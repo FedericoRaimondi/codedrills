@@ -33,6 +33,8 @@ Be kind, constructive, and inclusive. Harassment or discrimination of any kind w
 
 Both types support four levels: `new`, `beginner`, `intermediate`, `advanced`.
 
+Supported languages: **Python**, **SQL**, **JavaScript**, **Rust**.
+
 ---
 
 ## Getting started
@@ -110,7 +112,7 @@ Each lesson: `{ "title": "...", "body": "...", "code"?: "..." }`
 
 - **IDs** — `<lang-abbr>-<level>-<slug>`, e.g. `js-beginner-arrays`
 - **File IDs** are lowercase with hyphens; no spaces.
-- **Language abbreviations**: `py`, `js`, `ts`, `java`, `swift`, `kt`
+- **Language abbreviations**: `py`, `sql`, `js`, `rs`
 
 ---
 

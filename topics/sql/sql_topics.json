@@ -1,0 +1,142 @@
+{
+    "language": "sql",
+    "levels": [
+        {
+            "level": "new",
+            "topics": [
+                {
+                    "id": "sql-new-intro",
+                    "language": "sql",
+                    "level": "new",
+                    "title": "What is SQL?",
+                    "description": "Understand what SQL is, what a relational database is, and how to write your first SELECT statement.",
+                    "estimatedMinutes": 8,
+                    "lessons": [
+                        {
+                            "title": "Relational databases",
+                            "body": "A relational database stores data in tables — rows and columns, like a spreadsheet. SQL (Structured Query Language) is the standard language used to interact with these databases."
+                        },
+                        {
+                            "title": "Your first SELECT",
+                            "body": "SELECT retrieves data from a table. * means 'all columns'. FROM specifies which table to read.",
+                            "code": "SELECT * FROM users;"
+                        },
+                        {
+                            "title": "Selecting specific columns",
+                            "body": "List column names separated by commas to return only the data you need.",
+                            "code": "SELECT name, email FROM users;"
+                        },
+                        {
+                            "title": "Filtering with WHERE",
+                            "body": "The WHERE clause filters rows. Only rows where the condition is TRUE are returned.",
+                            "code": "SELECT name FROM users WHERE age > 18;"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "beginner",
+            "topics": [
+                {
+                    "id": "sql-beginner-joins",
+                    "language": "sql",
+                    "level": "beginner",
+                    "title": "JOINs",
+                    "description": "Combine rows from two or more tables using SQL JOIN operations.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Why JOINs?",
+                            "body": "Data is often spread across multiple tables to avoid duplication. JOINs let you combine them based on a matching column (usually a foreign key)."
+                        },
+                        {
+                            "title": "INNER JOIN",
+                            "body": "INNER JOIN returns only rows that have a match in both tables.",
+                            "code": "SELECT orders.id, customers.name\nFROM orders\nINNER JOIN customers ON orders.customer_id = customers.id;"
+                        },
+                        {
+                            "title": "LEFT JOIN",
+                            "body": "LEFT JOIN returns all rows from the left table and the matching rows from the right. If there is no match, NULL is returned for the right table's columns.",
+                            "code": "SELECT customers.name, orders.id\nFROM customers\nLEFT JOIN orders ON customers.id = orders.customer_id;"
+                        },
+                        {
+                            "title": "Aliases",
+                            "body": "Use AS to give tables or columns shorter names, making queries easier to read.",
+                            "code": "SELECT c.name, o.amount\nFROM customers AS c\nINNER JOIN orders AS o ON c.id = o.customer_id;"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "intermediate",
+            "topics": [
+                {
+                    "id": "sql-intermediate-aggregates",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Aggregates & GROUP BY",
+                    "description": "Summarise data with aggregate functions and group rows with GROUP BY.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Aggregate functions",
+                            "body": "COUNT, SUM, AVG, MIN, and MAX compute a single value from a set of rows.",
+                            "code": "SELECT COUNT(*) FROM orders;\nSELECT AVG(salary) FROM employees;"
+                        },
+                        {
+                            "title": "GROUP BY",
+                            "body": "GROUP BY collapses multiple rows with the same value into one group, so aggregates apply per group.",
+                            "code": "SELECT department, AVG(salary) AS avg_salary\nFROM employees\nGROUP BY department;"
+                        },
+                        {
+                            "title": "HAVING",
+                            "body": "WHERE filters rows before grouping. HAVING filters groups after aggregation.",
+                            "code": "SELECT department, COUNT(*) AS headcount\nFROM employees\nGROUP BY department\nHAVING COUNT(*) > 10;"
+                        },
+                        {
+                            "title": "NULL handling",
+                            "body": "Aggregate functions ignore NULL values. COUNT(*) counts all rows; COUNT(column) skips NULLs in that column.",
+                            "code": "SELECT COUNT(*) AS total_rows,\n       COUNT(email) AS rows_with_email\nFROM users;"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "advanced",
+            "topics": [
+                {
+                    "id": "sql-advanced-window-functions",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Window Functions",
+                    "description": "Compute values across a sliding window of rows without collapsing them, using SQL window functions.",
+                    "estimatedMinutes": 15,
+                    "lessons": [
+                        {
+                            "title": "What is a window function?",
+                            "body": "A window function computes a value for each row based on a set of related rows (the window), without collapsing them into a single output row. The OVER clause defines the window."
+                        },
+                        {
+                            "title": "ROW_NUMBER, RANK, DENSE_RANK",
+                            "body": "Ranking functions assign a position to each row within a partition. RANK() skips numbers after ties; DENSE_RANK() does not.",
+                            "code": "SELECT name, salary,\n       RANK() OVER (ORDER BY salary DESC) AS salary_rank\nFROM employees;"
+                        },
+                        {
+                            "title": "PARTITION BY",
+                            "body": "PARTITION BY divides rows into groups before the window function is applied, like GROUP BY but without collapsing rows.",
+                            "code": "SELECT department, name, salary,\n       RANK() OVER (PARTITION BY department ORDER BY salary DESC) AS dept_rank\nFROM employees;"
+                        },
+                        {
+                            "title": "Running totals with SUM OVER",
+                            "body": "SUM with ORDER BY inside OVER computes a cumulative total up to the current row.",
+                            "code": "SELECT created_at, amount,\n       SUM(amount) OVER (ORDER BY created_at) AS running_total\nFROM transactions;"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

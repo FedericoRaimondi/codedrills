@@ -24,11 +24,9 @@ topics/
 | Language   | Directory         |
 |------------|-------------------|
 | Python     | `python/`         |
+| SQL        | `sql/`            |
 | JavaScript | `javascript/`     |
-| TypeScript | `typescript/`     |
-| Java       | `java/`           |
-| Swift      | `swift/`          |
-| Kotlin     | `kotlin/`         |
+| Rust       | `rust/`           |
 
 ### Levels
 

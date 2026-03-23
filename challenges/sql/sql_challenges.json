@@ -1,0 +1,135 @@
+{
+    "language": "sql",
+    "levels": [
+        {
+            "level": "new",
+            "challenges": [
+                {
+                    "id": "sql-new-1",
+                    "language": "sql",
+                    "level": "new",
+                    "title": "Select all rows",
+                    "description": "Write a query that returns every row and every column from the table named `employees`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "The wildcard * selects all columns. Use FROM to specify the table.",
+                    "solution": {
+                        "code": "SELECT * FROM employees;",
+                        "steps": [
+                            {
+                                "title": "Understand SELECT",
+                                "explanation": "SELECT tells the database which columns to return. The * wildcard means 'all columns'."
+                            },
+                            {
+                                "title": "Specify the table",
+                                "explanation": "FROM employees tells the database which table to read from.",
+                                "code": "SELECT * FROM employees;"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "The result should contain every row in the employees table with all its columns."
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "level": "beginner",
+            "challenges": [
+                {
+                    "id": "sql-beginner-1",
+                    "language": "sql",
+                    "level": "beginner",
+                    "title": "Filter with WHERE",
+                    "description": "From the `employees` table, select the `name` and `salary` of all employees whose salary is greater than 50000.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use WHERE with a comparison operator (>) to filter rows.",
+                    "solution": {
+                        "code": "SELECT name, salary\nFROM employees\nWHERE salary > 50000;",
+                        "steps": [
+                            {
+                                "title": "Select specific columns",
+                                "explanation": "List column names separated by commas instead of using *."
+                            },
+                            {
+                                "title": "Filter rows",
+                                "explanation": "The WHERE clause applies a condition. Only rows where it evaluates to TRUE are included.",
+                                "code": "SELECT name, salary\nFROM employees\nWHERE salary > 50000;"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "The result should include only employees earning more than 50000, showing their name and salary."
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "level": "intermediate",
+            "challenges": [
+                {
+                    "id": "sql-intermediate-1",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Aggregate with GROUP BY",
+                    "description": "Using the `orders` table (columns: `customer_id`, `amount`), return each `customer_id` and the total `amount` they have spent. Order the results by total amount descending.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use SUM() with GROUP BY. Use ORDER BY ... DESC for descending sort.",
+                    "solution": {
+                        "code": "SELECT customer_id, SUM(amount) AS total_spent\nFROM orders\nGROUP BY customer_id\nORDER BY total_spent DESC;",
+                        "steps": [
+                            {
+                                "title": "Aggregate with SUM",
+                                "explanation": "SUM(amount) computes the total for each group. Give it an alias with AS for readability."
+                            },
+                            {
+                                "title": "Group rows",
+                                "explanation": "GROUP BY customer_id collapses all rows with the same customer_id into one.",
+                                "code": "GROUP BY customer_id"
+                            },
+                            {
+                                "title": "Sort the results",
+                                "explanation": "ORDER BY total_spent DESC puts the highest spenders first.",
+                                "code": "SELECT customer_id, SUM(amount) AS total_spent\nFROM orders\nGROUP BY customer_id\nORDER BY total_spent DESC;"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "level": "advanced",
+            "challenges": [
+                {
+                    "id": "sql-advanced-1",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Window function: running total",
+                    "description": "Using the `transactions` table (columns: `id`, `created_at`, `amount`), return each row with an additional column `running_total` that shows the cumulative sum of `amount` ordered by `created_at`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use SUM() as a window function with OVER (ORDER BY created_at).",
+                    "solution": {
+                        "code": "SELECT\n    id,\n    created_at,\n    amount,\n    SUM(amount) OVER (ORDER BY created_at) AS running_total\nFROM transactions\nORDER BY created_at;",
+                        "steps": [
+                            {
+                                "title": "Window function syntax",
+                                "explanation": "Aggregate functions followed by OVER (...) become window functions — they compute a value across a sliding frame without collapsing rows."
+                            },
+                            {
+                                "title": "Define the window",
+                                "explanation": "ORDER BY created_at inside OVER means: accumulate from the first row up to and including the current row.",
+                                "code": "SUM(amount) OVER (ORDER BY created_at) AS running_total"
+                            },
+                            {
+                                "title": "Final query",
+                                "explanation": "Select all original columns plus the window result. The outer ORDER BY keeps the output in chronological order.",
+                                "code": "SELECT\n    id,\n    created_at,\n    amount,\n    SUM(amount) OVER (ORDER BY created_at) AS running_total\nFROM transactions\nORDER BY created_at;"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}
