@@ -1,0 +1,143 @@
+{
+    "language": "rust",
+    "levels": [
+        {
+            "level": "new",
+            "topics": [
+                {
+                    "id": "rs-new-ownership",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Ownership & Borrowing",
+                    "description": "Understand Rust's unique ownership system that guarantees memory safety without a garbage collector.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Every value has an owner",
+                            "body": "In Rust, every value is owned by exactly one variable. When the variable goes out of scope, the value is dropped (freed) automatically."
+                        },
+                        {
+                            "title": "Move semantics",
+                            "body": "Assigning a value to another variable moves ownership. The original variable can no longer be used.",
+                            "code": "let s1 = String::from(\"hello\");\nlet s2 = s1;  // s1 is moved\n// println!(\"{}\", s1); // Error: s1 is no longer valid"
+                        },
+                        {
+                            "title": "Borrowing with &",
+                            "body": "You can lend a reference (&) to a value without transferring ownership. The borrower can read the value; the owner keeps it.",
+                            "code": "fn print_str(s: &String) {\n    println!(\"{}\", s);\n}\n\nlet s = String::from(\"hello\");\nprint_str(&s);  // s is still valid here"
+                        },
+                        {
+                            "title": "Copy types",
+                            "body": "Simple types like integers, floats, booleans, and chars implement Copy. Assigning them creates a copy — no move happens.",
+                            "code": "let x = 5;\nlet y = x;  // x is copied, not moved\nprintln!(\"{} {}\", x, y);  // both valid"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "beginner",
+            "topics": [
+                {
+                    "id": "rs-beginner-enums",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Enums & Pattern Matching",
+                    "description": "Model variants with Rust enums and handle them exhaustively using match.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Defining an enum",
+                            "body": "An enum type has a fixed set of variants. Each variant can optionally carry data.",
+                            "code": "enum Direction {\n    North,\n    South,\n    East,\n    West,\n}"
+                        },
+                        {
+                            "title": "Enums with data",
+                            "body": "Variants can hold different types of data, making Rust enums much more powerful than enums in other languages.",
+                            "code": "enum Message {\n    Quit,\n    Move { x: i32, y: i32 },\n    Write(String),\n}"
+                        },
+                        {
+                            "title": "match expressions",
+                            "body": "match lets you handle every variant. The compiler ensures all cases are covered — no accidental fall-through.",
+                            "code": "let dir = Direction::North;\nmatch dir {\n    Direction::North => println!(\"Going north\"),\n    Direction::South => println!(\"Going south\"),\n    Direction::East  => println!(\"Going east\"),\n    Direction::West  => println!(\"Going west\"),\n}"
+                        },
+                        {
+                            "title": "Option<T>",
+                            "body": "Rust has no null. Instead, Option<T> is an enum with Some(T) and None. You must explicitly handle both cases.",
+                            "code": "let maybe: Option<i32> = Some(42);\nmatch maybe {\n    Some(n) => println!(\"Got {}\", n),\n    None    => println!(\"Nothing here\"),\n}"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "intermediate",
+            "topics": [
+                {
+                    "id": "rs-intermediate-traits",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Traits",
+                    "description": "Define shared behaviour with traits — Rust's mechanism for polymorphism and code reuse.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Defining a trait",
+                            "body": "A trait declares a set of methods that any implementing type must provide.",
+                            "code": "trait Greet {\n    fn greet(&self) -> String;\n}"
+                        },
+                        {
+                            "title": "Implementing a trait",
+                            "body": "Use impl Trait for Type to provide the method bodies for a specific type.",
+                            "code": "struct Person { name: String }\n\nimpl Greet for Person {\n    fn greet(&self) -> String {\n        format!(\"Hello, {}!\", self.name)\n    }\n}"
+                        },
+                        {
+                            "title": "Default methods",
+                            "body": "Traits can provide default implementations. Types can override them or use the default.",
+                            "code": "trait Greet {\n    fn name(&self) -> &str;\n    fn greet(&self) -> String {\n        format!(\"Hello, {}!\", self.name())\n    }\n}"
+                        },
+                        {
+                            "title": "Trait bounds",
+                            "body": "Use trait bounds (T: Trait) to write generic functions that work with any type implementing the trait.",
+                            "code": "fn print_greeting<T: Greet>(item: &T) {\n    println!(\"{}\", item.greet());\n}"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "advanced",
+            "topics": [
+                {
+                    "id": "rs-advanced-lifetimes",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Lifetimes",
+                    "description": "Understand how Rust's lifetime annotations prevent dangling references and enable safe borrowing across function boundaries.",
+                    "estimatedMinutes": 15,
+                    "lessons": [
+                        {
+                            "title": "What is a lifetime?",
+                            "body": "A lifetime is the scope for which a reference is valid. The borrow checker ensures references never outlive the data they point to. Most lifetimes are inferred, but sometimes you must annotate them explicitly."
+                        },
+                        {
+                            "title": "Lifetime annotation syntax",
+                            "body": "Lifetime parameters start with an apostrophe: 'a. They appear in angle brackets alongside type parameters.",
+                            "code": "fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {\n    if x.len() > y.len() { x } else { y }\n}"
+                        },
+                        {
+                            "title": "Why this function needs a lifetime",
+                            "body": "The returned reference borrows from either x or y. Without 'a, the compiler can't know which input the output borrows from, or how long the result stays valid.",
+                            "code": "// The caller ensures both inputs live at least as long as the returned reference\nlet result;\n{\n    let s1 = String::from(\"long string\");\n    let s2 = String::from(\"xy\");\n    result = longest(&s1, &s2);\n    println!(\"{}\", result);  // OK — both s1 and s2 still live here\n}"
+                        },
+                        {
+                            "title": "Lifetime elision rules",
+                            "body": "The compiler applies three elision rules before requiring annotations: (1) each input gets its own lifetime; (2) if there is exactly one input lifetime it is given to all outputs; (3) if one input is &self or &mut self its lifetime is given to all outputs.",
+                            "code": "// No annotation needed — rule 2 applies\nfn first_word(s: &str) -> &str {\n    let bytes = s.as_bytes();\n    for (i, &b) in bytes.iter().enumerate() {\n        if b == b' ' { return &s[..i]; }\n    }\n    s\n}"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

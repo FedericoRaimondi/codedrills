@@ -1,0 +1,135 @@
+{
+    "language": "python",
+    "levels": [
+        {
+            "level": "new",
+            "challenges": [
+                {
+                    "id": "py-new-1",
+                    "language": "python",
+                    "level": "new",
+                    "title": "Print a greeting",
+                    "description": "Print the text 'Hello, World!' to the console.",
+                    "starterCode": "# Write your code below\n",
+                    "hint": "Use the built-in print() function with a string argument.",
+                    "solution": {
+                        "code": "print(\"Hello, World!\")",
+                        "steps": [
+                            {
+                                "title": "Understand the task",
+                                "explanation": "You need to display text in the console. Python's print() function writes any value to standard output."
+                            },
+                            {
+                                "title": "Write the solution",
+                                "explanation": "Call print() with the string 'Hello, World!' as its argument.",
+                                "code": "print(\"Hello, World!\")"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Run the script. You should see 'Hello, World!' printed in the console."
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "level": "beginner",
+            "challenges": [
+                {
+                    "id": "py-beginner-1",
+                    "language": "python",
+                    "level": "beginner",
+                    "title": "Sum of a list",
+                    "description": "Write a function `list_sum(numbers)` that returns the sum of all integers in a list.",
+                    "starterCode": "def list_sum(numbers):\n    # Your code here\n    pass\n",
+                    "hint": "Python has a built-in sum() function, or you can loop over the list.",
+                    "solution": {
+                        "code": "def list_sum(numbers):\n    return sum(numbers)",
+                        "steps": [
+                            {
+                                "title": "Understand the task",
+                                "explanation": "You need to add up every number in the list and return the total."
+                            },
+                            {
+                                "title": "Use the built-in",
+                                "explanation": "Python's built-in sum() accepts any iterable and returns the total.",
+                                "code": "def list_sum(numbers):\n    return sum(numbers)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "list_sum([1, 2, 3]) should return 6. list_sum([]) should return 0."
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "level": "intermediate",
+            "challenges": [
+                {
+                    "id": "py-intermediate-1",
+                    "language": "python",
+                    "level": "intermediate",
+                    "title": "FizzBuzz",
+                    "description": "Write a function `fizzbuzz(n)` that returns a list of strings from 1 to n. For multiples of 3 use 'Fizz', multiples of 5 use 'Buzz', multiples of both use 'FizzBuzz', otherwise use the number as a string.",
+                    "starterCode": "def fizzbuzz(n):\n    # Your code here\n    pass\n",
+                    "hint": "Check divisibility with the modulo operator %. Order matters: check both 3 and 5 first.",
+                    "solution": {
+                        "code": "def fizzbuzz(n):\n    result = []\n    for i in range(1, n + 1):\n        if i % 15 == 0:\n            result.append(\"FizzBuzz\")\n        elif i % 3 == 0:\n            result.append(\"Fizz\")\n        elif i % 5 == 0:\n            result.append(\"Buzz\")\n        else:\n            result.append(str(i))\n    return result",
+                        "steps": [
+                            {
+                                "title": "Iterate 1 to n",
+                                "explanation": "Use range(1, n + 1) to iterate over all integers from 1 to n inclusive."
+                            },
+                            {
+                                "title": "Check divisibility in order",
+                                "explanation": "Check 15 (both 3 and 5) first to avoid accidentally returning 'Fizz' or 'Buzz' for FizzBuzz numbers.",
+                                "code": "if i % 15 == 0:\n    result.append(\"FizzBuzz\")"
+                            },
+                            {
+                                "title": "Handle remaining cases",
+                                "explanation": "Use elif for 3 and 5, and else to stringify the number.",
+                                "code": "def fizzbuzz(n):\n    result = []\n    for i in range(1, n + 1):\n        if i % 15 == 0:\n            result.append(\"FizzBuzz\")\n        elif i % 3 == 0:\n            result.append(\"Fizz\")\n        elif i % 5 == 0:\n            result.append(\"Buzz\")\n        else:\n            result.append(str(i))\n    return result"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "level": "advanced",
+            "challenges": [
+                {
+                    "id": "py-advanced-1",
+                    "language": "python",
+                    "level": "advanced",
+                    "title": "LRU Cache",
+                    "description": "Implement an LRU (Least Recently Used) cache class with a fixed capacity. It must support O(1) `get(key)` and `put(key, value)` operations. `get` returns -1 if the key is not found. When capacity is exceeded, evict the least recently used entry.",
+                    "starterCode": "class LRUCache:\n    def __init__(self, capacity: int):\n        # Your code here\n        pass\n\n    def get(self, key: int) -> int:\n        # Your code here\n        pass\n\n    def put(self, key: int, value: int) -> None:\n        # Your code here\n        pass\n",
+                    "hint": "Combine an OrderedDict (or a dict + doubly-linked list) for O(1) access and O(1) eviction.",
+                    "solution": {
+                        "code": "from collections import OrderedDict\n\nclass LRUCache:\n    def __init__(self, capacity: int):\n        self.capacity = capacity\n        self.cache = OrderedDict()\n\n    def get(self, key: int) -> int:\n        if key not in self.cache:\n            return -1\n        self.cache.move_to_end(key)\n        return self.cache[key]\n\n    def put(self, key: int, value: int) -> None:\n        if key in self.cache:\n            self.cache.move_to_end(key)\n        self.cache[key] = value\n        if len(self.cache) > self.capacity:\n            self.cache.popitem(last=False)",
+                        "steps": [
+                            {
+                                "title": "Choose the data structure",
+                                "explanation": "OrderedDict maintains insertion order and supports move_to_end(), which gives us O(1) reordering."
+                            },
+                            {
+                                "title": "Implement get",
+                                "explanation": "On a cache hit, move the key to the end (most recently used) before returning its value.",
+                                "code": "def get(self, key: int) -> int:\n    if key not in self.cache:\n        return -1\n    self.cache.move_to_end(key)\n    return self.cache[key]"
+                            },
+                            {
+                                "title": "Implement put",
+                                "explanation": "Insert or update the key, then move it to the end. If over capacity, pop from the front (LRU).",
+                                "code": "def put(self, key: int, value: int) -> None:\n    if key in self.cache:\n        self.cache.move_to_end(key)\n    self.cache[key] = value\n    if len(self.cache) > self.capacity:\n        self.cache.popitem(last=False)"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

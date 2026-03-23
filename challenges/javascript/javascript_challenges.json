@@ -1,0 +1,134 @@
+{
+    "language": "javascript",
+    "levels": [
+        {
+            "level": "new",
+            "challenges": [
+                {
+                    "id": "js-new-1",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Print a greeting",
+                    "description": "Print the text 'Hello, World!' to the console.",
+                    "starterCode": "// Write your code below\n",
+                    "hint": "Use console.log() with a string argument.",
+                    "solution": {
+                        "code": "console.log(\"Hello, World!\");",
+                        "steps": [
+                            {
+                                "title": "Understand the task",
+                                "explanation": "You need to display text in the console. JavaScript's console.log() writes any value to standard output."
+                            },
+                            {
+                                "title": "Write the solution",
+                                "explanation": "Call console.log() with the string 'Hello, World!'.",
+                                "code": "console.log(\"Hello, World!\");"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Run the script. You should see 'Hello, World!' in the console."
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "level": "beginner",
+            "challenges": [
+                {
+                    "id": "js-beginner-1",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Reverse a string",
+                    "description": "Write a function `reverseString(str)` that returns the input string reversed.",
+                    "starterCode": "function reverseString(str) {\n  // Your code here\n}\n",
+                    "hint": "Strings are immutable in JavaScript. Convert to an array, reverse it, then join it back.",
+                    "solution": {
+                        "code": "function reverseString(str) {\n  return str.split(\"\").reverse().join(\"\");\n}",
+                        "steps": [
+                            {
+                                "title": "Split into characters",
+                                "explanation": "str.split('') converts the string into an array of individual characters."
+                            },
+                            {
+                                "title": "Reverse the array",
+                                "explanation": "Array.prototype.reverse() reverses the array in place and returns it."
+                            },
+                            {
+                                "title": "Join back to string",
+                                "explanation": "Array.prototype.join('') concatenates all elements without a separator.",
+                                "code": "function reverseString(str) {\n  return str.split(\"\").reverse().join(\"\");\n}"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "level": "intermediate",
+            "challenges": [
+                {
+                    "id": "js-intermediate-1",
+                    "language": "javascript",
+                    "level": "intermediate",
+                    "title": "Debounce function",
+                    "description": "Implement a `debounce(fn, delay)` function that returns a debounced version of `fn`. The debounced function delays invoking `fn` until `delay` milliseconds have elapsed since the last invocation.",
+                    "starterCode": "function debounce(fn, delay) {\n  // Your code here\n}\n",
+                    "hint": "Use a closure to hold a timer ID. Each call to the returned function clears the previous timer and starts a new one.",
+                    "solution": {
+                        "code": "function debounce(fn, delay) {\n  let timerId;\n  return function (...args) {\n    clearTimeout(timerId);\n    timerId = setTimeout(() => fn.apply(this, args), delay);\n  };\n}",
+                        "steps": [
+                            {
+                                "title": "Create a closure",
+                                "explanation": "Declare a timerId variable in the outer scope so every call to the returned function shares the same timer reference."
+                            },
+                            {
+                                "title": "Clear and reset the timer",
+                                "explanation": "On each invocation, clearTimeout cancels the pending call and setTimeout schedules a fresh one.",
+                                "code": "clearTimeout(timerId);\ntimerId = setTimeout(() => fn.apply(this, args), delay);"
+                            },
+                            {
+                                "title": "Preserve context and arguments",
+                                "explanation": "Use rest parameters (...args) and fn.apply(this, args) so the original function receives the correct this and all arguments.",
+                                "code": "function debounce(fn, delay) {\n  let timerId;\n  return function (...args) {\n    clearTimeout(timerId);\n    timerId = setTimeout(() => fn.apply(this, args), delay);\n  };\n}"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "level": "advanced",
+            "challenges": [
+                {
+                    "id": "js-advanced-1",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Promise.all polyfill",
+                    "description": "Implement `promiseAll(promises)` that behaves like `Promise.all`: resolves with an array of results when all promises resolve, or rejects as soon as any promise rejects.",
+                    "starterCode": "function promiseAll(promises) {\n  // Your code here\n}\n",
+                    "hint": "Return a new Promise. Track a results array and a counter. Reject immediately on any rejection.",
+                    "solution": {
+                        "code": "function promiseAll(promises) {\n  return new Promise((resolve, reject) => {\n    if (promises.length === 0) return resolve([]);\n    const results = new Array(promises.length);\n    let remaining = promises.length;\n    promises.forEach((p, i) => {\n      Promise.resolve(p).then(value => {\n        results[i] = value;\n        if (--remaining === 0) resolve(results);\n      }).catch(reject);\n    });\n  });\n}",
+                        "steps": [
+                            {
+                                "title": "Handle the empty case",
+                                "explanation": "If the input array is empty, resolve immediately with an empty array."
+                            },
+                            {
+                                "title": "Track results by index",
+                                "explanation": "Pre-allocate a results array of the same length so results are stored at the correct positions."
+                            },
+                            {
+                                "title": "Count resolutions",
+                                "explanation": "Decrement a counter on each resolution. When it reaches zero, all promises have resolved — call resolve(results).",
+                                "code": "function promiseAll(promises) {\n  return new Promise((resolve, reject) => {\n    if (promises.length === 0) return resolve([]);\n    const results = new Array(promises.length);\n    let remaining = promises.length;\n    promises.forEach((p, i) => {\n      Promise.resolve(p).then(value => {\n        results[i] = value;\n        if (--remaining === 0) resolve(results);\n      }).catch(reject);\n    });\n  });\n}"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

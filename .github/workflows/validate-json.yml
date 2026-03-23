@@ -1,0 +1,31 @@
+name: Validate JSON content
+
+on:
+  # Manual trigger — any collaborator can trigger, but the job checks the actor
+  workflow_dispatch:
+  # Also run automatically on PRs that touch content files
+  pull_request:
+    paths:
+      - 'challenges/**/*.json'
+      - 'topics/**/*.json'
+
+jobs:
+  validate:
+    name: Check JSON format and keys
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    # Only the repository owner may trigger this workflow
+    if: github.actor == github.repository_owner || github.event_name == 'pull_request'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate challenge and topic JSON files
+        run: python scripts/validate_json.py

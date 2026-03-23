@@ -1,0 +1,134 @@
+{
+    "language": "rust",
+    "levels": [
+        {
+            "level": "new",
+            "challenges": [
+                {
+                    "id": "rs-new-1",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Print a greeting",
+                    "description": "Print the text 'Hello, World!' to the console.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use the println! macro with a string literal.",
+                    "solution": {
+                        "code": "fn main() {\n    println!(\"Hello, World!\");\n}",
+                        "steps": [
+                            {
+                                "title": "Understand the entry point",
+                                "explanation": "Every Rust program starts from the main() function. It takes no arguments and returns nothing by default."
+                            },
+                            {
+                                "title": "Print to the console",
+                                "explanation": "println! is a macro (notice the !) that writes a formatted line to standard output.",
+                                "code": "println!(\"Hello, World!\");"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Run with `cargo run`. You should see 'Hello, World!' in the terminal."
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "level": "beginner",
+            "challenges": [
+                {
+                    "id": "rs-beginner-1",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Sum a vector",
+                    "description": "Write a function `vec_sum(numbers: &[i32]) -> i32` that returns the sum of all integers in the slice.",
+                    "starterCode": "fn vec_sum(numbers: &[i32]) -> i32 {\n    // Your code here\n    0\n}\n",
+                    "hint": "Use the Iterator::sum() method available on slices via .iter().",
+                    "solution": {
+                        "code": "fn vec_sum(numbers: &[i32]) -> i32 {\n    numbers.iter().sum()\n}",
+                        "steps": [
+                            {
+                                "title": "Borrow the slice",
+                                "explanation": "&[i32] is a borrowed slice — a view into a sequence of i32 values. No ownership is transferred."
+                            },
+                            {
+                                "title": "Use iter().sum()",
+                                "explanation": ".iter() creates an iterator over references. .sum() folds the iterator by adding all values.",
+                                "code": "numbers.iter().sum()"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "vec_sum(&[1, 2, 3]) should return 6. vec_sum(&[]) should return 0."
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "level": "intermediate",
+            "challenges": [
+                {
+                    "id": "rs-intermediate-1",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Count words",
+                    "description": "Write a function `word_count(text: &str) -> std::collections::HashMap<&str, usize>` that counts how many times each word appears in the input string (words are separated by whitespace).",
+                    "starterCode": "use std::collections::HashMap;\n\nfn word_count<'a>(text: &'a str) -> HashMap<&'a str, usize> {\n    // Your code here\n    HashMap::new()\n}\n",
+                    "hint": "Use .split_whitespace() to iterate over words, and the entry().and_modify().or_insert() pattern to update counts.",
+                    "solution": {
+                        "code": "use std::collections::HashMap;\n\nfn word_count<'a>(text: &'a str) -> HashMap<&'a str, usize> {\n    let mut counts = HashMap::new();\n    for word in text.split_whitespace() {\n        *counts.entry(word).or_insert(0) += 1;\n    }\n    counts\n}",
+                        "steps": [
+                            {
+                                "title": "Split on whitespace",
+                                "explanation": ".split_whitespace() handles any run of whitespace and skips leading/trailing spaces."
+                            },
+                            {
+                                "title": "Update the map",
+                                "explanation": "entry(word).or_insert(0) returns a mutable reference to the count, inserting 0 if absent. Dereferencing and incrementing updates it in place.",
+                                "code": "*counts.entry(word).or_insert(0) += 1;"
+                            },
+                            {
+                                "title": "Lifetimes",
+                                "explanation": "The 'a lifetime ties the keys in the HashMap to the input &str, so they stay valid as long as the original string lives.",
+                                "code": "fn word_count<'a>(text: &'a str) -> HashMap<&'a str, usize> { ... }"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "level": "advanced",
+            "challenges": [
+                {
+                    "id": "rs-advanced-1",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Generic stack with trait bound",
+                    "description": "Implement a generic `Stack<T>` where T implements the `Display` trait. It must support `push(&mut self, item: T)`, `pop(&mut self) -> Option<T>`, and `peek(&self) -> Option<&T>`. Also implement a `print_all` method that prints every element.",
+                    "starterCode": "use std::fmt::Display;\n\nstruct Stack<T> {\n    // Your fields here\n}\n\nimpl<T: Display> Stack<T> {\n    pub fn new() -> Self {\n        // Your code here\n        todo!()\n    }\n\n    pub fn push(&mut self, item: T) {\n        // Your code here\n    }\n\n    pub fn pop(&mut self) -> Option<T> {\n        // Your code here\n        None\n    }\n\n    pub fn peek(&self) -> Option<&T> {\n        // Your code here\n        None\n    }\n\n    pub fn print_all(&self) {\n        // Your code here\n    }\n}\n",
+                    "hint": "Back the stack with a Vec<T>. Vec already has push and pop. Use last() for peek.",
+                    "solution": {
+                        "code": "use std::fmt::Display;\n\nstruct Stack<T> {\n    data: Vec<T>,\n}\n\nimpl<T: Display> Stack<T> {\n    pub fn new() -> Self {\n        Stack { data: Vec::new() }\n    }\n\n    pub fn push(&mut self, item: T) {\n        self.data.push(item);\n    }\n\n    pub fn pop(&mut self) -> Option<T> {\n        self.data.pop()\n    }\n\n    pub fn peek(&self) -> Option<&T> {\n        self.data.last()\n    }\n\n    pub fn print_all(&self) {\n        for item in &self.data {\n            println!(\"{}\", item);\n        }\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Back with Vec",
+                                "explanation": "Vec<T> already handles dynamic sizing and provides push() and pop() with the exact semantics a stack needs."
+                            },
+                            {
+                                "title": "Trait bound: Display",
+                                "explanation": "The T: Display bound in impl<T: Display> means every method in this block can call println!(\"{}\", item) on a T."
+                            },
+                            {
+                                "title": "peek returns a reference",
+                                "explanation": "Option<&T> borrows from the Vec — no cloning or ownership transfer needed. Vec::last() returns this for free.",
+                                "code": "pub fn peek(&self) -> Option<&T> {\n    self.data.last()\n}"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}
