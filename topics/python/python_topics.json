@@ -1,0 +1,143 @@
+{
+    "language": "python",
+    "levels": [
+        {
+            "level": "new",
+            "topics": [
+                {
+                    "id": "py-new-datatypes",
+                    "language": "python",
+                    "level": "new",
+                    "title": "Data Types & Variables",
+                    "description": "Understand Python's core data types: int, float, str, bool.",
+                    "estimatedMinutes": 8,
+                    "lessons": [
+                        {
+                            "title": "What are data types?",
+                            "body": "Every value in Python has a type. The type determines what operations you can do with it and how it's stored in memory. Python figures out the type automatically — you don't need to declare it."
+                        },
+                        {
+                            "title": "Integers and floats",
+                            "body": "Integers (int) are whole numbers like 1, -5, 100. Floats have decimal points like 3.14, -0.5. Dividing two integers with / always gives a float in Python 3.",
+                            "code": "age = 25\npi = 3.14159\nprint(type(age))  # <class 'int'>\nprint(type(pi))   # <class 'float'>"
+                        },
+                        {
+                            "title": "Strings",
+                            "body": "Strings store text. Use single or double quotes — both work. You can even use triple quotes for multi-line strings.",
+                            "code": "name = \"Alice\"\ngreeting = 'Hello'\nprint(name[0])  # 'A'"
+                        },
+                        {
+                            "title": "Booleans",
+                            "body": "Booleans are either True or False. They're the result of comparisons and logical operations.",
+                            "code": "is_raining = True\nprint(5 > 3)       # True\nprint(True + True) # 2"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "beginner",
+            "topics": [
+                {
+                    "id": "py-beginner-lists",
+                    "language": "python",
+                    "level": "beginner",
+                    "title": "Lists & List Methods",
+                    "description": "Learn how to store, access, and manipulate ordered collections of items using Python lists.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Creating a list",
+                            "body": "A list is an ordered, mutable collection. Create one with square brackets.",
+                            "code": "fruits = [\"apple\", \"banana\", \"cherry\"]\nprint(fruits[0])  # 'apple'"
+                        },
+                        {
+                            "title": "Common methods",
+                            "body": "append() adds to the end. remove() deletes the first matching value. pop() removes by index and returns the value.",
+                            "code": "fruits.append(\"date\")\nfruits.remove(\"banana\")\nlast = fruits.pop()"
+                        },
+                        {
+                            "title": "Slicing",
+                            "body": "Use [start:stop:step] to get a sub-list. Negative indices count from the end.",
+                            "code": "numbers = [0, 1, 2, 3, 4, 5]\nprint(numbers[1:4])   # [1, 2, 3]\nprint(numbers[::-1])  # [5, 4, 3, 2, 1, 0]"
+                        },
+                        {
+                            "title": "List comprehensions",
+                            "body": "A concise way to create a new list by transforming or filtering another sequence.",
+                            "code": "squares = [x**2 for x in range(1, 6)]\n# [1, 4, 9, 16, 25]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "intermediate",
+            "topics": [
+                {
+                    "id": "py-intermediate-decorators",
+                    "language": "python",
+                    "level": "intermediate",
+                    "title": "Decorators",
+                    "description": "Understand how Python decorators wrap functions to add behaviour without modifying the original code.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Functions as first-class objects",
+                            "body": "In Python, functions are objects. You can pass them as arguments, return them, and assign them to variables.",
+                            "code": "def greet():\n    return \"Hello\"\n\nsay = greet\nprint(say())  # 'Hello'"
+                        },
+                        {
+                            "title": "Writing a decorator",
+                            "body": "A decorator is a function that takes another function and returns a new function with added behaviour.",
+                            "code": "def log(fn):\n    def wrapper(*args, **kwargs):\n        print(f\"Calling {fn.__name__}\")\n        return fn(*args, **kwargs)\n    return wrapper"
+                        },
+                        {
+                            "title": "Applying with @",
+                            "body": "The @ syntax is syntactic sugar for reassigning the function through the decorator.",
+                            "code": "@log\ndef add(a, b):\n    return a + b\n\nadd(1, 2)  # prints 'Calling add', returns 3"
+                        },
+                        {
+                            "title": "functools.wraps",
+                            "body": "Use @functools.wraps(fn) inside your wrapper to preserve the original function's name and docstring.",
+                            "code": "import functools\n\ndef log(fn):\n    @functools.wraps(fn)\n    def wrapper(*args, **kwargs):\n        print(f\"Calling {fn.__name__}\")\n        return fn(*args, **kwargs)\n    return wrapper"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "advanced",
+            "topics": [
+                {
+                    "id": "py-advanced-asyncio",
+                    "language": "python",
+                    "level": "advanced",
+                    "title": "AsyncIO & Coroutines",
+                    "description": "Master Python's asyncio framework for writing concurrent I/O-bound code using coroutines.",
+                    "estimatedMinutes": 15,
+                    "lessons": [
+                        {
+                            "title": "The event loop",
+                            "body": "asyncio runs an event loop that schedules coroutines. The loop runs until all coroutines complete. asyncio.run() is the entry point in modern Python."
+                        },
+                        {
+                            "title": "async def and await",
+                            "body": "Coroutines are defined with async def. Use await to pause execution until an awaitable completes.",
+                            "code": "import asyncio\n\nasync def fetch(url: str) -> str:\n    await asyncio.sleep(1)  # simulates I/O\n    return f\"data from {url}\""
+                        },
+                        {
+                            "title": "Running concurrently with gather",
+                            "body": "asyncio.gather() runs multiple coroutines concurrently. They interleave during I/O waits.",
+                            "code": "async def main():\n    results = await asyncio.gather(\n        fetch(\"https://a.example\"),\n        fetch(\"https://b.example\"),\n    )\n    print(results)\n\nasyncio.run(main())"
+                        },
+                        {
+                            "title": "Tasks and cancellation",
+                            "body": "asyncio.create_task() schedules a coroutine immediately. You can cancel a task at any time.",
+                            "code": "task = asyncio.create_task(fetch(\"https://c.example\"))\nawait asyncio.sleep(0.5)\ntask.cancel()"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

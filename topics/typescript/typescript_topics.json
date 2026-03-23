@@ -1,0 +1,138 @@
+{
+    "language": "typescript",
+    "levels": [
+        {
+            "level": "new",
+            "topics": [
+                {
+                    "id": "ts-new-types",
+                    "language": "typescript",
+                    "level": "new",
+                    "title": "Basic Types & Type Annotations",
+                    "description": "Learn TypeScript's primitive types and how to annotate variables and function signatures.",
+                    "estimatedMinutes": 8,
+                    "lessons": [
+                        {
+                            "title": "TypeScript is a superset of JavaScript",
+                            "body": "Any valid JavaScript is valid TypeScript. TypeScript adds optional type annotations and catches type errors at compile time rather than at runtime."
+                        },
+                        {
+                            "title": "Primitive types",
+                            "body": "The basic types are number, string, boolean, null, and undefined. Annotate with a colon after the variable name.",
+                            "code": "let age: number = 30;\nlet name: string = \"Alice\";\nlet active: boolean = true;"
+                        },
+                        {
+                            "title": "Type inference",
+                            "body": "TypeScript infers types automatically when you initialise a variable. You only need to annotate when inference is insufficient.",
+                            "code": "let count = 0;        // inferred: number\ncount = \"hello\";      // Error: Type 'string' is not assignable to type 'number'"
+                        },
+                        {
+                            "title": "Function signatures",
+                            "body": "Annotate both parameter types and the return type to document intent and catch mistakes.",
+                            "code": "function add(a: number, b: number): number {\n  return a + b;\n}"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "beginner",
+            "topics": [
+                {
+                    "id": "ts-beginner-interfaces",
+                    "language": "typescript",
+                    "level": "beginner",
+                    "title": "Interfaces & Type Aliases",
+                    "description": "Define the shape of objects using interfaces and type aliases.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "interface",
+                            "body": "An interface describes the shape of an object. It can have optional properties (?) and readonly modifiers.",
+                            "code": "interface User {\n  id: number;\n  name: string;\n  email?: string;  // optional\n}"
+                        },
+                        {
+                            "title": "type alias",
+                            "body": "type aliases can describe any type — not just objects. They're interchangeable with interfaces for object shapes in most cases.",
+                            "code": "type Point = { x: number; y: number };\ntype ID = string | number;"
+                        },
+                        {
+                            "title": "Extending interfaces",
+                            "body": "Use extends to build on an existing interface. Composition over repetition.",
+                            "code": "interface Admin extends User {\n  role: \"admin\" | \"superadmin\";\n}"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "intermediate",
+            "topics": [
+                {
+                    "id": "ts-intermediate-generics",
+                    "language": "typescript",
+                    "level": "intermediate",
+                    "title": "Generics",
+                    "description": "Write reusable, type-safe functions and classes using TypeScript generics.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Why generics?",
+                            "body": "Generics let you write a function once that works with many types while still preserving type information. The alternative — using any — loses all type safety."
+                        },
+                        {
+                            "title": "Generic functions",
+                            "body": "Declare a type parameter in angle brackets. TypeScript infers it from the argument at the call site.",
+                            "code": "function first<T>(arr: T[]): T | undefined {\n  return arr[0];\n}\n\nconst n = first([1, 2, 3]);   // number | undefined\nconst s = first([\"a\", \"b\"]);  // string | undefined"
+                        },
+                        {
+                            "title": "Constraints with extends",
+                            "body": "Use extends to restrict what types a parameter can be.",
+                            "code": "function getLength<T extends { length: number }>(value: T): number {\n  return value.length;\n}"
+                        },
+                        {
+                            "title": "Generic interfaces",
+                            "body": "Interfaces can also be generic, useful for API responses and containers.",
+                            "code": "interface ApiResponse<T> {\n  data: T;\n  error: string | null;\n}"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "advanced",
+            "topics": [
+                {
+                    "id": "ts-advanced-conditional-types",
+                    "language": "typescript",
+                    "level": "advanced",
+                    "title": "Conditional & Mapped Types",
+                    "description": "Use TypeScript's type-level programming features to transform and derive types from other types.",
+                    "estimatedMinutes": 15,
+                    "lessons": [
+                        {
+                            "title": "Conditional types",
+                            "body": "T extends U ? X : Y resolves to X if T is assignable to U, otherwise Y. This enables powerful type inference.",
+                            "code": "type IsString<T> = T extends string ? true : false;\ntype A = IsString<string>; // true\ntype B = IsString<number>; // false"
+                        },
+                        {
+                            "title": "infer keyword",
+                            "body": "infer introduces a type variable inside a conditional type that TypeScript fills in during inference.",
+                            "code": "type ReturnType<T> = T extends (...args: unknown[]) => infer R ? R : never;\ntype N = ReturnType<() => number>; // number"
+                        },
+                        {
+                            "title": "Mapped types",
+                            "body": "Mapped types iterate over a union of keys and transform each property.",
+                            "code": "type Partial<T> = { [K in keyof T]?: T[K] };\ntype Required<T> = { [K in keyof T]-?: T[K] };"
+                        },
+                        {
+                            "title": "Template literal types",
+                            "body": "TypeScript can build string union types using template literals, enabling event-name generation and more.",
+                            "code": "type EventName<T extends string> = `on${Capitalize<T>}`;\ntype ClickEvent = EventName<\"click\">; // 'onClick'"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

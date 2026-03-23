@@ -1,0 +1,131 @@
+{
+    "language": "java",
+    "levels": [
+        {
+            "level": "new",
+            "challenges": [
+                {
+                    "id": "java-new-1",
+                    "language": "java",
+                    "level": "new",
+                    "title": "Print a greeting",
+                    "description": "Print the text 'Hello, World!' to the console.",
+                    "starterCode": "public class Main {\n    public static void main(String[] args) {\n        // Write your code below\n    }\n}\n",
+                    "hint": "Use System.out.println() with a string argument.",
+                    "solution": {
+                        "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Understand the entry point",
+                                "explanation": "Every Java program starts from the main method inside a class. The method signature must be exactly public static void main(String[] args)."
+                            },
+                            {
+                                "title": "Print to the console",
+                                "explanation": "System.out.println() writes a line to standard output and adds a newline at the end.",
+                                "code": "System.out.println(\"Hello, World!\");"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Compile and run. You should see 'Hello, World!' in the console."
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "level": "beginner",
+            "challenges": [
+                {
+                    "id": "java-beginner-1",
+                    "language": "java",
+                    "level": "beginner",
+                    "title": "Check palindrome",
+                    "description": "Write a method `isPalindrome(String s)` that returns true if the string reads the same forwards and backwards (case-insensitive), false otherwise.",
+                    "starterCode": "public class Solution {\n    public boolean isPalindrome(String s) {\n        // Your code here\n        return false;\n    }\n}\n",
+                    "hint": "Reverse the string and compare it to the original. Remember to handle case.",
+                    "solution": {
+                        "code": "public class Solution {\n    public boolean isPalindrome(String s) {\n        String lower = s.toLowerCase();\n        String reversed = new StringBuilder(lower).reverse().toString();\n        return lower.equals(reversed);\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Normalize case",
+                                "explanation": "Convert the string to lower case so the comparison is case-insensitive."
+                            },
+                            {
+                                "title": "Reverse the string",
+                                "explanation": "StringBuilder.reverse() efficiently reverses the character sequence.",
+                                "code": "String reversed = new StringBuilder(lower).reverse().toString();"
+                            },
+                            {
+                                "title": "Compare",
+                                "explanation": "Use .equals() (not ==) to compare string contents in Java.",
+                                "code": "return lower.equals(reversed);"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "level": "intermediate",
+            "challenges": [
+                {
+                    "id": "java-intermediate-1",
+                    "language": "java",
+                    "level": "intermediate",
+                    "title": "Two Sum",
+                    "description": "Given an integer array `nums` and an integer `target`, return the indices of the two numbers that add up to `target`. Each input has exactly one solution. You may not use the same element twice.",
+                    "starterCode": "import java.util.*;\n\npublic class Solution {\n    public int[] twoSum(int[] nums, int target) {\n        // Your code here\n        return new int[]{};\n    }\n}\n",
+                    "hint": "A HashMap lets you check in O(1) whether the complement of each number has already been seen.",
+                    "solution": {
+                        "code": "import java.util.*;\n\npublic class Solution {\n    public int[] twoSum(int[] nums, int target) {\n        Map<Integer, Integer> seen = new HashMap<>();\n        for (int i = 0; i < nums.length; i++) {\n            int complement = target - nums[i];\n            if (seen.containsKey(complement)) {\n                return new int[]{seen.get(complement), i};\n            }\n            seen.put(nums[i], i);\n        }\n        return new int[]{};\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Use a HashMap",
+                                "explanation": "Store each number and its index as you iterate. For each element, check whether its complement (target - nums[i]) is already in the map."
+                            },
+                            {
+                                "title": "Single pass",
+                                "explanation": "This approach is O(n) time and O(n) space — a single loop through the array.",
+                                "code": "Map<Integer, Integer> seen = new HashMap<>();\nfor (int i = 0; i < nums.length; i++) {\n    int complement = target - nums[i];\n    if (seen.containsKey(complement)) {\n        return new int[]{seen.get(complement), i};\n    }\n    seen.put(nums[i], i);\n}"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "level": "advanced",
+            "challenges": [
+                {
+                    "id": "java-advanced-1",
+                    "language": "java",
+                    "level": "advanced",
+                    "title": "Thread-safe singleton",
+                    "description": "Implement a thread-safe Singleton class using the double-checked locking pattern. The class must expose a `getInstance()` method and an `increment()` / `getCount()` pair for a shared counter.",
+                    "starterCode": "public class Singleton {\n    // Your code here\n\n    public static Singleton getInstance() {\n        return null;\n    }\n\n    public void increment() {}\n\n    public int getCount() {\n        return 0;\n    }\n}\n",
+                    "hint": "Declare the instance field as volatile and use synchronized on the inner null check.",
+                    "solution": {
+                        "code": "public class Singleton {\n    private static volatile Singleton instance;\n    private int count = 0;\n\n    private Singleton() {}\n\n    public static Singleton getInstance() {\n        if (instance == null) {\n            synchronized (Singleton.class) {\n                if (instance == null) {\n                    instance = new Singleton();\n                }\n            }\n        }\n        return instance;\n    }\n\n    public synchronized void increment() {\n        count++;\n    }\n\n    public synchronized int getCount() {\n        return count;\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "volatile field",
+                                "explanation": "volatile ensures that writes to the instance field are immediately visible to all threads, preventing stale reads."
+                            },
+                            {
+                                "title": "Double-checked locking",
+                                "explanation": "Check instance == null before and after the synchronized block. The outer check avoids locking on every call; the inner check prevents duplicate creation.",
+                                "code": "if (instance == null) {\n    synchronized (Singleton.class) {\n        if (instance == null) {\n            instance = new Singleton();\n        }\n    }\n}"
+                            },
+                            {
+                                "title": "Synchronized counter methods",
+                                "explanation": "Mark increment() and getCount() as synchronized to prevent data races on the count field.",
+                                "code": "public synchronized void increment() { count++; }\npublic synchronized int getCount() { return count; }"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

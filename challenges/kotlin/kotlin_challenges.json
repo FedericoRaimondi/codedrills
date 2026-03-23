@@ -1,0 +1,126 @@
+{
+    "language": "kotlin",
+    "levels": [
+        {
+            "level": "new",
+            "challenges": [
+                {
+                    "id": "kt-new-1",
+                    "language": "kotlin",
+                    "level": "new",
+                    "title": "Print a greeting",
+                    "description": "Print the text 'Hello, World!' to the console.",
+                    "starterCode": "fun main() {\n    // Write your code below\n}\n",
+                    "hint": "Use println() with a string argument.",
+                    "solution": {
+                        "code": "fun main() {\n    println(\"Hello, World!\")\n}",
+                        "steps": [
+                            {
+                                "title": "Understand the entry point",
+                                "explanation": "Kotlin programs start from the top-level main() function. No class wrapper is required."
+                            },
+                            {
+                                "title": "Print to the console",
+                                "explanation": "println() writes a line followed by a newline to standard output.",
+                                "code": "println(\"Hello, World!\")"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Run the program. You should see 'Hello, World!' in the output."
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "level": "beginner",
+            "challenges": [
+                {
+                    "id": "kt-beginner-1",
+                    "language": "kotlin",
+                    "level": "beginner",
+                    "title": "Null-safe length",
+                    "description": "Write a function `safeLength(s: String?): Int` that returns the length of the string, or 0 if the string is null.",
+                    "starterCode": "fun safeLength(s: String?): Int {\n    // Your code here\n    return 0\n}\n",
+                    "hint": "Use the Elvis operator ?: to provide a default value.",
+                    "solution": {
+                        "code": "fun safeLength(s: String?): Int = s?.length ?: 0",
+                        "steps": [
+                            {
+                                "title": "Safe call operator",
+                                "explanation": "s?.length returns the length if s is not null, or null if s is null."
+                            },
+                            {
+                                "title": "Elvis operator",
+                                "explanation": "?: provides a default value when the left side is null.",
+                                "code": "s?.length ?: 0"
+                            },
+                            {
+                                "title": "Full solution",
+                                "explanation": "Combine both operators in a single expression.",
+                                "code": "fun safeLength(s: String?): Int = s?.length ?: 0"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "level": "intermediate",
+            "challenges": [
+                {
+                    "id": "kt-intermediate-1",
+                    "language": "kotlin",
+                    "level": "intermediate",
+                    "title": "Flatten a nested list",
+                    "description": "Write a function `flatten(nested: List<List<Int>>): List<Int>` that returns a single flat list containing all elements from all inner lists.",
+                    "starterCode": "fun flatten(nested: List<List<Int>>): List<Int> {\n    // Your code here\n    return emptyList()\n}\n",
+                    "hint": "The standard library has flatMap. You can also use fold with plus.",
+                    "solution": {
+                        "code": "fun flatten(nested: List<List<Int>>): List<Int> = nested.flatMap { it }",
+                        "steps": [
+                            {
+                                "title": "Use flatMap",
+                                "explanation": "flatMap transforms each element and flattens the result into a single list. Passing the identity { it } simply concatenates all inner lists."
+                            },
+                            {
+                                "title": "Full solution",
+                                "explanation": "One line using the standard library.",
+                                "code": "fun flatten(nested: List<List<Int>>): List<Int> = nested.flatMap { it }"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "level": "advanced",
+            "challenges": [
+                {
+                    "id": "kt-advanced-1",
+                    "language": "kotlin",
+                    "level": "advanced",
+                    "title": "Sealed class state machine",
+                    "description": "Model a simple traffic light using a sealed class `TrafficLight` with states Red, Yellow, Green. Write a function `next(light: TrafficLight): TrafficLight` that transitions Red→Green→Yellow→Red.",
+                    "starterCode": "sealed class TrafficLight\n\n// Your code here\n\nfun next(light: TrafficLight): TrafficLight {\n    // Your code here\n    return light\n}\n",
+                    "hint": "Declare the states as data objects inside the sealed class. Use a when expression in next().",
+                    "solution": {
+                        "code": "sealed class TrafficLight {\n    data object Red : TrafficLight()\n    data object Yellow : TrafficLight()\n    data object Green : TrafficLight()\n}\n\nfun next(light: TrafficLight): TrafficLight = when (light) {\n    is TrafficLight.Red    -> TrafficLight.Green\n    is TrafficLight.Green  -> TrafficLight.Yellow\n    is TrafficLight.Yellow -> TrafficLight.Red\n}",
+                        "steps": [
+                            {
+                                "title": "Define states as data objects",
+                                "explanation": "Sealed class subclasses are limited to the same file or class. data object gives each state a meaningful toString() and equals()."
+                            },
+                            {
+                                "title": "Exhaustive when",
+                                "explanation": "When used as an expression, Kotlin's when must be exhaustive. The compiler verifies that every state is handled.",
+                                "code": "fun next(light: TrafficLight): TrafficLight = when (light) {\n    is TrafficLight.Red    -> TrafficLight.Green\n    is TrafficLight.Green  -> TrafficLight.Yellow\n    is TrafficLight.Yellow -> TrafficLight.Red\n}"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

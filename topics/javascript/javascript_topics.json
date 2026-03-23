@@ -1,0 +1,135 @@
+{
+    "language": "javascript",
+    "levels": [
+        {
+            "level": "new",
+            "topics": [
+                {
+                    "id": "js-new-variables",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Variables: var, let, const",
+                    "description": "Understand the three ways to declare variables in JavaScript and when to use each.",
+                    "estimatedMinutes": 8,
+                    "lessons": [
+                        {
+                            "title": "var (avoid in modern JS)",
+                            "body": "var is function-scoped and hoisted to the top of its scope. It can cause unexpected bugs because you can use a variable before declaring it.",
+                            "code": "var x = 10;\nconsole.log(x); // 10"
+                        },
+                        {
+                            "title": "let (block-scoped, reassignable)",
+                            "body": "let is block-scoped — it only exists inside the { } where it was declared. Use let for variables whose values change.",
+                            "code": "let count = 0;\ncount = 1; // OK\nconsole.log(count); // 1"
+                        },
+                        {
+                            "title": "const (block-scoped, binding is fixed)",
+                            "body": "const prevents reassigning the binding. For objects and arrays, the contents can still change. Use const by default.",
+                            "code": "const PI = 3.14;\nconst person = { name: \"Alice\" };\nperson.name = \"Bob\"; // OK — object is mutable\n// PI = 3; // TypeError"
+                        },
+                        {
+                            "title": "Rule of thumb",
+                            "body": "Prefer const. Use let when you need to reassign. Avoid var in modern JavaScript."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "beginner",
+            "topics": [
+                {
+                    "id": "js-beginner-arrays",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Arrays & Array Methods",
+                    "description": "Work with ordered collections using JavaScript arrays and their powerful built-in methods.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Creating arrays",
+                            "body": "Arrays are ordered lists that can hold any type. They're created with square brackets.",
+                            "code": "const nums = [1, 2, 3];\nconst mixed = [1, \"two\", true];"
+                        },
+                        {
+                            "title": "map and filter",
+                            "body": "map transforms every element and returns a new array. filter returns only the elements that pass the test.",
+                            "code": "const doubled = [1, 2, 3].map(n => n * 2);   // [2, 4, 6]\nconst evens   = [1, 2, 3].filter(n => n % 2 === 0); // [2]"
+                        },
+                        {
+                            "title": "reduce",
+                            "body": "reduce collapses an array to a single value by applying an accumulator function.",
+                            "code": "const sum = [1, 2, 3].reduce((acc, n) => acc + n, 0); // 6"
+                        },
+                        {
+                            "title": "Spread and destructuring",
+                            "body": "Spread (...) copies or merges arrays. Destructuring pulls values into named variables.",
+                            "code": "const a = [1, 2];\nconst b = [...a, 3, 4]; // [1, 2, 3, 4]\nconst [first, second] = b;"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "intermediate",
+            "topics": [
+                {
+                    "id": "js-intermediate-closures",
+                    "language": "javascript",
+                    "level": "intermediate",
+                    "title": "Closures",
+                    "description": "Learn how closures let inner functions retain access to the outer function's scope.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "What is a closure?",
+                            "body": "A closure is created when a function is defined inside another function and remembers the outer function's variables even after the outer function has returned."
+                        },
+                        {
+                            "title": "A practical example: counter",
+                            "body": "The inner function captures the count variable. Each call to the returned function increments the same captured variable.",
+                            "code": "function makeCounter() {\n  let count = 0;\n  return () => ++count;\n}\n\nconst counter = makeCounter();\nconsole.log(counter()); // 1\nconsole.log(counter()); // 2"
+                        },
+                        {
+                            "title": "Closures and loops",
+                            "body": "A classic gotcha: if you close over a var inside a loop, all closures share the same variable. Use let (block-scoped) to give each iteration its own binding.",
+                            "code": "for (let i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i), 100);\n}\n// prints 0, 1, 2 — not 3, 3, 3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "advanced",
+            "topics": [
+                {
+                    "id": "js-advanced-event-loop",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Event Loop & Microtask Queue",
+                    "description": "Understand how JavaScript's single-threaded event loop, call stack, and task queues work together.",
+                    "estimatedMinutes": 15,
+                    "lessons": [
+                        {
+                            "title": "Call stack",
+                            "body": "JavaScript executes synchronous code on a single call stack — one thing at a time. A function call pushes a frame; returning pops it."
+                        },
+                        {
+                            "title": "Task queue (macrotasks)",
+                            "body": "setTimeout and setInterval schedule callbacks in the macrotask queue. The event loop picks one macrotask per loop iteration after the call stack is empty."
+                        },
+                        {
+                            "title": "Microtask queue",
+                            "body": "Promise callbacks (.then, .catch, await) go into the microtask queue. All microtasks are drained before the next macrotask runs.",
+                            "code": "console.log(\"1\");\nsetTimeout(() => console.log(\"4\"), 0);\nPromise.resolve().then(() => console.log(\"3\"));\nconsole.log(\"2\");\n// Output: 1, 2, 3, 4"
+                        },
+                        {
+                            "title": "Practical implications",
+                            "body": "Heavy synchronous work blocks the event loop. Break long tasks with setTimeout(fn, 0) or requestIdleCallback to keep the UI responsive."
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

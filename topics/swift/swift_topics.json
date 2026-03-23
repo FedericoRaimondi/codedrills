@@ -1,0 +1,144 @@
+{
+    "language": "swift",
+    "levels": [
+        {
+            "level": "new",
+            "topics": [
+                {
+                    "id": "swift-new-types",
+                    "language": "swift",
+                    "level": "new",
+                    "title": "Types & Constants vs Variables",
+                    "description": "Understand Swift's basic types and the difference between let (constants) and var (variables).",
+                    "estimatedMinutes": 8,
+                    "lessons": [
+                        {
+                            "title": "let vs var",
+                            "body": "Use let when a value won't change — Swift encourages immutability. Use var only when reassignment is needed.",
+                            "code": "let pi = 3.14159\nvar score = 0\nscore = 10  // OK\n// pi = 3    // Error: cannot assign to a 'let' constant"
+                        },
+                        {
+                            "title": "Basic types",
+                            "body": "Int, Double, String, Bool are the core value types. Swift infers the type from the initial value.",
+                            "code": "let age: Int = 30\nlet name = \"Alice\"   // inferred String\nlet isActive = true  // inferred Bool"
+                        },
+                        {
+                            "title": "String interpolation",
+                            "body": "Embed expressions inside strings using \\(...).",
+                            "code": "let greeting = \"Hello, \\(name)! You are \\(age) years old.\""
+                        },
+                        {
+                            "title": "Type safety",
+                            "body": "Swift will not implicitly convert types. You must convert explicitly.",
+                            "code": "let x: Int = 5\nlet y: Double = Double(x) + 1.5"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "beginner",
+            "topics": [
+                {
+                    "id": "swift-beginner-optionals",
+                    "language": "swift",
+                    "level": "beginner",
+                    "title": "Optionals",
+                    "description": "Master Swift's optional type system to handle the absence of a value safely.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "What is an optional?",
+                            "body": "An optional variable can hold a value or be nil. Declare it with a ? after the type. You cannot use an optional value directly — you must unwrap it."
+                        },
+                        {
+                            "title": "Optional binding with if let",
+                            "body": "if let safely unwraps an optional. The code inside runs only if the optional has a value.",
+                            "code": "var username: String? = \"Alice\"\nif let name = username {\n    print(\"Hello, \\(name)\")\n} else {\n    print(\"No user\")\n}"
+                        },
+                        {
+                            "title": "guard let",
+                            "body": "guard let is preferred inside functions. It exits the function early if the optional is nil.",
+                            "code": "func greet(_ name: String?) {\n    guard let name = name else {\n        print(\"No name\")\n        return\n    }\n    print(\"Hello, \\(name)\")\n}"
+                        },
+                        {
+                            "title": "Nil coalescing ??",
+                            "body": "The ?? operator provides a default value when an optional is nil.",
+                            "code": "let display = username ?? \"Guest\""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "intermediate",
+            "topics": [
+                {
+                    "id": "swift-intermediate-protocols",
+                    "language": "swift",
+                    "level": "intermediate",
+                    "title": "Protocols & Protocol Extensions",
+                    "description": "Define interfaces with protocols and add default implementations via protocol extensions.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Defining a protocol",
+                            "body": "A protocol defines a blueprint of methods and properties. Any type can conform to it — structs, classes, and enums.",
+                            "code": "protocol Describable {\n    var description: String { get }\n    func describe()\n}"
+                        },
+                        {
+                            "title": "Conforming to a protocol",
+                            "body": "Declare conformance after the type name, then implement all requirements.",
+                            "code": "struct Car: Describable {\n    var make: String\n    var description: String { \"A car made by \\(make)\" }\n    func describe() { print(description) }\n}"
+                        },
+                        {
+                            "title": "Protocol extensions",
+                            "body": "Add default implementations in an extension. Conforming types get the default behaviour for free.",
+                            "code": "extension Describable {\n    func describe() {\n        print(description)\n    }\n}"
+                        },
+                        {
+                            "title": "Protocol composition",
+                            "body": "Combine multiple protocols with & to express compound requirements.",
+                            "code": "func process(_ item: Describable & Equatable) { ... }"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "advanced",
+            "topics": [
+                {
+                    "id": "swift-advanced-concurrency",
+                    "language": "swift",
+                    "level": "advanced",
+                    "title": "Swift Concurrency: async/await & Actors",
+                    "description": "Write safe, readable concurrent code using Swift's structured concurrency model.",
+                    "estimatedMinutes": 15,
+                    "lessons": [
+                        {
+                            "title": "async/await basics",
+                            "body": "Mark a function async to indicate it can suspend. Use await to call it — the current task suspends, freeing the thread for other work.",
+                            "code": "func fetchUser(id: Int) async throws -> User {\n    let url = URL(string: \"https://api.example.com/users/\\(id)\")!\n    let (data, _) = try await URLSession.shared.data(from: url)\n    return try JSONDecoder().decode(User.self, from: data)\n}"
+                        },
+                        {
+                            "title": "Structured concurrency with async let",
+                            "body": "async let starts a child task immediately. await the results later to collect them concurrently.",
+                            "code": "async let user = fetchUser(id: 1)\nasync let posts = fetchPosts(userId: 1)\nlet (u, p) = try await (user, posts)"
+                        },
+                        {
+                            "title": "Actors",
+                            "body": "An actor is a reference type that serialises access to its mutable state. Only one task runs inside an actor at a time, preventing data races.",
+                            "code": "actor Counter {\n    private var value = 0\n    func increment() { value += 1 }\n    func get() -> Int { value }\n}"
+                        },
+                        {
+                            "title": "MainActor",
+                            "body": "@MainActor marks code that must run on the main thread. Use it on UI-related classes and methods to keep updates thread-safe.",
+                            "code": "@MainActor\nfunc updateUI(with user: User) {\n    nameLabel.text = user.name\n}"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
