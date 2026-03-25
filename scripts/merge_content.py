@@ -24,7 +24,6 @@ import argparse
 import json
 import os
 import sys
-from datetime import datetime, timezone
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -117,8 +116,6 @@ def merge_challenges(root: str, output_path: str) -> None:
                     added += 1
 
     output = {
-        "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "total": len(merged),
         "challenges": merged,
     }
     write_json(output_path, output)
@@ -168,8 +165,6 @@ def merge_lessons(root: str, output_path: str) -> None:
                     added += 1
 
     output = {
-        "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "total": len(merged),
         "topics": merged,
     }
     write_json(output_path, output)

@@ -139,8 +139,6 @@ python scripts/merge_content.py --lessons
 | `output/challenges.json` | All challenges from every language, flat list keyed by `challenges` |
 | `output/lessons.json` | All topics (with nested lessons) from every language, flat list keyed by `topics` |
 
-Both files include a `generated_at` timestamp (UTC) and a `total` count.
-
 ---
 
 ## 🤝 Contributing
