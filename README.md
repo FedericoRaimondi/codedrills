@@ -95,7 +95,7 @@ See the [`examples/`](examples/) folder for annotated reference files:
           "description": "...",
           "estimatedMinutes": 8,
           "lessons": [
-            { "title": "...", "body": "..." }
+            { "title": "...", "body": "...", "code": "..." }
           ]
         }
       ]
