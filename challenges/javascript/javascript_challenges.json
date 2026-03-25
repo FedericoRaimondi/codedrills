@@ -261,7 +261,7 @@
                     "starterCode": "function toTitleCase(text) {\n  // Your code here\n}\n",
                     "hint": "Split words, transform each, then join.",
                     "solution": {
-                        "code": "function toTitleCase(text) {\n  return text\n    .split(\" \")\n    .map((w) => (w ? w[0].toUpperCase() + w.slice(1).toLowerCase() : w))\n    .join(\" \");\n}",
+                        "code": "function toTitleCase(text) {\n  return text\n    .split(\" \")\n    .map((w) => (w.length > 0 ? w[0].toUpperCase() + w.slice(1).toLowerCase() : w))\n    .join(\" \");\n}",
                         "steps": [
                             {
                                 "title": "Understand the goal",
@@ -270,7 +270,7 @@
                             {
                                 "title": "Implement the core logic",
                                 "explanation": "Apply the language feature that directly solves the task.",
-                                "code": "function toTitleCase(text) {\n  return text\n    .split(\" \")\n    .map((w) => (w ? w[0].toUpperCase() + w.slice(1).toLowerCase() : w))\n    .join(\" \");\n}"
+                                "code": "function toTitleCase(text) {\n  return text\n    .split(\" \")\n    .map((w) => (w.length > 0 ? w[0].toUpperCase() + w.slice(1).toLowerCase() : w))\n    .join(\" \");\n}"
                             },
                             {
                                 "title": "Verify expected result",
