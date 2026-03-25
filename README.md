@@ -106,6 +106,43 @@ See the [`examples/`](examples/) folder for annotated reference files:
 
 ---
 
+## 🛠️ Scripts
+
+### `scripts/merge_content.py` — Build combined output files
+
+This script reads all language-specific challenge and topic JSON files,
+deduplicates entries by `id`, and writes two merged files into an `output/`
+directory at the repository root (excluded from version control via `.gitignore`).
+
+**Deduplication rule:** if an output file from a previous run already exists,
+its entries are loaded first and take priority.  New entries whose `id` already
+appears in the existing output are skipped, so manual edits to the output files
+are preserved across re-runs.
+
+#### Usage
+
+```bash
+# Merge both challenges and lessons (default)
+python scripts/merge_content.py
+
+# Merge challenge files only
+python scripts/merge_content.py --challenges
+
+# Merge lesson/topic files only
+python scripts/merge_content.py --lessons
+```
+
+#### Output files
+
+| File | Contents |
+|------|----------|
+| `output/challenges.json` | All challenges from every language, flat list keyed by `challenges` |
+| `output/lessons.json` | All topics (with nested lessons) from every language, flat list keyed by `topics` |
+
+Both files include a `generated_at` timestamp (UTC) and a `total` count.
+
+---
+
 ## 🤝 Contributing
 
 We welcome challenge and topic contributions! Read [CONTRIBUTING.md](CONTRIBUTING.md) for step-by-step instructions, naming conventions, and the review process.
