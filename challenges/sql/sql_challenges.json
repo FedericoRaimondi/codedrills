@@ -8,25 +8,133 @@
                     "id": "sql-new-1",
                     "language": "sql",
                     "level": "new",
-                    "title": "Select all rows",
-                    "description": "Write a query that returns every row and every column from the table named `employees`.",
+                    "title": "Table Sweep",
+                    "description": "Return all rows and all columns from `employees`. Expected output: complete employees table.",
                     "starterCode": "-- Write your query below\n",
-                    "hint": "The wildcard * selects all columns. Use FROM to specify the table.",
+                    "hint": "Use SELECT * FROM employees.",
                     "solution": {
-                        "code": "SELECT * FROM employees;",
+                        "code": "SELECT * FROM employees",
                         "steps": [
                             {
-                                "title": "Understand SELECT",
-                                "explanation": "SELECT tells the database which columns to return. The * wildcard means 'all columns'."
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
                             },
                             {
-                                "title": "Specify the table",
-                                "explanation": "FROM employees tells the database which table to read from.",
-                                "code": "SELECT * FROM employees;"
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "SELECT * FROM employees"
                             },
                             {
-                                "title": "Verify",
-                                "explanation": "The result should contain every row in the employees table with all its columns."
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-new-2",
+                    "language": "sql",
+                    "level": "new",
+                    "title": "Name Lane",
+                    "description": "Return only `name` from `employees`. Expected output: one-column list of employee names.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Select the specific column instead of *.",
+                    "solution": {
+                        "code": "SELECT name\nFROM employees",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "SELECT name\nFROM employees"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-new-3",
+                    "language": "sql",
+                    "level": "new",
+                    "title": "Salary Cap",
+                    "description": "Return `name` and `salary` from `employees` where salary > 50000.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use WHERE salary > 50000.",
+                    "solution": {
+                        "code": "SELECT name, salary\nFROM employees\nWHERE salary > 50000",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "SELECT name, salary\nFROM employees\nWHERE salary > 50000"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-new-4",
+                    "language": "sql",
+                    "level": "new",
+                    "title": "Sort Up",
+                    "description": "Return `name` and `salary` from `employees` ordered by `salary` ascending.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use ORDER BY salary ASC.",
+                    "solution": {
+                        "code": "SELECT name, salary\nFROM employees\nORDER BY salary ASC",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "SELECT name, salary\nFROM employees\nORDER BY salary ASC"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-new-5",
+                    "language": "sql",
+                    "level": "new",
+                    "title": "Top Earner",
+                    "description": "Return one row: highest-paid employee from `employees` with columns `name`, `salary`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Sort descending then limit to 1.",
+                    "solution": {
+                        "code": "SELECT name, salary\nFROM employees\nORDER BY salary DESC\nLIMIT 1",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "SELECT name, salary\nFROM employees\nORDER BY salary DESC\nLIMIT 1"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
                             }
                         ]
                     }
@@ -40,25 +148,133 @@
                     "id": "sql-beginner-1",
                     "language": "sql",
                     "level": "beginner",
-                    "title": "Filter with WHERE",
-                    "description": "From the `employees` table, select the `name` and `salary` of all employees whose salary is greater than 50000.",
+                    "title": "Dept Rollup",
+                    "description": "Using `employees(department, salary)`, return each department with average salary as `avg_salary`, ordered highest first.",
                     "starterCode": "-- Write your query below\n",
-                    "hint": "Use WHERE with a comparison operator (>) to filter rows.",
+                    "hint": "Use AVG with GROUP BY then ORDER BY avg_salary DESC.",
                     "solution": {
-                        "code": "SELECT name, salary\nFROM employees\nWHERE salary > 50000;",
+                        "code": "SELECT department, AVG(salary) AS avg_salary\nFROM employees\nGROUP BY department\nORDER BY avg_salary DESC",
                         "steps": [
                             {
-                                "title": "Select specific columns",
-                                "explanation": "List column names separated by commas instead of using *."
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
                             },
                             {
-                                "title": "Filter rows",
-                                "explanation": "The WHERE clause applies a condition. Only rows where it evaluates to TRUE are included.",
-                                "code": "SELECT name, salary\nFROM employees\nWHERE salary > 50000;"
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "SELECT department, AVG(salary) AS avg_salary\nFROM employees\nGROUP BY department\nORDER BY avg_salary DESC"
                             },
                             {
-                                "title": "Verify",
-                                "explanation": "The result should include only employees earning more than 50000, showing their name and salary."
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-beginner-2",
+                    "language": "sql",
+                    "level": "beginner",
+                    "title": "Count Hires",
+                    "description": "Using `employees`, return total row count as `employee_count`. Output must be one row.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "COUNT(*) counts all rows.",
+                    "solution": {
+                        "code": "SELECT COUNT(*) AS employee_count\nFROM employees",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "SELECT COUNT(*) AS employee_count\nFROM employees"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-beginner-3",
+                    "language": "sql",
+                    "level": "beginner",
+                    "title": "Recent Orders",
+                    "description": "Using `orders(created_at)`, return all rows on or after `2024-01-01`, newest first.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Filter with >= and sort by created_at DESC.",
+                    "solution": {
+                        "code": "SELECT *\nFROM orders\nWHERE created_at >= '2024-01-01'\nORDER BY created_at DESC",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "SELECT *\nFROM orders\nWHERE created_at >= '2024-01-01'\nORDER BY created_at DESC"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-beginner-4",
+                    "language": "sql",
+                    "level": "beginner",
+                    "title": "Distinct Cities",
+                    "description": "Using `customers(city)`, return unique non-null cities sorted alphabetically.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Combine DISTINCT, IS NOT NULL, and ORDER BY.",
+                    "solution": {
+                        "code": "SELECT DISTINCT city\nFROM customers\nWHERE city IS NOT NULL\nORDER BY city",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "SELECT DISTINCT city\nFROM customers\nWHERE city IS NOT NULL\nORDER BY city"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-beginner-5",
+                    "language": "sql",
+                    "level": "beginner",
+                    "title": "Price Window",
+                    "description": "Using `products(name, price)`, return rows where price is between 10 and 50 inclusive, sorted by price ascending.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "BETWEEN 10 AND 50 is inclusive.",
+                    "solution": {
+                        "code": "SELECT name, price\nFROM products\nWHERE price BETWEEN 10 AND 50\nORDER BY price ASC",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "SELECT name, price\nFROM products\nWHERE price BETWEEN 10 AND 50\nORDER BY price ASC"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
                             }
                         ]
                     }
@@ -72,26 +288,133 @@
                     "id": "sql-intermediate-1",
                     "language": "sql",
                     "level": "intermediate",
-                    "title": "Aggregate with GROUP BY",
-                    "description": "Using the `orders` table (columns: `customer_id`, `amount`), return each `customer_id` and the total `amount` they have spent. Order the results by total amount descending.",
+                    "title": "Customer Totals",
+                    "description": "Using `orders(customer_id, amount)`, return each customer with total spent as `total_spent`, sorted descending.",
                     "starterCode": "-- Write your query below\n",
-                    "hint": "Use SUM() with GROUP BY. Use ORDER BY ... DESC for descending sort.",
+                    "hint": "SUM + GROUP BY + ORDER BY total_spent DESC.",
                     "solution": {
-                        "code": "SELECT customer_id, SUM(amount) AS total_spent\nFROM orders\nGROUP BY customer_id\nORDER BY total_spent DESC;",
+                        "code": "SELECT customer_id, SUM(amount) AS total_spent\nFROM orders\nGROUP BY customer_id\nORDER BY total_spent DESC",
                         "steps": [
                             {
-                                "title": "Aggregate with SUM",
-                                "explanation": "SUM(amount) computes the total for each group. Give it an alias with AS for readability."
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
                             },
                             {
-                                "title": "Group rows",
-                                "explanation": "GROUP BY customer_id collapses all rows with the same customer_id into one.",
-                                "code": "GROUP BY customer_id"
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "SELECT customer_id, SUM(amount) AS total_spent\nFROM orders\nGROUP BY customer_id\nORDER BY total_spent DESC"
                             },
                             {
-                                "title": "Sort the results",
-                                "explanation": "ORDER BY total_spent DESC puts the highest spenders first.",
-                                "code": "SELECT customer_id, SUM(amount) AS total_spent\nFROM orders\nGROUP BY customer_id\nORDER BY total_spent DESC;"
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-2",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Join Names",
+                    "description": "Using `orders(id, customer_id)` and `customers(id, name)`, return `order_id` and customer `name` for each order.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Join orders.customer_id to customers.id.",
+                    "solution": {
+                        "code": "SELECT o.id AS order_id, c.name\nFROM orders o\nJOIN customers c ON o.customer_id = c.id",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "SELECT o.id AS order_id, c.name\nFROM orders o\nJOIN customers c ON o.customer_id = c.id"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-3",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "No Orders",
+                    "description": "Using `customers(id, name)` and `orders(customer_id)`, return customers with no orders. Output: `id`, `name`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "LEFT JOIN then keep rows where order side is NULL.",
+                    "solution": {
+                        "code": "SELECT c.id, c.name\nFROM customers c\nLEFT JOIN orders o ON c.id = o.customer_id\nWHERE o.customer_id IS NULL",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "SELECT c.id, c.name\nFROM customers c\nLEFT JOIN orders o ON c.id = o.customer_id\nWHERE o.customer_id IS NULL"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-4",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Daily Revenue",
+                    "description": "Using `orders(created_at, amount)`, return `order_day` and `daily_total`, grouped by day and sorted ascending by day.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Extract DATE(created_at), then SUM and GROUP BY.",
+                    "solution": {
+                        "code": "SELECT DATE(created_at) AS order_day, SUM(amount) AS daily_total\nFROM orders\nGROUP BY DATE(created_at)\nORDER BY order_day ASC",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "SELECT DATE(created_at) AS order_day, SUM(amount) AS daily_total\nFROM orders\nGROUP BY DATE(created_at)\nORDER BY order_day ASC"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-5",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Second Highest",
+                    "description": "Using `employees(name, salary)`, return all employees whose salary equals the second highest distinct salary.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Find second distinct salary in subquery, then filter by it.",
+                    "solution": {
+                        "code": "SELECT name, salary\nFROM employees\nWHERE salary = (\n  SELECT DISTINCT salary\n  FROM employees\n  ORDER BY salary DESC\n  LIMIT 1 OFFSET 1\n)",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "SELECT name, salary\nFROM employees\nWHERE salary = (\n  SELECT DISTINCT salary\n  FROM employees\n  ORDER BY salary DESC\n  LIMIT 1 OFFSET 1\n)"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
                             }
                         ]
                     }
@@ -105,26 +428,133 @@
                     "id": "sql-advanced-1",
                     "language": "sql",
                     "level": "advanced",
-                    "title": "Window function: running total",
-                    "description": "Using the `transactions` table (columns: `id`, `created_at`, `amount`), return each row with an additional column `running_total` that shows the cumulative sum of `amount` ordered by `created_at`.",
+                    "title": "Running Balance",
+                    "description": "Using `transactions(id, created_at, amount)`, return each row plus running total `running_total` ordered by `created_at`.",
                     "starterCode": "-- Write your query below\n",
-                    "hint": "Use SUM() as a window function with OVER (ORDER BY created_at).",
+                    "hint": "Use SUM(amount) OVER (ORDER BY created_at).",
                     "solution": {
-                        "code": "SELECT\n    id,\n    created_at,\n    amount,\n    SUM(amount) OVER (ORDER BY created_at) AS running_total\nFROM transactions\nORDER BY created_at;",
+                        "code": "SELECT\n  id,\n  created_at,\n  amount,\n  SUM(amount) OVER (ORDER BY created_at) AS running_total\nFROM transactions\nORDER BY created_at",
                         "steps": [
                             {
-                                "title": "Window function syntax",
-                                "explanation": "Aggregate functions followed by OVER (...) become window functions — they compute a value across a sliding frame without collapsing rows."
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
                             },
                             {
-                                "title": "Define the window",
-                                "explanation": "ORDER BY created_at inside OVER means: accumulate from the first row up to and including the current row.",
-                                "code": "SUM(amount) OVER (ORDER BY created_at) AS running_total"
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "SELECT\n  id,\n  created_at,\n  amount,\n  SUM(amount) OVER (ORDER BY created_at) AS running_total\nFROM transactions\nORDER BY created_at"
                             },
                             {
-                                "title": "Final query",
-                                "explanation": "Select all original columns plus the window result. The outer ORDER BY keeps the output in chronological order.",
-                                "code": "SELECT\n    id,\n    created_at,\n    amount,\n    SUM(amount) OVER (ORDER BY created_at) AS running_total\nFROM transactions\nORDER BY created_at;"
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-2",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Latest Per Customer",
+                    "description": "Using `orders(id, customer_id, created_at)`, return each customer's latest order as `customer_id`, `order_id`, `created_at`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "ROW_NUMBER partitioned by customer, ordered by date desc.",
+                    "solution": {
+                        "code": "SELECT customer_id, id AS order_id, created_at\nFROM (\n  SELECT\n    customer_id,\n    id,\n    created_at,\n    ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY created_at DESC) AS rn\n  FROM orders\n) t\nWHERE rn = 1",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "SELECT customer_id, id AS order_id, created_at\nFROM (\n  SELECT\n    customer_id,\n    id,\n    created_at,\n    ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY created_at DESC) AS rn\n  FROM orders\n) t\nWHERE rn = 1"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-3",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Gap Finder",
+                    "description": "Using `events(event_date)`, return rows where the gap from previous event is more than 1 day. Output: `event_date`, `previous_date`, `gap_days`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use LAG to compare each date with previous row.",
+                    "solution": {
+                        "code": "WITH dated AS (\n  SELECT\n    event_date,\n    LAG(event_date) OVER (ORDER BY event_date) AS previous_date\n  FROM events\n)\nSELECT\n  event_date,\n  previous_date,\n  event_date - previous_date AS gap_days\nFROM dated\nWHERE previous_date IS NOT NULL\n  AND event_date - previous_date > 1\nORDER BY event_date",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "WITH dated AS (\n  SELECT\n    event_date,\n    LAG(event_date) OVER (ORDER BY event_date) AS previous_date\n  FROM events\n)\nSELECT\n  event_date,\n  previous_date,\n  event_date - previous_date AS gap_days\nFROM dated\nWHERE previous_date IS NOT NULL\n  AND event_date - previous_date > 1\nORDER BY event_date"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-4",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Median Salary",
+                    "description": "Using `employees(salary)`, return median salary as `median_salary`. Assume support for `PERCENTILE_CONT`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Median is percentile 0.5 in an ordered group.",
+                    "solution": {
+                        "code": "SELECT\n  PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY salary) AS median_salary\nFROM employees",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "SELECT\n  PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY salary) AS median_salary\nFROM employees"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-5",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Consecutive Streak",
+                    "description": "Using `logins(user_id, login_date)`, return each user's longest streak of consecutive login days as `longest_streak`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use login_date - row_number grouping trick to identify streaks.",
+                    "solution": {
+                        "code": "WITH ranked AS (\n  SELECT\n    user_id,\n    login_date,\n    login_date - ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY login_date) AS grp\n  FROM logins\n), grouped AS (\n  SELECT\n    user_id,\n    grp,\n    COUNT(*) AS streak_len\n  FROM ranked\n  GROUP BY user_id, grp\n)\nSELECT\n  user_id,\n  MAX(streak_len) AS longest_streak\nFROM grouped\nGROUP BY user_id\nORDER BY user_id",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "WITH ranked AS (\n  SELECT\n    user_id,\n    login_date,\n    login_date - ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY login_date) AS grp\n  FROM logins\n), grouped AS (\n  SELECT\n    user_id,\n    grp,\n    COUNT(*) AS streak_len\n  FROM ranked\n  GROUP BY user_id, grp\n)\nSELECT\n  user_id,\n  MAX(streak_len) AS longest_streak\nFROM grouped\nGROUP BY user_id\nORDER BY user_id"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
                             }
                         ]
                     }
