@@ -1360,31 +1360,438 @@
             "level": "advanced",
             "topics": [
                 {
+                    "id": "rs-advanced-concurrency-threads",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Concurrency With Threads",
+                    "description": "Harness native OS threads in Rust using std::thread, spawn, join, and move closures for safe parallel execution.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Spawning Threads",
+                            "body": "Rust provides native OS threads via std::thread::spawn. Each call to spawn creates a new thread that runs a closure concurrently with the main thread. The function returns a JoinHandle that lets you wait for the thread to finish.",
+                            "code": "use std::thread;\n\nfn main() {\n    let handle = thread::spawn(|| {\n        for i in 0..5 {\n            println!(\"spawned thread: {i}\");\n        }\n    });\n\n    for i in 0..3 {\n        println!(\"main thread: {i}\");\n    }\n\n    handle.join().unwrap();\n}"
+                        },
+                        {
+                            "title": "Move Closures In Threads",
+                            "body": "By default, closures borrow variables from the enclosing scope. When you pass a closure to thread::spawn, the compiler cannot guarantee the borrowed data will outlive the thread. Using the move keyword transfers ownership of captured variables into the closure so the new thread owns its data independently.",
+                            "code": "use std::thread;\n\nfn main() {\n    let data = vec![1, 2, 3];\n\n    let handle = thread::spawn(move || {\n        println!(\"thread owns data: {:?}\", data);\n    });\n\n    // data is no longer accessible here\n    handle.join().unwrap();\n}"
+                        },
+                        {
+                            "title": "Joining Multiple Threads",
+                            "body": "You can spawn many threads and collect their JoinHandles into a vector. Iterating over the handles and calling join on each ensures all threads complete before the program continues. This pattern is common when splitting a workload across threads.",
+                            "code": "use std::thread;\n\nfn main() {\n    let mut handles = vec![];\n\n    for id in 0..4 {\n        handles.push(thread::spawn(move || {\n            println!(\"worker {id} done\");\n        }));\n    }\n\n    for h in handles {\n        h.join().unwrap();\n    }\n}"
+                        },
+                        {
+                            "title": "Thread Panics And Safety",
+                            "body": "If a spawned thread panics, the panic is captured inside the JoinHandle. Calling join returns a Result, and you can inspect or propagate the error. This design prevents one thread from silently crashing the whole program. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on fearless concurrency. Also visit the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-advanced-message-passing",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Message Passing",
+                    "description": "Use mpsc channels to send data between threads following Rust's philosophy of sharing memory by communicating.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Creating A Channel",
+                            "body": "The std::sync::mpsc module provides a multi-producer, single-consumer channel. Calling mpsc::channel returns a Sender and Receiver pair. Data sent through the Sender is received in FIFO order by the Receiver.",
+                            "code": "use std::sync::mpsc;\n\nfn main() {\n    let (tx, rx) = mpsc::channel();\n\n    tx.send(42).unwrap();\n    let value = rx.recv().unwrap();\n    println!(\"received: {value}\");\n}"
+                        },
+                        {
+                            "title": "Channels Across Threads",
+                            "body": "Channels shine when communicating between threads. Move the Sender into a spawned thread and receive on the main thread. The recv call blocks until a message arrives or all senders are dropped.",
+                            "code": "use std::sync::mpsc;\nuse std::thread;\n\nfn main() {\n    let (tx, rx) = mpsc::channel();\n\n    thread::spawn(move || {\n        tx.send(String::from(\"hello from thread\")).unwrap();\n    });\n\n    let msg = rx.recv().unwrap();\n    println!(\"{msg}\");\n}"
+                        },
+                        {
+                            "title": "Multiple Producers",
+                            "body": "Clone the Sender to give multiple threads their own handle to the same channel. Each clone is an independent producer. The single Receiver collects messages from all producers in arrival order.",
+                            "code": "use std::sync::mpsc;\nuse std::thread;\n\nfn main() {\n    let (tx, rx) = mpsc::channel();\n\n    for i in 0..3 {\n        let tx_clone = tx.clone();\n        thread::spawn(move || {\n            tx_clone.send(format!(\"msg from {i}\")).unwrap();\n        });\n    }\n    drop(tx);\n\n    for received in rx {\n        println!(\"{received}\");\n    }\n}"
+                        },
+                        {
+                            "title": "Channel Patterns And Backpressure",
+                            "body": "Use mpsc::sync_channel to create a bounded channel that blocks the sender when the buffer is full, providing natural backpressure. Unbounded channels created with mpsc::channel can grow without limit, so choose based on your workload. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on message passing. Also visit the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-advanced-shared-state",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Shared State Concurrency",
+                    "description": "Safely share mutable data across threads using Mutex<T> and Arc<T> while understanding deadlock risks.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "Mutex Basics",
+                            "body": "A Mutex wraps data and enforces exclusive access through locking. You call lock to obtain a MutexGuard, which implements Deref so you can use it like a reference. The guard automatically releases the lock when it goes out of scope.",
+                            "code": "use std::sync::Mutex;\n\nfn main() {\n    let m = Mutex::new(5);\n\n    {\n        let mut num = m.lock().unwrap();\n        *num = 10;\n    } // lock released here\n\n    println!(\"value: {:?}\", m.lock().unwrap());\n}"
+                        },
+                        {
+                            "title": "Sharing A Mutex With Arc",
+                            "body": "Rc is not thread-safe, so Rust provides Arc (atomic reference counting) for shared ownership across threads. Wrap a Mutex in an Arc, clone the Arc for each thread, and each thread can lock the mutex independently.",
+                            "code": "use std::sync::{Arc, Mutex};\nuse std::thread;\n\nfn main() {\n    let counter = Arc::new(Mutex::new(0));\n    let mut handles = vec![];\n\n    for _ in 0..5 {\n        let counter = Arc::clone(&counter);\n        handles.push(thread::spawn(move || {\n            let mut num = counter.lock().unwrap();\n            *num += 1;\n        }));\n    }\n\n    for h in handles {\n        h.join().unwrap();\n    }\n\n    println!(\"result: {}\", *counter.lock().unwrap());\n}"
+                        },
+                        {
+                            "title": "Deadlock Awareness",
+                            "body": "A deadlock occurs when two or more threads each hold a lock and wait for the other to release theirs. Rust prevents data races at compile time but cannot prevent deadlocks. Always acquire locks in a consistent order and keep critical sections short to minimize risk.",
+                            "code": "// Potential deadlock: thread 1 locks A then B,\n// thread 2 locks B then A.\n// Fix: always lock A before B in every thread.\n\nuse std::sync::{Arc, Mutex};\n\nfn safe_order(a: &Mutex<i32>, b: &Mutex<i32>) {\n    let _ga = a.lock().unwrap();\n    let _gb = b.lock().unwrap();\n    // always same order avoids deadlock\n}"
+                        },
+                        {
+                            "title": "RwLock For Read-Heavy Workloads",
+                            "body": "When many threads read data but writes are rare, RwLock allows multiple concurrent readers or one exclusive writer. This improves throughput compared to Mutex for read-heavy access patterns. Choose Mutex for simplicity and RwLock when profiling shows read contention. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on shared-state concurrency. Also visit the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-advanced-async-await",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Async & Await",
+                    "description": "Write non-blocking concurrent code with async functions, the .await keyword, and futures in Rust.",
+                    "estimatedMinutes": 14,
+                    "lessons": [
+                        {
+                            "title": "Async Functions And Futures",
+                            "body": "An async fn returns a Future instead of executing immediately. The function body only runs when the future is polled by an async runtime. This lazy evaluation model lets you compose asynchronous operations efficiently.",
+                            "code": "async fn fetch_data() -> String {\n    // In real code, this might be an HTTP call\n    String::from(\"data loaded\")\n}\n\n// The return type is impl Future<Output = String>"
+                        },
+                        {
+                            "title": "Using .await",
+                            "body": "Inside an async context, call .await on a future to suspend the current task until the future resolves. While suspended, the runtime can execute other tasks. This cooperative scheduling achieves concurrency without threads for IO-bound work.",
+                            "code": "async fn process() {\n    let result = fetch_data().await;\n    println!(\"{result}\");\n}\n\nasync fn fetch_data() -> String {\n    String::from(\"fetched\")\n}"
+                        },
+                        {
+                            "title": "Running Futures With A Runtime",
+                            "body": "The standard library defines the Future trait but does not include a runtime. You need an executor like tokio or async-std to poll futures to completion. The block_on function is a common entry point that bridges synchronous main to the async world.",
+                            "code": "// Using tokio as runtime (add tokio to Cargo.toml)\n// tokio = { version = \"1\", features = [\"full\"] }\n\n#[tokio::main]\nasync fn main() {\n    let value = compute().await;\n    println!(\"result: {value}\");\n}\n\nasync fn compute() -> i32 {\n    42\n}"
+                        },
+                        {
+                            "title": "Concurrent Tasks With Join",
+                            "body": "Use join or select combinators to run multiple futures concurrently on the same thread. This is more lightweight than OS threads and ideal for IO-bound workloads. The runtime multiplexes tasks cooperatively at each await point. For a deeper dive, consult the Rust Async Book (rust-lang.github.io/async-book) and The Rust Programming Language book (doc.rust-lang.org/book). Also visit the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-advanced-unsafe",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Unsafe Rust",
+                    "description": "Understand when and how to use unsafe blocks, raw pointers, and unsafe functions to bypass compiler guarantees responsibly.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "What Unsafe Unlocks",
+                            "body": "The unsafe keyword lets you perform five operations the compiler cannot verify: dereference raw pointers, call unsafe functions, access mutable statics, implement unsafe traits, and access union fields. Unsafe does not disable the borrow checker; it only permits these specific actions.",
+                            "code": "fn main() {\n    let mut num = 5;\n    let r1 = &num as *const i32;\n    let r2 = &mut num as *mut i32;\n\n    unsafe {\n        println!(\"r1: {}\", *r1);\n        *r2 = 10;\n        println!(\"r2: {}\", *r2);\n    }\n}"
+                        },
+                        {
+                            "title": "Unsafe Functions",
+                            "body": "Mark a function as unsafe fn when its contract includes invariants the caller must uphold. The caller wraps the call in an unsafe block, signaling they have verified the preconditions. This pushes responsibility to the programmer, not the compiler.",
+                            "code": "unsafe fn dangerous(ptr: *const i32) -> i32 {\n    *ptr // caller must ensure ptr is valid\n}\n\nfn main() {\n    let val = 42;\n    let ptr = &val as *const i32;\n\n    let result = unsafe { dangerous(ptr) };\n    println!(\"{result}\");\n}"
+                        },
+                        {
+                            "title": "Safe Abstractions Over Unsafe Code",
+                            "body": "The best practice is to wrap unsafe operations inside safe public APIs. The standard library does this extensively. For example, Vec uses unsafe internally for memory management but exposes a fully safe interface. Keep unsafe blocks minimal and well-documented.",
+                            "code": "fn split_at_mut(slice: &mut [i32], mid: usize) -> (&mut [i32], &mut [i32]) {\n    let len = slice.len();\n    let ptr = slice.as_mut_ptr();\n    assert!(mid <= len);\n\n    unsafe {\n        (\n            std::slice::from_raw_parts_mut(ptr, mid),\n            std::slice::from_raw_parts_mut(ptr.add(mid), len - mid),\n        )\n    }\n}"
+                        },
+                        {
+                            "title": "When To Use Unsafe",
+                            "body": "Reach for unsafe only when you need to interface with hardware, call C libraries, or implement data structures the borrow checker cannot express. Always document the safety invariants. Incorrect unsafe code causes undefined behavior, so audit it carefully. For a deeper dive, consult the Rustonomicon (doc.rust-lang.org/nomicon) which covers unsafe Rust in exhaustive detail. Also visit the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-advanced-declarative-macros",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Macros: macro_rules!",
+                    "description": "Write declarative macros with macro_rules! to generate repetitive code using pattern matching and repetitions.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "Your First Macro",
+                            "body": "Declarative macros match against source code patterns and expand into new code at compile time. The macro_rules! construct defines a macro with one or more arms. Each arm has a matcher and a transcriber separated by =>.",
+                            "code": "macro_rules! say_hello {\n    () => {\n        println!(\"Hello!\");\n    };\n}\n\nfn main() {\n    say_hello!();\n}"
+                        },
+                        {
+                            "title": "Capturing Fragments",
+                            "body": "Matchers use designators like $name:expr, $t:ty, or $id:ident to capture fragments of Rust syntax. The captured fragment is substituted in the transcriber wherever $name appears. This lets macros work with arbitrary expressions and types.",
+                            "code": "macro_rules! create_fn {\n    ($name:ident, $body:expr) => {\n        fn $name() {\n            println!(\"{}\", $body);\n        }\n    };\n}\n\ncreate_fn!(greet, \"hi there\");\n\nfn main() {\n    greet();\n}"
+                        },
+                        {
+                            "title": "Repetitions",
+                            "body": "Use $(...),* for zero-or-more repetitions or $(...),+ for one-or-more. Repetitions let a single macro arm accept a variable number of arguments. This is how the standard vec! macro accepts any number of elements.",
+                            "code": "macro_rules! my_vec {\n    ( $( $x:expr ),* ) => {\n        {\n            let mut v = Vec::new();\n            $( v.push($x); )*\n            v\n        }\n    };\n}\n\nfn main() {\n    let v = my_vec![1, 2, 3];\n    println!(\"{:?}\", v);\n}"
+                        },
+                        {
+                            "title": "Macro Hygiene And Limits",
+                            "body": "Rust macros are partially hygienic: local variables inside macros do not leak into the caller scope. However, declarative macros cannot generate new identifiers dynamically or operate on types at a semantic level. When you hit these limits, consider procedural macros instead. For a deeper dive, consult The Rust Reference (doc.rust-lang.org/reference/macros-by-example.html) on macros by example. Also visit the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-advanced-proc-macros",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Procedural Macros",
+                    "description": "Explore derive macros, attribute macros, and function-like procedural macros that operate on Rust token streams.",
+                    "estimatedMinutes": 14,
+                    "lessons": [
+                        {
+                            "title": "What Are Procedural Macros",
+                            "body": "Procedural macros are Rust functions that receive a TokenStream and return a TokenStream. They run at compile time and can inspect or transform code structurally. Unlike declarative macros, they are defined in a separate crate with proc-macro = true in Cargo.toml.",
+                            "code": "// In Cargo.toml of the proc-macro crate:\n// [lib]\n// proc-macro = true\n\n// In lib.rs:\nuse proc_macro::TokenStream;\n\n#[proc_macro]\npub fn my_macro(input: TokenStream) -> TokenStream {\n    // transform input and return new tokens\n    input\n}"
+                        },
+                        {
+                            "title": "Derive Macros",
+                            "body": "Derive macros generate impl blocks automatically when you annotate a struct or enum with #[derive(YourMacro)]. The macro receives the type definition as tokens and produces the implementation. The syn and quote crates make parsing and generating tokens ergonomic.",
+                            "code": "// Using syn and quote in the proc-macro crate\nuse proc_macro::TokenStream;\nuse quote::quote;\nuse syn::{parse_macro_input, DeriveInput};\n\n#[proc_macro_derive(HelloMacro)]\npub fn hello_derive(input: TokenStream) -> TokenStream {\n    let ast = parse_macro_input!(input as DeriveInput);\n    let name = &ast.ident;\n\n    let expanded = quote! {\n        impl #name {\n            fn hello() {\n                println!(\"Hello from {}!\", stringify!(#name));\n            }\n        }\n    };\n    expanded.into()\n}"
+                        },
+                        {
+                            "title": "Attribute Macros",
+                            "body": "Attribute macros attach to items like functions or structs via #[your_attr]. They receive two token streams: the attribute arguments and the annotated item. This gives you full control to rewrite or wrap the item.",
+                            "code": "// #[proc_macro_attribute]\n// pub fn route(attr: TokenStream, item: TokenStream) -> TokenStream\n//\n// Usage:\n// #[route(GET, \"/\")]\n// fn index() -> String {\n//     String::from(\"home\")\n// }"
+                        },
+                        {
+                            "title": "When To Use Proc Macros",
+                            "body": "Procedural macros shine for serialization, ORM mapping, CLI argument parsing, and API boilerplate. They add compile time cost, so prefer declarative macros or generics when they suffice. Keep macro logic in a dedicated crate and write tests with trybuild or macrotest. For a deeper dive, consult The Rust Reference (doc.rust-lang.org/reference/procedural-macros.html) on procedural macros. Also visit the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-advanced-traits",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Advanced Traits",
+                    "description": "Master associated types, operator overloading, supertraits, and fully qualified syntax for complex trait designs.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "Associated Types",
+                            "body": "Associated types let a trait define a placeholder type that implementors choose. Unlike generics on the trait, each type can implement the trait only once, making the API cleaner. The Iterator trait uses this pattern with its Item associated type.",
+                            "code": "trait Graph {\n    type Node;\n    type Edge;\n\n    fn edges(&self, node: &Self::Node) -> Vec<Self::Edge>;\n}\n\nstruct MyGraph;\n\nimpl Graph for MyGraph {\n    type Node = u32;\n    type Edge = (u32, u32);\n\n    fn edges(&self, _node: &u32) -> Vec<(u32, u32)> {\n        vec![(1, 2)]\n    }\n}"
+                        },
+                        {
+                            "title": "Operator Overloading",
+                            "body": "Rust lets you overload operators by implementing traits from std::ops. For example, implementing Add lets you use the + operator on your type. The Output associated type determines the result type of the operation.",
+                            "code": "use std::ops::Add;\n\n#[derive(Debug, PartialEq)]\nstruct Point {\n    x: f64,\n    y: f64,\n}\n\nimpl Add for Point {\n    type Output = Point;\n\n    fn add(self, other: Point) -> Point {\n        Point {\n            x: self.x + other.x,\n            y: self.y + other.y,\n        }\n    }\n}"
+                        },
+                        {
+                            "title": "Supertraits",
+                            "body": "A supertrait is a trait that requires another trait as a prerequisite. This lets you call methods from the parent trait inside your trait's default implementations or blanket impls. Use the syntax trait Child: Parent to declare the relationship.",
+                            "code": "use std::fmt;\n\ntrait Printable: fmt::Display {\n    fn print(&self) {\n        println!(\"{}\", self);\n    }\n}\n\nstruct Wrapper(i32);\n\nimpl fmt::Display for Wrapper {\n    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n        write!(f, \"Wrapper({})\", self.0)\n    }\n}\n\nimpl Printable for Wrapper {}"
+                        },
+                        {
+                            "title": "Fully Qualified Syntax",
+                            "body": "When a type implements multiple traits with methods of the same name, use fully qualified syntax to disambiguate. The form <Type as Trait>::method(&instance) tells the compiler exactly which implementation to call. This also works for associated functions that take no self parameter. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on advanced traits. Also visit the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
                     "id": "rs-advanced-lifetimes",
                     "language": "rust",
                     "level": "advanced",
-                    "title": "Lifetimes",
-                    "description": "Understand how Rust's lifetime annotations prevent dangling references and enable safe borrowing across function boundaries.",
-                    "estimatedMinutes": 15,
+                    "title": "Advanced Lifetimes",
+                    "description": "Explore lifetime subtyping, higher-ranked trait bounds, and the 'static lifetime for complex borrow relationships.",
+                    "estimatedMinutes": 14,
                     "lessons": [
                         {
-                            "title": "What is a lifetime?",
-                            "body": "A lifetime is the scope for which a reference is valid. The borrow checker ensures references never outlive the data they point to. Most lifetimes are inferred, but sometimes you must annotate them explicitly."
+                            "title": "Lifetime Subtyping",
+                            "body": "Lifetime subtyping lets you express that one lifetime outlives another. The syntax 'a: 'b means 'a lives at least as long as 'b. This is needed when a struct holds references with different lifetimes and you must prove the relationship to the compiler.",
+                            "code": "struct Context<'s>(&'s str);\n\nstruct Parser<'c, 's: 'c> {\n    context: &'c Context<'s>,\n}\n\nimpl<'c, 's: 'c> Parser<'c, 's> {\n    fn parse(&self) -> &'s str {\n        self.context.0\n    }\n}"
                         },
                         {
-                            "title": "Lifetime annotation syntax",
-                            "body": "Lifetime parameters start with an apostrophe: 'a. They appear in angle brackets alongside type parameters.",
-                            "code": "fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {\n    if x.len() > y.len() { x } else { y }\n}"
+                            "title": "Higher-Ranked Trait Bounds",
+                            "body": "Higher-ranked trait bounds (HRTBs) use the syntax for<'a> to say a trait must hold for all possible lifetimes. This is common with closures that accept references. The compiler infers HRTBs in many cases, but you sometimes need to write them explicitly.",
+                            "code": "fn apply<F>(f: F)\nwhere\n    F: for<'a> Fn(&'a str) -> &'a str,\n{\n    let owned = String::from(\"hello world\");\n    let result = f(&owned);\n    println!(\"{result}\");\n}"
                         },
                         {
-                            "title": "Why this function needs a lifetime",
-                            "body": "The returned reference borrows from either x or y. Without 'a, the compiler can't know which input the output borrows from, or how long the result stays valid.",
-                            "code": "// The caller ensures both inputs live at least as long as the returned reference\nlet result;\n{\n    let s1 = String::from(\"long string\");\n    let s2 = String::from(\"xy\");\n    result = longest(&s1, &s2);\n    println!(\"{}\", result);  // OK — both s1 and s2 still live here\n}"
+                            "title": "The 'static Lifetime",
+                            "body": "The 'static lifetime means the reference can live for the entire program duration. String literals are 'static because they are baked into the binary. A bound T: 'static means T contains no non-static references, not that it lives forever. Owned types like String satisfy T: 'static.",
+                            "code": "fn make_static() -> &'static str {\n    \"I live forever in the binary\"\n}\n\n// T: 'static means T owns its data or\n// only contains 'static references\nfn spawn_task<T: Send + 'static>(val: T) {\n    std::thread::spawn(move || {\n        drop(val);\n    });\n}"
                         },
                         {
-                            "title": "Lifetime elision rules",
-                            "body": "The compiler applies three elision rules before requiring annotations: (1) each input gets its own lifetime; (2) if there is exactly one input lifetime it is given to all outputs; (3) if one input is &self or &mut self its lifetime is given to all outputs.",
-                            "code": "// No annotation needed — rule 2 applies\nfn first_word(s: &str) -> &str {\n    let bytes = s.as_bytes();\n    for (i, &b) in bytes.iter().enumerate() {\n        if b == b' ' { return &s[..i]; }\n    }\n    s\n}"
+                            "title": "Lifetime Elision Revisited",
+                            "body": "The compiler applies three elision rules to infer lifetimes in function signatures. When the rules are insufficient the compiler asks you to annotate explicitly. Understanding elision helps you write cleaner signatures and recognize when manual annotation is truly needed. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on advanced lifetimes and the Rustonomicon (doc.rust-lang.org/nomicon) for edge cases. Also visit the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-advanced-smart-pointers",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Smart Pointers Overview",
+                    "description": "Compare Box, Rc, Arc, and RefCell to understand when to use each smart pointer for memory management.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Box For Heap Allocation",
+                            "body": "Box<T> allocates data on the heap with a single owner. It is the simplest smart pointer and costs nothing beyond the allocation. Use Box for recursive types, large data you want off the stack, or trait objects.",
+                            "code": "enum List {\n    Cons(i32, Box<List>),\n    Nil,\n}\n\nfn main() {\n    let list = List::Cons(1,\n        Box::new(List::Cons(2,\n            Box::new(List::Nil))));\n}"
+                        },
+                        {
+                            "title": "Rc For Shared Ownership",
+                            "body": "Rc<T> enables multiple owners of the same heap data in a single thread via reference counting. Cloning an Rc increments the count; dropping one decrements it. The data is freed when the count reaches zero. Rc does not allow mutation by default.",
+                            "code": "use std::rc::Rc;\n\nfn main() {\n    let a = Rc::new(String::from(\"shared\"));\n    let b = Rc::clone(&a);\n    let c = Rc::clone(&a);\n\n    println!(\"count: {}\", Rc::strong_count(&a)); // 3\n    println!(\"{}, {}, {}\", a, b, c);\n}"
+                        },
+                        {
+                            "title": "Arc For Thread-Safe Sharing",
+                            "body": "Arc<T> is the atomic version of Rc, safe to share across threads. It uses atomic operations for the reference count, which adds slight overhead. Pair Arc with Mutex or RwLock when you need shared mutable state across threads.",
+                            "code": "use std::sync::Arc;\nuse std::thread;\n\nfn main() {\n    let data = Arc::new(vec![1, 2, 3]);\n\n    let handles: Vec<_> = (0..3).map(|_| {\n        let data = Arc::clone(&data);\n        thread::spawn(move || {\n            println!(\"{:?}\", data);\n        })\n    }).collect();\n\n    for h in handles {\n        h.join().unwrap();\n    }\n}"
+                        },
+                        {
+                            "title": "RefCell For Interior Mutability",
+                            "body": "RefCell<T> enforces borrowing rules at runtime instead of compile time. You can obtain a mutable reference even when the RefCell itself is behind a shared reference. If you violate the rules at runtime, RefCell panics. Combine Rc<RefCell<T>> for shared mutable single-threaded data. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on smart pointers. Also visit the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-advanced-phantomdata",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "PhantomData & Zero-Sized Types",
+                    "description": "Use PhantomData and zero-sized types to encode type-level information without runtime cost.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "Zero-Sized Types",
+                            "body": "A zero-sized type (ZST) occupies no memory at runtime. Unit structs and empty enums are ZSTs. The compiler optimizes them away entirely. ZSTs are useful as marker types, map values you do not need, or type-level tags.",
+                            "code": "struct Marker;\n\nfn main() {\n    println!(\"size: {}\", std::mem::size_of::<Marker>()); // 0\n\n    // Using a ZST as a HashMap value acts like a HashSet\n    use std::collections::HashMap;\n    let mut set: HashMap<String, ()> = HashMap::new();\n    set.insert(\"key\".into(), ());\n}"
+                        },
+                        {
+                            "title": "PhantomData Basics",
+                            "body": "PhantomData<T> is a ZST from std::marker that tells the compiler your type logically owns or references T even though no field actually stores it. This affects drop ordering, variance, and auto-trait implementations without adding runtime size.",
+                            "code": "use std::marker::PhantomData;\n\nstruct Slice<'a, T: 'a> {\n    start: *const T,\n    end: *const T,\n    _marker: PhantomData<&'a T>,\n}"
+                        },
+                        {
+                            "title": "Typestate With PhantomData",
+                            "body": "PhantomData enables the typestate pattern where a struct's generic parameter represents its state. Transitions between states are methods that consume self and return a new type. The compiler enforces valid state transitions at zero runtime cost.",
+                            "code": "use std::marker::PhantomData;\n\nstruct Locked;\nstruct Unlocked;\n\nstruct Door<State> {\n    _state: PhantomData<State>,\n}\n\nimpl Door<Locked> {\n    fn unlock(self) -> Door<Unlocked> {\n        Door { _state: PhantomData }\n    }\n}\n\nimpl Door<Unlocked> {\n    fn lock(self) -> Door<Locked> {\n        Door { _state: PhantomData }\n    }\n    fn open(&self) {\n        println!(\"door is open\");\n    }\n}"
+                        },
+                        {
+                            "title": "Variance And Drop Check",
+                            "body": "PhantomData influences how the compiler infers variance and drop check for your type. Using PhantomData<T> implies ownership, so the compiler may require T to outlive your struct. Use PhantomData<fn() -> T> for covariance without implying ownership. Getting this right matters for unsafe code. For a deeper dive, consult the Rustonomicon (doc.rust-lang.org/nomicon) on PhantomData and subtyping. Also visit the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-advanced-pin-unpin",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Pin & Unpin",
+                    "description": "Understand pinning, self-referential structs, and why async Rust relies on Pin<T> to guarantee memory safety.",
+                    "estimatedMinutes": 14,
+                    "lessons": [
+                        {
+                            "title": "The Problem Pin Solves",
+                            "body": "Some types contain internal pointers to their own fields, making them self-referential. If such a value is moved in memory, the internal pointers become dangling. Pin<P> is a wrapper that prevents the pointee from being moved, making self-referential types safe.",
+                            "code": "use std::pin::Pin;\n\n// A pinned reference guarantees the data\n// behind it will not be moved.\nfn process(data: Pin<&mut String>) {\n    println!(\"{}\", data);\n    // Cannot call mem::swap or take ownership\n}"
+                        },
+                        {
+                            "title": "Pin And Unpin",
+                            "body": "Most Rust types implement the auto trait Unpin, meaning they are safe to move even when pinned. Pin only restricts types that do NOT implement Unpin. Futures generated by async blocks are !Unpin because they may be self-referential across await points.",
+                            "code": "use std::pin::Pin;\n\nfn takes_unpin<T: Unpin>(val: Pin<&mut T>) {\n    // T is Unpin, so we can safely get &mut T\n    let inner: &mut T = Pin::into_inner(val);\n    drop(inner);\n}\n\n// i32 is Unpin, so this works:\nfn main() {\n    let mut x = 42;\n    let pinned = Pin::new(&mut x);\n    takes_unpin(pinned);\n}"
+                        },
+                        {
+                            "title": "Pinning On The Heap",
+                            "body": "Box::pin places a value on the heap and returns Pin<Box<T>>. Since the heap address is stable, the value is effectively immovable. This is the easiest way to pin a future or self-referential struct.",
+                            "code": "use std::pin::Pin;\n\nasync fn example() -> i32 { 42 }\n\nfn main() {\n    let future: Pin<Box<dyn std::future::Future<Output = i32>>> =\n        Box::pin(example());\n    // future is pinned and safe to poll\n    drop(future);\n}"
+                        },
+                        {
+                            "title": "Pin In Async Runtimes",
+                            "body": "Async runtimes must pin futures before polling them because the Future::poll method requires Pin<&mut Self>. This contract ensures that a future's internal state is never moved between polls. Understanding Pin is essential for writing low-level async combinators and executors. For a deeper dive, consult the Rustonomicon (doc.rust-lang.org/nomicon) on pinning and the Rust Async Book (rust-lang.github.io/async-book). Also visit the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-advanced-custom-iterators",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Custom Iterators",
+                    "description": "Implement the Iterator and IntoIterator traits to create lazy, composable data pipelines for your own types.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Implementing Iterator",
+                            "body": "To make a type iterable, implement the Iterator trait which requires a type Item and a next method. The next method returns Some(Item) while there are elements and None when exhausted. This enables your type to work with for loops and all iterator adapters.",
+                            "code": "struct Counter {\n    count: u32,\n    max: u32,\n}\n\nimpl Counter {\n    fn new(max: u32) -> Self {\n        Counter { count: 0, max }\n    }\n}\n\nimpl Iterator for Counter {\n    type Item = u32;\n\n    fn next(&mut self) -> Option<u32> {\n        if self.count < self.max {\n            self.count += 1;\n            Some(self.count)\n        } else {\n            None\n        }\n    }\n}"
+                        },
+                        {
+                            "title": "Using Your Iterator",
+                            "body": "Once you implement Iterator, you get dozens of adapter methods for free: map, filter, take, zip, collect, and more. These adapters are lazy and compose without allocating intermediate collections. Only a terminal operation like collect or for_each drives evaluation.",
+                            "code": "fn main() {\n    let sum: u32 = Counter::new(5)\n        .filter(|&x| x % 2 == 0)\n        .map(|x| x * x)\n        .sum();\n\n    println!(\"sum of squares of evens: {sum}\"); // 4 + 16 = 20\n}"
+                        },
+                        {
+                            "title": "IntoIterator",
+                            "body": "The IntoIterator trait converts a type into an iterator. Implementing it lets your type be used directly in for loops. Typically you implement IntoIterator for references to your collection and for the owned type, mirroring how Vec works.",
+                            "code": "struct Team {\n    members: Vec<String>,\n}\n\nimpl IntoIterator for Team {\n    type Item = String;\n    type IntoIter = std::vec::IntoIter<String>;\n\n    fn into_iter(self) -> Self::IntoIter {\n        self.members.into_iter()\n    }\n}\n\nfn main() {\n    let team = Team {\n        members: vec![\"Alice\".into(), \"Bob\".into()],\n    };\n    for member in team {\n        println!(\"{member}\");\n    }\n}"
+                        },
+                        {
+                            "title": "Lazy Evaluation And Performance",
+                            "body": "Rust iterators compile down to the same machine code as hand-written loops thanks to zero-cost abstractions. The compiler inlines and fuses adapter chains, eliminating intermediate allocations. This makes iterator pipelines both expressive and performant in production code. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on iterators and closures. Also visit the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-advanced-ffi",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "FFI Basics",
+                    "description": "Call C functions from Rust and expose Rust functions to C using extern, #[no_mangle], and FFI safety practices.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "Calling C From Rust",
+                            "body": "Use an extern block with the \"C\" ABI to declare foreign functions. Calling them is unsafe because the compiler cannot verify the foreign code's safety guarantees. Link to the C library via Cargo build scripts or system linker flags.",
+                            "code": "extern \"C\" {\n    fn abs(input: i32) -> i32;\n}\n\nfn main() {\n    let x = -5;\n    let result = unsafe { abs(x) };\n    println!(\"abs({x}) = {result}\");\n}"
+                        },
+                        {
+                            "title": "Exposing Rust To C",
+                            "body": "To let C code call a Rust function, mark it with extern \"C\" and #[no_mangle]. The no_mangle attribute preserves the function name so C can find it by symbol. Set your crate type to cdylib or staticlib in Cargo.toml to produce a C-compatible library.",
+                            "code": "#[no_mangle]\npub extern \"C\" fn add(a: i32, b: i32) -> i32 {\n    a + b\n}\n\n// In Cargo.toml:\n// [lib]\n// crate-type = [\"cdylib\"]"
+                        },
+                        {
+                            "title": "Working With C Strings",
+                            "body": "C strings are null-terminated byte arrays, while Rust strings are UTF-8 slices with a length. The std::ffi module provides CString for owned C strings and CStr for borrowed ones. Always handle the conversion carefully to avoid buffer overflows or invalid UTF-8.",
+                            "code": "use std::ffi::{CStr, CString};\nuse std::os::raw::c_char;\n\nextern \"C\" {\n    fn strlen(s: *const c_char) -> usize;\n}\n\nfn main() {\n    let rust_str = CString::new(\"hello\").unwrap();\n    let len = unsafe { strlen(rust_str.as_ptr()) };\n    println!(\"length: {len}\");\n}"
+                        },
+                        {
+                            "title": "FFI Safety Practices",
+                            "body": "Always wrap foreign calls in safe Rust functions that validate inputs and handle errors. Use the bindgen crate to auto-generate Rust bindings from C headers, reducing manual errors. Test FFI boundaries thoroughly, as bugs there cause undefined behavior. For a deeper dive, consult the Rustonomicon (doc.rust-lang.org/nomicon) on FFI and The Rust Programming Language book (doc.rust-lang.org/book). Also visit the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-advanced-design-patterns",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Design Patterns In Rust",
+                    "description": "Apply the builder pattern, typestate pattern, RAII, and the newtype idiom to write safe, expressive Rust APIs.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "The Builder Pattern",
+                            "body": "The builder pattern constructs complex objects step by step. In Rust, the builder owns partial state and each method returns self for chaining. A final build method validates and produces the target type. This avoids constructors with many parameters.",
+                            "code": "struct Server {\n    host: String,\n    port: u16,\n    max_conn: usize,\n}\n\nstruct ServerBuilder {\n    host: String,\n    port: u16,\n    max_conn: usize,\n}\n\nimpl ServerBuilder {\n    fn new(host: &str) -> Self {\n        ServerBuilder {\n            host: host.to_string(),\n            port: 8080,\n            max_conn: 100,\n        }\n    }\n    fn port(mut self, port: u16) -> Self {\n        self.port = port;\n        self\n    }\n    fn max_connections(mut self, n: usize) -> Self {\n        self.max_conn = n;\n        self\n    }\n    fn build(self) -> Server {\n        Server {\n            host: self.host,\n            port: self.port,\n            max_conn: self.max_conn,\n        }\n    }\n}"
+                        },
+                        {
+                            "title": "The Typestate Pattern",
+                            "body": "The typestate pattern uses generics to encode an object's state in the type system. Methods are only available on the correct state, and transitions consume self and return a new state. This moves runtime checks to compile time.",
+                            "code": "struct Draft;\nstruct Published;\n\nstruct Post<S> {\n    content: String,\n    _state: std::marker::PhantomData<S>,\n}\n\nimpl Post<Draft> {\n    fn new(content: &str) -> Self {\n        Post {\n            content: content.to_string(),\n            _state: std::marker::PhantomData,\n        }\n    }\n    fn publish(self) -> Post<Published> {\n        Post {\n            content: self.content,\n            _state: std::marker::PhantomData,\n        }\n    }\n}\n\nimpl Post<Published> {\n    fn view(&self) -> &str {\n        &self.content\n    }\n}"
+                        },
+                        {
+                            "title": "RAII And Drop",
+                            "body": "Resource Acquisition Is Initialization ties resource management to object lifetime. When a value goes out of scope, its Drop implementation runs automatically, releasing files, locks, or memory. This eliminates resource leaks without manual cleanup calls.",
+                            "code": "struct TempFile {\n    path: String,\n}\n\nimpl TempFile {\n    fn new(path: &str) -> Self {\n        println!(\"creating {path}\");\n        TempFile { path: path.to_string() }\n    }\n}\n\nimpl Drop for TempFile {\n    fn drop(&mut self) {\n        println!(\"cleaning up {}\", self.path);\n        // In real code: std::fs::remove_file\n    }\n}\n\nfn main() {\n    let _f = TempFile::new(\"data.tmp\");\n    // _f is dropped here automatically\n}"
+                        },
+                        {
+                            "title": "The Newtype Pattern",
+                            "body": "Wrapping a primitive in a single-field tuple struct creates a distinct type that prevents accidental misuse. For example, Meters(f64) and Seconds(f64) cannot be mixed even though both hold f64. The compiler optimizes away the wrapper so there is no runtime cost. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on patterns and idioms. Also visit the recommended books in the app for more insights.",
+                            "code": "struct Meters(f64);\nstruct Seconds(f64);\n\nfn speed(distance: Meters, time: Seconds) -> f64 {\n    distance.0 / time.0\n}\n\nfn main() {\n    let d = Meters(100.0);\n    let t = Seconds(9.58);\n    println!(\"speed: {:.2} m/s\", speed(d, t));\n}"
                         }
                     ]
                 }
