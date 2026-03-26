@@ -32,6 +32,396 @@
                             "code": "is_raining = True\nprint(5 > 3)       # True\nprint(True + True) # 2"
                         }
                     ]
+                },
+                {
+                    "id": "py-new-printing",
+                    "language": "python",
+                    "level": "new",
+                    "title": "Printing & Output",
+                    "description": "Learn how to display text and values on the screen using Python's print() function.",
+                    "estimatedMinutes": 5,
+                    "lessons": [
+                        {
+                            "title": "The print() function",
+                            "body": "print() is the simplest way to show output. You can pass any value or variable to it and Python will display it in the console.",
+                            "code": "print(\"Hello, world!\")\nprint(42)\nprint(3.14)"
+                        },
+                        {
+                            "title": "Printing multiple values",
+                            "body": "You can pass several values separated by commas. By default, print() adds a space between them and a newline at the end.",
+                            "code": "name = \"Alice\"\nage = 30\nprint(\"Name:\", name, \"Age:\", age)\n# Name: Alice Age: 30"
+                        },
+                        {
+                            "title": "f-strings",
+                            "body": "f-strings (formatted string literals) let you embed expressions directly inside a string. Prefix the string with f and place expressions in curly braces.",
+                            "code": "name = \"Bob\"\nscore = 95\nprint(f\"{name} scored {score} points.\")\n# Bob scored 95 points."
+                        },
+                        {
+                            "title": "sep and end parameters",
+                            "body": "Use sep to change the separator between values, and end to change what's printed after the last value (default is a newline).",
+                            "code": "print(\"a\", \"b\", \"c\", sep=\"-\")   # a-b-c\nprint(\"loading\", end=\"...\")\nprint(\"done\")                    # loading...done"
+                        }
+                    ]
+                },
+                {
+                    "id": "py-new-comments",
+                    "language": "python",
+                    "level": "new",
+                    "title": "Comments & Code Readability",
+                    "description": "Discover how to write comments in Python to make your code easier to understand.",
+                    "estimatedMinutes": 5,
+                    "lessons": [
+                        {
+                            "title": "What is a comment?",
+                            "body": "A comment is a note in your code that Python ignores when running the program. Comments help you and others understand what the code does."
+                        },
+                        {
+                            "title": "Single-line comments",
+                            "body": "Use the # character to start a comment. Everything after # on that line is ignored by Python.",
+                            "code": "# This is a comment\nx = 10  # This sets x to 10\nprint(x)"
+                        },
+                        {
+                            "title": "Multi-line comments",
+                            "body": "Python doesn't have a special multi-line comment syntax, but you can use triple-quoted strings as an informal block comment when they aren't assigned to a variable.",
+                            "code": "\"\"\"\nThis block describes what the program does.\nIt spans multiple lines.\n\"\"\"\nprint(\"Program starts here\")"
+                        },
+                        {
+                            "title": "When to write comments",
+                            "body": "Write comments to explain why you made a decision, not just what the code does. Clear variable names often reduce the need for comments — but complex logic always benefits from an explanation."
+                        }
+                    ]
+                },
+                {
+                    "id": "py-new-input",
+                    "language": "python",
+                    "level": "new",
+                    "title": "User Input",
+                    "description": "Learn how to read text entered by the user at runtime using the input() function.",
+                    "estimatedMinutes": 6,
+                    "lessons": [
+                        {
+                            "title": "The input() function",
+                            "body": "input() pauses the program and waits for the user to type something and press Enter. It always returns a string.",
+                            "code": "name = input(\"What is your name? \")\nprint(\"Hello,\", name)"
+                        },
+                        {
+                            "title": "Converting input to a number",
+                            "body": "Because input() returns a string, you must convert it before doing arithmetic. Use int() for whole numbers or float() for decimals.",
+                            "code": "age = int(input(\"Enter your age: \"))\nprint(\"In 10 years you will be\", age + 10)"
+                        },
+                        {
+                            "title": "Handling invalid input",
+                            "body": "If the user types something that can't be converted, Python raises a ValueError. You'll learn to handle errors properly later — for now, trust that the user enters valid data.",
+                            "code": "number = float(input(\"Enter a decimal: \"))\nprint(\"Doubled:\", number * 2)"
+                        }
+                    ]
+                },
+                {
+                    "id": "py-new-operators",
+                    "language": "python",
+                    "level": "new",
+                    "title": "Arithmetic Operators",
+                    "description": "Explore Python's built-in arithmetic operators for performing calculations.",
+                    "estimatedMinutes": 7,
+                    "lessons": [
+                        {
+                            "title": "Basic operations",
+                            "body": "Python supports the four classic operations: addition (+), subtraction (-), multiplication (*), and division (/). Division always produces a float.",
+                            "code": "print(10 + 3)   # 13\nprint(10 - 3)   # 7\nprint(10 * 3)   # 30\nprint(10 / 3)   # 3.3333..."
+                        },
+                        {
+                            "title": "Floor division and modulo",
+                            "body": "// performs floor division — it divides and rounds down to the nearest integer. % gives the remainder after division.",
+                            "code": "print(10 // 3)  # 3\nprint(10 % 3)   # 1"
+                        },
+                        {
+                            "title": "Exponentiation",
+                            "body": "Use ** to raise a number to a power. It works with integers and floats.",
+                            "code": "print(2 ** 10)   # 1024\nprint(9 ** 0.5)  # 3.0"
+                        },
+                        {
+                            "title": "Operator precedence",
+                            "body": "Python follows standard math rules: exponentiation first, then multiplication/division/modulo, then addition/subtraction. Use parentheses to control evaluation order.",
+                            "code": "print(2 + 3 * 4)    # 14  (not 20)\nprint((2 + 3) * 4)  # 20"
+                        }
+                    ]
+                },
+                {
+                    "id": "py-new-comparison",
+                    "language": "python",
+                    "level": "new",
+                    "title": "Comparison & Logical Operators",
+                    "description": "Use comparison and logical operators to evaluate conditions that return True or False.",
+                    "estimatedMinutes": 7,
+                    "lessons": [
+                        {
+                            "title": "Comparison operators",
+                            "body": "Comparison operators compare two values and return a boolean. The six operators are: == (equal), != (not equal), >, <, >=, <=.",
+                            "code": "print(5 == 5)   # True\nprint(5 != 3)   # True\nprint(10 > 7)   # True\nprint(4 >= 4)   # True"
+                        },
+                        {
+                            "title": "Logical and / or / not",
+                            "body": "and returns True if both conditions are True. or returns True if at least one is True. not flips a boolean.",
+                            "code": "age = 20\nhas_id = True\nprint(age >= 18 and has_id)  # True\nprint(age < 18 or has_id)    # True\nprint(not has_id)             # False"
+                        },
+                        {
+                            "title": "Chained comparisons",
+                            "body": "Python lets you chain comparisons naturally, like in mathematics. This is more readable than using and explicitly.",
+                            "code": "x = 5\nprint(1 < x < 10)   # True\nprint(0 <= x <= 5)  # True"
+                        }
+                    ]
+                },
+                {
+                    "id": "py-new-type-conversion",
+                    "language": "python",
+                    "level": "new",
+                    "title": "Type Conversion",
+                    "description": "Learn how to convert values between Python's built-in types using constructor functions.",
+                    "estimatedMinutes": 6,
+                    "lessons": [
+                        {
+                            "title": "Why convert types?",
+                            "body": "Sometimes a value is stored as the wrong type. For example, input() always returns a string, but you may need a number. Python's built-in functions let you convert between types."
+                        },
+                        {
+                            "title": "int(), float(), str()",
+                            "body": "int() converts to an integer, float() to a floating-point number, and str() to a string. Conversion can fail if the value isn't compatible.",
+                            "code": "print(int(\"42\"))     # 42\nprint(float(\"3.14\")) # 3.14\nprint(str(100))      # '100'"
+                        },
+                        {
+                            "title": "bool() and truthiness",
+                            "body": "bool() converts a value to True or False. Most values are truthy; exceptions include 0, 0.0, empty strings, and None.",
+                            "code": "print(bool(0))     # False\nprint(bool(\"\"))    # False\nprint(bool(42))    # True\nprint(bool(\"hi\"))  # True"
+                        },
+                        {
+                            "title": "Implicit vs explicit conversion",
+                            "body": "Python sometimes converts types automatically (implicit), such as promoting an int to float in mixed arithmetic. Explicit conversion is when you call int(), float(), etc. yourself — always prefer explicit to avoid surprises.",
+                            "code": "print(3 + 1.5)      # 4.5 (int promoted to float)\nprint(int(3 + 1.5)) # 4   (explicit truncation)"
+                        }
+                    ]
+                },
+                {
+                    "id": "py-new-conditionals",
+                    "language": "python",
+                    "level": "new",
+                    "title": "Conditionals: if / elif / else",
+                    "description": "Control the flow of your program by executing different code based on conditions.",
+                    "estimatedMinutes": 8,
+                    "lessons": [
+                        {
+                            "title": "The if statement",
+                            "body": "An if statement runs a block of code only when a condition is True. The block must be indented (4 spaces by convention).",
+                            "code": "temperature = 30\nif temperature > 25:\n    print(\"It's hot today!\")"
+                        },
+                        {
+                            "title": "else and elif",
+                            "body": "else runs when the if condition is False. elif (else-if) lets you check additional conditions in sequence. Only the first matching branch executes.",
+                            "code": "score = 72\nif score >= 90:\n    print(\"A\")\nelif score >= 70:\n    print(\"B\")\nelse:\n    print(\"C or below\")"
+                        },
+                        {
+                            "title": "Nested conditions",
+                            "body": "You can place if statements inside other if statements to check multiple related conditions. Keep nesting shallow to maintain readability.",
+                            "code": "logged_in = True\nis_admin = False\nif logged_in:\n    if is_admin:\n        print(\"Welcome, admin!\")\n    else:\n        print(\"Welcome, user!\")"
+                        },
+                        {
+                            "title": "One-line conditionals",
+                            "body": "Python supports a ternary expression: value_if_true if condition else value_if_false. Use it for simple, short choices.",
+                            "code": "age = 20\nstatus = \"adult\" if age >= 18 else \"minor\"\nprint(status)  # adult"
+                        }
+                    ]
+                },
+                {
+                    "id": "py-new-loops-for",
+                    "language": "python",
+                    "level": "new",
+                    "title": "For Loops",
+                    "description": "Repeat actions over sequences of values using Python's for loop.",
+                    "estimatedMinutes": 8,
+                    "lessons": [
+                        {
+                            "title": "Iterating over a sequence",
+                            "body": "A for loop goes through each item in a sequence (like a list or string) one at a time. The loop variable takes the value of each item in turn.",
+                            "code": "fruits = [\"apple\", \"banana\", \"cherry\"]\nfor fruit in fruits:\n    print(fruit)"
+                        },
+                        {
+                            "title": "Using range()",
+                            "body": "range(n) produces integers from 0 up to (but not including) n. range(start, stop, step) gives you more control.",
+                            "code": "for i in range(5):\n    print(i)          # 0 1 2 3 4\n\nfor i in range(2, 10, 2):\n    print(i)          # 2 4 6 8"
+                        },
+                        {
+                            "title": "Looping over strings",
+                            "body": "Strings are sequences too. A for loop visits each character one by one.",
+                            "code": "word = \"Python\"\nfor ch in word:\n    print(ch)"
+                        },
+                        {
+                            "title": "break and continue",
+                            "body": "break exits the loop immediately. continue skips the rest of the current iteration and moves to the next one.",
+                            "code": "for i in range(10):\n    if i == 5:\n        break       # stop at 5\n    if i % 2 == 0:\n        continue    # skip even numbers\n    print(i)        # prints 1 3"
+                        }
+                    ]
+                },
+                {
+                    "id": "py-new-loops-while",
+                    "language": "python",
+                    "level": "new",
+                    "title": "While Loops",
+                    "description": "Repeat a block of code as long as a condition remains True using the while loop.",
+                    "estimatedMinutes": 7,
+                    "lessons": [
+                        {
+                            "title": "Basic while loop",
+                            "body": "A while loop checks a condition before every iteration. If the condition is True, it runs the body; otherwise it stops.",
+                            "code": "count = 0\nwhile count < 5:\n    print(count)\n    count += 1"
+                        },
+                        {
+                            "title": "Infinite loops and break",
+                            "body": "If the condition never becomes False, the loop runs forever (an infinite loop). Use break to exit when a certain event occurs.",
+                            "code": "while True:\n    answer = input(\"Type 'quit' to exit: \")\n    if answer == \"quit\":\n        break\n    print(\"You typed:\", answer)"
+                        },
+                        {
+                            "title": "while vs for",
+                            "body": "Use a for loop when you know in advance how many times to iterate (or you're iterating over a collection). Use while when the number of iterations depends on a condition that changes during the loop."
+                        }
+                    ]
+                },
+                {
+                    "id": "py-new-functions",
+                    "language": "python",
+                    "level": "new",
+                    "title": "Defining Functions",
+                    "description": "Package reusable logic into functions using def, parameters, and return values.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "What is a function?",
+                            "body": "A function is a named block of code that performs a specific task. You define it once and can call it as many times as you need, avoiding repetition."
+                        },
+                        {
+                            "title": "def, parameters, and return",
+                            "body": "Use def to define a function. Parameters are the inputs; return sends a value back to the caller.",
+                            "code": "def add(a, b):\n    return a + b\n\nresult = add(3, 4)\nprint(result)  # 7"
+                        },
+                        {
+                            "title": "Default parameter values",
+                            "body": "You can give parameters default values. If the caller doesn't supply an argument, the default is used instead.",
+                            "code": "def greet(name, greeting=\"Hello\"):\n    return f\"{greeting}, {name}!\"\n\nprint(greet(\"Alice\"))          # Hello, Alice!\nprint(greet(\"Bob\", \"Hi\"))      # Hi, Bob!"
+                        },
+                        {
+                            "title": "Functions without a return value",
+                            "body": "A function that doesn't explicitly return a value implicitly returns None. These functions are useful for side effects like printing.",
+                            "code": "def say_hello(name):\n    print(f\"Hello, {name}!\")\n\nresult = say_hello(\"Charlie\")\nprint(result)  # None"
+                        }
+                    ]
+                },
+                {
+                    "id": "py-new-lists-intro",
+                    "language": "python",
+                    "level": "new",
+                    "title": "Introduction to Lists",
+                    "description": "Store multiple values in a single variable using Python lists.",
+                    "estimatedMinutes": 8,
+                    "lessons": [
+                        {
+                            "title": "Creating a list",
+                            "body": "A list is an ordered collection of items enclosed in square brackets. Items can be of any type, and a list can mix types.",
+                            "code": "numbers = [1, 2, 3, 4, 5]\nnames = [\"Alice\", \"Bob\"]\nmixed = [1, \"hello\", True]\nprint(numbers)"
+                        },
+                        {
+                            "title": "Accessing items by index",
+                            "body": "Each item has an index starting at 0. Negative indices count from the end: -1 is the last item.",
+                            "code": "colors = [\"red\", \"green\", \"blue\"]\nprint(colors[0])   # red\nprint(colors[-1])  # blue"
+                        },
+                        {
+                            "title": "Adding and removing items",
+                            "body": "append() adds an item to the end. remove() deletes the first occurrence of a value.",
+                            "code": "items = [\"a\", \"b\", \"c\"]\nitems.append(\"d\")\nprint(items)         # ['a', 'b', 'c', 'd']\nitems.remove(\"b\")\nprint(items)         # ['a', 'c', 'd']"
+                        },
+                        {
+                            "title": "Useful list functions",
+                            "body": "len() returns the number of items. sorted() returns a new sorted list. sum() adds up numeric items.",
+                            "code": "nums = [3, 1, 4, 1, 5]\nprint(len(nums))       # 5\nprint(sorted(nums))    # [1, 1, 3, 4, 5]\nprint(sum(nums))       # 14"
+                        }
+                    ]
+                },
+                {
+                    "id": "py-new-indexing",
+                    "language": "python",
+                    "level": "new",
+                    "title": "Indexing & Slicing",
+                    "description": "Access specific elements or sub-sequences from strings and lists using indexing and slicing.",
+                    "estimatedMinutes": 7,
+                    "lessons": [
+                        {
+                            "title": "Zero-based indexing",
+                            "body": "Python counts positions from 0. The first element is at index 0, the second at 1, and so on. Negative indices count from the end.",
+                            "code": "word = \"Python\"\nprint(word[0])   # P\nprint(word[-1])  # n"
+                        },
+                        {
+                            "title": "Slicing basics",
+                            "body": "A slice [start:stop] returns a portion of a sequence. start is inclusive, stop is exclusive. Omitting either defaults to the beginning or end.",
+                            "code": "s = \"Hello, World!\"\nprint(s[0:5])   # Hello\nprint(s[7:])    # World!\nprint(s[:5])    # Hello"
+                        },
+                        {
+                            "title": "Step in slices",
+                            "body": "Adding a step [start:stop:step] skips elements. A step of -1 reverses the sequence.",
+                            "code": "nums = [0, 1, 2, 3, 4, 5]\nprint(nums[::2])    # [0, 2, 4]\nprint(nums[::-1])   # [5, 4, 3, 2, 1, 0]"
+                        }
+                    ]
+                },
+                {
+                    "id": "py-new-strings-methods",
+                    "language": "python",
+                    "level": "new",
+                    "title": "String Methods",
+                    "description": "Manipulate and inspect text using Python's built-in string methods.",
+                    "estimatedMinutes": 8,
+                    "lessons": [
+                        {
+                            "title": "Case methods",
+                            "body": "upper() and lower() change the case of all characters. capitalize() uppercases only the first character.",
+                            "code": "s = \"hello WORLD\"\nprint(s.upper())      # HELLO WORLD\nprint(s.lower())      # hello world\nprint(s.capitalize()) # Hello world"
+                        },
+                        {
+                            "title": "strip, split, join",
+                            "body": "strip() removes leading and trailing whitespace. split() breaks a string into a list. join() does the reverse — it combines a list of strings into one.",
+                            "code": "text = \"  hello  \"\nprint(text.strip())              # 'hello'\nwords = \"a,b,c\".split(\",\")      # ['a', 'b', 'c']\nprint(\"-\".join(words))           # a-b-c"
+                        },
+                        {
+                            "title": "Searching inside strings",
+                            "body": "find() returns the index of the first occurrence (-1 if not found). in is often simpler for a True/False check.",
+                            "code": "msg = \"Good morning!\"\nprint(msg.find(\"morning\"))  # 5\nprint(\"Good\" in msg)        # True"
+                        },
+                        {
+                            "title": "replace()",
+                            "body": "replace(old, new) returns a new string with all occurrences of old replaced by new. Strings are immutable — replace() doesn't change the original.",
+                            "code": "s = \"I like cats and cats like me\"\nprint(s.replace(\"cats\", \"dogs\"))\n# I like dogs and dogs like me"
+                        }
+                    ]
+                },
+                {
+                    "id": "py-new-none",
+                    "language": "python",
+                    "level": "new",
+                    "title": "None & the Absence of a Value",
+                    "description": "Understand what None means in Python and how to check for it correctly.",
+                    "estimatedMinutes": 5,
+                    "lessons": [
+                        {
+                            "title": "What is None?",
+                            "body": "None is Python's way of representing 'nothing' or 'no value'. It is its own type (NoneType) and is the only value of that type.",
+                            "code": "x = None\nprint(x)          # None\nprint(type(x))    # <class 'NoneType'>"
+                        },
+                        {
+                            "title": "Functions that return None",
+                            "body": "Functions that don't explicitly return a value return None automatically. Forgetting to return is a common source of bugs.",
+                            "code": "def double(n):\n    result = n * 2  # forgot return!\n\nval = double(5)\nprint(val)  # None"
+                        },
+                        {
+                            "title": "Checking for None",
+                            "body": "Always use is None or is not None to check for None, not == None. The is operator checks identity, which is the correct semantics for singleton objects like None.",
+                            "code": "value = None\nif value is None:\n    print(\"No value provided\")\nelse:\n    print(\"Value:\", value)"
+                        }
+                    ]
                 }
             ]
         },
