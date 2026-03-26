@@ -19,17 +19,370 @@
                         {
                             "title": "Your first SELECT",
                             "body": "SELECT retrieves data from a table. * means 'all columns'. FROM specifies which table to read.",
-                            "code": "SELECT * FROM users;"
+                            "code": "SELECT * FROM users"
                         },
                         {
                             "title": "Selecting specific columns",
                             "body": "List column names separated by commas to return only the data you need.",
-                            "code": "SELECT name, email FROM users;"
+                            "code": "SELECT name, email FROM users"
                         },
                         {
                             "title": "Filtering with WHERE",
                             "body": "The WHERE clause filters rows. Only rows where the condition is TRUE are returned.",
-                            "code": "SELECT name FROM users WHERE age > 18;"
+                            "code": "SELECT name FROM users WHERE age > 18"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-new-tables",
+                    "language": "sql",
+                    "level": "new",
+                    "title": "Tables & Rows",
+                    "description": "Learn what database tables look like, how columns define structure, and how rows hold individual records.",
+                    "estimatedMinutes": 6,
+                    "lessons": [
+                        {
+                            "title": "What is a table?",
+                            "body": "A table is a collection of related data organized into rows and columns. Each column has a name and a data type, such as INTEGER or TEXT. Each row represents one record."
+                        },
+                        {
+                            "title": "Common data types",
+                            "body": "Every column stores one kind of data. INTEGER holds whole numbers, TEXT holds strings, and REAL holds decimal numbers. Choosing the right type helps the database validate and optimize your data."
+                        },
+                        {
+                            "title": "Creating a table",
+                            "body": "CREATE TABLE defines a new table with its columns and their types. The column list goes inside parentheses.",
+                            "code": "CREATE TABLE students (\n    id INTEGER,\n    name TEXT,\n    grade REAL\n)"
+                        },
+                        {
+                            "title": "Viewing table contents",
+                            "body": "After creating a table and inserting data, you can view all records with SELECT *.",
+                            "code": "SELECT * FROM students"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-new-select",
+                    "language": "sql",
+                    "level": "new",
+                    "title": "SELECT Basics",
+                    "description": "Master the fundamentals of retrieving data with SELECT, including choosing columns and using expressions.",
+                    "estimatedMinutes": 6,
+                    "lessons": [
+                        {
+                            "title": "Selecting all columns",
+                            "body": "The asterisk (*) is a shortcut that returns every column in the table. It is handy for quick exploration but not recommended in production queries.",
+                            "code": "SELECT * FROM products"
+                        },
+                        {
+                            "title": "Picking specific columns",
+                            "body": "List the columns you want, separated by commas. This makes results easier to read and can improve performance.",
+                            "code": "SELECT name, price FROM products"
+                        },
+                        {
+                            "title": "Expressions in SELECT",
+                            "body": "You can include calculations directly in the SELECT list. The database evaluates the expression for every row.",
+                            "code": "SELECT name, price * 1.1 AS price_with_tax\nFROM products"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-new-where",
+                    "language": "sql",
+                    "level": "new",
+                    "title": "WHERE Clause",
+                    "description": "Filter query results by specifying conditions with the WHERE clause.",
+                    "estimatedMinutes": 7,
+                    "lessons": [
+                        {
+                            "title": "Basic filtering",
+                            "body": "WHERE appears after FROM and keeps only the rows that satisfy the condition. Rows that do not match are excluded from the result.",
+                            "code": "SELECT name FROM employees\nWHERE department = 'Sales'"
+                        },
+                        {
+                            "title": "Combining conditions with AND",
+                            "body": "AND requires both conditions to be true. Only rows meeting every condition are returned.",
+                            "code": "SELECT name FROM employees\nWHERE department = 'Sales' AND salary > 50000"
+                        },
+                        {
+                            "title": "Combining conditions with OR",
+                            "body": "OR returns rows that satisfy at least one of the conditions. You can mix AND and OR, but use parentheses to control evaluation order.",
+                            "code": "SELECT name FROM employees\nWHERE department = 'Sales' OR department = 'Marketing'"
+                        },
+                        {
+                            "title": "Negation with NOT",
+                            "body": "NOT inverts a condition. It is useful when you want everything except a particular set of rows.",
+                            "code": "SELECT name FROM employees\nWHERE NOT department = 'HR'"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-new-order-by",
+                    "language": "sql",
+                    "level": "new",
+                    "title": "Sorting with ORDER BY",
+                    "description": "Control the order of your query results using ORDER BY with ascending and descending sorts.",
+                    "estimatedMinutes": 5,
+                    "lessons": [
+                        {
+                            "title": "Default sort order",
+                            "body": "Without ORDER BY, the database returns rows in no guaranteed order. ORDER BY lets you sort by one or more columns. The default direction is ascending (ASC).",
+                            "code": "SELECT name, age FROM users\nORDER BY age"
+                        },
+                        {
+                            "title": "Descending order",
+                            "body": "Add DESC after the column name to sort from highest to lowest. ASC is the explicit keyword for ascending, though it is the default.",
+                            "code": "SELECT name, salary FROM employees\nORDER BY salary DESC"
+                        },
+                        {
+                            "title": "Sorting by multiple columns",
+                            "body": "Separate column names with commas. The database sorts by the first column, then uses subsequent columns to break ties.",
+                            "code": "SELECT name, department, salary\nFROM employees\nORDER BY department ASC, salary DESC"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-new-limit",
+                    "language": "sql",
+                    "level": "new",
+                    "title": "LIMIT & OFFSET",
+                    "description": "Restrict the number of rows returned and paginate through results with LIMIT and OFFSET.",
+                    "estimatedMinutes": 5,
+                    "lessons": [
+                        {
+                            "title": "Limiting results",
+                            "body": "LIMIT restricts how many rows the query returns. It is commonly used when you only need the top few results or want to preview data.",
+                            "code": "SELECT * FROM products\nORDER BY price DESC\nLIMIT 5"
+                        },
+                        {
+                            "title": "Skipping rows with OFFSET",
+                            "body": "OFFSET tells the database to skip a number of rows before starting to return results. Combined with LIMIT, it enables simple pagination.",
+                            "code": "SELECT * FROM products\nORDER BY price DESC\nLIMIT 5 OFFSET 10"
+                        },
+                        {
+                            "title": "Pagination pattern",
+                            "body": "To show page N with P rows per page, set OFFSET to (N - 1) * P and LIMIT to P. This is one of the most common patterns in web applications."
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-new-null",
+                    "language": "sql",
+                    "level": "new",
+                    "title": "NULL Values",
+                    "description": "Understand what NULL means in SQL and how to test for missing data with IS NULL and IS NOT NULL.",
+                    "estimatedMinutes": 6,
+                    "lessons": [
+                        {
+                            "title": "What is NULL?",
+                            "body": "NULL represents the absence of a value. It is not zero, not an empty string, and not false. NULL means the data is unknown or not applicable."
+                        },
+                        {
+                            "title": "Testing for NULL",
+                            "body": "You cannot use = to compare with NULL. Instead, use IS NULL to find missing values and IS NOT NULL to find rows that have data.",
+                            "code": "SELECT name FROM users\nWHERE email IS NULL"
+                        },
+                        {
+                            "title": "NULL in conditions",
+                            "body": "Any comparison with NULL returns NULL (not TRUE or FALSE). This means NULL values are excluded from most WHERE conditions unless explicitly checked.",
+                            "code": "SELECT name FROM users\nWHERE email IS NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-new-comparisons",
+                    "language": "sql",
+                    "level": "new",
+                    "title": "Comparison Operators",
+                    "description": "Learn the comparison operators available in SQL for filtering and evaluating data.",
+                    "estimatedMinutes": 5,
+                    "lessons": [
+                        {
+                            "title": "Equality and inequality",
+                            "body": "Use = to test equality and != or <> to test inequality. These work with numbers, strings, and dates.",
+                            "code": "SELECT * FROM orders\nWHERE status = 'shipped'"
+                        },
+                        {
+                            "title": "Greater and less than",
+                            "body": "Use < and > for strict comparisons, and <= and >= to include the boundary value.",
+                            "code": "SELECT name, price FROM products\nWHERE price >= 10 AND price <= 100"
+                        },
+                        {
+                            "title": "Comparing strings",
+                            "body": "String comparisons follow alphabetical (lexicographic) order. They are case-sensitive in most databases unless configured otherwise.",
+                            "code": "SELECT name FROM users\nWHERE name > 'M'"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-new-insert",
+                    "language": "sql",
+                    "level": "new",
+                    "title": "INSERT INTO",
+                    "description": "Add new rows to a table using the INSERT INTO statement.",
+                    "estimatedMinutes": 6,
+                    "lessons": [
+                        {
+                            "title": "Inserting a single row",
+                            "body": "INSERT INTO adds a new row. You list the target columns and then the VALUES to store in each one.",
+                            "code": "INSERT INTO users (name, email, age)\nVALUES ('Alice', 'alice@example.com', 30)"
+                        },
+                        {
+                            "title": "Inserting without column list",
+                            "body": "If you supply values for every column in table order, the column list is optional. However, listing columns explicitly is safer and more readable.",
+                            "code": "INSERT INTO users\nVALUES (1, 'Bob', 'bob@example.com', 25)"
+                        },
+                        {
+                            "title": "Inserting multiple rows",
+                            "body": "Some databases allow multiple value sets in one INSERT. Separate each set with a comma. This is faster than running many individual inserts.",
+                            "code": "INSERT INTO users (name, email, age)\nVALUES\n    ('Carol', 'carol@example.com', 28),\n    ('Dave', 'dave@example.com', 35)"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-new-update",
+                    "language": "sql",
+                    "level": "new",
+                    "title": "UPDATE",
+                    "description": "Modify existing rows in a table using the UPDATE statement with SET and WHERE.",
+                    "estimatedMinutes": 6,
+                    "lessons": [
+                        {
+                            "title": "Basic UPDATE",
+                            "body": "UPDATE changes column values in existing rows. Always combine it with WHERE to target specific rows, or you will change every row in the table.",
+                            "code": "UPDATE users\nSET email = 'new@example.com'\nWHERE id = 1"
+                        },
+                        {
+                            "title": "Updating multiple columns",
+                            "body": "Separate the column assignments with commas in the SET clause. All changes happen in a single operation.",
+                            "code": "UPDATE users\nSET name = 'Alice Smith', age = 31\nWHERE id = 1"
+                        },
+                        {
+                            "title": "UPDATE without WHERE",
+                            "body": "Omitting WHERE updates every row in the table. This is rarely intentional and can cause major data loss. Always double-check your WHERE clause before running an UPDATE."
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-new-delete",
+                    "language": "sql",
+                    "level": "new",
+                    "title": "DELETE",
+                    "description": "Remove rows from a table using the DELETE statement safely with WHERE conditions.",
+                    "estimatedMinutes": 5,
+                    "lessons": [
+                        {
+                            "title": "Deleting specific rows",
+                            "body": "DELETE FROM removes rows that match the WHERE condition. Like UPDATE, always include a WHERE clause to avoid deleting everything.",
+                            "code": "DELETE FROM users\nWHERE id = 42"
+                        },
+                        {
+                            "title": "Deleting all rows",
+                            "body": "Omitting WHERE removes every row in the table. The table itself still exists, but it will be empty. Use this with extreme caution.",
+                            "code": "DELETE FROM temp_logs"
+                        },
+                        {
+                            "title": "DELETE vs TRUNCATE",
+                            "body": "TRUNCATE TABLE is a faster way to remove all rows because it does not log individual row deletions. However, it cannot be filtered with WHERE and may not fire triggers."
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-new-distinct",
+                    "language": "sql",
+                    "level": "new",
+                    "title": "DISTINCT",
+                    "description": "Remove duplicate rows from query results using the DISTINCT keyword.",
+                    "estimatedMinutes": 5,
+                    "lessons": [
+                        {
+                            "title": "Why duplicates appear",
+                            "body": "When you select a column that contains repeated values, every occurrence appears in the result. DISTINCT collapses identical rows into one."
+                        },
+                        {
+                            "title": "Using DISTINCT",
+                            "body": "Place DISTINCT right after SELECT. The database compares the entire selected row, not just one column, when deciding what is a duplicate.",
+                            "code": "SELECT DISTINCT department FROM employees"
+                        },
+                        {
+                            "title": "DISTINCT on multiple columns",
+                            "body": "When you list multiple columns, DISTINCT removes rows where the combination of all listed columns is the same.",
+                            "code": "SELECT DISTINCT department, title FROM employees"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-new-count",
+                    "language": "sql",
+                    "level": "new",
+                    "title": "Counting with COUNT",
+                    "description": "Use the COUNT function to tally rows and understand the difference between COUNT(*) and COUNT(column).",
+                    "estimatedMinutes": 5,
+                    "lessons": [
+                        {
+                            "title": "COUNT(*)",
+                            "body": "COUNT(*) counts every row in the result, including rows with NULL values. It is the simplest way to find out how many records exist.",
+                            "code": "SELECT COUNT(*) FROM orders"
+                        },
+                        {
+                            "title": "COUNT(column)",
+                            "body": "COUNT(column) counts only the rows where that column is not NULL. This is useful for checking data completeness.",
+                            "code": "SELECT COUNT(email) FROM users"
+                        },
+                        {
+                            "title": "COUNT with WHERE",
+                            "body": "Combine COUNT with WHERE to count rows that meet a condition. The filter runs first, then the count is computed on the filtered set.",
+                            "code": "SELECT COUNT(*) FROM orders\nWHERE status = 'completed'"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-new-like",
+                    "language": "sql",
+                    "level": "new",
+                    "title": "Pattern Matching with LIKE",
+                    "description": "Search for patterns in text columns using LIKE with the % and _ wildcard characters.",
+                    "estimatedMinutes": 6,
+                    "lessons": [
+                        {
+                            "title": "The % wildcard",
+                            "body": "% matches zero or more characters. Place it before, after, or around a pattern to match different positions within the string.",
+                            "code": "SELECT name FROM users\nWHERE name LIKE 'A%'"
+                        },
+                        {
+                            "title": "The _ wildcard",
+                            "body": "The underscore _ matches exactly one character. Use it when you know the length but not the exact value of part of the string.",
+                            "code": "SELECT code FROM products\nWHERE code LIKE 'P_00'"
+                        },
+                        {
+                            "title": "Combining wildcards",
+                            "body": "You can mix % and _ in the same pattern. NOT LIKE inverts the match, returning rows that do not fit the pattern.",
+                            "code": "SELECT name FROM users\nWHERE email LIKE '%@gmail.com'"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-new-aliases",
+                    "language": "sql",
+                    "level": "new",
+                    "title": "Column Aliases",
+                    "description": "Give columns friendlier names in your output using the AS keyword.",
+                    "estimatedMinutes": 5,
+                    "lessons": [
+                        {
+                            "title": "Renaming columns with AS",
+                            "body": "AS lets you assign a temporary name to a column or expression in the result set. The alias appears as the column header in the output.",
+                            "code": "SELECT name AS full_name, email AS contact_email\nFROM users"
+                        },
+                        {
+                            "title": "Aliases for expressions",
+                            "body": "Calculated columns have no natural name. An alias gives the result a readable label that you and others can reference.",
+                            "code": "SELECT price * quantity AS total_cost\nFROM order_items"
+                        },
+                        {
+                            "title": "Aliases with spaces",
+                            "body": "If your alias contains spaces or special characters, wrap it in double quotes. Single-word aliases do not need quotes.",
+                            "code": "SELECT name AS \"Full Name\", salary AS \"Annual Salary\"\nFROM employees"
                         }
                     ]
                 }
@@ -53,17 +406,370 @@
                         {
                             "title": "INNER JOIN",
                             "body": "INNER JOIN returns only rows that have a match in both tables.",
-                            "code": "SELECT orders.id, customers.name\nFROM orders\nINNER JOIN customers ON orders.customer_id = customers.id;"
+                            "code": "SELECT orders.id, customers.name\nFROM orders\nINNER JOIN customers ON orders.customer_id = customers.id"
                         },
                         {
                             "title": "LEFT JOIN",
                             "body": "LEFT JOIN returns all rows from the left table and the matching rows from the right. If there is no match, NULL is returned for the right table's columns.",
-                            "code": "SELECT customers.name, orders.id\nFROM customers\nLEFT JOIN orders ON customers.id = orders.customer_id;"
+                            "code": "SELECT customers.name, orders.id\nFROM customers\nLEFT JOIN orders ON customers.id = orders.customer_id"
                         },
                         {
                             "title": "Aliases",
                             "body": "Use AS to give tables or columns shorter names, making queries easier to read.",
-                            "code": "SELECT c.name, o.amount\nFROM customers AS c\nINNER JOIN orders AS o ON c.id = o.customer_id;"
+                            "code": "SELECT c.name, o.amount\nFROM customers AS c\nINNER JOIN orders AS o ON c.id = o.customer_id"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-beginner-right-full-join",
+                    "language": "sql",
+                    "level": "beginner",
+                    "title": "RIGHT JOIN & FULL OUTER JOIN",
+                    "description": "Learn how RIGHT JOIN and FULL OUTER JOIN work and when to use them instead of LEFT JOIN.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "RIGHT JOIN",
+                            "body": "RIGHT JOIN returns all rows from the right table and matched rows from the left. It is the mirror of LEFT JOIN. If there is no match, NULLs fill the left side.",
+                            "code": "SELECT o.id, c.name\nFROM orders AS o\nRIGHT JOIN customers AS c ON o.customer_id = c.id"
+                        },
+                        {
+                            "title": "FULL OUTER JOIN",
+                            "body": "FULL OUTER JOIN returns all rows from both tables. Where there is no match, the missing side is filled with NULLs.",
+                            "code": "SELECT c.name, o.id\nFROM customers AS c\nFULL OUTER JOIN orders AS o ON c.id = o.customer_id"
+                        },
+                        {
+                            "title": "When to use each",
+                            "body": "LEFT JOIN is the most common. Use RIGHT JOIN when the driving table is on the right. Use FULL OUTER JOIN when you need unmatched rows from both sides, such as reconciliation reports."
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-beginner-self-joins",
+                    "language": "sql",
+                    "level": "beginner",
+                    "title": "Self Joins",
+                    "description": "Join a table to itself to compare rows within the same table, such as employee-manager relationships.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "What is a self join?",
+                            "body": "A self join joins a table to itself. You must use aliases to distinguish the two copies. This is useful when rows have relationships to other rows in the same table."
+                        },
+                        {
+                            "title": "Employee-manager example",
+                            "body": "A common use case is an employees table where each row has a manager_id pointing to another row in the same table.",
+                            "code": "SELECT e.name AS employee, m.name AS manager\nFROM employees AS e\nINNER JOIN employees AS m ON e.manager_id = m.id"
+                        },
+                        {
+                            "title": "Finding pairs",
+                            "body": "Self joins can also find pairs of rows that share a property. Use a condition to avoid pairing a row with itself.",
+                            "code": "SELECT a.name, b.name\nFROM users AS a\nINNER JOIN users AS b ON a.city = b.city AND a.id < b.id"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-beginner-union",
+                    "language": "sql",
+                    "level": "beginner",
+                    "title": "UNION & UNION ALL",
+                    "description": "Stack the results of two or more SELECT queries vertically with UNION and UNION ALL.",
+                    "estimatedMinutes": 8,
+                    "lessons": [
+                        {
+                            "title": "UNION",
+                            "body": "UNION combines the results of two queries and removes duplicate rows. Both queries must return the same number of columns with compatible types.",
+                            "code": "SELECT name FROM customers\nUNION\nSELECT name FROM suppliers"
+                        },
+                        {
+                            "title": "UNION ALL",
+                            "body": "UNION ALL works like UNION but keeps all duplicates. It is faster because the database skips the deduplication step.",
+                            "code": "SELECT name FROM customers\nUNION ALL\nSELECT name FROM suppliers"
+                        },
+                        {
+                            "title": "Ordering combined results",
+                            "body": "Place ORDER BY after the last SELECT to sort the entire combined result set. You cannot put ORDER BY inside the individual queries.",
+                            "code": "SELECT name, 'customer' AS source FROM customers\nUNION ALL\nSELECT name, 'supplier' AS source FROM suppliers\nORDER BY name"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-beginner-subqueries-where",
+                    "language": "sql",
+                    "level": "beginner",
+                    "title": "Subqueries in WHERE",
+                    "description": "Use a query inside another query's WHERE clause to filter based on dynamic values.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "What is a subquery?",
+                            "body": "A subquery is a SELECT statement nested inside another statement. When placed in WHERE, it provides values that the outer query uses for filtering."
+                        },
+                        {
+                            "title": "Scalar subquery",
+                            "body": "A scalar subquery returns a single value. You can compare it with =, <, or > just like a constant.",
+                            "code": "SELECT name, salary\nFROM employees\nWHERE salary > (SELECT AVG(salary) FROM employees)"
+                        },
+                        {
+                            "title": "Subquery with IN",
+                            "body": "When a subquery returns multiple rows, use IN to check if a value is in the returned set.",
+                            "code": "SELECT name FROM customers\nWHERE id IN (SELECT customer_id FROM orders WHERE total > 500)"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-beginner-derived-tables",
+                    "language": "sql",
+                    "level": "beginner",
+                    "title": "Subqueries in FROM (Derived Tables)",
+                    "description": "Use subqueries in the FROM clause to create temporary result sets that act like tables.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Derived tables",
+                            "body": "A subquery in the FROM clause creates a derived table. It must have an alias. The outer query can select from it just like a regular table."
+                        },
+                        {
+                            "title": "Example: top spenders",
+                            "body": "First aggregate order totals per customer, then query that result to find the highest spenders.",
+                            "code": "SELECT sub.customer_id, sub.total_spent\nFROM (\n    SELECT customer_id, SUM(amount) AS total_spent\n    FROM orders\n    GROUP BY customer_id\n) AS sub\nWHERE sub.total_spent > 1000"
+                        },
+                        {
+                            "title": "When to use derived tables",
+                            "body": "Derived tables are useful when you need an intermediate aggregation or transformation before the outer query. They keep complex logic organized and readable.",
+                            "code": "SELECT dept, avg_salary\nFROM (\n    SELECT department AS dept, AVG(salary) AS avg_salary\n    FROM employees\n    GROUP BY department\n) AS dept_stats\nORDER BY avg_salary DESC"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-beginner-exists",
+                    "language": "sql",
+                    "level": "beginner",
+                    "title": "EXISTS & NOT EXISTS",
+                    "description": "Check for the presence or absence of related rows using EXISTS and NOT EXISTS.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "How EXISTS works",
+                            "body": "EXISTS returns TRUE if the subquery produces at least one row. The database stops scanning as soon as it finds the first match, making it efficient."
+                        },
+                        {
+                            "title": "Using EXISTS",
+                            "body": "EXISTS is commonly used to filter rows that have related data in another table.",
+                            "code": "SELECT name FROM customers AS c\nWHERE EXISTS (\n    SELECT 1 FROM orders AS o\n    WHERE o.customer_id = c.id\n)"
+                        },
+                        {
+                            "title": "NOT EXISTS",
+                            "body": "NOT EXISTS returns TRUE when the subquery produces no rows. It is useful for finding orphaned or unmatched records.",
+                            "code": "SELECT name FROM customers AS c\nWHERE NOT EXISTS (\n    SELECT 1 FROM orders AS o\n    WHERE o.customer_id = c.id\n)"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-beginner-case",
+                    "language": "sql",
+                    "level": "beginner",
+                    "title": "CASE Expressions",
+                    "description": "Add conditional logic to your queries using CASE WHEN ... THEN ... ELSE ... END.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Simple CASE",
+                            "body": "CASE evaluates conditions in order and returns the value for the first TRUE condition. If none match, ELSE provides a default.",
+                            "code": "SELECT name,\n    CASE status\n        WHEN 'A' THEN 'Active'\n        WHEN 'I' THEN 'Inactive'\n        ELSE 'Unknown'\n    END AS status_label\nFROM users"
+                        },
+                        {
+                            "title": "Searched CASE",
+                            "body": "A searched CASE uses boolean expressions instead of comparing a single value. Each WHEN can test a different column or condition.",
+                            "code": "SELECT name, salary,\n    CASE\n        WHEN salary > 100000 THEN 'High'\n        WHEN salary > 50000 THEN 'Medium'\n        ELSE 'Low'\n    END AS salary_band\nFROM employees"
+                        },
+                        {
+                            "title": "CASE in ORDER BY",
+                            "body": "CASE can appear in ORDER BY to create custom sort orders that do not follow alphabetical or numeric rules.",
+                            "code": "SELECT name, priority\nFROM tickets\nORDER BY\n    CASE priority\n        WHEN 'critical' THEN 1\n        WHEN 'high' THEN 2\n        WHEN 'medium' THEN 3\n        ELSE 4\n    END"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-beginner-string-functions",
+                    "language": "sql",
+                    "level": "beginner",
+                    "title": "String Functions",
+                    "description": "Manipulate text data with common SQL string functions like UPPER, LOWER, LENGTH, and SUBSTRING.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Changing case",
+                            "body": "UPPER converts text to uppercase and LOWER converts to lowercase. These are helpful for case-insensitive comparisons.",
+                            "code": "SELECT UPPER(name) AS upper_name,\n       LOWER(email) AS lower_email\nFROM users"
+                        },
+                        {
+                            "title": "String length and trimming",
+                            "body": "LENGTH (or LEN in some databases) returns the number of characters. TRIM removes leading and trailing whitespace.",
+                            "code": "SELECT name, LENGTH(name) AS name_length\nFROM users"
+                        },
+                        {
+                            "title": "Extracting parts of a string",
+                            "body": "SUBSTRING extracts a portion of a string given a start position and length. Positions start at 1 in SQL.",
+                            "code": "SELECT SUBSTRING(phone, 1, 3) AS area_code\nFROM contacts"
+                        },
+                        {
+                            "title": "Concatenation",
+                            "body": "CONCAT joins two or more strings together. Some databases also support the || operator for concatenation.",
+                            "code": "SELECT CONCAT(first_name, ' ', last_name) AS full_name\nFROM employees"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-beginner-date-functions",
+                    "language": "sql",
+                    "level": "beginner",
+                    "title": "Date & Time Functions",
+                    "description": "Work with dates and times using functions to extract parts, calculate differences, and format output.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Current date and time",
+                            "body": "CURRENT_DATE returns today's date and CURRENT_TIMESTAMP returns the date and time. These are standard SQL functions supported by most databases.",
+                            "code": "SELECT CURRENT_DATE AS today,\n       CURRENT_TIMESTAMP AS now"
+                        },
+                        {
+                            "title": "Extracting date parts",
+                            "body": "EXTRACT pulls a single component from a date or timestamp, such as the year, month, or day.",
+                            "code": "SELECT EXTRACT(YEAR FROM created_at) AS order_year,\n       EXTRACT(MONTH FROM created_at) AS order_month\nFROM orders"
+                        },
+                        {
+                            "title": "Date arithmetic",
+                            "body": "You can add or subtract intervals from dates. The syntax varies by database, but the INTERVAL keyword is widely supported.",
+                            "code": "SELECT name, created_at,\n       created_at + INTERVAL '30' DAY AS expiry_date\nFROM subscriptions"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-beginner-numeric-functions",
+                    "language": "sql",
+                    "level": "beginner",
+                    "title": "Numeric Functions & Rounding",
+                    "description": "Round, truncate, and transform numbers using built-in SQL numeric functions.",
+                    "estimatedMinutes": 8,
+                    "lessons": [
+                        {
+                            "title": "ROUND",
+                            "body": "ROUND rounds a number to a specified number of decimal places. If no precision is given, it rounds to the nearest integer.",
+                            "code": "SELECT ROUND(price, 2) AS rounded_price\nFROM products"
+                        },
+                        {
+                            "title": "CEIL and FLOOR",
+                            "body": "CEIL (or CEILING) rounds up to the nearest integer. FLOOR rounds down. These are useful for billing or inventory calculations.",
+                            "code": "SELECT CEIL(4.2) AS rounded_up,\n       FLOOR(4.8) AS rounded_down"
+                        },
+                        {
+                            "title": "ABS and MOD",
+                            "body": "ABS returns the absolute value of a number. MOD returns the remainder of a division. Both are useful for data validation and cyclic calculations.",
+                            "code": "SELECT ABS(-15) AS absolute_val,\n       MOD(17, 5) AS remainder"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-beginner-in-between",
+                    "language": "sql",
+                    "level": "beginner",
+                    "title": "IN & BETWEEN",
+                    "description": "Simplify multi-value and range conditions with IN and BETWEEN operators.",
+                    "estimatedMinutes": 8,
+                    "lessons": [
+                        {
+                            "title": "The IN operator",
+                            "body": "IN checks whether a value matches any item in a list. It replaces multiple OR conditions and is easier to read.",
+                            "code": "SELECT name FROM employees\nWHERE department IN ('Sales', 'Marketing', 'Support')"
+                        },
+                        {
+                            "title": "The BETWEEN operator",
+                            "body": "BETWEEN tests whether a value falls within a range, inclusive of both endpoints. It works with numbers, dates, and strings.",
+                            "code": "SELECT name, salary FROM employees\nWHERE salary BETWEEN 40000 AND 80000"
+                        },
+                        {
+                            "title": "NOT IN and NOT BETWEEN",
+                            "body": "Prefix either operator with NOT to invert the condition. NOT IN excludes listed values and NOT BETWEEN excludes the range.",
+                            "code": "SELECT name FROM employees\nWHERE department NOT IN ('HR', 'Legal')"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-beginner-group-by",
+                    "language": "sql",
+                    "level": "beginner",
+                    "title": "GROUP BY Basics",
+                    "description": "Collapse rows into groups and compute summary statistics using GROUP BY with aggregate functions.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "How GROUP BY works",
+                            "body": "GROUP BY groups rows that share the same value in one or more columns. Aggregate functions like COUNT and SUM then operate on each group independently."
+                        },
+                        {
+                            "title": "Counting per group",
+                            "body": "Combine GROUP BY with COUNT to see how many rows belong to each group.",
+                            "code": "SELECT department, COUNT(*) AS employee_count\nFROM employees\nGROUP BY department"
+                        },
+                        {
+                            "title": "SUM and AVG per group",
+                            "body": "SUM totals numeric values per group and AVG computes the mean. Both ignore NULL values in the target column.",
+                            "code": "SELECT department, SUM(salary) AS total_salary,\n       AVG(salary) AS avg_salary\nFROM employees\nGROUP BY department"
+                        },
+                        {
+                            "title": "Grouping by multiple columns",
+                            "body": "You can group by more than one column to create finer categories. List the columns separated by commas.",
+                            "code": "SELECT department, title, COUNT(*) AS headcount\nFROM employees\nGROUP BY department, title"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-beginner-having",
+                    "language": "sql",
+                    "level": "beginner",
+                    "title": "HAVING Clause",
+                    "description": "Filter grouped results with HAVING, which works like WHERE but runs after aggregation.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "WHERE vs HAVING",
+                            "body": "WHERE filters individual rows before grouping. HAVING filters groups after aggregation. You cannot reference aggregate functions in WHERE."
+                        },
+                        {
+                            "title": "Basic HAVING",
+                            "body": "HAVING appears after GROUP BY and tests conditions on aggregate values like COUNT or SUM.",
+                            "code": "SELECT department, COUNT(*) AS headcount\nFROM employees\nGROUP BY department\nHAVING COUNT(*) > 5"
+                        },
+                        {
+                            "title": "Combining WHERE and HAVING",
+                            "body": "Use WHERE to narrow rows before grouping and HAVING to narrow groups after. This two-stage approach gives you precise control over results.",
+                            "code": "SELECT department, AVG(salary) AS avg_salary\nFROM employees\nWHERE hire_date > '2020-01-01'\nGROUP BY department\nHAVING AVG(salary) > 60000"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-beginner-advanced-ordering",
+                    "language": "sql",
+                    "level": "beginner",
+                    "title": "ORDER BY with Multiple Columns & Expressions",
+                    "description": "Sort results using multiple columns, expressions, and positional references.",
+                    "estimatedMinutes": 8,
+                    "lessons": [
+                        {
+                            "title": "Sorting by position",
+                            "body": "Instead of column names, you can use the column's position number in the SELECT list. This is shorter but less readable.",
+                            "code": "SELECT name, department, salary\nFROM employees\nORDER BY 2, 3 DESC"
+                        },
+                        {
+                            "title": "Sorting by expressions",
+                            "body": "ORDER BY can use any expression, not just column names. This lets you sort by calculated values without including them in the SELECT list.",
+                            "code": "SELECT name, price, quantity\nFROM order_items\nORDER BY price * quantity DESC"
+                        },
+                        {
+                            "title": "NULL sort order",
+                            "body": "Different databases sort NULLs differently. Some place them first, others last. Use NULLS FIRST or NULLS LAST to control placement explicitly.",
+                            "code": "SELECT name, bonus\nFROM employees\nORDER BY bonus DESC NULLS LAST"
                         }
                     ]
                 }
@@ -83,22 +789,400 @@
                         {
                             "title": "Aggregate functions",
                             "body": "COUNT, SUM, AVG, MIN, and MAX compute a single value from a set of rows.",
-                            "code": "SELECT COUNT(*) FROM orders;\nSELECT AVG(salary) FROM employees;"
+                            "code": "SELECT COUNT(*) FROM orders\nSELECT AVG(salary) FROM employees"
                         },
                         {
                             "title": "GROUP BY",
                             "body": "GROUP BY collapses multiple rows with the same value into one group, so aggregates apply per group.",
-                            "code": "SELECT department, AVG(salary) AS avg_salary\nFROM employees\nGROUP BY department;"
+                            "code": "SELECT department, AVG(salary) AS avg_salary\nFROM employees\nGROUP BY department"
                         },
                         {
                             "title": "HAVING",
                             "body": "WHERE filters rows before grouping. HAVING filters groups after aggregation.",
-                            "code": "SELECT department, COUNT(*) AS headcount\nFROM employees\nGROUP BY department\nHAVING COUNT(*) > 10;"
+                            "code": "SELECT department, COUNT(*) AS headcount\nFROM employees\nGROUP BY department\nHAVING COUNT(*) > 10"
                         },
                         {
                             "title": "NULL handling",
                             "body": "Aggregate functions ignore NULL values. COUNT(*) counts all rows; COUNT(column) skips NULLs in that column.",
-                            "code": "SELECT COUNT(*) AS total_rows,\n       COUNT(email) AS rows_with_email\nFROM users;"
+                            "code": "SELECT COUNT(*) AS total_rows,\n       COUNT(email) AS rows_with_email\nFROM users"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-intermediate-cte",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Common Table Expressions (CTEs)",
+                    "description": "Write cleaner queries by defining reusable named result sets with the WITH clause.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "What is a CTE?",
+                            "body": "A Common Table Expression is a named temporary result set defined with the WITH keyword. It exists only for the duration of the query and makes complex SQL more readable."
+                        },
+                        {
+                            "title": "Basic CTE syntax",
+                            "body": "Define a CTE with WITH, give it a name and a SELECT body, then reference it in the main query.",
+                            "code": "WITH active_users AS (\n    SELECT id, name FROM users\n    WHERE status = 'active'\n)\nSELECT name FROM active_users"
+                        },
+                        {
+                            "title": "Multiple CTEs",
+                            "body": "Separate multiple CTEs with commas after the WITH keyword. Later CTEs can reference earlier ones, building up complex logic step by step.",
+                            "code": "WITH dept_totals AS (\n    SELECT department, SUM(salary) AS total\n    FROM employees\n    GROUP BY department\n),\navg_total AS (\n    SELECT AVG(total) AS avg_dept_total\n    FROM dept_totals\n)\nSELECT d.department, d.total\nFROM dept_totals AS d, avg_total AS a\nWHERE d.total > a.avg_dept_total"
+                        },
+                        {
+                            "title": "CTE vs subquery",
+                            "body": "CTEs and subqueries produce the same results, but CTEs can be referenced multiple times in the same query and are generally easier to maintain."
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-intermediate-views",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Views",
+                    "description": "Create virtual tables with CREATE VIEW to simplify complex queries and control data access.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "What is a view?",
+                            "body": "A view is a saved SELECT statement that behaves like a table. It does not store data itself but runs the underlying query each time it is accessed."
+                        },
+                        {
+                            "title": "Creating a view",
+                            "body": "Use CREATE VIEW with a name and a SELECT statement. After creation, you can query the view just like a regular table.",
+                            "code": "CREATE VIEW active_customers AS\nSELECT id, name, email\nFROM customers\nWHERE status = 'active'"
+                        },
+                        {
+                            "title": "Querying a view",
+                            "body": "Once created, a view can appear in FROM or JOIN clauses. You can also filter, sort, and aggregate its data.",
+                            "code": "SELECT name, email\nFROM active_customers\nORDER BY name"
+                        },
+                        {
+                            "title": "Dropping a view",
+                            "body": "DROP VIEW removes a view definition from the database. The underlying table data is not affected.",
+                            "code": "DROP VIEW IF EXISTS active_customers"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-intermediate-indexes",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Indexes",
+                    "description": "Speed up queries by creating indexes on frequently searched or joined columns.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "Why indexes matter",
+                            "body": "Without an index, the database must scan every row to find matches. An index builds a fast-lookup structure, similar to a book index, dramatically reducing search time."
+                        },
+                        {
+                            "title": "Creating an index",
+                            "body": "CREATE INDEX defines a new index on one or more columns. The database uses it automatically when it determines the index will speed up a query.",
+                            "code": "CREATE INDEX idx_users_email\nON users (email)"
+                        },
+                        {
+                            "title": "Composite indexes",
+                            "body": "An index on multiple columns is called a composite index. Column order matters — the index is most effective when the leading columns appear in the WHERE clause.",
+                            "code": "CREATE INDEX idx_orders_customer_date\nON orders (customer_id, created_at)"
+                        },
+                        {
+                            "title": "Trade-offs",
+                            "body": "Indexes speed up reads but slow down writes because the database must update the index on every INSERT, UPDATE, or DELETE. Only index columns that are frequently queried."
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-intermediate-constraints",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Constraints",
+                    "description": "Enforce data rules at the database level with PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL, and CHECK constraints.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "PRIMARY KEY",
+                            "body": "A PRIMARY KEY uniquely identifies each row in a table. It automatically enforces NOT NULL and UNIQUE. Most tables have a single-column integer primary key.",
+                            "code": "CREATE TABLE users (\n    id INTEGER PRIMARY KEY,\n    name TEXT NOT NULL\n)"
+                        },
+                        {
+                            "title": "FOREIGN KEY",
+                            "body": "A FOREIGN KEY links a column to the primary key of another table, ensuring that references always point to existing rows.",
+                            "code": "CREATE TABLE orders (\n    id INTEGER PRIMARY KEY,\n    customer_id INTEGER,\n    FOREIGN KEY (customer_id) REFERENCES customers(id)\n)"
+                        },
+                        {
+                            "title": "UNIQUE and CHECK",
+                            "body": "UNIQUE ensures no duplicate values in a column. CHECK validates that values meet a custom condition.",
+                            "code": "CREATE TABLE products (\n    id INTEGER PRIMARY KEY,\n    sku TEXT UNIQUE,\n    price REAL CHECK (price > 0)\n)"
+                        },
+                        {
+                            "title": "NOT NULL",
+                            "body": "NOT NULL prevents a column from accepting NULL values. It guarantees that every row has a value for that column, which is essential for mandatory fields like names or emails."
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-intermediate-normalization",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Normalization",
+                    "description": "Organize tables to reduce redundancy and improve data integrity using normalization principles.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "Why normalize?",
+                            "body": "Normalization splits data into related tables to eliminate duplication. This reduces storage, prevents update anomalies, and makes the schema easier to maintain."
+                        },
+                        {
+                            "title": "First Normal Form (1NF)",
+                            "body": "A table is in 1NF if every column holds a single atomic value (no lists or nested structures) and each row is unique.",
+                            "code": "CREATE TABLE contacts (\n    id INTEGER PRIMARY KEY,\n    name TEXT,\n    phone TEXT\n)"
+                        },
+                        {
+                            "title": "Second Normal Form (2NF)",
+                            "body": "2NF requires 1NF plus every non-key column must depend on the entire primary key, not just part of it. This usually means splitting tables with composite keys.",
+                            "code": "-- Before 2NF: partial dependency on composite key\n-- (student_id, course_id) -> grade, student_name\n-- After 2NF: split into two tables\nCREATE TABLE students (\n    student_id INTEGER PRIMARY KEY,\n    student_name TEXT\n)\n\nCREATE TABLE enrollments (\n    student_id INTEGER,\n    course_id INTEGER,\n    grade TEXT,\n    PRIMARY KEY (student_id, course_id)\n)"
+                        },
+                        {
+                            "title": "Third Normal Form (3NF)",
+                            "body": "3NF requires 2NF plus no non-key column depends on another non-key column. If a column depends on something other than the primary key, move it to its own table.",
+                            "code": "-- Before 3NF: zip_code -> city (transitive dependency)\n-- After 3NF: move city to a zip_codes table\nCREATE TABLE customers (\n    id INTEGER PRIMARY KEY,\n    name TEXT,\n    zip_code TEXT\n)\n\nCREATE TABLE zip_codes (\n    zip_code TEXT PRIMARY KEY,\n    city TEXT\n)"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-intermediate-transactions",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Transactions",
+                    "description": "Group multiple statements into atomic units of work using BEGIN, COMMIT, and ROLLBACK.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "What is a transaction?",
+                            "body": "A transaction is a sequence of SQL statements that execute as a single unit. Either all changes succeed (COMMIT) or none of them are applied (ROLLBACK). This protects data consistency."
+                        },
+                        {
+                            "title": "BEGIN and COMMIT",
+                            "body": "BEGIN starts a transaction. COMMIT saves all changes made during the transaction permanently to the database.",
+                            "code": "BEGIN\nUPDATE accounts SET balance = balance - 100 WHERE id = 1\nUPDATE accounts SET balance = balance + 100 WHERE id = 2\nCOMMIT"
+                        },
+                        {
+                            "title": "ROLLBACK",
+                            "body": "ROLLBACK undoes all changes made since the last BEGIN. Use it when an error occurs and you need to revert to a clean state.",
+                            "code": "BEGIN\nUPDATE inventory SET quantity = quantity - 1 WHERE product_id = 5\nROLLBACK"
+                        },
+                        {
+                            "title": "ACID properties",
+                            "body": "Transactions follow ACID: Atomicity (all or nothing), Consistency (valid state), Isolation (concurrent transactions do not interfere), and Durability (committed data persists)."
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-intermediate-coalesce",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "COALESCE & NULLIF",
+                    "description": "Handle NULL values gracefully using COALESCE to provide defaults and NULLIF to create NULLs conditionally.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "COALESCE",
+                            "body": "COALESCE returns the first non-NULL argument. It is commonly used to replace NULLs with default values in query output.",
+                            "code": "SELECT name,\n       COALESCE(phone, 'N/A') AS phone\nFROM contacts"
+                        },
+                        {
+                            "title": "COALESCE with multiple arguments",
+                            "body": "You can pass many arguments to COALESCE. It walks left to right and returns the first value that is not NULL.",
+                            "code": "SELECT COALESCE(mobile, home_phone, work_phone, 'No phone') AS best_phone\nFROM contacts"
+                        },
+                        {
+                            "title": "NULLIF",
+                            "body": "NULLIF returns NULL if its two arguments are equal, otherwise it returns the first argument. It is useful for avoiding division by zero.",
+                            "code": "SELECT revenue / NULLIF(cost, 0) AS margin_ratio\nFROM financials"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-intermediate-correlated-subqueries",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Correlated Subqueries",
+                    "description": "Write subqueries that reference columns from the outer query, executing once per outer row.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "What is a correlated subquery?",
+                            "body": "A correlated subquery references a column from the outer query. Unlike a regular subquery, it runs once for each row of the outer query because its result depends on that row."
+                        },
+                        {
+                            "title": "Filtering with a correlated subquery",
+                            "body": "Find employees whose salary is above their department average. The subquery filters by the outer row's department.",
+                            "code": "SELECT name, salary, department\nFROM employees AS e\nWHERE salary > (\n    SELECT AVG(salary)\n    FROM employees\n    WHERE department = e.department\n)"
+                        },
+                        {
+                            "title": "Correlated subquery in SELECT",
+                            "body": "A correlated subquery can also appear in the SELECT list, computing a value per row based on related data.",
+                            "code": "SELECT name,\n    (SELECT COUNT(*)\n     FROM orders AS o\n     WHERE o.customer_id = c.id) AS order_count\nFROM customers AS c"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-intermediate-cast",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "CAST & Type Conversion",
+                    "description": "Convert data between types using CAST and understand implicit vs explicit type conversion.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Explicit casting with CAST",
+                            "body": "CAST converts a value from one data type to another. The syntax is CAST(value AS target_type). Use it when the database cannot infer the conversion automatically.",
+                            "code": "SELECT CAST(price AS INTEGER) AS rounded_price\nFROM products"
+                        },
+                        {
+                            "title": "Common conversions",
+                            "body": "Typical casts include string to integer, integer to text, and string to date. Invalid conversions raise an error at runtime.",
+                            "code": "SELECT CAST('2024-01-15' AS DATE) AS order_date"
+                        },
+                        {
+                            "title": "Implicit conversion",
+                            "body": "Some databases automatically convert types when mixing them in expressions, such as comparing an integer column to a string literal. Relying on implicit conversion can cause unexpected results, so explicit CAST is safer."
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-intermediate-set-operations",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Set Operations",
+                    "description": "Combine result sets using UNION, INTERSECT, and EXCEPT to perform set-based logic.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "UNION refresher",
+                            "body": "UNION stacks two result sets and removes duplicates. UNION ALL keeps duplicates and is faster. Both require matching column counts and compatible types."
+                        },
+                        {
+                            "title": "INTERSECT",
+                            "body": "INTERSECT returns only rows that appear in both result sets. It is useful for finding common elements between two queries.",
+                            "code": "SELECT email FROM newsletter_subscribers\nINTERSECT\nSELECT email FROM active_customers"
+                        },
+                        {
+                            "title": "EXCEPT",
+                            "body": "EXCEPT returns rows from the first query that do not appear in the second. It is the set-difference operation.",
+                            "code": "SELECT email FROM newsletter_subscribers\nEXCEPT\nSELECT email FROM unsubscribed_users"
+                        },
+                        {
+                            "title": "Order of operations",
+                            "body": "You can chain multiple set operations. Use parentheses to control evaluation order. ORDER BY applies to the final combined result and goes at the very end."
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-intermediate-temp-tables",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Temporary Tables",
+                    "description": "Store intermediate results in temporary tables that exist only for the duration of a session.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Creating a temporary table",
+                            "body": "Temporary tables live only for the current session and are automatically dropped when the session ends. They are useful for breaking complex logic into manageable steps.",
+                            "code": "CREATE TEMPORARY TABLE recent_orders AS\nSELECT * FROM orders\nWHERE created_at > '2024-01-01'"
+                        },
+                        {
+                            "title": "Using a temporary table",
+                            "body": "Once created, a temporary table behaves exactly like a regular table. You can SELECT, INSERT, UPDATE, and DELETE from it.",
+                            "code": "SELECT customer_id, COUNT(*) AS order_count\nFROM recent_orders\nGROUP BY customer_id"
+                        },
+                        {
+                            "title": "Dropping a temporary table",
+                            "body": "Although temporary tables are automatically cleaned up, you can drop them explicitly if you need to free resources or reuse the name.",
+                            "code": "DROP TABLE IF EXISTS recent_orders"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-intermediate-conditional-aggregation",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Conditional Aggregation",
+                    "description": "Use CASE inside aggregate functions to compute multiple summaries in a single query.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "COUNT with CASE",
+                            "body": "Place a CASE expression inside COUNT to count only rows that meet a condition. Return 1 for matches and NULL for non-matches.",
+                            "code": "SELECT\n    COUNT(CASE WHEN status = 'active' THEN 1 END) AS active_count,\n    COUNT(CASE WHEN status = 'inactive' THEN 1 END) AS inactive_count\nFROM users"
+                        },
+                        {
+                            "title": "SUM with CASE",
+                            "body": "SUM with CASE lets you compute conditional totals. This is useful for building pivot-like reports in a single pass.",
+                            "code": "SELECT department,\n    SUM(CASE WHEN gender = 'M' THEN salary ELSE 0 END) AS male_salary,\n    SUM(CASE WHEN gender = 'F' THEN salary ELSE 0 END) AS female_salary\nFROM employees\nGROUP BY department"
+                        },
+                        {
+                            "title": "FILTER clause",
+                            "body": "Some databases support the FILTER clause as a cleaner alternative to CASE inside aggregates. It reads more naturally and is easier to maintain.",
+                            "code": "SELECT\n    COUNT(*) FILTER (WHERE status = 'active') AS active_count,\n    COUNT(*) FILTER (WHERE status = 'inactive') AS inactive_count\nFROM users"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-intermediate-referential-actions",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Data Integrity & Referential Actions",
+                    "description": "Control what happens to child rows when a parent row is updated or deleted using ON DELETE and ON UPDATE actions.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Referential integrity",
+                            "body": "Referential integrity ensures that every foreign key value points to an existing primary key. Without enforcement, orphaned rows can corrupt your data."
+                        },
+                        {
+                            "title": "ON DELETE CASCADE",
+                            "body": "CASCADE automatically deletes child rows when the parent row is deleted. This keeps the database clean but can cause unintended mass deletions.",
+                            "code": "CREATE TABLE orders (\n    id INTEGER PRIMARY KEY,\n    customer_id INTEGER,\n    FOREIGN KEY (customer_id)\n        REFERENCES customers(id)\n        ON DELETE CASCADE\n)"
+                        },
+                        {
+                            "title": "ON DELETE SET NULL",
+                            "body": "SET NULL replaces the foreign key value with NULL when the parent is deleted. The child row survives but loses its reference.",
+                            "code": "CREATE TABLE orders (\n    id INTEGER PRIMARY KEY,\n    customer_id INTEGER,\n    FOREIGN KEY (customer_id)\n        REFERENCES customers(id)\n        ON DELETE SET NULL\n)"
+                        },
+                        {
+                            "title": "RESTRICT and NO ACTION",
+                            "body": "RESTRICT and NO ACTION prevent the parent from being deleted if child rows exist. They are the safest defaults because they force you to handle dependencies explicitly."
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-intermediate-explain",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "EXPLAIN & Query Plans",
+                    "description": "Use EXPLAIN to see how the database executes your query and identify performance bottlenecks.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "What is a query plan?",
+                            "body": "Before executing a query, the database optimizer chooses a plan — the series of steps it will take. EXPLAIN shows this plan so you can understand and improve performance."
+                        },
+                        {
+                            "title": "Using EXPLAIN",
+                            "body": "Place EXPLAIN before your SELECT statement. The output shows operations like sequential scans, index scans, and joins along with their estimated costs.",
+                            "code": "EXPLAIN\nSELECT * FROM orders\nWHERE customer_id = 42"
+                        },
+                        {
+                            "title": "Reading the plan",
+                            "body": "Look for sequential scans on large tables, which indicate missing indexes. Nested loop joins on big tables may suggest a need for hash or merge joins."
+                        },
+                        {
+                            "title": "EXPLAIN ANALYZE",
+                            "body": "EXPLAIN ANALYZE actually runs the query and reports real execution times alongside estimates. This helps you verify that changes like adding an index had the desired effect.",
+                            "code": "EXPLAIN ANALYZE\nSELECT * FROM orders\nWHERE customer_id = 42"
                         }
                     ]
                 }
@@ -122,17 +1206,409 @@
                         {
                             "title": "ROW_NUMBER, RANK, DENSE_RANK",
                             "body": "Ranking functions assign a position to each row within a partition. RANK() skips numbers after ties; DENSE_RANK() does not.",
-                            "code": "SELECT name, salary,\n       RANK() OVER (ORDER BY salary DESC) AS salary_rank\nFROM employees;"
+                            "code": "SELECT name, salary,\n       RANK() OVER (ORDER BY salary DESC) AS salary_rank\nFROM employees"
                         },
                         {
                             "title": "PARTITION BY",
                             "body": "PARTITION BY divides rows into groups before the window function is applied, like GROUP BY but without collapsing rows.",
-                            "code": "SELECT department, name, salary,\n       RANK() OVER (PARTITION BY department ORDER BY salary DESC) AS dept_rank\nFROM employees;"
+                            "code": "SELECT department, name, salary,\n       RANK() OVER (PARTITION BY department ORDER BY salary DESC) AS dept_rank\nFROM employees"
                         },
                         {
                             "title": "Running totals with SUM OVER",
                             "body": "SUM with ORDER BY inside OVER computes a cumulative total up to the current row.",
-                            "code": "SELECT created_at, amount,\n       SUM(amount) OVER (ORDER BY created_at) AS running_total\nFROM transactions;"
+                            "code": "SELECT created_at, amount,\n       SUM(amount) OVER (ORDER BY created_at) AS running_total\nFROM transactions"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-advanced-window-frames",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Advanced Window Frames",
+                    "description": "Control exactly which rows a window function considers using ROWS and RANGE frame specifications.",
+                    "estimatedMinutes": 14,
+                    "lessons": [
+                        {
+                            "title": "Window frame basics",
+                            "body": "A window frame defines the subset of rows within a partition that the function operates on. The default frame depends on whether ORDER BY is present and varies by database."
+                        },
+                        {
+                            "title": "ROWS BETWEEN",
+                            "body": "ROWS BETWEEN lets you specify an exact number of rows before and after the current row. UNBOUNDED PRECEDING starts from the first row in the partition.",
+                            "code": "SELECT date, revenue,\n       AVG(revenue) OVER (\n           ORDER BY date\n           ROWS BETWEEN 2 PRECEDING AND CURRENT ROW\n       ) AS moving_avg_3day\nFROM daily_sales"
+                        },
+                        {
+                            "title": "RANGE BETWEEN",
+                            "body": "RANGE BETWEEN uses the logical value of the ORDER BY column instead of physical row positions. It groups rows with equal values into the same frame boundary. With numeric ordering, you can specify a value offset directly.",
+                            "code": "SELECT month_number, revenue,\n       SUM(revenue) OVER (\n           ORDER BY month_number\n           RANGE BETWEEN 2 PRECEDING AND CURRENT ROW\n       ) AS rolling_3month_total\nFROM monthly_sales"
+                        },
+                        {
+                            "title": "Common frame patterns",
+                            "body": "Use ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW for running totals. Use ROWS BETWEEN N PRECEDING AND N FOLLOWING for centered moving averages. Choose the frame that matches your analytical need."
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-advanced-recursive-cte",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Recursive CTEs",
+                    "description": "Traverse hierarchical or graph-structured data using recursive common table expressions.",
+                    "estimatedMinutes": 15,
+                    "lessons": [
+                        {
+                            "title": "What is a recursive CTE?",
+                            "body": "A recursive CTE references itself in its definition. It has an anchor member (base case) and a recursive member joined with UNION ALL. Execution repeats until no new rows are produced."
+                        },
+                        {
+                            "title": "Organizational hierarchy",
+                            "body": "A classic use case is traversing an employee-manager tree. The anchor selects the root, and each iteration joins the CTE back to the table to find children.",
+                            "code": "WITH RECURSIVE org AS (\n    SELECT id, name, manager_id, 1 AS depth\n    FROM employees\n    WHERE manager_id IS NULL\n    UNION ALL\n    SELECT e.id, e.name, e.manager_id, o.depth + 1\n    FROM employees AS e\n    INNER JOIN org AS o ON e.manager_id = o.id\n)\nSELECT name, depth FROM org"
+                        },
+                        {
+                            "title": "Generating a series",
+                            "body": "Recursive CTEs can generate sequences without a dedicated function, which is helpful for filling gaps in date ranges.",
+                            "code": "WITH RECURSIVE dates AS (\n    SELECT CAST('2024-01-01' AS DATE) AS d\n    UNION ALL\n    SELECT d + INTERVAL '1' DAY\n    FROM dates\n    WHERE d < '2024-01-31'\n)\nSELECT d FROM dates"
+                        },
+                        {
+                            "title": "Preventing infinite loops",
+                            "body": "Always include a termination condition in the WHERE clause of the recursive member. Some databases also support MAXRECURSION or a CYCLE clause to safeguard against runaway recursion."
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-advanced-pivot",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Pivot & Unpivot Patterns",
+                    "description": "Transform rows into columns (pivot) and columns into rows (unpivot) for reporting and analysis.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "Manual pivot with CASE",
+                            "body": "The most portable way to pivot is conditional aggregation. Use CASE inside SUM or COUNT to spread row values across columns.",
+                            "code": "SELECT product,\n    SUM(CASE WHEN quarter = 'Q1' THEN revenue ELSE 0 END) AS q1,\n    SUM(CASE WHEN quarter = 'Q2' THEN revenue ELSE 0 END) AS q2,\n    SUM(CASE WHEN quarter = 'Q3' THEN revenue ELSE 0 END) AS q3,\n    SUM(CASE WHEN quarter = 'Q4' THEN revenue ELSE 0 END) AS q4\nFROM sales\nGROUP BY product"
+                        },
+                        {
+                            "title": "PIVOT syntax",
+                            "body": "Some databases (SQL Server, Oracle) have a native PIVOT operator that specifies the aggregate, the value column, and the list of pivot values. This syntax is not available in PostgreSQL, MySQL, or SQLite — use the CASE approach instead for portability.",
+                            "code": "SELECT product, Q1, Q2, Q3, Q4\nFROM sales\nPIVOT (\n    SUM(revenue)\n    FOR quarter IN ('Q1' AS Q1, 'Q2' AS Q2, 'Q3' AS Q3, 'Q4' AS Q4)\n)"
+                        },
+                        {
+                            "title": "Unpivot",
+                            "body": "Unpivoting converts columns back into rows. You can do this with UNION ALL or with a native UNPIVOT operator where available.",
+                            "code": "SELECT product, 'Q1' AS quarter, q1 AS revenue FROM sales_wide\nUNION ALL\nSELECT product, 'Q2', q2 FROM sales_wide\nUNION ALL\nSELECT product, 'Q3', q3 FROM sales_wide\nUNION ALL\nSELECT product, 'Q4', q4 FROM sales_wide"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-advanced-optimization",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Query Optimization Techniques",
+                    "description": "Write faster SQL by understanding indexes, sargability, and common performance anti-patterns.",
+                    "estimatedMinutes": 14,
+                    "lessons": [
+                        {
+                            "title": "Sargable predicates",
+                            "body": "A predicate is sargable (Search ARGument ABLE) if the database can use an index to evaluate it. Wrapping a column in a function or expression makes it non-sargable.",
+                            "code": "SELECT * FROM orders\nWHERE created_at >= '2024-01-01'\n  AND created_at < '2024-02-01'"
+                        },
+                        {
+                            "title": "Covering indexes",
+                            "body": "A covering index includes all columns the query needs. The database can answer the query entirely from the index without reading the table, which is called an index-only scan.",
+                            "code": "CREATE INDEX idx_orders_cover\nON orders (customer_id, created_at, total)"
+                        },
+                        {
+                            "title": "Avoiding SELECT *",
+                            "body": "SELECT * reads every column, which prevents covering-index optimizations and transfers unnecessary data. Always list only the columns you need."
+                        },
+                        {
+                            "title": "Batch processing",
+                            "body": "Processing millions of rows in a single statement can lock tables and exhaust memory. Break large operations into smaller batches using LIMIT or range conditions to reduce contention."
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-advanced-stored-procedures",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Stored Procedures",
+                    "description": "Encapsulate reusable SQL logic on the server with stored procedures, including parameters and control flow.",
+                    "estimatedMinutes": 14,
+                    "lessons": [
+                        {
+                            "title": "What is a stored procedure?",
+                            "body": "A stored procedure is a named block of SQL statements saved in the database. It can accept parameters, contain control-flow logic, and be called repeatedly without resending the full SQL text."
+                        },
+                        {
+                            "title": "Creating a procedure",
+                            "body": "Use CREATE PROCEDURE with a name, parameters, and a body. The exact syntax varies across databases, but the concept is universal.",
+                            "code": "CREATE PROCEDURE deactivate_user(IN user_id INTEGER)\nBEGIN\n    UPDATE users SET status = 'inactive' WHERE id = user_id\nEND"
+                        },
+                        {
+                            "title": "Calling a procedure",
+                            "body": "Use CALL (or EXEC in SQL Server) followed by the procedure name and arguments to run it.",
+                            "code": "CALL deactivate_user(42)"
+                        },
+                        {
+                            "title": "When to use procedures",
+                            "body": "Stored procedures reduce network round-trips and centralize business logic. However, they can be harder to version-control and test than application code. Use them for data-intensive operations that benefit from running close to the database."
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-advanced-triggers",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Triggers",
+                    "description": "Automatically execute SQL logic in response to INSERT, UPDATE, or DELETE events on a table.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "What is a trigger?",
+                            "body": "A trigger is a database object that automatically fires a block of SQL when a specified event (INSERT, UPDATE, DELETE) occurs on a table. Triggers enforce rules that cannot be expressed with simple constraints."
+                        },
+                        {
+                            "title": "BEFORE and AFTER triggers",
+                            "body": "BEFORE triggers run before the data change is applied, allowing you to modify or reject the new values. AFTER triggers run after the change and are often used for auditing.",
+                            "code": "CREATE TRIGGER audit_update\nAFTER UPDATE ON employees\nFOR EACH ROW\nINSERT INTO audit_log (table_name, action, changed_at)\nVALUES ('employees', 'UPDATE', CURRENT_TIMESTAMP)"
+                        },
+                        {
+                            "title": "Accessing OLD and NEW",
+                            "body": "Inside a trigger, OLD refers to the row before the change and NEW refers to the row after. You can read and (in BEFORE triggers) modify these values.",
+                            "code": "CREATE TRIGGER set_updated_at\nBEFORE UPDATE ON orders\nFOR EACH ROW\nSET NEW.updated_at = CURRENT_TIMESTAMP"
+                        },
+                        {
+                            "title": "Trigger pitfalls",
+                            "body": "Triggers are invisible to application code and can cause unexpected side effects. Cascading triggers can create complex chains that are hard to debug. Use them sparingly and document their behavior."
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-advanced-dynamic-sql",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Dynamic SQL",
+                    "description": "Build and execute SQL statements at runtime using dynamic SQL for flexible queries and administration tasks.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "What is dynamic SQL?",
+                            "body": "Dynamic SQL constructs a SQL statement as a string at runtime and then executes it. This allows table names, column names, or conditions to vary based on input or logic."
+                        },
+                        {
+                            "title": "EXECUTE IMMEDIATE",
+                            "body": "Many databases use EXECUTE IMMEDIATE or a similar command to run a dynamically built string as SQL.",
+                            "code": "SET @sql = CONCAT('SELECT * FROM ', @table_name, ' WHERE id = ', @id)\nPREPARE stmt FROM @sql\nEXECUTE stmt\nDEALLOCATE PREPARE stmt"
+                        },
+                        {
+                            "title": "Parameterized dynamic SQL",
+                            "body": "Always use parameters instead of concatenating user input directly into the SQL string. This prevents SQL injection attacks.",
+                            "code": "PREPARE stmt FROM 'SELECT * FROM users WHERE email = ?'\nEXECUTE stmt USING @user_email\nDEALLOCATE PREPARE stmt"
+                        },
+                        {
+                            "title": "When to use dynamic SQL",
+                            "body": "Dynamic SQL is useful for admin scripts, generating reports with variable columns, or building search queries with optional filters. Avoid it when static SQL can accomplish the same task, because dynamic SQL is harder to read and optimize."
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-advanced-partitioning",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Table Partitioning",
+                    "description": "Split large tables into smaller physical pieces for faster queries and easier maintenance.",
+                    "estimatedMinutes": 14,
+                    "lessons": [
+                        {
+                            "title": "Why partition?",
+                            "body": "Partitioning divides a table into segments based on a column value. The database can skip irrelevant partitions during queries, drastically improving performance on large datasets."
+                        },
+                        {
+                            "title": "Range partitioning",
+                            "body": "Range partitioning splits data by value ranges, often dates. Each partition holds a distinct range, and queries that filter on the partition key scan only the relevant segment.",
+                            "code": "CREATE TABLE orders (\n    id INTEGER,\n    created_at DATE,\n    total REAL\n) PARTITION BY RANGE (created_at)"
+                        },
+                        {
+                            "title": "List partitioning",
+                            "body": "List partitioning assigns rows to partitions based on discrete values, such as country codes or status values.",
+                            "code": "CREATE TABLE users (\n    id INTEGER,\n    country TEXT,\n    name TEXT\n) PARTITION BY LIST (country)"
+                        },
+                        {
+                            "title": "Partition maintenance",
+                            "body": "Partitions simplify data lifecycle management. You can drop an old partition instantly instead of running a slow DELETE. Adding new partitions for future data keeps the schema prepared for growth."
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-advanced-json",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "JSON in SQL",
+                    "description": "Store, query, and manipulate JSON data inside relational databases using built-in JSON functions.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "JSON column types",
+                            "body": "Most modern databases support a JSON or JSONB column type. JSONB (binary JSON) is preferred for querying because it is indexed and parsed on write rather than on every read."
+                        },
+                        {
+                            "title": "Extracting values",
+                            "body": "Use JSON extraction functions to pull values out of a JSON column. The operator syntax varies by database but the concept is the same.",
+                            "code": "SELECT data->>'name' AS name,\n       data->>'email' AS email\nFROM profiles"
+                        },
+                        {
+                            "title": "Filtering on JSON fields",
+                            "body": "You can use extracted JSON values in WHERE conditions. Some databases support indexing JSON paths for fast lookups.",
+                            "code": "SELECT * FROM profiles\nWHERE data->>'country' = 'US'"
+                        },
+                        {
+                            "title": "Building JSON",
+                            "body": "Aggregate functions like JSON_AGG or JSON_OBJECT let you construct JSON output from relational data, useful for APIs that return JSON directly from the database.",
+                            "code": "SELECT JSON_AGG(\n    JSON_BUILD_OBJECT('id', id, 'name', name)\n) AS users_json\nFROM users"
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-advanced-full-text-search",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Full-Text Search",
+                    "description": "Search natural-language text efficiently using full-text indexes and search functions.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "Why full-text search?",
+                            "body": "LIKE with wildcards is slow on large text columns and cannot rank results by relevance. Full-text search uses specialized indexes that tokenize text and support ranking, stemming, and boolean queries."
+                        },
+                        {
+                            "title": "Creating a full-text index",
+                            "body": "In PostgreSQL, you create a GIN index on a tsvector column. In MySQL, you use a FULLTEXT index. The index stores word tokens for fast lookups.",
+                            "code": "CREATE INDEX idx_articles_fts\nON articles USING GIN (to_tsvector('english', body))"
+                        },
+                        {
+                            "title": "Searching with full-text",
+                            "body": "Use the database's full-text search syntax to find rows matching keywords. Results can be ranked by relevance.",
+                            "code": "SELECT title, ts_rank(to_tsvector('english', body), q) AS rank\nFROM articles, to_tsquery('english', 'database & performance') AS q\nWHERE to_tsvector('english', body) @@ q\nORDER BY rank DESC"
+                        },
+                        {
+                            "title": "Boolean operators",
+                            "body": "Full-text queries support AND (&), OR (|), and NOT (!) operators. Combine them to build precise search expressions that match your users' intent."
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-advanced-materialized-views",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Materialized Views",
+                    "description": "Cache expensive query results in a materialized view that you refresh on demand.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "View vs materialized view",
+                            "body": "A regular view runs its query every time you access it. A materialized view stores the result set physically, so reads are fast. The trade-off is that the data can become stale."
+                        },
+                        {
+                            "title": "Creating a materialized view",
+                            "body": "Use CREATE MATERIALIZED VIEW with a SELECT statement. The result is stored on disk and can be indexed like a regular table.",
+                            "code": "CREATE MATERIALIZED VIEW monthly_revenue AS\nSELECT DATE_TRUNC('month', created_at) AS month,\n       SUM(total) AS revenue\nFROM orders\nGROUP BY month"
+                        },
+                        {
+                            "title": "Refreshing the data",
+                            "body": "Run REFRESH MATERIALIZED VIEW to update the stored data. CONCURRENTLY allows reads during the refresh but requires a unique index.",
+                            "code": "REFRESH MATERIALIZED VIEW CONCURRENTLY monthly_revenue"
+                        },
+                        {
+                            "title": "When to use materialized views",
+                            "body": "Use them for dashboards, reports, or aggregations that are expensive to compute and do not need real-time accuracy. Schedule refreshes during off-peak hours to minimize load."
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-advanced-isolation-levels",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Isolation Levels & Concurrency Control",
+                    "description": "Understand transaction isolation levels and how they balance consistency against concurrency.",
+                    "estimatedMinutes": 15,
+                    "lessons": [
+                        {
+                            "title": "Concurrency problems",
+                            "body": "When multiple transactions run simultaneously, issues like dirty reads, non-repeatable reads, and phantom reads can occur. Isolation levels control which of these problems are allowed."
+                        },
+                        {
+                            "title": "READ COMMITTED",
+                            "body": "READ COMMITTED is the default in many databases. A transaction only sees data committed before each statement, preventing dirty reads but allowing non-repeatable reads.",
+                            "code": "SET TRANSACTION ISOLATION LEVEL READ COMMITTED"
+                        },
+                        {
+                            "title": "REPEATABLE READ and SERIALIZABLE",
+                            "body": "REPEATABLE READ guarantees that if a row is read twice in the same transaction, it will not change. SERIALIZABLE provides the strictest isolation, behaving as if transactions ran one at a time.",
+                            "code": "SET TRANSACTION ISOLATION LEVEL SERIALIZABLE"
+                        },
+                        {
+                            "title": "Choosing an isolation level",
+                            "body": "Higher isolation reduces concurrency bugs but increases locking and the chance of transaction failures. Most applications use READ COMMITTED and handle edge cases with explicit locking or retries."
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-advanced-lateral-joins",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Lateral Joins & CROSS APPLY",
+                    "description": "Use LATERAL joins to reference preceding tables in a subquery, enabling per-row subqueries in the FROM clause.",
+                    "estimatedMinutes": 14,
+                    "lessons": [
+                        {
+                            "title": "What is a lateral join?",
+                            "body": "A LATERAL subquery can reference columns from preceding tables in the FROM clause. This lets you run a dependent subquery for each row of the outer table, which is not possible with a regular subquery in FROM."
+                        },
+                        {
+                            "title": "Top-N per group",
+                            "body": "A common use case is fetching the top N rows per group without window functions. The lateral subquery filters and limits based on each outer row.",
+                            "code": "SELECT c.name, recent.id, recent.total\nFROM customers AS c\nCROSS JOIN LATERAL (\n    SELECT id, total\n    FROM orders\n    WHERE customer_id = c.id\n    ORDER BY created_at DESC\n    LIMIT 3\n) AS recent"
+                        },
+                        {
+                            "title": "CROSS APPLY in SQL Server",
+                            "body": "SQL Server uses CROSS APPLY instead of LATERAL. OUTER APPLY is the equivalent of LEFT JOIN LATERAL, returning NULLs when the subquery produces no rows.",
+                            "code": "SELECT c.name, recent.id, recent.total\nFROM customers AS c\nCROSS APPLY (\n    SELECT TOP 3 id, total\n    FROM orders\n    WHERE customer_id = c.id\n    ORDER BY created_at DESC\n) AS recent"
+                        },
+                        {
+                            "title": "When to use lateral joins",
+                            "body": "Use lateral joins when a derived table needs to reference the outer row, such as top-N per group, expanding arrays, or calling table-valued functions. They are more expressive than correlated subqueries and often easier to read."
+                        }
+                    ]
+                },
+                {
+                    "id": "sql-advanced-analytical-patterns",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Advanced Analytical Patterns",
+                    "description": "Combine window functions, CTEs, and aggregation to solve complex analytical problems like gaps, islands, and percentiles.",
+                    "estimatedMinutes": 15,
+                    "lessons": [
+                        {
+                            "title": "Gaps and islands",
+                            "body": "The gaps-and-islands problem identifies consecutive sequences in data. Subtract ROW_NUMBER from the value column to create group identifiers for each island.",
+                            "code": "WITH numbered AS (\n    SELECT date, value,\n           date - ROW_NUMBER() OVER (ORDER BY date) * INTERVAL '1' DAY AS grp\n    FROM readings\n    WHERE value IS NOT NULL\n)\nSELECT MIN(date) AS island_start,\n       MAX(date) AS island_end,\n       COUNT(*) AS island_length\nFROM numbered\nGROUP BY grp"
+                        },
+                        {
+                            "title": "Percentiles",
+                            "body": "PERCENTILE_CONT computes a continuous percentile (interpolating between values), while PERCENTILE_DISC returns an actual value from the data set.",
+                            "code": "SELECT department,\n       PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY salary) AS median_salary\nFROM employees\nGROUP BY department"
+                        },
+                        {
+                            "title": "Year-over-year comparison",
+                            "body": "Use LAG with a PARTITION BY on month to compare the current year's value with the previous year's value in a single query.",
+                            "code": "SELECT month, year, revenue,\n       LAG(revenue) OVER (PARTITION BY month ORDER BY year) AS prev_year_revenue,\n       revenue - LAG(revenue) OVER (PARTITION BY month ORDER BY year) AS yoy_change\nFROM monthly_revenue"
+                        },
+                        {
+                            "title": "Cumulative distribution",
+                            "body": "CUME_DIST returns the fraction of rows with a value less than or equal to the current row's value. NTILE divides rows into N equal buckets. Both are useful for statistical analysis and reporting.",
+                            "code": "SELECT name, salary,\n       CUME_DIST() OVER (ORDER BY salary) AS salary_percentile,\n       NTILE(4) OVER (ORDER BY salary) AS quartile\nFROM employees"
                         }
                     ]
                 }
