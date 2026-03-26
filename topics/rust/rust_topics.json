@@ -5,31 +5,450 @@
             "level": "new",
             "topics": [
                 {
-                    "id": "rs-new-ownership",
+                    "id": "rs-new-setup",
                     "language": "rust",
                     "level": "new",
-                    "title": "Ownership & Borrowing",
-                    "description": "Understand Rust's unique ownership system that guarantees memory safety without a garbage collector.",
+                    "title": "Setting Up Rust",
+                    "description": "Install the Rust toolchain with rustup and get your development environment ready to write your first Rust program.",
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Every value has an owner",
-                            "body": "In Rust, every value is owned by exactly one variable. When the variable goes out of scope, the value is dropped (freed) automatically."
+                            "title": "Why Rust?",
+                            "body": "Rust is a systems programming language that guarantees memory safety without a garbage collector. It is fast, reliable, and productive. Before writing any code you need to install the Rust toolchain on your machine."
                         },
                         {
-                            "title": "Move semantics",
-                            "body": "Assigning a value to another variable moves ownership. The original variable can no longer be used.",
-                            "code": "let s1 = String::from(\"hello\");\nlet s2 = s1;  // s1 is moved\n// println!(\"{}\", s1); // Error: s1 is no longer valid"
+                            "title": "Installing rustup",
+                            "body": "rustup is the official installer and version manager for Rust. On macOS or Linux open a terminal and run the command below. On Windows download rustup-init.exe from rustup.rs. This command downloads a script from the official Rust site. You can visit https://sh.rustup.rs in your browser first to review it. After installation restart your terminal so the PATH changes take effect.",
+                            "code": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh\n# Follow the prompts and choose the default installation\n# Then reload your shell:\nsource $HOME/.cargo/env"
                         },
                         {
-                            "title": "Borrowing with &",
-                            "body": "You can lend a reference (&) to a value without transferring ownership. The borrower can read the value; the owner keeps it.",
-                            "code": "fn print_str(s: &String) {\n    println!(\"{}\", s);\n}\n\nlet s = String::from(\"hello\");\nprint_str(&s);  // s is still valid here"
+                            "title": "Verifying the installation",
+                            "body": "After installing rustup you should have three tools available: rustc (the compiler), cargo (the build system and package manager), and rustup itself. Run the commands below to verify everything is working.",
+                            "code": "rustc --version\n# rustc 1.XX.0 (abc1234 2024-XX-XX)\n\ncargo --version\n# cargo 1.XX.0 (abc1234 2024-XX-XX)\n\nrustup --version\n# rustup 1.XX.0 (abc1234 2024-XX-XX)"
                         },
                         {
-                            "title": "Copy types",
-                            "body": "Simple types like integers, floats, booleans, and chars implement Copy. Assigning them creates a copy — no move happens.",
-                            "code": "let x = 5;\nlet y = x;  // x is copied, not moved\nprintln!(\"{} {}\", x, y);  // both valid"
+                            "title": "Editor support",
+                            "body": "You can write Rust in any text editor. Popular choices include VS Code with the rust-analyzer extension, IntelliJ with the Rust plugin, and Neovim with LSP support. The key tool is rust-analyzer which provides autocomplete, inline errors, and refactoring. Pick whatever editor you are comfortable with and install rust-analyzer for the best experience. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on Getting Started. Also explore the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-new-hello-world",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Hello, Rust!",
+                    "description": "Write and run your very first Rust program using fn main and the println! macro.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Creating a project with Cargo",
+                            "body": "Cargo is the Rust build tool and package manager. Use cargo new to scaffold a new project. This creates a directory with a Cargo.toml manifest and a src/main.rs file containing a hello world program.",
+                            "code": "cargo new hello_rust\ncd hello_rust\n# Created files:\n# Cargo.toml   - project metadata\n# src/main.rs  - entry point"
+                        },
+                        {
+                            "title": "The main function",
+                            "body": "Every Rust executable starts at the main function. It takes no arguments and returns nothing by default. The fn keyword declares a function. Curly braces delimit the function body.",
+                            "code": "fn main() {\n    println!(\"Hello, Rust!\");\n}"
+                        },
+                        {
+                            "title": "println! is a macro",
+                            "body": "The exclamation mark after println tells you it is a macro, not a regular function. Macros can accept a variable number of arguments and generate code at compile time. println! prints text to the terminal followed by a newline. You can embed values using curly brace placeholders.",
+                            "code": "fn main() {\n    let name = \"world\";\n    println!(\"Hello, {}!\", name);\n    println!(\"1 + 2 = {}\", 1 + 2);\n}"
+                        },
+                        {
+                            "title": "Building and running",
+                            "body": "Use cargo run to compile and execute your program in one step. Cargo places the compiled binary in the target/debug directory. Use cargo build --release when you want an optimized binary for production. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on Hello, World!. Also explore the recommended books in the app for more insights.",
+                            "code": "cargo run\n# Compiling hello_rust v0.1.0\n# Running `target/debug/hello_rust`\n# Hello, Rust!"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-new-variables",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Variables and Mutability",
+                    "description": "Learn how Rust handles variables with let bindings, mutability with mut, and the powerful concept of shadowing.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Immutable by default",
+                            "body": "In Rust variables are immutable by default. Once you bind a value with let you cannot change it. This design choice helps prevent bugs by making mutation an explicit decision rather than the default.",
+                            "code": "let x = 5;\n// x = 10;  // Error: cannot assign twice to immutable variable\nprintln!(\"x is {}\", x);"
+                        },
+                        {
+                            "title": "Making variables mutable",
+                            "body": "Add the mut keyword after let to make a variable mutable. Now you can reassign it as many times as you like. Use mut only when you genuinely need to change a value.",
+                            "code": "let mut score = 0;\nprintln!(\"Score: {}\", score);\nscore = 10;\nprintln!(\"Score: {}\", score);\nscore += 5;\nprintln!(\"Score: {}\", score);"
+                        },
+                        {
+                            "title": "Shadowing",
+                            "body": "You can declare a new variable with the same name using let again. This is called shadowing. The new binding shadows the old one. Unlike mut, shadowing lets you change the type of the value while reusing the name.",
+                            "code": "let spaces = \"   \";\nlet spaces = spaces.len();  // shadows the string with a number\nprintln!(\"Number of spaces: {}\", spaces);\n\nlet x = 5;\nlet x = x + 1;  // x is now 6\nlet x = x * 2;  // x is now 12\nprintln!(\"x is {}\", x);"
+                        },
+                        {
+                            "title": "Constants",
+                            "body": "Use const for values that never change and are known at compile time. Constants must have a type annotation and use SCREAMING_SNAKE_CASE by convention. Unlike let bindings, constants can be declared in any scope including the global scope. They cannot use mut and must be set to a constant expression. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on Variables and Mutability. Also explore the recommended books in the app for more insights.",
+                            "code": "const MAX_POINTS: u32 = 100_000;\nconst PI: f64 = 3.141592653589793;\nprintln!(\"Max points: {}\", MAX_POINTS);\nprintln!(\"Pi: {}\", PI);"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-new-scalar-types",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Scalar Data Types",
+                    "description": "Explore Rust's four scalar types: integers, floating-point numbers, booleans, and characters.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Integer types",
+                            "body": "Rust has signed and unsigned integers in various sizes. Signed types (i8, i16, i32, i64, i128) can hold negative values. Unsigned types (u8, u16, u32, u64, u128) hold only non-negative values. The default integer type is i32. You can use underscores in numeric literals for readability.",
+                            "code": "let age: u8 = 30;\nlet temperature: i32 = -5;\nlet big_number: u64 = 1_000_000;\nlet byte: u8 = 0xff;\nprintln!(\"{} {} {} {}\", age, temperature, big_number, byte);"
+                        },
+                        {
+                            "title": "Floating-point types",
+                            "body": "Rust has two floating-point types: f32 (single precision) and f64 (double precision). The default is f64 because on modern CPUs it is roughly the same speed as f32 but has more precision. Use f32 only when you have a specific need such as GPU programming or memory constraints.",
+                            "code": "let pi: f64 = 3.14159;\nlet gravity: f32 = 9.81;\nlet result = 10.0 / 3.0;  // f64 by default\nprintln!(\"{} {} {:.4}\", pi, gravity, result);"
+                        },
+                        {
+                            "title": "Booleans",
+                            "body": "The bool type has exactly two values: true and false. Booleans are one byte in size. They are the result of comparison operators and are used heavily in control flow such as if expressions and while loops.",
+                            "code": "let is_active: bool = true;\nlet is_greater = 10 > 5;  // true\nlet is_equal = 3 == 4;    // false\nprintln!(\"active: {}, greater: {}, equal: {}\", is_active, is_greater, is_equal);"
+                        },
+                        {
+                            "title": "Characters",
+                            "body": "The char type represents a single Unicode scalar value. It is four bytes in size, so it can represent much more than just ASCII. Use single quotes for char literals and double quotes for string literals. Chars can represent letters, digits, emoji, and many other Unicode symbols. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on Data Types. Also explore the recommended books in the app for more insights.",
+                            "code": "let letter: char = 'A';\nlet digit: char = '7';\nlet emoji: char = '\\u{1F600}';  // grinning face\nlet chinese: char = '\\u{4E16}'; // means world\nprintln!(\"{} {} {} {}\", letter, digit, emoji, chinese);"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-new-compound-types",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Compound Types",
+                    "description": "Group multiple values together using tuples and arrays, Rust's two primitive compound types.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Tuples",
+                            "body": "A tuple groups a fixed number of values with potentially different types into one compound value. Once declared a tuple cannot grow or shrink. You access elements by index using a dot followed by the position starting at zero.",
+                            "code": "let person: (&str, i32, bool) = (\"Alice\", 30, true);\nprintln!(\"Name: {}\", person.0);\nprintln!(\"Age: {}\", person.1);\nprintln!(\"Active: {}\", person.2);"
+                        },
+                        {
+                            "title": "Destructuring tuples",
+                            "body": "You can unpack a tuple into individual variables using pattern matching. This is called destructuring. It is a clean way to extract all values at once instead of accessing them by index.",
+                            "code": "let point = (3.0, 4.5);\nlet (x, y) = point;\nprintln!(\"x = {}, y = {}\", x, y);\n\nlet (name, age, _) = (\"Bob\", 25, true);\nprintln!(\"{} is {}\", name, age);"
+                        },
+                        {
+                            "title": "Arrays",
+                            "body": "An array is a fixed-length collection where every element has the same type. Arrays are stack-allocated and very fast. Use square brackets for the type annotation: [type; length]. Access elements with index notation. Rust checks array bounds at runtime and panics on out-of-bounds access.",
+                            "code": "let numbers: [i32; 5] = [1, 2, 3, 4, 5];\nprintln!(\"First: {}\", numbers[0]);\nprintln!(\"Last: {}\", numbers[4]);\n\nlet zeros = [0; 10];  // ten zeros\nprintln!(\"Length: {}\", zeros.len());"
+                        },
+                        {
+                            "title": "When to use each",
+                            "body": "Use tuples when you need to group a small number of values of different types, such as returning multiple values from a function. Use arrays when you have a fixed number of values of the same type, like days of the week or a buffer. If you need a growable collection use Vec instead, which you will learn about later. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on Data Types. Also explore the recommended books in the app for more insights.",
+                            "code": "// Tuple: return multiple values from a function\nfn min_max(list: &[i32]) -> (i32, i32) {\n    let mut min = list[0];\n    let mut max = list[0];\n    for &val in list {\n        if val < min { min = val; }\n        if val > max { max = val; }\n    }\n    (min, max)\n}\n\nlet data = [3, 7, 1, 9, 4];\nlet (lo, hi) = min_max(&data);\nprintln!(\"min={}, max={}\", lo, hi);"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-new-functions",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Functions and Return Values",
+                    "description": "Define reusable blocks of code with functions, pass parameters, and return values using Rust's expression-based syntax.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Declaring functions",
+                            "body": "Use the fn keyword to declare a function. Rust uses snake_case for function names by convention. You can define functions before or after main because Rust does not care about declaration order within a file.",
+                            "code": "fn greet() {\n    println!(\"Hello from a function!\");\n}\n\nfn main() {\n    greet();\n    greet();\n}"
+                        },
+                        {
+                            "title": "Parameters",
+                            "body": "Functions can accept parameters. Each parameter must have a type annotation. Separate multiple parameters with commas. When you call the function you pass arguments that match the declared types.",
+                            "code": "fn add(a: i32, b: i32) {\n    println!(\"{} + {} = {}\", a, b, a + b);\n}\n\nfn describe(name: &str, age: u32) {\n    println!(\"{} is {} years old\", name, age);\n}\n\nfn main() {\n    add(3, 7);\n    describe(\"Alice\", 30);\n}"
+                        },
+                        {
+                            "title": "Return values",
+                            "body": "Specify a return type with an arrow (->). In Rust the last expression in a function body is the return value automatically. You do not need a return keyword or a semicolon on the final expression. Adding a semicolon turns an expression into a statement, which returns the unit type () instead.",
+                            "code": "fn square(n: i32) -> i32 {\n    n * n  // no semicolon = this is the return value\n}\n\nfn full_name(first: &str, last: &str) -> String {\n    format!(\"{} {}\", first, last)\n}\n\nfn main() {\n    let result = square(5);\n    println!(\"5 squared = {}\", result);\n    println!(\"{}\", full_name(\"Jane\", \"Doe\"));\n}"
+                        },
+                        {
+                            "title": "Early returns",
+                            "body": "Use the return keyword to exit a function early. This is useful inside conditionals when you want to bail out before reaching the end. The return keyword requires a semicolon. For the final expression you can omit both return and the semicolon. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on Functions. Also explore the recommended books in the app for more insights.",
+                            "code": "// Simplified example. In real code, use Option<f64>\n// to handle division by zero properly.\nfn divide(a: f64, b: f64) -> f64 {\n    if b == 0.0 {\n        return 0.0;  // early return\n    }\n    a / b  // implicit return\n}\n\nfn main() {\n    println!(\"10 / 3 = {}\", divide(10.0, 3.0));\n    println!(\"10 / 0 = {}\", divide(10.0, 0.0));\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-new-comments",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Comments and Documentation",
+                    "description": "Write clear code comments and generate beautiful documentation with Rust's built-in doc comment system.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Line comments",
+                            "body": "Use double slashes to write a line comment. Everything after // on that line is ignored by the compiler. Line comments are the most common comment style in Rust. Place them above or beside the code they describe.",
+                            "code": "// This is a line comment\nlet x = 5; // This is an inline comment\n\n// You can use multiple lines\n// to explain something longer\nlet result = x * 2;"
+                        },
+                        {
+                            "title": "Block comments",
+                            "body": "Use /* and */ for block comments that span multiple lines. Block comments can be nested in Rust, which is unusual compared to most languages. However, Rust developers generally prefer line comments.",
+                            "code": "/* This is a block comment.\n   It can span multiple lines. */\n\n/* Block comments /* can be nested */ in Rust */\nlet x = 42;"
+                        },
+                        {
+                            "title": "Doc comments with ///",
+                            "body": "Triple slashes create documentation comments. They support Markdown formatting and are placed directly above the item they document. Running cargo doc generates HTML documentation from these comments. This is how the Rust standard library is documented.",
+                            "code": "/// Calculates the area of a rectangle.\n///\n/// # Arguments\n/// * `width` - The width of the rectangle\n/// * `height` - The height of the rectangle\n///\n/// # Examples\n/// ```\n/// let area = rectangle_area(5.0, 3.0);\n/// assert_eq!(area, 15.0);\n/// ```\nfn rectangle_area(width: f64, height: f64) -> f64 {\n    width * height\n}"
+                        },
+                        {
+                            "title": "Module-level doc comments",
+                            "body": "Use //! to write documentation for the enclosing module or crate. These comments typically go at the top of lib.rs or main.rs and describe the overall purpose of the package. You can generate and view documentation locally with cargo doc --open. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on Comments. Also explore the recommended books in the app for more insights.",
+                            "code": "//! # My Awesome Crate\n//!\n//! This crate provides utilities for\n//! working with geometric shapes.\n//!\n//! ## Quick Start\n//! ```\n//! let c = my_crate::circle_area(5.0);\n//! ```\n\n/// Returns the area of a circle.\nfn circle_area(radius: f64) -> f64 {\n    std::f64::consts::PI * radius * radius\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-new-if-else",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Control Flow: if and else",
+                    "description": "Make decisions in your code using if, else if, and else expressions, and learn how Rust treats them as expressions that return values.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "Basic if expressions",
+                            "body": "The if keyword evaluates a condition and runs a block of code when the condition is true. Unlike many languages, Rust does not require parentheses around the condition. The condition must be a bool. Rust will not automatically convert numbers or other types to booleans.",
+                            "code": "let temperature = 35;\n\nif temperature > 30 {\n    println!(\"It is hot outside!\");\n}\n\nlet logged_in = true;\nif logged_in {\n    println!(\"Welcome back!\");\n}"
+                        },
+                        {
+                            "title": "else and else if",
+                            "body": "Use else to run code when the condition is false. Chain multiple conditions with else if. Rust evaluates conditions from top to bottom and runs only the first matching branch.",
+                            "code": "let score = 75;\n\nif score >= 90 {\n    println!(\"Grade: A\");\n} else if score >= 80 {\n    println!(\"Grade: B\");\n} else if score >= 70 {\n    println!(\"Grade: C\");\n} else {\n    println!(\"Grade: F\");\n}"
+                        },
+                        {
+                            "title": "if as an expression",
+                            "body": "In Rust if is an expression, meaning it returns a value. You can assign the result of an if expression to a variable. Both branches must return the same type. This replaces the ternary operator found in other languages.",
+                            "code": "let age = 20;\nlet status = if age >= 18 { \"adult\" } else { \"minor\" };\nprintln!(\"Status: {}\", status);\n\nlet number = 7;\nlet parity = if number % 2 == 0 { \"even\" } else { \"odd\" };\nprintln!(\"{} is {}\", number, parity);"
+                        },
+                        {
+                            "title": "Combining conditions",
+                            "body": "Use logical operators to combine conditions. The && operator means and, the || operator means or, and the ! operator means not. You can group conditions with parentheses for clarity. Keep conditions readable and consider extracting complex logic into well-named variables. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on Control Flow. Also explore the recommended books in the app for more insights.",
+                            "code": "let age = 25;\nlet has_ticket = true;\n\nif age >= 18 && has_ticket {\n    println!(\"You may enter.\");\n}\n\nlet is_weekend = true;\nlet is_holiday = false;\n\nif is_weekend || is_holiday {\n    println!(\"No work today!\");\n}\n\nif !(age < 18) {\n    println!(\"Not a minor.\");\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-new-loops",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Loops in Rust",
+                    "description": "Repeat actions with Rust's three loop constructs: loop for infinite loops, while for conditional loops, and for for iteration.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "The loop keyword",
+                            "body": "The loop keyword creates an infinite loop. Use break to exit and continue to skip to the next iteration. You can return a value from a loop by placing it after break. This makes loop an expression, which is unique to Rust.",
+                            "code": "let mut counter = 0;\n\nlet result = loop {\n    counter += 1;\n    if counter == 10 {\n        break counter * 2;  // returns 20\n    }\n};\n\nprintln!(\"Result: {}\", result);"
+                        },
+                        {
+                            "title": "while loops",
+                            "body": "A while loop runs as long as its condition is true. The condition is checked before each iteration. Use while when you do not know how many times you need to loop but you have a clear stopping condition.",
+                            "code": "let mut countdown = 5;\n\nwhile countdown > 0 {\n    println!(\"{}...\", countdown);\n    countdown -= 1;\n}\n\nprintln!(\"Liftoff!\");"
+                        },
+                        {
+                            "title": "for loops and ranges",
+                            "body": "The for loop iterates over elements of a collection or a range. It is the most common loop in Rust because it is safe and concise. Ranges use the .. syntax where the end is exclusive, or ..= for inclusive ranges.",
+                            "code": "// Iterate over a range\nfor i in 1..=5 {\n    println!(\"{}\", i);  // prints 1 through 5\n}\n\n// Iterate over an array\nlet fruits = [\"apple\", \"banana\", \"cherry\"];\nfor fruit in fruits {\n    println!(\"I like {}\", fruit);\n}\n\n// Countdown with rev()\nfor i in (1..4).rev() {\n    println!(\"{}...\", i);\n}\nprintln!(\"Go!\");"
+                        },
+                        {
+                            "title": "Loop labels and nested loops",
+                            "body": "When you have nested loops you can label them with a tick prefix like 'outer. Then use break 'outer or continue 'outer to control which loop is affected. This avoids the need for boolean flags to break out of nested loops. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on Repetition with Loops. Also explore the recommended books in the app for more insights.",
+                            "code": "let mut found = false;\n\n'outer: for x in 0..10 {\n    for y in 0..10 {\n        if x + y == 15 {\n            println!(\"Found: x={}, y={}\", x, y);\n            found = true;\n            break 'outer;\n        }\n    }\n}\n\nif found {\n    println!(\"Search complete.\");\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-new-ownership",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Ownership Essentials",
+                    "description": "Understand Rust's ownership model that ensures memory safety at compile time without a garbage collector.",
+                    "estimatedMinutes": 14,
+                    "lessons": [
+                        {
+                            "title": "The three ownership rules",
+                            "body": "Rust enforces three rules at compile time. First, each value has exactly one owner. Second, there can only be one owner at a time. Third, when the owner goes out of scope the value is dropped. These rules eliminate entire classes of bugs like use-after-free and double-free.",
+                            "code": "{\n    let s = String::from(\"hello\");  // s owns the String\n    println!(\"{}\", s);\n}  // s goes out of scope, String is dropped\n\n// println!(\"{}\", s);  // Error: s does not exist here"
+                        },
+                        {
+                            "title": "Moves",
+                            "body": "When you assign a heap-allocated value like a String to another variable ownership moves. The original variable becomes invalid and cannot be used. This prevents two variables from freeing the same memory.",
+                            "code": "let s1 = String::from(\"hello\");\nlet s2 = s1;  // ownership moves from s1 to s2\n\n// println!(\"{}\", s1);  // Error: value borrowed after move\nprintln!(\"{}\", s2);  // Works fine"
+                        },
+                        {
+                            "title": "Clone for deep copies",
+                            "body": "If you need two independent copies of a heap-allocated value use the clone method. This creates a full deep copy so both variables are valid. Cloning is explicit because it can be expensive for large data.",
+                            "code": "let s1 = String::from(\"hello\");\nlet s2 = s1.clone();  // deep copy\n\nprintln!(\"s1 = {}\", s1);  // both are valid\nprintln!(\"s2 = {}\", s2);"
+                        },
+                        {
+                            "title": "Copy types live on the stack",
+                            "body": "Simple types like integers, floats, booleans, and chars implement the Copy trait. When you assign them the value is copied on the stack automatically. No move happens because copying stack data is cheap. Types that implement Copy include all integer types, bool, f32, f64, char, and tuples of Copy types. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on Understanding Ownership. Also explore the recommended books in the app for more insights.",
+                            "code": "let x = 42;\nlet y = x;  // x is copied, not moved\nprintln!(\"x = {}, y = {}\", x, y);  // both valid\n\nlet a = true;\nlet b = a;  // copied\nprintln!(\"a = {}, b = {}\", a, b);"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-new-references",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "References and Borrowing",
+                    "description": "Learn how to borrow values without taking ownership using immutable and mutable references.",
+                    "estimatedMinutes": 14,
+                    "lessons": [
+                        {
+                            "title": "Immutable references with &",
+                            "body": "A reference lets you refer to a value without taking ownership. Use the ampersand to create a reference. The original owner keeps the value and the reference can read it. This is called borrowing. You can have multiple immutable references at the same time.",
+                            "code": "fn calculate_length(s: &String) -> usize {\n    s.len()\n}\n\nfn main() {\n    let s = String::from(\"hello\");\n    let len = calculate_length(&s);\n    println!(\"'{}' has {} characters\", s, len);  // s still valid\n}"
+                        },
+                        {
+                            "title": "Mutable references with &mut",
+                            "body": "To modify a borrowed value you need a mutable reference. Use &mut to create one. The original variable must also be declared as mut. Rust allows only one mutable reference to a value at a time to prevent data races at compile time.",
+                            "code": "fn add_world(s: &mut String) {\n    s.push_str(\", world!\");\n}\n\nfn main() {\n    let mut greeting = String::from(\"hello\");\n    add_world(&mut greeting);\n    println!(\"{}\", greeting);  // hello, world!\n}"
+                        },
+                        {
+                            "title": "The borrowing rules",
+                            "body": "Rust enforces two rules for references. First, you can have either one mutable reference or any number of immutable references at the same time but not both. Second, references must always be valid. The compiler prevents dangling references at compile time.",
+                            "code": "let mut s = String::from(\"hello\");\n\nlet r1 = &s;\nlet r2 = &s;\nprintln!(\"{} and {}\", r1, r2);  // OK: multiple immutable refs\n\n// r1 and r2 are no longer used after this point\nlet r3 = &mut s;  // OK: no immutable refs active\nr3.push_str(\" world\");\nprintln!(\"{}\", r3);"
+                        },
+                        {
+                            "title": "References in practice",
+                            "body": "Borrowing is the preferred way to pass data to functions when you do not need ownership. It avoids unnecessary cloning and makes your code efficient. Most functions should take references rather than owned values. Use &T for read-only access and &mut T only when the function needs to modify the data. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on References and Borrowing. Also explore the recommended books in the app for more insights.",
+                            "code": "fn first_word(s: &str) -> &str {\n    let bytes = s.as_bytes();\n    for (i, &byte) in bytes.iter().enumerate() {\n        if byte == b' ' {\n            return &s[..i];\n        }\n    }\n    s\n}\n\nfn main() {\n    let sentence = String::from(\"hello world\");\n    let word = first_word(&sentence);\n    println!(\"First word: {}\", word);\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-new-strings",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "The String Type",
+                    "description": "Understand the difference between String and &str, and learn how to create and manipulate text in Rust.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "String vs &str",
+                            "body": "Rust has two main string types. String is a growable, heap-allocated string that you own. The &str type is a string slice, an immutable reference to a sequence of UTF-8 bytes. String literals like \"hello\" are &str. Think of String as the owned version and &str as the borrowed view.",
+                            "code": "let s1: &str = \"hello\";           // string literal, stored in binary\nlet s2: String = String::from(\"hello\"); // heap-allocated, owned\nlet s3: String = \"hello\".to_string();   // another way to create String\n\nprintln!(\"{} {} {}\", s1, s2, s3);"
+                        },
+                        {
+                            "title": "Creating and growing strings",
+                            "body": "Create an empty String with String::new() and add content with push for a single character or push_str for a string slice. You can also use format! to build strings from multiple values without taking ownership of any of them.",
+                            "code": "let mut s = String::new();\ns.push_str(\"Hello\");\ns.push(',');\ns.push_str(\" world!\");\nprintln!(\"{}\", s);\n\nlet first = \"Jane\";\nlet last = \"Doe\";\nlet full = format!(\"{} {}\", first, last);\nprintln!(\"{}\", full);"
+                        },
+                        {
+                            "title": "String concatenation",
+                            "body": "You can concatenate strings using the + operator, but this takes ownership of the left operand. The right operand must be a &str. For joining multiple strings without ownership concerns use format! instead. You can also use the join method on a slice of strings.",
+                            "code": "let hello = String::from(\"Hello\");\nlet world = String::from(\" world\");\nlet greeting = hello + &world;\n// hello is moved and no longer valid\nprintln!(\"{}\", greeting);\n\nlet parts = vec![\"Rust\", \"is\", \"great\"];\nlet sentence = parts.join(\" \");\nprintln!(\"{}\", sentence);"
+                        },
+                        {
+                            "title": "Iterating over strings",
+                            "body": "Rust strings are UTF-8 encoded so you cannot index them with s[0]. Instead use the chars method to iterate over Unicode characters or bytes for raw bytes. The len method returns the byte length, not the character count. Use chars().count() for the number of characters. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on Storing UTF-8 Encoded Text with Strings. Also explore the recommended books in the app for more insights.",
+                            "code": "let text = String::from(\"Hello\");\n\nfor ch in text.chars() {\n    print!(\"{} \", ch);\n}\nprintln!();\n\nprintln!(\"Byte length: {}\", text.len());\nprintln!(\"Char count: {}\", text.chars().count());\n\n// Slicing (be careful with multi-byte characters)\nlet slice = &text[0..5];\nprintln!(\"Slice: {}\", slice);"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-new-type-casting",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Type Casting and Conversions",
+                    "description": "Convert between types safely using the as keyword and the From and Into traits.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "The as keyword",
+                            "body": "Use the as keyword for primitive type casting. This works for numeric conversions such as integer to float, widening, and narrowing. Be aware that narrowing conversions (like i32 to u8) can silently truncate values. The as keyword only works with primitive types.",
+                            "code": "let x: i32 = 42;\nlet y: f64 = x as f64;\nlet z: u8 = x as u8;\nprintln!(\"i32: {}, f64: {}, u8: {}\", x, y, z);\n\nlet big: i32 = 300;\nlet truncated: u8 = big as u8;  // wraps to 44\nprintln!(\"300 as u8 = {}\", truncated);"
+                        },
+                        {
+                            "title": "From and Into traits",
+                            "body": "The From trait provides a standard way to create a type from another type. When you implement From you get the Into trait for free. Use From::from or .into() for conversions. Unlike as, these conversions are type-safe and will not compile if the conversion is not defined.",
+                            "code": "let s = String::from(\"hello\");  // From<&str> for String\nprintln!(\"{}\", s);\n\nlet n: i64 = 42;\nlet big: i64 = i64::from(n);\nprintln!(\"{}\", big);\n\n// Using Into (inferred from context)\nlet x: i32 = 5;\nlet y: i64 = x.into();\nprintln!(\"{}\", y);"
+                        },
+                        {
+                            "title": "String conversions",
+                            "body": "Convert numbers to strings with to_string() or format!(). Parse strings into numbers with the parse method, which returns a Result because the string might not be a valid number. Use the turbofish syntax to specify the target type.",
+                            "code": "let num = 42;\nlet text = num.to_string();\nprintln!(\"String: {}\", text);\n\nlet parsed: i32 = \"100\".parse().expect(\"Not a number\");\nprintln!(\"Parsed: {}\", parsed);\n\n// Turbofish syntax\nlet pi = \"3.14\".parse::<f64>().expect(\"Not a float\");\nprintln!(\"Pi: {}\", pi);"
+                        },
+                        {
+                            "title": "TryFrom for fallible conversions",
+                            "body": "When a conversion might fail use TryFrom instead of From. It returns a Result so you can handle the error gracefully. For example converting a large i32 into a u8 can fail if the value does not fit. TryFrom makes these edge cases explicit and safe. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) appendix on Operators and the Rust by Example section on Conversion. Also explore the recommended books in the app for more insights.",
+                            "code": "use std::convert::TryFrom;\n\nlet big: i32 = 300;\nmatch u8::try_from(big) {\n    Ok(val) => println!(\"Converted: {}\", val),\n    Err(e) => println!(\"Conversion failed: {}\", e),\n}\n\nlet small: i32 = 42;\nlet result = u8::try_from(small);\nprintln!(\"42 as u8: {:?}\", result);  // Ok(42)"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-new-stack-heap",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Stack vs Heap",
+                    "description": "Understand how Rust uses stack and heap memory and why it matters for performance and ownership.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "What is the stack?",
+                            "body": "The stack is a region of memory that stores data in a last-in first-out order. It is very fast because the CPU just moves a pointer up and down. All data on the stack must have a known fixed size at compile time. Local variables, function parameters, and return addresses live on the stack.",
+                            "code": "fn calculate() {\n    let x: i32 = 10;     // 4 bytes on the stack\n    let y: f64 = 3.14;   // 8 bytes on the stack\n    let flag: bool = true; // 1 byte on the stack\n    println!(\"{} {} {}\", x, y, flag);\n}  // all three are popped off the stack here"
+                        },
+                        {
+                            "title": "What is the heap?",
+                            "body": "The heap is a region of memory for data whose size is not known at compile time or that needs to live beyond the current scope. Allocating on the heap is slower because the allocator must find a big enough block. The result is a pointer that lives on the stack and points to the heap data.",
+                            "code": "let s = String::from(\"hello\");\n// On the stack: pointer, length (5), capacity (5)\n// On the heap: the actual bytes h-e-l-l-o\n\nlet v = vec![1, 2, 3];\n// On the stack: pointer, length (3), capacity (3)\n// On the heap: the integers 1, 2, 3\n\nprintln!(\"{} {:?}\", s, v);"
+                        },
+                        {
+                            "title": "Why it matters",
+                            "body": "Understanding stack vs heap explains why ownership works the way it does. Stack data is cheap to copy so types like i32 and bool implement Copy. Heap data is expensive to copy so String and Vec use move semantics. When a heap-allocated value goes out of scope Rust calls drop to free the heap memory.",
+                            "code": "// Stack types: Copy\nlet a = 5;\nlet b = a;  // cheap stack copy\nprintln!(\"{} {}\", a, b);  // both valid\n\n// Heap types: Move\nlet s1 = String::from(\"hello\");\nlet s2 = s1;  // ownership moves, heap data is NOT copied\n// println!(\"{}\", s1);  // Error!\nprintln!(\"{}\", s2);"
+                        },
+                        {
+                            "title": "Box for heap allocation",
+                            "body": "Sometimes you want to explicitly put data on the heap. Use Box<T> for this. Box is a smart pointer that owns heap-allocated data and frees it when dropped. Box is useful for large data you do not want on the stack, recursive types, and trait objects. You will use it more as you advance. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on What Is Ownership and the section on Using Box. Also explore the recommended books in the app for more insights.",
+                            "code": "let boxed = Box::new(42);\nprintln!(\"Boxed value: {}\", boxed);\n\n// Box is useful for large arrays\nlet big_array = Box::new([0u8; 1_000_000]);\nprintln!(\"First element: {}\", big_array[0]);\n\n// When boxed goes out of scope, heap memory is freed"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-new-cargo-crates",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Cargo and Crates",
+                    "description": "Master Cargo, Rust's build system and package manager, and learn how to use external crates in your projects.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Cargo basics",
+                            "body": "Cargo handles building, testing, and managing dependencies for Rust projects. Key commands include cargo new to create a project, cargo build to compile, cargo run to compile and execute, and cargo test to run tests. The Cargo.toml file is the manifest that describes your project.",
+                            "code": "cargo new my_project   # create a new project\ncd my_project\ncargo build            # compile in debug mode\ncargo run              # compile and run\ncargo test             # run tests\ncargo build --release  # compile with optimizations"
+                        },
+                        {
+                            "title": "Understanding Cargo.toml",
+                            "body": "Cargo.toml is the configuration file for your project. It has sections for package metadata, dependencies, and build settings. The package section includes the name, version, and edition. The dependencies section lists external crates your project uses.",
+                            "code": "[package]\nname = \"my_project\"\nversion = \"0.1.0\"\nedition = \"2021\"\n\n[dependencies]\nrand = \"0.8\"\nserde = { version = \"1.0\", features = [\"derive\"] }"
+                        },
+                        {
+                            "title": "Adding and using crates",
+                            "body": "Crates are Rust packages published on crates.io. Add a crate by listing it under dependencies in Cargo.toml or by running cargo add. Then use it in your code with the use keyword. Cargo automatically downloads, compiles, and links the crate.",
+                            "code": "// In Cargo.toml: rand = \"0.8\"\n\nuse rand::Rng;\n\nfn main() {\n    let mut rng = rand::thread_rng();\n    let n: u32 = rng.gen_range(1..=100);\n    println!(\"Random number: {}\", n);\n}"
+                        },
+                        {
+                            "title": "Project structure and workspaces",
+                            "body": "A typical Cargo project has src/main.rs for binaries and src/lib.rs for libraries. You can have both in one project. For larger projects use workspaces to manage multiple related packages in one repository. The Cargo.lock file records exact dependency versions to ensure reproducible builds. Commit Cargo.lock for binaries but not for libraries. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on Hello, Cargo! and the Cargo Book (doc.rust-lang.org/cargo). Also explore the recommended books in the app for more insights.",
+                            "code": "my_project/\n  Cargo.toml\n  Cargo.lock\n  src/\n    main.rs    # binary entry point\n    lib.rs     # library code\n  tests/\n    integration_test.rs\n  examples/\n    demo.rs    # run with: cargo run --example demo"
                         }
                     ]
                 }
@@ -58,7 +477,7 @@
                         },
                         {
                             "title": "match expressions",
-                            "body": "match lets you handle every variant. The compiler ensures all cases are covered — no accidental fall-through.",
+                            "body": "match lets you handle every variant. The compiler ensures all cases are covered \u2014 no accidental fall-through.",
                             "code": "let dir = Direction::North;\nmatch dir {\n    Direction::North => println!(\"Going north\"),\n    Direction::South => println!(\"Going south\"),\n    Direction::East  => println!(\"Going east\"),\n    Direction::West  => println!(\"Going west\"),\n}"
                         },
                         {
@@ -78,7 +497,7 @@
                     "language": "rust",
                     "level": "intermediate",
                     "title": "Traits",
-                    "description": "Define shared behaviour with traits — Rust's mechanism for polymorphism and code reuse.",
+                    "description": "Define shared behaviour with traits \u2014 Rust's mechanism for polymorphism and code reuse.",
                     "estimatedMinutes": 12,
                     "lessons": [
                         {
@@ -128,12 +547,12 @@
                         {
                             "title": "Why this function needs a lifetime",
                             "body": "The returned reference borrows from either x or y. Without 'a, the compiler can't know which input the output borrows from, or how long the result stays valid.",
-                            "code": "// The caller ensures both inputs live at least as long as the returned reference\nlet result;\n{\n    let s1 = String::from(\"long string\");\n    let s2 = String::from(\"xy\");\n    result = longest(&s1, &s2);\n    println!(\"{}\", result);  // OK — both s1 and s2 still live here\n}"
+                            "code": "// The caller ensures both inputs live at least as long as the returned reference\nlet result;\n{\n    let s1 = String::from(\"long string\");\n    let s2 = String::from(\"xy\");\n    result = longest(&s1, &s2);\n    println!(\"{}\", result);  // OK \u2014 both s1 and s2 still live here\n}"
                         },
                         {
                             "title": "Lifetime elision rules",
                             "body": "The compiler applies three elision rules before requiring annotations: (1) each input gets its own lifetime; (2) if there is exactly one input lifetime it is given to all outputs; (3) if one input is &self or &mut self its lifetime is given to all outputs.",
-                            "code": "// No annotation needed — rule 2 applies\nfn first_word(s: &str) -> &str {\n    let bytes = s.as_bytes();\n    for (i, &b) in bytes.iter().enumerate() {\n        if b == b' ' { return &s[..i]; }\n    }\n    s\n}"
+                            "code": "// No annotation needed \u2014 rule 2 applies\nfn first_word(s: &str) -> &str {\n    let bytes = s.as_bytes();\n    for (i, &b) in bytes.iter().enumerate() {\n        if b == b' ' { return &s[..i]; }\n    }\n    s\n}"
                         }
                     ]
                 }
