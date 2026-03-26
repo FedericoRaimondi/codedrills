@@ -458,32 +458,449 @@
             "level": "beginner",
             "topics": [
                 {
+                    "id": "rs-beginner-structs",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Structs & Fields",
+                    "description": "Define custom data types with named fields using Rust structs.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Defining a Struct",
+                            "body": "A struct groups related values under one name. Each field has a name and a type, separated by a colon. You create an instance by providing values for every field.",
+                            "code": "struct User {\n    name: String,\n    age: u32,\n    active: bool,\n}\n\nlet user = User {\n    name: String::from(\"Alice\"),\n    age: 30,\n    active: true,\n};"
+                        },
+                        {
+                            "title": "Accessing and Mutating Fields",
+                            "body": "Use dot notation to read or write a field. The entire instance must be declared mut to change any field; Rust does not allow marking individual fields as mutable.",
+                            "code": "let mut user = User {\n    name: String::from(\"Bob\"),\n    age: 25,\n    active: false,\n};\nprintln!(\"{}\", user.name);\nuser.active = true;"
+                        },
+                        {
+                            "title": "Tuple Structs and Unit Structs",
+                            "body": "Tuple structs have fields without names, accessed by index. They are useful for lightweight wrappers. Unit structs have no fields at all and are used as markers or for trait implementations.",
+                            "code": "struct Color(u8, u8, u8);\nlet red = Color(255, 0, 0);\nprintln!(\"R: {}\", red.0);\n\nstruct Marker;\nlet _m = Marker;"
+                        },
+                        {
+                            "title": "Struct Update Syntax",
+                            "body": "The struct update syntax lets you create a new instance by copying most fields from an existing one and overriding specific fields. Use the .. operator followed by the source instance. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on structs. Also visit the recommended books in the app for more insights.",
+                            "code": "let user2 = User {\n    name: String::from(\"Carol\"),\n    ..user\n};"
+                        }
+                    ]
+                },
+                {
                     "id": "rs-beginner-enums",
                     "language": "rust",
                     "level": "beginner",
-                    "title": "Enums & Pattern Matching",
-                    "description": "Model variants with Rust enums and handle them exhaustively using match.",
-                    "estimatedMinutes": 10,
+                    "title": "Enums & Variants",
+                    "description": "Model data that can be one of several variants using Rust enums.",
+                    "estimatedMinutes": 12,
                     "lessons": [
                         {
-                            "title": "Defining an enum",
-                            "body": "An enum type has a fixed set of variants. Each variant can optionally carry data.",
+                            "title": "Defining an Enum",
+                            "body": "An enum lets you define a type by listing its possible variants. Each variant is a distinct value of that type. Enums are perfect for representing a fixed set of choices.",
                             "code": "enum Direction {\n    North,\n    South,\n    East,\n    West,\n}"
                         },
                         {
-                            "title": "Enums with data",
-                            "body": "Variants can hold different types of data, making Rust enums much more powerful than enums in other languages.",
-                            "code": "enum Message {\n    Quit,\n    Move { x: i32, y: i32 },\n    Write(String),\n}"
+                            "title": "Variants with Data",
+                            "body": "Variants can hold data of different types. A variant can carry unnamed fields like a tuple, named fields like a struct, or no data at all. This makes enums far more powerful than simple C-style enums.",
+                            "code": "enum Message {\n    Quit,\n    Echo(String),\n    Move { x: i32, y: i32 },\n    Color(u8, u8, u8),\n}"
                         },
                         {
-                            "title": "match expressions",
-                            "body": "match lets you handle every variant. The compiler ensures all cases are covered \u2014 no accidental fall-through.",
-                            "code": "let dir = Direction::North;\nmatch dir {\n    Direction::North => println!(\"Going north\"),\n    Direction::South => println!(\"Going south\"),\n    Direction::East  => println!(\"Going east\"),\n    Direction::West  => println!(\"Going west\"),\n}"
+                            "title": "Using Enums",
+                            "body": "Create enum values by specifying the variant. You can define methods on enums with impl blocks, just like with structs.",
+                            "code": "let msg = Message::Echo(String::from(\"hello\"));\n\nimpl Message {\n    fn call(&self) {\n        println!(\"Message received\");\n    }\n}\nmsg.call();"
                         },
                         {
-                            "title": "Option<T>",
-                            "body": "Rust has no null. Instead, Option<T> is an enum with Some(T) and None. You must explicitly handle both cases.",
-                            "code": "let maybe: Option<i32> = Some(42);\nmatch maybe {\n    Some(n) => println!(\"Got {}\", n),\n    None    => println!(\"Nothing here\"),\n}"
+                            "title": "Why Enums Matter",
+                            "body": "Enums enforce that you handle every possible case, preventing forgotten edge cases. They are central to Rust's type system and underpin important standard types like Option and Result. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on enums. Also visit the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-beginner-pattern-matching",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Pattern Matching",
+                    "description": "Use match expressions to elegantly branch on values and destructure data.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "The match Expression",
+                            "body": "A match expression compares a value against a series of patterns and runs the code for the first pattern that fits. Each arm uses => to separate the pattern from the code.",
+                            "code": "let x = 3;\nmatch x {\n    1 => println!(\"one\"),\n    2 => println!(\"two\"),\n    3 => println!(\"three\"),\n    _ => println!(\"other\"),\n}"
+                        },
+                        {
+                            "title": "Exhaustive Matching",
+                            "body": "Rust requires that every match covers all possible values of the type. If you leave out a variant or value, the compiler will refuse to build. This prevents unhandled cases at compile time.",
+                            "code": "enum Coin {\n    Penny,\n    Nickel,\n    Dime,\n}\n\nfn value(c: Coin) -> u32 {\n    match c {\n        Coin::Penny => 1,\n        Coin::Nickel => 5,\n        Coin::Dime => 10,\n    }\n}"
+                        },
+                        {
+                            "title": "Wildcards and Bindings",
+                            "body": "The underscore _ acts as a catch-all that matches anything but ignores the value. You can also bind matched values to a variable to use them in the arm body.",
+                            "code": "let num = 7;\nmatch num {\n    1 => println!(\"one\"),\n    n @ 2..=9 => println!(\"small: {n}\"),\n    _ => println!(\"big\"),\n}"
+                        },
+                        {
+                            "title": "Destructuring in Patterns",
+                            "body": "Patterns can pull apart structs, tuples, and enums to bind their inner values directly. This avoids manual field access and makes code concise. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on patterns and matching. Also visit the recommended books in the app for more insights.",
+                            "code": "let point = (3, 7);\nmatch point {\n    (0, 0) => println!(\"origin\"),\n    (x, 0) => println!(\"on x-axis at {x}\"),\n    (0, y) => println!(\"on y-axis at {y}\"),\n    (x, y) => println!(\"({x}, {y})\"),\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-beginner-option-type",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "The Option Type",
+                    "description": "Safely represent the absence of a value with Option instead of null.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Some and None",
+                            "body": "Option<T> is an enum with two variants: Some(T) holds a value, and None represents no value. Rust has no null, so Option forces you to handle the missing-value case explicitly.",
+                            "code": "let age: Option<u32> = Some(30);\nlet missing: Option<u32> = None;"
+                        },
+                        {
+                            "title": "Unwrapping Safely",
+                            "body": "Calling unwrap on an Option returns the inner value if it is Some, but panics if it is None. Use unwrap_or to provide a default value instead of risking a panic.",
+                            "code": "let val = Some(42);\nprintln!(\"{}\", val.unwrap());       // 42\n\nlet empty: Option<i32> = None;\nprintln!(\"{}\", empty.unwrap_or(0)); // 0"
+                        },
+                        {
+                            "title": "Transforming with map",
+                            "body": "The map method applies a function to the inner value of Some and returns a new Option. If the value is None, map returns None without calling the function.",
+                            "code": "let name = Some(\"alice\");\nlet upper = name.map(|s| s.to_uppercase());\nprintln!(\"{:?}\", upper); // Some(\"ALICE\")"
+                        },
+                        {
+                            "title": "Chaining with and_then",
+                            "body": "The and_then method is like map but the function itself returns an Option, avoiding nested Options. It is useful when each step in a chain might fail. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on the Option type. Also visit the recommended books in the app for more insights.",
+                            "code": "fn parse_even(s: &str) -> Option<i32> {\n    let n: i32 = s.parse().ok()?;\n    if n % 2 == 0 { Some(n) } else { None }\n}\n\nlet result = Some(\"4\").and_then(parse_even);\nprintln!(\"{:?}\", result); // Some(4)"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-beginner-result-error",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Result & Error Handling",
+                    "description": "Handle operations that can fail using Result, Ok, Err, and the ? operator.",
+                    "estimatedMinutes": 14,
+                    "lessons": [
+                        {
+                            "title": "Ok and Err",
+                            "body": "Result<T, E> is an enum with Ok(T) for success and Err(E) for failure. Functions that can fail return Result so callers must handle both outcomes explicitly.",
+                            "code": "fn divide(a: f64, b: f64) -> Result<f64, String> {\n    if b == 0.0 {\n        Err(String::from(\"division by zero\"))\n    } else {\n        Ok(a / b)\n    }\n}"
+                        },
+                        {
+                            "title": "Matching on Result",
+                            "body": "You can use match to handle Ok and Err separately. This gives you full control over what happens on success and failure.",
+                            "code": "match divide(10.0, 3.0) {\n    Ok(val) => println!(\"Result: {val}\"),\n    Err(e) => println!(\"Error: {e}\"),\n}"
+                        },
+                        {
+                            "title": "The ? Operator",
+                            "body": "The ? operator placed after a Result expression returns the Ok value if successful, or immediately returns the Err from the current function. It drastically reduces boilerplate for chaining fallible operations.",
+                            "code": "use std::num::ParseIntError;\n\nfn double_parse(s: &str) -> Result<i32, ParseIntError> {\n    let n = s.parse::<i32>()?;\n    Ok(n * 2)\n}"
+                        },
+                        {
+                            "title": "Practical Error Handling Tips",
+                            "body": "For small programs, returning Result with a boxed error trait object keeps things simple. In libraries, define custom error types for clarity. Avoid unwrap in production code because it panics on errors. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on error handling. Also visit the recommended books in the app for more insights.",
+                            "code": "use std::error::Error;\n\nfn run() -> Result<(), Box<dyn Error>> {\n    let n: i32 = \"42\".parse()?;\n    println!(\"Parsed: {n}\");\n    Ok(())\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-beginner-vectors",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Vectors",
+                    "description": "Store and manipulate growable lists of values with Vec<T>.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "Creating Vectors",
+                            "body": "Vec<T> is a growable array stored on the heap. You can create one with Vec::new or the vec! macro. The macro lets you provide initial values conveniently.",
+                            "code": "let mut nums: Vec<i32> = Vec::new();\nlet colors = vec![\"red\", \"green\", \"blue\"];"
+                        },
+                        {
+                            "title": "Push and Pop",
+                            "body": "Use push to add an element to the end and pop to remove the last element. Pop returns an Option because the vector might be empty.",
+                            "code": "let mut stack = vec![1, 2, 3];\nstack.push(4);\nprintln!(\"{:?}\", stack);      // [1, 2, 3, 4]\n\nlet top = stack.pop();\nprintln!(\"{:?}\", top);        // Some(4)"
+                        },
+                        {
+                            "title": "Indexing and get",
+                            "body": "Access elements by index with brackets, which panics on out-of-bounds, or with get, which returns an Option. Prefer get when the index might be invalid.",
+                            "code": "let v = vec![10, 20, 30];\nprintln!(\"{}\", v[1]);          // 20\nprintln!(\"{:?}\", v.get(5));    // None"
+                        },
+                        {
+                            "title": "Iterating over Vectors",
+                            "body": "Use a for loop to iterate over references to each element. You can also iterate mutably with iter_mut to modify elements in place. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on vectors. Also visit the recommended books in the app for more insights.",
+                            "code": "let mut scores = vec![80, 90, 70];\nfor s in &mut scores {\n    *s += 5;\n}\nprintln!(\"{:?}\", scores); // [85, 95, 75]"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-beginner-hashmaps",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "HashMaps",
+                    "description": "Store key-value pairs for fast lookups using HashMap.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Creating a HashMap",
+                            "body": "A HashMap<K, V> stores associations between keys and values. Import it from std::collections. Create one with HashMap::new and add entries with insert.",
+                            "code": "use std::collections::HashMap;\n\nlet mut scores = HashMap::new();\nscores.insert(String::from(\"Alice\"), 95);\nscores.insert(String::from(\"Bob\"), 87);"
+                        },
+                        {
+                            "title": "Reading Values with get",
+                            "body": "Use get with a key reference to look up a value. It returns Option<&V>, so you get None if the key is missing rather than a panic.",
+                            "code": "if let Some(score) = scores.get(\"Alice\") {\n    println!(\"Alice scored {score}\");\n}"
+                        },
+                        {
+                            "title": "Updating Entries",
+                            "body": "Calling insert with an existing key overwrites the value. Use entry and or_insert to insert only if the key does not already exist. This pattern is common for building counters.",
+                            "code": "scores.entry(String::from(\"Carol\")).or_insert(0);\n\nlet text = \"hello world hello\";\nlet mut counts = HashMap::new();\nfor word in text.split_whitespace() {\n    let count = counts.entry(word).or_insert(0);\n    *count += 1;\n}"
+                        },
+                        {
+                            "title": "Iterating over a HashMap",
+                            "body": "Use a for loop to iterate over key-value pairs as references. The order of iteration is arbitrary because HashMap does not maintain insertion order. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on hash maps. Also visit the recommended books in the app for more insights.",
+                            "code": "for (name, score) in &scores {\n    println!(\"{name}: {score}\");\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-beginner-string-slices",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "String Slices",
+                    "description": "Understand the difference between String and &str and how to slice text safely.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "String vs &str",
+                            "body": "String is an owned, heap-allocated, growable string. The type &str is a borrowed reference to a string slice, which is a view into string data. String literals are &str by default.",
+                            "code": "let owned: String = String::from(\"hello\");\nlet slice: &str = \"hello\";\nlet borrowed: &str = &owned;"
+                        },
+                        {
+                            "title": "Slicing Strings",
+                            "body": "You can take a substring by indexing with a byte range. Be careful: the range must land on valid UTF-8 character boundaries or your program will panic at runtime.",
+                            "code": "let s = String::from(\"hello world\");\nlet hello: &str = &s[0..5];\nlet world: &str = &s[6..11];\nprintln!(\"{hello} {world}\");"
+                        },
+                        {
+                            "title": "Common String Methods",
+                            "body": "Both String and &str offer useful methods like contains, starts_with, trim, and to_uppercase. Methods that need to allocate return a new String, while read-only checks work on &str directly.",
+                            "code": "let greeting = \"  Hello, Rust!  \";\nprintln!(\"{}\", greeting.trim());\nprintln!(\"{}\", greeting.contains(\"Rust\"));\nprintln!(\"{}\", greeting.to_lowercase());"
+                        },
+                        {
+                            "title": "Converting Between String and &str",
+                            "body": "Convert &str to String with to_string, String::from, or to_owned. Go the other way by borrowing with & or calling as_str. Understanding when to own and when to borrow is key to writing efficient Rust. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on strings. Also visit the recommended books in the app for more insights.",
+                            "code": "let s: String = \"hello\".to_string();\nlet r: &str = s.as_str();\nlet s2: String = String::from(r);"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-beginner-modules",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Modules & Visibility",
+                    "description": "Organize code into modules and control what is public or private.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "Defining Modules",
+                            "body": "Use the mod keyword to define a module inside a file. Modules create separate namespaces and can be nested. Items inside a module are private by default.",
+                            "code": "mod math {\n    pub fn add(a: i32, b: i32) -> i32 {\n        a + b\n    }\n\n    fn secret() -> i32 {\n        42\n    }\n}"
+                        },
+                        {
+                            "title": "The pub Keyword",
+                            "body": "Mark an item with pub to make it accessible outside its module. Without pub, functions, structs, and constants are only visible within the same module and its children.",
+                            "code": "mod greet {\n    pub fn hello() {\n        println!(\"Hello!\");\n    }\n}\n\ngreet::hello(); // works because hello is pub"
+                        },
+                        {
+                            "title": "The use Keyword",
+                            "body": "The use statement brings a path into scope so you can refer to items by their short name. You can also rename imports with as to avoid name conflicts.",
+                            "code": "use std::collections::HashMap;\nuse std::io::Result as IoResult;\n\nlet mut map = HashMap::new();\nmap.insert(\"key\", \"value\");"
+                        },
+                        {
+                            "title": "File-Based Module Structure",
+                            "body": "In larger projects, each module lives in its own file. A mod statement in the parent file tells the compiler to load the child file. A directory with a mod.rs file defines a module with submodules. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on modules. Also visit the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-beginner-method-syntax",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Method Syntax",
+                    "description": "Attach behavior to your types using impl blocks, self, and associated functions.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Implementing Methods",
+                            "body": "Define methods for a type inside an impl block. Methods take self as the first parameter, which refers to the instance the method is called on.",
+                            "code": "struct Rect {\n    width: f64,\n    height: f64,\n}\n\nimpl Rect {\n    fn area(&self) -> f64 {\n        self.width * self.height\n    }\n}"
+                        },
+                        {
+                            "title": "Self Variants",
+                            "body": "Use &self to borrow immutably, &mut self to borrow mutably, and self to take ownership. Most methods use &self because they only need to read the data.",
+                            "code": "impl Rect {\n    fn scale(&mut self, factor: f64) {\n        self.width *= factor;\n        self.height *= factor;\n    }\n}"
+                        },
+                        {
+                            "title": "Associated Functions",
+                            "body": "Functions inside an impl block that do not take self are called associated functions. They are often used as constructors. Call them with the double-colon syntax.",
+                            "code": "impl Rect {\n    fn square(size: f64) -> Rect {\n        Rect { width: size, height: size }\n    }\n}\n\nlet sq = Rect::square(5.0);"
+                        },
+                        {
+                            "title": "Multiple impl Blocks",
+                            "body": "You can split methods across several impl blocks for the same type. This is especially handy when implementing traits separately from inherent methods. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on method syntax. Also visit the recommended books in the app for more insights.",
+                            "code": "impl Rect {\n    fn is_square(&self) -> bool {\n        (self.width - self.height).abs() < f64::EPSILON\n    }\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-beginner-if-let-while-let",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "if let & while let",
+                    "description": "Use concise pattern matching alternatives when you only care about one variant.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "The if let Shorthand",
+                            "body": "When you only care about one match arm, if let is cleaner than a full match. It binds the value if the pattern matches and skips the block otherwise.",
+                            "code": "let config_max = Some(3u8);\nif let Some(max) = config_max {\n    println!(\"Max is {max}\");\n}"
+                        },
+                        {
+                            "title": "if let with else",
+                            "body": "Add an else branch to handle the non-matching case. This is equivalent to a match with a wildcard arm, but more concise when there are only two outcomes.",
+                            "code": "let val: Option<i32> = None;\nif let Some(v) = val {\n    println!(\"Got {v}\");\n} else {\n    println!(\"No value\");\n}"
+                        },
+                        {
+                            "title": "The while let Loop",
+                            "body": "while let repeatedly matches a pattern and runs the loop body as long as it succeeds. It is commonly used to drain a collection one element at a time.",
+                            "code": "let mut stack = vec![1, 2, 3];\nwhile let Some(top) = stack.pop() {\n    println!(\"{top}\");\n}\n// prints 3, 2, 1"
+                        },
+                        {
+                            "title": "When to Choose if let vs match",
+                            "body": "Use if let when you only need to act on one variant and want concise code. Use match when you need to handle all variants or more than two cases. Both are pattern matching under the hood. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on if let control flow. Also visit the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-beginner-iterators",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Iterators Basics",
+                    "description": "Traverse and transform collections lazily using Rust's iterator trait.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "What is an Iterator?",
+                            "body": "An iterator produces a sequence of values one at a time. In Rust, any type implementing the Iterator trait has a next method that returns Some(value) until exhausted, then None.",
+                            "code": "let nums = vec![10, 20, 30];\nlet mut it = nums.iter();\nprintln!(\"{:?}\", it.next()); // Some(10)\nprintln!(\"{:?}\", it.next()); // Some(20)"
+                        },
+                        {
+                            "title": "iter, into_iter, and iter_mut",
+                            "body": "iter borrows each element immutably. iter_mut borrows each element mutably. into_iter takes ownership of the collection and yields owned values. Choose based on whether you need to keep the original collection.",
+                            "code": "let v = vec![1, 2, 3];\nfor val in v.iter() {\n    println!(\"{val}\"); // borrows\n}\nfor val in v.into_iter() {\n    println!(\"{val}\"); // owns, v is consumed\n}"
+                        },
+                        {
+                            "title": "Common Adapters",
+                            "body": "Adapters like map, filter, and take transform an iterator into a new iterator lazily. Nothing happens until you consume the iterator with a method like collect or for_each.",
+                            "code": "let nums = vec![1, 2, 3, 4, 5];\nlet evens: Vec<i32> = nums.iter()\n    .filter(|&&x| x % 2 == 0)\n    .copied()\n    .collect();\nprintln!(\"{:?}\", evens); // [2, 4]"
+                        },
+                        {
+                            "title": "Consuming with collect and sum",
+                            "body": "The collect method gathers iterator results into a collection. The sum and product methods reduce numeric iterators to a single value. Turbofish syntax tells Rust the desired output type. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on iterators. Also visit the recommended books in the app for more insights.",
+                            "code": "let total: i32 = (1..=5).sum();\nprintln!(\"Sum: {total}\"); // 15\n\nlet doubled: Vec<i32> = (1..=3).map(|x| x * 2).collect();\nprintln!(\"{:?}\", doubled); // [2, 4, 6]"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-beginner-closures",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Closures Essentials",
+                    "description": "Write anonymous functions that capture variables from their environment.",
+                    "estimatedMinutes": 14,
+                    "lessons": [
+                        {
+                            "title": "Closure Syntax",
+                            "body": "Closures are anonymous functions defined with pipes for parameters. The compiler infers parameter and return types in most cases. Braces are optional for single-expression bodies.",
+                            "code": "let add = |a: i32, b: i32| a + b;\nprintln!(\"{}\", add(2, 3)); // 5\n\nlet greet = |name| format!(\"Hi, {name}!\");\nprintln!(\"{}\", greet(\"Rust\"));"
+                        },
+                        {
+                            "title": "Capturing Variables",
+                            "body": "Closures can capture variables from the surrounding scope. By default, Rust decides whether to borrow immutably, borrow mutably, or take ownership based on how the variable is used inside the closure.",
+                            "code": "let greeting = String::from(\"Hello\");\nlet say_hi = || println!(\"{greeting}\");\nsay_hi();"
+                        },
+                        {
+                            "title": "The move Keyword",
+                            "body": "Use move before the parameter list to force the closure to take ownership of captured variables. This is essential when passing closures to new threads or returning them from functions.",
+                            "code": "let name = String::from(\"Alice\");\nlet greet = move || {\n    println!(\"Hi, {name}\");\n};\ngreet();\n// name is no longer usable here"
+                        },
+                        {
+                            "title": "Fn, FnMut, and FnOnce Traits",
+                            "body": "Every closure implements one or more of the Fn traits. Fn borrows immutably, FnMut borrows mutably, and FnOnce consumes captured values. Function signatures accepting closures use these traits as bounds. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on closures. Also visit the recommended books in the app for more insights.",
+                            "code": "fn apply<F: Fn(i32) -> i32>(f: F, x: i32) -> i32 {\n    f(x)\n}\n\nlet double = |n| n * 2;\nprintln!(\"{}\", apply(double, 5)); // 10"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-beginner-user-input",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Reading User Input",
+                    "description": "Read text from the terminal using std::io and parse it into useful types.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "Standard Input Basics",
+                            "body": "Rust provides std::io::stdin to read from the terminal. Call read_line to capture user input into a mutable String. The method appends a newline, so trim the result.",
+                            "code": "use std::io;\n\nlet mut input = String::new();\nio::stdin().read_line(&mut input)\n    .expect(\"Failed to read line\");\nlet input = input.trim();\nprintln!(\"You typed: {input}\");"
+                        },
+                        {
+                            "title": "Parsing Input into Numbers",
+                            "body": "User input arrives as a string. Use parse to convert it to a numeric type. Handle the Result to avoid panics when the user types something unexpected.",
+                            "code": "let mut buf = String::new();\nio::stdin().read_line(&mut buf).unwrap();\n\nmatch buf.trim().parse::<i32>() {\n    Ok(n) => println!(\"Number: {n}\"),\n    Err(_) => println!(\"Not a valid number\"),\n}"
+                        },
+                        {
+                            "title": "Reading in a Loop",
+                            "body": "Wrap read_line in a loop to repeatedly prompt the user. Break out of the loop when you receive valid input or a sentinel value like an empty line.",
+                            "code": "loop {\n    let mut line = String::new();\n    io::stdin().read_line(&mut line).unwrap();\n    let line = line.trim();\n    if line.is_empty() {\n        break;\n    }\n    println!(\"Echo: {line}\");\n}"
+                        },
+                        {
+                            "title": "Buffered Reading with BufRead",
+                            "body": "For reading multiple lines efficiently, use the BufRead trait and its lines method. It returns an iterator of Result values, one per line, automatically stripping newlines. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on I/O. Also visit the recommended books in the app for more insights.",
+                            "code": "use std::io::{self, BufRead};\n\nlet stdin = io::stdin();\nfor line in stdin.lock().lines() {\n    let line = line.expect(\"read error\");\n    println!(\"Got: {line}\");\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-beginner-testing",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Basic Testing",
+                    "description": "Write and run tests with the built-in test framework and cargo test.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Writing Your First Test",
+                            "body": "Annotate a function with #[test] to make it a test. The function should have no parameters and no return value. Cargo discovers and runs all #[test] functions automatically.",
+                            "code": "#[cfg(test)]\nmod tests {\n    #[test]\n    fn it_works() {\n        let result = 2 + 2;\n        assert_eq!(result, 4);\n    }\n}"
+                        },
+                        {
+                            "title": "assert!, assert_eq!, and assert_ne!",
+                            "body": "assert! checks that a boolean expression is true. assert_eq! checks that two values are equal, and assert_ne! checks they are not. On failure, they print the values to help you debug.",
+                            "code": "#[test]\nfn test_assertions() {\n    assert!(true);\n    assert_eq!(3 + 3, 6);\n    assert_ne!(\"hello\", \"world\");\n}"
+                        },
+                        {
+                            "title": "Running Tests with cargo test",
+                            "body": "Run cargo test in your project directory to compile and execute all tests. Cargo shows a pass or fail summary. Use cargo test test_name to run a specific test by name.",
+                            "code": "// In your terminal:\n// $ cargo test\n// $ cargo test test_assertions"
+                        },
+                        {
+                            "title": "Testing for Panics and Organizing Tests",
+                            "body": "Use the #[should_panic] attribute to verify that a function panics as expected. Group tests inside a mod tests block with #[cfg(test)] so they compile only during testing. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on testing. Also visit the recommended books in the app for more insights.",
+                            "code": "#[cfg(test)]\nmod tests {\n    #[test]\n    #[should_panic(expected = \"divide by zero\")]\n    fn test_panic() {\n        panic!(\"divide by zero\");\n    }\n}"
                         }
                     ]
                 }
