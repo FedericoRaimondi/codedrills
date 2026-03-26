@@ -5,6 +5,36 @@
             "level": "new",
             "topics": [
                 {
+                    "id": "js-new-setup",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Getting Started with JavaScript",
+                    "description": "Set up your environment and run your very first JavaScript program in the browser and on your computer.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "What is JavaScript?",
+                            "body": "JavaScript is the programming language of the web. Every modern browser can run it, and with Node.js you can also run JavaScript outside the browser — on servers, scripts, and command-line tools. You don't need much to get started: just a browser or a small runtime install.",
+                            "code": "// This is JavaScript!\nconsole.log(\"Hello, world!\");"
+                        },
+                        {
+                            "title": "Installing Node.js",
+                            "body": "Node.js lets you run JavaScript files directly on your computer. Visit https://nodejs.org and download the LTS (Long Term Support) version for your operating system. The installer adds the 'node' command to your terminal. After installing, open a terminal and verify the installation by checking the version.",
+                            "code": "// In your terminal, type:\n// node --version\n// You should see something like: v20.x.x"
+                        },
+                        {
+                            "title": "Running JS in the browser console",
+                            "body": "Every browser has a built-in JavaScript console. In Chrome or Edge, press F12 (or Ctrl+Shift+J on Windows, Cmd+Option+J on Mac) to open DevTools, then click the Console tab. You can type JavaScript directly and press Enter to run it. This is the fastest way to experiment with small snippets.",
+                            "code": "// Type these lines one at a time in the console:\n2 + 2\n\"Hello\" + \" \" + \"World\"\nMath.random()"
+                        },
+                        {
+                            "title": "Running a .js file with Node",
+                            "body": "Create a file called hello.js in any text editor — VS Code is a popular free choice that offers syntax highlighting and a built-in terminal. Write your code, save the file, then open a terminal in the same folder and run it with the node command. For a deeper look at the language, check out MDN's JavaScript Guide and visit the recommended books section for beginner-friendly resources.",
+                            "code": "// hello.js\nconsole.log(\"Hello from a file!\");\n\n// In your terminal:\n// node hello.js\n// Output: Hello from a file!"
+                        }
+                    ]
+                },
+                {
                     "id": "js-new-variables",
                     "language": "javascript",
                     "level": "new",
@@ -29,7 +59,398 @@
                         },
                         {
                             "title": "Rule of thumb",
-                            "body": "Prefer const. Use let when you need to reassign. Avoid var in modern JavaScript."
+                            "body": "Prefer const. Use let when you need to reassign. Avoid var in modern JavaScript. For a deeper dive, check out MDN's guide on Grammar and Types. Don't forget to visit the recommended books section for curated resources.",
+                            "code": "const greeting = \"Hello\";\nlet score = 0;\nscore += 10;\nconsole.log(greeting, score); // Hello 10"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-datatypes",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Data Types at a Glance",
+                    "description": "Learn the fundamental data types JavaScript offers and how to identify them using typeof.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "The seven primitive types",
+                            "body": "JavaScript has seven primitive (simple) types: string, number, bigint, boolean, undefined, null, and symbol. Primitives are immutable — once created, their value cannot change. When you reassign a variable, you are replacing the value, not modifying it.",
+                            "code": "const name = \"Alice\";   // string\nconst age = 30;          // number\nconst isHappy = true;    // boolean\nlet score;               // undefined (no value assigned)\nconst empty = null;      // null (intentionally empty)"
+                        },
+                        {
+                            "title": "The typeof operator",
+                            "body": "Use typeof to check what type a value is. It returns a string describing the type. This is handy when debugging or when you need to handle different types differently. Note that typeof null returns 'object' — this is a well-known JavaScript quirk, not a feature.",
+                            "code": "console.log(typeof \"hello\"); // \"string\"\nconsole.log(typeof 42);      // \"number\"\nconsole.log(typeof true);    // \"boolean\"\nconsole.log(typeof undefined); // \"undefined\"\nconsole.log(typeof null);    // \"object\" (quirk!)"
+                        },
+                        {
+                            "title": "null vs. undefined",
+                            "body": "undefined means a variable has been declared but not yet assigned a value. null is a deliberate assignment that represents 'no value.' Think of undefined as 'nothing here yet' and null as 'intentionally empty.' Both are falsy, but they are not the same type.",
+                            "code": "let a;\nconsole.log(a);        // undefined\n\nlet b = null;\nconsole.log(b);        // null\n\nconsole.log(a == b);   // true  (loose equality)\nconsole.log(a === b);  // false (strict equality)"
+                        },
+                        {
+                            "title": "Objects — the non-primitive",
+                            "body": "Everything that is not a primitive is an object. Arrays, functions, dates, and regular objects are all objects under the hood. Unlike primitives, objects are mutable and are stored by reference, not by value. To explore data types in depth, see MDN's JavaScript data types and data structures page, and visit the recommended books section for thorough beginner references.",
+                            "code": "const colors = [\"red\", \"green\"];  // array (object)\nconst person = { name: \"Eve\" };   // object\n\nconsole.log(typeof colors);  // \"object\"\nconsole.log(typeof person);  // \"object\"\nconsole.log(Array.isArray(colors)); // true"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-strings",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Strings & Template Literals",
+                    "description": "Master creating, combining, and manipulating text in JavaScript with strings and modern template literals.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Creating strings",
+                            "body": "A string is a sequence of characters wrapped in quotes. You can use single quotes, double quotes, or backticks. Single and double quotes behave identically. Backticks unlock template literals, which we'll cover shortly. Pick one style and be consistent.",
+                            "code": "const single = 'Hello';\nconst double = \"World\";\nconst backtick = `Hi there`;\n\nconsole.log(single, double, backtick);"
+                        },
+                        {
+                            "title": "Useful string properties and methods",
+                            "body": "Strings come with built-in properties and methods. The .length property tells you how many characters a string has. Methods like .toUpperCase(), .toLowerCase(), .trim(), .includes(), and .slice() let you inspect and transform strings without changing the original — strings are immutable.",
+                            "code": "const msg = \"  Hello, JavaScript!  \";\n\nconsole.log(msg.length);          // 22\nconsole.log(msg.trim());          // \"Hello, JavaScript!\"\nconsole.log(msg.includes(\"Java\")); // true\nconsole.log(msg.slice(2, 7));     // \"Hello\"\nconsole.log(msg.toUpperCase());   // \"  HELLO, JAVASCRIPT!  \""
+                        },
+                        {
+                            "title": "Template literals & interpolation",
+                            "body": "Template literals use backticks (`) and allow you to embed expressions inside ${...}. This is called string interpolation. It is far more readable than concatenation with the + operator, especially when you have multiple variables or calculations.",
+                            "code": "const name = \"Alice\";\nconst age = 25;\n\n// Old way — concatenation\nconsole.log(\"Name: \" + name + \", Age: \" + age);\n\n// Modern way — template literal\nconsole.log(`Name: ${name}, Age: ${age}`);\nconsole.log(`Next year you will be ${age + 1}`);"
+                        },
+                        {
+                            "title": "Multi-line strings",
+                            "body": "Template literals also support multi-line strings naturally — just press Enter inside the backticks. With regular quotes you would need escape characters like backslash-n. This makes template literals ideal for building HTML snippets or formatted output. For a comprehensive look at string handling, read MDN's Text formatting guide and visit the recommended books section for additional learning paths.",
+                            "code": "const poem = `Roses are red,\nViolets are blue,\nJavaScript is fun,\nAnd so are you.`;\n\nconsole.log(poem);"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-numbers",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Numbers & Basic Math",
+                    "description": "Work with JavaScript's number type, arithmetic operators, and the built-in Math object.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "One number type to rule them all",
+                            "body": "Unlike many languages, JavaScript has a single number type that handles both integers and decimals (floating-point). Behind the scenes it uses 64-bit floating point (IEEE 754). You can write integers, decimals, and even scientific notation.",
+                            "code": "const integer = 42;\nconst decimal = 3.14;\nconst scientific = 2.5e3; // 2500\n\nconsole.log(integer, decimal, scientific);\nconsole.log(typeof integer);  // \"number\"\nconsole.log(typeof decimal);  // \"number\""
+                        },
+                        {
+                            "title": "Arithmetic operators",
+                            "body": "JavaScript supports the standard arithmetic operators: addition (+), subtraction (-), multiplication (*), division (/), remainder (%), and exponentiation (**). The remainder operator is sometimes called modulo and is very useful for checking if a number is even or odd.",
+                            "code": "console.log(10 + 3);   // 13\nconsole.log(10 - 3);   // 7\nconsole.log(10 * 3);   // 30\nconsole.log(10 / 3);   // 3.3333...\nconsole.log(10 % 3);   // 1 (remainder)\nconsole.log(2 ** 10);  // 1024 (exponentiation)"
+                        },
+                        {
+                            "title": "The Math object",
+                            "body": "The built-in Math object provides useful constants and functions for more advanced calculations. You don't need to import anything — Math is always available. Common helpers include Math.round(), Math.floor(), Math.ceil(), Math.max(), Math.min(), Math.abs(), and Math.random().",
+                            "code": "console.log(Math.round(4.6));    // 5\nconsole.log(Math.floor(4.9));    // 4\nconsole.log(Math.ceil(4.1));     // 5\nconsole.log(Math.max(1, 5, 3));  // 5\nconsole.log(Math.min(1, 5, 3));  // 1\nconsole.log(Math.abs(-7));       // 7\nconsole.log(Math.random());      // 0 to 0.999..."
+                        },
+                        {
+                            "title": "Watch out for floating-point quirks",
+                            "body": "Because JavaScript uses floating-point math, you will occasionally see tiny rounding errors. The classic example is 0.1 + 0.2, which does not equal exactly 0.3. When precision matters, multiply to integers first, calculate, then divide back. For the full story on numbers, consult MDN's Numbers and dates guide and visit the recommended books section for beginner-friendly deep dives.",
+                            "code": "console.log(0.1 + 0.2);          // 0.30000000000000004\nconsole.log(0.1 + 0.2 === 0.3);  // false\n\n// Workaround: use toFixed or integer math\nconsole.log((0.1 + 0.2).toFixed(1)); // \"0.3\"\nconsole.log((1 + 2) / 10);           // 0.3"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-booleans",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Booleans & Truthy/Falsy",
+                    "description": "Understand true and false values in JavaScript, including the surprising truthy and falsy rules.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Meet the booleans",
+                            "body": "A boolean is the simplest data type — it can only be true or false. Booleans are the backbone of decision-making in code. Every if statement, every loop condition, and every comparison ultimately produces a boolean.",
+                            "code": "const isLoggedIn = true;\nconst hasPermission = false;\n\nconsole.log(isLoggedIn);      // true\nconsole.log(typeof hasPermission); // \"boolean\""
+                        },
+                        {
+                            "title": "Comparison operators produce booleans",
+                            "body": "Comparisons like ===, !==, <, >, <=, and >= all evaluate to true or false. Always prefer strict equality (===) over loose equality (==). Strict equality checks both value and type, while loose equality can perform surprising type conversions.",
+                            "code": "console.log(5 > 3);       // true\nconsole.log(5 === \"5\");   // false (strict — different types)\nconsole.log(5 == \"5\");    // true  (loose — coerces type)\nconsole.log(10 !== 10);   // false\nconsole.log(1 < 2);       // true"
+                        },
+                        {
+                            "title": "Truthy and falsy values",
+                            "body": "In JavaScript, every value has a boolean identity. When used in a boolean context (like an if), values are treated as either truthy or falsy. There are exactly six falsy values: false, 0, '' (empty string), null, undefined, and NaN. Everything else is truthy — including empty arrays and empty objects.",
+                            "code": "// Falsy values\nif (!false) console.log(\"false is falsy\");\nif (!0) console.log(\"0 is falsy\");\nif (!\"\") console.log(\"empty string is falsy\");\nif (!null) console.log(\"null is falsy\");\nif (!undefined) console.log(\"undefined is falsy\");\n\n// Truthy surprises\nif ([]) console.log(\"empty array is truthy!\");\nif ({}) console.log(\"empty object is truthy!\");"
+                        },
+                        {
+                            "title": "Converting to boolean explicitly",
+                            "body": "You can convert any value to its boolean equivalent using Boolean() or the double-NOT trick (!!). This is useful when you need a clean true/false rather than a truthy/falsy value. Understanding these conversions will save you from subtle bugs. For a thorough overview, read MDN's Truthy and Falsy reference and visit the recommended books section for foundational JavaScript resources.",
+                            "code": "console.log(Boolean(1));        // true\nconsole.log(Boolean(0));        // false\nconsole.log(Boolean(\"hello\"));  // true\nconsole.log(Boolean(\"\"));       // false\n\n// Double-NOT shorthand\nconsole.log(!!\"text\");  // true\nconsole.log(!!0);       // false"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-operators",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Operators & Expressions",
+                    "description": "Learn the essential JavaScript operators — assignment, comparison, logical, and the handy ternary operator.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Assignment operators",
+                            "body": "The basic assignment operator is =. JavaScript also has compound assignment operators that combine an operation with assignment. These are shorthand — they perform the operation and assign the result in one step. They work with arithmetic and even string concatenation.",
+                            "code": "let x = 10;\nx += 5;  // x = x + 5 → 15\nx -= 3;  // x = x - 3 → 12\nx *= 2;  // x = x * 2 → 24\nx /= 4;  // x = x / 4 → 6\nx %= 4;  // x = x % 4 → 2\n\nconsole.log(x); // 2"
+                        },
+                        {
+                            "title": "Equality: == vs. ===",
+                            "body": "JavaScript has two equality operators. Loose equality (==) converts types before comparing, which leads to surprising results. Strict equality (===) checks both value and type with no conversion. Always use === and !== to avoid unexpected type coercion bugs.",
+                            "code": "console.log(1 == \"1\");    // true  (loose: string → number)\nconsole.log(1 === \"1\");   // false (strict: different types)\nconsole.log(null == undefined);  // true  (loose: special rule)\nconsole.log(null === undefined); // false (strict: different types)\nconsole.log(0 == false);  // true  (loose)\nconsole.log(0 === false); // false (strict)"
+                        },
+                        {
+                            "title": "Logical operators",
+                            "body": "The three logical operators are AND (&&), OR (||), and NOT (!). AND returns the first falsy value or the last value if all are truthy. OR returns the first truthy value or the last value if all are falsy. NOT flips a value's truthiness. These operators short-circuit, meaning they stop evaluating as soon as the result is determined.",
+                            "code": "console.log(true && \"hello\");  // \"hello\" (both truthy → last value)\nconsole.log(false && \"hello\"); // false   (short-circuits)\nconsole.log(\"\" || \"default\");  // \"default\" (first truthy)\nconsole.log(\"hi\" || \"default\"); // \"hi\"\n\nconsole.log(!true);   // false\nconsole.log(!0);      // true"
+                        },
+                        {
+                            "title": "The ternary operator",
+                            "body": "The ternary operator is a compact if/else on a single line. The syntax is: condition ? valueIfTrue : valueIfFalse. It is an expression, so it can be used inside assignments, template literals, or function arguments. Keep ternaries simple — if the logic is complex, use a regular if/else instead. For a complete operator reference, see MDN's Expressions and Operators page and visit the recommended books section for structured learning materials.",
+                            "code": "const age = 20;\nconst label = age >= 18 ? \"adult\" : \"minor\";\nconsole.log(label); // \"adult\"\n\nconst score = 85;\nconsole.log(`Grade: ${score >= 90 ? \"A\" : \"B or below\"}`);"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-conditionals",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Conditionals: if, else, switch",
+                    "description": "Control the flow of your programs by making decisions with if statements and switch blocks.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "The if statement",
+                            "body": "The if statement runs a block of code only when a condition is true. The condition goes inside parentheses and the code to execute goes inside curly braces. If the condition is falsy, the block is skipped entirely.",
+                            "code": "const temperature = 35;\n\nif (temperature > 30) {\n  console.log(\"It's hot outside!\");\n}\n// Output: It's hot outside!"
+                        },
+                        {
+                            "title": "if...else and else if",
+                            "body": "Add an else block to handle the case when the condition is false. Use else if to test additional conditions in sequence. JavaScript evaluates each condition from top to bottom and runs only the first matching block.",
+                            "code": "const score = 75;\n\nif (score >= 90) {\n  console.log(\"A\");\n} else if (score >= 80) {\n  console.log(\"B\");\n} else if (score >= 70) {\n  console.log(\"C\");\n} else {\n  console.log(\"Needs improvement\");\n}\n// Output: C"
+                        },
+                        {
+                            "title": "The switch statement",
+                            "body": "switch is useful when you are comparing a single value against many possible matches. Each case is checked with strict equality (===). Always include break to prevent fall-through, and add a default case to handle unexpected values.",
+                            "code": "const day = \"Monday\";\n\nswitch (day) {\n  case \"Monday\":\n    console.log(\"Start of the work week\");\n    break;\n  case \"Friday\":\n    console.log(\"Almost weekend!\");\n    break;\n  case \"Saturday\":\n  case \"Sunday\":\n    console.log(\"Weekend!\");\n    break;\n  default:\n    console.log(\"Midweek\");\n}"
+                        },
+                        {
+                            "title": "Choosing between if and switch",
+                            "body": "Use if/else when you need to evaluate different expressions or ranges (like score >= 90). Use switch when you are matching one variable against a set of exact values. Both achieve the same goal — pick the one that makes your code clearer. For more patterns and edge cases, see MDN's control flow documentation and visit the recommended books section for practical examples and exercises.",
+                            "code": "// Range check — if/else is natural\nconst age = 15;\nif (age < 13) {\n  console.log(\"child\");\n} else if (age < 18) {\n  console.log(\"teenager\");\n} else {\n  console.log(\"adult\");\n}\n// Output: teenager"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-for-loops",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "For Loops",
+                    "description": "Repeat actions efficiently using JavaScript's for loop and the modern for...of loop.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "The classic for loop",
+                            "body": "The for loop has three parts separated by semicolons: initialization, condition, and update. The initialization runs once before the loop starts. The condition is checked before each iteration — if false, the loop stops. The update runs after each iteration.",
+                            "code": "for (let i = 0; i < 5; i++) {\n  console.log(i);\n}\n// Output: 0, 1, 2, 3, 4"
+                        },
+                        {
+                            "title": "Looping through arrays by index",
+                            "body": "A common use of the for loop is iterating over an array using its index. The loop counter starts at 0 (arrays are zero-indexed) and runs while it is less than the array's length. This gives you access to both the index and the element.",
+                            "code": "const fruits = [\"apple\", \"banana\", \"cherry\"];\n\nfor (let i = 0; i < fruits.length; i++) {\n  console.log(`${i}: ${fruits[i]}`);\n}\n// 0: apple\n// 1: banana\n// 2: cherry"
+                        },
+                        {
+                            "title": "for...of — the modern way",
+                            "body": "The for...of loop iterates directly over the values of an iterable (arrays, strings, etc.). You don't need to manage an index — it simply gives you each element one at a time. Use for...of when you don't need the index, and the classic for loop when you do.",
+                            "code": "const colors = [\"red\", \"green\", \"blue\"];\n\nfor (const color of colors) {\n  console.log(color);\n}\n// red\n// green\n// blue\n\n// Works with strings too\nfor (const char of \"Hi!\") {\n  console.log(char);\n}\n// H, i, !"
+                        },
+                        {
+                            "title": "Nested for loops",
+                            "body": "You can place one loop inside another to work with multi-dimensional data or generate combinations. The inner loop completes all its iterations for each single iteration of the outer loop. Be mindful of performance — nested loops multiply the number of iterations. For advanced looping patterns and performance tips, explore MDN's Loops and iteration guide and visit the recommended books section for hands-on practice problems.",
+                            "code": "for (let row = 1; row <= 3; row++) {\n  let line = \"\";\n  for (let col = 1; col <= 3; col++) {\n    line += `(${row},${col}) `;\n  }\n  console.log(line);\n}\n// (1,1) (1,2) (1,3)\n// (2,1) (2,2) (2,3)\n// (3,1) (3,2) (3,3)"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-while-loops",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "While & Do-While Loops",
+                    "description": "Learn when to use while and do-while loops, and how to control loop execution with break and continue.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "The while loop",
+                            "body": "A while loop repeats a block of code as long as its condition remains true. The condition is checked before each iteration, so if it starts as false the body never runs. Make sure something inside the loop eventually makes the condition false, or you'll get an infinite loop.",
+                            "code": "let count = 0;\n\nwhile (count < 5) {\n  console.log(count);\n  count++;\n}\n// Output: 0, 1, 2, 3, 4"
+                        },
+                        {
+                            "title": "The do...while loop",
+                            "body": "A do...while loop is like while, but the condition is checked after the body runs. This guarantees the body executes at least once. It is useful when you need to perform an action before deciding whether to repeat it.",
+                            "code": "let num = 10;\n\ndo {\n  console.log(num);\n  num += 10;\n} while (num <= 30);\n// Output: 10, 20, 30"
+                        },
+                        {
+                            "title": "break and continue",
+                            "body": "The break statement exits a loop immediately, no matter what the condition says. The continue statement skips the rest of the current iteration and jumps to the next one. Both work in for, while, and do...while loops.",
+                            "code": "// break — stop at 3\nfor (let i = 0; i < 10; i++) {\n  if (i === 3) break;\n  console.log(i);\n}\n// Output: 0, 1, 2\n\n// continue — skip even numbers\nfor (let i = 0; i < 6; i++) {\n  if (i % 2 === 0) continue;\n  console.log(i);\n}\n// Output: 1, 3, 5"
+                        },
+                        {
+                            "title": "Avoiding infinite loops",
+                            "body": "An infinite loop happens when the condition never becomes false. Common causes include forgetting to update the loop variable, or accidentally writing a condition that is always true. If your program freezes, an infinite loop is likely the culprit — in the browser console you can press Ctrl+C or close the tab to stop it. For more loop patterns and best practices, review MDN's Loops and iteration reference and visit the recommended books section for guided exercises.",
+                            "code": "// BAD — infinite loop (don't run this!)\n// let x = 1;\n// while (x > 0) { x++; } // x only grows!\n\n// GOOD — condition eventually becomes false\nlet x = 10;\nwhile (x > 0) {\n  console.log(x);\n  x -= 3;\n}\n// Output: 10, 7, 4, 1"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-functions",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Writing Your First Functions",
+                    "description": "Learn how to create reusable blocks of code with function declarations, expressions, and arrow functions.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "Function declarations",
+                            "body": "A function declaration defines a named, reusable block of code. You declare it with the function keyword, a name, parentheses for parameters, and curly braces for the body. Call the function by its name followed by parentheses. Declared functions are hoisted, meaning you can call them before they appear in your code.",
+                            "code": "function greet(name) {\n  console.log(`Hello, ${name}!`);\n}\n\ngreet(\"Alice\"); // Hello, Alice!\ngreet(\"Bob\");   // Hello, Bob!"
+                        },
+                        {
+                            "title": "Parameters and return values",
+                            "body": "Parameters are placeholders listed in the function definition. Arguments are the actual values you pass when calling. The return statement sends a value back to the caller and stops the function. If there is no return, the function returns undefined by default.",
+                            "code": "function add(a, b) {\n  return a + b;\n}\n\nconst sum = add(3, 7);\nconsole.log(sum); // 10\n\nfunction noReturn() {\n  console.log(\"I run but return nothing\");\n}\nconsole.log(noReturn()); // undefined"
+                        },
+                        {
+                            "title": "Arrow functions",
+                            "body": "Arrow functions are a shorter syntax introduced in ES6. They use => instead of the function keyword. If the body is a single expression, you can omit the curly braces and the return is implicit. Arrow functions are especially popular for short callbacks and inline logic.",
+                            "code": "// Regular function\nconst square = function (n) {\n  return n * n;\n};\n\n// Arrow function (concise)\nconst squareArrow = (n) => n * n;\n\nconsole.log(square(4));      // 16\nconsole.log(squareArrow(4)); // 16\n\n// Arrow with multiple statements\nconst describe = (name) => {\n  const upper = name.toUpperCase();\n  return `Name: ${upper}`;\n};"
+                        },
+                        {
+                            "title": "Default parameters",
+                            "body": "You can give parameters default values that kick in when no argument is passed. This prevents undefined from sneaking into your logic. Defaults are defined with = in the parameter list. For a complete tour of functions, including rest parameters and closures, read MDN's Functions guide and visit the recommended books section for structured practice.",
+                            "code": "function greet(name = \"stranger\") {\n  return `Hello, ${name}!`;\n}\n\nconsole.log(greet(\"Alice\")); // Hello, Alice!\nconsole.log(greet());        // Hello, stranger!"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-scope",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Scope & Block Scoping",
+                    "description": "Understand where variables live and why scope matters for writing predictable JavaScript code.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "What is scope?",
+                            "body": "Scope determines where a variable is accessible in your code. Think of scope as a boundary — a variable declared inside a boundary is invisible outside it. JavaScript has three main scope levels: global, function, and block. Understanding scope helps you avoid naming conflicts and unexpected bugs.",
+                            "code": "const global = \"I am everywhere\";\n\nfunction example() {\n  const local = \"I am only in this function\";\n  console.log(global); // works\n  console.log(local);  // works\n}\n\nexample();\n// console.log(local); // ReferenceError!"
+                        },
+                        {
+                            "title": "Global scope",
+                            "body": "A variable declared outside any function or block lives in the global scope. It can be accessed from anywhere in your code. While convenient, too many global variables make code hard to maintain and can cause naming collisions. Keep globals to a minimum.",
+                            "code": "const appName = \"MyApp\"; // global\n\nfunction printApp() {\n  console.log(appName); // accessible\n}\n\nprintApp(); // MyApp\nconsole.log(appName); // MyApp"
+                        },
+                        {
+                            "title": "Function scope vs. block scope",
+                            "body": "Variables declared with var are function-scoped — they are visible throughout the entire function, even before their declaration (due to hoisting). Variables declared with let and const are block-scoped — they exist only within the nearest set of curly braces. Block scoping is more predictable and is one of the main reasons to prefer let and const.",
+                            "code": "function demo() {\n  if (true) {\n    var a = 1;   // function-scoped\n    let b = 2;   // block-scoped\n    const c = 3; // block-scoped\n  }\n  console.log(a); // 1 (var leaks out of the block)\n  // console.log(b); // ReferenceError\n  // console.log(c); // ReferenceError\n}\n\ndemo();"
+                        },
+                        {
+                            "title": "The scope chain",
+                            "body": "When JavaScript looks up a variable, it starts in the current scope and moves outward through each enclosing scope until it finds the variable or reaches the global scope. This lookup path is called the scope chain. Inner functions can access variables from outer functions, but not the other way around. For a deep understanding of scope, closures, and hoisting, explore MDN's guide on Closures and visit the recommended books section for thorough explanations with visual examples.",
+                            "code": "const outer = \"outer\";\n\nfunction parent() {\n  const middle = \"middle\";\n\n  function child() {\n    const inner = \"inner\";\n    console.log(inner);  // \"inner\"  (own scope)\n    console.log(middle); // \"middle\" (parent scope)\n    console.log(outer);  // \"outer\"  (global scope)\n  }\n\n  child();\n}\n\nparent();"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-arrays-intro",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Introduction to Arrays",
+                    "description": "Store and work with ordered collections of data using JavaScript arrays.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "Creating arrays",
+                            "body": "An array is an ordered list of values. You create one with square brackets and separate items with commas. Arrays can hold any mix of types — strings, numbers, booleans, even other arrays. The .length property tells you how many items the array contains.",
+                            "code": "const fruits = [\"apple\", \"banana\", \"cherry\"];\nconst mixed = [1, \"two\", true, null];\n\nconsole.log(fruits.length); // 3\nconsole.log(mixed.length);  // 4"
+                        },
+                        {
+                            "title": "Accessing and modifying elements",
+                            "body": "Array elements are accessed by their index, starting at 0. Use bracket notation to read or update a value at a specific position. Accessing an index that doesn't exist returns undefined rather than an error.",
+                            "code": "const colors = [\"red\", \"green\", \"blue\"];\n\nconsole.log(colors[0]); // \"red\"\nconsole.log(colors[2]); // \"blue\"\nconsole.log(colors[5]); // undefined\n\ncolors[1] = \"yellow\";\nconsole.log(colors); // [\"red\", \"yellow\", \"blue\"]"
+                        },
+                        {
+                            "title": "Common array methods",
+                            "body": "Arrays come with powerful built-in methods. Use push() to add to the end, pop() to remove from the end, unshift() to add to the front, and shift() to remove from the front. The includes() method checks if a value exists, and indexOf() returns its position (or -1 if not found).",
+                            "code": "const nums = [1, 2, 3];\n\nnums.push(4);       // [1, 2, 3, 4]\nnums.unshift(0);    // [0, 1, 2, 3, 4]\nnums.pop();         // [0, 1, 2, 3]\nnums.shift();       // [1, 2, 3]\n\nconsole.log(nums.includes(2));  // true\nconsole.log(nums.indexOf(3));   // 2\nconsole.log(nums.indexOf(99));  // -1"
+                        },
+                        {
+                            "title": "Iterating over arrays",
+                            "body": "You can loop over an array with for, for...of, or the forEach method. forEach calls a function once for each element and is a clean, readable option for simple iterations. As your skills grow, you'll also learn map, filter, and reduce. For a full reference of array methods, consult MDN's Array documentation and visit the recommended books section for exercises that build real muscle memory.",
+                            "code": "const pets = [\"cat\", \"dog\", \"fish\"];\n\n// for...of\nfor (const pet of pets) {\n  console.log(pet);\n}\n\n// forEach\npets.forEach((pet, index) => {\n  console.log(`${index}: ${pet}`);\n});\n// 0: cat\n// 1: dog\n// 2: fish"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-objects-intro",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Introduction to Objects",
+                    "description": "Learn how to group related data into key-value pairs with JavaScript objects.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "Creating objects",
+                            "body": "An object is a collection of key-value pairs wrapped in curly braces. Keys (also called properties) are strings (or Symbols), and values can be anything — strings, numbers, arrays, even other objects. Objects let you group related data under one name.",
+                            "code": "const person = {\n  name: \"Alice\",\n  age: 30,\n  hobbies: [\"reading\", \"coding\"]\n};\n\nconsole.log(person);"
+                        },
+                        {
+                            "title": "Accessing properties",
+                            "body": "There are two ways to read a property: dot notation and bracket notation. Dot notation is cleaner for known, fixed property names. Bracket notation is required when the key is stored in a variable or contains special characters like spaces.",
+                            "code": "const car = { brand: \"Toyota\", year: 2022 };\n\n// Dot notation\nconsole.log(car.brand); // \"Toyota\"\n\n// Bracket notation\nconsole.log(car[\"year\"]); // 2022\n\n// Dynamic key\nconst key = \"brand\";\nconsole.log(car[key]); // \"Toyota\""
+                        },
+                        {
+                            "title": "Adding, updating, and deleting properties",
+                            "body": "Objects are mutable — you can add new properties, change existing ones, or remove them entirely. Use assignment to add or update. Use the delete operator to remove a property. You can also check whether a property exists using the in operator.",
+                            "code": "const user = { name: \"Bob\" };\n\n// Add\nuser.email = \"bob@example.com\";\n\n// Update\nuser.name = \"Robert\";\n\n// Delete\ndelete user.email;\n\nconsole.log(user);            // { name: \"Robert\" }\nconsole.log(\"name\" in user);   // true\nconsole.log(\"email\" in user);  // false"
+                        },
+                        {
+                            "title": "Looping through an object",
+                            "body": "Use a for...in loop to iterate over an object's keys, or use Object.keys(), Object.values(), and Object.entries() for more control. Object.entries() is especially handy because it gives you both the key and value in each iteration. For more on objects, prototypes, and methods, dive into MDN's Working with Objects guide and visit the recommended books section for project-based learning resources.",
+                            "code": "const scores = { math: 95, english: 88, science: 92 };\n\n// for...in\nfor (const subject in scores) {\n  console.log(`${subject}: ${scores[subject]}`);\n}\n\n// Object.entries\nfor (const [key, value] of Object.entries(scores)) {\n  console.log(`${key} → ${value}`);\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-console",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Debugging with console",
+                    "description": "Go beyond console.log — learn the full suite of console methods to debug your JavaScript faster.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "console.log — your best friend",
+                            "body": "console.log() prints values to the console and is the most common debugging tool. You can pass multiple arguments separated by commas, and they will be printed on the same line. Use it liberally while developing, then remove or reduce logs before shipping code.",
+                            "code": "console.log(\"Hello!\");\nconsole.log(\"x =\", 10, \"y =\", 20);\n\nconst user = { name: \"Alice\", age: 30 };\nconsole.log(\"User:\", user);"
+                        },
+                        {
+                            "title": "console.warn and console.error",
+                            "body": "console.warn() displays a yellow warning message, and console.error() displays a red error message. They work just like console.log but visually stand out in the browser's DevTools. Use warn for things that are not ideal but not broken, and error for actual failures.",
+                            "code": "console.warn(\"Deprecated function called\");\nconsole.error(\"Failed to load data!\");\n\n// They accept multiple arguments too\nconst code = 404;\nconsole.error(\"Status:\", code, \"— Not Found\");"
+                        },
+                        {
+                            "title": "console.table and console.dir",
+                            "body": "console.table() prints arrays or objects as a formatted table — it makes structured data much easier to scan. console.dir() shows an interactive, expandable tree view of an object's properties. Both are incredibly useful when inspecting complex data during development.",
+                            "code": "const users = [\n  { name: \"Alice\", age: 30 },\n  { name: \"Bob\", age: 25 },\n  { name: \"Charlie\", age: 35 }\n];\n\nconsole.table(users);\n// Displays a neat table with columns: (index), name, age\n\nconsole.dir(document.body); // tree view in browsers"
+                        },
+                        {
+                            "title": "Timing and grouping",
+                            "body": "console.time() and console.timeEnd() measure how long a block of code takes to run — pass the same label to both. console.group() and console.groupEnd() let you visually nest related logs for cleaner output. Mastering these tools will make your debugging sessions far more productive. For the full list of console methods and advanced debugging techniques, check out MDN's Console API reference and visit the recommended books section for debugging-focused learning resources.",
+                            "code": "console.time(\"loop\");\nfor (let i = 0; i < 100000; i++) {}\nconsole.timeEnd(\"loop\"); // loop: 1.23ms\n\nconsole.group(\"User Details\");\nconsole.log(\"Name: Alice\");\nconsole.log(\"Age: 30\");\nconsole.groupEnd();"
                         }
                     ]
                 }
@@ -63,8 +484,428 @@
                         },
                         {
                             "title": "Spread and destructuring",
-                            "body": "Spread (...) copies or merges arrays. Destructuring pulls values into named variables.",
+                            "body": "Spread (...) copies or merges arrays. Destructuring pulls values into named variables. For a deeper dive into array methods, explore MDN's Array reference and visit the recommended books for more practice.",
                             "code": "const a = [1, 2];\nconst b = [...a, 3, 4]; // [1, 2, 3, 4]\nconst [first, second] = b;"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-beginner-objects",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Objects In Depth",
+                    "description": "Master JavaScript objects — the building blocks for organizing and structuring your data.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Creating objects",
+                            "body": "Objects store data as key-value pairs. Keys are strings (or Symbols), and values can be any type. You can create them with object literals.",
+                            "code": "const user = {\n  name: \"Alice\",\n  age: 28,\n  isAdmin: false\n};"
+                        },
+                        {
+                            "title": "Accessing and modifying properties",
+                            "body": "Use dot notation for known keys and bracket notation for dynamic keys. You can add, change, or delete properties at any time.",
+                            "code": "console.log(user.name);        // \"Alice\"\nconsole.log(user[\"age\"]);      // 28\nuser.email = \"alice@test.com\"; // add\ndelete user.isAdmin;           // remove"
+                        },
+                        {
+                            "title": "Computed properties and shorthand",
+                            "body": "ES6 shorthand lets you skip repeating variable names. Computed property names use an expression inside brackets as the key.",
+                            "code": "const key = \"score\";\nconst value = 42;\nconst obj = { [key]: value, value };\n// { score: 42, value: 42 }"
+                        },
+                        {
+                            "title": "Object static methods",
+                            "body": "Object.keys, Object.values, and Object.entries let you iterate over an object's contents easily. Object.assign and the spread operator help you merge objects. Check out MDN's Object reference for the full list of static methods, and the recommended books offer great exercises to solidify these concepts.",
+                            "code": "const cat = { name: \"Milo\", age: 3 };\nObject.keys(cat);    // [\"name\", \"age\"]\nObject.values(cat);  // [\"Milo\", 3]\nObject.entries(cat); // [[\"name\",\"Milo\"],[\"age\",3]]"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-beginner-destructuring",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Destructuring & Spread",
+                    "description": "Learn how to unpack values from arrays and objects into distinct variables with elegant ES6 syntax.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "Object destructuring",
+                            "body": "Destructuring extracts properties from an object into standalone variables. You can also rename them and set default values.",
+                            "code": "const { name, age, role = \"user\" } = { name: \"Bo\", age: 25 };\nconsole.log(name); // \"Bo\"\nconsole.log(role); // \"user\""
+                        },
+                        {
+                            "title": "Array destructuring",
+                            "body": "Array destructuring assigns elements by position. You can skip elements with empty commas and use rest syntax to collect the remainder.",
+                            "code": "const [first, , third] = [10, 20, 30];\nconsole.log(first); // 10\nconsole.log(third); // 30\nconst [head, ...tail] = [1, 2, 3, 4];\nconsole.log(tail);  // [2, 3, 4]"
+                        },
+                        {
+                            "title": "Spread operator",
+                            "body": "The spread operator (...) expands an iterable into individual elements. It's perfect for cloning arrays, merging objects, and passing arguments.",
+                            "code": "const arr1 = [1, 2];\nconst arr2 = [...arr1, 3]; // [1, 2, 3]\n\nconst defaults = { theme: \"light\", lang: \"en\" };\nconst prefs = { ...defaults, lang: \"fr\" };\n// { theme: \"light\", lang: \"fr\" }"
+                        },
+                        {
+                            "title": "Rest parameters in functions",
+                            "body": "Rest parameters gather remaining arguments into a real array, replacing the old arguments object. This pairs beautifully with destructuring in function signatures. For more patterns and edge cases, MDN's destructuring assignment guide is an excellent deep dive, and the recommended books walk through dozens of real-world examples.",
+                            "code": "function sum(...nums) {\n  return nums.reduce((a, b) => a + b, 0);\n}\nconsole.log(sum(1, 2, 3, 4)); // 10\n\nfunction greet({ name, greeting = \"Hello\" }) {\n  return `${greeting}, ${name}!`;\n}\ngreet({ name: \"Kai\" }); // \"Hello, Kai!\""
+                        }
+                    ]
+                },
+                {
+                    "id": "js-beginner-string-methods",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "String Methods Toolbox",
+                    "description": "Explore the most useful string methods for searching, extracting, and transforming text in JavaScript.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "Searching strings",
+                            "body": "includes checks for a substring and returns a boolean. indexOf returns the position or -1 if not found. startsWith and endsWith check boundaries.",
+                            "code": "const msg = \"Hello, world!\";\nmsg.includes(\"world\");    // true\nmsg.indexOf(\"world\");     // 7\nmsg.startsWith(\"Hello\");  // true\nmsg.endsWith(\"!\");        // true"
+                        },
+                        {
+                            "title": "Extracting substrings",
+                            "body": "slice extracts part of a string by start and end index. It supports negative indices to count from the end. split breaks a string into an array using a separator.",
+                            "code": "const str = \"JavaScript\";\nstr.slice(0, 4);  // \"Java\"\nstr.slice(-6);    // \"Script\"\n\"a-b-c\".split(\"-\"); // [\"a\", \"b\", \"c\"]"
+                        },
+                        {
+                            "title": "Transforming strings",
+                            "body": "toUpperCase and toLowerCase change casing. trim removes whitespace from both ends. replace swaps the first match; replaceAll swaps every match.",
+                            "code": "\"  hello  \".trim();              // \"hello\"\n\"hello\".toUpperCase();           // \"HELLO\"\n\"aabbcc\".replace(\"b\", \"X\");      // \"aaXbcc\"\n\"aabbcc\".replaceAll(\"b\", \"X\");   // \"aaXXcc\""
+                        },
+                        {
+                            "title": "Template literals revisited",
+                            "body": "Template literals use backticks and ${} for interpolation. They support multi-line strings and expression evaluation inside the braces. For the complete list of string methods, MDN's String reference is your go-to resource, and the recommended books provide practice challenges to master text manipulation.",
+                            "code": "const name = \"Zara\";\nconst score = 95;\nconsole.log(`${name} scored ${score}!`);\n// \"Zara scored 95!\"\n\nconst multi = `Line one\nLine two`;"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-beginner-arrow-functions",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Arrow Functions",
+                    "description": "Understand arrow function syntax, implicit returns, and how they differ from traditional functions.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Arrow syntax basics",
+                            "body": "Arrow functions provide a shorter syntax for writing functions. They use => instead of the function keyword.",
+                            "code": "// Traditional\nfunction add(a, b) { return a + b; }\n\n// Arrow\nconst addArrow = (a, b) => { return a + b; };"
+                        },
+                        {
+                            "title": "Implicit return",
+                            "body": "When the function body is a single expression, you can omit the braces and the return keyword. The expression's value is returned automatically.",
+                            "code": "const double = n => n * 2;\nconst greet = name => `Hello, ${name}!`;\nconsole.log(double(5));       // 10\nconsole.log(greet(\"Sam\"));    // \"Hello, Sam!\""
+                        },
+                        {
+                            "title": "Arrow functions and this",
+                            "body": "Arrow functions don't have their own this — they inherit it from the surrounding scope. This makes them ideal for callbacks but unsuitable as object methods that need this to point to the object.",
+                            "code": "const timer = {\n  seconds: 0,\n  start() {\n    setInterval(() => {\n      this.seconds++; // 'this' refers to timer\n    }, 1000);\n  }\n};"
+                        },
+                        {
+                            "title": "When to use arrows",
+                            "body": "Use arrow functions for short callbacks, array methods, and anywhere you want lexical this. Stick with regular functions for object methods and constructors. For a thorough comparison between function types, MDN's arrow function expressions page covers all the nuances, and the recommended books include side-by-side examples that make the differences crystal clear.",
+                            "code": "const nums = [3, 1, 4, 1, 5];\nconst sorted = nums.sort((a, b) => a - b);\nconst big = nums.filter(n => n > 3);"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-beginner-callbacks",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Callbacks & Higher-Order Functions",
+                    "description": "Learn how functions can be passed as arguments and returned from other functions to create powerful abstractions.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "Functions as values",
+                            "body": "In JavaScript, functions are first-class values. You can assign them to variables, store them in arrays, and pass them to other functions just like any other data.",
+                            "code": "const sayHi = function() { return \"Hi!\"; };\nconst fns = [sayHi, n => n * 2];\nconsole.log(fns[0]()); // \"Hi!\"\nconsole.log(fns[1](5)); // 10"
+                        },
+                        {
+                            "title": "What is a callback",
+                            "body": "A callback is a function you pass into another function to be called later. The receiving function decides when and how to invoke it.",
+                            "code": "function doMath(a, b, operation) {\n  return operation(a, b);\n}\nconst result = doMath(4, 5, (x, y) => x + y);\nconsole.log(result); // 9"
+                        },
+                        {
+                            "title": "Writing higher-order functions",
+                            "body": "A higher-order function either takes a function as an argument, returns a function, or both. You've already used some — map, filter, and reduce are all higher-order functions.",
+                            "code": "function repeat(n, action) {\n  for (let i = 0; i < n; i++) action(i);\n}\nrepeat(3, i => console.log(`Step ${i}`));\n// Step 0\n// Step 1\n// Step 2"
+                        },
+                        {
+                            "title": "Returning functions",
+                            "body": "Functions that return other functions enable patterns like closures and factory functions. The returned function remembers variables from its parent scope. To explore advanced patterns like currying and composition, MDN's guide on closures is invaluable, and the recommended books dedicate entire chapters to functional programming techniques.",
+                            "code": "function multiplier(factor) {\n  return num => num * factor;\n}\nconst triple = multiplier(3);\nconsole.log(triple(7));  // 21\nconsole.log(triple(10)); // 30"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-beginner-dom-basics",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "DOM Basics",
+                    "description": "Discover how to select, read, and modify HTML elements using the Document Object Model.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "Selecting elements",
+                            "body": "querySelector returns the first matching element; querySelectorAll returns a NodeList of all matches. Both accept CSS selectors.",
+                            "code": "const heading = document.querySelector(\"h1\");\nconst items = document.querySelectorAll(\".item\");\nconst btn = document.getElementById(\"submitBtn\");"
+                        },
+                        {
+                            "title": "Reading and changing content",
+                            "body": "textContent gets or sets the text inside an element. innerHTML gets or sets the HTML markup. Use textContent when you don't need to parse HTML — it's safer and faster.",
+                            "code": "const el = document.querySelector(\"#greeting\");\nconsole.log(el.textContent); // reads text\nel.textContent = \"Hello!\";   // sets text"
+                        },
+                        {
+                            "title": "Changing styles and classes",
+                            "body": "classList provides add, remove, toggle, and contains methods for managing CSS classes. The style property lets you set inline styles directly.",
+                            "code": "const box = document.querySelector(\".box\");\nbox.classList.add(\"active\");\nbox.classList.toggle(\"hidden\");\nbox.style.backgroundColor = \"coral\";"
+                        },
+                        {
+                            "title": "Creating and removing elements",
+                            "body": "createElement makes a new element, appendChild adds it to the DOM, and remove detaches it. You can build entire UIs programmatically this way. For the complete DOM API, MDN's DOM documentation is the definitive reference, and the recommended books provide hands-on projects that bring these methods to life.",
+                            "code": "const li = document.createElement(\"li\");\nli.textContent = \"New item\";\ndocument.querySelector(\"ul\").appendChild(li);\n\n// Remove an element\nli.remove();"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-beginner-events",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Handling Events",
+                    "description": "Respond to user interactions like clicks, key presses, and form submissions with JavaScript event handling.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "addEventListener",
+                            "body": "addEventListener attaches a handler function that runs when the specified event fires. Always prefer it over inline on-attributes for cleaner separation of HTML and JS.",
+                            "code": "const btn = document.querySelector(\"button\");\nbtn.addEventListener(\"click\", () => {\n  console.log(\"Button clicked!\");\n});"
+                        },
+                        {
+                            "title": "The event object",
+                            "body": "Every handler receives an event object with details about what happened. It includes properties like target (the element that fired the event), type, and methods like preventDefault.",
+                            "code": "document.querySelector(\"form\").addEventListener(\"submit\", e => {\n  e.preventDefault(); // stop page reload\n  console.log(\"Form submitted!\");\n  console.log(e.target);  // the <form> element\n});"
+                        },
+                        {
+                            "title": "Event delegation",
+                            "body": "Instead of adding a listener to every child, add one to a parent and use event.target to determine which child was clicked. This is more efficient, especially with dynamic lists.",
+                            "code": "document.querySelector(\"ul\").addEventListener(\"click\", e => {\n  if (e.target.tagName === \"LI\") {\n    console.log(\"Clicked:\", e.target.textContent);\n  }\n});"
+                        },
+                        {
+                            "title": "Removing listeners and common events",
+                            "body": "To remove a listener, pass the same function reference to removeEventListener. Common events include click, input, keydown, mouseover, and scroll. MDN's event reference catalogs every event type with browser support tables, and the recommended books feature interactive projects that give you plenty of hands-on practice.",
+                            "code": "function handleClick() {\n  console.log(\"Clicked once!\");\n  btn.removeEventListener(\"click\", handleClick);\n}\nconst btn = document.querySelector(\"button\");\nbtn.addEventListener(\"click\", handleClick);"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-beginner-error-handling",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Error Handling with try/catch",
+                    "description": "Write resilient code by catching and managing errors gracefully with try, catch, and finally.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "try/catch basics",
+                            "body": "Wrap risky code in a try block. If an error is thrown, execution jumps to catch where you can handle it without crashing your program.",
+                            "code": "try {\n  const data = JSON.parse(\"not valid json\");\n} catch (error) {\n  console.log(\"Parsing failed:\", error.message);\n}\n// \"Parsing failed: Unexpected token 'o'...\""
+                        },
+                        {
+                            "title": "The Error object",
+                            "body": "Errors have a message property describing what went wrong and a name property like TypeError or RangeError. The stack property shows where the error originated.",
+                            "code": "try {\n  null.toString();\n} catch (e) {\n  console.log(e.name);    // \"TypeError\"\n  console.log(e.message); // \"Cannot read properties of null\"\n}"
+                        },
+                        {
+                            "title": "Throwing custom errors",
+                            "body": "Use throw to signal an error when a condition isn't met. You can throw any value, but Error objects are preferred because they include a stack trace.",
+                            "code": "function divide(a, b) {\n  if (b === 0) throw new Error(\"Cannot divide by zero\");\n  return a / b;\n}\ntry {\n  divide(10, 0);\n} catch (e) {\n  console.log(e.message); // \"Cannot divide by zero\"\n}"
+                        },
+                        {
+                            "title": "finally and best practices",
+                            "body": "The finally block runs whether or not an error occurred — perfect for cleanup like closing connections. Keep try blocks small and only catch errors you can meaningfully handle. MDN's error handling guide explains every built-in error type in detail, and the recommended books offer patterns for building robust error-handling strategies in real applications.",
+                            "code": "function readFile(path) {\n  let handle;\n  try {\n    handle = open(path);\n    return handle.read();\n  } catch (e) {\n    console.error(\"Read failed:\", e.message);\n    return null;\n  } finally {\n    if (handle) handle.close();\n  }\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-beginner-json",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Working with JSON",
+                    "description": "Parse, create, and manipulate JSON — the universal data format for web APIs and configuration files.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "What is JSON",
+                            "body": "JSON (JavaScript Object Notation) is a lightweight text format for structuring data. It looks like JavaScript objects but only allows strings as keys and supports strings, numbers, booleans, null, arrays, and objects as values.",
+                            "code": "// Valid JSON (note the double-quoted keys)\n// { \"name\": \"Ada\", \"age\": 30, \"languages\": [\"JS\", \"Python\"] }"
+                        },
+                        {
+                            "title": "JSON.parse",
+                            "body": "JSON.parse converts a JSON string into a JavaScript value. It throws a SyntaxError if the input is not valid JSON, so always wrap it in try/catch when parsing untrusted data.",
+                            "code": "const jsonStr = '{\"city\": \"Tokyo\", \"pop\": 14000000}';\nconst obj = JSON.parse(jsonStr);\nconsole.log(obj.city); // \"Tokyo\"\nconsole.log(obj.pop);  // 14000000"
+                        },
+                        {
+                            "title": "JSON.stringify",
+                            "body": "JSON.stringify converts a JavaScript value to a JSON string. Pass a number as the third argument to pretty-print with indentation. Functions and undefined values are silently omitted.",
+                            "code": "const data = { name: \"Ada\", scores: [90, 85] };\nconst json = JSON.stringify(data, null, 2);\nconsole.log(json);\n// {\n//   \"name\": \"Ada\",\n//   \"scores\": [90, 85]\n// }"
+                        },
+                        {
+                            "title": "Deep cloning and practical tips",
+                            "body": "A quick way to deep-clone simple objects is structuredClone, though JSON round-tripping also works for plain data. Be aware that JSON cannot represent Dates, Maps, Sets, or functions. For advanced serialization techniques and custom replacers, MDN's JSON documentation covers every option, and the recommended books include real-world API projects that put JSON skills to work.",
+                            "code": "const original = { a: { b: 1 } };\nconst clone = JSON.parse(JSON.stringify(original));\nclone.a.b = 99;\nconsole.log(original.a.b); // 1 (unaffected)"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-beginner-dates",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Dates & Time",
+                    "description": "Create, read, and manipulate dates and times using JavaScript's built-in Date object.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Creating dates",
+                            "body": "The Date constructor creates date objects. With no arguments it gives the current date and time. You can also pass a date string or individual components (year, month index, day).",
+                            "code": "const now = new Date();\nconst birthday = new Date(\"1995-12-17\");\nconst custom = new Date(2024, 0, 15); // Jan 15, 2024\n// Note: months are 0-indexed (0 = January)"
+                        },
+                        {
+                            "title": "Reading date components",
+                            "body": "Use getter methods to extract parts of a date. getFullYear, getMonth (0-based), getDate, getDay (0 = Sunday), getHours, getMinutes, and getSeconds.",
+                            "code": "const d = new Date(\"2024-06-15T10:30:00\");\nconsole.log(d.getFullYear()); // 2024\nconsole.log(d.getMonth());    // 5 (June)\nconsole.log(d.getDate());     // 15\nconsole.log(d.getDay());      // 6 (Saturday)"
+                        },
+                        {
+                            "title": "Date arithmetic",
+                            "body": "Dates are stored as milliseconds since January 1, 1970. You can subtract two dates to get the difference in milliseconds, then convert to days, hours, or minutes.",
+                            "code": "const start = new Date(\"2024-01-01\");\nconst end = new Date(\"2024-12-31\");\nconst diffMs = end - start;\nconst diffDays = diffMs / (1000 * 60 * 60 * 24);\nconsole.log(diffDays); // 365"
+                        },
+                        {
+                            "title": "Formatting dates",
+                            "body": "toLocaleDateString and toLocaleTimeString format dates according to a locale. Intl.DateTimeFormat gives even more control. Be cautious with date parsing across browsers — always prefer ISO 8601 strings. MDN's Date reference documents every method and locale option, and the recommended books cover libraries like date-fns for more complex date handling.",
+                            "code": "const d = new Date(\"2024-06-15\");\nconsole.log(d.toLocaleDateString(\"en-US\"));\n// \"6/15/2024\"\nconsole.log(d.toLocaleDateString(\"de-DE\"));\n// \"15.6.2024\""
+                        }
+                    ]
+                },
+                {
+                    "id": "js-beginner-math",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "The Math Object",
+                    "description": "Use JavaScript's built-in Math object for rounding, random numbers, and common mathematical operations.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Rounding methods",
+                            "body": "Math.round rounds to the nearest integer. Math.floor always rounds down, and Math.ceil always rounds up. Math.trunc removes the decimal part entirely.",
+                            "code": "Math.round(4.5);  // 5\nMath.round(4.4);  // 4\nMath.floor(4.9);  // 4\nMath.ceil(4.1);   // 5\nMath.trunc(-4.7); // -4"
+                        },
+                        {
+                            "title": "Min, max, and random",
+                            "body": "Math.min and Math.max find the smallest and largest values. Math.random returns a random float between 0 (inclusive) and 1 (exclusive). Combine them to generate random integers in a range.",
+                            "code": "Math.min(3, 1, 7);  // 1\nMath.max(3, 1, 7);  // 7\nMath.random();      // e.g. 0.7342...\n\n// Random integer from 1 to 10\nconst rand = Math.floor(Math.random() * 10) + 1;"
+                        },
+                        {
+                            "title": "Powers, roots, and constants",
+                            "body": "Math.pow raises a base to an exponent (or use the ** operator). Math.sqrt returns the square root. Math.abs gives the absolute value. Math.PI and Math.E are built-in constants.",
+                            "code": "Math.pow(2, 8);    // 256\n2 ** 8;            // 256\nMath.sqrt(144);    // 12\nMath.abs(-42);     // 42\nMath.PI;           // 3.141592653589793"
+                        },
+                        {
+                            "title": "Practical examples",
+                            "body": "Combine Math methods for everyday tasks like clamping values, generating IDs, or computing distances. These patterns come up constantly in UI development and game logic. For a complete list of Math methods including trigonometric functions, MDN's Math reference is comprehensive, and the recommended books include algorithm exercises that put these methods into practice.",
+                            "code": "// Clamp a value between min and max\nfunction clamp(val, min, max) {\n  return Math.min(Math.max(val, min), max);\n}\nconsole.log(clamp(150, 0, 100)); // 100\nconsole.log(clamp(-5, 0, 100));  // 0"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-beginner-sets-maps",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Sets & Maps",
+                    "description": "Go beyond plain objects and arrays with Set for unique values and Map for flexible key-value storage.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Creating and using Sets",
+                            "body": "A Set stores unique values of any type. Duplicates are automatically ignored. Use add, has, delete, and size to manage the collection.",
+                            "code": "const s = new Set([1, 2, 3, 3, 2]);\nconsole.log(s.size); // 3\ns.add(4);\ns.has(2);   // true\ns.delete(1);\nconsole.log([...s]); // [2, 3, 4]"
+                        },
+                        {
+                            "title": "Set operations",
+                            "body": "You can perform union, intersection, and difference operations by combining Sets with spread and filter. These patterns are handy for comparing lists or removing duplicates.",
+                            "code": "const a = new Set([1, 2, 3]);\nconst b = new Set([2, 3, 4]);\n\nconst union = new Set([...a, ...b]);           // {1,2,3,4}\nconst intersection = [...a].filter(x => b.has(x)); // [2,3]\nconst diff = [...a].filter(x => !b.has(x));         // [1]"
+                        },
+                        {
+                            "title": "Creating and using Maps",
+                            "body": "A Map holds key-value pairs where keys can be any type — objects, functions, even NaN. Unlike plain objects, Maps maintain insertion order and have a handy size property.",
+                            "code": "const m = new Map();\nm.set(\"name\", \"Aria\");\nm.set(42, \"answer\");\nconsole.log(m.get(\"name\")); // \"Aria\"\nconsole.log(m.size);        // 2\n\nfor (const [key, val] of m) {\n  console.log(key, val);\n}"
+                        },
+                        {
+                            "title": "When to choose Sets and Maps",
+                            "body": "Use a Set when you need a collection of unique values or want fast lookups. Use a Map when your keys aren't simple strings, or you need guaranteed insertion order. Plain objects are still fine for simple string-keyed data. MDN's Set and Map references detail every method and performance characteristic, and the recommended books contain data-structure challenges that help you choose the right tool for each job.",
+                            "code": "// Counting word frequency with a Map\nconst words = [\"hi\", \"hey\", \"hi\", \"hello\", \"hey\", \"hi\"];\nconst freq = new Map();\nfor (const w of words) {\n  freq.set(w, (freq.get(w) || 0) + 1);\n}\nconsole.log(freq); // Map { 'hi'=>3, 'hey'=>2, 'hello'=>1 }"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-beginner-modules",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Modules: import & export",
+                    "description": "Organize your code into reusable pieces with JavaScript's native ES module system.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "Named exports",
+                            "body": "Named exports let you share multiple values from a file. Each export is identified by its name and must be imported by the same name (or aliased).",
+                            "code": "// math.js\nexport const PI = 3.14159;\nexport function add(a, b) { return a + b; }\nexport function subtract(a, b) { return a - b; }"
+                        },
+                        {
+                            "title": "Default exports",
+                            "body": "A module can have one default export. It's imported without braces and you can name it whatever you like. Default exports are common for classes and main functions.",
+                            "code": "// Logger.js\nexport default class Logger {\n  log(msg) { console.log(`[LOG] ${msg}`); }\n}\n\n// main.js\nimport Logger from \"./Logger.js\";\nconst logger = new Logger();\nlogger.log(\"Started\");"
+                        },
+                        {
+                            "title": "Importing modules",
+                            "body": "Use import { name } for named exports and import name for defaults. You can rename imports with as, and import everything with * as namespace.",
+                            "code": "import { add, subtract as sub } from \"./math.js\";\nimport * as MathUtils from \"./math.js\";\n\nconsole.log(add(2, 3));           // 5\nconsole.log(sub(10, 4));          // 6\nconsole.log(MathUtils.PI);        // 3.14159"
+                        },
+                        {
+                            "title": "Organizing code with modules",
+                            "body": "Group related functions into dedicated files and re-export them through an index file for clean imports. Keep modules focused on a single responsibility. For advanced patterns like dynamic imports and tree shaking, MDN's JavaScript modules guide is a thorough reference, and the recommended books demonstrate module architecture in full-scale projects.",
+                            "code": "// utils/index.js — barrel file\nexport { add, subtract } from \"./math.js\";\nexport { formatDate } from \"./dates.js\";\n\n// app.js\nimport { add, formatDate } from \"./utils/index.js\";"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-beginner-regex",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Regular Expressions Basics",
+                    "description": "Learn to search, match, and replace text patterns using JavaScript regular expressions.",
+                    "estimatedMinutes": 14,
+                    "lessons": [
+                        {
+                            "title": "Creating regex patterns",
+                            "body": "Regular expressions (regex) define search patterns. In JavaScript, create them with literal slashes or the RegExp constructor. Flags like g (global) and i (case-insensitive) modify behavior.",
+                            "code": "const pattern1 = /hello/i;              // literal\nconst pattern2 = new RegExp(\"hello\", \"i\"); // constructor\n// Both match \"hello\", \"Hello\", \"HELLO\", etc."
+                        },
+                        {
+                            "title": "Testing and matching",
+                            "body": "test returns true or false for a match. match returns the matched substrings. matchAll (with the g flag) returns an iterator of all matches with capture group details.",
+                            "code": "const re = /\\d+/g;\nconst str = \"I have 3 cats and 12 fish\";\n\nre.test(str);        // true\nstr.match(/\\d+/g);   // [\"3\", \"12\"]\n\nfor (const m of str.matchAll(/\\d+/g)) {\n  console.log(m[0], \"at index\", m.index);\n}"
+                        },
+                        {
+                            "title": "Character classes and quantifiers",
+                            "body": "Character classes match sets of characters: \\d (digit), \\w (word char), \\s (whitespace), . (any char). Quantifiers control repetition: + (one or more), * (zero or more), ? (optional), {n,m} (range).",
+                            "code": "// Match a US phone number like 555-123-4567\nconst phone = /\\d{3}-\\d{3}-\\d{4}/;\nphone.test(\"555-123-4567\"); // true\n\n// Match words starting with a capital letter\nconst caps = /[A-Z]\\w*/g;\n\"Hello World foo Bar\".match(caps); // [\"Hello\",\"World\",\"Bar\"]"
+                        },
+                        {
+                            "title": "Practical regex patterns",
+                            "body": "Use replace with regex for powerful text transformations. Capture groups (parentheses) let you extract or rearrange parts of a match. Even simple patterns can save dozens of lines of string manipulation code. For the full syntax including lookaheads and named groups, MDN's regular expressions guide is the most complete resource, and the recommended books feature regex challenges that build pattern-matching intuition.",
+                            "code": "// Validate a simple email format\nconst email = /^[\\w.+-]+@[\\w-]+\\.[a-z]{2,}$/i;\nemail.test(\"user@example.com\"); // true\n\n// Swap first and last name\nconst name = \"Doe, Jane\";\nconst swapped = name.replace(/(\\w+), (\\w+)/, \"$2 $1\");\nconsole.log(swapped); // \"Jane Doe\""
                         }
                     ]
                 }
@@ -73,6 +914,66 @@
         {
             "level": "intermediate",
             "topics": [
+                {
+                    "id": "js-intermediate-promises",
+                    "language": "javascript",
+                    "level": "intermediate",
+                    "title": "Promises from Scratch",
+                    "description": "Understand how Promises represent eventual values, chain asynchronous steps, and handle errors gracefully.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Creating a Promise",
+                            "body": "A Promise wraps an asynchronous operation. You pass a function with resolve and reject callbacks to the Promise constructor. Calling resolve fulfills the promise; calling reject fails it.",
+                            "code": "const wait = (ms) => new Promise((resolve) => {\n  setTimeout(() => resolve(ms), ms);\n});\n\nwait(1000).then((ms) => console.log(`Waited ${ms}ms`));"
+                        },
+                        {
+                            "title": "Chaining with .then()",
+                            "body": "Each .then() returns a new Promise, so you can chain transformations. The value returned from one .then() callback becomes the input of the next. This keeps asynchronous code flat instead of nested.",
+                            "code": "fetch('https://api.example.com/user/1')\n  .then((res) => res.json())\n  .then((user) => fetch(`https://api.example.com/posts?userId=${user.id}`))\n  .then((res) => res.json())\n  .then((posts) => console.log(posts));"
+                        },
+                        {
+                            "title": "Error handling with .catch() and .finally()",
+                            "body": "A rejected promise skips subsequent .then() handlers and jumps to the nearest .catch(). Use .finally() for cleanup that must run regardless of outcome, such as hiding a loading spinner.",
+                            "code": "fetchData()\n  .then((data) => process(data))\n  .catch((err) => console.error('Failed:', err.message))\n  .finally(() => console.log('Done — success or failure'));"
+                        },
+                        {
+                            "title": "Promise combinators",
+                            "body": "Promise.all waits for every promise to fulfill (or rejects on the first failure). Promise.race resolves or rejects with whichever promise settles first. Promise.allSettled waits for all to settle regardless of outcome, and Promise.any resolves with the first fulfillment. These combinators let you coordinate concurrent work. For a deep dive, read the Promise section on MDN and consult the recommended books for thorough coverage of async patterns.",
+                            "code": "const [user, posts] = await Promise.all([\n  fetch('/api/user').then(r => r.json()),\n  fetch('/api/posts').then(r => r.json())\n]);\nconsole.log(user, posts);"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-intermediate-async-await",
+                    "language": "javascript",
+                    "level": "intermediate",
+                    "title": "async / await",
+                    "description": "Write asynchronous code that reads like synchronous code using async functions and the await keyword.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "The async keyword",
+                            "body": "Marking a function with async makes it always return a Promise. Any value you return is automatically wrapped in Promise.resolve, and thrown errors become rejections.",
+                            "code": "async function greet() {\n  return 'Hello';\n}\n\ngreet().then(console.log); // Hello"
+                        },
+                        {
+                            "title": "await and sequential execution",
+                            "body": "Inside an async function, await pauses execution until the promise settles, then unwraps its fulfilled value. This lets you write step-by-step logic without .then() chains.",
+                            "code": "async function loadUser(id) {\n  const res = await fetch(`/api/users/${id}`);\n  const user = await res.json();\n  console.log(user.name);\n}\n\nloadUser(1);"
+                        },
+                        {
+                            "title": "Error handling with try / catch",
+                            "body": "Wrap awaited calls in try/catch to handle rejections. This mirrors synchronous error handling, making the control flow easier to follow.",
+                            "code": "async function safeFetch(url) {\n  try {\n    const res = await fetch(url);\n    if (!res.ok) throw new Error(`HTTP ${res.status}`);\n    return await res.json();\n  } catch (err) {\n    console.error('Request failed:', err.message);\n    return null;\n  }\n}"
+                        },
+                        {
+                            "title": "Running tasks in parallel",
+                            "body": "Using await in a loop runs tasks one after another. To run them concurrently, start all promises first and then await them together with Promise.all. This is critical for performance when tasks are independent. For a deep dive, read the async function reference on MDN and visit the recommended books for comprehensive async/await patterns.",
+                            "code": "async function fetchAll(ids) {\n  const promises = ids.map((id) => fetch(`/api/items/${id}`));\n  const responses = await Promise.all(promises);\n  return Promise.all(responses.map((r) => r.json()));\n}\n\nconst items = await fetchAll([1, 2, 3]);"
+                        }
+                    ]
+                },
                 {
                     "id": "js-intermediate-closures",
                     "language": "javascript",
@@ -83,7 +984,8 @@
                     "lessons": [
                         {
                             "title": "What is a closure?",
-                            "body": "A closure is created when a function is defined inside another function and remembers the outer function's variables even after the outer function has returned."
+                            "body": "A closure is created when a function is defined inside another function and remembers the outer function's variables even after the outer function has returned.",
+                            "code": "function greet(name) {\n  return function() {\n    console.log(`Hello, ${name}`);\n  };\n}\nconst hi = greet(\"Alice\");\nhi(); // Hello, Alice"
                         },
                         {
                             "title": "A practical example: counter",
@@ -94,6 +996,371 @@
                             "title": "Closures and loops",
                             "body": "A classic gotcha: if you close over a var inside a loop, all closures share the same variable. Use let (block-scoped) to give each iteration its own binding.",
                             "code": "for (let i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i), 100);\n}\n// prints 0, 1, 2 — not 3, 3, 3"
+                        },
+                        {
+                            "title": "When closures shine",
+                            "body": "Closures power data privacy, factory functions, and partial application. They are one of JavaScript's most powerful patterns. For a deep dive, read the Closures chapter on MDN and visit the recommended books for thorough coverage.",
+                            "code": "function multiply(a) {\n  return (b) => a * b;\n}\nconst double = multiply(2);\nconsole.log(double(5)); // 10"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-intermediate-prototypes",
+                    "language": "javascript",
+                    "level": "intermediate",
+                    "title": "Prototypes & the Prototype Chain",
+                    "description": "Discover how JavaScript objects delegate property lookups through the prototype chain.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Every object has a prototype",
+                            "body": "When you access a property on an object, JavaScript first looks at the object itself. If the property is not found, it follows the internal [[Prototype]] link to the next object in the chain, continuing until it reaches null.",
+                            "code": "const animal = { eats: true };\nconst rabbit = Object.create(animal);\nrabbit.hops = true;\n\nconsole.log(rabbit.eats); // true (from prototype)\nconsole.log(rabbit.hops); // true (own property)"
+                        },
+                        {
+                            "title": "Constructor functions and .prototype",
+                            "body": "When you call a function with new, the new object's [[Prototype]] is set to the constructor's .prototype property. This is how methods are shared across all instances without duplicating them.",
+                            "code": "function Dog(name) {\n  this.name = name;\n}\nDog.prototype.bark = function() {\n  return `${this.name} says woof!`;\n};\n\nconst rex = new Dog('Rex');\nconsole.log(rex.bark()); // Rex says woof!"
+                        },
+                        {
+                            "title": "Inspecting the chain",
+                            "body": "Use Object.getPrototypeOf() to read an object's prototype. Use hasOwnProperty() or Object.hasOwn() to check whether a property lives directly on the object rather than being inherited.",
+                            "code": "const obj = { a: 1 };\nconsole.log(Object.getPrototypeOf(obj) === Object.prototype); // true\nconsole.log(obj.hasOwnProperty('a'));       // true\nconsole.log(obj.hasOwnProperty('toString')); // false (inherited)"
+                        },
+                        {
+                            "title": "Prototype pollution and best practices",
+                            "body": "Modifying Object.prototype affects every object in the runtime—never do it in production code. Prefer Object.create(null) for dictionary-like objects when you need a clean prototype. Understanding the chain is essential for debugging and performance. For a deep dive, read the Inheritance and the prototype chain guide on MDN and consult the recommended books for expert-level treatment.",
+                            "code": "const dict = Object.create(null);\ndict['key'] = 'value';\nconsole.log('toString' in dict); // false — clean object"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-intermediate-classes",
+                    "language": "javascript",
+                    "level": "intermediate",
+                    "title": "Classes & Inheritance",
+                    "description": "Use ES6 class syntax to define constructors, methods, static members, and inheritance hierarchies.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "Defining a class",
+                            "body": "The class keyword is syntactic sugar over prototype-based inheritance. A class body contains a constructor and method definitions. Unlike function declarations, classes are not hoisted.",
+                            "code": "class Point {\n  constructor(x, y) {\n    this.x = x;\n    this.y = y;\n  }\n  toString() {\n    return `(${this.x}, ${this.y})`;\n  }\n}\n\nconsole.log(new Point(3, 4).toString()); // (3, 4)"
+                        },
+                        {
+                            "title": "Inheritance with extends and super",
+                            "body": "Use extends to create a subclass. The super keyword calls the parent constructor and lets you invoke parent methods from overridden ones.",
+                            "code": "class Shape {\n  constructor(color) { this.color = color; }\n  describe() { return `A ${this.color} shape`; }\n}\n\nclass Circle extends Shape {\n  constructor(color, radius) {\n    super(color);\n    this.radius = radius;\n  }\n  describe() {\n    return `${super.describe()} with radius ${this.radius}`;\n  }\n}\n\nconsole.log(new Circle('red', 5).describe());"
+                        },
+                        {
+                            "title": "Static methods and private fields",
+                            "body": "Static methods belong to the class itself, not instances. Private fields (prefixed with #) are truly private—accessible only inside the class body, enforced by the engine.",
+                            "code": "class BankAccount {\n  #balance = 0;\n  constructor(initial) { this.#balance = initial; }\n  deposit(amount) { this.#balance += amount; }\n  get balance() { return this.#balance; }\n  static create(amount) { return new BankAccount(amount); }\n}\n\nconst acct = BankAccount.create(100);\nacct.deposit(50);\nconsole.log(acct.balance); // 150"
+                        },
+                        {
+                            "title": "Getters, setters, and design tips",
+                            "body": "Getters and setters let you add validation or computed values behind a property access syntax. Favor composition over deep inheritance trees—two levels is usually enough. Classes are a convenience layer; the prototype system does the real work underneath. For a deep dive, read the Classes reference on MDN and visit the recommended books for in-depth coverage of object-oriented JavaScript.",
+                            "code": "class Temperature {\n  #celsius;\n  constructor(c) { this.#celsius = c; }\n  get fahrenheit() { return this.#celsius * 9 / 5 + 32; }\n  set fahrenheit(f) { this.#celsius = (f - 32) * 5 / 9; }\n}\n\nconst t = new Temperature(0);\nconsole.log(t.fahrenheit); // 32\nt.fahrenheit = 212;\nconsole.log(t.fahrenheit); // 212"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-intermediate-this",
+                    "language": "javascript",
+                    "level": "intermediate",
+                    "title": "The 'this' Keyword Demystified",
+                    "description": "Master the rules that determine what 'this' refers to in every calling context.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "Default and implicit binding",
+                            "body": "In non-strict mode, a standalone function call sets this to the global object (window in browsers, globalThis in Node). When a function is called as a method of an object, this refers to the object before the dot.",
+                            "code": "const user = {\n  name: 'Ada',\n  greet() {\n    console.log(`Hi, I'm ${this.name}`);\n  }\n};\n\nuser.greet(); // Hi, I'm Ada\n\nconst greet = user.greet;\ngreet(); // Hi, I'm undefined (lost implicit binding)"
+                        },
+                        {
+                            "title": "Explicit binding: call, apply, bind",
+                            "body": "call and apply invoke a function immediately with a specified this value. call takes arguments individually, apply takes an array. bind returns a new function permanently bound to the given this value.",
+                            "code": "function introduce(greeting) {\n  console.log(`${greeting}, I'm ${this.name}`);\n}\n\nconst person = { name: 'Grace' };\nintroduce.call(person, 'Hello');  // Hello, I'm Grace\nintroduce.apply(person, ['Hey']); // Hey, I'm Grace\n\nconst bound = introduce.bind(person);\nbound('Hi'); // Hi, I'm Grace"
+                        },
+                        {
+                            "title": "Arrow functions inherit this",
+                            "body": "Arrow functions do not have their own this. They capture this from the enclosing lexical scope at the time they are defined. This makes them ideal for callbacks where you want to preserve the outer this.",
+                            "code": "class Timer {\n  constructor() { this.seconds = 0; }\n  start() {\n    setInterval(() => {\n      this.seconds++;\n      console.log(this.seconds);\n    }, 1000);\n  }\n}\n\nnew Timer().start(); // 1, 2, 3, ..."
+                        },
+                        {
+                            "title": "Common pitfalls and the priority order",
+                            "body": "The binding priority from highest to lowest is: new binding, explicit binding (call/apply/bind), implicit binding (method call), and default binding. Losing the receiver when extracting a method is the most common mistake. Use bind or arrow functions to lock in context. For a deep dive, read the this reference on MDN and visit the recommended books for a rigorous exploration of JavaScript's execution context.",
+                            "code": "class Button {\n  constructor(label) { this.label = label; }\n  click = () => {\n    console.log(`${this.label} clicked`);\n  };\n}\n\nconst btn = new Button('Submit');\nsetTimeout(btn.click, 100); // Submit clicked (arrow preserves this)"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-intermediate-iterators",
+                    "language": "javascript",
+                    "level": "intermediate",
+                    "title": "Iterators & Generators",
+                    "description": "Build custom iterables with the iteration protocol and produce values lazily with generator functions.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "The iteration protocol",
+                            "body": "An object is iterable if it has a [Symbol.iterator]() method that returns an iterator. An iterator must have a next() method returning { value, done }. for...of, spread, and destructuring all rely on this protocol.",
+                            "code": "const range = {\n  from: 1,\n  to: 3,\n  [Symbol.iterator]() {\n    let current = this.from;\n    const last = this.to;\n    return {\n      next() {\n        return current <= last\n          ? { value: current++, done: false }\n          : { done: true };\n      }\n    };\n  }\n};\n\nfor (const n of range) console.log(n); // 1, 2, 3"
+                        },
+                        {
+                            "title": "Generator functions",
+                            "body": "A function* creates a generator that pauses at each yield and resumes when next() is called. Generators are iterators automatically, making custom iteration much simpler.",
+                            "code": "function* fibonacci() {\n  let a = 0, b = 1;\n  while (true) {\n    yield a;\n    [a, b] = [b, a + b];\n  }\n}\n\nconst fib = fibonacci();\nconsole.log(fib.next().value); // 0\nconsole.log(fib.next().value); // 1\nconsole.log(fib.next().value); // 1\nconsole.log(fib.next().value); // 2"
+                        },
+                        {
+                            "title": "yield* and composing generators",
+                            "body": "yield* delegates to another iterable or generator, flattening its values into the outer sequence. This lets you compose complex iteration logic from simple building blocks.",
+                            "code": "function* concat(...iterables) {\n  for (const iter of iterables) {\n    yield* iter;\n  }\n}\n\nconst result = [...concat([1, 2], [3, 4], [5])];\nconsole.log(result); // [1, 2, 3, 4, 5]"
+                        },
+                        {
+                            "title": "Lazy evaluation and async generators",
+                            "body": "Generators compute values on demand, making them memory-efficient for large or infinite sequences. Async generators (async function*) combine generators with await, letting you yield values from asynchronous sources like paginated APIs. For a deep dive, read the Iterators and Generators guide on MDN and consult the recommended books for advanced lazy evaluation techniques.",
+                            "code": "async function* fetchPages(url) {\n  let page = 1;\n  while (true) {\n    const res = await fetch(`${url}?page=${page}`);\n    const data = await res.json();\n    if (data.length === 0) return;\n    yield data;\n    page++;\n  }\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-intermediate-symbols",
+                    "language": "javascript",
+                    "level": "intermediate",
+                    "title": "Symbols & Well-Known Symbols",
+                    "description": "Explore symbols as unique, collision-free property keys and learn the well-known symbols that customize language behavior.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Creating and using symbols",
+                            "body": "Symbol() creates a unique, immutable value every time. The optional description string is for debugging only—two symbols with the same description are never equal.",
+                            "code": "const id1 = Symbol('id');\nconst id2 = Symbol('id');\n\nconsole.log(id1 === id2); // false\nconsole.log(typeof id1);  // 'symbol'"
+                        },
+                        {
+                            "title": "Symbols as property keys",
+                            "body": "Symbols can be used as object property keys. They do not appear in for...in loops or Object.keys(), providing a form of soft privacy that avoids name collisions with string keys.",
+                            "code": "const secret = Symbol('secret');\n\nconst obj = {\n  name: 'public',\n  [secret]: 'hidden'\n};\n\nconsole.log(obj[secret]);      // 'hidden'\nconsole.log(Object.keys(obj)); // ['name']\nconsole.log(Object.getOwnPropertySymbols(obj)); // [Symbol(secret)]"
+                        },
+                        {
+                            "title": "Well-known symbols",
+                            "body": "JavaScript defines several well-known symbols that let you customize built-in behavior. Symbol.iterator makes an object iterable. Symbol.toPrimitive controls type coercion. Symbol.hasInstance customizes instanceof checks.",
+                            "code": "class Money {\n  constructor(amount, currency) {\n    this.amount = amount;\n    this.currency = currency;\n  }\n  [Symbol.toPrimitive](hint) {\n    if (hint === 'number') return this.amount;\n    return `${this.amount} ${this.currency}`;\n  }\n}\n\nconst price = new Money(9.99, 'USD');\nconsole.log(+price);    // 9.99\nconsole.log(`${price}`); // 9.99 USD"
+                        },
+                        {
+                            "title": "The global symbol registry",
+                            "body": "Symbol.for(key) returns a shared symbol from a global registry, creating it if needed. Symbol.keyFor(sym) retrieves the key. This lets separate modules share the same symbol identity. Use the registry when cross-realm or cross-module symbol sharing is needed; use plain Symbol() for local uniqueness. For a deep dive, read the Symbol reference on MDN and check the recommended books for advanced metaprogramming techniques.",
+                            "code": "const s1 = Symbol.for('app.id');\nconst s2 = Symbol.for('app.id');\n\nconsole.log(s1 === s2);          // true\nconsole.log(Symbol.keyFor(s1));  // 'app.id'"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-intermediate-proxy",
+                    "language": "javascript",
+                    "level": "intermediate",
+                    "title": "Proxy & Reflect",
+                    "description": "Intercept and customize fundamental object operations using Proxy traps and the Reflect API.",
+                    "estimatedMinutes": 14,
+                    "lessons": [
+                        {
+                            "title": "Creating a Proxy",
+                            "body": "A Proxy wraps a target object with a handler that defines traps—functions that intercept operations like property access, assignment, and deletion.",
+                            "code": "const handler = {\n  get(target, prop) {\n    console.log(`Reading ${prop}`);\n    return target[prop];\n  }\n};\n\nconst user = new Proxy({ name: 'Alice' }, handler);\nconsole.log(user.name);\n// Reading name\n// Alice"
+                        },
+                        {
+                            "title": "Validation with set and get traps",
+                            "body": "The set trap runs before a property is assigned, letting you validate or transform values. The get trap can provide default values for missing properties or log access patterns.",
+                            "code": "const validator = {\n  set(target, prop, value) {\n    if (prop === 'age' && typeof value !== 'number') {\n      throw new TypeError('Age must be a number');\n    }\n    target[prop] = value;\n    return true;\n  }\n};\n\nconst person = new Proxy({}, validator);\nperson.age = 30;  // OK\n// person.age = 'old'; // TypeError"
+                        },
+                        {
+                            "title": "The Reflect API",
+                            "body": "Reflect provides static methods that mirror every Proxy trap. Using Reflect inside a trap preserves correct default behavior and returns a boolean success indicator instead of throwing.",
+                            "code": "const logged = new Proxy({}, {\n  set(target, prop, value, receiver) {\n    console.log(`SET ${prop} = ${value}`);\n    return Reflect.set(target, prop, value, receiver);\n  },\n  deleteProperty(target, prop) {\n    console.log(`DELETE ${prop}`);\n    return Reflect.deleteProperty(target, prop);\n  }\n});\n\nlogged.x = 10; // SET x = 10\ndelete logged.x; // DELETE x"
+                        },
+                        {
+                            "title": "Real-world patterns and revocable proxies",
+                            "body": "Proxy.revocable() creates a proxy that can be permanently disabled, useful for granting temporary access to an object. Proxies power reactive state systems in frameworks like Vue 3 and are used for auto-memoization, API mocking, and access-control layers. For a deep dive, read the Proxy and Reflect references on MDN and explore the recommended books for advanced metaprogramming.",
+                            "code": "const { proxy, revoke } = Proxy.revocable({ data: 42 }, {});\nconsole.log(proxy.data); // 42\nrevoke();\n// proxy.data; // TypeError: Cannot perform 'get' on a revoked proxy"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-intermediate-weakref",
+                    "language": "javascript",
+                    "level": "intermediate",
+                    "title": "WeakMap, WeakSet & WeakRef",
+                    "description": "Use weak references to associate data with objects without preventing garbage collection.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "WeakMap basics",
+                            "body": "A WeakMap holds key-value pairs where keys must be objects (or non-registered symbols). Keys are held weakly, meaning if no other reference to the key exists, the entry can be garbage-collected.",
+                            "code": "const cache = new WeakMap();\n\nfunction process(obj) {\n  if (cache.has(obj)) return cache.get(obj);\n  const result = { ...obj, processed: true };\n  cache.set(obj, result);\n  return result;\n}\n\nlet data = { id: 1 };\nprocess(data);\n// When data = null, the cache entry becomes eligible for GC"
+                        },
+                        {
+                            "title": "WeakSet for tagging objects",
+                            "body": "A WeakSet stores a collection of objects with no values. It is ideal for tagging or tracking objects—such as marking them as visited—without creating memory leaks.",
+                            "code": "const visited = new WeakSet();\n\nfunction visit(node) {\n  if (visited.has(node)) return;\n  visited.add(node);\n  console.log('Processing', node.name);\n}\n\nconst a = { name: 'A' };\nvisit(a); // Processing A\nvisit(a); // (skipped)"
+                        },
+                        {
+                            "title": "WeakRef and FinalizationRegistry",
+                            "body": "WeakRef creates a weak reference to an object. Call deref() to access it—if the object was collected, deref() returns undefined. FinalizationRegistry lets you register a cleanup callback that fires after an object is garbage-collected.",
+                            "code": "let bigData = { size: '100MB' };\nconst ref = new WeakRef(bigData);\n\nconsole.log(ref.deref()); // { size: '100MB' }\nbigData = null;\n// After GC, ref.deref() may return undefined\n\nconst registry = new FinalizationRegistry((id) => {\n  console.log(`Object ${id} was collected`);\n});\nregistry.register({ temp: true }, 'temp-obj');"
+                        },
+                        {
+                            "title": "When to use (and avoid) weak references",
+                            "body": "WeakMap is perfect for caching metadata about DOM nodes, attaching private data to objects, or memoization caches that should not prevent GC. WeakRef and FinalizationRegistry are advanced tools—avoid relying on them for correctness because garbage collection timing is unpredictable. For a deep dive, read the WeakMap, WeakSet, and WeakRef references on MDN and explore the recommended books for memory management strategies.",
+                            "code": "// Attaching private data to DOM elements\nconst elementData = new WeakMap();\n\nfunction setData(el, data) {\n  elementData.set(el, data);\n}\nfunction getData(el) {\n  return elementData.get(el);\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-intermediate-error-types",
+                    "language": "javascript",
+                    "level": "intermediate",
+                    "title": "Custom Errors & Error Subclasses",
+                    "description": "Create meaningful custom error types by extending the built-in Error class for precise error handling.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Built-in error types",
+                            "body": "JavaScript provides several built-in error constructors: TypeError, RangeError, ReferenceError, SyntaxError, and URIError. Each sets a name and message. Understanding them helps you throw the right type and catch errors selectively.",
+                            "code": "try {\n  null.property;\n} catch (e) {\n  console.log(e.constructor.name); // TypeError\n  console.log(e.message);          // Cannot read properties of null\n}"
+                        },
+                        {
+                            "title": "Creating custom error classes",
+                            "body": "Extend Error to create your own error types. Set this.name to your class name so stack traces are readable. Custom errors let calling code use instanceof to distinguish different failure modes.",
+                            "code": "class ValidationError extends Error {\n  constructor(field, message) {\n    super(message);\n    this.name = 'ValidationError';\n    this.field = field;\n  }\n}\n\nthrow new ValidationError('email', 'Invalid email format');"
+                        },
+                        {
+                            "title": "Enriching errors with metadata",
+                            "body": "Attach a cause via the options bag to chain errors. Add status codes, error codes, or context data as properties so error handlers can make decisions without parsing message strings.",
+                            "code": "class HttpError extends Error {\n  constructor(status, message, options) {\n    super(message, options);\n    this.name = 'HttpError';\n    this.status = status;\n  }\n}\n\ntry {\n  throw new Error('Network timeout');\n} catch (err) {\n  throw new HttpError(503, 'Service unavailable', { cause: err });\n}"
+                        },
+                        {
+                            "title": "Catching by type and best practices",
+                            "body": "Use instanceof checks inside catch blocks to handle different error types differently. Group related errors under a common base class for coarse-grained catching. Always re-throw errors you do not know how to handle. For a deep dive, read the Error reference on MDN and consult the recommended books for robust error handling architecture.",
+                            "code": "try {\n  riskyOperation();\n} catch (err) {\n  if (err instanceof ValidationError) {\n    showFieldError(err.field, err.message);\n  } else if (err instanceof HttpError) {\n    showStatusPage(err.status);\n  } else {\n    throw err; // unknown error — re-throw\n  }\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-intermediate-fetch",
+                    "language": "javascript",
+                    "level": "intermediate",
+                    "title": "Fetch API & HTTP Requests",
+                    "description": "Make HTTP requests from the browser with the Fetch API, handle responses, and manage cancellation.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Basic GET requests",
+                            "body": "fetch() returns a Promise that resolves to a Response object. The promise resolves even on HTTP error statuses (404, 500), so always check response.ok before reading the body.",
+                            "code": "const res = await fetch('https://api.example.com/users');\nif (!res.ok) throw new Error(`HTTP ${res.status}`);\nconst users = await res.json();\nconsole.log(users);"
+                        },
+                        {
+                            "title": "POST and request options",
+                            "body": "Pass a second argument to fetch with method, headers, and body. For JSON payloads, set the Content-Type header and stringify the body. Other methods (PUT, PATCH, DELETE) work the same way.",
+                            "code": "const res = await fetch('https://api.example.com/users', {\n  method: 'POST',\n  headers: { 'Content-Type': 'application/json' },\n  body: JSON.stringify({ name: 'Alice', age: 30 })\n});\n\nconst created = await res.json();\nconsole.log(created.id);"
+                        },
+                        {
+                            "title": "Response types and streaming",
+                            "body": "A Response has methods for different formats: .json(), .text(), .blob(), .arrayBuffer(), and .formData(). The body is a ReadableStream, so you can process large payloads incrementally using the reader interface.",
+                            "code": "const res = await fetch('/large-file.txt');\nconst reader = res.body.getReader();\nconst decoder = new TextDecoder();\n\nwhile (true) {\n  const { done, value } = await reader.read();\n  if (done) break;\n  console.log(decoder.decode(value, { stream: true }));\n}"
+                        },
+                        {
+                            "title": "Cancellation with AbortController",
+                            "body": "Create an AbortController and pass its signal to fetch. Calling controller.abort() rejects the fetch promise with an AbortError. This is essential for cancelling requests when a component unmounts or a user navigates away. For a deep dive, read the Fetch API and AbortController references on MDN and check the recommended books for production-ready networking patterns.",
+                            "code": "const controller = new AbortController();\n\nsetTimeout(() => controller.abort(), 5000);\n\ntry {\n  const res = await fetch('/api/data', {\n    signal: controller.signal\n  });\n  const data = await res.json();\n} catch (err) {\n  if (err.name === 'AbortError') {\n    console.log('Request was cancelled');\n  }\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-intermediate-storage",
+                    "language": "javascript",
+                    "level": "intermediate",
+                    "title": "Web Storage: localStorage & sessionStorage",
+                    "description": "Persist key-value data in the browser using the Web Storage API and understand its trade-offs.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "localStorage basics",
+                            "body": "localStorage stores string key-value pairs that persist until explicitly deleted. Data survives page reloads and browser restarts. Use setItem, getItem, and removeItem to manage entries.",
+                            "code": "localStorage.setItem('theme', 'dark');\nconsole.log(localStorage.getItem('theme')); // 'dark'\nlocalStorage.removeItem('theme');"
+                        },
+                        {
+                            "title": "sessionStorage and its differences",
+                            "body": "sessionStorage has the same API as localStorage but its data is scoped to the browser tab. It is cleared when the tab is closed. Use sessionStorage for temporary state like form drafts or wizard progress.",
+                            "code": "sessionStorage.setItem('step', '2');\nconsole.log(sessionStorage.getItem('step')); // '2'\n// Close the tab and the data is gone"
+                        },
+                        {
+                            "title": "Storing complex data with JSON",
+                            "body": "Web Storage only stores strings. Wrap objects and arrays with JSON.stringify on write and JSON.parse on read. Always handle potential parse errors for corrupted data.",
+                            "code": "const prefs = { fontSize: 16, darkMode: true };\nlocalStorage.setItem('prefs', JSON.stringify(prefs));\n\nconst loaded = JSON.parse(localStorage.getItem('prefs'));\nconsole.log(loaded.fontSize); // 16"
+                        },
+                        {
+                            "title": "Limits, security, and the storage event",
+                            "body": "Most browsers cap Web Storage at about 5–10 MB per origin. Data is stored unencrypted, so never store tokens or secrets. The storage event fires on other tabs when data changes, enabling simple cross-tab communication. For larger or structured data, consider IndexedDB. For a deep dive, read the Web Storage API reference on MDN and explore the recommended books for client-side data persistence strategies.",
+                            "code": "// Listen for changes made by other tabs\nwindow.addEventListener('storage', (e) => {\n  console.log(`${e.key} changed from ${e.oldValue} to ${e.newValue}`);\n});"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-intermediate-timers",
+                    "language": "javascript",
+                    "level": "intermediate",
+                    "title": "Timers, Intervals & requestAnimationFrame",
+                    "description": "Schedule code execution with setTimeout, setInterval, and requestAnimationFrame, and learn debounce and throttle patterns.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "setTimeout and clearTimeout",
+                            "body": "setTimeout schedules a callback to run after at least the specified delay in milliseconds. It returns a timer ID you can pass to clearTimeout to cancel the pending execution. The actual delay may be longer due to the event loop.",
+                            "code": "const id = setTimeout(() => {\n  console.log('Fired after ~1 second');\n}, 1000);\n\n// Cancel before it fires\nclearTimeout(id);"
+                        },
+                        {
+                            "title": "setInterval and clearInterval",
+                            "body": "setInterval repeatedly calls a callback at the given interval. Always store the ID and call clearInterval when done to prevent leaks—especially in single-page apps where components mount and unmount.",
+                            "code": "let count = 0;\nconst id = setInterval(() => {\n  count++;\n  console.log(`Tick ${count}`);\n  if (count >= 5) clearInterval(id);\n}, 1000);"
+                        },
+                        {
+                            "title": "requestAnimationFrame",
+                            "body": "requestAnimationFrame schedules a callback before the browser's next repaint, typically at 60 fps. It is the correct way to drive visual animations because the browser can optimize it—pausing when the tab is hidden.",
+                            "code": "function animate(timestamp) {\n  const progress = (timestamp % 2000) / 2000;\n  element.style.transform = `translateX(${progress * 300}px)`;\n  requestAnimationFrame(animate);\n}\n\nrequestAnimationFrame(animate);"
+                        },
+                        {
+                            "title": "Debounce and throttle patterns",
+                            "body": "Debounce delays execution until a pause in events (e.g., typing stops). Throttle ensures a function runs at most once per interval (e.g., scroll handling). Both use setTimeout internally and are essential for performance. For a deep dive, read the setTimeout and requestAnimationFrame references on MDN and consult the recommended books for advanced scheduling and animation techniques.",
+                            "code": "function debounce(fn, ms) {\n  let timer;\n  return (...args) => {\n    clearTimeout(timer);\n    timer = setTimeout(() => fn(...args), ms);\n  };\n}\n\nconst search = debounce((query) => {\n  console.log('Searching:', query);\n}, 300);\n\nsearch('he');\nsearch('hel');\nsearch('hello'); // Only 'hello' fires after 300ms pause"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-intermediate-functional",
+                    "language": "javascript",
+                    "level": "intermediate",
+                    "title": "Functional Patterns: Curry, Compose, Pipe",
+                    "description": "Apply functional programming techniques—currying, composition, and piping—to write declarative, reusable JavaScript.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "Currying",
+                            "body": "Currying transforms a function that takes multiple arguments into a chain of functions each taking one argument. This lets you fix some arguments up front and reuse the partially applied function with different remaining arguments.",
+                            "code": "function curry(fn) {\n  return function curried(...args) {\n    if (args.length >= fn.length) return fn(...args);\n    return (...more) => curried(...args, ...more);\n  };\n}\n\nconst add = curry((a, b, c) => a + b + c);\nconsole.log(add(1)(2)(3)); // 6\nconsole.log(add(1, 2)(3)); // 6"
+                        },
+                        {
+                            "title": "Partial application",
+                            "body": "Partial application fixes one or more arguments of a function, returning a new function that accepts the rest. Unlike currying, partial application does not require one-argument-at-a-time calling.",
+                            "code": "function partial(fn, ...fixed) {\n  return (...rest) => fn(...fixed, ...rest);\n}\n\nfunction log(level, timestamp, message) {\n  console.log(`[${level}] ${timestamp}: ${message}`);\n}\n\nconst warn = partial(log, 'WARN');\nwarn(Date.now(), 'Disk space low');"
+                        },
+                        {
+                            "title": "Compose and pipe",
+                            "body": "Composition combines functions so the output of one becomes the input of the next. compose applies functions right-to-left; pipe applies them left-to-right. Pipe usually reads more naturally.",
+                            "code": "const compose = (...fns) =>\n  (x) => fns.reduceRight((acc, fn) => fn(acc), x);\n\nconst pipe = (...fns) =>\n  (x) => fns.reduce((acc, fn) => fn(acc), x);\n\nconst shout = pipe(\n  (s) => s.trim(),\n  (s) => s.toUpperCase(),\n  (s) => s + '!!!'\n);\n\nconsole.log(shout('  hello  ')); // HELLO!!!"
+                        },
+                        {
+                            "title": "Building pipelines in practice",
+                            "body": "Functional pipelines shine when processing data through a series of transformations. Each step is a small, testable, reusable function. Combine pipe with curried helpers to build expressive data flows without intermediate variables. For a deep dive, read the Array methods and functional programming sections on MDN and explore the recommended books for comprehensive functional JavaScript patterns.",
+                            "code": "const double = (x) => x * 2;\nconst addOne = (x) => x + 1;\nconst toString = (x) => `Result: ${x}`;\n\nconst transform = pipe(double, addOne, toString);\n\nconsole.log(transform(5));  // Result: 11\nconsole.log(transform(10)); // Result: 21\n\n// With arrays\nconst process = pipe(\n  (arr) => arr.filter((n) => n > 0),\n  (arr) => arr.map(double),\n  (arr) => arr.reduce((sum, n) => sum + n, 0)\n);\nconsole.log(process([-1, 2, 3, -4, 5])); // 20"
                         }
                     ]
                 }
@@ -112,11 +1379,13 @@
                     "lessons": [
                         {
                             "title": "Call stack",
-                            "body": "JavaScript executes synchronous code on a single call stack — one thing at a time. A function call pushes a frame; returning pops it."
+                            "body": "JavaScript executes synchronous code on a single call stack — one thing at a time. A function call pushes a frame; returning pops it.",
+                            "code": "function outer() { inner(); }\nfunction inner() { console.log(\"hi\"); }\nouter();"
                         },
                         {
                             "title": "Task queue (macrotasks)",
-                            "body": "setTimeout and setInterval schedule callbacks in the macrotask queue. The event loop picks one macrotask per loop iteration after the call stack is empty."
+                            "body": "setTimeout and setInterval schedule callbacks in the macrotask queue. The event loop picks one macrotask per loop iteration after the call stack is empty.",
+                            "code": "setTimeout(() => console.log(\"macro\"), 0);\nconsole.log(\"sync\");\n// Output: sync, macro"
                         },
                         {
                             "title": "Microtask queue",
@@ -125,7 +1394,428 @@
                         },
                         {
                             "title": "Practical implications",
-                            "body": "Heavy synchronous work blocks the event loop. Break long tasks with setTimeout(fn, 0) or requestIdleCallback to keep the UI responsive."
+                            "body": "Heavy synchronous work blocks the event loop. Break long tasks with setTimeout(fn, 0) or requestIdleCallback to keep the UI responsive. For a comprehensive deep dive, read the MDN Event Loop article and visit the recommended books for expert-level coverage.",
+                            "code": "// Break heavy work into chunks\nfunction processChunk(items, i) {\n  const end = Math.min(i + 100, items.length);\n  for (; i < end; i++) { /* work */ }\n  if (i < items.length) {\n    setTimeout(() => processChunk(items, i), 0);\n  }\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-advanced-memory",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Memory Management & Garbage Collection",
+                    "description": "Learn how JavaScript engines allocate, track, and reclaim memory, and how to avoid leaks in real-world applications.",
+                    "estimatedMinutes": 14,
+                    "lessons": [
+                        {
+                            "title": "Heap & stack allocation",
+                            "body": "Primitives live on the stack; objects, arrays, and closures are heap-allocated. The engine tracks references from stack roots, global scope, and active closures to determine what is reachable.",
+                            "code": "let x = 42;          // stack (primitive)\nlet obj = { a: 1 };  // heap (object)\nfunction outer() {\n  let big = new Array(1e6);\n  return () => big.length; // closure keeps 'big' alive\n}"
+                        },
+                        {
+                            "title": "Mark-and-sweep & generational GC",
+                            "body": "Modern engines use mark-and-sweep: starting from roots, they mark every reachable object and sweep (free) the rest. V8 splits the heap into a young generation (short-lived objects, Scavenge collector) and an old generation (long-lived, Mark-Compact). Frequent minor GCs handle the young gen cheaply; major GCs compact the old gen less often.",
+                            "code": "// Objects that survive two minor GCs are promoted to old gen.\n// Tip: short-lived temporaries are cheap — the young gen handles them.\nconst result = arr\n  .map(x => x * 2)   // intermediate array is short-lived\n  .filter(x => x > 5);"
+                        },
+                        {
+                            "title": "Common memory leaks",
+                            "body": "Detached DOM nodes, forgotten event listeners, closures capturing large scopes, unbounded caches, and uncleared timers are the most common leak sources. WeakRef and FinalizationRegistry let you hold non-preventing references and run cleanup when objects are collected.",
+                            "code": "// WeakRef: does not prevent GC\nlet heavy = { data: new ArrayBuffer(1e8) };\nconst ref = new WeakRef(heavy);\nheavy = null; // eligible for GC now\n\n// Later:\nconst obj = ref.deref(); // undefined if collected\n\n// FinalizationRegistry for cleanup\nconst registry = new FinalizationRegistry(key => {\n  console.log(`${key} was collected`);\n});\nregistry.register(someObj, \"myObj\");"
+                        },
+                        {
+                            "title": "Profiling memory in practice",
+                            "body": "Use Chrome DevTools' Memory tab to take heap snapshots, record allocation timelines, and compare retained sizes. The 'Detached HTMLElement' filter catches DOM leaks quickly. For the full specification on WeakRef and FinalizationRegistry semantics, consult the TC39 proposal docs and MDN Memory Management guide, and see the recommended books for expert-level coverage of engine internals.",
+                            "code": "// Programmatic memory check (Node.js)\nconst used = process.memoryUsage();\nconsole.log(`Heap: ${(used.heapUsed / 1e6).toFixed(1)} MB`);\nconsole.log(`RSS:  ${(used.rss / 1e6).toFixed(1)} MB`);"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-advanced-workers",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Web Workers & Multithreading",
+                    "description": "Offload heavy computation to background threads using Web Workers and SharedArrayBuffer for true parallelism.",
+                    "estimatedMinutes": 14,
+                    "lessons": [
+                        {
+                            "title": "Dedicated Workers",
+                            "body": "A dedicated Worker runs a separate JS file on its own thread with its own global scope (no DOM access). Communication happens via postMessage/onmessage using the structured clone algorithm. Workers are ideal for CPU-bound tasks like image processing or data parsing.",
+                            "code": "// main.js\nconst w = new Worker('worker.js');\nw.postMessage({ nums: [1, 2, 3] });\nw.onmessage = e => console.log('Sum:', e.data);\n\n// worker.js\nself.onmessage = e => {\n  const sum = e.data.nums.reduce((a, b) => a + b, 0);\n  self.postMessage(sum);\n};"
+                        },
+                        {
+                            "title": "Transferable objects",
+                            "body": "Structured cloning copies data, which is slow for large buffers. Transferable objects (ArrayBuffer, MessagePort, OffscreenCanvas) move ownership to the worker in O(1) time — the sender loses access immediately.",
+                            "code": "// Transfer an ArrayBuffer (zero-copy)\nconst buf = new ArrayBuffer(1024 * 1024);\nworker.postMessage(buf, [buf]);\nconsole.log(buf.byteLength); // 0 — ownership transferred"
+                        },
+                        {
+                            "title": "SharedArrayBuffer & Atomics",
+                            "body": "SharedArrayBuffer allows multiple threads to read and write the same memory. Atomics provides atomic operations (load, store, add, compareExchange) and wait/notify for lock-free synchronization. Requires cross-origin isolation headers (COOP/COEP).",
+                            "code": "// main.js\nconst sab = new SharedArrayBuffer(4);\nconst view = new Int32Array(sab);\nworker.postMessage(sab);\n\n// worker.js\nself.onmessage = e => {\n  const view = new Int32Array(e.data);\n  Atomics.add(view, 0, 1);\n  Atomics.notify(view, 0);\n};"
+                        },
+                        {
+                            "title": "Worker pools & best practices",
+                            "body": "Spawning a worker per task is expensive. Maintain a pool of long-lived workers and dispatch tasks via a message queue. navigator.hardwareConcurrency tells you how many logical cores are available. For full details on the Worker API, SharedArrayBuffer security model, and cross-origin isolation, consult the MDN Web Workers guide and the HTML Living Standard, and see the recommended books for production-grade multithreading patterns.",
+                            "code": "// Simple round-robin worker pool\nconst pool = Array.from(\n  { length: navigator.hardwareConcurrency },\n  () => new Worker('task-worker.js')\n);\nlet idx = 0;\nfunction dispatch(task) {\n  pool[idx % pool.length].postMessage(task);\n  idx++;\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-advanced-service-workers",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Service Workers & Offline Caching",
+                    "description": "Master service worker lifecycles, caching strategies, and background sync to build resilient offline-first web apps.",
+                    "estimatedMinutes": 15,
+                    "lessons": [
+                        {
+                            "title": "Lifecycle: install, activate, fetch",
+                            "body": "A service worker goes through registration → install → activate. During install, precache critical assets. During activate, clean old caches. The fetch event intercepts every network request from controlled pages, letting you serve cached responses or fall back to the network.",
+                            "code": "// Register\nnavigator.serviceWorker.register('/sw.js');\n\n// sw.js — install\nself.addEventListener('install', e => {\n  e.waitUntil(\n    caches.open('v1').then(c =>\n      c.addAll(['/', '/app.js', '/style.css'])\n    )\n  );\n});"
+                        },
+                        {
+                            "title": "Caching strategies",
+                            "body": "Cache-first serves from cache, falling back to network (fast, but stale). Network-first tries the network, falling back to cache (fresh, but slower offline). Stale-while-revalidate serves cache immediately and updates it in the background — the best balance for most apps.",
+                            "code": "// Stale-while-revalidate\nself.addEventListener('fetch', e => {\n  e.respondWith(\n    caches.open('v1').then(async cache => {\n      const cached = await cache.match(e.request);\n      const fetched = fetch(e.request).then(res => {\n        cache.put(e.request, res.clone());\n        return res;\n      });\n      return cached || fetched;\n    })\n  );\n});"
+                        },
+                        {
+                            "title": "Background sync & periodic sync",
+                            "body": "The Background Sync API lets you defer actions (like sending a form) until the user has connectivity. Register a sync tag, then handle the 'sync' event in the service worker. Periodic Background Sync (with permission) lets you refresh content on a schedule even when the page is closed.",
+                            "code": "// Register sync from the page\nasync function sendLater(data) {\n  const reg = await navigator.serviceWorker.ready;\n  await saveToIndexedDB(data);\n  await reg.sync.register('send-form');\n}\n\n// sw.js — handle sync\nself.addEventListener('sync', e => {\n  if (e.tag === 'send-form') {\n    e.waitUntil(flushQueue());\n  }\n});"
+                        },
+                        {
+                            "title": "Update flow & advanced patterns",
+                            "body": "When the browser detects a byte-different service worker, it installs the new version but waits for all controlled tabs to close before activating it. Call skipWaiting() to activate immediately and clients.claim() to take control of open tabs. For the complete lifecycle specification, cache storage limits, and push notification integration, see the MDN Service Worker API docs and the Service Worker spec, and see the recommended books for in-depth offline-first architecture patterns.",
+                            "code": "// sw.js — activate: clean old caches\nself.addEventListener('activate', e => {\n  e.waitUntil(\n    caches.keys().then(keys =>\n      Promise.all(\n        keys.filter(k => k !== 'v2')\n            .map(k => caches.delete(k))\n      )\n    )\n  );\n  self.clients.claim();\n});"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-advanced-streams",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Streams API",
+                    "description": "Process data incrementally with ReadableStream, WritableStream, and TransformStream for memory-efficient I/O.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "ReadableStream fundamentals",
+                            "body": "A ReadableStream represents an asynchronous source of data delivered in chunks. The underlying source pushes chunks via a controller. Consumers read using a reader or pipe the stream. Backpressure is built in — the source is signaled to slow down when the internal queue is full.",
+                            "code": "const stream = new ReadableStream({\n  start(controller) {\n    controller.enqueue('Hello');\n    controller.enqueue(' World');\n    controller.close();\n  }\n});\n\nconst reader = stream.getReader();\nlet result = '';\nwhile (true) {\n  const { done, value } = await reader.read();\n  if (done) break;\n  result += value;\n}\nconsole.log(result); // 'Hello World'"
+                        },
+                        {
+                            "title": "WritableStream & piping",
+                            "body": "A WritableStream consumes chunks. Its underlying sink defines write(), close(), and abort() methods. Use pipeThrough() to route a readable stream through a TransformStream, and pipeTo() to send it to a writable stream. The pipe chain handles backpressure automatically across all stages.",
+                            "code": "const writable = new WritableStream({\n  write(chunk) { console.log('Received:', chunk); },\n  close() { console.log('Stream closed'); }\n});\n\n// Pipe a fetch body directly to a writable\nconst res = await fetch('/data.txt');\nawait res.body.pipeTo(writable);"
+                        },
+                        {
+                            "title": "TransformStream",
+                            "body": "TransformStream sits between a readable and writable side, transforming chunks in flight. This is ideal for on-the-fly decompression, parsing line-delimited JSON, or encoding conversions. TextDecoderStream and CompressionStream are built-in transform streams available in modern browsers.",
+                            "code": "// Uppercase transform\nconst upper = new TransformStream({\n  transform(chunk, controller) {\n    controller.enqueue(chunk.toUpperCase());\n  }\n});\n\nconst res = await fetch('/data.txt');\nconst reader = res.body\n  .pipeThrough(new TextDecoderStream())\n  .pipeThrough(upper)\n  .getReader();"
+                        },
+                        {
+                            "title": "Real-world streaming patterns",
+                            "body": "Streams shine for large file uploads (slice into chunks), server-sent event parsing, and streaming JSON from APIs without buffering the full response. Combining ReadableStream.from() with async iterables bridges the gap with for-await-of loops. For the complete Streams specification, backpressure algorithms, and byte streams, consult the WHATWG Streams Standard and MDN Streams API docs, and see the recommended books for advanced data pipeline patterns.",
+                            "code": "// Stream a large fetch response as lines\nasync function* lines(response) {\n  const reader = response.body\n    .pipeThrough(new TextDecoderStream())\n    .getReader();\n  let buf = '';\n  while (true) {\n    const { done, value } = await reader.read();\n    if (done) break;\n    buf += value;\n    const parts = buf.split('\\n');\n    buf = parts.pop();\n    for (const line of parts) yield line;\n  }\n  if (buf) yield buf;\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-advanced-typed-arrays",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Typed Arrays & ArrayBuffer",
+                    "description": "Work with raw binary data efficiently using ArrayBuffer, DataView, and typed array views for graphics, audio, and network protocols.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "ArrayBuffer & views",
+                            "body": "An ArrayBuffer is a fixed-length block of raw bytes. You cannot read or write it directly — you need a view. Typed arrays (Uint8Array, Float32Array, etc.) provide indexed access with a fixed element type. Multiple views can overlay the same buffer to interpret bytes differently.",
+                            "code": "const buf = new ArrayBuffer(16);\nconst u8 = new Uint8Array(buf);\nconst f32 = new Float32Array(buf);\n\nf32[0] = 3.14;\nconsole.log(u8[0]); // raw byte of the float\nconsole.log(f32[0]); // 3.14"
+                        },
+                        {
+                            "title": "DataView for mixed formats",
+                            "body": "DataView lets you read and write arbitrary types at arbitrary byte offsets with explicit endianness control. This is essential for parsing binary protocols, file formats (PNG, WAV), and network packets where fields have mixed sizes and byte orders.",
+                            "code": "const buf = new ArrayBuffer(12);\nconst view = new DataView(buf);\n\n// Write a little-endian 32-bit int at byte 0\nview.setUint32(0, 0xDEADBEEF, true);\n// Write a big-endian float at byte 4\nview.setFloat32(4, 2.71828, false);\n// Read a 16-bit int at byte 8\nview.setUint16(8, 1024, true);\n\nconsole.log(view.getUint32(0, true).toString(16)); // 'deadbeef'"
+                        },
+                        {
+                            "title": "Typed array methods & slicing",
+                            "body": "Typed arrays share many Array methods (map, filter, slice, sort) but always return typed arrays, not plain arrays. The subarray() method creates a new view over the same buffer (no copy), while slice() copies bytes into a new buffer. Use .buffer, .byteOffset, and .byteLength to navigate the underlying memory.",
+                            "code": "const data = new Float64Array([3.1, 1.4, 2.7, 0.5]);\ndata.sort(); // in-place: [0.5, 1.4, 2.7, 3.1]\n\n// subarray: same buffer, no copy\nconst sub = data.subarray(1, 3);\nsub[0] = 99;\nconsole.log(data[1]); // 99 — shared memory\n\n// slice: independent copy\nconst copy = data.slice(0, 2);\ncopy[0] = -1;\nconsole.log(data[0]); // 0.5 — unchanged"
+                        },
+                        {
+                            "title": "Performance & interop patterns",
+                            "body": "Typed arrays are the bridge between JavaScript and low-level APIs: WebGL buffers, Web Audio, WebSocket binary frames, and WebAssembly memory are all backed by ArrayBuffers. Prefer typed arrays over regular arrays when processing large numeric datasets for cache-friendly access and reduced GC pressure. For the full specification of typed arrays, endianness rules, and detached buffer behavior, see the ECMAScript spec and MDN Typed Arrays guide, and see the recommended books for expert binary data techniques.",
+                            "code": "// WebGL example: upload vertex data\nconst vertices = new Float32Array([\n  -1, -1, 0,\n   1, -1, 0,\n   0,  1, 0\n]);\ngl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-advanced-decorators",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Decorators (Stage 3)",
+                    "description": "Use the TC39 Stage 3 decorator proposal to declaratively modify classes, methods, and accessors with reusable metadata.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "What decorators are",
+                            "body": "A decorator is a function that receives a value (class, method, accessor, or field) and its context, and can replace or augment it. Decorators use the @ syntax above the target. The Stage 3 proposal standardizes a pattern long used via TypeScript experimental decorators and Babel plugins, but with a different, simpler API.",
+                            "code": "// A simple method decorator\nfunction logged(target, context) {\n  return function (...args) {\n    console.log(`Calling ${context.name}`);\n    return target.call(this, ...args);\n  };\n}\n\nclass Api {\n  @logged\n  fetchData() { /* ... */ }\n}"
+                        },
+                        {
+                            "title": "Decorator kinds & context",
+                            "body": "Decorators can target classes, methods, getters, setters, fields, and auto-accessors. The context object provides kind, name, isStatic, isPrivate, and addInitializer(). The addInitializer hook lets you run setup code when the class or instance is created, which is perfect for registering metadata without modifying the value.",
+                            "code": "function track(target, context) {\n  context.addInitializer(function () {\n    // 'this' is the new instance\n    console.log(`Created instance with ${context.name}`);\n  });\n  return target;\n}\n\nclass User {\n  @track name = 'anonymous';\n}"
+                        },
+                        {
+                            "title": "Composing decorators",
+                            "body": "Multiple decorators apply bottom-up (closest to the target runs first). Decorator factories — functions that return decorators — let you parameterize behavior. Compose small, single-purpose decorators into powerful pipelines: validation, caching, access control, and logging can all stack cleanly.",
+                            "code": "function memoize(target, context) {\n  const cache = new Map();\n  return function (...args) {\n    const key = JSON.stringify(args);\n    if (!cache.has(key)) cache.set(key, target.call(this, ...args));\n    return cache.get(key);\n  };\n}\n\nfunction deprecated(msg) {\n  return (target, context) => {\n    return function (...args) {\n      console.warn(`${context.name} is deprecated: ${msg}`);\n      return target.call(this, ...args);\n    };\n  };\n}\n\nclass MathLib {\n  @deprecated('Use fastFib instead')\n  @memoize\n  fib(n) { return n < 2 ? n : this.fib(n - 1) + this.fib(n - 2); }\n}"
+                        },
+                        {
+                            "title": "Auto-accessors & the road ahead",
+                            "body": "The accessor keyword creates a private backing field with auto-generated get/set, which decorators can intercept for reactive patterns or validation. As decorators advance toward Stage 4, decorator metadata (a companion proposal) will provide a standard way to attach and query metadata. For the latest proposal text, semantics, and migration guides from legacy TypeScript decorators, see the TC39 decorators proposal on GitHub and MDN documentation, and see the recommended books for decorator design patterns in large-scale applications.",
+                            "code": "function clamp(min, max) {\n  return (target, context) => ({\n    get() { return target.get.call(this); },\n    set(val) {\n      target.set.call(this, Math.min(max, Math.max(min, val)));\n    },\n    init(val) { return Math.min(max, Math.max(min, val)); }\n  });\n}\n\nclass Slider {\n  @clamp(0, 100) accessor value = 50;\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-advanced-metaprogramming",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Metaprogramming with Proxy & Reflect",
+                    "description": "Intercept and customize fundamental object operations using Proxy traps and Reflect methods for powerful abstractions.",
+                    "estimatedMinutes": 14,
+                    "lessons": [
+                        {
+                            "title": "Proxy basics & traps",
+                            "body": "A Proxy wraps a target object with a handler that defines traps — functions that intercept fundamental operations like get, set, has, deleteProperty, and apply. When a trap is not defined, the operation passes through to the target unchanged. There are 13 traps covering all internal object operations.",
+                            "code": "const handler = {\n  get(target, prop, receiver) {\n    console.log(`Accessed: ${String(prop)}`);\n    return Reflect.get(target, prop, receiver);\n  },\n  set(target, prop, value, receiver) {\n    console.log(`Set ${String(prop)} = ${value}`);\n    return Reflect.set(target, prop, value, receiver);\n  }\n};\n\nconst user = new Proxy({}, handler);\nuser.name = 'Ada'; // logs: Set name = Ada\nuser.name;         // logs: Accessed: name"
+                        },
+                        {
+                            "title": "Reflect API",
+                            "body": "Reflect provides static methods that mirror every Proxy trap (Reflect.get, Reflect.set, Reflect.has, etc.). Always use Reflect inside traps to forward operations correctly — it handles receiver binding and returns booleans instead of throwing, making trap logic cleaner and less error-prone than direct object operations.",
+                            "code": "const handler = {\n  set(target, prop, value, receiver) {\n    if (typeof value !== 'string') {\n      throw new TypeError(`${String(prop)} must be a string`);\n    }\n    // Reflect.set returns true/false, not the value\n    return Reflect.set(target, prop, value, receiver);\n  },\n  deleteProperty(target, prop) {\n    console.log(`Deleting ${String(prop)}`);\n    return Reflect.deleteProperty(target, prop);\n  }\n};"
+                        },
+                        {
+                            "title": "Practical patterns",
+                            "body": "Proxies enable validation layers, observable objects (react to changes), negative array indexing, auto-vivification (auto-create nested objects on access), and virtual/lazy properties. Revocable proxies (Proxy.revocable) let you cut off access entirely, useful for capability-based security.",
+                            "code": "// Negative indexing for arrays\nfunction negativeIndex(arr) {\n  return new Proxy(arr, {\n    get(target, prop, receiver) {\n      const idx = Number(prop);\n      if (Number.isInteger(idx) && idx < 0) {\n        return target[target.length + idx];\n      }\n      return Reflect.get(target, prop, receiver);\n    }\n  });\n}\n\nconst a = negativeIndex([10, 20, 30]);\nconsole.log(a[-1]); // 30"
+                        },
+                        {
+                            "title": "Invariants, performance & caveats",
+                            "body": "Proxy traps must respect invariants enforced by the engine — for example, you cannot report a non-configurable property as non-existent. Proxies add overhead to every trapped operation, so avoid them on hot paths. Use them at API boundaries, not inside tight loops. For the full list of invariants, trap signatures, and Reflect method semantics, see the ECMAScript specification chapters on Proxy and Reflect and the MDN Proxy reference, and see the recommended books for metaprogramming design patterns and performance analysis.",
+                            "code": "// Revocable proxy — cut off access\nconst { proxy, revoke } = Proxy.revocable({ secret: 42 }, {});\nconsole.log(proxy.secret); // 42\nrevoke();\n// proxy.secret; // TypeError: Cannot perform 'get' on a proxy that has been revoked"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-advanced-concurrency",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Concurrency Patterns",
+                    "description": "Master advanced async coordination with Promise combinators, semaphores, cancellation, and structured concurrency.",
+                    "estimatedMinutes": 14,
+                    "lessons": [
+                        {
+                            "title": "Promise combinators",
+                            "body": "Promise.all rejects on the first failure. Promise.allSettled waits for every outcome. Promise.race resolves or rejects with the first settled promise. Promise.any resolves with the first fulfilled value and only rejects if all fail (AggregateError). Choosing the right combinator is key to correct concurrent logic.",
+                            "code": "const urls = ['/api/a', '/api/b', '/api/c'];\n\n// All must succeed\nconst all = await Promise.all(urls.map(u => fetch(u)));\n\n// First to respond wins\nconst fastest = await Promise.race(urls.map(u => fetch(u)));\n\n// At least one must succeed\nconst any = await Promise.any(urls.map(u => fetch(u)));\n\n// Get all results regardless of failure\nconst settled = await Promise.allSettled(urls.map(u => fetch(u)));\nconst failures = settled.filter(r => r.status === 'rejected');"
+                        },
+                        {
+                            "title": "Limiting concurrency",
+                            "body": "Firing thousands of requests at once can overwhelm servers and exhaust resources. A semaphore or pool pattern limits how many tasks run concurrently. The pattern: maintain a Set of active promises, wait with Promise.race when the set is full, and remove each task as it settles.",
+                            "code": "async function pMap(items, fn, concurrency = 5) {\n  const results = [];\n  const active = new Set();\n  for (const [i, item] of items.entries()) {\n    const p = fn(item).then(val => {\n      active.delete(p);\n      return val;\n    });\n    active.add(p);\n    results[i] = p;\n    if (active.size >= concurrency) {\n      await Promise.race(active);\n    }\n  }\n  return Promise.all(results);\n}"
+                        },
+                        {
+                            "title": "Async iterators & generators",
+                            "body": "Async generators (async function*) let you yield values over time, consumed with for-await-of. This is perfect for paginated APIs, streaming data, or any sequence produced asynchronously. Combined with concurrency limits, they form powerful data pipelines.",
+                            "code": "async function* paginate(url) {\n  let page = 1;\n  while (true) {\n    const res = await fetch(`${url}?page=${page}`);\n    const data = await res.json();\n    if (data.items.length === 0) return;\n    yield* data.items;\n    page++;\n  }\n}\n\nfor await (const item of paginate('/api/users')) {\n  console.log(item.name);\n}"
+                        },
+                        {
+                            "title": "Structured concurrency & error boundaries",
+                            "body": "Structured concurrency ensures that spawned async tasks do not outlive their parent scope — if one fails, siblings are cancelled and errors propagate predictably. Combine AbortController with Promise combinators to build error boundaries: cancel all in-flight requests when one fails. For the complete async iteration protocol, Promise combinator specifications, and emerging structured concurrency proposals, consult the TC39 proposals, ECMAScript spec, and MDN async guides, and see the recommended books for production-grade concurrency architecture.",
+                            "code": "async function fetchAll(urls, signal) {\n  const controller = new AbortController();\n  signal?.addEventListener('abort', () => controller.abort());\n  try {\n    return await Promise.all(\n      urls.map(u => fetch(u, { signal: controller.signal }))\n    );\n  } catch (err) {\n    controller.abort(); // cancel siblings\n    throw err;\n  }\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-advanced-engine",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "How JS Engines Optimize Code",
+                    "description": "Peek behind the curtain at parsing, JIT compilation, inline caches, hidden classes, and deoptimization in modern engines.",
+                    "estimatedMinutes": 15,
+                    "lessons": [
+                        {
+                            "title": "Parsing & the AST",
+                            "body": "The engine first parses source into an Abstract Syntax Tree (AST). V8 uses lazy parsing: it only fully parses functions when they are first called, reducing startup time. Pre-parsing checks for syntax errors and collects scope info. Avoid patterns that force eager parsing (like wrapping IIFEs around large code) to keep startup fast.",
+                            "code": "// Lazy parsing: only parsed when called\nfunction rarelyUsed() {\n  /* complex logic — not parsed until first call */\n}\n\n// IIFE forces eager parse\n(function() {\n  /* parsed immediately */\n})();"
+                        },
+                        {
+                            "title": "Hidden classes & inline caches",
+                            "body": "V8 assigns a hidden class (called a Map internally) to every object. Objects with the same property layout share a hidden class, enabling fast property access via inline caches (ICs). Adding properties in different orders creates different hidden classes, defeating ICs and slowing access. Always initialize all properties in the constructor in the same order.",
+                            "code": "// Good: consistent shape, one hidden class\nclass Point {\n  constructor(x, y) {\n    this.x = x; // hidden class transition 1\n    this.y = y; // hidden class transition 2\n  }\n}\n\n// Bad: conditional properties create branches\nfunction makeObj(flag) {\n  const o = {};\n  if (flag) { o.a = 1; o.b = 2; }\n  else      { o.b = 2; o.a = 1; } // different hidden class!\n  return o;\n}"
+                        },
+                        {
+                            "title": "JIT tiers & optimization",
+                            "body": "V8 starts with the Ignition interpreter (fast startup, slow execution), then promotes hot functions to Sparkplug (baseline compiler), then Maglev (mid-tier), and finally TurboFan (optimizing compiler). TurboFan uses type feedback from ICs to speculate — inlining calls, eliminating type checks, and unrolling loops. Speculation failure triggers deoptimization: the engine drops back to interpreted code and re-profiles.",
+                            "code": "// Monomorphic: one type → fast IC\nfunction add(a, b) { return a + b; }\nadd(1, 2); add(3, 4); // always numbers → optimized\n\n// Megamorphic: many types → slow IC, deopt\nadd('a', 'b'); // now string + string → bailout\nadd({}, []);   // even worse: objects → megamorphic"
+                        },
+                        {
+                            "title": "Avoiding deoptimization",
+                            "body": "Keep functions monomorphic (always pass the same types). Avoid arguments object manipulation, with statements, eval, try-catch around hot code (older engines), and deleting properties. Use TypedArrays for numeric work. Profile with V8's --trace-opt and --trace-deopt flags or Chrome DevTools Performance panel. For deep engine internals, read the V8 blog, the MDN JIT compilation overview, JavaScriptCore architecture docs, and SpiderMonkey documentation, and see the recommended books for comprehensive JIT compiler theory and optimization techniques.",
+                            "code": "// Use --trace-opt to find optimization killers\n// node --trace-opt --trace-deopt app.js\n\n// Avoid 'delete' — it changes hidden class\nconst obj = { x: 1, y: 2 };\n// delete obj.x; // BAD: transitions to slow-mode dictionary\nobj.x = undefined; // Better: preserves hidden class"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-advanced-wasm",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "WebAssembly Interop",
+                    "description": "Call compiled C/C++/Rust code from JavaScript using WebAssembly, exchange data efficiently, and integrate Wasm modules into web apps.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "Loading & instantiating modules",
+                            "body": "WebAssembly.instantiateStreaming compiles and instantiates a .wasm file in one step, leveraging streaming compilation. The imports object provides functions the Wasm module can call back into JS. The instance's exports object exposes Wasm functions to JS. Always prefer streaming over fetching the entire buffer first.",
+                            "code": "const importObj = {\n  env: {\n    log: (n) => console.log('From Wasm:', n)\n  }\n};\n\nconst { instance } = await WebAssembly.instantiateStreaming(\n  fetch('math.wasm'),\n  importObj\n);\n\nconst result = instance.exports.factorial(10);\nconsole.log(result); // 3628800"
+                        },
+                        {
+                            "title": "Memory: the linear model",
+                            "body": "Wasm and JS share data through WebAssembly.Memory, a resizable ArrayBuffer. JS reads/writes the buffer using typed array views. Strings, arrays, and structs must be manually serialized into linear memory — there is no automatic object marshaling. Memory can grow at runtime with memory.grow(), but the old buffer detaches so you must re-create views.",
+                            "code": "const memory = new WebAssembly.Memory({ initial: 1 }); // 1 page = 64KB\nconst buf = new Uint8Array(memory.buffer);\n\n// Write a string into Wasm memory\nconst encoder = new TextEncoder();\nconst encoded = encoder.encode('Hello Wasm');\nbuf.set(encoded, 0); // write at offset 0\n\n// Pass pointer and length to Wasm\ninstance.exports.processString(0, encoded.length);"
+                        },
+                        {
+                            "title": "Tables, globals & multi-value",
+                            "body": "WebAssembly.Table holds function references, enabling indirect calls and dynamic dispatch (critical for virtual method tables in C++). WebAssembly.Global shares mutable scalar values between JS and Wasm. Multi-value returns let Wasm functions return tuples without memory allocation. These primitives bridge the gap between Wasm's low-level model and JS's dynamic nature.",
+                            "code": "// Share a mutable global between JS and Wasm\nconst counter = new WebAssembly.Global(\n  { value: 'i32', mutable: true },\n  0\n);\n\nconst { instance } = await WebAssembly.instantiateStreaming(\n  fetch('counter.wasm'),\n  { env: { counter } }\n);\n\ninstance.exports.increment(); // Wasm mutates the global\nconsole.log(counter.value);   // 1"
+                        },
+                        {
+                            "title": "Wasm-JS integration patterns",
+                            "body": "For complex data exchange, use a serialization layer or shared typed array conventions. Tools like wasm-bindgen (Rust) and Emscripten (C/C++) generate JS glue code automatically. WASI provides a standard system interface for server-side Wasm. Profile interop boundaries — frequent JS↔Wasm calls can be slower than batching work on one side. For the full WebAssembly JS API, memory model, and upcoming proposals like GC and threads, consult the WebAssembly spec and MDN WebAssembly docs, and see the recommended books for end-to-end Wasm application architecture.",
+                            "code": "// Efficient pattern: batch work in Wasm, read results in JS\nconst N = 1000;\nconst input = new Float64Array(memory.buffer, 0, N);\nfor (let i = 0; i < N; i++) input[i] = Math.random();\n\ninstance.exports.processArray(0, N); // Wasm processes in bulk\n\nconst output = new Float64Array(memory.buffer, N * 8, N);\nconsole.log(output[0]); // read result"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-advanced-structuredclone",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Structured Clone & Serialization",
+                    "description": "Deep-copy complex objects with structuredClone, understand the structured clone algorithm, and master serialization boundaries.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "structuredClone basics",
+                            "body": "structuredClone() creates a deep copy of a value using the structured clone algorithm. Unlike JSON.parse(JSON.stringify(x)), it handles Date, RegExp, Map, Set, ArrayBuffer, Error, and circular references. It is available globally in browsers, Node.js 17+, and Deno.",
+                            "code": "const original = {\n  date: new Date(),\n  pattern: /abc/gi,\n  data: new Map([['key', { nested: true }]]),\n  buffer: new ArrayBuffer(8)\n};\n\nconst copy = structuredClone(original);\ncopy.data.set('key', { nested: false });\nconsole.log(original.data.get('key')); // { nested: true } — independent"
+                        },
+                        {
+                            "title": "Circular references & transferables",
+                            "body": "The algorithm handles circular references by tracking visited objects during serialization. structuredClone also accepts a transfer list — ArrayBuffers and other transferable objects in the list are moved (zero-copy) to the clone, and the originals are detached.",
+                            "code": "// Circular reference — works fine\nconst a = { name: 'a' };\na.self = a;\nconst b = structuredClone(a);\nconsole.log(b.self === b); // true (own circular ref)\nconsole.log(b === a);      // false (independent copy)\n\n// Transfer an ArrayBuffer\nconst buf = new ArrayBuffer(1024);\nconst clone = structuredClone({ buf }, { transfer: [buf] });\nconsole.log(buf.byteLength);       // 0 (detached)\nconsole.log(clone.buf.byteLength); // 1024"
+                        },
+                        {
+                            "title": "What cannot be cloned",
+                            "body": "Functions, DOM nodes, symbols, WeakMap, WeakSet, and objects with prototype chains (class instances lose their prototype) are not cloneable. Property descriptors, getters, setters, and non-enumerable properties are also lost. Understanding these limits prevents subtle bugs when passing objects between workers or caching with structuredClone.",
+                            "code": "// These all throw DataCloneError:\n// structuredClone(() => {});       // function\n// structuredClone(Symbol('x'));    // symbol\n// structuredClone(document.body);  // DOM node\n\n// Class instances lose their prototype:\nclass Dog {\n  constructor(n) { this.name = n; }\n  bark() { return 'Woof!'; }\n}\nconst clone = structuredClone(new Dog('Rex'));\n// clone.bark(); // TypeError: clone.bark is not a function\nconsole.log(clone.name); // 'Rex' — data preserved"
+                        },
+                        {
+                            "title": "Serialization contexts & alternatives",
+                            "body": "The structured clone algorithm is used by postMessage, IndexedDB, Cache API, history.pushState, and BroadcastChannel — not just structuredClone(). For cross-origin or network serialization, JSON remains the standard. For richer serialization, consider libraries that handle class revival. For the full algorithm specification, cloneable types list, and transfer semantics, see the HTML Living Standard structured clone section and MDN structuredClone docs, and see the recommended books for serialization design patterns across distributed systems.",
+                            "code": "// Structured clone is used everywhere:\nworker.postMessage(complexObj); // cloned\nawait caches.open('v1').then(c => c.put(req, res)); // body cloned\nhistory.pushState(stateObj, ''); // cloned\n\n// JSON alternative for network\nconst json = JSON.stringify(data, replacer);\nconst revived = JSON.parse(json, reviver);"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-advanced-abortcontroller",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "AbortController & Cancellation",
+                    "description": "Cancel fetch requests, event listeners, and custom async operations cleanly using AbortController and AbortSignal.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "AbortController & AbortSignal",
+                            "body": "AbortController creates an AbortSignal that can be passed to cancellable APIs. Calling controller.abort() sets signal.aborted to true and dispatches an 'abort' event. Fetch, addEventListener, and many newer APIs accept a signal option. Aborting a fetch rejects its promise with an AbortError.",
+                            "code": "const controller = new AbortController();\n\nfetch('/api/data', { signal: controller.signal })\n  .then(r => r.json())\n  .catch(err => {\n    if (err.name === 'AbortError') console.log('Cancelled');\n    else throw err;\n  });\n\n// Cancel after 2 seconds\nsetTimeout(() => controller.abort(), 2000);"
+                        },
+                        {
+                            "title": "AbortSignal.timeout & AbortSignal.any",
+                            "body": "AbortSignal.timeout(ms) creates a signal that auto-aborts after a duration — perfect for request timeouts without manual setTimeout. AbortSignal.any([signal1, signal2]) creates a composite signal that aborts when any input signal fires, enabling layered cancellation (user cancel + timeout + page unload).",
+                            "code": "// Timeout after 5 seconds\nconst res = await fetch('/slow', {\n  signal: AbortSignal.timeout(5000)\n});\n\n// Composite: user cancel OR 10s timeout\nconst userCtrl = new AbortController();\nconst combined = AbortSignal.any([\n  userCtrl.signal,\n  AbortSignal.timeout(10000)\n]);\n\nfetch('/api', { signal: combined });\ncancelBtn.onclick = () => userCtrl.abort();"
+                        },
+                        {
+                            "title": "Cancelling custom async work",
+                            "body": "Any async function can accept an AbortSignal and check signal.aborted or listen for the abort event. This lets you build cancellable pipelines: polling loops, streaming reads, batch processing, and recursive crawlers can all cooperate with a single controller.",
+                            "code": "async function poll(url, interval, signal) {\n  while (!signal.aborted) {\n    try {\n      const res = await fetch(url, { signal });\n      const data = await res.json();\n      console.log(data);\n    } catch (err) {\n      if (err.name === 'AbortError') return;\n      throw err;\n    }\n    await new Promise((resolve, reject) => {\n      const id = setTimeout(resolve, interval);\n      signal.addEventListener('abort', () => {\n        clearTimeout(id);\n        reject(new DOMException('Aborted', 'AbortError'));\n      }, { once: true });\n    });\n  }\n}"
+                        },
+                        {
+                            "title": "Patterns & integration with event listeners",
+                            "body": "Pass { signal } to addEventListener to auto-remove listeners when aborted — no need for manual removeEventListener. This is excellent for component lifecycle cleanup. AbortController also integrates with Node.js streams, child_process, and the EventTarget API. For the full AbortController specification, supported APIs, and reason property for abort causes, see the DOM Living Standard and MDN AbortController guide, and see the recommended books for advanced cancellation and resource cleanup patterns.",
+                            "code": "// Auto-cleanup event listeners on abort\nconst ctrl = new AbortController();\n\nwindow.addEventListener('resize', handleResize, {\n  signal: ctrl.signal\n});\nwindow.addEventListener('scroll', handleScroll, {\n  signal: ctrl.signal\n});\ndocument.addEventListener('keydown', handleKey, {\n  signal: ctrl.signal\n});\n\n// One call removes all three listeners\nctrl.abort();"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-advanced-intl",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Internationalization with Intl",
+                    "description": "Format numbers, dates, currencies, and lists locale-aware using the built-in Intl API without external libraries.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Intl.NumberFormat",
+                            "body": "Intl.NumberFormat handles locale-sensitive number formatting: decimals, percentages, currencies, units, and compact notation. It respects locale-specific grouping separators, decimal marks, and currency symbol placement. Create a formatter once and reuse it — construction is expensive, but format() calls are fast.",
+                            "code": "const usd = new Intl.NumberFormat('en-US', {\n  style: 'currency', currency: 'USD'\n});\nconsole.log(usd.format(1234.5)); // '$1,234.50'\n\nconst de = new Intl.NumberFormat('de-DE', {\n  style: 'unit', unit: 'kilometer-per-hour'\n});\nconsole.log(de.format(120)); // '120 km/h'\n\nconst compact = new Intl.NumberFormat('en', {\n  notation: 'compact'\n});\nconsole.log(compact.format(7800000)); // '7.8M'"
+                        },
+                        {
+                            "title": "Intl.DateTimeFormat & Intl.RelativeTimeFormat",
+                            "body": "Intl.DateTimeFormat formats dates and times with full locale and timezone control. Options let you pick components (weekday, year, month, hour) and styles (long, short, narrow). Intl.RelativeTimeFormat produces human-readable relative strings like '3 days ago' or 'in 2 hours' without manual pluralization logic.",
+                            "code": "const dtf = new Intl.DateTimeFormat('ja-JP', {\n  dateStyle: 'full',\n  timeStyle: 'short',\n  timeZone: 'Asia/Tokyo'\n});\nconsole.log(dtf.format(new Date())); // '2025年1月15日水曜日 14:30'\n\nconst rtf = new Intl.RelativeTimeFormat('en', {\n  numeric: 'auto'\n});\nconsole.log(rtf.format(-1, 'day'));   // 'yesterday'\nconsole.log(rtf.format(3, 'month')); // 'in 3 months'"
+                        },
+                        {
+                            "title": "Collator, Segmenter & ListFormat",
+                            "body": "Intl.Collator provides locale-aware string comparison for sorting — essential for non-ASCII text. Intl.Segmenter splits text into grapheme clusters, words, or sentences correctly (emoji, CJK, and combining characters). Intl.ListFormat joins arrays into grammatically correct lists ('A, B, and C' in English, 'A, B et C' in French).",
+                            "code": "// Locale-aware sort\nconst collator = new Intl.Collator('sv-SE');\nconst sorted = ['ä', 'a', 'ö', 'o'].sort(collator.compare);\nconsole.log(sorted); // ['a', 'o', 'ä', 'ö'] (Swedish order)\n\n// Grapheme-safe string length\nconst seg = new Intl.Segmenter('en', { granularity: 'grapheme' });\nconst graphemes = [...seg.segment('👨‍👩‍👧‍👦')];\nconsole.log(graphemes.length); // 1 (not 7!)\n\n// ListFormat\nconst lf = new Intl.ListFormat('en', { type: 'conjunction' });\nconsole.log(lf.format(['JS', 'TS', 'Rust'])); // 'JS, TS, and Rust'"
+                        },
+                        {
+                            "title": "PluralRules, DisplayNames & best practices",
+                            "body": "Intl.PluralRules returns the CLDR plural category (zero, one, two, few, many, other) for a number — essential for correct pluralization in languages like Arabic or Polish. Intl.DisplayNames translates language, region, and script codes into human-readable names. Cache formatters, support locale fallback chains, and test with diverse locales. For the complete Intl specification, supported options, and locale negotiation algorithm, see ECMA-402, the Unicode CLDR docs, and MDN Intl reference, and see the recommended books for building fully internationalized applications.",
+                            "code": "// Plural rules for Russian\nconst pr = new Intl.PluralRules('ru');\nconsole.log(pr.select(1));  // 'one'\nconsole.log(pr.select(2));  // 'few'\nconsole.log(pr.select(5));  // 'many'\n\n// Display names\nconst dn = new Intl.DisplayNames('en', { type: 'language' });\nconsole.log(dn.of('ja')); // 'Japanese'\nconsole.log(dn.of('zh-Hant')); // 'Traditional Chinese'"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-advanced-perf",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Performance Profiling & Optimization",
+                    "description": "Profile, measure, and optimize JavaScript execution using browser APIs, DevTools, and algorithmic best practices.",
+                    "estimatedMinutes": 15,
+                    "lessons": [
+                        {
+                            "title": "Performance API & marks",
+                            "body": "The Performance API provides sub-millisecond timestamps via performance.now() and structured measurement via performance.mark() and performance.measure(). Unlike Date.now(), it is monotonic and not affected by clock adjustments. Use marks to instrument code paths and measures to calculate durations for specific operations.",
+                            "code": "performance.mark('start-process');\n\n// expensive work\nfor (let i = 0; i < 1e6; i++) Math.sqrt(i);\n\nperformance.mark('end-process');\nperformance.measure('process-time', 'start-process', 'end-process');\n\nconst [entry] = performance.getEntriesByName('process-time');\nconsole.log(`Duration: ${entry.duration.toFixed(2)}ms`);"
+                        },
+                        {
+                            "title": "PerformanceObserver & Web Vitals",
+                            "body": "PerformanceObserver watches for entries asynchronously — resource loads, long tasks, layout shifts, largest contentful paint, and first input delay. This is the foundation for measuring Core Web Vitals (LCP, FID/INP, CLS) in production. Buffered entries catch events that fired before the observer was registered.",
+                            "code": "// Observe Largest Contentful Paint\nconst observer = new PerformanceObserver(list => {\n  const entries = list.getEntries();\n  const last = entries[entries.length - 1];\n  console.log('LCP:', last.startTime.toFixed(0), 'ms');\n});\nobserver.observe({ type: 'largest-contentful-paint', buffered: true });\n\n// Observe long tasks (>50ms)\nconst longTaskObs = new PerformanceObserver(list => {\n  for (const entry of list.getEntries()) {\n    console.warn(`Long task: ${entry.duration.toFixed(0)}ms`);\n  }\n});\nlongTaskObs.observe({ type: 'longtask' });"
+                        },
+                        {
+                            "title": "Runtime optimization techniques",
+                            "body": "Avoid layout thrashing by batching DOM reads and writes. Use requestAnimationFrame for visual updates. Debounce/throttle high-frequency events. Prefer CSS containment and will-change for paint-heavy elements. On the JS side: avoid megamorphic call sites, minimize closures in hot paths, use typed arrays for numeric data, and leverage OffscreenCanvas for heavy rendering.",
+                            "code": "// Bad: layout thrashing (read-write-read-write)\nelements.forEach(el => {\n  const h = el.offsetHeight; // read (forces layout)\n  el.style.height = h * 2 + 'px'; // write (invalidates layout)\n});\n\n// Good: batch reads, then batch writes\nconst heights = elements.map(el => el.offsetHeight);\nrequestAnimationFrame(() => {\n  elements.forEach((el, i) => {\n    el.style.height = heights[i] * 2 + 'px';\n  });\n});"
+                        },
+                        {
+                            "title": "Profiling workflow & DevTools mastery",
+                            "body": "Chrome DevTools Performance tab records CPU profiles, flame charts, and rendering timelines. Use 'Bottom-Up' to find the most expensive functions, 'Call Tree' to trace hot call paths, and 'Event Log' for individual events. Enable CPU throttling (4x/6x) to simulate real devices. Lighthouse automates auditing. For the full Performance API specification, observer types, and metric definitions, see the W3C Performance Timeline spec and MDN Performance API docs, and see the recommended books for systematic performance engineering methodology.",
+                            "code": "// Programmatic CPU profile in Node.js\nconst { Session } = require('inspector');\nconst session = new Session();\nsession.connect();\n\nsession.post('Profiler.enable', () => {\n  session.post('Profiler.start', () => {\n    // ... run code to profile ...\n    session.post('Profiler.stop', (err, { profile }) => {\n      require('fs').writeFileSync(\n        'profile.cpuprofile',\n        JSON.stringify(profile)\n      );\n    });\n  });\n});"
                         }
                     ]
                 }

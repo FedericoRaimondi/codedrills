@@ -8,25 +8,133 @@
                     "id": "rs-new-1",
                     "language": "rust",
                     "level": "new",
-                    "title": "Print a greeting",
-                    "description": "Print the text 'Hello, World!' to the console.",
+                    "title": "Hello Rust",
+                    "description": "Print exactly `Hello, World!`. Expected output: `Hello, World!`.",
                     "starterCode": "fn main() {\n    // Write your code below\n}\n",
-                    "hint": "Use the println! macro with a string literal.",
+                    "hint": "Use println! with exact text.",
                     "solution": {
                         "code": "fn main() {\n    println!(\"Hello, World!\");\n}",
                         "steps": [
                             {
-                                "title": "Understand the entry point",
-                                "explanation": "Every Rust program starts from the main() function. It takes no arguments and returns nothing by default."
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
                             },
                             {
-                                "title": "Print to the console",
-                                "explanation": "println! is a macro (notice the !) that writes a formatted line to standard output.",
-                                "code": "println!(\"Hello, World!\");"
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "fn main() {\n    println!(\"Hello, World!\");\n}"
                             },
                             {
-                                "title": "Verify",
-                                "explanation": "Run with `cargo run`. You should see 'Hello, World!' in the terminal."
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-2",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Name Spark",
+                    "description": "Create `let name = \"Ada\";` and print `Hi, Ada!`. Expected output: `Hi, Ada!`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use {} placeholder in println!.",
+                    "solution": {
+                        "code": "fn main() {\n    let name = \"Ada\";\n    println!(\"Hi, {}!\", name);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "fn main() {\n    let name = \"Ada\";\n    println!(\"Hi, {}!\", name);\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-3",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Double Tap",
+                    "description": "Set `x = 7` and print its double. Expected output: `14`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Multiply and pass result to println!.",
+                    "solution": {
+                        "code": "fn main() {\n    let x = 7;\n    println!(\"{}\", x * 2);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "fn main() {\n    let x = 7;\n    println!(\"{}\", x * 2);\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-4",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Line Trio",
+                    "description": "Print these lines in order: `Ready`, `Set`, `Code`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Three println! calls in exact order.",
+                    "solution": {
+                        "code": "fn main() {\n    println!(\"Ready\");\n    println!(\"Set\");\n    println!(\"Code\");\n}",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "fn main() {\n    println!(\"Ready\");\n    println!(\"Set\");\n    println!(\"Code\");\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-5",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Area Pulse",
+                    "description": "Given `width = 4` and `height = 3`, print rectangle area. Expected output: `12`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Area is width * height.",
+                    "solution": {
+                        "code": "fn main() {\n    let width = 4;\n    let height = 3;\n    println!(\"{}\", width * height);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "fn main() {\n    let width = 4;\n    let height = 3;\n    println!(\"{}\", width * height);\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
                             }
                         ]
                     }
@@ -40,25 +148,133 @@
                     "id": "rs-beginner-1",
                     "language": "rust",
                     "level": "beginner",
-                    "title": "Sum a vector",
-                    "description": "Write a function `vec_sum(numbers: &[i32]) -> i32` that returns the sum of all integers in the slice.",
+                    "title": "Slice Sum",
+                    "description": "Write `vec_sum(numbers: &[i32]) -> i32` returning sum of all values. Example: `&[3,4,5] -> 12`.",
                     "starterCode": "fn vec_sum(numbers: &[i32]) -> i32 {\n    // Your code here\n    0\n}\n",
-                    "hint": "Use the Iterator::sum() method available on slices via .iter().",
+                    "hint": "Use iter().sum().",
                     "solution": {
                         "code": "fn vec_sum(numbers: &[i32]) -> i32 {\n    numbers.iter().sum()\n}",
                         "steps": [
                             {
-                                "title": "Borrow the slice",
-                                "explanation": "&[i32] is a borrowed slice — a view into a sequence of i32 values. No ownership is transferred."
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
                             },
                             {
-                                "title": "Use iter().sum()",
-                                "explanation": ".iter() creates an iterator over references. .sum() folds the iterator by adding all values.",
-                                "code": "numbers.iter().sum()"
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "fn vec_sum(numbers: &[i32]) -> i32 {\n    numbers.iter().sum()\n}"
                             },
                             {
-                                "title": "Verify",
-                                "explanation": "vec_sum(&[1, 2, 3]) should return 6. vec_sum(&[]) should return 0."
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-2",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Even Keep",
+                    "description": "Write `only_even(numbers: &[i32]) -> Vec<i32>` returning even values in order. Example: `[5,2,8,1] -> [2,8]`.",
+                    "starterCode": "fn only_even(numbers: &[i32]) -> Vec<i32> {\n    // Your code here\n    Vec::new()\n}\n",
+                    "hint": "Filter with `% 2 == 0` and collect.",
+                    "solution": {
+                        "code": "fn only_even(numbers: &[i32]) -> Vec<i32> {\n    numbers.iter().copied().filter(|n| n % 2 == 0).collect()\n}",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "fn only_even(numbers: &[i32]) -> Vec<i32> {\n    numbers.iter().copied().filter(|n| n % 2 == 0).collect()\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-3",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Vowel Tally",
+                    "description": "Write `count_vowels(text: &str) -> usize` counting vowels case-insensitively. Example: `\"Code\" -> 2`.",
+                    "starterCode": "fn count_vowels(text: &str) -> usize {\n    // Your code here\n    0\n}\n",
+                    "hint": "Lowercase each char then match vowels.",
+                    "solution": {
+                        "code": "fn count_vowels(text: &str) -> usize {\n    text.chars()\n        .filter(|c| matches!(c.to_ascii_lowercase(), 'a' | 'e' | 'i' | 'o' | 'u'))\n        .count()\n}",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "fn count_vowels(text: &str) -> usize {\n    text.chars()\n        .filter(|c| matches!(c.to_ascii_lowercase(), 'a' | 'e' | 'i' | 'o' | 'u'))\n        .count()\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-4",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Max Hunter",
+                    "description": "Write `max_in_slice(numbers: &[i32]) -> i32` for non-empty input. Example: `[4,9,1] -> 9`.",
+                    "starterCode": "fn max_in_slice(numbers: &[i32]) -> i32 {\n    // Your code here\n    0\n}\n",
+                    "hint": "Use iter().max().unwrap() then dereference.",
+                    "solution": {
+                        "code": "fn max_in_slice(numbers: &[i32]) -> i32 {\n    *numbers.iter().max().unwrap()\n}",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "fn max_in_slice(numbers: &[i32]) -> i32 {\n    *numbers.iter().max().unwrap()\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-5",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Word Flip",
+                    "description": "Write `reverse_word(word: &str) -> String` returning reversed text. Example: `\"drill\" -> \"llird\"`.",
+                    "starterCode": "fn reverse_word(word: &str) -> String {\n    // Your code here\n    String::new()\n}\n",
+                    "hint": "Use chars().rev().collect().",
+                    "solution": {
+                        "code": "fn reverse_word(word: &str) -> String {\n    word.chars().rev().collect()\n}",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "fn reverse_word(word: &str) -> String {\n    word.chars().rev().collect()\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
                             }
                         ]
                     }
@@ -72,26 +288,133 @@
                     "id": "rs-intermediate-1",
                     "language": "rust",
                     "level": "intermediate",
-                    "title": "Count words",
-                    "description": "Write a function `word_count(text: &str) -> std::collections::HashMap<&str, usize>` that counts how many times each word appears in the input string (words are separated by whitespace).",
-                    "starterCode": "use std::collections::HashMap;\n\nfn word_count<'a>(text: &'a str) -> HashMap<&'a str, usize> {\n    // Your code here\n    HashMap::new()\n}\n",
-                    "hint": "Use .split_whitespace() to iterate over words, and the entry().and_modify().or_insert() pattern to update counts.",
+                    "title": "Word Counter",
+                    "description": "Write `word_count(text: &str) -> std::collections::HashMap<String, usize>` counting whitespace-separated words. Example: `\"go rust go\" -> {\"go\":2,\"rust\":1}`.",
+                    "starterCode": "use std::collections::HashMap;\n\nfn word_count(text: &str) -> HashMap<String, usize> {\n    // Your code here\n    HashMap::new()\n}\n",
+                    "hint": "Use entry(...).or_insert(0) += 1.",
                     "solution": {
-                        "code": "use std::collections::HashMap;\n\nfn word_count<'a>(text: &'a str) -> HashMap<&'a str, usize> {\n    let mut counts = HashMap::new();\n    for word in text.split_whitespace() {\n        *counts.entry(word).or_insert(0) += 1;\n    }\n    counts\n}",
+                        "code": "use std::collections::HashMap;\n\nfn word_count(text: &str) -> HashMap<String, usize> {\n    let mut counts = HashMap::new();\n    for word in text.split_whitespace() {\n        *counts.entry(word.to_string()).or_insert(0) += 1;\n    }\n    counts\n}",
                         "steps": [
                             {
-                                "title": "Split on whitespace",
-                                "explanation": ".split_whitespace() handles any run of whitespace and skips leading/trailing spaces."
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
                             },
                             {
-                                "title": "Update the map",
-                                "explanation": "entry(word).or_insert(0) returns a mutable reference to the count, inserting 0 if absent. Dereferencing and incrementing updates it in place.",
-                                "code": "*counts.entry(word).or_insert(0) += 1;"
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "use std::collections::HashMap;\n\nfn word_count(text: &str) -> HashMap<String, usize> {\n    let mut counts = HashMap::new();\n    for word in text.split_whitespace() {\n        *counts.entry(word.to_string()).or_insert(0) += 1;\n    }\n    counts\n}"
                             },
                             {
-                                "title": "Lifetimes",
-                                "explanation": "The 'a lifetime ties the keys in the HashMap to the input &str, so they stay valid as long as the original string lives.",
-                                "code": "fn word_count<'a>(text: &'a str) -> HashMap<&'a str, usize> { ... }"
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-2",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Run Totals",
+                    "description": "Write `running_sum(numbers: &[i32]) -> Vec<i32>` returning cumulative sums. Example: `[2,1,3] -> [2,3,6]`.",
+                    "starterCode": "fn running_sum(numbers: &[i32]) -> Vec<i32> {\n    // Your code here\n    Vec::new()\n}\n",
+                    "hint": "Track mutable total and push after each addition.",
+                    "solution": {
+                        "code": "fn running_sum(numbers: &[i32]) -> Vec<i32> {\n    let mut total = 0;\n    let mut out = Vec::with_capacity(numbers.len());\n    for &n in numbers {\n        total += n;\n        out.push(total);\n    }\n    out\n}",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "fn running_sum(numbers: &[i32]) -> Vec<i32> {\n    let mut total = 0;\n    let mut out = Vec::with_capacity(numbers.len());\n    for &n in numbers {\n        total += n;\n        out.push(total);\n    }\n    out\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-3",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Prime Guard",
+                    "description": "Write `is_prime(n: u64) -> bool` returning true for primes and false otherwise; 0 and 1 are not prime.",
+                    "starterCode": "fn is_prime(n: u64) -> bool {\n    // Your code here\n    false\n}\n",
+                    "hint": "Check divisors while d*d <= n.",
+                    "solution": {
+                        "code": "fn is_prime(n: u64) -> bool {\n    if n < 2 {\n        return false;\n    }\n    let mut d = 2;\n    while d * d <= n {\n        if n % d == 0 {\n            return false;\n        }\n        d += 1;\n    }\n    true\n}",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "fn is_prime(n: u64) -> bool {\n    if n < 2 {\n        return false;\n    }\n    let mut d = 2;\n    while d * d <= n {\n        if n % d == 0 {\n            return false;\n        }\n        d += 1;\n    }\n    true\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-4",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Group Initial",
+                    "description": "Write `group_by_first(words: &[&str]) -> std::collections::HashMap<char, Vec<String>>` grouping by first character.",
+                    "starterCode": "use std::collections::HashMap;\n\nfn group_by_first(words: &[&str]) -> HashMap<char, Vec<String>> {\n    // Your code here\n    HashMap::new()\n}\n",
+                    "hint": "Use entry(key).or_default().push(...).",
+                    "solution": {
+                        "code": "use std::collections::HashMap;\n\nfn group_by_first(words: &[&str]) -> HashMap<char, Vec<String>> {\n    let mut groups: HashMap<char, Vec<String>> = HashMap::new();\n    for &word in words {\n        let key = word.chars().next().unwrap();\n        groups.entry(key).or_default().push(word.to_string());\n    }\n    groups\n}",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "use std::collections::HashMap;\n\nfn group_by_first(words: &[&str]) -> HashMap<char, Vec<String>> {\n    let mut groups: HashMap<char, Vec<String>> = HashMap::new();\n    for &word in words {\n        let key = word.chars().next().unwrap();\n        groups.entry(key).or_default().push(word.to_string());\n    }\n    groups\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-5",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Rotate Right",
+                    "description": "Write `rotate_right(items: &[i32], k: usize) -> Vec<i32>` rotating right by k. Example: `([1,2,3,4],1) -> [4,1,2,3]`.",
+                    "starterCode": "fn rotate_right(items: &[i32], k: usize) -> Vec<i32> {\n    // Your code here\n    Vec::new()\n}\n",
+                    "hint": "Use modulo shift and combine two slices.",
+                    "solution": {
+                        "code": "fn rotate_right(items: &[i32], k: usize) -> Vec<i32> {\n    if items.is_empty() {\n        return Vec::new();\n    }\n    let shift = k % items.len();\n    let mut out = Vec::with_capacity(items.len());\n    out.extend_from_slice(&items[items.len() - shift..]);\n    out.extend_from_slice(&items[..items.len() - shift]);\n    out\n}",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "fn rotate_right(items: &[i32], k: usize) -> Vec<i32> {\n    if items.is_empty() {\n        return Vec::new();\n    }\n    let shift = k % items.len();\n    let mut out = Vec::with_capacity(items.len());\n    out.extend_from_slice(&items[items.len() - shift..]);\n    out.extend_from_slice(&items[..items.len() - shift]);\n    out\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
                             }
                         ]
                     }
@@ -105,25 +428,133 @@
                     "id": "rs-advanced-1",
                     "language": "rust",
                     "level": "advanced",
-                    "title": "Generic stack with trait bound",
-                    "description": "Implement a generic `Stack<T>` where T implements the `Display` trait. It must support `push(&mut self, item: T)`, `pop(&mut self) -> Option<T>`, and `peek(&self) -> Option<&T>`. Also implement a `print_all` method that prints every element.",
-                    "starterCode": "use std::fmt::Display;\n\nstruct Stack<T> {\n    // Your fields here\n}\n\nimpl<T: Display> Stack<T> {\n    pub fn new() -> Self {\n        // Your code here\n        todo!()\n    }\n\n    pub fn push(&mut self, item: T) {\n        // Your code here\n    }\n\n    pub fn pop(&mut self) -> Option<T> {\n        // Your code here\n        None\n    }\n\n    pub fn peek(&self) -> Option<&T> {\n        // Your code here\n        None\n    }\n\n    pub fn print_all(&self) {\n        // Your code here\n    }\n}\n",
-                    "hint": "Back the stack with a Vec<T>. Vec already has push and pop. Use last() for peek.",
+                    "title": "Stack Forge",
+                    "description": "Implement generic `Stack<T>` with methods `new`, `push`, `pop`, `peek`, using `Vec<T>` as storage.",
+                    "starterCode": "struct Stack<T> {\n    // Your fields here\n}\n\nimpl<T> Stack<T> {\n    fn new() -> Self {\n        // Your code here\n        todo!()\n    }\n\n    fn push(&mut self, item: T) {\n        // Your code here\n    }\n\n    fn pop(&mut self) -> Option<T> {\n        // Your code here\n        None\n    }\n\n    fn peek(&self) -> Option<&T> {\n        // Your code here\n        None\n    }\n}\n",
+                    "hint": "Delegate behavior to Vec push/pop/last.",
                     "solution": {
-                        "code": "use std::fmt::Display;\n\nstruct Stack<T> {\n    data: Vec<T>,\n}\n\nimpl<T: Display> Stack<T> {\n    pub fn new() -> Self {\n        Stack { data: Vec::new() }\n    }\n\n    pub fn push(&mut self, item: T) {\n        self.data.push(item);\n    }\n\n    pub fn pop(&mut self) -> Option<T> {\n        self.data.pop()\n    }\n\n    pub fn peek(&self) -> Option<&T> {\n        self.data.last()\n    }\n\n    pub fn print_all(&self) {\n        for item in &self.data {\n            println!(\"{}\", item);\n        }\n    }\n}",
+                        "code": "struct Stack<T> {\n    data: Vec<T>,\n}\n\nimpl<T> Stack<T> {\n    fn new() -> Self {\n        Stack { data: Vec::new() }\n    }\n\n    fn push(&mut self, item: T) {\n        self.data.push(item);\n    }\n\n    fn pop(&mut self) -> Option<T> {\n        self.data.pop()\n    }\n\n    fn peek(&self) -> Option<&T> {\n        self.data.last()\n    }\n}",
                         "steps": [
                             {
-                                "title": "Back with Vec",
-                                "explanation": "Vec<T> already handles dynamic sizing and provides push() and pop() with the exact semantics a stack needs."
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
                             },
                             {
-                                "title": "Trait bound: Display",
-                                "explanation": "The T: Display bound in impl<T: Display> means every method in this block can call println!(\"{}\", item) on a T."
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "struct Stack<T> {\n    data: Vec<T>,\n}\n\nimpl<T> Stack<T> {\n    fn new() -> Self {\n        Stack { data: Vec::new() }\n    }\n\n    fn push(&mut self, item: T) {\n        self.data.push(item);\n    }\n\n    fn pop(&mut self) -> Option<T> {\n        self.data.pop()\n    }\n\n    fn peek(&self) -> Option<&T> {\n        self.data.last()\n    }\n}"
                             },
                             {
-                                "title": "peek returns a reference",
-                                "explanation": "Option<&T> borrows from the Vec — no cloning or ownership transfer needed. Vec::last() returns this for free.",
-                                "code": "pub fn peek(&self) -> Option<&T> {\n    self.data.last()\n}"
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-advanced-2",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Paren Shield",
+                    "description": "Write `is_valid_parentheses(s: &str) -> bool` for brackets `()[]{}` with proper nesting. Example: `\"([])\" -> true`, `\"([)]\" -> false`.",
+                    "starterCode": "fn is_valid_parentheses(s: &str) -> bool {\n    // Your code here\n    false\n}\n",
+                    "hint": "Use stack and match each closer.",
+                    "solution": {
+                        "code": "fn is_valid_parentheses(s: &str) -> bool {\n    let mut stack: Vec<char> = Vec::new();\n\n    for ch in s.chars() {\n        match ch {\n            '(' | '[' | '{' => stack.push(ch),\n            ')' => if stack.pop() != Some('(') { return false; },\n            ']' => if stack.pop() != Some('[') { return false; },\n            '}' => if stack.pop() != Some('{') { return false; },\n            _ => {}\n        }\n    }\n\n    stack.is_empty()\n}",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "fn is_valid_parentheses(s: &str) -> bool {\n    let mut stack: Vec<char> = Vec::new();\n\n    for ch in s.chars() {\n        match ch {\n            '(' | '[' | '{' => stack.push(ch),\n            ')' => if stack.pop() != Some('(') { return false; },\n            ']' => if stack.pop() != Some('[') { return false; },\n            '}' => if stack.pop() != Some('{') { return false; },\n            _ => {}\n        }\n    }\n\n    stack.is_empty()\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-advanced-3",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Interval Fuse",
+                    "description": "Write `merge_intervals(intervals: &[[i32; 2]]) -> Vec<[i32; 2]>` merging overlaps. Example: `[[1,3],[2,6],[8,10]] -> [[1,6],[8,10]]`.",
+                    "starterCode": "fn merge_intervals(intervals: &[[i32; 2]]) -> Vec<[i32; 2]> {\n    // Your code here\n    Vec::new()\n}\n",
+                    "hint": "Sort by start then merge against the last output interval.",
+                    "solution": {
+                        "code": "fn merge_intervals(intervals: &[[i32; 2]]) -> Vec<[i32; 2]> {\n    if intervals.is_empty() {\n        return Vec::new();\n    }\n\n    let mut sorted = intervals.to_vec();\n    sorted.sort_by_key(|iv| iv[0]);\n\n    let mut merged = vec![sorted[0]];\n    for iv in sorted.into_iter().skip(1) {\n        let last = merged.last_mut().unwrap();\n        if iv[0] <= last[1] {\n            last[1] = last[1].max(iv[1]);\n        } else {\n            merged.push(iv);\n        }\n    }\n    merged\n}",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "fn merge_intervals(intervals: &[[i32; 2]]) -> Vec<[i32; 2]> {\n    if intervals.is_empty() {\n        return Vec::new();\n    }\n\n    let mut sorted = intervals.to_vec();\n    sorted.sort_by_key(|iv| iv[0]);\n\n    let mut merged = vec![sorted[0]];\n    for iv in sorted.into_iter().skip(1) {\n        let last = merged.last_mut().unwrap();\n        if iv[0] <= last[1] {\n            last[1] = last[1].max(iv[1]);\n        } else {\n            merged.push(iv);\n        }\n    }\n    merged\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-advanced-4",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Top K Words",
+                    "description": "Write `top_k_frequent(words: &[&str], k: usize) -> Vec<String>` returning top-k by frequency, lexicographic tiebreak. Example: `[\"i\",\"love\",\"i\",\"code\"],2 -> [\"i\",\"code\"]`.",
+                    "starterCode": "use std::collections::HashMap;\n\nfn top_k_frequent(words: &[&str], k: usize) -> Vec<String> {\n    // Your code here\n    Vec::new()\n}\n",
+                    "hint": "Count with HashMap then sort entries by count desc and word asc.",
+                    "solution": {
+                        "code": "use std::collections::HashMap;\n\nfn top_k_frequent(words: &[&str], k: usize) -> Vec<String> {\n    let mut counts: HashMap<&str, usize> = HashMap::new();\n    for &w in words {\n        *counts.entry(w).or_insert(0) += 1;\n    }\n\n    let mut entries: Vec<(&str, usize)> = counts.into_iter().collect();\n    entries.sort_by(|a, b| b.1.cmp(&a.1).then_with(|| a.0.cmp(b.0)));\n\n    entries.into_iter().take(k).map(|(w, _)| w.to_string()).collect()\n}",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "use std::collections::HashMap;\n\nfn top_k_frequent(words: &[&str], k: usize) -> Vec<String> {\n    let mut counts: HashMap<&str, usize> = HashMap::new();\n    for &w in words {\n        *counts.entry(w).or_insert(0) += 1;\n    }\n\n    let mut entries: Vec<(&str, usize)> = counts.into_iter().collect();\n    entries.sort_by(|a, b| b.1.cmp(&a.1).then_with(|| a.0.cmp(b.0)));\n\n    entries.into_iter().take(k).map(|(w, _)| w.to_string()).collect()\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-advanced-5",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Deep Flatten",
+                    "description": "Define enum `Nested { Num(i32), List(Vec<Nested>) }` and write `flatten_deep(items: &[Nested]) -> Vec<i32>` returning depth-first flattened numbers. Example: `[Num(1), List(vec![Num(2), List(vec![Num(3)])])] -> [1,2,3]`.",
+                    "starterCode": "enum Nested {\n    Num(i32),\n    List(Vec<Nested>),\n}\n\nfn flatten_deep(items: &[Nested]) -> Vec<i32> {\n    // Your code here\n    Vec::new()\n}\n",
+                    "hint": "Use recursion to walk nested lists.",
+                    "solution": {
+                        "code": "enum Nested {\n    Num(i32),\n    List(Vec<Nested>),\n}\n\nfn flatten_deep(items: &[Nested]) -> Vec<i32> {\n    fn walk(items: &[Nested], out: &mut Vec<i32>) {\n        for item in items {\n            match item {\n                Nested::Num(n) => out.push(*n),\n                Nested::List(inner) => walk(inner, out),\n            }\n        }\n    }\n\n    let mut out = Vec::new();\n    walk(items, &mut out);\n    out\n}",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Apply the language feature that directly solves the task.",
+                                "code": "enum Nested {\n    Num(i32),\n    List(Vec<Nested>),\n}\n\nfn flatten_deep(items: &[Nested]) -> Vec<i32> {\n    fn walk(items: &[Nested], out: &mut Vec<i32>) {\n        for item in items {\n            match item {\n                Nested::Num(n) => out.push(*n),\n                Nested::List(inner) => walk(inner, out),\n            }\n        }\n    }\n\n    let mut out = Vec::new();\n    walk(items, &mut out);\n    out\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
                             }
                         ]
                     }
