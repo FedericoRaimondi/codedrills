@@ -5,6 +5,36 @@
             "level": "new",
             "topics": [
                 {
+                    "id": "js-new-setup",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Getting Started with JavaScript",
+                    "description": "Set up your environment and run your very first JavaScript program in the browser and on your computer.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "What is JavaScript?",
+                            "body": "JavaScript is the programming language of the web. Every modern browser can run it, and with Node.js you can also run JavaScript outside the browser \u2014 on servers, scripts, and command-line tools. You don't need much to get started: just a browser or a small runtime install.",
+                            "code": "// This is JavaScript!\nconsole.log(\"Hello, world!\");"
+                        },
+                        {
+                            "title": "Installing Node.js",
+                            "body": "Node.js lets you run JavaScript files directly on your computer. Visit https://nodejs.org and download the LTS (Long Term Support) version for your operating system. The installer adds the 'node' command to your terminal. After installing, open a terminal and verify the installation by checking the version.",
+                            "code": "// In your terminal, type:\n// node --version\n// You should see something like: v20.11.0"
+                        },
+                        {
+                            "title": "Running JS in the browser console",
+                            "body": "Every browser has a built-in JavaScript console. In Chrome or Edge, press F12 (or Ctrl+Shift+J on Windows, Cmd+Option+J on Mac) to open DevTools, then click the Console tab. You can type JavaScript directly and press Enter to run it. This is the fastest way to experiment with small snippets.",
+                            "code": "// Type these lines one at a time in the console:\n2 + 2\n\"Hello\" + \" \" + \"World\"\nMath.random()"
+                        },
+                        {
+                            "title": "Running a .js file with Node",
+                            "body": "Create a file called hello.js in any text editor \u2014 VS Code is a popular free choice that offers syntax highlighting and a built-in terminal. Write your code, save the file, then open a terminal in the same folder and run it with the node command. For a deeper look at the language, check out MDN's JavaScript Guide and visit the recommended books section for beginner-friendly resources.",
+                            "code": "// hello.js\nconsole.log(\"Hello from a file!\");\n\n// In your terminal:\n// node hello.js\n// Output: Hello from a file!"
+                        }
+                    ]
+                },
+                {
                     "id": "js-new-variables",
                     "language": "javascript",
                     "level": "new",
@@ -19,17 +49,408 @@
                         },
                         {
                             "title": "let (block-scoped, reassignable)",
-                            "body": "let is block-scoped — it only exists inside the { } where it was declared. Use let for variables whose values change.",
+                            "body": "let is block-scoped \u2014 it only exists inside the { } where it was declared. Use let for variables whose values change.",
                             "code": "let count = 0;\ncount = 1; // OK\nconsole.log(count); // 1"
                         },
                         {
                             "title": "const (block-scoped, binding is fixed)",
                             "body": "const prevents reassigning the binding. For objects and arrays, the contents can still change. Use const by default.",
-                            "code": "const PI = 3.14;\nconst person = { name: \"Alice\" };\nperson.name = \"Bob\"; // OK — object is mutable\n// PI = 3; // TypeError"
+                            "code": "const PI = 3.14;\nconst person = { name: \"Alice\" };\nperson.name = \"Bob\"; // OK \u2014 object is mutable\n// PI = 3; // TypeError"
                         },
                         {
                             "title": "Rule of thumb",
-                            "body": "Prefer const. Use let when you need to reassign. Avoid var in modern JavaScript."
+                            "body": "Prefer const. Use let when you need to reassign. Avoid var in modern JavaScript. For a deeper dive, check out MDN's guide on Grammar and Types. Don't forget to visit the recommended books section for curated resources.",
+                            "code": "const greeting = \"Hello\";\nlet score = 0;\nscore += 10;\nconsole.log(greeting, score); // Hello 10"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-datatypes",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Data Types at a Glance",
+                    "description": "Learn the fundamental data types JavaScript offers and how to identify them using typeof.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "The seven primitive types",
+                            "body": "JavaScript has seven primitive (simple) types: string, number, bigint, boolean, undefined, null, and symbol. Primitives are immutable \u2014 once created, their value cannot change. When you reassign a variable, you are replacing the value, not modifying it.",
+                            "code": "const name = \"Alice\";   // string\nconst age = 30;          // number\nconst isHappy = true;    // boolean\nlet score;               // undefined (no value assigned)\nconst empty = null;      // null (intentionally empty)"
+                        },
+                        {
+                            "title": "The typeof operator",
+                            "body": "Use typeof to check what type a value is. It returns a string describing the type. This is handy when debugging or when you need to handle different types differently. Note that typeof null returns 'object' \u2014 this is a well-known JavaScript quirk, not a feature.",
+                            "code": "console.log(typeof \"hello\"); // \"string\"\nconsole.log(typeof 42);      // \"number\"\nconsole.log(typeof true);    // \"boolean\"\nconsole.log(typeof undefined); // \"undefined\"\nconsole.log(typeof null);    // \"object\" (quirk!)"
+                        },
+                        {
+                            "title": "null vs. undefined",
+                            "body": "undefined means a variable has been declared but not yet assigned a value. null is a deliberate assignment that represents 'no value.' Think of undefined as 'nothing here yet' and null as 'intentionally empty.' Both are falsy, but they are not the same type.",
+                            "code": "let a;\nconsole.log(a);        // undefined\n\nlet b = null;\nconsole.log(b);        // null\n\nconsole.log(a == b);   // true  (loose equality)\nconsole.log(a === b);  // false (strict equality)"
+                        },
+                        {
+                            "title": "Objects \u2014 the non-primitive",
+                            "body": "Everything that is not a primitive is an object. Arrays, functions, dates, and regular objects are all objects under the hood. Unlike primitives, objects are mutable and are stored by reference, not by value. To explore data types in depth, see MDN's JavaScript data types and data structures page, and visit the recommended books section for thorough beginner references.",
+                            "code": "const colors = [\"red\", \"green\"];  // array (object)\nconst person = { name: \"Eve\" };   // object\n\nconsole.log(typeof colors);  // \"object\"\nconsole.log(typeof person);  // \"object\"\nconsole.log(Array.isArray(colors)); // true"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-strings",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Strings & Template Literals",
+                    "description": "Master creating, combining, and manipulating text in JavaScript with strings and modern template literals.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Creating strings",
+                            "body": "A string is a sequence of characters wrapped in quotes. You can use single quotes, double quotes, or backticks. Single and double quotes behave identically. Backticks unlock template literals, which we'll cover shortly. Pick one style and be consistent.",
+                            "code": "const single = 'Hello';\nconst double = \"World\";\nconst backtick = `Hi there`;\n\nconsole.log(single, double, backtick);"
+                        },
+                        {
+                            "title": "Useful string properties and methods",
+                            "body": "Strings come with built-in properties and methods. The .length property tells you how many characters a string has. Methods like .toUpperCase(), .toLowerCase(), .trim(), .includes(), and .slice() let you inspect and transform strings without changing the original \u2014 strings are immutable.",
+                            "code": "const msg = \"  Hello, JavaScript!  \";\n\nconsole.log(msg.length);          // 22\nconsole.log(msg.trim());          // \"Hello, JavaScript!\"\nconsole.log(msg.includes(\"Java\")); // true\nconsole.log(msg.slice(2, 7));     // \"Hello\"\nconsole.log(msg.toUpperCase());   // \"  HELLO, JAVASCRIPT!  \""
+                        },
+                        {
+                            "title": "Template literals & interpolation",
+                            "body": "Template literals use backticks (`) and allow you to embed expressions inside ${...}. This is called string interpolation. It is far more readable than concatenation with the + operator, especially when you have multiple variables or calculations.",
+                            "code": "const name = \"Alice\";\nconst age = 25;\n\n// Old way \u2014 concatenation\nconsole.log(\"Name: \" + name + \", Age: \" + age);\n\n// Modern way \u2014 template literal\nconsole.log(`Name: ${name}, Age: ${age}`);\nconsole.log(`Next year you will be ${age + 1}`);"
+                        },
+                        {
+                            "title": "Multi-line strings",
+                            "body": "Template literals also support multi-line strings naturally \u2014 just press Enter inside the backticks. With regular quotes you would need escape characters like backslash-n. This makes template literals ideal for building HTML snippets or formatted output. For a comprehensive look at string handling, read MDN's Text formatting guide and visit the recommended books section for additional learning paths.",
+                            "code": "const poem = `Roses are red,\nViolets are blue,\nJavaScript is fun,\nAnd so are you.`;\n\nconsole.log(poem);"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-numbers",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Numbers & Basic Math",
+                    "description": "Work with JavaScript's number type, arithmetic operators, and the built-in Math object.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "One number type to rule them all",
+                            "body": "Unlike many languages, JavaScript has a single number type that handles both integers and decimals (floating-point). Behind the scenes it uses 64-bit floating point (IEEE 754). You can write integers, decimals, and even scientific notation.",
+                            "code": "const integer = 42;\nconst decimal = 3.14;\nconst scientific = 2.5e3; // 2500\n\nconsole.log(integer, decimal, scientific);\nconsole.log(typeof integer);  // \"number\"\nconsole.log(typeof decimal);  // \"number\""
+                        },
+                        {
+                            "title": "Arithmetic operators",
+                            "body": "JavaScript supports the standard arithmetic operators: addition (+), subtraction (-), multiplication (*), division (/), remainder (%), and exponentiation (**). The remainder operator is sometimes called modulo and is very useful for checking if a number is even or odd.",
+                            "code": "console.log(10 + 3);   // 13\nconsole.log(10 - 3);   // 7\nconsole.log(10 * 3);   // 30\nconsole.log(10 / 3);   // 3.3333...\nconsole.log(10 % 3);   // 1 (remainder)\nconsole.log(2 ** 10);  // 1024 (exponentiation)"
+                        },
+                        {
+                            "title": "The Math object",
+                            "body": "The built-in Math object provides useful constants and functions for more advanced calculations. You don't need to import anything \u2014 Math is always available. Common helpers include Math.round(), Math.floor(), Math.ceil(), Math.max(), Math.min(), Math.abs(), and Math.random().",
+                            "code": "console.log(Math.round(4.6));    // 5\nconsole.log(Math.floor(4.9));    // 4\nconsole.log(Math.ceil(4.1));     // 5\nconsole.log(Math.max(1, 5, 3));  // 5\nconsole.log(Math.min(1, 5, 3));  // 1\nconsole.log(Math.abs(-7));       // 7\nconsole.log(Math.random());      // 0 to 0.999..."
+                        },
+                        {
+                            "title": "Watch out for floating-point quirks",
+                            "body": "Because JavaScript uses floating-point math, you will occasionally see tiny rounding errors. The classic example is 0.1 + 0.2, which does not equal exactly 0.3. When precision matters, multiply to integers first, calculate, then divide back. For the full story on numbers, consult MDN's Numbers and dates guide and visit the recommended books section for beginner-friendly deep dives.",
+                            "code": "console.log(0.1 + 0.2);          // 0.30000000000000004\nconsole.log(0.1 + 0.2 === 0.3);  // false\n\n// Workaround: use toFixed or integer math\nconsole.log((0.1 + 0.2).toFixed(1)); // \"0.3\"\nconsole.log((1 + 2) / 10);           // 0.3"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-booleans",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Booleans & Truthy/Falsy",
+                    "description": "Understand true and false values in JavaScript, including the surprising truthy and falsy rules.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Meet the booleans",
+                            "body": "A boolean is the simplest data type \u2014 it can only be true or false. Booleans are the backbone of decision-making in code. Every if statement, every loop condition, and every comparison ultimately produces a boolean.",
+                            "code": "const isLoggedIn = true;\nconst hasPermission = false;\n\nconsole.log(isLoggedIn);      // true\nconsole.log(typeof hasPermission); // \"boolean\""
+                        },
+                        {
+                            "title": "Comparison operators produce booleans",
+                            "body": "Comparisons like ===, !==, <, >, <=, and >= all evaluate to true or false. Always prefer strict equality (===) over loose equality (==). Strict equality checks both value and type, while loose equality can perform surprising type conversions.",
+                            "code": "console.log(5 > 3);       // true\nconsole.log(5 === \"5\");   // false (strict \u2014 different types)\nconsole.log(5 == \"5\");    // true  (loose \u2014 coerces type)\nconsole.log(10 !== 10);   // false\nconsole.log(1 < 2);       // true"
+                        },
+                        {
+                            "title": "Truthy and falsy values",
+                            "body": "In JavaScript, every value has a boolean identity. When used in a boolean context (like an if), values are treated as either truthy or falsy. There are exactly six falsy values: false, 0, '' (empty string), null, undefined, and NaN. Everything else is truthy \u2014 including empty arrays and empty objects.",
+                            "code": "// Falsy values\nif (!false) console.log(\"false is falsy\");\nif (!0) console.log(\"0 is falsy\");\nif (!\"\") console.log(\"empty string is falsy\");\nif (!null) console.log(\"null is falsy\");\nif (!undefined) console.log(\"undefined is falsy\");\n\n// Truthy surprises\nif ([]) console.log(\"empty array is truthy!\");\nif ({}) console.log(\"empty object is truthy!\");"
+                        },
+                        {
+                            "title": "Converting to boolean explicitly",
+                            "body": "You can convert any value to its boolean equivalent using Boolean() or the double-NOT trick (!!). This is useful when you need a clean true/false rather than a truthy/falsy value. Understanding these conversions will save you from subtle bugs. For a thorough overview, read MDN's Truthy and Falsy reference and visit the recommended books section for foundational JavaScript resources.",
+                            "code": "console.log(Boolean(1));        // true\nconsole.log(Boolean(0));        // false\nconsole.log(Boolean(\"hello\"));  // true\nconsole.log(Boolean(\"\"));       // false\n\n// Double-NOT shorthand\nconsole.log(!!\"text\");  // true\nconsole.log(!!0);       // false"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-operators",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Operators & Expressions",
+                    "description": "Learn the essential JavaScript operators \u2014 assignment, comparison, logical, and the handy ternary operator.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Assignment operators",
+                            "body": "The basic assignment operator is =. JavaScript also has compound assignment operators that combine an operation with assignment. These are shorthand \u2014 they perform the operation and assign the result in one step. They work with arithmetic and even string concatenation.",
+                            "code": "let x = 10;\nx += 5;  // x = x + 5 \u2192 15\nx -= 3;  // x = x - 3 \u2192 12\nx *= 2;  // x = x * 2 \u2192 24\nx /= 4;  // x = x / 4 \u2192 6\nx %= 4;  // x = x % 4 \u2192 2\n\nconsole.log(x); // 2"
+                        },
+                        {
+                            "title": "Equality: == vs. ===",
+                            "body": "JavaScript has two equality operators. Loose equality (==) converts types before comparing, which leads to surprising results. Strict equality (===) checks both value and type with no conversion. Always use === and !== to avoid unexpected type coercion bugs.",
+                            "code": "console.log(1 == \"1\");    // true  (loose: string \u2192 number)\nconsole.log(1 === \"1\");   // false (strict: different types)\nconsole.log(null == undefined);  // true  (loose: special rule)\nconsole.log(null === undefined); // false (strict: different types)\nconsole.log(0 == false);  // true  (loose)\nconsole.log(0 === false); // false (strict)"
+                        },
+                        {
+                            "title": "Logical operators",
+                            "body": "The three logical operators are AND (&&), OR (||), and NOT (!). AND returns the first falsy value or the last value if all are truthy. OR returns the first truthy value or the last value if all are falsy. NOT flips a value's truthiness. These operators short-circuit, meaning they stop evaluating as soon as the result is determined.",
+                            "code": "console.log(true && \"hello\");  // \"hello\" (both truthy \u2192 last value)\nconsole.log(false && \"hello\"); // false   (short-circuits)\nconsole.log(\"\" || \"default\");  // \"default\" (first truthy)\nconsole.log(\"hi\" || \"default\"); // \"hi\"\n\nconsole.log(!true);   // false\nconsole.log(!0);      // true"
+                        },
+                        {
+                            "title": "The ternary operator",
+                            "body": "The ternary operator is a compact if/else on a single line. The syntax is: condition ? valueIfTrue : valueIfFalse. It is an expression, so it can be used inside assignments, template literals, or function arguments. Keep ternaries simple \u2014 if the logic is complex, use a regular if/else instead. For a complete operator reference, see MDN's Expressions and Operators page and visit the recommended books section for structured learning materials.",
+                            "code": "const age = 20;\nconst label = age >= 18 ? \"adult\" : \"minor\";\nconsole.log(label); // \"adult\"\n\nconst score = 85;\nconsole.log(`Grade: ${score >= 90 ? \"A\" : \"B or below\"}`);"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-conditionals",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Conditionals: if, else, switch",
+                    "description": "Control the flow of your programs by making decisions with if statements and switch blocks.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "The if statement",
+                            "body": "The if statement runs a block of code only when a condition is true. The condition goes inside parentheses and the code to execute goes inside curly braces. If the condition is falsy, the block is skipped entirely.",
+                            "code": "const temperature = 35;\n\nif (temperature > 30) {\n  console.log(\"It's hot outside!\");\n}\n// Output: It's hot outside!"
+                        },
+                        {
+                            "title": "if...else and else if",
+                            "body": "Add an else block to handle the case when the condition is false. Use else if to test additional conditions in sequence. JavaScript evaluates each condition from top to bottom and runs only the first matching block.",
+                            "code": "const score = 75;\n\nif (score >= 90) {\n  console.log(\"A\");\n} else if (score >= 80) {\n  console.log(\"B\");\n} else if (score >= 70) {\n  console.log(\"C\");\n} else {\n  console.log(\"Needs improvement\");\n}\n// Output: C"
+                        },
+                        {
+                            "title": "The switch statement",
+                            "body": "switch is useful when you are comparing a single value against many possible matches. Each case is checked with strict equality (===). Always include break to prevent fall-through, and add a default case to handle unexpected values.",
+                            "code": "const day = \"Monday\";\n\nswitch (day) {\n  case \"Monday\":\n    console.log(\"Start of the work week\");\n    break;\n  case \"Friday\":\n    console.log(\"Almost weekend!\");\n    break;\n  case \"Saturday\":\n  case \"Sunday\":\n    console.log(\"Weekend!\");\n    break;\n  default:\n    console.log(\"Midweek\");\n}"
+                        },
+                        {
+                            "title": "Choosing between if and switch",
+                            "body": "Use if/else when you need to evaluate different expressions or ranges (like score >= 90). Use switch when you are matching one variable against a set of exact values. Both achieve the same goal \u2014 pick the one that makes your code clearer. For more patterns and edge cases, see MDN's control flow documentation and visit the recommended books section for practical examples and exercises.",
+                            "code": "// Range check \u2014 if/else is natural\nconst age = 15;\nif (age < 13) {\n  console.log(\"child\");\n} else if (age < 18) {\n  console.log(\"teenager\");\n} else {\n  console.log(\"adult\");\n}\n// Output: teenager"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-for-loops",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "For Loops",
+                    "description": "Repeat actions efficiently using JavaScript's for loop and the modern for...of loop.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "The classic for loop",
+                            "body": "The for loop has three parts separated by semicolons: initialization, condition, and update. The initialization runs once before the loop starts. The condition is checked before each iteration \u2014 if false, the loop stops. The update runs after each iteration.",
+                            "code": "for (let i = 0; i < 5; i++) {\n  console.log(i);\n}\n// Output: 0, 1, 2, 3, 4"
+                        },
+                        {
+                            "title": "Looping through arrays by index",
+                            "body": "A common use of the for loop is iterating over an array using its index. The loop counter starts at 0 (arrays are zero-indexed) and runs while it is less than the array's length. This gives you access to both the index and the element.",
+                            "code": "const fruits = [\"apple\", \"banana\", \"cherry\"];\n\nfor (let i = 0; i < fruits.length; i++) {\n  console.log(`${i}: ${fruits[i]}`);\n}\n// 0: apple\n// 1: banana\n// 2: cherry"
+                        },
+                        {
+                            "title": "for...of \u2014 the modern way",
+                            "body": "The for...of loop iterates directly over the values of an iterable (arrays, strings, etc.). You don't need to manage an index \u2014 it simply gives you each element one at a time. Use for...of when you don't need the index, and the classic for loop when you do.",
+                            "code": "const colors = [\"red\", \"green\", \"blue\"];\n\nfor (const color of colors) {\n  console.log(color);\n}\n// red\n// green\n// blue\n\n// Works with strings too\nfor (const char of \"Hi!\") {\n  console.log(char);\n}\n// H, i, !"
+                        },
+                        {
+                            "title": "Nested for loops",
+                            "body": "You can place one loop inside another to work with multi-dimensional data or generate combinations. The inner loop completes all its iterations for each single iteration of the outer loop. Be mindful of performance \u2014 nested loops multiply the number of iterations. For advanced looping patterns and performance tips, explore MDN's Loops and iteration guide and visit the recommended books section for hands-on practice problems.",
+                            "code": "for (let row = 1; row <= 3; row++) {\n  let line = \"\";\n  for (let col = 1; col <= 3; col++) {\n    line += `(${row},${col}) `;\n  }\n  console.log(line);\n}\n// (1,1) (1,2) (1,3)\n// (2,1) (2,2) (2,3)\n// (3,1) (3,2) (3,3)"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-while-loops",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "While & Do-While Loops",
+                    "description": "Learn when to use while and do-while loops, and how to control loop execution with break and continue.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "The while loop",
+                            "body": "A while loop repeats a block of code as long as its condition remains true. The condition is checked before each iteration, so if it starts as false the body never runs. Make sure something inside the loop eventually makes the condition false, or you'll get an infinite loop.",
+                            "code": "let count = 0;\n\nwhile (count < 5) {\n  console.log(count);\n  count++;\n}\n// Output: 0, 1, 2, 3, 4"
+                        },
+                        {
+                            "title": "The do...while loop",
+                            "body": "A do...while loop is like while, but the condition is checked after the body runs. This guarantees the body executes at least once. It is useful when you need to perform an action before deciding whether to repeat it.",
+                            "code": "let num = 10;\n\ndo {\n  console.log(num);\n  num += 10;\n} while (num <= 30);\n// Output: 10, 20, 30"
+                        },
+                        {
+                            "title": "break and continue",
+                            "body": "The break statement exits a loop immediately, no matter what the condition says. The continue statement skips the rest of the current iteration and jumps to the next one. Both work in for, while, and do...while loops.",
+                            "code": "// break \u2014 stop at 3\nfor (let i = 0; i < 10; i++) {\n  if (i === 3) break;\n  console.log(i);\n}\n// Output: 0, 1, 2\n\n// continue \u2014 skip even numbers\nfor (let i = 0; i < 6; i++) {\n  if (i % 2 === 0) continue;\n  console.log(i);\n}\n// Output: 1, 3, 5"
+                        },
+                        {
+                            "title": "Avoiding infinite loops",
+                            "body": "An infinite loop happens when the condition never becomes false. Common causes include forgetting to update the loop variable, or accidentally writing a condition that is always true. If your program freezes, an infinite loop is likely the culprit \u2014 in the browser console you can press Ctrl+C or close the tab to stop it. For more loop patterns and best practices, review MDN's Loops and iteration reference and visit the recommended books section for guided exercises.",
+                            "code": "// BAD \u2014 infinite loop (don't run this!)\n// let x = 1;\n// while (x > 0) { x++; } // x only grows!\n\n// GOOD \u2014 condition eventually becomes false\nlet x = 10;\nwhile (x > 0) {\n  console.log(x);\n  x -= 3;\n}\n// Output: 10, 7, 4, 1"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-functions",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Writing Your First Functions",
+                    "description": "Learn how to create reusable blocks of code with function declarations, expressions, and arrow functions.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "Function declarations",
+                            "body": "A function declaration defines a named, reusable block of code. You declare it with the function keyword, a name, parentheses for parameters, and curly braces for the body. Call the function by its name followed by parentheses. Declared functions are hoisted, meaning you can call them before they appear in your code.",
+                            "code": "function greet(name) {\n  console.log(`Hello, ${name}!`);\n}\n\ngreet(\"Alice\"); // Hello, Alice!\ngreet(\"Bob\");   // Hello, Bob!"
+                        },
+                        {
+                            "title": "Parameters and return values",
+                            "body": "Parameters are placeholders listed in the function definition. Arguments are the actual values you pass when calling. The return statement sends a value back to the caller and stops the function. If there is no return, the function returns undefined by default.",
+                            "code": "function add(a, b) {\n  return a + b;\n}\n\nconst sum = add(3, 7);\nconsole.log(sum); // 10\n\nfunction noReturn() {\n  console.log(\"I run but return nothing\");\n}\nconsole.log(noReturn()); // undefined"
+                        },
+                        {
+                            "title": "Arrow functions",
+                            "body": "Arrow functions are a shorter syntax introduced in ES6. They use => instead of the function keyword. If the body is a single expression, you can omit the curly braces and the return is implicit. Arrow functions are especially popular for short callbacks and inline logic.",
+                            "code": "// Regular function\nconst square = function (n) {\n  return n * n;\n};\n\n// Arrow function (concise)\nconst squareArrow = (n) => n * n;\n\nconsole.log(square(4));      // 16\nconsole.log(squareArrow(4)); // 16\n\n// Arrow with multiple statements\nconst describe = (name) => {\n  const upper = name.toUpperCase();\n  return `Name: ${upper}`;\n};"
+                        },
+                        {
+                            "title": "Default parameters",
+                            "body": "You can give parameters default values that kick in when no argument is passed. This prevents undefined from sneaking into your logic. Defaults are defined with = in the parameter list. For a complete tour of functions, including rest parameters and closures, read MDN's Functions guide and visit the recommended books section for structured practice.",
+                            "code": "function greet(name = \"stranger\") {\n  return `Hello, ${name}!`;\n}\n\nconsole.log(greet(\"Alice\")); // Hello, Alice!\nconsole.log(greet());        // Hello, stranger!"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-scope",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Scope & Block Scoping",
+                    "description": "Understand where variables live and why scope matters for writing predictable JavaScript code.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "What is scope?",
+                            "body": "Scope determines where a variable is accessible in your code. Think of scope as a boundary \u2014 a variable declared inside a boundary is invisible outside it. JavaScript has three main scope levels: global, function, and block. Understanding scope helps you avoid naming conflicts and unexpected bugs.",
+                            "code": "const global = \"I am everywhere\";\n\nfunction example() {\n  const local = \"I am only in this function\";\n  console.log(global); // works\n  console.log(local);  // works\n}\n\nexample();\n// console.log(local); // ReferenceError!"
+                        },
+                        {
+                            "title": "Global scope",
+                            "body": "A variable declared outside any function or block lives in the global scope. It can be accessed from anywhere in your code. While convenient, too many global variables make code hard to maintain and can cause naming collisions. Keep globals to a minimum.",
+                            "code": "const appName = \"MyApp\"; // global\n\nfunction printApp() {\n  console.log(appName); // accessible\n}\n\nprintApp(); // MyApp\nconsole.log(appName); // MyApp"
+                        },
+                        {
+                            "title": "Function scope vs. block scope",
+                            "body": "Variables declared with var are function-scoped \u2014 they are visible throughout the entire function, even before their declaration (due to hoisting). Variables declared with let and const are block-scoped \u2014 they exist only within the nearest set of curly braces. Block scoping is more predictable and is one of the main reasons to prefer let and const.",
+                            "code": "function demo() {\n  if (true) {\n    var a = 1;   // function-scoped\n    let b = 2;   // block-scoped\n    const c = 3; // block-scoped\n  }\n  console.log(a); // 1 (var leaks out of the block)\n  // console.log(b); // ReferenceError\n  // console.log(c); // ReferenceError\n}\n\ndemo();"
+                        },
+                        {
+                            "title": "The scope chain",
+                            "body": "When JavaScript looks up a variable, it starts in the current scope and moves outward through each enclosing scope until it finds the variable or reaches the global scope. This lookup path is called the scope chain. Inner functions can access variables from outer functions, but not the other way around. For a deep understanding of scope, closures, and hoisting, explore MDN's guide on Closures and visit the recommended books section for thorough explanations with visual examples.",
+                            "code": "const outer = \"outer\";\n\nfunction parent() {\n  const middle = \"middle\";\n\n  function child() {\n    const inner = \"inner\";\n    console.log(inner);  // \"inner\"  (own scope)\n    console.log(middle); // \"middle\" (parent scope)\n    console.log(outer);  // \"outer\"  (global scope)\n  }\n\n  child();\n}\n\nparent();"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-arrays-intro",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Introduction to Arrays",
+                    "description": "Store and work with ordered collections of data using JavaScript arrays.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "Creating arrays",
+                            "body": "An array is an ordered list of values. You create one with square brackets and separate items with commas. Arrays can hold any mix of types \u2014 strings, numbers, booleans, even other arrays. The .length property tells you how many items the array contains.",
+                            "code": "const fruits = [\"apple\", \"banana\", \"cherry\"];\nconst mixed = [1, \"two\", true, null];\n\nconsole.log(fruits.length); // 3\nconsole.log(mixed.length);  // 4"
+                        },
+                        {
+                            "title": "Accessing and modifying elements",
+                            "body": "Array elements are accessed by their index, starting at 0. Use bracket notation to read or update a value at a specific position. Accessing an index that doesn't exist returns undefined rather than an error.",
+                            "code": "const colors = [\"red\", \"green\", \"blue\"];\n\nconsole.log(colors[0]); // \"red\"\nconsole.log(colors[2]); // \"blue\"\nconsole.log(colors[5]); // undefined\n\ncolors[1] = \"yellow\";\nconsole.log(colors); // [\"red\", \"yellow\", \"blue\"]"
+                        },
+                        {
+                            "title": "Common array methods",
+                            "body": "Arrays come with powerful built-in methods. Use push() to add to the end, pop() to remove from the end, unshift() to add to the front, and shift() to remove from the front. The includes() method checks if a value exists, and indexOf() returns its position (or -1 if not found).",
+                            "code": "const nums = [1, 2, 3];\n\nnums.push(4);       // [1, 2, 3, 4]\nnums.unshift(0);    // [0, 1, 2, 3, 4]\nnums.pop();         // [0, 1, 2, 3]\nnums.shift();       // [1, 2, 3]\n\nconsole.log(nums.includes(2));  // true\nconsole.log(nums.indexOf(3));   // 2\nconsole.log(nums.indexOf(99));  // -1"
+                        },
+                        {
+                            "title": "Iterating over arrays",
+                            "body": "You can loop over an array with for, for...of, or the forEach method. forEach calls a function once for each element and is a clean, readable option for simple iterations. As your skills grow, you'll also learn map, filter, and reduce. For a full reference of array methods, consult MDN's Array documentation and visit the recommended books section for exercises that build real muscle memory.",
+                            "code": "const pets = [\"cat\", \"dog\", \"fish\"];\n\n// for...of\nfor (const pet of pets) {\n  console.log(pet);\n}\n\n// forEach\npets.forEach((pet, index) => {\n  console.log(`${index}: ${pet}`);\n});\n// 0: cat\n// 1: dog\n// 2: fish"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-objects-intro",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Introduction to Objects",
+                    "description": "Learn how to group related data into key-value pairs with JavaScript objects.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "Creating objects",
+                            "body": "An object is a collection of key-value pairs wrapped in curly braces. Keys (also called properties) are strings (or Symbols), and values can be anything \u2014 strings, numbers, arrays, even other objects. Objects let you group related data under one name.",
+                            "code": "const person = {\n  name: \"Alice\",\n  age: 30,\n  hobbies: [\"reading\", \"coding\"]\n};\n\nconsole.log(person);"
+                        },
+                        {
+                            "title": "Accessing properties",
+                            "body": "There are two ways to read a property: dot notation and bracket notation. Dot notation is cleaner for known, fixed property names. Bracket notation is required when the key is stored in a variable or contains special characters like spaces.",
+                            "code": "const car = { brand: \"Toyota\", year: 2022 };\n\n// Dot notation\nconsole.log(car.brand); // \"Toyota\"\n\n// Bracket notation\nconsole.log(car[\"year\"]); // 2022\n\n// Dynamic key\nconst key = \"brand\";\nconsole.log(car[key]); // \"Toyota\""
+                        },
+                        {
+                            "title": "Adding, updating, and deleting properties",
+                            "body": "Objects are mutable \u2014 you can add new properties, change existing ones, or remove them entirely. Use assignment to add or update. Use the delete operator to remove a property. You can also check whether a property exists using the in operator.",
+                            "code": "const user = { name: \"Bob\" };\n\n// Add\nuser.email = \"bob@example.com\";\n\n// Update\nuser.name = \"Robert\";\n\n// Delete\ndelete user.email;\n\nconsole.log(user);            // { name: \"Robert\" }\nconsole.log(\"name\" in user);   // true\nconsole.log(\"email\" in user);  // false"
+                        },
+                        {
+                            "title": "Looping through an object",
+                            "body": "Use a for...in loop to iterate over an object's keys, or use Object.keys(), Object.values(), and Object.entries() for more control. Object.entries() is especially handy because it gives you both the key and value in each iteration. For more on objects, prototypes, and methods, dive into MDN's Working with Objects guide and visit the recommended books section for project-based learning resources.",
+                            "code": "const scores = { math: 95, english: 88, science: 92 };\n\n// for...in\nfor (const subject in scores) {\n  console.log(`${subject}: ${scores[subject]}`);\n}\n\n// Object.entries\nfor (const [key, value] of Object.entries(scores)) {\n  console.log(`${key} \u2192 ${value}`);\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "js-new-console",
+                    "language": "javascript",
+                    "level": "new",
+                    "title": "Debugging with console",
+                    "description": "Go beyond console.log \u2014 learn the full suite of console methods to debug your JavaScript faster.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "console.log \u2014 your best friend",
+                            "body": "console.log() prints values to the console and is the most common debugging tool. You can pass multiple arguments separated by commas, and they will be printed on the same line. Use it liberally while developing, then remove or reduce logs before shipping code.",
+                            "code": "console.log(\"Hello!\");\nconsole.log(\"x =\", 10, \"y =\", 20);\n\nconst user = { name: \"Alice\", age: 30 };\nconsole.log(\"User:\", user);"
+                        },
+                        {
+                            "title": "console.warn and console.error",
+                            "body": "console.warn() displays a yellow warning message, and console.error() displays a red error message. They work just like console.log but visually stand out in the browser's DevTools. Use warn for things that are not ideal but not broken, and error for actual failures.",
+                            "code": "console.warn(\"Deprecated function called\");\nconsole.error(\"Failed to load data!\");\n\n// They accept multiple arguments too\nconst code = 404;\nconsole.error(\"Status:\", code, \"\u2014 Not Found\");"
+                        },
+                        {
+                            "title": "console.table and console.dir",
+                            "body": "console.table() prints arrays or objects as a formatted table \u2014 it makes structured data much easier to scan. console.dir() shows an interactive, expandable tree view of an object's properties. Both are incredibly useful when inspecting complex data during development.",
+                            "code": "const users = [\n  { name: \"Alice\", age: 30 },\n  { name: \"Bob\", age: 25 },\n  { name: \"Charlie\", age: 35 }\n];\n\nconsole.table(users);\n// Displays a neat table with columns: (index), name, age\n\nconsole.dir(document.body); // tree view in browsers"
+                        },
+                        {
+                            "title": "Timing and grouping",
+                            "body": "console.time() and console.timeEnd() measure how long a block of code takes to run \u2014 pass the same label to both. console.group() and console.groupEnd() let you visually nest related logs for cleaner output. Mastering these tools will make your debugging sessions far more productive. For the full list of console methods and advanced debugging techniques, check out MDN's Console API reference and visit the recommended books section for debugging-focused learning resources.",
+                            "code": "console.time(\"loop\");\nfor (let i = 0; i < 100000; i++) {}\nconsole.timeEnd(\"loop\"); // loop: 1.23ms\n\nconsole.group(\"User Details\");\nconsole.log(\"Name: Alice\");\nconsole.log(\"Age: 30\");\nconsole.groupEnd();"
                         }
                     ]
                 }
@@ -93,7 +514,7 @@
                         {
                             "title": "Closures and loops",
                             "body": "A classic gotcha: if you close over a var inside a loop, all closures share the same variable. Use let (block-scoped) to give each iteration its own binding.",
-                            "code": "for (let i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i), 100);\n}\n// prints 0, 1, 2 — not 3, 3, 3"
+                            "code": "for (let i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i), 100);\n}\n// prints 0, 1, 2 \u2014 not 3, 3, 3"
                         }
                     ]
                 }
@@ -112,7 +533,7 @@
                     "lessons": [
                         {
                             "title": "Call stack",
-                            "body": "JavaScript executes synchronous code on a single call stack — one thing at a time. A function call pushes a frame; returning pops it."
+                            "body": "JavaScript executes synchronous code on a single call stack \u2014 one thing at a time. A function call pushes a frame; returning pops it."
                         },
                         {
                             "title": "Task queue (macrotasks)",
