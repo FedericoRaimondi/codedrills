@@ -20,7 +20,7 @@
                         {
                             "title": "Installing Node.js",
                             "body": "Node.js lets you run JavaScript files directly on your computer. Visit https://nodejs.org and download the LTS (Long Term Support) version for your operating system. The installer adds the 'node' command to your terminal. After installing, open a terminal and verify the installation by checking the version.",
-                            "code": "// In your terminal, type:\n// node --version\n// You should see something like: v20.11.0"
+                            "code": "// In your terminal, type:\n// node --version\n// You should see something like: v20.x.x"
                         },
                         {
                             "title": "Running JS in the browser console",
@@ -985,7 +985,7 @@
                         {
                             "title": "What is a closure?",
                             "body": "A closure is created when a function is defined inside another function and remembers the outer function's variables even after the outer function has returned.",
-                            "code": "function greet(name) {\n  return function() {\n    console.log(\"Hello, \" + name);\n  };\n}\nconst hi = greet(\"Alice\");\nhi(); // Hello, Alice"
+                            "code": "function greet(name) {\n  return function() {\n    console.log(`Hello, ${name}`);\n  };\n}\nconst hi = greet(\"Alice\");\nhi(); // Hello, Alice"
                         },
                         {
                             "title": "A practical example: counter",
@@ -1380,7 +1380,7 @@
                         {
                             "title": "Call stack",
                             "body": "JavaScript executes synchronous code on a single call stack — one thing at a time. A function call pushes a frame; returning pops it.",
-                            "code": "function a() { b(); }\nfunction b() { console.log(\"hi\"); }\na();"
+                            "code": "function outer() { inner(); }\nfunction inner() { console.log(\"hi\"); }\nouter();"
                         },
                         {
                             "title": "Task queue (macrotasks)",
