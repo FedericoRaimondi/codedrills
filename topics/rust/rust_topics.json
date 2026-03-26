@@ -178,7 +178,7 @@
                         {
                             "title": "Early returns",
                             "body": "Use the return keyword to exit a function early. This is useful inside conditionals when you want to bail out before reaching the end. The return keyword requires a semicolon. For the final expression you can omit both return and the semicolon. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on Functions. Also explore the recommended books in the app for more insights.",
-                            "code": "// Simplified example. In real code, use Option<f64>\n// to handle division by zero properly.\nfn divide(a: f64, b: f64) -> f64 {\n    if b == 0.0 {\n        return 0.0;  // early return\n    }\n    a / b  // implicit return\n}\n\nfn main() {\n    println!(\"10 / 3 = {}\", divide(10.0, 3.0));\n    println!(\"10 / 0 = {}\", divide(10.0, 0.0));\n}"
+                            "code": "fn divide(a: f64, b: f64) -> Option<f64> {\n    if b == 0.0 {\n        return None;  // early return\n    }\n    Some(a / b)  // implicit return\n}\n\nfn main() {\n    println!(\"10 / 3 = {:?}\", divide(10.0, 3.0));\n    println!(\"10 / 0 = {:?}\", divide(10.0, 0.0));\n}"
                         }
                     ]
                 },
@@ -373,7 +373,7 @@
                         {
                             "title": "The as keyword",
                             "body": "Use the as keyword for primitive type casting. This works for numeric conversions such as integer to float, widening, and narrowing. Be aware that narrowing conversions (like i32 to u8) can silently truncate values. The as keyword only works with primitive types.",
-                            "code": "let x: i32 = 42;\nlet y: f64 = x as f64;\nlet z: u8 = x as u8;\nprintln!(\"i32: {}, f64: {}, u8: {}\", x, y, z);\n\nlet big: i32 = 300;\nlet truncated: u8 = big as u8;  // wraps to 44\nprintln!(\"300 as u8 = {}\", truncated);"
+                            "code": "let x: i32 = 42;\nlet y: f64 = x as f64;\nlet z: u8 = x as u8;\nprintln!(\"i32: {}, f64: {}, u8: {}\", x, y, z);\n\nlet big: i32 = 300;\nlet truncated: u8 = big as u8;  // truncates to 44 (300 % 256)\nprintln!(\"300 as u8 = {}\", truncated);"
                         },
                         {
                             "title": "From and Into traits",
