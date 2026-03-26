@@ -913,29 +913,444 @@
                     "id": "rs-intermediate-traits",
                     "language": "rust",
                     "level": "intermediate",
-                    "title": "Traits",
-                    "description": "Define shared behaviour with traits \u2014 Rust's mechanism for polymorphism and code reuse.",
+                    "title": "Traits & Implementation",
+                    "description": "Define shared behavior across types using traits and implement them for your own structs.",
                     "estimatedMinutes": 12,
                     "lessons": [
                         {
-                            "title": "Defining a trait",
-                            "body": "A trait declares a set of methods that any implementing type must provide.",
-                            "code": "trait Greet {\n    fn greet(&self) -> String;\n}"
+                            "title": "Defining a Trait",
+                            "body": "A trait defines a set of methods that a type must implement. Think of it as a contract: any type that implements the trait promises to provide those methods. Traits are Rust's primary tool for polymorphism.",
+                            "code": "trait Greet {\n    fn hello(&self) -> String;\n}\n\nstruct User {\n    name: String,\n}\n\nimpl Greet for User {\n    fn hello(&self) -> String {\n        format!(\"Hi, I'm {}!\", self.name)\n    }\n}"
                         },
                         {
-                            "title": "Implementing a trait",
-                            "body": "Use impl Trait for Type to provide the method bodies for a specific type.",
-                            "code": "struct Person { name: String }\n\nimpl Greet for Person {\n    fn greet(&self) -> String {\n        format!(\"Hello, {}!\", self.name)\n    }\n}"
+                            "title": "Default Method Implementations",
+                            "body": "Traits can provide default method bodies. Types that implement the trait can use the default or override it. This reduces boilerplate when many types share the same logic.",
+                            "code": "trait Summary {\n    fn summarize_author(&self) -> String;\n\n    fn summarize(&self) -> String {\n        format!(\"(Read more from {}...)\", self.summarize_author())\n    }\n}\n\nstruct Article {\n    author: String,\n}\n\nimpl Summary for Article {\n    fn summarize_author(&self) -> String {\n        self.author.clone()\n    }\n}"
                         },
                         {
-                            "title": "Default methods",
-                            "body": "Traits can provide default implementations. Types can override them or use the default.",
-                            "code": "trait Greet {\n    fn name(&self) -> &str;\n    fn greet(&self) -> String {\n        format!(\"Hello, {}!\", self.name())\n    }\n}"
+                            "title": "Trait Bounds on Functions",
+                            "body": "You can require function parameters to implement specific traits using the impl Trait syntax or explicit bounds. This lets you write generic code that works with any type meeting the contract.",
+                            "code": "fn print_greeting(item: &impl Greet) {\n    println!(\"{}\", item.hello());\n}\n\n// Equivalent with explicit bound:\nfn print_greeting_v2<T: Greet>(item: &T) {\n    println!(\"{}\", item.hello());\n}"
                         },
                         {
-                            "title": "Trait bounds",
-                            "body": "Use trait bounds (T: Trait) to write generic functions that work with any type implementing the trait.",
-                            "code": "fn print_greeting<T: Greet>(item: &T) {\n    println!(\"{}\", item.greet());\n}"
+                            "title": "Implementing Multiple Traits",
+                            "body": "A single type can implement many traits, and a single trait can be implemented by many types. This composability is what makes Rust's trait system powerful. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on traits. Also visit the recommended books in the app for more insights.",
+                            "code": "use std::fmt;\n\nstruct Point {\n    x: f64,\n    y: f64,\n}\n\nimpl fmt::Display for Point {\n    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n        write!(f, \"({}, {})\", self.x, self.y)\n    }\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-intermediate-generics",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Generics",
+                    "description": "Write flexible and reusable code with generic types and functions in Rust.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Generic Functions",
+                            "body": "Generic functions work with any type by using a type parameter in angle brackets. The compiler generates specialized versions for each concrete type you use, so there is zero runtime cost.",
+                            "code": "fn largest<T: PartialOrd>(list: &[T]) -> &T {\n    let mut max = &list[0];\n    for item in &list[1..] {\n        if item > max {\n            max = item;\n        }\n    }\n    max\n}\n\nfn main() {\n    let numbers = vec![34, 50, 25, 100, 65];\n    println!(\"Largest: {}\", largest(&numbers));\n}"
+                        },
+                        {
+                            "title": "Generic Structs",
+                            "body": "Structs can also hold generic types. This lets you create data structures that work with any type while remaining type-safe. Each field can use the same or different type parameters.",
+                            "code": "struct Pair<T, U> {\n    first: T,\n    second: U,\n}\n\nimpl<T, U> Pair<T, U> {\n    fn new(first: T, second: U) -> Self {\n        Pair { first, second }\n    }\n}\n\nfn main() {\n    let p = Pair::new(\"hello\", 42);\n    println!(\"{} - {}\", p.first, p.second);\n}"
+                        },
+                        {
+                            "title": "Generic Enums",
+                            "body": "Rust's most famous enums are generic: Option<T> and Result<T, E>. You can define your own generic enums to model flexible data variants that work across types.",
+                            "code": "enum Response<T> {\n    Success(T),\n    Error(String),\n}\n\nfn fetch_data(valid: bool) -> Response<Vec<i32>> {\n    if valid {\n        Response::Success(vec![1, 2, 3])\n    } else {\n        Response::Error(\"fetch failed\".to_string())\n    }\n}"
+                        },
+                        {
+                            "title": "Monomorphization",
+                            "body": "Rust compiles generics through monomorphization: it generates concrete code for every type you actually use. This means generic code runs as fast as hand-written specialized code. The tradeoff is slightly longer compile times but zero runtime overhead. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on generics. Also visit the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-intermediate-lifetimes",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Lifetimes",
+                    "description": "Understand lifetime annotations and how Rust ensures references never outlive the data they point to.",
+                    "estimatedMinutes": 14,
+                    "lessons": [
+                        {
+                            "title": "Why Lifetimes Exist",
+                            "body": "Lifetimes are Rust's way of tracking how long references are valid. The compiler uses them to guarantee that you never have a dangling reference. Most of the time lifetimes are inferred, but sometimes you must annotate them explicitly.",
+                            "code": "// This won't compile: r would dangle\n// fn bad() -> &i32 {\n//     let x = 5;\n//     &x  // x is dropped here\n// }\n\nfn good(x: &i32) -> &i32 {\n    x  // returned ref lives as long as input\n}"
+                        },
+                        {
+                            "title": "Lifetime Annotations",
+                            "body": "Lifetime annotations use an apostrophe followed by a short name, like 'a. They tell the compiler how the lifetimes of multiple references relate to each other. Annotations don't change how long values live; they describe existing relationships.",
+                            "code": "fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {\n    if x.len() > y.len() {\n        x\n    } else {\n        y\n    }\n}\n\nfn main() {\n    let s1 = String::from(\"long string\");\n    let result;\n    {\n        let s2 = String::from(\"hi\");\n        result = longest(s1.as_str(), s2.as_str());\n        println!(\"Longest: {}\", result);\n    }\n}"
+                        },
+                        {
+                            "title": "Lifetime Elision Rules",
+                            "body": "Rust has three elision rules that let you skip lifetime annotations in common cases. If each parameter gets its own lifetime, if there is exactly one input lifetime it gets assigned to all outputs, and if one parameter is &self its lifetime is assigned to outputs. These rules cover most functions.",
+                            "code": "// All three are equivalent thanks to elision:\n// fn first(s: &str) -> &str\n// fn first<'a>(s: &'a str) -> &'a str\nfn first(s: &str) -> &str {\n    &s[..1]\n}"
+                        },
+                        {
+                            "title": "Lifetimes in Structs",
+                            "body": "When a struct holds a reference, it needs a lifetime annotation. This tells the compiler the struct cannot outlive the data it borrows. This pattern is common for lightweight views into larger data. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on lifetimes. Also visit the recommended books in the app for more insights.",
+                            "code": "struct Excerpt<'a> {\n    text: &'a str,\n}\n\nimpl<'a> Excerpt<'a> {\n    fn level(&self) -> i32 {\n        3\n    }\n}\n\nfn main() {\n    let novel = String::from(\"Call me Ishmael. Some years ago...\");\n    let first_sentence = novel.split('.').next().unwrap();\n    let excerpt = Excerpt { text: first_sentence };\n    println!(\"Excerpt: {}\", excerpt.text);\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-intermediate-trait-bounds",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Trait Bounds & Where Clauses",
+                    "description": "Constrain generic types precisely using trait bounds and where clauses for cleaner, safer code.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "Basic Trait Bounds",
+                            "body": "Trait bounds restrict which types a generic function accepts. You write them after a colon on the type parameter. Only types that implement the required trait can be passed to the function.",
+                            "code": "use std::fmt::Display;\n\nfn print_item<T: Display>(item: T) {\n    println!(\"Value: {}\", item);\n}\n\nfn main() {\n    print_item(42);\n    print_item(\"hello\");\n}"
+                        },
+                        {
+                            "title": "Multiple Trait Bounds",
+                            "body": "A type parameter can require multiple traits using the + syntax. The type must implement all listed traits. This is useful when you need a combination of capabilities from a single value.",
+                            "code": "use std::fmt::{Display, Debug};\n\nfn inspect<T: Display + Debug>(item: T) {\n    println!(\"Display: {}\", item);\n    println!(\"Debug: {:?}\", item);\n}\n\nfn main() {\n    inspect(42);\n    inspect(\"rust\");\n}"
+                        },
+                        {
+                            "title": "Where Clauses",
+                            "body": "When bounds get complex, move them to a where clause after the function signature. This keeps the function name and parameters readable. Where clauses are especially helpful when multiple type parameters each have several bounds.",
+                            "code": "use std::fmt::{Display, Debug};\n\nfn compare_and_display<T, U>(t: &T, u: &U)\nwhere\n    T: Display + Clone,\n    U: Debug + PartialOrd,\n{\n    println!(\"t = {}\", t);\n    println!(\"u = {:?}\", u);\n}\n\nfn main() {\n    compare_and_display(&\"hello\", &42);\n}"
+                        },
+                        {
+                            "title": "Returning Bounded Types",
+                            "body": "You can use impl Trait as a return type to say the function returns some type implementing a trait without naming it. This is handy for returning closures or iterators. The compiler still knows the concrete type so there is no dynamic dispatch cost. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on trait bounds. Also visit the recommended books in the app for more insights.",
+                            "code": "fn make_adder(x: i32) -> impl Fn(i32) -> i32 {\n    move |y| x + y\n}\n\nfn main() {\n    let add_five = make_adder(5);\n    println!(\"{}\", add_five(3));  // 8\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-intermediate-box",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Box & Heap Allocation",
+                    "description": "Use Box<T> to store data on the heap for recursive types, large values, and trait objects.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "What Is Box<T>",
+                            "body": "Box<T> is the simplest smart pointer in Rust. It allocates data on the heap and stores a pointer on the stack. When the Box goes out of scope, both the pointer and the heap data are freed automatically.",
+                            "code": "fn main() {\n    let b = Box::new(5);\n    println!(\"Boxed value: {}\", b);\n    // b is automatically freed here\n}"
+                        },
+                        {
+                            "title": "When to Use the Heap",
+                            "body": "Use Box when you have a large value you don't want to copy on the stack, when you need a value with a size unknown at compile time, or when you want to transfer ownership without copying data. Stack allocation is faster, so prefer it unless you have a reason to use the heap.",
+                            "code": "fn main() {\n    // Large array on the heap to avoid stack overflow\n    let big_data = Box::new([0u8; 1_000_000]);\n    println!(\"Length: {}\", big_data.len());\n}"
+                        },
+                        {
+                            "title": "Recursive Types with Box",
+                            "body": "Recursive types like linked lists need Box because the compiler must know the size of each type at compile time. Without Box, a recursive struct would be infinitely sized. Box provides the indirection that gives it a fixed size.",
+                            "code": "enum List {\n    Cons(i32, Box<List>),\n    Nil,\n}\n\nuse List::{Cons, Nil};\n\nfn main() {\n    let list = Cons(1, Box::new(Cons(2, Box::new(Cons(3, Box::new(Nil))))));\n    // A linked list: 1 -> 2 -> 3 -> Nil\n}"
+                        },
+                        {
+                            "title": "Box and Deref",
+                            "body": "Box implements the Deref trait, so you can treat a Box<T> just like a regular reference to T. The compiler automatically dereferences it when needed. This makes Box transparent in most code so you rarely need explicit dereferencing. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on smart pointers. Also visit the recommended books in the app for more insights.",
+                            "code": "fn greet(name: &str) {\n    println!(\"Hello, {}!\", name);\n}\n\nfn main() {\n    let boxed_name = Box::new(String::from(\"Rust\"));\n    greet(&boxed_name);  // Deref coercion: Box -> String -> &str\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-intermediate-rc",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Rc & Reference Counting",
+                    "description": "Share ownership of heap data between multiple parts of your program using Rc<T>.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Why Shared Ownership",
+                            "body": "Sometimes a value needs more than one owner. A node in a graph, for example, might be referenced by multiple edges. Rust's default single-ownership model doesn't allow this, so Rc<T> provides reference-counted shared ownership for single-threaded scenarios.",
+                            "code": "use std::rc::Rc;\n\nfn main() {\n    let data = Rc::new(vec![1, 2, 3]);\n    let a = Rc::clone(&data);\n    let b = Rc::clone(&data);\n    println!(\"References: {}\", Rc::strong_count(&data));  // 3\n}"
+                        },
+                        {
+                            "title": "How Rc Works",
+                            "body": "Rc keeps a count of how many clones exist. Calling Rc::clone increments this count cheaply without copying the inner data. When each clone is dropped the count decrements, and the data is freed only when the count reaches zero.",
+                            "code": "use std::rc::Rc;\n\nfn main() {\n    let a = Rc::new(String::from(\"shared\"));\n    println!(\"Count after a: {}\", Rc::strong_count(&a));\n    {\n        let b = Rc::clone(&a);\n        println!(\"Count after b: {}\", Rc::strong_count(&a));\n    }\n    println!(\"Count after b dropped: {}\", Rc::strong_count(&a));\n}"
+                        },
+                        {
+                            "title": "Shared Lists with Rc",
+                            "body": "A classic use case is two lists sharing a common tail. Without Rc you would need to clone the tail data. With Rc both lists point to the same heap allocation and the data lives until both lists are dropped.",
+                            "code": "use std::rc::Rc;\n\nenum List {\n    Cons(i32, Rc<List>),\n    Nil,\n}\n\nuse List::{Cons, Nil};\n\nfn main() {\n    let shared_tail = Rc::new(Cons(10, Rc::new(Nil)));\n    let list_a = Cons(5, Rc::clone(&shared_tail));\n    let list_b = Cons(7, Rc::clone(&shared_tail));\n}"
+                        },
+                        {
+                            "title": "Rc Limitations",
+                            "body": "Rc only provides immutable access to the inner data. If you need to mutate shared data, pair it with RefCell for interior mutability. Rc also cannot be sent across threads; use Arc for thread-safe reference counting. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on Rc and reference counting. Also visit the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-intermediate-interior-mutability",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Interior Mutability",
+                    "description": "Mutate data even through shared references using RefCell<T> and Cell<T> for runtime borrow checking.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "The Interior Mutability Pattern",
+                            "body": "Normally, Rust enforces borrowing rules at compile time. Interior mutability lets you mutate data even when there are immutable references to it by moving the borrow check to runtime. This is useful when you know your code is safe but the compiler cannot prove it.",
+                            "code": "use std::cell::RefCell;\n\nfn main() {\n    let data = RefCell::new(vec![1, 2, 3]);\n    data.borrow_mut().push(4);\n    println!(\"{:?}\", data.borrow());  // [1, 2, 3, 4]\n}"
+                        },
+                        {
+                            "title": "RefCell<T> in Detail",
+                            "body": "RefCell tracks borrows at runtime. Calling borrow gives a shared reference, and borrow_mut gives a mutable one. If you violate borrowing rules at runtime, the program panics instead of producing undefined behavior. This trades compile-time safety for flexibility.",
+                            "code": "use std::cell::RefCell;\n\nfn main() {\n    let value = RefCell::new(42);\n    let r1 = value.borrow();\n    let r2 = value.borrow();  // Multiple shared borrows: OK\n    println!(\"{} {}\", r1, r2);\n    drop(r1);\n    drop(r2);\n    *value.borrow_mut() = 99;  // Mutable borrow after dropping shared ones\n    println!(\"{}\", value.borrow());\n}"
+                        },
+                        {
+                            "title": "Combining Rc and RefCell",
+                            "body": "A common pattern is Rc<RefCell<T>> which gives you multiple owners that can all mutate the inner value. This is the Rust equivalent of a shared mutable variable, with safety enforced at runtime.",
+                            "code": "use std::cell::RefCell;\nuse std::rc::Rc;\n\nfn main() {\n    let shared = Rc::new(RefCell::new(0));\n    let a = Rc::clone(&shared);\n    let b = Rc::clone(&shared);\n\n    *a.borrow_mut() += 10;\n    *b.borrow_mut() += 20;\n\n    println!(\"Final: {}\", shared.borrow());  // 30\n}"
+                        },
+                        {
+                            "title": "Cell<T> for Copy Types",
+                            "body": "Cell<T> is a simpler alternative for types that implement Copy. It lets you get and set values without borrowing. Since it copies the value in and out, there is no risk of aliased mutable references. Use Cell for simple counters or flags, and RefCell for complex types. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on interior mutability. Also visit the recommended books in the app for more insights.",
+                            "code": "use std::cell::Cell;\n\nfn main() {\n    let counter = Cell::new(0);\n    counter.set(counter.get() + 1);\n    counter.set(counter.get() + 1);\n    println!(\"Counter: {}\", counter.get());  // 2\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-intermediate-error-handling",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Error Handling Patterns",
+                    "description": "Design robust error types using custom errors, the From trait, and idiomatic Rust patterns.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "Custom Error Types",
+                            "body": "For libraries and larger programs, define your own error enum. Each variant represents a different failure mode. Implementing Display and the Error trait lets your error integrate with the standard error ecosystem.",
+                            "code": "use std::fmt;\n\n#[derive(Debug)]\nenum AppError {\n    NotFound(String),\n    ParseFailure(String),\n    Io(std::io::Error),\n}\n\nimpl fmt::Display for AppError {\n    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n        match self {\n            AppError::NotFound(name) => write!(f, \"{} not found\", name),\n            AppError::ParseFailure(msg) => write!(f, \"parse error: {}\", msg),\n            AppError::Io(e) => write!(f, \"IO error: {}\", e),\n        }\n    }\n}\n\nimpl std::error::Error for AppError {}"
+                        },
+                        {
+                            "title": "The From Trait for Conversion",
+                            "body": "Implementing From lets the question mark operator automatically convert foreign errors into your custom type. This makes error propagation seamless: just use ? and Rust converts the error for you.",
+                            "code": "impl From<std::io::Error> for AppError {\n    fn from(e: std::io::Error) -> Self {\n        AppError::Io(e)\n    }\n}\n\nfn read_config() -> Result<String, AppError> {\n    let content = std::fs::read_to_string(\"config.toml\")?;\n    Ok(content)\n}"
+                        },
+                        {
+                            "title": "The ? Operator Chain",
+                            "body": "You can chain multiple fallible operations using the ? operator. Each call either succeeds and unwraps the value, or returns early with the error converted via From. This replaces verbose match chains with clean, linear code.",
+                            "code": "use std::num::ParseIntError;\n\nimpl From<ParseIntError> for AppError {\n    fn from(e: ParseIntError) -> Self {\n        AppError::ParseFailure(e.to_string())\n    }\n}\n\nfn parse_port(input: &str) -> Result<u16, AppError> {\n    let trimmed = input.trim();\n    if trimmed.is_empty() {\n        return Err(AppError::NotFound(\"port value\".into()));\n    }\n    let port: u16 = trimmed.parse()?;\n    Ok(port)\n}"
+                        },
+                        {
+                            "title": "Choosing an Error Strategy",
+                            "body": "For quick scripts, Box<dyn Error> or anyhow-style erasure works well. For libraries, define a concrete error enum so callers can match on variants. The key is consistency: pick one strategy per crate and stick with it. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on error handling. Also visit the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-intermediate-iterators",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Iterators & Combinators",
+                    "description": "Chain powerful iterator adaptors like map, filter, and fold to process collections expressively.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Iterator Basics",
+                            "body": "The Iterator trait requires one method: next, which returns Some(item) or None. Most collections provide iter, iter_mut, and into_iter to create iterators. Iterators are lazy: they do nothing until consumed.",
+                            "code": "fn main() {\n    let nums = vec![1, 2, 3, 4, 5];\n    let mut iter = nums.iter();\n    println!(\"{:?}\", iter.next());  // Some(1)\n    println!(\"{:?}\", iter.next());  // Some(2)\n}"
+                        },
+                        {
+                            "title": "Map and Filter",
+                            "body": "Map transforms each element by applying a closure. Filter keeps only elements where the closure returns true. Both are adaptors that return new iterators, so you can chain them without allocating intermediate collections.",
+                            "code": "fn main() {\n    let nums = vec![1, 2, 3, 4, 5, 6];\n    let result: Vec<i32> = nums.iter()\n        .filter(|&&x| x % 2 == 0)\n        .map(|&x| x * x)\n        .collect();\n    println!(\"{:?}\", result);  // [4, 16, 36]\n}"
+                        },
+                        {
+                            "title": "Fold and Reduce",
+                            "body": "Fold accumulates all elements into a single value using an initial accumulator and a closure. It is the most general consumer: you can implement sum, product, and many other operations with fold.",
+                            "code": "fn main() {\n    let nums = vec![1, 2, 3, 4, 5];\n    let sum = nums.iter().fold(0, |acc, &x| acc + x);\n    println!(\"Sum: {}\", sum);  // 15\n\n    let product = nums.iter().fold(1, |acc, &x| acc * x);\n    println!(\"Product: {}\", product);  // 120\n}"
+                        },
+                        {
+                            "title": "Chaining and Collecting",
+                            "body": "Iterator chains compose naturally. You can chain multiple adaptors, then call collect to build any collection that implements FromIterator. Because adaptors are lazy, the entire chain runs in a single pass with no intermediate allocations. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on iterators. Also visit the recommended books in the app for more insights.",
+                            "code": "use std::collections::HashMap;\n\nfn main() {\n    let words = vec![\"apple\", \"banana\", \"avocado\", \"blueberry\"];\n    let map: HashMap<char, Vec<&&str>> = words.iter()\n        .fold(HashMap::new(), |mut acc, word| {\n            let first = word.chars().next().unwrap();\n            acc.entry(first).or_default().push(word);\n            acc\n        });\n    println!(\"{:?}\", map);\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-intermediate-closures",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Closures In Depth",
+                    "description": "Master Fn, FnMut, and FnOnce traits to write flexible closures that capture their environment.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "Closure Capture Modes",
+                            "body": "Closures capture variables from their environment in three ways: by reference (Fn), by mutable reference (FnMut), or by value (FnOnce). Rust infers the most permissive mode that works, but you can force ownership with the move keyword.",
+                            "code": "fn main() {\n    let name = String::from(\"Rust\");\n    let greet = || println!(\"Hello, {}!\", name);  // borrows name\n    greet();\n    greet();\n    println!(\"Still have: {}\", name);  // name is still valid\n}"
+                        },
+                        {
+                            "title": "FnMut and FnOnce",
+                            "body": "FnMut closures mutate captured variables, so they need mutable access. FnOnce closures consume a captured value, so they can only be called once. The compiler picks the right trait based on what the closure body does.",
+                            "code": "fn main() {\n    let mut count = 0;\n    let mut increment = || {\n        count += 1;  // mutates count -> FnMut\n        println!(\"Count: {}\", count);\n    };\n    increment();\n    increment();\n\n    let name = String::from(\"owned\");\n    let consume = move || {\n        drop(name);  // consumes name -> FnOnce\n    };\n    consume();\n    // consume();  // Error: already consumed\n}"
+                        },
+                        {
+                            "title": "Closures as Parameters",
+                            "body": "Functions can accept closures using generic bounds or impl Trait. Choose the most general trait that works: Fn if you only read, FnMut if you mutate, FnOnce if you consume. This gives callers maximum flexibility.",
+                            "code": "fn apply_twice<F: Fn(i32) -> i32>(f: F, x: i32) -> i32 {\n    f(f(x))\n}\n\nfn main() {\n    let double = |x| x * 2;\n    println!(\"{}\", apply_twice(double, 3));  // 12\n\n    let add_ten = |x| x + 10;\n    println!(\"{}\", apply_twice(add_ten, 5));  // 25\n}"
+                        },
+                        {
+                            "title": "Returning Closures",
+                            "body": "To return a closure from a function, use impl Fn or Box<dyn Fn>. Since closures have unique anonymous types, you cannot name them directly. The impl Trait syntax works when the function always returns the same closure type; use Box for dynamic cases. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on closures. Also visit the recommended books in the app for more insights.",
+                            "code": "fn make_multiplier(factor: i32) -> impl Fn(i32) -> i32 {\n    move |x| x * factor\n}\n\nfn main() {\n    let triple = make_multiplier(3);\n    let double = make_multiplier(2);\n    println!(\"{}\", triple(10));  // 30\n    println!(\"{}\", double(10));  // 20\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-intermediate-enums-data",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Enums With Data",
+                    "description": "Build expressive data models using Rust enums with associated data, methods, and state machines.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Enum Variants with Data",
+                            "body": "Rust enums can hold data in each variant, like tuples or structs. This makes them far more powerful than enums in most languages. Each variant can carry different types and amounts of data.",
+                            "code": "enum Message {\n    Quit,\n    Move { x: i32, y: i32 },\n    Write(String),\n    Color(u8, u8, u8),\n}\n\nfn main() {\n    let msg = Message::Move { x: 10, y: 20 };\n    let txt = Message::Write(\"hello\".to_string());\n}"
+                        },
+                        {
+                            "title": "Methods on Enums",
+                            "body": "You can implement methods on enums just like structs. Use match inside methods to handle each variant. This keeps behavior close to the data it operates on.",
+                            "code": "impl Message {\n    fn process(&self) {\n        match self {\n            Message::Quit => println!(\"Quitting\"),\n            Message::Move { x, y } => println!(\"Moving to ({}, {})\", x, y),\n            Message::Write(text) => println!(\"Writing: {}\", text),\n            Message::Color(r, g, b) => println!(\"Color: #{:02x}{:02x}{:02x}\", r, g, b),\n        }\n    }\n}\n\nfn main() {\n    Message::Color(255, 128, 0).process();\n}"
+                        },
+                        {
+                            "title": "State Machines with Enums",
+                            "body": "Enums naturally model state machines. Each variant is a state, and transitions are functions that consume one state and return another. The compiler ensures you handle every state, making illegal states unrepresentable.",
+                            "code": "enum Connection {\n    Disconnected,\n    Connecting(String),\n    Connected { host: String, port: u16 },\n}\n\nimpl Connection {\n    fn connect(host: &str, port: u16) -> Connection {\n        println!(\"Connecting to {}:{}...\", host, port);\n        Connection::Connected {\n            host: host.to_string(),\n            port,\n        }\n    }\n\n    fn disconnect(self) -> Connection {\n        Connection::Disconnected\n    }\n}"
+                        },
+                        {
+                            "title": "Pattern Matching Power",
+                            "body": "Rust's pattern matching with enums supports destructuring, guards, nested patterns, and binding. Combined with exhaustive checking, this makes it nearly impossible to forget a case. Enums with data and match form one of Rust's most distinctive and powerful features. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on enums and pattern matching. Also visit the recommended books in the app for more insights.",
+                            "code": "fn describe(conn: &Connection) -> String {\n    match conn {\n        Connection::Disconnected => \"offline\".to_string(),\n        Connection::Connecting(host) => format!(\"reaching {}\", host),\n        Connection::Connected { host, port } if *port == 443 => {\n            format!(\"secure connection to {}\", host)\n        }\n        Connection::Connected { host, port } => {\n            format!(\"connected to {}:{}\", host, port)\n        }\n    }\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-intermediate-type-aliases",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Type Aliases & Newtype",
+                    "description": "Improve code clarity and type safety using type aliases and the newtype wrapper pattern.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Type Aliases",
+                            "body": "The type keyword creates an alias: a new name for an existing type. Aliases don't create new types; they just improve readability. They are especially useful for shortening long generic types like Result with a fixed error.",
+                            "code": "type Meters = f64;\ntype Seconds = f64;\ntype Velocity = f64;\n\nfn speed(distance: Meters, time: Seconds) -> Velocity {\n    distance / time\n}\n\n// Common pattern: shortening Result\ntype IoResult<T> = Result<T, std::io::Error>;"
+                        },
+                        {
+                            "title": "The Newtype Pattern",
+                            "body": "A newtype is a tuple struct with a single field. Unlike aliases, newtypes create distinct types that the compiler treats as different. This prevents mixing up values that have the same underlying type but different meanings.",
+                            "code": "struct Meters(f64);\nstruct Seconds(f64);\n\nfn speed(distance: Meters, time: Seconds) -> f64 {\n    distance.0 / time.0\n}\n\nfn main() {\n    let d = Meters(100.0);\n    let t = Seconds(9.58);\n    println!(\"Speed: {:.2} m/s\", speed(d, t));\n    // speed(t, d);  // Compile error: wrong types!\n}"
+                        },
+                        {
+                            "title": "Implementing Traits on Newtypes",
+                            "body": "Newtypes let you implement foreign traits on foreign types, bypassing the orphan rule. You wrap the foreign type in your newtype, then implement whatever traits you need on the wrapper.",
+                            "code": "use std::fmt;\n\nstruct Wrapper(Vec<String>);\n\nimpl fmt::Display for Wrapper {\n    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n        write!(f, \"[{}]\", self.0.join(\", \"))\n    }\n}\n\nfn main() {\n    let w = Wrapper(vec![\"hello\".into(), \"world\".into()]);\n    println!(\"{}\", w);  // [hello, world]\n}"
+                        },
+                        {
+                            "title": "When to Choose Each",
+                            "body": "Use type aliases when you only want shorter names and the compiler should treat both as the same type. Use newtypes when you want the compiler to enforce that two values with the same underlying type cannot be mixed up. Newtypes have zero runtime cost thanks to guaranteed same-layout optimization. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on type aliases and newtypes. Also visit the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-intermediate-files",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Working With Files",
+                    "description": "Read, write, and manage files in Rust using std::fs, Path, and PathBuf.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Reading Files",
+                            "body": "The simplest way to read a file is std::fs::read_to_string, which loads the entire content into a String. For large files, use BufReader with a File to read line by line. Both methods return Result, so handle errors with ? or match.",
+                            "code": "use std::fs;\n\nfn main() -> Result<(), Box<dyn std::error::Error>> {\n    let content = fs::read_to_string(\"hello.txt\")?;\n    println!(\"File content: {}\", content);\n    Ok(())\n}"
+                        },
+                        {
+                            "title": "Writing Files",
+                            "body": "Use fs::write to create or overwrite a file in one call. For appending or more control, open a File with OpenOptions. The Write trait provides write_all and write_fmt for formatted output.",
+                            "code": "use std::fs::{self, OpenOptions};\nuse std::io::Write;\n\nfn main() -> Result<(), Box<dyn std::error::Error>> {\n    fs::write(\"output.txt\", \"Hello, Rust!\")?;\n\n    let mut file = OpenOptions::new()\n        .append(true)\n        .open(\"output.txt\")?;\n    writeln!(file, \"\\nAppended line\")?;\n    Ok(())\n}"
+                        },
+                        {
+                            "title": "Buffered Reading",
+                            "body": "BufReader wraps a File and buffers reads for efficiency. Combined with the lines iterator, you can process a file line by line without loading it all into memory. Each line is returned as a Result<String>.",
+                            "code": "use std::fs::File;\nuse std::io::{BufRead, BufReader};\n\nfn main() -> Result<(), Box<dyn std::error::Error>> {\n    let file = File::open(\"data.txt\")?;\n    let reader = BufReader::new(file);\n    for (i, line) in reader.lines().enumerate() {\n        println!(\"Line {}: {}\", i + 1, line?);\n    }\n    Ok(())\n}"
+                        },
+                        {
+                            "title": "Path and PathBuf",
+                            "body": "Path is an immutable reference to a file path, and PathBuf is its owned counterpart. They handle platform differences like separator characters automatically. Use them instead of raw strings for reliable cross-platform file operations. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on file I/O. Also visit the recommended books in the app for more insights.",
+                            "code": "use std::path::{Path, PathBuf};\n\nfn main() {\n    let dir = Path::new(\"/home/user\");\n    let file: PathBuf = dir.join(\"documents\").join(\"notes.txt\");\n    println!(\"Full path: {}\", file.display());\n    println!(\"Extension: {:?}\", file.extension());\n    println!(\"Parent: {:?}\", file.parent());\n}"
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-intermediate-collections",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Collections Deep Dive",
+                    "description": "Go beyond Vec and HashMap to explore VecDeque, BTreeMap, HashSet, and how to choose the right collection.",
+                    "estimatedMinutes": 13,
+                    "lessons": [
+                        {
+                            "title": "VecDeque for Double-Ended Access",
+                            "body": "VecDeque is a double-ended queue built on a ring buffer. It offers O(1) push and pop from both front and back, unlike Vec which is O(n) for front operations. Use it when you need a queue or need to insert at both ends.",
+                            "code": "use std::collections::VecDeque;\n\nfn main() {\n    let mut deque = VecDeque::new();\n    deque.push_back(1);\n    deque.push_back(2);\n    deque.push_front(0);\n    println!(\"{:?}\", deque);  // [0, 1, 2]\n    println!(\"Front: {:?}\", deque.pop_front());  // Some(0)\n    println!(\"Back: {:?}\", deque.pop_back());    // Some(2)\n}"
+                        },
+                        {
+                            "title": "BTreeMap for Sorted Keys",
+                            "body": "BTreeMap stores entries sorted by key using a B-tree. Lookups are O(log n) instead of HashMap's O(1), but you get sorted iteration and range queries. Use it when you need ordered keys or your key type doesn't implement Hash.",
+                            "code": "use std::collections::BTreeMap;\n\nfn main() {\n    let mut scores = BTreeMap::new();\n    scores.insert(\"Charlie\", 85);\n    scores.insert(\"Alice\", 92);\n    scores.insert(\"Bob\", 78);\n\n    // Iterates in sorted key order\n    for (name, score) in &scores {\n        println!(\"{}: {}\", name, score);\n    }\n\n    // Range query\n    for (name, score) in scores.range(\"A\"..\"C\") {\n        println!(\"Range: {} = {}\", name, score);\n    }\n}"
+                        },
+                        {
+                            "title": "HashSet for Unique Values",
+                            "body": "HashSet stores unique values with O(1) lookup. It supports set operations like union, intersection, and difference. Use it when you need to check membership or eliminate duplicates efficiently.",
+                            "code": "use std::collections::HashSet;\n\nfn main() {\n    let a: HashSet<i32> = [1, 2, 3, 4].iter().cloned().collect();\n    let b: HashSet<i32> = [3, 4, 5, 6].iter().cloned().collect();\n\n    let intersection: Vec<&i32> = a.intersection(&b).collect();\n    let union: Vec<&i32> = a.union(&b).collect();\n    let diff: Vec<&i32> = a.difference(&b).collect();\n\n    println!(\"Intersection: {:?}\", intersection);\n    println!(\"Union: {:?}\", union);\n    println!(\"Only in a: {:?}\", diff);\n}"
+                        },
+                        {
+                            "title": "Choosing the Right Collection",
+                            "body": "Use Vec for ordered sequences with fast indexing. Use HashMap or HashSet for fast key lookups. Use BTreeMap or BTreeSet when you need sorted order. Use VecDeque for FIFO queues or double-ended access. The right collection depends on your access patterns, not just the data shape. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on collections. Also visit the recommended books in the app for more insights."
+                        }
+                    ]
+                },
+                {
+                    "id": "rs-intermediate-trait-objects",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Trait Objects & dyn",
+                    "description": "Use dynamic dispatch with dyn Trait to work with different types through a common interface at runtime.",
+                    "estimatedMinutes": 14,
+                    "lessons": [
+                        {
+                            "title": "What Are Trait Objects",
+                            "body": "A trait object lets you store different concrete types behind a single interface. You create one by using dyn Trait behind a reference or smart pointer. The compiler uses a vtable for dynamic dispatch, resolving method calls at runtime instead of compile time.",
+                            "code": "trait Shape {\n    fn area(&self) -> f64;\n    fn name(&self) -> &str;\n}\n\nstruct Circle { radius: f64 }\nstruct Rect { w: f64, h: f64 }\n\nimpl Shape for Circle {\n    fn area(&self) -> f64 { std::f64::consts::PI * self.radius * self.radius }\n    fn name(&self) -> &str { \"circle\" }\n}\n\nimpl Shape for Rect {\n    fn area(&self) -> f64 { self.w * self.h }\n    fn name(&self) -> &str { \"rectangle\" }\n}"
+                        },
+                        {
+                            "title": "Using dyn Trait",
+                            "body": "You can collect different types in a Vec<Box<dyn Trait>> or accept them as function parameters with &dyn Trait. This is useful when the set of types isn't known at compile time, like plugin systems or heterogeneous collections.",
+                            "code": "fn print_shapes(shapes: &[Box<dyn Shape>]) {\n    for shape in shapes {\n        println!(\"{}: area = {:.2}\", shape.name(), shape.area());\n    }\n}\n\nfn main() {\n    let shapes: Vec<Box<dyn Shape>> = vec![\n        Box::new(Circle { radius: 5.0 }),\n        Box::new(Rect { w: 4.0, h: 6.0 }),\n        Box::new(Circle { radius: 2.0 }),\n    ];\n    print_shapes(&shapes);\n}"
+                        },
+                        {
+                            "title": "Object Safety",
+                            "body": "Not every trait can be used as a trait object. A trait is object-safe if its methods don't return Self and don't use generics. This is because the compiler needs a fixed vtable layout. If a trait isn't object-safe, use generics with trait bounds instead.",
+                            "code": "// Object-safe: all methods take &self, no generics\ntrait Drawable {\n    fn draw(&self);\n}\n\n// NOT object-safe: returns Self\ntrait Cloneable {\n    fn clone_self(&self) -> Self;\n}\n\n// Workaround: use a Box return\ntrait CloneBox {\n    fn clone_box(&self) -> Box<dyn CloneBox>;\n}"
+                        },
+                        {
+                            "title": "Generics vs Trait Objects",
+                            "body": "Generics use static dispatch with monomorphization, producing fast specialized code but larger binaries. Trait objects use dynamic dispatch with a small runtime cost but keep binary size down. Choose generics when performance is critical and types are known at compile time; choose trait objects when you need runtime flexibility. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on trait objects and dynamic dispatch. Also visit the recommended books in the app for more insights.",
+                            "code": "// Static dispatch: one copy per type, fast\nfn area_static(shape: &impl Shape) -> f64 {\n    shape.area()\n}\n\n// Dynamic dispatch: one copy, flexible\nfn area_dynamic(shape: &dyn Shape) -> f64 {\n    shape.area()\n}\n\nfn main() {\n    let c = Circle { radius: 3.0 };\n    println!(\"{}\", area_static(&c));\n    println!(\"{}\", area_dynamic(&c));\n}"
                         }
                     ]
                 }
@@ -964,12 +1379,12 @@
                         {
                             "title": "Why this function needs a lifetime",
                             "body": "The returned reference borrows from either x or y. Without 'a, the compiler can't know which input the output borrows from, or how long the result stays valid.",
-                            "code": "// The caller ensures both inputs live at least as long as the returned reference\nlet result;\n{\n    let s1 = String::from(\"long string\");\n    let s2 = String::from(\"xy\");\n    result = longest(&s1, &s2);\n    println!(\"{}\", result);  // OK \u2014 both s1 and s2 still live here\n}"
+                            "code": "// The caller ensures both inputs live at least as long as the returned reference\nlet result;\n{\n    let s1 = String::from(\"long string\");\n    let s2 = String::from(\"xy\");\n    result = longest(&s1, &s2);\n    println!(\"{}\", result);  // OK — both s1 and s2 still live here\n}"
                         },
                         {
                             "title": "Lifetime elision rules",
                             "body": "The compiler applies three elision rules before requiring annotations: (1) each input gets its own lifetime; (2) if there is exactly one input lifetime it is given to all outputs; (3) if one input is &self or &mut self its lifetime is given to all outputs.",
-                            "code": "// No annotation needed \u2014 rule 2 applies\nfn first_word(s: &str) -> &str {\n    let bytes = s.as_bytes();\n    for (i, &b) in bytes.iter().enumerate() {\n        if b == b' ' { return &s[..i]; }\n    }\n    s\n}"
+                            "code": "// No annotation needed — rule 2 applies\nfn first_word(s: &str) -> &str {\n    let bytes = s.as_bytes();\n    for (i, &b) in bytes.iter().enumerate() {\n        if b == b' ' { return &s[..i]; }\n    }\n    s\n}"
                         }
                     ]
                 }
