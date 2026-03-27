@@ -1,0 +1,1082 @@
+[
+  {
+    "id": "js-intermediate-61",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Deep Flatten",
+    "description": "Write a function flattenDeep(arr) that recursively flattens arbitrarily nested arrays into a single flat array. For example, flattenDeep([1, [2, [3, [4]]]]) should return [1, 2, 3, 4].",
+    "starterCode": "function flattenDeep(arr) {\n  // Your code here\n}\n",
+    "hint": "Use Array.isArray() to check if an element is an array, then recursively flatten and concatenate.",
+    "solution": {
+      "code": "function flattenDeep(arr) {\n  return arr.reduce((acc, val) => {\n    return acc.concat(Array.isArray(val) ? flattenDeep(val) : val);\n  }, []);\n}\n\nconsole.log(flattenDeep([1, [2, [3, [4]]]]));\nconsole.log(flattenDeep([[1, 2], [3, [4, [5, 6]]]]));\n",
+      "steps": [
+        {
+          "title": "Understand Recursive Flattening",
+          "explanation": "We need to iterate through each element of the array. If an element is itself an array, we recursively flatten it. Otherwise, we keep the element as-is. This handles any depth of nesting."
+        },
+        {
+          "title": "Implement with Reduce and Concat",
+          "explanation": "Use arr.reduce() to accumulate results. For each value, check Array.isArray(val). If true, recursively call flattenDeep(val) and concat the result. If false, concat the value directly.",
+          "code": "function flattenDeep(arr) {\n  return arr.reduce((acc, val) => {\n    return acc.concat(Array.isArray(val) ? flattenDeep(val) : val);\n  }, []);\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "flattenDeep([1, [2, [3, [4]]]]) returns [1, 2, 3, 4]. flattenDeep([[1, 2], [3, [4, [5, 6]]]]) returns [1, 2, 3, 4, 5, 6]. All nested levels are correctly flattened into a single array."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-62",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Tree Traversal",
+    "description": "Write a function traverseTree(node) that performs a depth-first traversal of a tree. Each node has a 'value' property and a 'children' array. Return an array of all values in depth-first order.",
+    "starterCode": "function traverseTree(node) {\n  // Your code here\n}\n",
+    "hint": "Start with the current node's value, then recursively traverse each child.",
+    "solution": {
+      "code": "function traverseTree(node) {\n  const result = [node.value];\n  if (node.children) {\n    for (const child of node.children) {\n      result.push(...traverseTree(child));\n    }\n  }\n  return result;\n}\n\nconst tree = {\n  value: 1,\n  children: [\n    { value: 2, children: [\n      { value: 4, children: [] },\n      { value: 5, children: [] }\n    ]},\n    { value: 3, children: [\n      { value: 6, children: [] }\n    ]}\n  ]\n};\n\nconsole.log(traverseTree(tree));\n",
+      "steps": [
+        {
+          "title": "Understand Depth-First Traversal",
+          "explanation": "In depth-first traversal, we visit the current node first, then recursively visit each child subtree before moving to the next sibling. This produces a pre-order traversal of the tree."
+        },
+        {
+          "title": "Implement the Recursion",
+          "explanation": "Start by adding the current node's value to the result array. Then iterate over the children array, recursively calling traverseTree on each child and spreading the results into our array.",
+          "code": "function traverseTree(node) {\n  const result = [node.value];\n  if (node.children) {\n    for (const child of node.children) {\n      result.push(...traverseTree(child));\n    }\n  }\n  return result;\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "For a tree with root 1, children 2 and 3, where 2 has children 4 and 5, and 3 has child 6, the output is [1, 2, 4, 5, 3, 6] \u2014 a correct depth-first pre-order traversal."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-63",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Permutation Power",
+    "description": "Write a function permutations(arr) that returns all possible permutations of the input array. For example, permutations([1, 2, 3]) should return all 6 orderings of those elements.",
+    "starterCode": "function permutations(arr) {\n  // Your code here\n}\n",
+    "hint": "For each element, remove it from the array and recursively find permutations of the rest, then prepend the element.",
+    "solution": {
+      "code": "function permutations(arr) {\n  if (arr.length <= 1) return [arr];\n  const result = [];\n  for (let i = 0; i < arr.length; i++) {\n    const rest = [...arr.slice(0, i), ...arr.slice(i + 1)];\n    const perms = permutations(rest);\n    for (const perm of perms) {\n      result.push([arr[i], ...perm]);\n    }\n  }\n  return result;\n}\n\nconsole.log(permutations([1, 2, 3]));\nconsole.log(permutations([1, 2]).length);\n",
+      "steps": [
+        {
+          "title": "Understand the Base Case",
+          "explanation": "If the array has zero or one element, there is only one permutation \u2014 the array itself. This is our recursion base case that stops the process."
+        },
+        {
+          "title": "Build Permutations Recursively",
+          "explanation": "For each element at index i, remove it from the array to get 'rest'. Recursively find all permutations of 'rest', then prepend the removed element to each permutation.",
+          "code": "function permutations(arr) {\n  if (arr.length <= 1) return [arr];\n  const result = [];\n  for (let i = 0; i < arr.length; i++) {\n    const rest = [...arr.slice(0, i), ...arr.slice(i + 1)];\n    const perms = permutations(rest);\n    for (const perm of perms) {\n      result.push([arr[i], ...perm]);\n    }\n  }\n  return result;\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "permutations([1, 2, 3]) returns 6 arrays representing all orderings. permutations([1, 2]).length is 2. The algorithm correctly generates n! permutations for an array of n elements."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-64",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Power Set",
+    "description": "Write a function powerSet(arr) that returns all subsets of the input array, including the empty set and the full set. For example, powerSet([1, 2]) returns [[], [1], [2], [1, 2]].",
+    "starterCode": "function powerSet(arr) {\n  // Your code here\n}\n",
+    "hint": "Start with an empty subset, then for each element, duplicate existing subsets and add the element to the copies.",
+    "solution": {
+      "code": "function powerSet(arr) {\n  let subsets = [[]];\n  for (const elem of arr) {\n    const newSubsets = subsets.map(subset => [...subset, elem]);\n    subsets = [...subsets, ...newSubsets];\n  }\n  return subsets;\n}\n\nconsole.log(powerSet([1, 2]));\nconsole.log(powerSet([1, 2, 3]).length);\n",
+      "steps": [
+        {
+          "title": "Start with Empty Set",
+          "explanation": "Initialize subsets with a single element: the empty array [[]]. Every power set includes the empty set. We build from here by iterating over each element in the input."
+        },
+        {
+          "title": "Duplicate and Extend",
+          "explanation": "For each element, take every existing subset, create a copy with the element appended, and add those new subsets to the collection. This doubles the number of subsets each time.",
+          "code": "function powerSet(arr) {\n  let subsets = [[]];\n  for (const elem of arr) {\n    const newSubsets = subsets.map(subset => [...subset, elem]);\n    subsets = [...subsets, ...newSubsets];\n  }\n  return subsets;\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "powerSet([1, 2]) returns [[], [1], [2], [1, 2]] \u2014 4 subsets. powerSet([1, 2, 3]).length is 8, which is 2^3. The algorithm correctly generates 2^n subsets."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-65",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Nested Sum",
+    "description": "Write a function nestedSum(obj) that recursively sums all number values in a deeply nested object. For example, nestedSum({a: 1, b: {c: 2, d: {e: 3}}}) should return 6.",
+    "starterCode": "function nestedSum(obj) {\n  // Your code here\n}\n",
+    "hint": "Iterate over Object.values(). If a value is a number, add it. If it's an object, recurse.",
+    "solution": {
+      "code": "function nestedSum(obj) {\n  let sum = 0;\n  for (const value of Object.values(obj)) {\n    if (typeof value === 'number') {\n      sum += value;\n    } else if (typeof value === 'object' && value !== null) {\n      sum += nestedSum(value);\n    }\n  }\n  return sum;\n}\n\nconsole.log(nestedSum({ a: 1, b: { c: 2, d: { e: 3 } } }));\nconsole.log(nestedSum({ x: 10, y: { z: 20 }, w: 'hello' }));\n",
+      "steps": [
+        {
+          "title": "Iterate Object Values",
+          "explanation": "Use Object.values(obj) to get all values from the object. We check each value's type to determine whether to add it or recurse deeper into nested structures."
+        },
+        {
+          "title": "Sum Numbers and Recurse Objects",
+          "explanation": "If a value is a number, add it to the sum. If it's a non-null object, recursively call nestedSum on it. Non-number, non-object values like strings are ignored.",
+          "code": "function nestedSum(obj) {\n  let sum = 0;\n  for (const value of Object.values(obj)) {\n    if (typeof value === 'number') {\n      sum += value;\n    } else if (typeof value === 'object' && value !== null) {\n      sum += nestedSum(value);\n    }\n  }\n  return sum;\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "nestedSum({a:1, b:{c:2, d:{e:3}}}) returns 6 (1+2+3). nestedSum({x:10, y:{z:20}, w:'hello'}) returns 30 (10+20, 'hello' is ignored). Nested objects are correctly traversed."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-66",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Custom Errors",
+    "description": "Create a ValidationError class that extends Error with a 'field' property indicating which field failed validation. Demonstrate throwing and catching the custom error to show structured error handling.",
+    "starterCode": "class ValidationError extends Error {\n  // Your code here\n}\n",
+    "hint": "Call super(message) in the constructor and set this.name and this.field.",
+    "solution": {
+      "code": "class ValidationError extends Error {\n  constructor(message, field) {\n    super(message);\n    this.name = 'ValidationError';\n    this.field = field;\n  }\n}\n\ntry {\n  throw new ValidationError('Email is required', 'email');\n} catch (err) {\n  console.log(err.name);\n  console.log(err.message);\n  console.log(err.field);\n  console.log(err instanceof ValidationError);\n  console.log(err instanceof Error);\n}\n",
+      "steps": [
+        {
+          "title": "Extend the Error Class",
+          "explanation": "Create a class that extends Error. In the constructor, call super(message) to set the error message, then set this.name to 'ValidationError' and store the field property."
+        },
+        {
+          "title": "Implement the Constructor",
+          "explanation": "The constructor takes a message and a field parameter. super(message) initializes the Error base class. We add the field property to identify which input field caused the validation failure.",
+          "code": "class ValidationError extends Error {\n  constructor(message, field) {\n    super(message);\n    this.name = 'ValidationError';\n    this.field = field;\n  }\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "Throwing and catching the error shows err.name is 'ValidationError', err.message is 'Email is required', err.field is 'email'. instanceof checks confirm it's both a ValidationError and an Error."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-67",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Retry Logic",
+    "description": "Write a function retry(fn, maxRetries) that calls fn and retries on failure up to maxRetries times. It returns the successful result or throws after all retries are exhausted. Uses synchronous logic with a counter-based demo function.",
+    "starterCode": "function retry(fn, maxRetries) {\n  // Your code here\n}\n",
+    "hint": "Use a loop that tries calling fn, catches errors, and decrements a counter.",
+    "solution": {
+      "code": "function retry(fn, maxRetries) {\n  let attempts = 0;\n  while (true) {\n    try {\n      return fn();\n    } catch (err) {\n      attempts++;\n      if (attempts >= maxRetries) {\n        throw err;\n      }\n    }\n  }\n}\n\nlet callCount = 0;\nfunction unreliable() {\n  callCount++;\n  if (callCount < 3) throw new Error('Fail #' + callCount);\n  return 'Success on attempt ' + callCount;\n}\n\nconsole.log(retry(unreliable, 5));\n\ncallCount = 0;\ntry {\n  console.log(retry(unreliable, 1));\n} catch (e) {\n  console.log('Caught: ' + e.message);\n}\n",
+      "steps": [
+        {
+          "title": "Understand the Retry Loop",
+          "explanation": "We wrap fn() in a try-catch inside a while loop. On success, we return the result immediately. On failure, we increment the attempt counter and check if we've exceeded maxRetries."
+        },
+        {
+          "title": "Implement Retry Logic",
+          "explanation": "Track attempts in a counter. Each catch increments it. If attempts reaches maxRetries, re-throw the error. Otherwise, loop back and try again.",
+          "code": "function retry(fn, maxRetries) {\n  let attempts = 0;\n  while (true) {\n    try {\n      return fn();\n    } catch (err) {\n      attempts++;\n      if (attempts >= maxRetries) {\n        throw err;\n      }\n    }\n  }\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "The unreliable function fails twice then succeeds. With maxRetries=5 it prints 'Success on attempt 3'. With maxRetries=1 it catches 'Fail #1' since it only allows one retry."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-68",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Safe JSON Parse",
+    "description": "Write a function safeJsonParse(str) that safely parses a JSON string without throwing. It returns {success: true, data} on valid JSON, or {success: false, error} on invalid JSON.",
+    "starterCode": "function safeJsonParse(str) {\n  // Your code here\n}\n",
+    "hint": "Wrap JSON.parse in a try-catch and return a structured result object.",
+    "solution": {
+      "code": "function safeJsonParse(str) {\n  try {\n    const data = JSON.parse(str);\n    return { success: true, data };\n  } catch (err) {\n    return { success: false, error: err.message };\n  }\n}\n\nconsole.log(safeJsonParse('{\"name\": \"Alice\", \"age\": 30}'));\nconsole.log(safeJsonParse('not valid json'));\nconsole.log(safeJsonParse('[1, 2, 3]'));\n",
+      "steps": [
+        {
+          "title": "Wrap JSON.parse in Try-Catch",
+          "explanation": "JSON.parse throws a SyntaxError on invalid JSON. By wrapping it in try-catch, we prevent the error from propagating and instead capture it in a structured result."
+        },
+        {
+          "title": "Return Structured Results",
+          "explanation": "On success, return an object with success: true and the parsed data. On failure, return success: false and the error message string for easy inspection.",
+          "code": "function safeJsonParse(str) {\n  try {\n    const data = JSON.parse(str);\n    return { success: true, data };\n  } catch (err) {\n    return { success: false, error: err.message };\n  }\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "Valid JSON returns {success: true, data: {name: 'Alice', age: 30}}. Invalid JSON returns {success: false, error: ...}. Arrays also parse correctly. No exceptions escape the function."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-69",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Validation Chain",
+    "description": "Write a validate(value) function that returns a chainable object with methods isString(), minLength(n), and matches(regex). Call result() at the end to get {valid: boolean, errors: string[]}.",
+    "starterCode": "function validate(value) {\n  // Your code here\n}\n",
+    "hint": "Return an object where each method pushes errors to an array and returns 'this' for chaining.",
+    "solution": {
+      "code": "function validate(value) {\n  const errors = [];\n  const chain = {\n    isString() {\n      if (typeof value !== 'string') errors.push('Value must be a string');\n      return chain;\n    },\n    minLength(n) {\n      if (typeof value === 'string' && value.length < n) errors.push('Minimum length is ' + n);\n      return chain;\n    },\n    matches(regex) {\n      if (typeof value === 'string' && !regex.test(value)) errors.push('Does not match pattern');\n      return chain;\n    },\n    result() {\n      return { valid: errors.length === 0, errors };\n    }\n  };\n  return chain;\n}\n\nconsole.log(validate('hello').isString().minLength(3).result());\nconsole.log(validate('hi').isString().minLength(5).matches(/^[A-Z]/).result());\nconsole.log(validate(42).isString().result());\n",
+      "steps": [
+        {
+          "title": "Design the Chainable Interface",
+          "explanation": "Create an errors array and a chain object. Each validation method checks a condition, pushes an error message if it fails, and returns the chain object to enable method chaining."
+        },
+        {
+          "title": "Implement Validation Methods",
+          "explanation": "isString() checks typeof. minLength(n) checks string length. matches(regex) tests the regex. Each returns 'chain' for fluent chaining. result() returns the final verdict.",
+          "code": "function validate(value) {\n  const errors = [];\n  const chain = {\n    isString() {\n      if (typeof value !== 'string') errors.push('Value must be a string');\n      return chain;\n    },\n    minLength(n) {\n      if (typeof value === 'string' && value.length < n) errors.push('Minimum length is ' + n);\n      return chain;\n    },\n    matches(regex) {\n      if (typeof value === 'string' && !regex.test(value)) errors.push('Does not match pattern');\n      return chain;\n    },\n    result() {\n      return { valid: errors.length === 0, errors };\n    }\n  };\n  return chain;\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "'hello' passes isString and minLength(3) so result is {valid: true, errors: []}. 'hi' fails minLength(5) and matches, returning two errors. 42 fails isString. All chains work correctly."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-70",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Result Type",
+    "description": "Implement Ok(value) and Err(error) result types. Ok has map(fn) that applies fn to the value and unwrap() that returns the value. Err has map(fn) that returns itself unchanged and unwrap() that throws the error.",
+    "starterCode": "function Ok(value) {\n  // Your code here\n}\n\nfunction Err(error) {\n  // Your code here\n}\n",
+    "hint": "Ok.map applies the function to the value. Err.map returns itself unchanged. unwrap returns value or throws.",
+    "solution": {
+      "code": "function Ok(value) {\n  return {\n    map(fn) { return Ok(fn(value)); },\n    unwrap() { return value; },\n    isOk: true,\n    isErr: false\n  };\n}\n\nfunction Err(error) {\n  return {\n    map() { return Err(error); },\n    unwrap() { throw new Error(error); },\n    isOk: false,\n    isErr: true\n  };\n}\n\nconst result1 = Ok(5).map(x => x * 2).map(x => x + 1);\nconsole.log(result1.unwrap());\n\nconst result2 = Err('not found').map(x => x * 2);\nconsole.log(result2.isErr);\n\ntry {\n  result2.unwrap();\n} catch (e) {\n  console.log('Caught: ' + e.message);\n}\n",
+      "steps": [
+        {
+          "title": "Implement Ok Type",
+          "explanation": "Ok wraps a value. map(fn) applies fn to the value and returns a new Ok. unwrap() simply returns the value. We also add isOk/isErr boolean flags for type checking."
+        },
+        {
+          "title": "Implement Err Type",
+          "explanation": "Err wraps an error. map(fn) ignores fn and returns itself unchanged \u2014 errors propagate without transformation. unwrap() throws the error since there is no valid value to return.",
+          "code": "function Err(error) {\n  return {\n    map() { return Err(error); },\n    unwrap() { throw new Error(error); },\n    isOk: false,\n    isErr: true\n  };\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "Ok(5).map(x => x*2).map(x => x+1).unwrap() returns 11. Err('not found').map(...) stays as Err, and unwrap() throws. This models safe error handling without exceptions."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-71",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Range Generator",
+    "description": "Write a generator function range(start, end, step) that yields numbers from start up to (but not including) end, incrementing by step. For example, [...range(0, 10, 2)] yields [0, 2, 4, 6, 8].",
+    "starterCode": "function* range(start, end, step) {\n  // Your code here\n}\n",
+    "hint": "Use a for loop inside the generator and yield each value.",
+    "solution": {
+      "code": "function* range(start, end, step = 1) {\n  for (let i = start; i < end; i += step) {\n    yield i;\n  }\n}\n\nconsole.log([...range(0, 10, 2)]);\nconsole.log([...range(1, 6, 1)]);\nconsole.log([...range(0, 5)]);\n",
+      "steps": [
+        {
+          "title": "Understand Generators",
+          "explanation": "A generator function uses function* syntax and yield to produce values lazily. Each call to next() on the iterator runs the function until the next yield, pausing execution in between."
+        },
+        {
+          "title": "Implement the Range Loop",
+          "explanation": "Use a for loop starting at 'start', incrementing by 'step', and stopping before 'end'. Yield each value of i. Default step to 1 if not provided.",
+          "code": "function* range(start, end, step = 1) {\n  for (let i = start; i < end; i += step) {\n    yield i;\n  }\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "[...range(0, 10, 2)] gives [0, 2, 4, 6, 8]. [...range(1, 6, 1)] gives [1, 2, 3, 4, 5]. [...range(0, 5)] gives [0, 1, 2, 3, 4] using default step of 1."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-72",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Lazy Filter",
+    "description": "Write a generator function lazyFilter(iterable, predicate) that lazily filters values from any iterable, yielding only values for which predicate returns true.",
+    "starterCode": "function* lazyFilter(iterable, predicate) {\n  // Your code here\n}\n",
+    "hint": "Use for...of to iterate and yield only values that pass the predicate.",
+    "solution": {
+      "code": "function* lazyFilter(iterable, predicate) {\n  for (const value of iterable) {\n    if (predicate(value)) {\n      yield value;\n    }\n  }\n}\n\nconst nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];\nconst evens = lazyFilter(nums, x => x % 2 === 0);\nconsole.log([...evens]);\n\nfunction* naturals() {\n  let n = 1;\n  while (true) yield n++;\n}\nconst firstFiveOdds = [];\nfor (const val of lazyFilter(naturals(), x => x % 2 !== 0)) {\n  firstFiveOdds.push(val);\n  if (firstFiveOdds.length === 5) break;\n}\nconsole.log(firstFiveOdds);\n",
+      "steps": [
+        {
+          "title": "Understand Lazy Evaluation",
+          "explanation": "Unlike Array.filter which processes all elements immediately, a generator-based filter processes elements on demand. This allows filtering infinite sequences since we only compute what we consume."
+        },
+        {
+          "title": "Implement with For-Of and Yield",
+          "explanation": "Use for...of to iterate through the iterable. For each value, check the predicate. If it returns true, yield the value. Otherwise skip it. The generator pauses between yields.",
+          "code": "function* lazyFilter(iterable, predicate) {\n  for (const value of iterable) {\n    if (predicate(value)) {\n      yield value;\n    }\n  }\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "Filtering [1..10] for evens gives [2, 4, 6, 8, 10]. Filtering an infinite sequence of naturals for odds and taking 5 gives [1, 3, 5, 7, 9]. Lazy evaluation handles both finite and infinite sources."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-73",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Fibonacci Generator",
+    "description": "Write a generator function fibonacci() that yields an infinite sequence of Fibonacci numbers. Use it to collect the first 10 Fibonacci numbers.",
+    "starterCode": "function* fibonacci() {\n  // Your code here\n}\n",
+    "hint": "Track two variables (a and b), yield a, then update: [a, b] = [b, a + b].",
+    "solution": {
+      "code": "function* fibonacci() {\n  let a = 0, b = 1;\n  while (true) {\n    yield a;\n    [a, b] = [b, a + b];\n  }\n}\n\nconst first10 = [];\nfor (const num of fibonacci()) {\n  first10.push(num);\n  if (first10.length === 10) break;\n}\nconsole.log(first10);\n\nconst fib = fibonacci();\nconsole.log(fib.next().value);\nconsole.log(fib.next().value);\nconsole.log(fib.next().value);\n",
+      "steps": [
+        {
+          "title": "Set Up State Variables",
+          "explanation": "Initialize two variables: a = 0 and b = 1, representing the current and next Fibonacci numbers. The sequence starts 0, 1, 1, 2, 3, 5, 8, 13, ..."
+        },
+        {
+          "title": "Yield and Update",
+          "explanation": "In an infinite while(true) loop, yield the current value 'a', then update both variables simultaneously using destructuring: [a, b] = [b, a + b].",
+          "code": "function* fibonacci() {\n  let a = 0, b = 1;\n  while (true) {\n    yield a;\n    [a, b] = [b, a + b];\n  }\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "The first 10 Fibonacci numbers are [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]. Individual next() calls return 0, 1, 1 sequentially. The infinite generator only computes values when requested."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-74",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Paginator",
+    "description": "Write a generator function paginate(items, pageSize) that yields pages (sub-arrays) of items. For example, paginate([1,2,3,4,5], 2) yields [1,2], [3,4], [5].",
+    "starterCode": "function* paginate(items, pageSize) {\n  // Your code here\n}\n",
+    "hint": "Use a for loop with step of pageSize and slice the array for each page.",
+    "solution": {
+      "code": "function* paginate(items, pageSize) {\n  for (let i = 0; i < items.length; i += pageSize) {\n    yield items.slice(i, i + pageSize);\n  }\n}\n\nconst pages = [...paginate([1, 2, 3, 4, 5, 6, 7], 3)];\nconsole.log(pages);\n\nfor (const page of paginate(['a', 'b', 'c', 'd', 'e'], 2)) {\n  console.log(page);\n}\n",
+      "steps": [
+        {
+          "title": "Understand Pagination Logic",
+          "explanation": "Pagination divides an array into chunks of a fixed size. We iterate by stepping through the array in increments of pageSize, slicing out each chunk to yield as a page."
+        },
+        {
+          "title": "Implement with Slice",
+          "explanation": "Loop from 0 to items.length with step pageSize. At each step, yield items.slice(i, i + pageSize). Slice handles the last page gracefully even if it has fewer elements.",
+          "code": "function* paginate(items, pageSize) {\n  for (let i = 0; i < items.length; i += pageSize) {\n    yield items.slice(i, i + pageSize);\n  }\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "paginate([1..7], 3) yields [1,2,3], [4,5,6], [7]. paginate(['a'..'e'], 2) yields ['a','b'], ['c','d'], ['e']. The last page correctly contains remaining elements."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-75",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Zip Iterator",
+    "description": "Write a generator function zip(...iterables) that yields tuples (arrays) of corresponding elements from multiple iterables. It stops when the shortest iterable is exhausted.",
+    "starterCode": "function* zip(...iterables) {\n  // Your code here\n}\n",
+    "hint": "Create iterators from each iterable, then repeatedly call .next() on all, yielding an array of values until any is done.",
+    "solution": {
+      "code": "function* zip(...iterables) {\n  const iterators = iterables.map(it => it[Symbol.iterator]());\n  while (true) {\n    const results = iterators.map(it => it.next());\n    if (results.some(r => r.done)) return;\n    yield results.map(r => r.value);\n  }\n}\n\nconsole.log([...zip([1, 2, 3], ['a', 'b', 'c'])]);\nconsole.log([...zip([1, 2], [10, 20, 30], [100, 200])]);\n",
+      "steps": [
+        {
+          "title": "Create Iterators",
+          "explanation": "Convert each iterable to an iterator by calling its Symbol.iterator method. This gives us fine-grained control to advance each iterable one step at a time in lockstep."
+        },
+        {
+          "title": "Advance in Lockstep",
+          "explanation": "In a loop, call .next() on every iterator. If any result has done: true, stop the generator. Otherwise, yield an array of all the values from this round.",
+          "code": "function* zip(...iterables) {\n  const iterators = iterables.map(it => it[Symbol.iterator]());\n  while (true) {\n    const results = iterators.map(it => it.next());\n    if (results.some(r => r.done)) return;\n    yield results.map(r => r.value);\n  }\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "zip([1,2,3], ['a','b','c']) yields [[1,'a'], [2,'b'], [3,'c']]. zip([1,2], [10,20,30], [100,200]) yields [[1,10,100], [2,20,200]], stopping at the shortest iterable."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-76",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Compose Functions",
+    "description": "Write a function compose(...fns) that composes functions right-to-left. For example, compose(double, addOne)(3) first applies addOne(3)=4, then double(4)=8.",
+    "starterCode": "function compose(...fns) {\n  // Your code here\n}\n",
+    "hint": "Use reduceRight to apply functions from right to left.",
+    "solution": {
+      "code": "function compose(...fns) {\n  return function(x) {\n    return fns.reduceRight((acc, fn) => fn(acc), x);\n  };\n}\n\nconst addOne = x => x + 1;\nconst double = x => x * 2;\nconst square = x => x * x;\n\nconsole.log(compose(double, addOne)(3));\nconsole.log(compose(square, double, addOne)(2));\nconsole.log(compose(addOne)(10));\n",
+      "steps": [
+        {
+          "title": "Understand Right-to-Left Composition",
+          "explanation": "compose(f, g, h)(x) means f(g(h(x))). Functions are applied from right to left: the rightmost function receives the initial value, and its result is passed to the next function leftward."
+        },
+        {
+          "title": "Implement with ReduceRight",
+          "explanation": "Return a new function that takes x and uses reduceRight on the functions array. The accumulator starts as x and each function transforms it from right to left.",
+          "code": "function compose(...fns) {\n  return function(x) {\n    return fns.reduceRight((acc, fn) => fn(acc), x);\n  };\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "compose(double, addOne)(3): addOne(3)=4, double(4)=8. compose(square, double, addOne)(2): addOne(2)=3, double(3)=6, square(6)=36. compose(addOne)(10): 11. All correct."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-77",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Pipe Functions",
+    "description": "Write a function pipe(...fns) that composes functions left-to-right. For example, pipe(addOne, double)(3) first applies addOne(3)=4, then double(4)=8.",
+    "starterCode": "function pipe(...fns) {\n  // Your code here\n}\n",
+    "hint": "Use reduce to apply functions from left to right.",
+    "solution": {
+      "code": "function pipe(...fns) {\n  return function(x) {\n    return fns.reduce((acc, fn) => fn(acc), x);\n  };\n}\n\nconst addOne = x => x + 1;\nconst double = x => x * 2;\nconst square = x => x * x;\n\nconsole.log(pipe(addOne, double)(3));\nconsole.log(pipe(addOne, double, square)(2));\nconsole.log(pipe(double)(5));\n",
+      "steps": [
+        {
+          "title": "Understand Left-to-Right Composition",
+          "explanation": "pipe(f, g, h)(x) means h(g(f(x))). Functions are applied from left to right: the first function receives the input, and its result flows forward through each subsequent function."
+        },
+        {
+          "title": "Implement with Reduce",
+          "explanation": "Return a function that takes x and uses reduce on the functions array. The accumulator starts as x and each function transforms it from left to right \u2014 the opposite of compose.",
+          "code": "function pipe(...fns) {\n  return function(x) {\n    return fns.reduce((acc, fn) => fn(acc), x);\n  };\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "pipe(addOne, double)(3): addOne(3)=4, double(4)=8. pipe(addOne, double, square)(2): addOne(2)=3, double(3)=6, square(6)=36. pipe(double)(5)=10. All correct."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-78",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Tap Utility",
+    "description": "Write a function tap(fn) that returns a function which executes fn for side effects while passing the value through unchanged. Useful for debugging in pipelines.",
+    "starterCode": "function tap(fn) {\n  // Your code here\n}\n",
+    "hint": "Return a function that calls fn(value) and then returns value.",
+    "solution": {
+      "code": "function tap(fn) {\n  return function(value) {\n    fn(value);\n    return value;\n  };\n}\n\nconst log = tap(x => console.log('Debug:', x));\nconsole.log(log(42));\n\nconst pipe = (...fns) => x => fns.reduce((acc, fn) => fn(acc), x);\nconst addOne = x => x + 1;\nconst double = x => x * 2;\n\nconst result = pipe(\n  addOne,\n  tap(x => console.log('After addOne:', x)),\n  double,\n  tap(x => console.log('After double:', x))\n)(3);\nconsole.log('Final:', result);\n",
+      "steps": [
+        {
+          "title": "Understand the Tap Pattern",
+          "explanation": "Tap is a utility for inserting side effects (like logging) into a data pipeline without altering the data flow. It runs a function on the value but returns the value unchanged."
+        },
+        {
+          "title": "Implement Tap",
+          "explanation": "Return a function that takes a value, calls fn(value) for its side effect, then returns the original value. This makes tap transparent in a pipeline \u2014 data passes through unmodified.",
+          "code": "function tap(fn) {\n  return function(value) {\n    fn(value);\n    return value;\n  };\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "In the pipeline, addOne(3)=4 is logged as 'After addOne: 4', then double(4)=8 is logged as 'After double: 8'. The final result is 8. Tap enables debugging without changing the pipeline's output."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-79",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Either Monad",
+    "description": "Implement Left(value) and Right(value) with map and fold methods. Right.map applies the function to the value; Left.map skips it. fold takes two functions (leftFn, rightFn) to extract the value from either side.",
+    "starterCode": "function Left(value) {\n  // Your code here\n}\n\nfunction Right(value) {\n  // Your code here\n}\n",
+    "hint": "Right.map transforms the value; Left.map returns itself. fold dispatches to the correct handler.",
+    "solution": {
+      "code": "function Left(value) {\n  return {\n    map() { return Left(value); },\n    fold(leftFn, rightFn) { return leftFn(value); },\n    isLeft: true,\n    isRight: false\n  };\n}\n\nfunction Right(value) {\n  return {\n    map(fn) { return Right(fn(value)); },\n    fold(leftFn, rightFn) { return rightFn(value); },\n    isLeft: false,\n    isRight: true\n  };\n}\n\nconst result1 = Right(5).map(x => x * 2).map(x => x + 1);\nconsole.log(result1.fold(err => 'Error: ' + err, val => 'Value: ' + val));\n\nconst result2 = Left('missing').map(x => x * 2);\nconsole.log(result2.fold(err => 'Error: ' + err, val => 'Value: ' + val));\n",
+      "steps": [
+        {
+          "title": "Understand Either Pattern",
+          "explanation": "Either represents a value that can be one of two types: Left (typically an error) or Right (typically a success). Map only transforms Right values; Left values pass through unchanged."
+        },
+        {
+          "title": "Implement Left and Right",
+          "explanation": "Left.map ignores the function and returns itself. Right.map applies the function and wraps the result. fold takes two functions and calls the appropriate one based on the type.",
+          "code": "function Right(value) {\n  return {\n    map(fn) { return Right(fn(value)); },\n    fold(leftFn, rightFn) { return rightFn(value); },\n    isLeft: false,\n    isRight: true\n  };\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "Right(5).map(x=>x*2).map(x=>x+1) gives Right(11), fold extracts 'Value: 11'. Left('missing').map(...) stays as Left('missing'), fold extracts 'Error: missing'. Mapping correctly short-circuits on Left."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-80",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Maybe Monad",
+    "description": "Implement a Maybe object with of(value), map(fn), and getOrElse(defaultVal) methods. map should skip applying fn if the value is null or undefined, and getOrElse should return the default in that case.",
+    "starterCode": "const Maybe = {\n  // Your code here\n};\n",
+    "hint": "In map, check if the value is null or undefined before applying the function.",
+    "solution": {
+      "code": "const Maybe = {\n  of(value) {\n    return {\n      map(fn) {\n        return value == null ? Maybe.of(null) : Maybe.of(fn(value));\n      },\n      getOrElse(defaultVal) {\n        return value == null ? defaultVal : value;\n      },\n      value\n    };\n  }\n};\n\nconsole.log(Maybe.of(5).map(x => x * 2).getOrElse(0));\nconsole.log(Maybe.of(null).map(x => x * 2).getOrElse(0));\nconsole.log(Maybe.of('hello').map(s => s.toUpperCase()).getOrElse('default'));\nconsole.log(Maybe.of(undefined).map(s => s.toUpperCase()).getOrElse('default'));\n",
+      "steps": [
+        {
+          "title": "Understand the Maybe Pattern",
+          "explanation": "Maybe wraps a value that might be null or undefined. Instead of null checks everywhere, map safely skips the transformation when there's no value, preventing null reference errors."
+        },
+        {
+          "title": "Implement Of, Map, GetOrElse",
+          "explanation": "of(value) creates a Maybe. map(fn) checks if value is null/undefined \u2014 if so, returns Maybe.of(null); otherwise applies fn and wraps the result. getOrElse returns value or the default.",
+          "code": "const Maybe = {\n  of(value) {\n    return {\n      map(fn) {\n        return value == null ? Maybe.of(null) : Maybe.of(fn(value));\n      },\n      getOrElse(defaultVal) {\n        return value == null ? defaultVal : value;\n      },\n      value\n    };\n  }\n};\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "Maybe.of(5).map(x=>x*2).getOrElse(0) returns 10. Maybe.of(null).map(...).getOrElse(0) returns 0 without error. Maybe.of('hello').map(toUpperCase) returns 'HELLO'. Maybe.of(undefined) safely returns 'default'."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-81",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Stack It Up",
+    "description": "Implement a Stack class with push(item), pop(), peek(), isEmpty(), and size() methods. The stack follows Last-In-First-Out (LIFO) ordering.",
+    "starterCode": "class Stack {\n  // Your code here\n}\n",
+    "hint": "Use an internal array. push adds to end, pop removes from end, peek returns last element.",
+    "solution": {
+      "code": "class Stack {\n  constructor() {\n    this.items = [];\n  }\n  push(item) {\n    this.items.push(item);\n  }\n  pop() {\n    if (this.isEmpty()) return undefined;\n    return this.items.pop();\n  }\n  peek() {\n    return this.items[this.items.length - 1];\n  }\n  isEmpty() {\n    return this.items.length === 0;\n  }\n  size() {\n    return this.items.length;\n  }\n}\n\nconst stack = new Stack();\nstack.push(1);\nstack.push(2);\nstack.push(3);\nconsole.log(stack.peek());\nconsole.log(stack.pop());\nconsole.log(stack.size());\nconsole.log(stack.isEmpty());\n",
+      "steps": [
+        {
+          "title": "Set Up Internal Storage",
+          "explanation": "Initialize an empty array in the constructor. This array acts as the underlying storage for the stack. We interact with it only through the stack methods to maintain LIFO behavior."
+        },
+        {
+          "title": "Implement Stack Operations",
+          "explanation": "push adds to the end of the array. pop removes from the end (returns undefined if empty). peek returns the last element without removing it. isEmpty and size check the array length.",
+          "code": "class Stack {\n  constructor() {\n    this.items = [];\n  }\n  push(item) { this.items.push(item); }\n  pop() { return this.isEmpty() ? undefined : this.items.pop(); }\n  peek() { return this.items[this.items.length - 1]; }\n  isEmpty() { return this.items.length === 0; }\n  size() { return this.items.length; }\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "After pushing 1, 2, 3: peek() returns 3, pop() returns 3 and removes it, size() returns 2, isEmpty() returns false. The stack correctly follows LIFO ordering."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-82",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Queue Up",
+    "description": "Implement a Queue class with enqueue(item), dequeue(), front(), isEmpty(), and size() methods. The queue follows First-In-First-Out (FIFO) ordering.",
+    "starterCode": "class Queue {\n  // Your code here\n}\n",
+    "hint": "Use an internal array. enqueue adds to end, dequeue removes from front.",
+    "solution": {
+      "code": "class Queue {\n  constructor() {\n    this.items = [];\n  }\n  enqueue(item) {\n    this.items.push(item);\n  }\n  dequeue() {\n    if (this.isEmpty()) return undefined;\n    return this.items.shift();\n  }\n  front() {\n    return this.items[0];\n  }\n  isEmpty() {\n    return this.items.length === 0;\n  }\n  size() {\n    return this.items.length;\n  }\n}\n\nconst q = new Queue();\nq.enqueue('a');\nq.enqueue('b');\nq.enqueue('c');\nconsole.log(q.front());\nconsole.log(q.dequeue());\nconsole.log(q.size());\nconsole.log(q.isEmpty());\n",
+      "steps": [
+        {
+          "title": "Set Up Internal Storage",
+          "explanation": "Initialize an empty array in the constructor. The array stores queue elements, with the front of the queue at index 0 and the back at the end of the array."
+        },
+        {
+          "title": "Implement Queue Operations",
+          "explanation": "enqueue adds to the end with push. dequeue removes from the front with shift. front returns index 0 without removing. isEmpty and size check the array length.",
+          "code": "class Queue {\n  constructor() {\n    this.items = [];\n  }\n  enqueue(item) { this.items.push(item); }\n  dequeue() { return this.isEmpty() ? undefined : this.items.shift(); }\n  front() { return this.items[0]; }\n  isEmpty() { return this.items.length === 0; }\n  size() { return this.items.length; }\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "After enqueueing 'a', 'b', 'c': front() returns 'a', dequeue() returns 'a' and removes it, size() returns 2, isEmpty() returns false. FIFO order is maintained correctly."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-83",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Linked List",
+    "description": "Implement a LinkedList class with append(value), prepend(value), toArray(), and find(value) methods. Each node has a value and a next pointer.",
+    "starterCode": "class LinkedList {\n  // Your code here\n}\n",
+    "hint": "Each node has a value and next pointer. Track the head of the list.",
+    "solution": {
+      "code": "class LinkedList {\n  constructor() {\n    this.head = null;\n  }\n  append(value) {\n    const node = { value, next: null };\n    if (!this.head) {\n      this.head = node;\n      return;\n    }\n    let current = this.head;\n    while (current.next) current = current.next;\n    current.next = node;\n  }\n  prepend(value) {\n    this.head = { value, next: this.head };\n  }\n  toArray() {\n    const arr = [];\n    let current = this.head;\n    while (current) {\n      arr.push(current.value);\n      current = current.next;\n    }\n    return arr;\n  }\n  find(value) {\n    let current = this.head;\n    while (current) {\n      if (current.value === value) return current;\n      current = current.next;\n    }\n    return null;\n  }\n}\n\nconst list = new LinkedList();\nlist.append(1);\nlist.append(2);\nlist.append(3);\nlist.prepend(0);\nconsole.log(list.toArray());\nconsole.log(list.find(2) !== null);\nconsole.log(list.find(5));\n",
+      "steps": [
+        {
+          "title": "Define Node Structure",
+          "explanation": "Each node is a simple object with 'value' and 'next' properties. The LinkedList class tracks the head node. When the list is empty, head is null."
+        },
+        {
+          "title": "Implement List Operations",
+          "explanation": "append traverses to the last node and adds a new node. prepend creates a new node pointing to the current head. toArray walks the list collecting values. find walks until a match is found.",
+          "code": "class LinkedList {\n  constructor() { this.head = null; }\n  append(value) {\n    const node = { value, next: null };\n    if (!this.head) { this.head = node; return; }\n    let current = this.head;\n    while (current.next) current = current.next;\n    current.next = node;\n  }\n  prepend(value) { this.head = { value, next: this.head }; }\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "After appending 1, 2, 3 and prepending 0: toArray() returns [0, 1, 2, 3]. find(2) returns the node (truthy). find(5) returns null. The linked list correctly maintains insertion order."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-84",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Binary Search",
+    "description": "Write a function binarySearch(sortedArr, target) that returns the index of the target in a sorted array, or -1 if not found. Must run in O(log n) time.",
+    "starterCode": "function binarySearch(sortedArr, target) {\n  // Your code here\n}\n",
+    "hint": "Maintain left and right pointers. Compare the middle element and halve the search space.",
+    "solution": {
+      "code": "function binarySearch(sortedArr, target) {\n  let left = 0;\n  let right = sortedArr.length - 1;\n  while (left <= right) {\n    const mid = Math.floor((left + right) / 2);\n    if (sortedArr[mid] === target) return mid;\n    if (sortedArr[mid] < target) left = mid + 1;\n    else right = mid - 1;\n  }\n  return -1;\n}\n\nconsole.log(binarySearch([1, 3, 5, 7, 9, 11], 7));\nconsole.log(binarySearch([1, 3, 5, 7, 9, 11], 4));\nconsole.log(binarySearch([2, 4, 6, 8, 10], 2));\n",
+      "steps": [
+        {
+          "title": "Set Up Pointers",
+          "explanation": "Initialize left at 0 and right at the last index. These define the current search range. We narrow this range by half each iteration by comparing the middle element to the target."
+        },
+        {
+          "title": "Implement the Search Loop",
+          "explanation": "While left <= right, compute mid. If the middle element equals target, return mid. If it's less, search the right half (left = mid + 1). If greater, search the left half (right = mid - 1).",
+          "code": "function binarySearch(sortedArr, target) {\n  let left = 0;\n  let right = sortedArr.length - 1;\n  while (left <= right) {\n    const mid = Math.floor((left + right) / 2);\n    if (sortedArr[mid] === target) return mid;\n    if (sortedArr[mid] < target) left = mid + 1;\n    else right = mid - 1;\n  }\n  return -1;\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "binarySearch([1,3,5,7,9,11], 7) returns 3 (correct index). binarySearch with target 4 returns -1 (not found). binarySearch([2,4,6,8,10], 2) returns 0 (first element). O(log n) performance."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-85",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Priority Queue",
+    "description": "Implement a PriorityQueue class where items are dequeued by priority (lower number = higher priority). Methods: enqueue(item, priority), dequeue(), peek(), and a size getter.",
+    "starterCode": "class PriorityQueue {\n  // Your code here\n}\n",
+    "hint": "Store items with their priority, and when dequeuing, find and remove the item with the lowest priority number.",
+    "solution": {
+      "code": "class PriorityQueue {\n  constructor() {\n    this.items = [];\n  }\n  enqueue(item, priority) {\n    this.items.push({ item, priority });\n    this.items.sort((a, b) => a.priority - b.priority);\n  }\n  dequeue() {\n    if (this.items.length === 0) return undefined;\n    return this.items.shift().item;\n  }\n  peek() {\n    if (this.items.length === 0) return undefined;\n    return this.items[0].item;\n  }\n  get size() {\n    return this.items.length;\n  }\n}\n\nconst pq = new PriorityQueue();\npq.enqueue('low priority', 3);\npq.enqueue('high priority', 1);\npq.enqueue('medium priority', 2);\nconsole.log(pq.peek());\nconsole.log(pq.dequeue());\nconsole.log(pq.dequeue());\nconsole.log(pq.size);\n",
+      "steps": [
+        {
+          "title": "Store Items with Priority",
+          "explanation": "Each enqueued item is stored as an object {item, priority}. After inserting, sort the array by priority ascending so the highest-priority item (lowest number) is always at the front."
+        },
+        {
+          "title": "Implement Dequeue and Peek",
+          "explanation": "dequeue removes and returns the first item (lowest priority number). peek returns the first item without removing it. The size getter returns the current number of items.",
+          "code": "class PriorityQueue {\n  constructor() { this.items = []; }\n  enqueue(item, priority) {\n    this.items.push({ item, priority });\n    this.items.sort((a, b) => a.priority - b.priority);\n  }\n  dequeue() { return this.items.length ? this.items.shift().item : undefined; }\n  peek() { return this.items.length ? this.items[0].item : undefined; }\n  get size() { return this.items.length; }\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "After enqueueing with priorities 3, 1, 2: peek() returns 'high priority' (priority 1). First dequeue returns 'high priority', second returns 'medium priority'. size is 1. Priority ordering is correct."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-86",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Merge Sort",
+    "description": "Implement mergeSort(arr) using the divide-and-conquer approach. Split the array in half, recursively sort each half, then merge the sorted halves back together.",
+    "starterCode": "function mergeSort(arr) {\n  // Your code here\n}\n",
+    "hint": "Split the array in half, recursively sort each half, then merge the sorted halves.",
+    "solution": {
+      "code": "function mergeSort(arr) {\n  if (arr.length <= 1) return arr;\n  const mid = Math.floor(arr.length / 2);\n  const left = mergeSort(arr.slice(0, mid));\n  const right = mergeSort(arr.slice(mid));\n  return merge(left, right);\n}\n\nfunction merge(left, right) {\n  const result = [];\n  let i = 0, j = 0;\n  while (i < left.length && j < right.length) {\n    if (left[i] <= right[j]) result.push(left[i++]);\n    else result.push(right[j++]);\n  }\n  return result.concat(left.slice(i)).concat(right.slice(j));\n}\n\nconsole.log(mergeSort([38, 27, 43, 3, 9, 82, 10]));\nconsole.log(mergeSort([5, 1, 4, 2, 8]));\n",
+      "steps": [
+        {
+          "title": "Understand Divide and Conquer",
+          "explanation": "Merge sort splits the array into halves until each piece has one element (base case). Then it merges sorted pieces back together. The merge step combines two sorted arrays into one sorted array."
+        },
+        {
+          "title": "Implement MergeSort and Merge",
+          "explanation": "mergeSort splits at the midpoint and recurses. merge uses two pointers to compare elements from each half, pushing the smaller one to the result, then appending any remaining elements.",
+          "code": "function mergeSort(arr) {\n  if (arr.length <= 1) return arr;\n  const mid = Math.floor(arr.length / 2);\n  const left = mergeSort(arr.slice(0, mid));\n  const right = mergeSort(arr.slice(mid));\n  return merge(left, right);\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "mergeSort([38,27,43,3,9,82,10]) returns [3,9,10,27,38,43,82]. mergeSort([5,1,4,2,8]) returns [1,2,4,5,8]. The O(n log n) sort correctly handles all cases."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-87",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Merge Intervals",
+    "description": "Write a function mergeIntervals(intervals) that merges overlapping intervals. For example, mergeIntervals([[1,3],[2,6],[8,10]]) returns [[1,6],[8,10]].",
+    "starterCode": "function mergeIntervals(intervals) {\n  // Your code here\n}\n",
+    "hint": "Sort intervals by start, then iterate and merge if the current interval overlaps the previous.",
+    "solution": {
+      "code": "function mergeIntervals(intervals) {\n  if (intervals.length === 0) return [];\n  intervals.sort((a, b) => a[0] - b[0]);\n  const merged = [intervals[0]];\n  for (let i = 1; i < intervals.length; i++) {\n    const last = merged[merged.length - 1];\n    if (intervals[i][0] <= last[1]) {\n      last[1] = Math.max(last[1], intervals[i][1]);\n    } else {\n      merged.push(intervals[i]);\n    }\n  }\n  return merged;\n}\n\nconsole.log(mergeIntervals([[1, 3], [2, 6], [8, 10], [15, 18]]));\nconsole.log(mergeIntervals([[1, 4], [4, 5]]));\n",
+      "steps": [
+        {
+          "title": "Sort by Start Time",
+          "explanation": "First sort the intervals by their start value. This ensures that overlapping intervals are adjacent, making it possible to merge them in a single pass through the array."
+        },
+        {
+          "title": "Merge Overlapping Intervals",
+          "explanation": "Start with the first interval in the result. For each subsequent interval, if its start is <= the last merged interval's end, extend the end. Otherwise, add it as a new non-overlapping interval.",
+          "code": "function mergeIntervals(intervals) {\n  if (intervals.length === 0) return [];\n  intervals.sort((a, b) => a[0] - b[0]);\n  const merged = [intervals[0]];\n  for (let i = 1; i < intervals.length; i++) {\n    const last = merged[merged.length - 1];\n    if (intervals[i][0] <= last[1]) {\n      last[1] = Math.max(last[1], intervals[i][1]);\n    } else {\n      merged.push(intervals[i]);\n    }\n  }\n  return merged;\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "mergeIntervals([[1,3],[2,6],[8,10],[15,18]]) returns [[1,6],[8,10],[15,18]]. mergeIntervals([[1,4],[4,5]]) returns [[1,5]]. Overlapping and touching intervals are correctly merged."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-88",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Two Sum",
+    "description": "Write a function twoSum(nums, target) that returns the indices of two numbers in the array that add up to the target. Use a hash map for O(n) time complexity.",
+    "starterCode": "function twoSum(nums, target) {\n  // Your code here\n}\n",
+    "hint": "Use a Map to store each number's index. For each number, check if target - number exists in the Map.",
+    "solution": {
+      "code": "function twoSum(nums, target) {\n  const map = new Map();\n  for (let i = 0; i < nums.length; i++) {\n    const complement = target - nums[i];\n    if (map.has(complement)) {\n      return [map.get(complement), i];\n    }\n    map.set(nums[i], i);\n  }\n  return [];\n}\n\nconsole.log(twoSum([2, 7, 11, 15], 9));\nconsole.log(twoSum([3, 2, 4], 6));\nconsole.log(twoSum([1, 5, 3, 7], 8));\n",
+      "steps": [
+        {
+          "title": "Use a Hash Map for Lookups",
+          "explanation": "Create a Map to store numbers we've seen and their indices. For each number, calculate its complement (target - number). If the complement is already in the Map, we found our pair."
+        },
+        {
+          "title": "Implement Single-Pass Solution",
+          "explanation": "Iterate through the array once. For each element, check if its complement exists in the Map. If yes, return both indices. If no, store the current number and its index in the Map.",
+          "code": "function twoSum(nums, target) {\n  const map = new Map();\n  for (let i = 0; i < nums.length; i++) {\n    const complement = target - nums[i];\n    if (map.has(complement)) return [map.get(complement), i];\n    map.set(nums[i], i);\n  }\n  return [];\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "twoSum([2,7,11,15], 9) returns [0,1] since 2+7=9. twoSum([3,2,4], 6) returns [1,2] since 2+4=6. twoSum([1,5,3,7], 8) returns [0,3] since 1+7=8. All O(n) time."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-89",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Anagram Check",
+    "description": "Write a function isAnagram(str1, str2) that checks if two strings are anagrams of each other (case-insensitive). Anagrams use exactly the same letters the same number of times.",
+    "starterCode": "function isAnagram(str1, str2) {\n  // Your code here\n}\n",
+    "hint": "Normalize both strings (lowercase, sort characters) and compare.",
+    "solution": {
+      "code": "function isAnagram(str1, str2) {\n  const normalize = s => s.toLowerCase().replace(/[^a-z]/g, '').split('').sort().join('');\n  return normalize(str1) === normalize(str2);\n}\n\nconsole.log(isAnagram('listen', 'silent'));\nconsole.log(isAnagram('Hello', 'Olelh'));\nconsole.log(isAnagram('abc', 'def'));\nconsole.log(isAnagram('Astronomer', 'Moon starer'));\n",
+      "steps": [
+        {
+          "title": "Normalize the Strings",
+          "explanation": "Convert both strings to lowercase and remove non-letter characters to make the comparison case-insensitive and ignore spaces/punctuation. Split into character arrays, sort alphabetically, and join back for comparison."
+        },
+        {
+          "title": "Compare Sorted Strings",
+          "explanation": "If two strings are anagrams, their sorted character sequences will be identical. Simply compare the normalized forms with strict equality.",
+          "code": "function isAnagram(str1, str2) {\n  const normalize = s => s.toLowerCase().replace(/[^a-z]/g, '').split('').sort().join('');\n  return normalize(str1) === normalize(str2);\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "'listen' and 'silent' are anagrams (true). 'Hello' and 'Olelh' are anagrams (true). 'abc' and 'def' are not (false). 'Astronomer' and 'Moon starer' are anagrams when spaces are ignored (true)."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-90",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Matrix Transpose",
+    "description": "Write a function transpose(matrix) that transposes a 2D matrix, turning rows into columns and columns into rows. For example, transpose([[1,2],[3,4],[5,6]]) returns [[1,3,5],[2,4,6]].",
+    "starterCode": "function transpose(matrix) {\n  // Your code here\n}\n",
+    "hint": "Use map on the first row's indices, and for each index, map across all rows to get that column.",
+    "solution": {
+      "code": "function transpose(matrix) {\n  return matrix[0].map((_, colIndex) => {\n    return matrix.map(row => row[colIndex]);\n  });\n}\n\nconsole.log(transpose([[1, 2], [3, 4], [5, 6]]));\nconsole.log(transpose([[1, 2, 3], [4, 5, 6]]));\n",
+      "steps": [
+        {
+          "title": "Understand the Transpose",
+          "explanation": "Transposing swaps rows and columns: element at position [i][j] moves to [j][i]. If the original matrix is m\u00d7n, the transposed matrix is n\u00d7m. We iterate by column index of the original."
+        },
+        {
+          "title": "Implement with Nested Map",
+          "explanation": "Map over column indices (from the first row's length). For each column index, map over all rows to extract that column's values, forming a new row in the transposed matrix.",
+          "code": "function transpose(matrix) {\n  return matrix[0].map((_, colIndex) => {\n    return matrix.map(row => row[colIndex]);\n  });\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "transpose([[1,2],[3,4],[5,6]]) returns [[1,3,5],[2,4,6]] \u2014 a 3\u00d72 matrix becomes 2\u00d73. transpose([[1,2,3],[4,5,6]]) returns [[1,4],[2,5],[3,6]] \u2014 a 2\u00d73 becomes 3\u00d72."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-91",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Singleton Pattern",
+    "description": "Implement a Singleton class that always returns the same instance. It has a static getInstance() method and an id property set to a random number on first creation, proving all references share the same instance.",
+    "starterCode": "class Singleton {\n  // Your code here\n}\n",
+    "hint": "Store the single instance as a static property. getInstance checks if it exists before creating.",
+    "solution": {
+      "code": "class Singleton {\n  constructor() {\n    if (Singleton.instance) return Singleton.instance;\n    this.id = Math.floor(Math.random() * 10000);\n    Singleton.instance = this;\n  }\n  static getInstance() {\n    if (!Singleton.instance) {\n      Singleton.instance = new Singleton();\n    }\n    return Singleton.instance;\n  }\n}\n\nconst a = Singleton.getInstance();\nconst b = Singleton.getInstance();\nconsole.log(a.id === b.id);\nconsole.log(a === b);\nconsole.log(a.id);\n",
+      "steps": [
+        {
+          "title": "Guard the Constructor",
+          "explanation": "In the constructor, check if Singleton.instance already exists. If it does, return it instead of creating a new one. On first call, set a random id and store 'this' as the instance."
+        },
+        {
+          "title": "Implement getInstance",
+          "explanation": "The static getInstance method checks if the instance exists. If not, it creates one with new Singleton(). It always returns the same instance, ensuring only one object is ever created.",
+          "code": "class Singleton {\n  constructor() {\n    if (Singleton.instance) return Singleton.instance;\n    this.id = Math.floor(Math.random() * 10000);\n    Singleton.instance = this;\n  }\n  static getInstance() {\n    if (!Singleton.instance) Singleton.instance = new Singleton();\n    return Singleton.instance;\n  }\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "a.id === b.id is true and a === b is true, proving both variables reference the exact same object. The Singleton pattern ensures only one instance exists throughout the application."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-92",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Factory Pattern",
+    "description": "Implement a ShapeFactory class with a create(type, options) method that returns different shape objects (circle, square, triangle) each with an area() method.",
+    "starterCode": "class ShapeFactory {\n  // Your code here\n}\n",
+    "hint": "Use a switch or object map to return different shape objects based on the type string.",
+    "solution": {
+      "code": "class ShapeFactory {\n  create(type, options) {\n    switch (type) {\n      case 'circle':\n        return {\n          type: 'circle',\n          radius: options.radius,\n          area() { return Math.PI * this.radius * this.radius; }\n        };\n      case 'square':\n        return {\n          type: 'square',\n          side: options.side,\n          area() { return this.side * this.side; }\n        };\n      case 'triangle':\n        return {\n          type: 'triangle',\n          base: options.base,\n          height: options.height,\n          area() { return 0.5 * this.base * this.height; }\n        };\n      default:\n        throw new Error('Unknown shape: ' + type);\n    }\n  }\n}\n\nconst factory = new ShapeFactory();\nconst circle = factory.create('circle', { radius: 5 });\nconst square = factory.create('square', { side: 4 });\nconst triangle = factory.create('triangle', { base: 6, height: 3 });\nconsole.log(circle.area().toFixed(2));\nconsole.log(square.area());\nconsole.log(triangle.area());\n",
+      "steps": [
+        {
+          "title": "Design the Factory Method",
+          "explanation": "The create method takes a type string and options object. Based on the type, it constructs and returns a different shape object. Each shape has its own properties and an area() method."
+        },
+        {
+          "title": "Implement Shape Objects",
+          "explanation": "Use a switch statement to handle 'circle', 'square', and 'triangle'. Each returns an object with the relevant properties and an area() method using the appropriate formula.",
+          "code": "class ShapeFactory {\n  create(type, options) {\n    switch (type) {\n      case 'circle': return { type: 'circle', radius: options.radius, area() { return Math.PI * this.radius * this.radius; } };\n      case 'square': return { type: 'square', side: options.side, area() { return this.side * this.side; } };\n      case 'triangle': return { type: 'triangle', base: options.base, height: options.height, area() { return 0.5 * this.base * this.height; } };\n      default: throw new Error('Unknown shape: ' + type);\n    }\n  }\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "Circle with radius 5 has area \u2248 78.54. Square with side 4 has area 16. Triangle with base 6 and height 3 has area 9. The factory pattern creates objects without exposing construction logic."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-93",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Strategy Pattern",
+    "description": "Implement a Sorter class that accepts a sorting strategy function and uses it to sort data. Demonstrate with ascending, descending, and alphabetical strategies.",
+    "starterCode": "class Sorter {\n  // Your code here\n}\n",
+    "hint": "Store the strategy function and call it in the sort method. Strategies could be ascending, descending, etc.",
+    "solution": {
+      "code": "class Sorter {\n  constructor(strategy) {\n    this.strategy = strategy;\n  }\n  setStrategy(strategy) {\n    this.strategy = strategy;\n  }\n  sort(data) {\n    return [...data].sort(this.strategy);\n  }\n}\n\nconst ascending = (a, b) => a - b;\nconst descending = (a, b) => b - a;\nconst alphabetical = (a, b) => a.localeCompare(b);\n\nconst sorter = new Sorter(ascending);\nconsole.log(sorter.sort([3, 1, 4, 1, 5]));\n\nsorter.setStrategy(descending);\nconsole.log(sorter.sort([3, 1, 4, 1, 5]));\n\nsorter.setStrategy(alphabetical);\nconsole.log(sorter.sort(['banana', 'apple', 'cherry']));\n",
+      "steps": [
+        {
+          "title": "Understand the Strategy Pattern",
+          "explanation": "The Strategy pattern lets you swap algorithms at runtime. The Sorter class doesn't know how to sort \u2014 it delegates to a strategy function. You can change the strategy without changing the class."
+        },
+        {
+          "title": "Implement the Sorter",
+          "explanation": "Store the strategy in the constructor. The sort method spreads the data into a new array and sorts it using the strategy. setStrategy allows changing the strategy at runtime.",
+          "code": "class Sorter {\n  constructor(strategy) { this.strategy = strategy; }\n  setStrategy(strategy) { this.strategy = strategy; }\n  sort(data) { return [...data].sort(this.strategy); }\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "With ascending: [1,1,3,4,5]. With descending: [5,4,3,1,1]. With alphabetical: ['apple','banana','cherry']. The same Sorter class produces different results by swapping strategy functions."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-94",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Decorator Pattern",
+    "description": "Write a withLogging(fn) decorator function that wraps a function to log its arguments and return value. The original function's behavior is unchanged.",
+    "starterCode": "function withLogging(fn) {\n  // Your code here\n}\n",
+    "hint": "Return a new function that logs args, calls the original, logs the result, and returns it.",
+    "solution": {
+      "code": "function withLogging(fn) {\n  return function(...args) {\n    console.log('Args:', args);\n    const result = fn.apply(this, args);\n    console.log('Result:', result);\n    return result;\n  };\n}\n\nfunction add(a, b) {\n  return a + b;\n}\n\nfunction multiply(a, b) {\n  return a * b;\n}\n\nconst loggedAdd = withLogging(add);\nconst loggedMultiply = withLogging(multiply);\n\nconsole.log(loggedAdd(2, 3));\nconsole.log(loggedMultiply(4, 5));\n",
+      "steps": [
+        {
+          "title": "Understand the Decorator Pattern",
+          "explanation": "A decorator wraps a function to add behavior (like logging) without modifying the original. It returns a new function that performs extra work before and/or after calling the original."
+        },
+        {
+          "title": "Implement withLogging",
+          "explanation": "Return a wrapper function that logs the arguments, calls the original function with fn.apply(this, args) to preserve context, logs the result, and returns it.",
+          "code": "function withLogging(fn) {\n  return function(...args) {\n    console.log('Args:', args);\n    const result = fn.apply(this, args);\n    console.log('Result:', result);\n    return result;\n  };\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "loggedAdd(2, 3) logs 'Args: [2, 3]', then 'Result: 5', and returns 5. loggedMultiply(4, 5) logs 'Args: [4, 5]', then 'Result: 20', and returns 20. Original behavior is preserved with added logging."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-95",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Middleware Pattern",
+    "description": "Implement a Pipeline class with use(fn) to add middleware and execute(context) to run all middleware in order. Each middleware receives the context object and can modify it.",
+    "starterCode": "class Pipeline {\n  // Your code here\n}\n",
+    "hint": "Store middleware functions in an array. execute() runs each one sequentially, passing the context.",
+    "solution": {
+      "code": "class Pipeline {\n  constructor() {\n    this.middlewares = [];\n  }\n  use(fn) {\n    this.middlewares.push(fn);\n    return this;\n  }\n  execute(context) {\n    for (const middleware of this.middlewares) {\n      middleware(context);\n    }\n    return context;\n  }\n}\n\nconst pipeline = new Pipeline();\npipeline\n  .use(ctx => { ctx.timestamp = Date.now(); })\n  .use(ctx => { ctx.greeting = 'Hello, ' + ctx.name; })\n  .use(ctx => { ctx.greeting = ctx.greeting.toUpperCase(); });\n\nconst result = pipeline.execute({ name: 'Alice' });\nconsole.log(result.greeting);\nconsole.log('Has timestamp:', 'timestamp' in result);\n",
+      "steps": [
+        {
+          "title": "Store Middleware Functions",
+          "explanation": "The Pipeline class keeps an array of middleware functions. The use() method pushes a function onto this array and returns 'this' to allow chaining multiple use() calls."
+        },
+        {
+          "title": "Execute Sequentially",
+          "explanation": "The execute method iterates through all middleware functions in order, passing the context to each one. Each middleware can read and modify the context. The final context is returned.",
+          "code": "class Pipeline {\n  constructor() { this.middlewares = []; }\n  use(fn) { this.middlewares.push(fn); return this; }\n  execute(context) {\n    for (const mw of this.middlewares) mw(context);\n    return context;\n  }\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "The pipeline adds a timestamp, creates a greeting, then uppercases it. result.greeting is 'HELLO, ALICE'. The timestamp exists. Each middleware modifies the shared context in sequence."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-96",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Proxy Handler",
+    "description": "Create a function createValidatedObject(schema) that returns a Proxy which validates property types on set (based on the schema) and logs access on get.",
+    "starterCode": "function createValidatedObject(schema) {\n  // Your code here\n}\n",
+    "hint": "Use new Proxy() with get and set traps. In set, check the value type against the schema.",
+    "solution": {
+      "code": "function createValidatedObject(schema) {\n  const target = {};\n  return new Proxy(target, {\n    get(obj, prop) {\n      console.log('Getting ' + String(prop));\n      return obj[prop];\n    },\n    set(obj, prop, value) {\n      if (schema[prop] && typeof value !== schema[prop]) {\n        console.log('Type error: ' + String(prop) + ' must be ' + schema[prop]);\n        return false;\n      }\n      obj[prop] = value;\n      return true;\n    }\n  });\n}\n\nconst user = createValidatedObject({ name: 'string', age: 'number' });\nuser.name = 'Alice';\nuser.age = 30;\nconsole.log(user.name);\nconsole.log(user.age);\nuser.age = 'thirty';\nconsole.log(user.age);\n",
+      "steps": [
+        {
+          "title": "Create a Proxy with Traps",
+          "explanation": "Use new Proxy(target, handler) where the handler defines get and set traps. The get trap logs access. The set trap validates the value's type against the schema before allowing the assignment."
+        },
+        {
+          "title": "Implement Validation Logic",
+          "explanation": "In the set trap, check if the property exists in the schema. If so, compare typeof value to the expected type. Reject the assignment if types don't match. Allow it otherwise.",
+          "code": "function createValidatedObject(schema) {\n  const target = {};\n  return new Proxy(target, {\n    get(obj, prop) { console.log('Getting ' + String(prop)); return obj[prop]; },\n    set(obj, prop, value) {\n      if (schema[prop] && typeof value !== schema[prop]) {\n        console.log('Type error: ' + String(prop) + ' must be ' + schema[prop]);\n        return false;\n      }\n      obj[prop] = value;\n      return true;\n    }\n  });\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "Setting name='Alice' and age=30 succeeds. Getting them logs access and returns values. Setting age='thirty' fails with a type error. The proxy enforces type safety transparently."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-97",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Symbol Protocol",
+    "description": "Create a Money class that implements Symbol.toPrimitive for type coercion and Symbol.iterator to iterate over a denomination breakdown (e.g., dollars and cents).",
+    "starterCode": "class Money {\n  // Your code here\n}\n",
+    "hint": "Define [Symbol.toPrimitive](hint) for type coercion and *[Symbol.iterator]() as a generator.",
+    "solution": {
+      "code": "class Money {\n  constructor(dollars, cents) {\n    this.dollars = dollars;\n    this.cents = cents;\n  }\n  [Symbol.toPrimitive](hint) {\n    if (hint === 'number') return this.dollars + this.cents / 100;\n    if (hint === 'string') return '$' + this.dollars + '.' + String(this.cents).padStart(2, '0');\n    return this.dollars + this.cents / 100;\n  }\n  *[Symbol.iterator]() {\n    yield { denomination: 'dollars', amount: this.dollars };\n    yield { denomination: 'cents', amount: this.cents };\n  }\n}\n\nconst price = new Money(9, 99);\nconsole.log(+price);\nconsole.log(`${price}`);\nconsole.log(price + 0.01);\n\nfor (const part of price) {\n  console.log(part.denomination + ': ' + part.amount);\n}\n",
+      "steps": [
+        {
+          "title": "Implement Symbol.toPrimitive",
+          "explanation": "Symbol.toPrimitive is called when JavaScript needs to convert an object to a primitive. The 'hint' parameter tells us the desired type: 'number', 'string', or 'default'. We return the appropriate representation."
+        },
+        {
+          "title": "Implement Symbol.iterator",
+          "explanation": "Using a generator method *[Symbol.iterator](), we yield objects representing the denomination breakdown. This makes Money instances iterable with for...of loops and spread syntax.",
+          "code": "class Money {\n  constructor(dollars, cents) {\n    this.dollars = dollars;\n    this.cents = cents;\n  }\n  [Symbol.toPrimitive](hint) {\n    if (hint === 'number') return this.dollars + this.cents / 100;\n    return '$' + this.dollars + '.' + String(this.cents).padStart(2, '0');\n  }\n  *[Symbol.iterator]() {\n    yield { denomination: 'dollars', amount: this.dollars };\n    yield { denomination: 'cents', amount: this.cents };\n  }\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "+price returns 9.99 (number coercion). Template literal gives '$9.99'. price + 0.01 gives 10. Iterating yields {denomination:'dollars', amount:9} and {denomination:'cents', amount:99}."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-98",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Tagged Templates",
+    "description": "Write a highlight tagged template function that wraps each interpolated value with ** markers. For example, highlight`Hello ${name}!` returns 'Hello **Alice**!'.",
+    "starterCode": "function highlight(strings, ...values) {\n  // Your code here\n}\n",
+    "hint": "Iterate over strings and values, wrapping each value with ** before joining.",
+    "solution": {
+      "code": "function highlight(strings, ...values) {\n  let result = '';\n  strings.forEach((str, i) => {\n    result += str;\n    if (i < values.length) {\n      result += '**' + values[i] + '**';\n    }\n  });\n  return result;\n}\n\nconst name = 'Alice';\nconst age = 30;\nconsole.log(highlight`Hello ${name}, you are ${age} years old!`);\nconsole.log(highlight`Welcome ${name}!`);\nconsole.log(highlight`The answer is ${42}.`);\n",
+      "steps": [
+        {
+          "title": "Understand Tagged Templates",
+          "explanation": "A tagged template function receives the static string parts as an array and the interpolated values as separate arguments. We interleave them, wrapping each value with markers."
+        },
+        {
+          "title": "Implement the Tag Function",
+          "explanation": "Iterate over the strings array. After each string part, if there's a corresponding value, wrap it with ** markers. The strings array always has one more element than values.",
+          "code": "function highlight(strings, ...values) {\n  let result = '';\n  strings.forEach((str, i) => {\n    result += str;\n    if (i < values.length) result += '**' + values[i] + '**';\n  });\n  return result;\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "highlight`Hello ${name}, you are ${age} years old!` returns 'Hello **Alice**, you are **30** years old!'. Each interpolated value is wrapped with ** markers while static text is unchanged."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-99",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Async Iterator",
+    "description": "Create an async iterable createAsyncRange(start, end) that yields values with simulated delays using Symbol.asyncIterator. Collect results with for-await-of.",
+    "starterCode": "function createAsyncRange(start, end) {\n  // Your code here\n}\n",
+    "hint": "Return an object with [Symbol.asyncIterator]() that returns {next()} returning promises.",
+    "solution": {
+      "code": "function createAsyncRange(start, end) {\n  return {\n    [Symbol.asyncIterator]() {\n      let current = start;\n      return {\n        next() {\n          if (current <= end) {\n            const value = current++;\n            return new Promise(resolve => {\n              setTimeout(() => resolve({ value, done: false }), 50);\n            });\n          }\n          return Promise.resolve({ value: undefined, done: true });\n        }\n      };\n    }\n  };\n}\n\nasync function main() {\n  const results = [];\n  for await (const num of createAsyncRange(1, 5)) {\n    results.push(num);\n  }\n  console.log(results);\n\n  for await (const num of createAsyncRange(10, 12)) {\n    console.log('Got:', num);\n  }\n}\n\nmain();\n",
+      "steps": [
+        {
+          "title": "Implement Symbol.asyncIterator",
+          "explanation": "Return an object with a [Symbol.asyncIterator]() method. This method returns an iterator with a next() method that returns Promises resolving to {value, done} objects \u2014 the async iteration protocol."
+        },
+        {
+          "title": "Add Simulated Delay",
+          "explanation": "Each call to next() returns a Promise that resolves after a setTimeout delay. The value increments from start to end. When current exceeds end, resolve with done: true.",
+          "code": "function createAsyncRange(start, end) {\n  return {\n    [Symbol.asyncIterator]() {\n      let current = start;\n      return {\n        next() {\n          if (current <= end) {\n            const value = current++;\n            return new Promise(resolve => setTimeout(() => resolve({ value, done: false }), 50));\n          }\n          return Promise.resolve({ value: undefined, done: true });\n        }\n      };\n    }\n  };\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "for-await-of collects values [1, 2, 3, 4, 5] from createAsyncRange(1, 5). The second loop logs 'Got: 10', 'Got: 11', 'Got: 12'. Values arrive asynchronously with simulated delays."
+        }
+      ]
+    }
+  },
+  {
+    "id": "js-intermediate-100",
+    "language": "javascript",
+    "level": "intermediate",
+    "title": "Middleware Engine",
+    "description": "Implement a middleware engine with a next() callback pattern similar to Express.js. Each middleware receives (context, next) and must call next() to pass control to the next middleware in the chain.",
+    "starterCode": "class MiddlewareEngine {\n  // Your code here\n}\n",
+    "hint": "Store middleware in an array. In execute, create a dispatch function that calls the current middleware with context and a function to call the next one.",
+    "solution": {
+      "code": "class MiddlewareEngine {\n  constructor() {\n    this.middlewares = [];\n  }\n  use(fn) {\n    this.middlewares.push(fn);\n    return this;\n  }\n  execute(context) {\n    let index = 0;\n    const dispatch = () => {\n      if (index >= this.middlewares.length) return;\n      const middleware = this.middlewares[index++];\n      middleware(context, dispatch);\n    };\n    dispatch();\n    return context;\n  }\n}\n\nconst engine = new MiddlewareEngine();\n\nengine.use((ctx, next) => {\n  ctx.step1 = 'processed';\n  console.log('Middleware 1: before next');\n  next();\n  console.log('Middleware 1: after next');\n});\n\nengine.use((ctx, next) => {\n  ctx.step2 = 'processed';\n  console.log('Middleware 2: before next');\n  next();\n  console.log('Middleware 2: after next');\n});\n\nengine.use((ctx, next) => {\n  ctx.step3 = 'processed';\n  console.log('Middleware 3: final');\n});\n\nconst result = engine.execute({ request: 'data' });\nconsole.log(result);\n",
+      "steps": [
+        {
+          "title": "Understand the Next Pattern",
+          "explanation": "Each middleware receives context and a next function. Calling next() invokes the following middleware. This allows middleware to run code both before and after downstream middleware \u2014 like an onion model."
+        },
+        {
+          "title": "Implement the Dispatch Chain",
+          "explanation": "Create a dispatch function that tracks the current index. It calls the current middleware, passing context and a function that advances the index and dispatches the next middleware.",
+          "code": "class MiddlewareEngine {\n  constructor() { this.middlewares = []; }\n  use(fn) { this.middlewares.push(fn); return this; }\n  execute(context) {\n    let index = 0;\n    const dispatch = () => {\n      if (index >= this.middlewares.length) return;\n      const middleware = this.middlewares[index++];\n      middleware(context, dispatch);\n    };\n    dispatch();\n    return context;\n  }\n}\n"
+        },
+        {
+          "title": "Verify Output",
+          "explanation": "Execution logs show the onion pattern: MW1 before, MW2 before, MW3 final, MW2 after, MW1 after. The context accumulates step1, step2, step3. Each middleware controls when the next one runs via next()."
+        }
+      ]
+    }
+  }
+]
