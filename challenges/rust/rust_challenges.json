@@ -3260,6 +3260,2242 @@
                             }
                         ]
                     }
+                },
+                {
+                    "id": "rs-beginner-21",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "String Reverse",
+                    "description": "Write a function `reverse_string(s: &str) -> String` that reverses the characters of a string.\n\nExample: `reverse_string(\"hello\")` returns `\"olleh\"`.\n\nExpected output:\n```\nolleh\n```",
+                    "starterCode": "fn reverse_string(s: &str) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", reverse_string(\"hello\"));\n}\n",
+                    "hint": "Use .chars() to get an iterator of characters, .rev() to reverse it, and .collect() to build a String.",
+                    "solution": {
+                        "code": "fn reverse_string(s: &str) -> String {\n    s.chars().rev().collect()\n}\n\nfn main() {\n    println!(\"{}\", reverse_string(\"hello\"));\n}",
+                        "steps": [
+                            {
+                                "title": "Iterate characters",
+                                "explanation": "Call .chars() on the string slice to get an iterator over its Unicode characters.",
+                                "code": "s.chars()"
+                            },
+                            {
+                                "title": "Reverse the iterator",
+                                "explanation": "Chain .rev() to reverse the order of the characters.",
+                                "code": "s.chars().rev()"
+                            },
+                            {
+                                "title": "Collect into String",
+                                "explanation": "Use .collect() to gather the reversed characters into a new String.",
+                                "code": "s.chars().rev().collect()"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-22",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Shout Maker",
+                    "description": "Write a function `shout(s: &str) -> String` that converts a string to uppercase.\n\nExample: `shout(\"hello world\")` returns `\"HELLO WORLD\"`.\n\nExpected output:\n```\nHELLO WORLD\n```",
+                    "starterCode": "fn shout(s: &str) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", shout(\"hello world\"));\n}\n",
+                    "hint": "Rust strings have a .to_uppercase() method that returns a new String.",
+                    "solution": {
+                        "code": "fn shout(s: &str) -> String {\n    s.to_uppercase()\n}\n\nfn main() {\n    println!(\"{}\", shout(\"hello world\"));\n}",
+                        "steps": [
+                            {
+                                "title": "Call to_uppercase",
+                                "explanation": "The to_uppercase() method on &str creates a new String with all characters converted to uppercase.",
+                                "code": "s.to_uppercase()"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "\"hello world\" becomes \"HELLO WORLD\" — all letters are capitalized."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-23",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Trim Edges",
+                    "description": "Write a function `clean(s: &str) -> String` that removes leading and trailing whitespace from a string.\n\nPrint the result wrapped in brackets so the trimming is visible.\n\nExpected output:\n```\n[hello]\n```",
+                    "starterCode": "fn clean(s: &str) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"[{}]\", clean(\"  hello  \"));\n}\n",
+                    "hint": "Use the .trim() method on a string slice, then convert to String with .to_string().",
+                    "solution": {
+                        "code": "fn clean(s: &str) -> String {\n    s.trim().to_string()\n}\n\nfn main() {\n    println!(\"[{}]\", clean(\"  hello  \"));\n}",
+                        "steps": [
+                            {
+                                "title": "Trim whitespace",
+                                "explanation": "The trim() method returns a &str with leading and trailing whitespace removed.",
+                                "code": "s.trim()"
+                            },
+                            {
+                                "title": "Convert to owned String",
+                                "explanation": "Since trim() returns a &str, call .to_string() to create an owned String.",
+                                "code": "s.trim().to_string()"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "\"  hello  \" becomes \"hello\" and prints as [hello]."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-24",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Word Finder",
+                    "description": "Write a function `contains_word(text: &str, word: &str) -> bool` that checks if `text` contains `word` as a substring.\n\nExpected output:\n```\ntrue\nfalse\n```",
+                    "starterCode": "fn contains_word(text: &str, word: &str) -> bool {\n    // Your code here\n    false\n}\n\nfn main() {\n    println!(\"{}\", contains_word(\"the rust programming language\", \"rust\"));\n    println!(\"{}\", contains_word(\"the rust programming language\", \"python\"));\n}\n",
+                    "hint": "Rust string slices have a .contains() method that checks for a substring.",
+                    "solution": {
+                        "code": "fn contains_word(text: &str, word: &str) -> bool {\n    text.contains(word)\n}\n\nfn main() {\n    println!(\"{}\", contains_word(\"the rust programming language\", \"rust\"));\n    println!(\"{}\", contains_word(\"the rust programming language\", \"python\"));\n}",
+                        "steps": [
+                            {
+                                "title": "Use contains",
+                                "explanation": "The contains() method on &str returns true if the given pattern is found within the string.",
+                                "code": "text.contains(word)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "\"rust\" is found in the text so the first call returns true. \"python\" is not found so the second returns false."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-25",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Text Replace",
+                    "description": "Write a function `replace_word(s: &str, from: &str, to: &str) -> String` that replaces all occurrences of `from` with `to`.\n\nExpected output:\n```\nhello rust\n```",
+                    "starterCode": "fn replace_word(s: &str, from: &str, to: &str) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", replace_word(\"hello world\", \"world\", \"rust\"));\n}\n",
+                    "hint": "String slices have a .replace() method that returns a new String with all matches substituted.",
+                    "solution": {
+                        "code": "fn replace_word(s: &str, from: &str, to: &str) -> String {\n    s.replace(from, to)\n}\n\nfn main() {\n    println!(\"{}\", replace_word(\"hello world\", \"world\", \"rust\"));\n}",
+                        "steps": [
+                            {
+                                "title": "Call replace",
+                                "explanation": "The replace() method returns a new String with every occurrence of the first argument replaced by the second.",
+                                "code": "s.replace(from, to)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "\"hello world\" with \"world\" replaced by \"rust\" gives \"hello rust\"."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-26",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Factorial Fun",
+                    "description": "Write a function `factorial(n: u64) -> u64` that computes the factorial of `n`.\n\nExample: `factorial(6)` returns `720` because 6! = 720.\n\nExpected output:\n```\n720\n```",
+                    "starterCode": "fn factorial(n: u64) -> u64 {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", factorial(6));\n}\n",
+                    "hint": "You can use (1..=n).product() to multiply all numbers from 1 to n in a concise way.",
+                    "solution": {
+                        "code": "fn factorial(n: u64) -> u64 {\n    (1..=n).product()\n}\n\nfn main() {\n    println!(\"{}\", factorial(6));\n}",
+                        "steps": [
+                            {
+                                "title": "Use a range",
+                                "explanation": "The range 1..=n generates all integers from 1 to n inclusive.",
+                                "code": "1..=n"
+                            },
+                            {
+                                "title": "Multiply with product",
+                                "explanation": "The product() method multiplies all elements of an iterator together. For an empty range (n=0), it returns 1.",
+                                "code": "(1..=n).product()"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "1 * 2 * 3 * 4 * 5 * 6 = 720."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-27",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Fib Sequence",
+                    "description": "Write a function `fibonacci(n: usize) -> Vec<u64>` that returns the first `n` Fibonacci numbers starting from 0.\n\nExample: `fibonacci(8)` returns `[0, 1, 1, 2, 3, 5, 8, 13]`.\n\nExpected output:\n```\n[0, 1, 1, 2, 3, 5, 8, 13]\n```",
+                    "starterCode": "fn fibonacci(n: usize) -> Vec<u64> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", fibonacci(8));\n}\n",
+                    "hint": "Start with (a, b) = (0, 1). In each iteration push a, then update: a becomes b, b becomes a + b.",
+                    "solution": {
+                        "code": "fn fibonacci(n: usize) -> Vec<u64> {\n    let mut fibs = Vec::new();\n    let (mut a, mut b) = (0u64, 1u64);\n    for _ in 0..n {\n        fibs.push(a);\n        let next = a + b;\n        a = b;\n        b = next;\n    }\n    fibs\n}\n\nfn main() {\n    println!(\"{:?}\", fibonacci(8));\n}",
+                        "steps": [
+                            {
+                                "title": "Initialize state",
+                                "explanation": "Start with two variables a=0 and b=1 representing consecutive Fibonacci numbers.",
+                                "code": "let (mut a, mut b) = (0u64, 1u64);"
+                            },
+                            {
+                                "title": "Loop and collect",
+                                "explanation": "In each iteration, push the current value a, then advance: set a = b and b = a + b (using a temp variable).",
+                                "code": "for _ in 0..n {\n    fibs.push(a);\n    let next = a + b;\n    a = b;\n    b = next;\n}"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "The first 8 Fibonacci numbers are 0, 1, 1, 2, 3, 5, 8, 13."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-28",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Min Max",
+                    "description": "Write a function `min_max(nums: &[i32]) -> (i32, i32)` that returns a tuple of the minimum and maximum values in a slice.\n\nExample: `min_max(&[3, 1, 4, 1, 5, 9])` returns `(1, 9)`.\n\nExpected output:\n```\n(1, 9)\n```",
+                    "starterCode": "fn min_max(nums: &[i32]) -> (i32, i32) {\n    // Your code here\n    (0, 0)\n}\n\nfn main() {\n    println!(\"{:?}\", min_max(&[3, 1, 4, 1, 5, 9]));\n}\n",
+                    "hint": "Use iter().min() and iter().max() — both return Option, so unwrap them.",
+                    "solution": {
+                        "code": "fn min_max(nums: &[i32]) -> (i32, i32) {\n    let min = *nums.iter().min().unwrap();\n    let max = *nums.iter().max().unwrap();\n    (min, max)\n}\n\nfn main() {\n    println!(\"{:?}\", min_max(&[3, 1, 4, 1, 5, 9]));\n}",
+                        "steps": [
+                            {
+                                "title": "Find minimum",
+                                "explanation": "iter().min() returns Option<&i32>. Unwrap and dereference with * to get i32.",
+                                "code": "*nums.iter().min().unwrap()"
+                            },
+                            {
+                                "title": "Find maximum",
+                                "explanation": "Similarly, iter().max() finds the largest element.",
+                                "code": "*nums.iter().max().unwrap()"
+                            },
+                            {
+                                "title": "Return as tuple",
+                                "explanation": "Combine both into a tuple (min, max). The output is (1, 9)."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-29",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Abs Values",
+                    "description": "Write a function `abs_values(nums: &[i32]) -> Vec<i32>` that returns a vector of absolute values.\n\nExample: `abs_values(&[-3, 0, 5, -7, 2])` returns `[3, 0, 5, 7, 2]`.\n\nExpected output:\n```\n[3, 0, 5, 7, 2]\n```",
+                    "starterCode": "fn abs_values(nums: &[i32]) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", abs_values(&[-3, 0, 5, -7, 2]));\n}\n",
+                    "hint": "Use iter().map() with .abs() on each element, then collect into a Vec.",
+                    "solution": {
+                        "code": "fn abs_values(nums: &[i32]) -> Vec<i32> {\n    nums.iter().map(|x| x.abs()).collect()\n}\n\nfn main() {\n    println!(\"{:?}\", abs_values(&[-3, 0, 5, -7, 2]));\n}",
+                        "steps": [
+                            {
+                                "title": "Map with abs",
+                                "explanation": "The .abs() method on i32 returns the absolute value. Map it over every element.",
+                                "code": "nums.iter().map(|x| x.abs())"
+                            },
+                            {
+                                "title": "Collect results",
+                                "explanation": "Use .collect() to gather mapped values into a Vec<i32>.",
+                                "code": "nums.iter().map(|x| x.abs()).collect()"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "|-3|=3, |0|=0, |5|=5, |-7|=7, |2|=2 gives [3, 0, 5, 7, 2]."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-30",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Power Up",
+                    "description": "Write a function `power(base: u64, exp: u32) -> u64` that raises `base` to the power `exp`.\n\nExample: `power(2, 10)` returns `1024`.\n\nExpected output:\n```\n1024\n```",
+                    "starterCode": "fn power(base: u64, exp: u32) -> u64 {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", power(2, 10));\n}\n",
+                    "hint": "Rust integer types have a built-in .pow() method that takes a u32 exponent.",
+                    "solution": {
+                        "code": "fn power(base: u64, exp: u32) -> u64 {\n    base.pow(exp)\n}\n\nfn main() {\n    println!(\"{}\", power(2, 10));\n}",
+                        "steps": [
+                            {
+                                "title": "Use pow",
+                                "explanation": "The .pow(exp) method on integer types computes self raised to the given power.",
+                                "code": "base.pow(exp)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "2^10 = 1024."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-31",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Vec Flatten",
+                    "description": "Write a function `flatten(nested: &[Vec<i32>]) -> Vec<i32>` that flattens a slice of vectors into a single vector.\n\nExample: `flatten(&[vec![1,2], vec![3,4], vec![5]])` returns `[1, 2, 3, 4, 5]`.\n\nExpected output:\n```\n[1, 2, 3, 4, 5]\n```",
+                    "starterCode": "fn flatten(nested: &[Vec<i32>]) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    let data = vec![vec![1, 2], vec![3, 4], vec![5]];\n    println!(\"{:?}\", flatten(&data));\n}\n",
+                    "hint": "Use iter().flat_map() to iterate over each inner vector's elements, then collect.",
+                    "solution": {
+                        "code": "fn flatten(nested: &[Vec<i32>]) -> Vec<i32> {\n    nested.iter().flat_map(|v| v.iter().copied()).collect()\n}\n\nfn main() {\n    let data = vec![vec![1, 2], vec![3, 4], vec![5]];\n    println!(\"{:?}\", flatten(&data));\n}",
+                        "steps": [
+                            {
+                                "title": "Iterate nested vectors",
+                                "explanation": "iter() yields each &Vec<i32> in the outer slice.",
+                                "code": "nested.iter()"
+                            },
+                            {
+                                "title": "Flatten with flat_map",
+                                "explanation": "flat_map applies a closure that returns an iterator for each element, then chains all results together.",
+                                "code": "nested.iter().flat_map(|v| v.iter().copied())"
+                            },
+                            {
+                                "title": "Collect",
+                                "explanation": "Gather all flattened elements into a single Vec<i32>."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-32",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Zip Combine",
+                    "description": "Write a function `zip_vectors(a: &[i32], b: &[i32]) -> Vec<(i32, i32)>` that pairs corresponding elements from two slices.\n\nExample: `zip_vectors(&[1,2,3], &[4,5,6])` returns `[(1, 4), (2, 5), (3, 6)]`.\n\nExpected output:\n```\n[(1, 4), (2, 5), (3, 6)]\n```",
+                    "starterCode": "fn zip_vectors(a: &[i32], b: &[i32]) -> Vec<(i32, i32)> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", zip_vectors(&[1, 2, 3], &[4, 5, 6]));\n}\n",
+                    "hint": "Use a.iter().zip(b.iter()) to pair elements, then map to dereference and collect.",
+                    "solution": {
+                        "code": "fn zip_vectors(a: &[i32], b: &[i32]) -> Vec<(i32, i32)> {\n    a.iter().zip(b.iter()).map(|(&x, &y)| (x, y)).collect()\n}\n\nfn main() {\n    println!(\"{:?}\", zip_vectors(&[1, 2, 3], &[4, 5, 6]));\n}",
+                        "steps": [
+                            {
+                                "title": "Zip the iterators",
+                                "explanation": "a.iter().zip(b.iter()) creates an iterator of (&i32, &i32) pairs.",
+                                "code": "a.iter().zip(b.iter())"
+                            },
+                            {
+                                "title": "Dereference pairs",
+                                "explanation": "Map each (&x, &y) to (x, y) to get owned i32 values.",
+                                "code": ".map(|(&x, &y)| (x, y))"
+                            },
+                            {
+                                "title": "Collect into Vec",
+                                "explanation": "Collect the pairs into a Vec<(i32, i32)>. The output is [(1, 4), (2, 5), (3, 6)]."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-33",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Dedup Filter",
+                    "description": "Write a function `remove_consecutive_dupes(nums: &[i32]) -> Vec<i32>` that removes consecutive duplicate elements.\n\nExample: `remove_consecutive_dupes(&[1, 1, 2, 3, 3, 3, 4, 4, 5])` returns `[1, 2, 3, 4, 5]`.\n\nExpected output:\n```\n[1, 2, 3, 4, 5]\n```",
+                    "starterCode": "fn remove_consecutive_dupes(nums: &[i32]) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", remove_consecutive_dupes(&[1, 1, 2, 3, 3, 3, 4, 4, 5]));\n}\n",
+                    "hint": "Copy the slice into a Vec, then call .dedup() which removes consecutive duplicates in place.",
+                    "solution": {
+                        "code": "fn remove_consecutive_dupes(nums: &[i32]) -> Vec<i32> {\n    let mut result = nums.to_vec();\n    result.dedup();\n    result\n}\n\nfn main() {\n    println!(\"{:?}\", remove_consecutive_dupes(&[1, 1, 2, 3, 3, 3, 4, 4, 5]));\n}",
+                        "steps": [
+                            {
+                                "title": "Copy to Vec",
+                                "explanation": "Use .to_vec() to create an owned mutable copy of the slice.",
+                                "code": "let mut result = nums.to_vec();"
+                            },
+                            {
+                                "title": "Deduplicate",
+                                "explanation": "Vec::dedup() removes consecutive repeated elements in place.",
+                                "code": "result.dedup();"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Consecutive duplicates are removed: [1,1,2,3,3,3,4,4,5] becomes [1,2,3,4,5]."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-34",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Even Split",
+                    "description": "Write a function `partition_evens(nums: &[i32]) -> (Vec<i32>, Vec<i32>)` that separates a slice into even and odd numbers.\n\nThe first vector should contain even numbers, the second odd numbers.\n\nExpected output:\n```\n[2, 4, 6]\n[1, 3, 5]\n```",
+                    "starterCode": "fn partition_evens(nums: &[i32]) -> (Vec<i32>, Vec<i32>) {\n    // Your code here\n    (vec![], vec![])\n}\n\nfn main() {\n    let (evens, odds) = partition_evens(&[1, 2, 3, 4, 5, 6]);\n    println!(\"{:?}\", evens);\n    println!(\"{:?}\", odds);\n}\n",
+                    "hint": "Use iter().copied().partition() with a closure that tests x % 2 == 0.",
+                    "solution": {
+                        "code": "fn partition_evens(nums: &[i32]) -> (Vec<i32>, Vec<i32>) {\n    nums.iter().copied().partition(|x| x % 2 == 0)\n}\n\nfn main() {\n    let (evens, odds) = partition_evens(&[1, 2, 3, 4, 5, 6]);\n    println!(\"{:?}\", evens);\n    println!(\"{:?}\", odds);\n}",
+                        "steps": [
+                            {
+                                "title": "Copy elements",
+                                "explanation": "Use .copied() to convert &i32 references to owned i32 values.",
+                                "code": "nums.iter().copied()"
+                            },
+                            {
+                                "title": "Partition",
+                                "explanation": "The partition() method splits an iterator into two collections based on a predicate. Elements where the closure returns true go into the first collection.",
+                                "code": "nums.iter().copied().partition(|x| x % 2 == 0)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Even numbers [2, 4, 6] come first, odd numbers [1, 3, 5] second."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-35",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Chunk Split",
+                    "description": "Write a function `chunk(nums: &[i32], size: usize) -> Vec<Vec<i32>>` that splits a slice into groups of the given size.\n\nThe last chunk may be smaller if the slice length is not divisible by size.\n\nExpected output:\n```\n[[1, 2], [3, 4], [5]]\n```",
+                    "starterCode": "fn chunk(nums: &[i32], size: usize) -> Vec<Vec<i32>> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", chunk(&[1, 2, 3, 4, 5], 2));\n}\n",
+                    "hint": "Slices have a .chunks(size) method that returns an iterator of sub-slices. Convert each to a Vec.",
+                    "solution": {
+                        "code": "fn chunk(nums: &[i32], size: usize) -> Vec<Vec<i32>> {\n    nums.chunks(size).map(|c| c.to_vec()).collect()\n}\n\nfn main() {\n    println!(\"{:?}\", chunk(&[1, 2, 3, 4, 5], 2));\n}",
+                        "steps": [
+                            {
+                                "title": "Use chunks",
+                                "explanation": "The .chunks(size) method on slices returns an iterator of non-overlapping sub-slices of the given length.",
+                                "code": "nums.chunks(size)"
+                            },
+                            {
+                                "title": "Convert sub-slices",
+                                "explanation": "Map each &[i32] chunk to a Vec<i32> with .to_vec(), then collect into the outer Vec.",
+                                "code": "nums.chunks(size).map(|c| c.to_vec()).collect()"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "[1,2,3,4,5] with size 2 gives [[1,2], [3,4], [5]] — the last chunk has only one element."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-36",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Point Distance",
+                    "description": "Define a struct `Point` with fields `x: i32` and `y: i32`. Implement a method `manhattan(&self) -> i32` that returns the Manhattan distance from the origin (|x| + |y|).\n\nExpected output:\n```\n7\n```",
+                    "starterCode": "struct Point {\n    x: i32,\n    y: i32,\n}\n\nimpl Point {\n    fn manhattan(&self) -> i32 {\n        // Your code here\n        0\n    }\n}\n\nfn main() {\n    let p = Point { x: 3, y: -4 };\n    println!(\"{}\", p.manhattan());\n}\n",
+                    "hint": "The Manhattan distance is |x| + |y|. Use the .abs() method on i32.",
+                    "solution": {
+                        "code": "struct Point {\n    x: i32,\n    y: i32,\n}\n\nimpl Point {\n    fn manhattan(&self) -> i32 {\n        self.x.abs() + self.y.abs()\n    }\n}\n\nfn main() {\n    let p = Point { x: 3, y: -4 };\n    println!(\"{}\", p.manhattan());\n}",
+                        "steps": [
+                            {
+                                "title": "Define the struct",
+                                "explanation": "Struct Point has two named fields x and y, both i32.",
+                                "code": "struct Point {\n    x: i32,\n    y: i32,\n}"
+                            },
+                            {
+                                "title": "Compute Manhattan distance",
+                                "explanation": "Take the absolute value of each coordinate and add them.",
+                                "code": "self.x.abs() + self.y.abs()"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "|3| + |-4| = 3 + 4 = 7."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-37",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Tuple Struct",
+                    "description": "Define a tuple struct `Celsius(f64)` and implement a method `to_fahrenheit(&self) -> f64` using the formula F = C * 9/5 + 32.\n\nPrint the result with one decimal place.\n\nExpected output:\n```\n212.0 F\n```",
+                    "starterCode": "struct Celsius(f64);\n\nimpl Celsius {\n    fn to_fahrenheit(&self) -> f64 {\n        // Your code here\n        0.0\n    }\n}\n\nfn main() {\n    let temp = Celsius(100.0);\n    println!(\"{:.1} F\", temp.to_fahrenheit());\n}\n",
+                    "hint": "Access the inner value with self.0, then apply the formula: self.0 * 9.0 / 5.0 + 32.0.",
+                    "solution": {
+                        "code": "struct Celsius(f64);\n\nimpl Celsius {\n    fn to_fahrenheit(&self) -> f64 {\n        self.0 * 9.0 / 5.0 + 32.0\n    }\n}\n\nfn main() {\n    let temp = Celsius(100.0);\n    println!(\"{:.1} F\", temp.to_fahrenheit());\n}",
+                        "steps": [
+                            {
+                                "title": "Define tuple struct",
+                                "explanation": "A tuple struct wraps a value without naming the field. Access it with .0.",
+                                "code": "struct Celsius(f64);"
+                            },
+                            {
+                                "title": "Apply conversion formula",
+                                "explanation": "Fahrenheit = Celsius * 9/5 + 32. Use floating-point literals.",
+                                "code": "self.0 * 9.0 / 5.0 + 32.0"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "100 * 9/5 + 32 = 180 + 32 = 212.0 F."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-38",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Rect Methods",
+                    "description": "Define a struct `Rectangle` with `width: u32` and `height: u32`. Implement methods `area(&self) -> u32` and `perimeter(&self) -> u32`.\n\nExpected output:\n```\nArea: 15\nPerimeter: 16\n```",
+                    "starterCode": "struct Rectangle {\n    width: u32,\n    height: u32,\n}\n\nimpl Rectangle {\n    fn area(&self) -> u32 {\n        // Your code here\n        0\n    }\n\n    fn perimeter(&self) -> u32 {\n        // Your code here\n        0\n    }\n}\n\nfn main() {\n    let r = Rectangle { width: 5, height: 3 };\n    println!(\"Area: {}\", r.area());\n    println!(\"Perimeter: {}\", r.perimeter());\n}\n",
+                    "hint": "Area is width * height. Perimeter is 2 * (width + height).",
+                    "solution": {
+                        "code": "struct Rectangle {\n    width: u32,\n    height: u32,\n}\n\nimpl Rectangle {\n    fn area(&self) -> u32 {\n        self.width * self.height\n    }\n\n    fn perimeter(&self) -> u32 {\n        2 * (self.width + self.height)\n    }\n}\n\nfn main() {\n    let r = Rectangle { width: 5, height: 3 };\n    println!(\"Area: {}\", r.area());\n    println!(\"Perimeter: {}\", r.perimeter());\n}",
+                        "steps": [
+                            {
+                                "title": "Implement area",
+                                "explanation": "Multiply width by height to get the area.",
+                                "code": "self.width * self.height"
+                            },
+                            {
+                                "title": "Implement perimeter",
+                                "explanation": "Add width and height, multiply by 2 for the perimeter.",
+                                "code": "2 * (self.width + self.height)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "5 * 3 = 15 for area. 2 * (5 + 3) = 16 for perimeter."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-39",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Display Trait",
+                    "description": "Define a struct `Fraction { numerator: i32, denominator: i32 }` and implement the `std::fmt::Display` trait so it prints as `numerator/denominator`.\n\nExpected output:\n```\n3/4\n```",
+                    "starterCode": "use std::fmt;\n\nstruct Fraction {\n    numerator: i32,\n    denominator: i32,\n}\n\nimpl fmt::Display for Fraction {\n    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n        // Your code here\n        write!(f, \"\")\n    }\n}\n\nfn main() {\n    let frac = Fraction { numerator: 3, denominator: 4 };\n    println!(\"{}\", frac);\n}\n",
+                    "hint": "Use write!(f, \"{}/{}\", self.numerator, self.denominator) in the fmt method.",
+                    "solution": {
+                        "code": "use std::fmt;\n\nstruct Fraction {\n    numerator: i32,\n    denominator: i32,\n}\n\nimpl fmt::Display for Fraction {\n    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n        write!(f, \"{}/{}\", self.numerator, self.denominator)\n    }\n}\n\nfn main() {\n    let frac = Fraction { numerator: 3, denominator: 4 };\n    println!(\"{}\", frac);\n}",
+                        "steps": [
+                            {
+                                "title": "Import fmt",
+                                "explanation": "Bring std::fmt into scope to use Display and Formatter.",
+                                "code": "use std::fmt;"
+                            },
+                            {
+                                "title": "Implement Display",
+                                "explanation": "The Display trait requires a fmt method. Use write! to format the numerator and denominator with a slash.",
+                                "code": "write!(f, \"{}/{}\", self.numerator, self.denominator)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Fraction { numerator: 3, denominator: 4 } prints as 3/4."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-40",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Default Config",
+                    "description": "Define a struct `Config` with fields `debug: bool`, `level: u32`, and `name: String`. Implement the `Default` trait with values `false`, `1`, and `\"default\"`.\n\nExpected output:\n```\ndebug: false, level: 1, name: default\n```",
+                    "starterCode": "struct Config {\n    debug: bool,\n    level: u32,\n    name: String,\n}\n\nimpl Default for Config {\n    fn default() -> Self {\n        // Your code here\n        Config {\n            debug: false,\n            level: 0,\n            name: String::new(),\n        }\n    }\n}\n\nfn main() {\n    let c = Config::default();\n    println!(\"debug: {}, level: {}, name: {}\", c.debug, c.level, c.name);\n}\n",
+                    "hint": "Return a Config with debug: false, level: 1, and name: String::from(\"default\").",
+                    "solution": {
+                        "code": "struct Config {\n    debug: bool,\n    level: u32,\n    name: String,\n}\n\nimpl Default for Config {\n    fn default() -> Self {\n        Config {\n            debug: false,\n            level: 1,\n            name: String::from(\"default\"),\n        }\n    }\n}\n\nfn main() {\n    let c = Config::default();\n    println!(\"debug: {}, level: {}, name: {}\", c.debug, c.level, c.name);\n}",
+                        "steps": [
+                            {
+                                "title": "Define the struct",
+                                "explanation": "Config has three fields of different types: bool, u32, and String."
+                            },
+                            {
+                                "title": "Implement Default",
+                                "explanation": "The Default trait has one method, default(), which returns Self with sensible initial values.",
+                                "code": "Config {\n    debug: false,\n    level: 1,\n    name: String::from(\"default\"),\n}"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Config::default() produces debug: false, level: 1, name: default."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-41",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Grade Matcher",
+                    "description": "Write a function `grade(score: u32) -> &'static str` that converts a numeric score to a letter grade using match with ranges.\n\n90-100 = A, 80-89 = B, 70-79 = C, 60-69 = D, below 60 = F.\n\nExpected output:\n```\nB\nA\nF\n```",
+                    "starterCode": "fn grade(score: u32) -> &'static str {\n    // Your code here\n    \"\"\n}\n\nfn main() {\n    println!(\"{}\", grade(85));\n    println!(\"{}\", grade(92));\n    println!(\"{}\", grade(55));\n}\n",
+                    "hint": "Use match with inclusive range patterns like 90..=100 => \"A\".",
+                    "solution": {
+                        "code": "fn grade(score: u32) -> &'static str {\n    match score {\n        90..=100 => \"A\",\n        80..=89 => \"B\",\n        70..=79 => \"C\",\n        60..=69 => \"D\",\n        _ => \"F\",\n    }\n}\n\nfn main() {\n    println!(\"{}\", grade(85));\n    println!(\"{}\", grade(92));\n    println!(\"{}\", grade(55));\n}",
+                        "steps": [
+                            {
+                                "title": "Match with ranges",
+                                "explanation": "Rust match supports inclusive range patterns with ..= syntax. Each arm maps a score range to a grade.",
+                                "code": "match score {\n    90..=100 => \"A\",\n    80..=89 => \"B\",\n    ..."
+                            },
+                            {
+                                "title": "Wildcard fallback",
+                                "explanation": "The _ arm catches all scores below 60 and returns \"F\".",
+                                "code": "_ => \"F\""
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "85 is in 80-89 (B), 92 is in 90-100 (A), 55 is below 60 (F)."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-42",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "If Let Find",
+                    "description": "Write a function `find_even(nums: &[i32]) -> Option<i32>` that returns the first even number. Use `if let` in main to print the result.\n\nExpected output:\n```\nFound: 4\n```",
+                    "starterCode": "fn find_even(nums: &[i32]) -> Option<i32> {\n    // Your code here\n    None\n}\n\nfn main() {\n    let nums = [1, 3, 4, 7, 8];\n    if let Some(val) = find_even(&nums) {\n        println!(\"Found: {}\", val);\n    }\n}\n",
+                    "hint": "Use iter().copied().find() with a closure checking x % 2 == 0.",
+                    "solution": {
+                        "code": "fn find_even(nums: &[i32]) -> Option<i32> {\n    nums.iter().copied().find(|x| x % 2 == 0)\n}\n\nfn main() {\n    let nums = [1, 3, 4, 7, 8];\n    if let Some(val) = find_even(&nums) {\n        println!(\"Found: {}\", val);\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Find first even",
+                                "explanation": "Use iter().copied() to get i32 values, then find() with a predicate.",
+                                "code": "nums.iter().copied().find(|x| x % 2 == 0)"
+                            },
+                            {
+                                "title": "Use if let",
+                                "explanation": "if let Some(val) = ... destructures the Option. The body runs only if Some is returned.",
+                                "code": "if let Some(val) = find_even(&nums) {\n    println!(\"Found: {}\", val);\n}"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "The first even number in [1, 3, 4, 7, 8] is 4, so it prints Found: 4."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-43",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Stack Drain",
+                    "description": "Write a function `pop_all(stack: &mut Vec<i32>)` that uses `while let` to pop and print each element from a vector.\n\nElements are printed in reverse order since pop() removes from the end.\n\nExpected output:\n```\n3\n2\n1\n```",
+                    "starterCode": "fn pop_all(stack: &mut Vec<i32>) {\n    // Your code here using while let\n}\n\nfn main() {\n    let mut stack = vec![1, 2, 3];\n    pop_all(&mut stack);\n}\n",
+                    "hint": "Use while let Some(top) = stack.pop() to keep popping until the vector is empty.",
+                    "solution": {
+                        "code": "fn pop_all(stack: &mut Vec<i32>) {\n    while let Some(top) = stack.pop() {\n        println!(\"{}\", top);\n    }\n}\n\nfn main() {\n    let mut stack = vec![1, 2, 3];\n    pop_all(&mut stack);\n}",
+                        "steps": [
+                            {
+                                "title": "While let pattern",
+                                "explanation": "while let continues looping as long as the pattern matches. When pop() returns None, the loop ends.",
+                                "code": "while let Some(top) = stack.pop()"
+                            },
+                            {
+                                "title": "Print each value",
+                                "explanation": "Inside the loop, print the popped value. pop() removes from the end, so 3 comes first.",
+                                "code": "println!(\"{}\", top);"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "vec![1, 2, 3] pops as 3, 2, 1."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-44",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Nested Match",
+                    "description": "Write a function `describe_point(p: Option<(i32, i32)>) -> String` that uses nested pattern matching to describe a coordinate.\n\n(0,0) is the origin, (x,0) is on the x-axis, (0,y) is on the y-axis, and None means no point.\n\nExpected output:\n```\norigin\non x-axis at 3\nat (2, 5)\nno point\n```",
+                    "starterCode": "fn describe_point(p: Option<(i32, i32)>) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", describe_point(Some((0, 0))));\n    println!(\"{}\", describe_point(Some((3, 0))));\n    println!(\"{}\", describe_point(Some((2, 5))));\n    println!(\"{}\", describe_point(None));\n}\n",
+                    "hint": "Match on the Option, then nest a match on the tuple inside Some. Use literal 0 in patterns for axes.",
+                    "solution": {
+                        "code": "fn describe_point(p: Option<(i32, i32)>) -> String {\n    match p {\n        Some((0, 0)) => String::from(\"origin\"),\n        Some((x, 0)) => format!(\"on x-axis at {}\", x),\n        Some((0, y)) => format!(\"on y-axis at {}\", y),\n        Some((x, y)) => format!(\"at ({}, {})\", x, y),\n        None => String::from(\"no point\"),\n    }\n}\n\nfn main() {\n    println!(\"{}\", describe_point(Some((0, 0))));\n    println!(\"{}\", describe_point(Some((3, 0))));\n    println!(\"{}\", describe_point(Some((2, 5))));\n    println!(\"{}\", describe_point(None));\n}",
+                        "steps": [
+                            {
+                                "title": "Match Option and tuple",
+                                "explanation": "Nest tuple patterns inside Some() to match specific coordinate shapes.",
+                                "code": "Some((0, 0)) => String::from(\"origin\")"
+                            },
+                            {
+                                "title": "Use variables in patterns",
+                                "explanation": "Patterns like Some((x, 0)) bind x while requiring y to be 0.",
+                                "code": "Some((x, 0)) => format!(\"on x-axis at {}\", x)"
+                            },
+                            {
+                                "title": "Catch-all cases",
+                                "explanation": "Some((x, y)) catches all other points, and None handles the absent case."
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "(0,0) is origin, (3,0) is on x-axis, (2,5) is a general point, None is no point."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-45",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Match Guards",
+                    "description": "Write a function `classify(x: i32) -> &'static str` that classifies a number using match guards.\n\nNegative numbers are \"negative\", zero is \"zero\", positive evens are \"positive even\", and positive odds are \"positive odd\".\n\nExpected output:\n```\n-5: negative\n0: zero\n4: positive even\n7: positive odd\n```",
+                    "starterCode": "fn classify(x: i32) -> &'static str {\n    // Your code here\n    \"\"\n}\n\nfn main() {\n    for x in [-5, 0, 4, 7] {\n        println!(\"{}: {}\", x, classify(x));\n    }\n}\n",
+                    "hint": "Use match with if guards: match x { n if n < 0 => ..., 0 => ..., n if n % 2 == 0 => ..., _ => ... }",
+                    "solution": {
+                        "code": "fn classify(x: i32) -> &'static str {\n    match x {\n        n if n < 0 => \"negative\",\n        0 => \"zero\",\n        n if n % 2 == 0 => \"positive even\",\n        _ => \"positive odd\",\n    }\n}\n\nfn main() {\n    for x in [-5, 0, 4, 7] {\n        println!(\"{}: {}\", x, classify(x));\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Guard for negative",
+                                "explanation": "The pattern n if n < 0 binds the value to n and checks the guard condition.",
+                                "code": "n if n < 0 => \"negative\""
+                            },
+                            {
+                                "title": "Literal match for zero",
+                                "explanation": "A simple 0 pattern matches exactly zero.",
+                                "code": "0 => \"zero\""
+                            },
+                            {
+                                "title": "Guard for even",
+                                "explanation": "n if n % 2 == 0 matches positive even numbers (negatives were already caught).",
+                                "code": "n if n % 2 == 0 => \"positive even\""
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "-5 is negative, 0 is zero, 4 is positive even, 7 is positive odd."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-46",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Safe Default",
+                    "description": "Write a function `first_positive(nums: &[i32]) -> i32` that returns the first positive number, or `0` if none exists.\n\nUse `unwrap_or` to provide the fallback.\n\nExpected output:\n```\n5\n0\n```",
+                    "starterCode": "fn first_positive(nums: &[i32]) -> i32 {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", first_positive(&[-3, -1, 5, 2]));\n    println!(\"{}\", first_positive(&[-3, -1, -5]));\n}\n",
+                    "hint": "Use iter().copied().find() to search for a positive number, then .unwrap_or(0) for the fallback.",
+                    "solution": {
+                        "code": "fn first_positive(nums: &[i32]) -> i32 {\n    nums.iter().copied().find(|&x| x > 0).unwrap_or(0)\n}\n\nfn main() {\n    println!(\"{}\", first_positive(&[-3, -1, 5, 2]));\n    println!(\"{}\", first_positive(&[-3, -1, -5]));\n}",
+                        "steps": [
+                            {
+                                "title": "Find first positive",
+                                "explanation": "Use find() with a predicate to locate the first element greater than 0.",
+                                "code": "nums.iter().copied().find(|&x| x > 0)"
+                            },
+                            {
+                                "title": "Provide fallback",
+                                "explanation": "unwrap_or(0) returns the inner value if Some, or 0 if None.",
+                                "code": ".unwrap_or(0)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "In [-3, -1, 5, 2], the first positive is 5. In [-3, -1, -5], there are none, so 0 is returned."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-47",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Option Map",
+                    "description": "Write a function `double_first(nums: &[i32]) -> Option<i32>` that doubles the first element of a slice, returning None if the slice is empty.\n\nExpected output:\n```\nSome(10)\nNone\n```",
+                    "starterCode": "fn double_first(nums: &[i32]) -> Option<i32> {\n    // Your code here\n    None\n}\n\nfn main() {\n    println!(\"{:?}\", double_first(&[5, 10, 15]));\n    println!(\"{:?}\", double_first(&[]));\n}\n",
+                    "hint": "Use nums.first() to get Option<&i32>, then .map(|x| x * 2) to double the value inside.",
+                    "solution": {
+                        "code": "fn double_first(nums: &[i32]) -> Option<i32> {\n    nums.first().map(|x| x * 2)\n}\n\nfn main() {\n    println!(\"{:?}\", double_first(&[5, 10, 15]));\n    println!(\"{:?}\", double_first(&[]));\n}",
+                        "steps": [
+                            {
+                                "title": "Get first element",
+                                "explanation": "nums.first() returns Option<&i32> — Some if the slice is non-empty, None if empty.",
+                                "code": "nums.first()"
+                            },
+                            {
+                                "title": "Map to transform",
+                                "explanation": "map() applies a closure to the inner value if present. |x| x * 2 doubles the reference (auto-deref handles &i32 * i32).",
+                                "code": "nums.first().map(|x| x * 2)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "First of [5, 10, 15] is 5, doubled to Some(10). Empty slice gives None."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-48",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Chain Options",
+                    "description": "Write a function `parse_and_double(s: &str) -> Option<i32>` that parses a string to an integer, then doubles it only if positive. Use `and_then` for chaining.\n\nExpected output:\n```\nSome(42)\nNone\nNone\n```",
+                    "starterCode": "fn parse_and_double(s: &str) -> Option<i32> {\n    // Your code here\n    None\n}\n\nfn main() {\n    println!(\"{:?}\", parse_and_double(\"21\"));\n    println!(\"{:?}\", parse_and_double(\"-5\"));\n    println!(\"{:?}\", parse_and_double(\"abc\"));\n}\n",
+                    "hint": "Use parse::<i32>().ok() to get Option<i32>, then .and_then() with a closure that returns Some(n*2) if n > 0, else None.",
+                    "solution": {
+                        "code": "fn parse_and_double(s: &str) -> Option<i32> {\n    s.parse::<i32>().ok().and_then(|n| {\n        if n > 0 { Some(n * 2) } else { None }\n    })\n}\n\nfn main() {\n    println!(\"{:?}\", parse_and_double(\"21\"));\n    println!(\"{:?}\", parse_and_double(\"-5\"));\n    println!(\"{:?}\", parse_and_double(\"abc\"));\n}",
+                        "steps": [
+                            {
+                                "title": "Parse to Option",
+                                "explanation": "parse::<i32>() returns Result; .ok() converts it to Option<i32>.",
+                                "code": "s.parse::<i32>().ok()"
+                            },
+                            {
+                                "title": "Chain with and_then",
+                                "explanation": "and_then() takes a closure returning Option. It flattens Option<Option<T>> into Option<T>.",
+                                "code": ".and_then(|n| {\n    if n > 0 { Some(n * 2) } else { None }\n})"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "\"21\" parses to 21 (positive), doubled to Some(42). \"-5\" parses but is not positive, so None. \"abc\" fails to parse, so None."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-49",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Option Filter",
+                    "description": "Write a function `even_only(n: Option<i32>) -> Option<i32>` that keeps the value only if it is even, using the `filter` method.\n\nExpected output:\n```\nSome(4)\nNone\nNone\n```",
+                    "starterCode": "fn even_only(n: Option<i32>) -> Option<i32> {\n    // Your code here\n    None\n}\n\nfn main() {\n    println!(\"{:?}\", even_only(Some(4)));\n    println!(\"{:?}\", even_only(Some(3)));\n    println!(\"{:?}\", even_only(None));\n}\n",
+                    "hint": "Use Option::filter() with a closure that checks x % 2 == 0.",
+                    "solution": {
+                        "code": "fn even_only(n: Option<i32>) -> Option<i32> {\n    n.filter(|x| x % 2 == 0)\n}\n\nfn main() {\n    println!(\"{:?}\", even_only(Some(4)));\n    println!(\"{:?}\", even_only(Some(3)));\n    println!(\"{:?}\", even_only(None));\n}",
+                        "steps": [
+                            {
+                                "title": "Use filter",
+                                "explanation": "Option::filter() returns Some(value) if the predicate is true, otherwise None. On None, it stays None.",
+                                "code": "n.filter(|x| x % 2 == 0)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Some(4) passes (4 is even). Some(3) fails (3 is odd). None stays None."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-50",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Flatten Option",
+                    "description": "Write a function `flatten_option(opt: Option<Option<i32>>) -> Option<i32>` that flattens a nested Option into a single Option.\n\nExpected output:\n```\nSome(42)\nNone\nNone\n```",
+                    "starterCode": "fn flatten_option(opt: Option<Option<i32>>) -> Option<i32> {\n    // Your code here\n    None\n}\n\nfn main() {\n    println!(\"{:?}\", flatten_option(Some(Some(42))));\n    println!(\"{:?}\", flatten_option(Some(None)));\n    println!(\"{:?}\", flatten_option(None));\n}\n",
+                    "hint": "Option has a .flatten() method that collapses one level of nesting.",
+                    "solution": {
+                        "code": "fn flatten_option(opt: Option<Option<i32>>) -> Option<i32> {\n    opt.flatten()\n}\n\nfn main() {\n    println!(\"{:?}\", flatten_option(Some(Some(42))));\n    println!(\"{:?}\", flatten_option(Some(None)));\n    println!(\"{:?}\", flatten_option(None));\n}",
+                        "steps": [
+                            {
+                                "title": "Use flatten",
+                                "explanation": "Option::flatten() converts Option<Option<T>> into Option<T>. Some(Some(v)) becomes Some(v), anything else becomes None.",
+                                "code": "opt.flatten()"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Some(Some(42)) flattens to Some(42). Some(None) and None both become None."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-51",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Parse Safe",
+                    "description": "Write a function `parse_number(s: &str) -> Result<i32, String>` that parses a string into an i32, converting any error to a String.\n\nExpected output:\n```\nOk(42)\nErr(\"invalid digit found in string\")\n```",
+                    "starterCode": "fn parse_number(s: &str) -> Result<i32, String> {\n    // Your code here\n    Err(String::new())\n}\n\nfn main() {\n    println!(\"{:?}\", parse_number(\"42\"));\n    println!(\"{:?}\", parse_number(\"abc\"));\n}\n",
+                    "hint": "Use s.parse::<i32>() and .map_err(|e| e.to_string()) to convert the ParseIntError to String.",
+                    "solution": {
+                        "code": "fn parse_number(s: &str) -> Result<i32, String> {\n    s.parse::<i32>().map_err(|e| e.to_string())\n}\n\nfn main() {\n    println!(\"{:?}\", parse_number(\"42\"));\n    println!(\"{:?}\", parse_number(\"abc\"));\n}",
+                        "steps": [
+                            {
+                                "title": "Parse the string",
+                                "explanation": "s.parse::<i32>() returns Result<i32, ParseIntError>.",
+                                "code": "s.parse::<i32>()"
+                            },
+                            {
+                                "title": "Convert the error",
+                                "explanation": "map_err transforms the error type. e.to_string() gives a human-readable message.",
+                                "code": ".map_err(|e| e.to_string())"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "\"42\" parses to Ok(42). \"abc\" fails with Err(\"invalid digit found in string\")."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-52",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Error Convert",
+                    "description": "Write a function `to_int(s: &str) -> Result<i32, String>` that parses a string, providing a custom error message with `map_err`.\n\nExpected output:\n```\nOk(10)\nErr(\"'xyz' is not a number\")\n```",
+                    "starterCode": "fn to_int(s: &str) -> Result<i32, String> {\n    // Your code here\n    Err(String::new())\n}\n\nfn main() {\n    println!(\"{:?}\", to_int(\"10\"));\n    println!(\"{:?}\", to_int(\"xyz\"));\n}\n",
+                    "hint": "Use .map_err() with a closure that formats a custom message including the original input.",
+                    "solution": {
+                        "code": "fn to_int(s: &str) -> Result<i32, String> {\n    s.parse::<i32>().map_err(|_| format!(\"'{}' is not a number\", s))\n}\n\nfn main() {\n    println!(\"{:?}\", to_int(\"10\"));\n    println!(\"{:?}\", to_int(\"xyz\"));\n}",
+                        "steps": [
+                            {
+                                "title": "Parse with custom error",
+                                "explanation": "map_err replaces the original error with a more descriptive message.",
+                                "code": "s.parse::<i32>().map_err(|_| format!(\"'{}' is not a number\", s))"
+                            },
+                            {
+                                "title": "Ignore original error",
+                                "explanation": "The |_| pattern discards the ParseIntError since we build our own message."
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "\"10\" parses to Ok(10). \"xyz\" fails with Err(\"'xyz' is not a number\")."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-53",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Fallback Value",
+                    "description": "Write a function `safe_parse(s: &str) -> i32` that parses a string to i32, falling back to `0` on failure using `unwrap_or_else`.\n\nExpected output:\n```\n42\n0\n```",
+                    "starterCode": "fn safe_parse(s: &str) -> i32 {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", safe_parse(\"42\"));\n    println!(\"{}\", safe_parse(\"abc\"));\n}\n",
+                    "hint": "Use s.parse::<i32>().unwrap_or_else(|_| 0) to provide a fallback value on error.",
+                    "solution": {
+                        "code": "fn safe_parse(s: &str) -> i32 {\n    s.parse::<i32>().unwrap_or_else(|_| 0)\n}\n\nfn main() {\n    println!(\"{}\", safe_parse(\"42\"));\n    println!(\"{}\", safe_parse(\"abc\"));\n}",
+                        "steps": [
+                            {
+                                "title": "Parse with fallback",
+                                "explanation": "unwrap_or_else takes a closure that runs only if the Result is Err, providing a default value.",
+                                "code": "s.parse::<i32>().unwrap_or_else(|_| 0)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "\"42\" parses successfully to 42. \"abc\" fails so the fallback 0 is used."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-54",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Result Chain",
+                    "description": "Write a function `parse_and_square(s: &str) -> Result<i32, String>` that parses a string to i32 and then squares it, using `map` on the Result.\n\nExpected output:\n```\nOk(25)\nErr(\"invalid digit found in string\")\n```",
+                    "starterCode": "fn parse_and_square(s: &str) -> Result<i32, String> {\n    // Your code here\n    Err(String::new())\n}\n\nfn main() {\n    println!(\"{:?}\", parse_and_square(\"5\"));\n    println!(\"{:?}\", parse_and_square(\"hi\"));\n}\n",
+                    "hint": "Chain .map_err(|e| e.to_string()) to convert the error, then .map(|n| n * n) to square the value.",
+                    "solution": {
+                        "code": "fn parse_and_square(s: &str) -> Result<i32, String> {\n    s.parse::<i32>()\n        .map_err(|e| e.to_string())\n        .map(|n| n * n)\n}\n\nfn main() {\n    println!(\"{:?}\", parse_and_square(\"5\"));\n    println!(\"{:?}\", parse_and_square(\"hi\"));\n}",
+                        "steps": [
+                            {
+                                "title": "Convert error type",
+                                "explanation": "map_err transforms the error from ParseIntError to String.",
+                                "code": ".map_err(|e| e.to_string())"
+                            },
+                            {
+                                "title": "Transform success value",
+                                "explanation": "map applies a closure to the Ok value without affecting Err.",
+                                "code": ".map(|n| n * n)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "\"5\" parses to 5, squared to Ok(25). \"hi\" fails with the error message."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-55",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Custom Error",
+                    "description": "Define an enum `MathError` with a variant `DivisionByZero`. Write `safe_divide(a: i32, b: i32) -> Result<i32, MathError>` that returns Err on division by zero.\n\nExpected output:\n```\nOk(5)\nErr(DivisionByZero)\n```",
+                    "starterCode": "#[derive(Debug)]\nenum MathError {\n    DivisionByZero,\n}\n\nfn safe_divide(a: i32, b: i32) -> Result<i32, MathError> {\n    // Your code here\n    Err(MathError::DivisionByZero)\n}\n\nfn main() {\n    println!(\"{:?}\", safe_divide(10, 2));\n    println!(\"{:?}\", safe_divide(10, 0));\n}\n",
+                    "hint": "Check if b is 0 — if so return Err(MathError::DivisionByZero), otherwise return Ok(a / b).",
+                    "solution": {
+                        "code": "#[derive(Debug)]\nenum MathError {\n    DivisionByZero,\n}\n\nfn safe_divide(a: i32, b: i32) -> Result<i32, MathError> {\n    if b == 0 {\n        Err(MathError::DivisionByZero)\n    } else {\n        Ok(a / b)\n    }\n}\n\nfn main() {\n    println!(\"{:?}\", safe_divide(10, 2));\n    println!(\"{:?}\", safe_divide(10, 0));\n}",
+                        "steps": [
+                            {
+                                "title": "Define error enum",
+                                "explanation": "Use #[derive(Debug)] so the enum can be printed. DivisionByZero is a unit variant.",
+                                "code": "#[derive(Debug)]\nenum MathError {\n    DivisionByZero,\n}"
+                            },
+                            {
+                                "title": "Guard against zero",
+                                "explanation": "Check if the divisor is zero and return the appropriate Err variant.",
+                                "code": "if b == 0 {\n    Err(MathError::DivisionByZero)\n}"
+                            },
+                            {
+                                "title": "Return Ok on success",
+                                "explanation": "When the divisor is non-zero, perform the division and wrap in Ok.",
+                                "code": "Ok(a / b)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "10 / 2 = Ok(5). 10 / 0 = Err(DivisionByZero)."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-56",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Fold Product",
+                    "description": "Write a function `product(nums: &[i32]) -> i32` that computes the product of all elements using `fold`.\n\nExample: `product(&[1, 2, 3, 4, 5])` returns `120`.\n\nExpected output:\n```\n120\n```",
+                    "starterCode": "fn product(nums: &[i32]) -> i32 {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", product(&[1, 2, 3, 4, 5]));\n}\n",
+                    "hint": "Use iter().fold(1, |acc, &x| acc * x) — start with 1 as the identity for multiplication.",
+                    "solution": {
+                        "code": "fn product(nums: &[i32]) -> i32 {\n    nums.iter().fold(1, |acc, &x| acc * x)\n}\n\nfn main() {\n    println!(\"{}\", product(&[1, 2, 3, 4, 5]));\n}",
+                        "steps": [
+                            {
+                                "title": "Use fold",
+                                "explanation": "fold takes an initial accumulator and a closure. It processes each element, updating the accumulator.",
+                                "code": "nums.iter().fold(1, |acc, &x| acc * x)"
+                            },
+                            {
+                                "title": "Start with identity",
+                                "explanation": "For multiplication, the identity element is 1 (multiplying by 1 changes nothing)."
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "1 * 2 * 3 * 4 * 5 = 120."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-57",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Running Total",
+                    "description": "Write a function `running_sum(nums: &[i32]) -> Vec<i32>` that returns cumulative sums using the `scan` iterator adapter.\n\nExample: `running_sum(&[1, 2, 3, 4, 5])` returns `[1, 3, 6, 10, 15]`.\n\nExpected output:\n```\n[1, 3, 6, 10, 15]\n```",
+                    "starterCode": "fn running_sum(nums: &[i32]) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", running_sum(&[1, 2, 3, 4, 5]));\n}\n",
+                    "hint": "Use iter().scan(0, |state, &x| { *state += x; Some(*state) }) to accumulate a running sum.",
+                    "solution": {
+                        "code": "fn running_sum(nums: &[i32]) -> Vec<i32> {\n    nums.iter().scan(0, |state, &x| {\n        *state += x;\n        Some(*state)\n    }).collect()\n}\n\nfn main() {\n    println!(\"{:?}\", running_sum(&[1, 2, 3, 4, 5]));\n}",
+                        "steps": [
+                            {
+                                "title": "Use scan",
+                                "explanation": "scan is like fold but yields intermediate results. It takes a mutable state and a closure returning Option.",
+                                "code": "nums.iter().scan(0, |state, &x| { ... })"
+                            },
+                            {
+                                "title": "Accumulate state",
+                                "explanation": "Add each element to the state and return Some(*state) to yield the running total.",
+                                "code": "*state += x;\nSome(*state)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Running sums: 1, 1+2=3, 3+3=6, 6+4=10, 10+5=15 gives [1, 3, 6, 10, 15]."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-58",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Take While",
+                    "description": "Write a function `take_small(nums: &[i32]) -> Vec<i32>` that takes elements from the front while they are less than 10.\n\nIt stops at the first element >= 10.\n\nExpected output:\n```\n[1, 3, 7]\n```",
+                    "starterCode": "fn take_small(nums: &[i32]) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", take_small(&[1, 3, 7, 12, 5, 2]));\n}\n",
+                    "hint": "Use iter().copied().take_while(|&x| x < 10) to take elements while the condition holds.",
+                    "solution": {
+                        "code": "fn take_small(nums: &[i32]) -> Vec<i32> {\n    nums.iter().copied().take_while(|&x| x < 10).collect()\n}\n\nfn main() {\n    println!(\"{:?}\", take_small(&[1, 3, 7, 12, 5, 2]));\n}",
+                        "steps": [
+                            {
+                                "title": "Use take_while",
+                                "explanation": "take_while yields elements as long as the predicate returns true. It stops permanently at the first false.",
+                                "code": "nums.iter().copied().take_while(|&x| x < 10)"
+                            },
+                            {
+                                "title": "Collect results",
+                                "explanation": "Collect the taken elements into a Vec.",
+                                "code": ".collect()"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "1, 3, 7 are all < 10. 12 is not, so iteration stops. Result is [1, 3, 7]."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-59",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Skip While",
+                    "description": "Write a function `skip_negative(nums: &[i32]) -> Vec<i32>` that skips leading negative numbers and collects the rest.\n\nExpected output:\n```\n[4, -2, 5]\n```",
+                    "starterCode": "fn skip_negative(nums: &[i32]) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", skip_negative(&[-3, -1, 4, -2, 5]));\n}\n",
+                    "hint": "Use iter().copied().skip_while(|&x| x < 0) to skip the initial negative elements.",
+                    "solution": {
+                        "code": "fn skip_negative(nums: &[i32]) -> Vec<i32> {\n    nums.iter().copied().skip_while(|&x| x < 0).collect()\n}\n\nfn main() {\n    println!(\"{:?}\", skip_negative(&[-3, -1, 4, -2, 5]));\n}",
+                        "steps": [
+                            {
+                                "title": "Use skip_while",
+                                "explanation": "skip_while discards elements from the front while the predicate is true. Once false, all remaining elements are yielded.",
+                                "code": "nums.iter().copied().skip_while(|&x| x < 0)"
+                            },
+                            {
+                                "title": "Collect remaining",
+                                "explanation": "Collect everything after the skipped prefix into a Vec."
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "-3 and -1 are skipped. Then 4, -2, 5 are all collected (even -2, since skip_while only skips the leading run)."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-60",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Index Pairs",
+                    "description": "Write a function `indexed(items: &[&str]) -> Vec<String>` that pairs each element with its index using `enumerate`.\n\nExpected output:\n```\n0: apple\n1: banana\n2: cherry\n```",
+                    "starterCode": "fn indexed(items: &[&str]) -> Vec<String> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    let words = [\"apple\", \"banana\", \"cherry\"];\n    for line in indexed(&words) {\n        println!(\"{}\", line);\n    }\n}\n",
+                    "hint": "Use iter().enumerate() to get (index, element) pairs, then format each into a String.",
+                    "solution": {
+                        "code": "fn indexed(items: &[&str]) -> Vec<String> {\n    items.iter().enumerate().map(|(i, s)| format!(\"{}: {}\", i, s)).collect()\n}\n\nfn main() {\n    let words = [\"apple\", \"banana\", \"cherry\"];\n    for line in indexed(&words) {\n        println!(\"{}\", line);\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Use enumerate",
+                                "explanation": "enumerate() wraps each element with its index, yielding (usize, &T) tuples.",
+                                "code": "items.iter().enumerate()"
+                            },
+                            {
+                                "title": "Format each pair",
+                                "explanation": "Map each (i, s) to a formatted String like \"0: apple\".",
+                                "code": ".map(|(i, s)| format!(\"{}: {}\", i, s))"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Indices 0, 1, 2 pair with apple, banana, cherry respectively."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-61",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Closure Capture",
+                    "description": "Create a variable `name` set to `\"Rust\"`. Then create a closure `greet` that captures `name` and returns a greeting string. Call the closure and print the result.\n\nExpected output:\n```\nHello, Rust!\n```",
+                    "starterCode": "fn main() {\n    let name = \"Rust\";\n    // Create a closure `greet` that captures `name`\n    // and returns format!(\"Hello, {}!\", name)\n    let greet = || todo!();\n    println!(\"{}\", greet());\n}\n",
+                    "hint": "A closure can capture variables from its environment. Use || format!(\"Hello, {}!\", name) to create the closure.",
+                    "solution": {
+                        "code": "fn main() {\n    let name = \"Rust\";\n    let greet = || format!(\"Hello, {}!\", name);\n    println!(\"{}\", greet());\n}",
+                        "steps": [
+                            {
+                                "title": "Define the variable",
+                                "explanation": "We create a string slice `name` that the closure will capture from its environment.",
+                                "code": "let name = \"Rust\";"
+                            },
+                            {
+                                "title": "Create the closure",
+                                "explanation": "The closure `|| format!(\"Hello, {}!\", name)` captures `name` by reference and returns a formatted String.",
+                                "code": "let greet = || format!(\"Hello, {}!\", name);"
+                            },
+                            {
+                                "title": "Call and print",
+                                "explanation": "Calling greet() executes the closure, which produces \"Hello, Rust!\"."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-62",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Apply Twice",
+                    "description": "Write a function `apply_twice(f: impl Fn(i32) -> i32, x: i32) -> i32` that applies function `f` to `x` two times: `f(f(x))`.\n\nExample: applying a function that adds 3 to the value 10 twice gives 16.\n\nExpected output:\n```\n16\n```",
+                    "starterCode": "fn apply_twice(f: impl Fn(i32) -> i32, x: i32) -> i32 {\n    // Your code here\n    0\n}\n\nfn main() {\n    let add3 = |x| x + 3;\n    println!(\"{}\", apply_twice(add3, 10));\n}\n",
+                    "hint": "Call f(x) to get the first result, then pass that result to f again.",
+                    "solution": {
+                        "code": "fn apply_twice(f: impl Fn(i32) -> i32, x: i32) -> i32 {\n    f(f(x))\n}\n\nfn main() {\n    let add3 = |x| x + 3;\n    println!(\"{}\", apply_twice(add3, 10));\n}",
+                        "steps": [
+                            {
+                                "title": "Accept a function parameter",
+                                "explanation": "The `impl Fn(i32) -> i32` trait bound means f can be any closure or function that takes an i32 and returns an i32.",
+                                "code": "fn apply_twice(f: impl Fn(i32) -> i32, x: i32) -> i32 {"
+                            },
+                            {
+                                "title": "Apply twice",
+                                "explanation": "First call f(x) = 10 + 3 = 13, then f(13) = 13 + 3 = 16. The nested call f(f(x)) chains both.",
+                                "code": "f(f(x))"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "add3(10) = 13, add3(13) = 16. Output is 16."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-63",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Custom Filter",
+                    "description": "Write a function `keep_if(nums: &[i32], pred: impl Fn(i32) -> bool) -> Vec<i32>` that returns only elements where `pred` returns true.\n\nFilter the list `[1, 2, 3, 4, 5, 6]` to keep only even numbers.\n\nExpected output:\n```\n[2, 4, 6]\n```",
+                    "starterCode": "fn keep_if(nums: &[i32], pred: impl Fn(i32) -> bool) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    let evens = keep_if(&[1, 2, 3, 4, 5, 6], |x| x % 2 == 0);\n    println!(\"{:?}\", evens);\n}\n",
+                    "hint": "Iterate over nums, dereference each element, and check if pred(*n) is true. Collect matching elements into a Vec.",
+                    "solution": {
+                        "code": "fn keep_if(nums: &[i32], pred: impl Fn(i32) -> bool) -> Vec<i32> {\n    nums.iter().copied().filter(|&x| pred(x)).collect()\n}\n\nfn main() {\n    let evens = keep_if(&[1, 2, 3, 4, 5, 6], |x| x % 2 == 0);\n    println!(\"{:?}\", evens);\n}",
+                        "steps": [
+                            {
+                                "title": "Iterate and copy",
+                                "explanation": "Use iter().copied() to get owned i32 values from the slice reference.",
+                                "code": "nums.iter().copied()"
+                            },
+                            {
+                                "title": "Filter with predicate",
+                                "explanation": "The filter adapter keeps only elements where pred(x) returns true. We pass the closure from the caller.",
+                                "code": ".filter(|&x| pred(x))"
+                            },
+                            {
+                                "title": "Collect results",
+                                "explanation": "collect() gathers the filtered values into a Vec<i32>. Output is [2, 4, 6]."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-64",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Function Pointer",
+                    "description": "Write two functions: `double(x: i32) -> i32` that returns `x * 2`, and `triple(x: i32) -> i32` that returns `x * 3`. Store them in a vector of function pointers and apply each to the value 5.\n\nExpected output:\n```\n10\n15\n```",
+                    "starterCode": "fn double(x: i32) -> i32 {\n    // Your code here\n    0\n}\n\nfn triple(x: i32) -> i32 {\n    // Your code here\n    0\n}\n\nfn main() {\n    let ops: Vec<fn(i32) -> i32> = vec![double, triple];\n    for op in &ops {\n        println!(\"{}\", op(5));\n    }\n}\n",
+                    "hint": "Function pointers in Rust have the type `fn(args) -> return`. Named functions can be stored directly as function pointers.",
+                    "solution": {
+                        "code": "fn double(x: i32) -> i32 {\n    x * 2\n}\n\nfn triple(x: i32) -> i32 {\n    x * 3\n}\n\nfn main() {\n    let ops: Vec<fn(i32) -> i32> = vec![double, triple];\n    for op in &ops {\n        println!(\"{}\", op(5));\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Define functions",
+                                "explanation": "double and triple are regular functions that can be used as function pointers since they capture no environment.",
+                                "code": "fn double(x: i32) -> i32 { x * 2 }"
+                            },
+                            {
+                                "title": "Store as pointers",
+                                "explanation": "Vec<fn(i32) -> i32> holds function pointers. We push double and triple into the vector.",
+                                "code": "let ops: Vec<fn(i32) -> i32> = vec![double, triple];"
+                            },
+                            {
+                                "title": "Iterate and call",
+                                "explanation": "For each function pointer op, we call op(5). double(5)=10, triple(5)=15."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-65",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Map Reduce",
+                    "description": "Write a function `map_reduce(nums: &[i32], map_fn: impl Fn(i32) -> i32, reduce_fn: impl Fn(i32, i32) -> i32, init: i32) -> i32` that first maps each element then reduces (folds) them.\n\nSquare each element of `[1, 2, 3, 4]` then sum them starting from 0.\n\nExpected output:\n```\n30\n```",
+                    "starterCode": "fn map_reduce(\n    nums: &[i32],\n    map_fn: impl Fn(i32) -> i32,\n    reduce_fn: impl Fn(i32, i32) -> i32,\n    init: i32,\n) -> i32 {\n    // Your code here\n    0\n}\n\nfn main() {\n    let result = map_reduce(&[1, 2, 3, 4], |x| x * x, |acc, x| acc + x, 0);\n    println!(\"{}\", result);\n}\n",
+                    "hint": "Chain iter().copied().map(map_fn).fold(init, reduce_fn) to first transform then accumulate.",
+                    "solution": {
+                        "code": "fn map_reduce(\n    nums: &[i32],\n    map_fn: impl Fn(i32) -> i32,\n    reduce_fn: impl Fn(i32, i32) -> i32,\n    init: i32,\n) -> i32 {\n    nums.iter().copied().map(map_fn).fold(init, reduce_fn)\n}\n\nfn main() {\n    let result = map_reduce(&[1, 2, 3, 4], |x| x * x, |acc, x| acc + x, 0);\n    println!(\"{}\", result);\n}",
+                        "steps": [
+                            {
+                                "title": "Map each element",
+                                "explanation": "iter().copied().map(map_fn) applies the squaring closure to each element: 1, 4, 9, 16.",
+                                "code": "nums.iter().copied().map(map_fn)"
+                            },
+                            {
+                                "title": "Fold to reduce",
+                                "explanation": "fold(init, reduce_fn) accumulates: 0+1=1, 1+4=5, 5+9=14, 14+16=30.",
+                                "code": ".fold(init, reduce_fn)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "1^2 + 2^2 + 3^2 + 4^2 = 1 + 4 + 9 + 16 = 30. Output is 30."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-66",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Word Counter",
+                    "description": "Write a function `count_words(words: &[&str]) -> std::collections::HashMap<String, usize>` that counts how many times each word appears.\n\nCount words in `[\"apple\", \"banana\", \"apple\", \"cherry\", \"banana\", \"apple\"]` and print the count for \"apple\".\n\nExpected output:\n```\napple: 3\n```",
+                    "starterCode": "use std::collections::HashMap;\n\nfn count_words(words: &[&str]) -> HashMap<String, usize> {\n    // Your code here\n    HashMap::new()\n}\n\nfn main() {\n    let words = vec![\"apple\", \"banana\", \"apple\", \"cherry\", \"banana\", \"apple\"];\n    let counts = count_words(&words);\n    println!(\"apple: {}\", counts[\"apple\"]);\n}\n",
+                    "hint": "Use the entry API: *counts.entry(word.to_string()).or_insert(0) += 1;",
+                    "solution": {
+                        "code": "use std::collections::HashMap;\n\nfn count_words(words: &[&str]) -> HashMap<String, usize> {\n    let mut map = HashMap::new();\n    for &word in words {\n        *map.entry(word.to_string()).or_insert(0) += 1;\n    }\n    map\n}\n\nfn main() {\n    let words = vec![\"apple\", \"banana\", \"apple\", \"cherry\", \"banana\", \"apple\"];\n    let counts = count_words(&words);\n    println!(\"apple: {}\", counts[\"apple\"]);\n}",
+                        "steps": [
+                            {
+                                "title": "Create a HashMap",
+                                "explanation": "We need a mutable HashMap<String, usize> to track word counts.",
+                                "code": "let mut map = HashMap::new();"
+                            },
+                            {
+                                "title": "Use the entry API",
+                                "explanation": "entry() returns an Entry enum. or_insert(0) inserts 0 if the key is missing. We then increment the count.",
+                                "code": "*map.entry(word.to_string()).or_insert(0) += 1;"
+                            },
+                            {
+                                "title": "Look up result",
+                                "explanation": "counts[\"apple\"] returns 3 since apple appears three times in the input."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-67",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Sorted Keys",
+                    "description": "Insert the key-value pairs (\"cherry\", 3), (\"apple\", 1), (\"banana\", 2) into a BTreeMap and print all entries. BTreeMap keeps keys sorted.\n\nExpected output:\n```\napple: 1\nbanana: 2\ncherry: 3\n```",
+                    "starterCode": "use std::collections::BTreeMap;\n\nfn main() {\n    let mut map = BTreeMap::new();\n    // Insert three fruit entries\n    // Then iterate and print each\n    println!(\"TODO\");\n}\n",
+                    "hint": "Use map.insert(key, value) to add entries. Iterate with a for loop over &map to print them in sorted order.",
+                    "solution": {
+                        "code": "use std::collections::BTreeMap;\n\nfn main() {\n    let mut map = BTreeMap::new();\n    map.insert(\"cherry\", 3);\n    map.insert(\"apple\", 1);\n    map.insert(\"banana\", 2);\n    for (key, value) in &map {\n        println!(\"{}: {}\", key, value);\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Create BTreeMap",
+                                "explanation": "BTreeMap stores entries sorted by key, unlike HashMap which has no guaranteed order.",
+                                "code": "let mut map = BTreeMap::new();"
+                            },
+                            {
+                                "title": "Insert entries",
+                                "explanation": "Even though we insert cherry first, the BTreeMap will sort them alphabetically.",
+                                "code": "map.insert(\"cherry\", 3);"
+                            },
+                            {
+                                "title": "Iterate in order",
+                                "explanation": "Iterating over &map yields entries in key-sorted order: apple, banana, cherry."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-68",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Unique Items",
+                    "description": "Write a function `unique(items: &[i32]) -> Vec<i32>` that returns the unique elements in sorted order using a HashSet.\n\nExample: `unique(&[3, 1, 4, 1, 5, 9, 2, 6, 5, 3])` returns `[1, 2, 3, 4, 5, 6, 9]`.\n\nExpected output:\n```\n[1, 2, 3, 4, 5, 6, 9]\n```",
+                    "starterCode": "use std::collections::HashSet;\n\nfn unique(items: &[i32]) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", unique(&[3, 1, 4, 1, 5, 9, 2, 6, 5, 3]));\n}\n",
+                    "hint": "Collect into a HashSet to remove duplicates, then collect into a Vec and sort it.",
+                    "solution": {
+                        "code": "use std::collections::HashSet;\n\nfn unique(items: &[i32]) -> Vec<i32> {\n    let set: HashSet<i32> = items.iter().copied().collect();\n    let mut result: Vec<i32> = set.into_iter().collect();\n    result.sort();\n    result\n}\n\nfn main() {\n    println!(\"{:?}\", unique(&[3, 1, 4, 1, 5, 9, 2, 6, 5, 3]));\n}",
+                        "steps": [
+                            {
+                                "title": "Collect into HashSet",
+                                "explanation": "A HashSet automatically removes duplicates. We collect the slice elements into it.",
+                                "code": "let set: HashSet<i32> = items.iter().copied().collect();"
+                            },
+                            {
+                                "title": "Convert and sort",
+                                "explanation": "Convert the set back to a Vec, then sort it to get a deterministic order.",
+                                "code": "let mut result: Vec<i32> = set.into_iter().collect();\nresult.sort();"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Duplicates (1, 5, 3) are removed. Sorted result is [1, 2, 3, 4, 5, 6, 9]."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-69",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Queue Ops",
+                    "description": "Use a VecDeque as a queue: push 1, 2, 3 to the back, then pop from the front one at a time and print each value.\n\nExpected output:\n```\n1\n2\n3\n```",
+                    "starterCode": "use std::collections::VecDeque;\n\nfn main() {\n    let mut queue = VecDeque::new();\n    // Push 1, 2, 3 to the back\n    // Pop from front and print each\n    println!(\"TODO\");\n}\n",
+                    "hint": "Use push_back() to enqueue and pop_front() to dequeue. pop_front() returns an Option, so use unwrap() or a while let loop.",
+                    "solution": {
+                        "code": "use std::collections::VecDeque;\n\nfn main() {\n    let mut queue = VecDeque::new();\n    queue.push_back(1);\n    queue.push_back(2);\n    queue.push_back(3);\n    while let Some(val) = queue.pop_front() {\n        println!(\"{}\", val);\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Create and fill queue",
+                                "explanation": "VecDeque is a double-ended queue. push_back adds to the rear, giving us FIFO order.",
+                                "code": "queue.push_back(1);\nqueue.push_back(2);\nqueue.push_back(3);"
+                            },
+                            {
+                                "title": "Pop from front",
+                                "explanation": "pop_front() removes and returns the first element as Some(val), or None when empty.",
+                                "code": "while let Some(val) = queue.pop_front() {"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Elements come out in insertion order: 1, 2, 3 — classic queue (FIFO) behavior."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-70",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Heap Sort",
+                    "description": "Use a BinaryHeap to sort numbers. Push `[4, 1, 7, 3, 9, 2]` into a max-heap, then pop all elements to get them in descending order.\n\nExpected output:\n```\n9 7 4 3 2 1\n```",
+                    "starterCode": "use std::collections::BinaryHeap;\n\nfn main() {\n    let mut heap = BinaryHeap::new();\n    let nums = [4, 1, 7, 3, 9, 2];\n    // Push all nums into the heap\n    // Pop all and collect into a sorted result\n    println!(\"TODO\");\n}\n",
+                    "hint": "BinaryHeap is a max-heap. Push all items, then pop() repeatedly. The largest element comes out first.",
+                    "solution": {
+                        "code": "use std::collections::BinaryHeap;\n\nfn main() {\n    let mut heap = BinaryHeap::new();\n    let nums = [4, 1, 7, 3, 9, 2];\n    for &n in &nums {\n        heap.push(n);\n    }\n    let mut result = Vec::new();\n    while let Some(val) = heap.pop() {\n        result.push(val.to_string());\n    }\n    println!(\"{}\", result.join(\" \"));\n}",
+                        "steps": [
+                            {
+                                "title": "Push elements",
+                                "explanation": "Push all numbers into the BinaryHeap. It internally maintains the max-heap property.",
+                                "code": "for &n in &nums { heap.push(n); }"
+                            },
+                            {
+                                "title": "Pop in order",
+                                "explanation": "pop() always removes the largest element. Repeated pops give descending order: 9, 7, 4, 3, 2, 1.",
+                                "code": "while let Some(val) = heap.pop() { result.push(val.to_string()); }"
+                            },
+                            {
+                                "title": "Format output",
+                                "explanation": "Join the results with spaces to produce \"9 7 4 3 2 1\"."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-71",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Trait Shape",
+                    "description": "Define a trait `Area` with a method `area(&self) -> f64`. Implement it for a `Circle` struct with field `radius: f64`. Create a circle with radius 5.0 and print its area.\n\nExpected output:\n```\n78.54\n```",
+                    "starterCode": "trait Area {\n    fn area(&self) -> f64;\n}\n\nstruct Circle {\n    radius: f64,\n}\n\n// Implement Area for Circle\n\nfn main() {\n    let c = Circle { radius: 5.0 };\n    println!(\"{:.2}\", c.area());\n}\n",
+                    "hint": "Use impl Area for Circle { fn area(&self) -> f64 { ... } }. The area formula is PI * r * r.",
+                    "solution": {
+                        "code": "trait Area {\n    fn area(&self) -> f64;\n}\n\nstruct Circle {\n    radius: f64,\n}\n\nimpl Area for Circle {\n    fn area(&self) -> f64 {\n        std::f64::consts::PI * self.radius * self.radius\n    }\n}\n\nfn main() {\n    let c = Circle { radius: 5.0 };\n    println!(\"{:.2}\", c.area());\n}",
+                        "steps": [
+                            {
+                                "title": "Define the trait",
+                                "explanation": "The Area trait declares an area() method that each shape must implement.",
+                                "code": "trait Area { fn area(&self) -> f64; }"
+                            },
+                            {
+                                "title": "Implement for Circle",
+                                "explanation": "We use the formula PI * r^2. std::f64::consts::PI provides a precise value of pi.",
+                                "code": "impl Area for Circle {\n    fn area(&self) -> f64 {\n        std::f64::consts::PI * self.radius * self.radius\n    }\n}"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "PI * 5.0 * 5.0 = 78.5398... formatted to 2 decimal places gives 78.54."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-72",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Default Method",
+                    "description": "Define a trait `Greetable` with a required method `name(&self) -> &str` and a default method `greet(&self) -> String` that returns `\"Hello, <name>!\"`.\n\nImplement it for a `User` struct. Print the greeting.\n\nExpected output:\n```\nHello, Alice!\n```",
+                    "starterCode": "trait Greetable {\n    fn name(&self) -> &str;\n    // Add a default greet method\n}\n\nstruct User {\n    username: String,\n}\n\n// Implement Greetable for User\n\nfn main() {\n    let u = User { username: String::from(\"Alice\") };\n    println!(\"{}\", u.greet());\n}\n",
+                    "hint": "Default methods have a body in the trait definition. Use format!(\"Hello, {}!\", self.name()) in the default greet method.",
+                    "solution": {
+                        "code": "trait Greetable {\n    fn name(&self) -> &str;\n    fn greet(&self) -> String {\n        format!(\"Hello, {}!\", self.name())\n    }\n}\n\nstruct User {\n    username: String,\n}\n\nimpl Greetable for User {\n    fn name(&self) -> &str {\n        &self.username\n    }\n}\n\nfn main() {\n    let u = User { username: String::from(\"Alice\") };\n    println!(\"{}\", u.greet());\n}",
+                        "steps": [
+                            {
+                                "title": "Default method",
+                                "explanation": "The greet() method has a default implementation in the trait, so implementors only need to provide name().",
+                                "code": "fn greet(&self) -> String {\n    format!(\"Hello, {}!\", self.name())\n}"
+                            },
+                            {
+                                "title": "Implement required method",
+                                "explanation": "User only needs to implement name(), returning a reference to the username field.",
+                                "code": "impl Greetable for User {\n    fn name(&self) -> &str { &self.username }\n}"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "u.greet() calls the default method, which calls u.name() returning \"Alice\", producing \"Hello, Alice!\"."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-73",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Multi Trait",
+                    "description": "Define two traits: `HasName` with method `name(&self) -> &str` and `HasAge` with method `age(&self) -> u32`. Implement both for a `Person` struct. Write a function that requires both traits and prints a summary.\n\nExpected output:\n```\nBob is 30 years old\n```",
+                    "starterCode": "trait HasName {\n    fn name(&self) -> &str;\n}\n\ntrait HasAge {\n    fn age(&self) -> u32;\n}\n\nstruct Person {\n    name: String,\n    age: u32,\n}\n\n// Implement both traits for Person\n// Write fn describe(p: &impl HasName + HasAge)\n\nfn main() {\n    let p = Person { name: String::from(\"Bob\"), age: 30 };\n    describe(&p);\n}\n",
+                    "hint": "Use `impl HasName + HasAge` or `T: HasName + HasAge` to require multiple trait bounds on a parameter.",
+                    "solution": {
+                        "code": "trait HasName {\n    fn name(&self) -> &str;\n}\n\ntrait HasAge {\n    fn age(&self) -> u32;\n}\n\nstruct Person {\n    name: String,\n    age: u32,\n}\n\nimpl HasName for Person {\n    fn name(&self) -> &str {\n        &self.name\n    }\n}\n\nimpl HasAge for Person {\n    fn age(&self) -> u32 {\n        self.age\n    }\n}\n\nfn describe(p: &(impl HasName + HasAge)) {\n    println!(\"{} is {} years old\", p.name(), p.age());\n}\n\nfn main() {\n    let p = Person { name: String::from(\"Bob\"), age: 30 };\n    describe(&p);\n}",
+                        "steps": [
+                            {
+                                "title": "Implement traits",
+                                "explanation": "Person implements both HasName (returning &self.name) and HasAge (returning self.age).",
+                                "code": "impl HasName for Person { fn name(&self) -> &str { &self.name } }"
+                            },
+                            {
+                                "title": "Combine trait bounds",
+                                "explanation": "The + syntax combines multiple trait bounds. The function accepts any type that implements both traits.",
+                                "code": "fn describe(p: &(impl HasName + HasAge)) {"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "describe(&p) calls both name() and age() on the Person, printing \"Bob is 30 years old\"."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-74",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Trait Bounds",
+                    "description": "Write a generic function `largest<T: PartialOrd>(list: &[T]) -> &T` that returns a reference to the largest element in a slice.\n\nFind the largest in `[34, 50, 25, 100, 65]`.\n\nExpected output:\n```\n100\n```",
+                    "starterCode": "fn largest<T: PartialOrd>(list: &[T]) -> &T {\n    // Your code here\n    &list[0]\n}\n\nfn main() {\n    let numbers = vec![34, 50, 25, 100, 65];\n    println!(\"{}\", largest(&numbers));\n}\n",
+                    "hint": "Start with the first element as the current largest. Loop through the rest, updating when you find a bigger element.",
+                    "solution": {
+                        "code": "fn largest<T: PartialOrd>(list: &[T]) -> &T {\n    let mut max = &list[0];\n    for item in &list[1..] {\n        if item > max {\n            max = item;\n        }\n    }\n    max\n}\n\nfn main() {\n    let numbers = vec![34, 50, 25, 100, 65];\n    println!(\"{}\", largest(&numbers));\n}",
+                        "steps": [
+                            {
+                                "title": "Generic with bounds",
+                                "explanation": "T: PartialOrd means T must support comparison with >. This works for i32, f64, and many other types.",
+                                "code": "fn largest<T: PartialOrd>(list: &[T]) -> &T {"
+                            },
+                            {
+                                "title": "Find maximum",
+                                "explanation": "Start with the first element, then iterate through the rest. Update max whenever we find a larger element.",
+                                "code": "let mut max = &list[0];\nfor item in &list[1..] {\n    if item > max { max = item; }\n}"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Comparing 34, 50, 25, 100, 65: the largest is 100."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-75",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Display Impl",
+                    "description": "Define a `Color` struct with fields `r: u8, g: u8, b: u8`. Implement the `std::fmt::Display` trait to format it as `rgb(r, g, b)`. Print a color.\n\nExpected output:\n```\nrgb(255, 128, 0)\n```",
+                    "starterCode": "use std::fmt;\n\nstruct Color {\n    r: u8,\n    g: u8,\n    b: u8,\n}\n\n// Implement Display for Color\n\nfn main() {\n    let c = Color { r: 255, g: 128, b: 0 };\n    println!(\"{}\", c);\n}\n",
+                    "hint": "Implement fmt::Display by writing an impl block with fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result, using write!(f, ...) inside.",
+                    "solution": {
+                        "code": "use std::fmt;\n\nstruct Color {\n    r: u8,\n    g: u8,\n    b: u8,\n}\n\nimpl fmt::Display for Color {\n    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n        write!(f, \"rgb({}, {}, {})\", self.r, self.g, self.b)\n    }\n}\n\nfn main() {\n    let c = Color { r: 255, g: 128, b: 0 };\n    println!(\"{}\", c);\n}",
+                        "steps": [
+                            {
+                                "title": "Implement Display",
+                                "explanation": "The Display trait requires a fmt method. We use write!() to format the output string.",
+                                "code": "impl fmt::Display for Color {\n    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n        write!(f, \"rgb({}, {}, {})\", self.r, self.g, self.b)\n    }\n}"
+                            },
+                            {
+                                "title": "Use with println!",
+                                "explanation": "Now println!(\"{}\", c) calls our Display implementation, formatting the Color nicely."
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Color { r: 255, g: 128, b: 0 } displays as \"rgb(255, 128, 0)\"."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-76",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Shared Refs",
+                    "description": "Create a vector of numbers `[10, 20, 30]`. Create two shared (immutable) references to it and use both to print the sum and the length.\n\nExpected output:\n```\nSum: 60\nLength: 3\n```",
+                    "starterCode": "fn main() {\n    let nums = vec![10, 20, 30];\n    // Create two shared references and use them\n    println!(\"TODO\");\n}\n",
+                    "hint": "Multiple shared references (&vec) can exist at the same time. Use iter().sum::<i32>() for the sum and .len() for the length.",
+                    "solution": {
+                        "code": "fn main() {\n    let nums = vec![10, 20, 30];\n    let r1 = &nums;\n    let r2 = &nums;\n    let total: i32 = r1.iter().sum();\n    println!(\"Sum: {}\", total);\n    println!(\"Length: {}\", r2.len());\n}",
+                        "steps": [
+                            {
+                                "title": "Create shared references",
+                                "explanation": "Rust allows multiple immutable (&) references to exist simultaneously — this is safe because no one can modify the data.",
+                                "code": "let r1 = &nums;\nlet r2 = &nums;"
+                            },
+                            {
+                                "title": "Use both references",
+                                "explanation": "r1 is used to compute the sum via iter().sum(), and r2 is used to get the length.",
+                                "code": "let total: i32 = r1.iter().sum();\nprintln!(\"Length: {}\", r2.len());"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "10 + 20 + 30 = 60 and the vector has 3 elements."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-77",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Mutable Ref",
+                    "description": "Create a mutable vector `[1, 2, 3]`. Write a function `double_all(nums: &mut Vec<i32>)` that doubles each element in place. Print the vector after calling it.\n\nExpected output:\n```\n[2, 4, 6]\n```",
+                    "starterCode": "fn double_all(nums: &mut Vec<i32>) {\n    // Your code here\n}\n\nfn main() {\n    let mut nums = vec![1, 2, 3];\n    double_all(&mut nums);\n    println!(\"{:?}\", nums);\n}\n",
+                    "hint": "Iterate over the vector with iter_mut() and multiply each element by 2 using *n *= 2.",
+                    "solution": {
+                        "code": "fn double_all(nums: &mut Vec<i32>) {\n    for n in nums.iter_mut() {\n        *n *= 2;\n    }\n}\n\nfn main() {\n    let mut nums = vec![1, 2, 3];\n    double_all(&mut nums);\n    println!(\"{:?}\", nums);\n}",
+                        "steps": [
+                            {
+                                "title": "Mutable reference parameter",
+                                "explanation": "The &mut Vec<i32> parameter lets us modify the vector in place. Only one mutable reference can exist at a time.",
+                                "code": "fn double_all(nums: &mut Vec<i32>) {"
+                            },
+                            {
+                                "title": "Modify in place",
+                                "explanation": "iter_mut() gives mutable references to each element. *n *= 2 dereferences and doubles each value.",
+                                "code": "for n in nums.iter_mut() {\n    *n *= 2;\n}"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "After doubling: 1*2=2, 2*2=4, 3*2=6. Output is [2, 4, 6]."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-78",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Lifetime Intro",
+                    "description": "Write a function `longer<'a>(s1: &'a str, s2: &'a str) -> &'a str` that returns the longer of two string slices. If equal, return the first.\n\nCompare \"hello\" and \"world!\".\n\nExpected output:\n```\nworld!\n```",
+                    "starterCode": "fn longer<'a>(s1: &'a str, s2: &'a str) -> &'a str {\n    // Your code here\n    s1\n}\n\nfn main() {\n    let result = longer(\"hello\", \"world!\");\n    println!(\"{}\", result);\n}\n",
+                    "hint": "Compare s1.len() and s2.len(). Return s2 only if it is strictly longer, otherwise return s1.",
+                    "solution": {
+                        "code": "fn longer<'a>(s1: &'a str, s2: &'a str) -> &'a str {\n    if s2.len() > s1.len() {\n        s2\n    } else {\n        s1\n    }\n}\n\nfn main() {\n    let result = longer(\"hello\", \"world!\");\n    println!(\"{}\", result);\n}",
+                        "steps": [
+                            {
+                                "title": "Lifetime annotation",
+                                "explanation": "The 'a lifetime tells the compiler that the returned reference lives as long as both inputs. This is needed because the compiler can't know which branch will be taken.",
+                                "code": "fn longer<'a>(s1: &'a str, s2: &'a str) -> &'a str {"
+                            },
+                            {
+                                "title": "Compare lengths",
+                                "explanation": "We compare string lengths. \"hello\" has 5 chars, \"world!\" has 6, so s2 is longer.",
+                                "code": "if s2.len() > s1.len() { s2 } else { s1 }"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "\"world!\" (6 chars) is longer than \"hello\" (5 chars), so we get \"world!\"."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-79",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "String Slices",
+                    "description": "Write a function `first_word(s: &str) -> &str` that returns the first word of a string (up to the first space, or the whole string if no space).\n\nExpected output:\n```\nHello\n```",
+                    "starterCode": "fn first_word(s: &str) -> &str {\n    // Your code here\n    s\n}\n\nfn main() {\n    let sentence = \"Hello World Rust\";\n    println!(\"{}\", first_word(sentence));\n}\n",
+                    "hint": "Use find(' ') to locate the first space, then slice with &s[..index]. If no space, return the entire string.",
+                    "solution": {
+                        "code": "fn first_word(s: &str) -> &str {\n    match s.find(' ') {\n        Some(i) => &s[..i],\n        None => s,\n    }\n}\n\nfn main() {\n    let sentence = \"Hello World Rust\";\n    println!(\"{}\", first_word(sentence));\n}",
+                        "steps": [
+                            {
+                                "title": "Find the space",
+                                "explanation": "s.find(' ') returns Some(index) if a space is found, or None if there is no space.",
+                                "code": "s.find(' ')"
+                            },
+                            {
+                                "title": "Slice the string",
+                                "explanation": "&s[..i] takes a slice from the start up to (but not including) the space. This gives us the first word.",
+                                "code": "Some(i) => &s[..i],"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "\"Hello World Rust\" has a space at index 5. &s[..5] is \"Hello\"."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-80",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Split Borrow",
+                    "description": "Create a mutable vector `[1, 2, 3, 4, 5]`. Use `split_at_mut` to get two mutable slices — one for the first 2 elements and one for the rest. Double the first slice and triple the second. Print the full vector.\n\nExpected output:\n```\n[2, 4, 9, 12, 15]\n```",
+                    "starterCode": "fn main() {\n    let mut nums = vec![1, 2, 3, 4, 5];\n    // Use split_at_mut to split and modify both halves\n    println!(\"{:?}\", nums);\n}\n",
+                    "hint": "split_at_mut(2) returns two mutable slices. You can iterate each with iter_mut() and modify independently.",
+                    "solution": {
+                        "code": "fn main() {\n    let mut nums = vec![1, 2, 3, 4, 5];\n    let (left, right) = nums.split_at_mut(2);\n    for n in left.iter_mut() {\n        *n *= 2;\n    }\n    for n in right.iter_mut() {\n        *n *= 3;\n    }\n    println!(\"{:?}\", nums);\n}",
+                        "steps": [
+                            {
+                                "title": "Split the vector",
+                                "explanation": "split_at_mut(2) gives two non-overlapping mutable slices. This is safe because the slices don't overlap.",
+                                "code": "let (left, right) = nums.split_at_mut(2);"
+                            },
+                            {
+                                "title": "Modify each half",
+                                "explanation": "Double the left slice [1, 2] -> [2, 4] and triple the right slice [3, 4, 5] -> [9, 12, 15].",
+                                "code": "for n in left.iter_mut() { *n *= 2; }\nfor n in right.iter_mut() { *n *= 3; }"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "The full vector is now [2, 4, 9, 12, 15] — both halves were modified independently."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-81",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Question Mark",
+                    "description": "Write a function `parse_and_double(s: &str) -> Result<i32, std::num::ParseIntError>` that parses a string to i32 and doubles it using the `?` operator.\n\nParse \"21\" and print the doubled result.\n\nExpected output:\n```\n42\n```",
+                    "starterCode": "fn parse_and_double(s: &str) -> Result<i32, std::num::ParseIntError> {\n    // Use ? to parse, then double\n    Ok(0)\n}\n\nfn main() {\n    match parse_and_double(\"21\") {\n        Ok(val) => println!(\"{}\", val),\n        Err(e) => println!(\"Error: {}\", e),\n    }\n}\n",
+                    "hint": "Use s.parse::<i32>()? to parse with automatic error propagation. Then multiply by 2 and wrap in Ok().",
+                    "solution": {
+                        "code": "fn parse_and_double(s: &str) -> Result<i32, std::num::ParseIntError> {\n    let n = s.parse::<i32>()?;\n    Ok(n * 2)\n}\n\nfn main() {\n    match parse_and_double(\"21\") {\n        Ok(val) => println!(\"{}\", val),\n        Err(e) => println!(\"Error: {}\", e),\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Parse with ?",
+                                "explanation": "The ? operator extracts the Ok value or returns the Err early. s.parse::<i32>()? either gives us the number or propagates the error.",
+                                "code": "let n = s.parse::<i32>()?;"
+                            },
+                            {
+                                "title": "Double and return",
+                                "explanation": "If parsing succeeded, we multiply by 2 and wrap in Ok(). \"21\" parses to 21, doubled is 42.",
+                                "code": "Ok(n * 2)"
+                            },
+                            {
+                                "title": "Handle in main",
+                                "explanation": "We use match to handle both Ok and Err cases. With \"21\" as input, we get Ok(42)."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-82",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Error Type",
+                    "description": "Define a custom error enum `MathError` with variants `DivisionByZero` and `Negative`. Write a function `safe_sqrt(x: f64) -> Result<f64, MathError>` that returns an error for negative input.\n\nCompute the square root of 16.0.\n\nExpected output:\n```\n4\n```",
+                    "starterCode": "enum MathError {\n    DivisionByZero,\n    Negative,\n}\n\nfn safe_sqrt(x: f64) -> Result<f64, MathError> {\n    // Your code here\n    Ok(0.0)\n}\n\nfn main() {\n    match safe_sqrt(16.0) {\n        Ok(val) => println!(\"{}\", val),\n        Err(_) => println!(\"Error!\"),\n    }\n}\n",
+                    "hint": "Check if x < 0.0 and return Err(MathError::Negative). Otherwise return Ok(x.sqrt()).",
+                    "solution": {
+                        "code": "enum MathError {\n    DivisionByZero,\n    Negative,\n}\n\nfn safe_sqrt(x: f64) -> Result<f64, MathError> {\n    if x < 0.0 {\n        Err(MathError::Negative)\n    } else {\n        Ok(x.sqrt())\n    }\n}\n\nfn main() {\n    match safe_sqrt(16.0) {\n        Ok(val) => println!(\"{}\", val),\n        Err(_) => println!(\"Error!\"),\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Define error type",
+                                "explanation": "The MathError enum has variants for different error cases. This is idiomatic Rust error handling.",
+                                "code": "enum MathError { DivisionByZero, Negative }"
+                            },
+                            {
+                                "title": "Validate and compute",
+                                "explanation": "Check for negative input first. If valid, compute sqrt. 16.0.sqrt() = 4.0.",
+                                "code": "if x < 0.0 { Err(MathError::Negative) } else { Ok(x.sqrt()) }"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "16.0 is not negative, so we get Ok(4.0). println! formats 4.0 as \"4\"."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-83",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Error Display",
+                    "description": "Define an error enum `AppError` with a variant `NotFound(String)`. Implement `std::fmt::Display` for it. Create an error and print it.\n\nExpected output:\n```\nNot found: config.toml\n```",
+                    "starterCode": "use std::fmt;\n\nenum AppError {\n    NotFound(String),\n}\n\n// Implement Display for AppError\n\nfn main() {\n    let err = AppError::NotFound(String::from(\"config.toml\"));\n    println!(\"{}\", err);\n}\n",
+                    "hint": "Implement fmt::Display with a match on self. For NotFound(name), write \"Not found: {name}\".",
+                    "solution": {
+                        "code": "use std::fmt;\n\nenum AppError {\n    NotFound(String),\n}\n\nimpl fmt::Display for AppError {\n    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n        match self {\n            AppError::NotFound(name) => write!(f, \"Not found: {}\", name),\n        }\n    }\n}\n\nfn main() {\n    let err = AppError::NotFound(String::from(\"config.toml\"));\n    println!(\"{}\", err);\n}",
+                        "steps": [
+                            {
+                                "title": "Define error enum",
+                                "explanation": "AppError::NotFound holds a String with the name of whatever was not found.",
+                                "code": "enum AppError { NotFound(String) }"
+                            },
+                            {
+                                "title": "Implement Display",
+                                "explanation": "Match on the variant and use write! to format the error message.",
+                                "code": "impl fmt::Display for AppError {\n    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n        match self {\n            AppError::NotFound(name) => write!(f, \"Not found: {}\", name),\n        }\n    }\n}"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "The error displays as \"Not found: config.toml\" — a human-readable error message."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-84",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "From Trait",
+                    "description": "Define an error enum `ConvertError` with a variant `ParseFailed(String)`. Implement `From<std::num::ParseIntError>` for it so parse errors convert automatically. Parse \"abc\" and handle the error.\n\nExpected output:\n```\nConversion error: ParseFailed(\"invalid digit found in string\")\n```",
+                    "starterCode": "use std::num::ParseIntError;\n\n#[derive(Debug)]\nenum ConvertError {\n    ParseFailed(String),\n}\n\n// Implement From<ParseIntError> for ConvertError\n\nfn parse_number(s: &str) -> Result<i32, ConvertError> {\n    let n = s.parse::<i32>()?;\n    Ok(n)\n}\n\nfn main() {\n    match parse_number(\"abc\") {\n        Ok(n) => println!(\"{}\", n),\n        Err(e) => println!(\"Conversion error: {:?}\", e),\n    }\n}\n",
+                    "hint": "Implement From<ParseIntError> for ConvertError by converting the error's message with e.to_string() into ParseFailed.",
+                    "solution": {
+                        "code": "use std::num::ParseIntError;\n\n#[derive(Debug)]\nenum ConvertError {\n    ParseFailed(String),\n}\n\nimpl From<ParseIntError> for ConvertError {\n    fn from(e: ParseIntError) -> Self {\n        ConvertError::ParseFailed(e.to_string())\n    }\n}\n\nfn parse_number(s: &str) -> Result<i32, ConvertError> {\n    let n = s.parse::<i32>()?;\n    Ok(n)\n}\n\nfn main() {\n    match parse_number(\"abc\") {\n        Ok(n) => println!(\"{}\", n),\n        Err(e) => println!(\"Conversion error: {:?}\", e),\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Implement From",
+                                "explanation": "The From trait lets the ? operator automatically convert ParseIntError into our ConvertError.",
+                                "code": "impl From<ParseIntError> for ConvertError {\n    fn from(e: ParseIntError) -> Self {\n        ConvertError::ParseFailed(e.to_string())\n    }\n}"
+                            },
+                            {
+                                "title": "Use ? for conversion",
+                                "explanation": "When parse() fails, ? calls From::from() on the error, converting it to ConvertError::ParseFailed.",
+                                "code": "let n = s.parse::<i32>()?;"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "\"abc\" can't parse as i32, so we get ConvertError::ParseFailed with the parse error message."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-85",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Unwrap Or",
+                    "description": "Write a function `safe_divide(a: f64, b: f64) -> Option<f64>` that returns None for division by zero. Use `unwrap_or` to provide a default value of 0.0.\n\nDivide 10.0 by 0.0 and 10.0 by 4.0, printing both results.\n\nExpected output:\n```\n0\n2.5\n```",
+                    "starterCode": "fn safe_divide(a: f64, b: f64) -> Option<f64> {\n    // Your code here\n    None\n}\n\nfn main() {\n    let r1 = safe_divide(10.0, 0.0).unwrap_or(0.0);\n    let r2 = safe_divide(10.0, 4.0).unwrap_or(0.0);\n    println!(\"{}\", r1);\n    println!(\"{}\", r2);\n}\n",
+                    "hint": "Check if b is 0.0 (use b == 0.0). Return None if so, otherwise return Some(a / b).",
+                    "solution": {
+                        "code": "fn safe_divide(a: f64, b: f64) -> Option<f64> {\n    if b == 0.0 {\n        None\n    } else {\n        Some(a / b)\n    }\n}\n\nfn main() {\n    let r1 = safe_divide(10.0, 0.0).unwrap_or(0.0);\n    let r2 = safe_divide(10.0, 4.0).unwrap_or(0.0);\n    println!(\"{}\", r1);\n    println!(\"{}\", r2);\n}",
+                        "steps": [
+                            {
+                                "title": "Check for zero",
+                                "explanation": "Return None when dividing by zero instead of panicking or producing infinity.",
+                                "code": "if b == 0.0 { None }"
+                            },
+                            {
+                                "title": "Return result",
+                                "explanation": "For valid inputs, return Some(a / b). 10.0 / 4.0 = 2.5.",
+                                "code": "else { Some(a / b) }"
+                            },
+                            {
+                                "title": "Use unwrap_or",
+                                "explanation": "unwrap_or(0.0) extracts the value from Some, or returns 0.0 for None. First call gives 0, second gives 2.5."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-86",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Type Alias",
+                    "description": "Create a type alias `type Matrix = Vec<Vec<i32>>`. Write a function `sum_matrix(m: &Matrix) -> i32` that sums all elements. Sum a 2x2 matrix.\n\nExpected output:\n```\n10\n```",
+                    "starterCode": "type Matrix = Vec<Vec<i32>>;\n\nfn sum_matrix(m: &Matrix) -> i32 {\n    // Your code here\n    0\n}\n\nfn main() {\n    let m: Matrix = vec![vec![1, 2], vec![3, 4]];\n    println!(\"{}\", sum_matrix(&m));\n}\n",
+                    "hint": "Use nested iteration: m.iter() for rows, then row.iter() for elements. Sum all elements with flat_map or a fold.",
+                    "solution": {
+                        "code": "type Matrix = Vec<Vec<i32>>;\n\nfn sum_matrix(m: &Matrix) -> i32 {\n    m.iter().flat_map(|row| row.iter()).sum()\n}\n\nfn main() {\n    let m: Matrix = vec![vec![1, 2], vec![3, 4]];\n    println!(\"{}\", sum_matrix(&m));\n}",
+                        "steps": [
+                            {
+                                "title": "Define type alias",
+                                "explanation": "type Matrix = Vec<Vec<i32>> creates a shorter name for a nested vector. It's just an alias, not a new type.",
+                                "code": "type Matrix = Vec<Vec<i32>>;"
+                            },
+                            {
+                                "title": "Flatten and sum",
+                                "explanation": "flat_map flattens the rows into a single iterator of &i32 references, then sum() adds them all.",
+                                "code": "m.iter().flat_map(|row| row.iter()).sum()"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "1 + 2 + 3 + 4 = 10."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-87",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Newtype Wrap",
+                    "description": "Create a newtype `Meters(f64)` and implement an `add` method that adds two Meters values. Add 3.5 meters and 2.5 meters.\n\nExpected output:\n```\n6 meters\n```",
+                    "starterCode": "struct Meters(f64);\n\nimpl Meters {\n    fn add(&self, other: &Meters) -> Meters {\n        // Your code here\n        Meters(0.0)\n    }\n}\n\nfn main() {\n    let a = Meters(3.5);\n    let b = Meters(2.5);\n    let c = a.add(&b);\n    println!(\"{} meters\", c.0);\n}\n",
+                    "hint": "Access the inner f64 with self.0 and other.0. Return a new Meters wrapping the sum.",
+                    "solution": {
+                        "code": "struct Meters(f64);\n\nimpl Meters {\n    fn add(&self, other: &Meters) -> Meters {\n        Meters(self.0 + other.0)\n    }\n}\n\nfn main() {\n    let a = Meters(3.5);\n    let b = Meters(2.5);\n    let c = a.add(&b);\n    println!(\"{} meters\", c.0);\n}",
+                        "steps": [
+                            {
+                                "title": "Newtype pattern",
+                                "explanation": "Meters(f64) is a tuple struct wrapping a single f64. This gives type safety — you can't accidentally mix Meters with other f64 values.",
+                                "code": "struct Meters(f64);"
+                            },
+                            {
+                                "title": "Add method",
+                                "explanation": "Access the inner value with .0 and return a new Meters wrapping the sum.",
+                                "code": "Meters(self.0 + other.0)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "3.5 + 2.5 = 6.0. println! formats 6.0 as \"6\" so output is \"6 meters\"."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-88",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Generic Pair",
+                    "description": "Define a generic struct `Pair<T>` with fields `first: T` and `second: T`. Add a method `swap(&self) -> Pair<T>` where T: Clone that returns a new pair with swapped fields.\n\nExpected output:\n```\n(world, hello)\n```",
+                    "starterCode": "struct Pair<T> {\n    first: T,\n    second: T,\n}\n\nimpl<T: Clone> Pair<T> {\n    fn swap(&self) -> Pair<T> {\n        // Your code here\n        Pair { first: self.first.clone(), second: self.second.clone() }\n    }\n}\n\nfn main() {\n    let p = Pair { first: \"hello\", second: \"world\" };\n    let swapped = p.swap();\n    println!(\"({}, {})\", swapped.first, swapped.second);\n}\n",
+                    "hint": "Return a new Pair with first set to self.second.clone() and second set to self.first.clone().",
+                    "solution": {
+                        "code": "struct Pair<T> {\n    first: T,\n    second: T,\n}\n\nimpl<T: Clone> Pair<T> {\n    fn swap(&self) -> Pair<T> {\n        Pair {\n            first: self.second.clone(),\n            second: self.first.clone(),\n        }\n    }\n}\n\nfn main() {\n    let p = Pair { first: \"hello\", second: \"world\" };\n    let swapped = p.swap();\n    println!(\"({}, {})\", swapped.first, swapped.second);\n}",
+                        "steps": [
+                            {
+                                "title": "Generic struct",
+                                "explanation": "Pair<T> works with any type T. Both fields must be the same type.",
+                                "code": "struct Pair<T> { first: T, second: T }"
+                            },
+                            {
+                                "title": "Clone-bounded swap",
+                                "explanation": "T: Clone is needed because we're creating new copies of the values in swapped positions.",
+                                "code": "Pair { first: self.second.clone(), second: self.first.clone() }"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Swapping (\"hello\", \"world\") gives (\"world\", \"hello\")."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-89",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Where Clause",
+                    "description": "Write a function using a where clause: `fn print_info<T>(item: &T) where T: std::fmt::Debug + std::fmt::Display` that prints both the Debug and Display forms.\n\nPrint info for the number 42.\n\nExpected output:\n```\nDisplay: 42\nDebug: 42\n```",
+                    "starterCode": "fn print_info<T>(item: &T)\nwhere\n    T: std::fmt::Debug + std::fmt::Display,\n{\n    // Print Display and Debug forms\n}\n\nfn main() {\n    print_info(&42);\n}\n",
+                    "hint": "Use println! with {} for Display and {:?} for Debug formatting.",
+                    "solution": {
+                        "code": "fn print_info<T>(item: &T)\nwhere\n    T: std::fmt::Debug + std::fmt::Display,\n{\n    println!(\"Display: {}\", item);\n    println!(\"Debug: {:?}\", item);\n}\n\nfn main() {\n    print_info(&42);\n}",
+                        "steps": [
+                            {
+                                "title": "Where clause syntax",
+                                "explanation": "The where clause puts trait bounds after the function signature. This is cleaner for complex bounds.",
+                                "code": "where T: std::fmt::Debug + std::fmt::Display,"
+                            },
+                            {
+                                "title": "Use both traits",
+                                "explanation": "{} invokes Display and {:?} invokes Debug. For i32, both produce the same output.",
+                                "code": "println!(\"Display: {}\", item);\nprintln!(\"Debug: {:?}\", item);"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "For 42, both Display and Debug format as \"42\"."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-90",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Phantom Type",
+                    "description": "Use PhantomData to create type-safe unit markers. Define empty structs `Km` and `Miles`, and a `Distance<U>` struct that holds an f64 value. Create a distance in Km and one in Miles and print both.\n\nExpected output:\n```\n100 km\n62.14 miles\n```",
+                    "starterCode": "use std::marker::PhantomData;\n\nstruct Km;\nstruct Miles;\n\nstruct Distance<U> {\n    value: f64,\n    _unit: PhantomData<U>,\n}\n\nimpl<U> Distance<U> {\n    fn new(value: f64) -> Self {\n        Distance { value, _unit: PhantomData }\n    }\n}\n\nfn main() {\n    let d1: Distance<Km> = Distance::new(100.0);\n    let d2: Distance<Miles> = Distance::new(62.14);\n    // Print both distances with their units\n    println!(\"TODO\");\n}\n",
+                    "hint": "The phantom type parameter U doesn't affect runtime — it's only for compile-time type checking. Just print the value field with the appropriate unit label.",
+                    "solution": {
+                        "code": "use std::marker::PhantomData;\n\nstruct Km;\nstruct Miles;\n\nstruct Distance<U> {\n    value: f64,\n    _unit: PhantomData<U>,\n}\n\nimpl<U> Distance<U> {\n    fn new(value: f64) -> Self {\n        Distance { value, _unit: PhantomData }\n    }\n}\n\nfn main() {\n    let d1: Distance<Km> = Distance::new(100.0);\n    let d2: Distance<Miles> = Distance::new(62.14);\n    println!(\"{} km\", d1.value);\n    println!(\"{} miles\", d2.value);\n}",
+                        "steps": [
+                            {
+                                "title": "Phantom type parameter",
+                                "explanation": "PhantomData<U> tells the compiler Distance uses type U, even though no U value is stored. This prevents mixing Km and Miles.",
+                                "code": "struct Distance<U> { value: f64, _unit: PhantomData<U> }"
+                            },
+                            {
+                                "title": "Type-safe construction",
+                                "explanation": "Distance::<Km>::new(100.0) and Distance::<Miles>::new(62.14) are distinct types at compile time.",
+                                "code": "let d1: Distance<Km> = Distance::new(100.0);"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "100.0 prints as \"100\" and 62.14 prints as \"62.14\". Each has its unit label."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-91",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Format Magic",
+                    "description": "Use the `format!` macro to build a formatted string containing a name, age, and score with 2 decimal places. Then print it.\n\nExpected output:\n```\nName: Alice, Age: 25, Score: 98.50\n```",
+                    "starterCode": "fn main() {\n    let name = \"Alice\";\n    let age = 25;\n    let score = 98.5;\n    // Use format! to build a string, then print it\n    println!(\"TODO\");\n}\n",
+                    "hint": "Use format!(\"Name: {}, Age: {}, Score: {:.2}\", name, age, score) to create the string. {:.2} formats with 2 decimal places.",
+                    "solution": {
+                        "code": "fn main() {\n    let name = \"Alice\";\n    let age = 25;\n    let score = 98.5;\n    let s = format!(\"Name: {}, Age: {}, Score: {:.2}\", name, age, score);\n    println!(\"{}\", s);\n}",
+                        "steps": [
+                            {
+                                "title": "Use format!",
+                                "explanation": "format! works like println! but returns a String instead of printing. It supports the same formatting syntax.",
+                                "code": "let s = format!(\"Name: {}, Age: {}, Score: {:.2}\", name, age, score);"
+                            },
+                            {
+                                "title": "Precision specifier",
+                                "explanation": "{:.2} formats a float with exactly 2 decimal places. 98.5 becomes \"98.50\".",
+                                "code": "{:.2}"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "The formatted string is \"Name: Alice, Age: 25, Score: 98.50\"."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-92",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Write Macro",
+                    "description": "Use `write!` and a String buffer to build a comma-separated list of numbers. Write the numbers 1 through 5 into a String.\n\nExpected output:\n```\n1, 2, 3, 4, 5\n```",
+                    "starterCode": "use std::fmt::Write;\n\nfn main() {\n    let mut buf = String::new();\n    let nums = [1, 2, 3, 4, 5];\n    // Use write! to append each number to buf\n    println!(\"TODO\");\n}\n",
+                    "hint": "Use write!(buf, \"{}\", n) for the first element and write!(buf, \", {}\", n) for the rest. The Write trait must be in scope.",
+                    "solution": {
+                        "code": "use std::fmt::Write;\n\nfn main() {\n    let mut buf = String::new();\n    let nums = [1, 2, 3, 4, 5];\n    for (i, n) in nums.iter().enumerate() {\n        if i > 0 {\n            write!(buf, \", \").unwrap();\n        }\n        write!(buf, \"{}\", n).unwrap();\n    }\n    println!(\"{}\", buf);\n}",
+                        "steps": [
+                            {
+                                "title": "Import Write trait",
+                                "explanation": "std::fmt::Write must be in scope to use write! with a String buffer.",
+                                "code": "use std::fmt::Write;"
+                            },
+                            {
+                                "title": "Build string with write!",
+                                "explanation": "write! appends formatted text to the buffer. We add \", \" before each element except the first.",
+                                "code": "if i > 0 { write!(buf, \", \").unwrap(); }\nwrite!(buf, \"{}\", n).unwrap();"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "The buffer contains \"1, 2, 3, 4, 5\" after the loop."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-93",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Assert Check",
+                    "description": "Write a function `is_palindrome(s: &str) -> bool` that checks if a string is a palindrome. Use `assert!` and `assert_eq!` to verify test cases, then print the result.\n\nExpected output:\n```\n\"racecar\" is a palindrome: true\n\"hello\" is a palindrome: false\n```",
+                    "starterCode": "fn is_palindrome(s: &str) -> bool {\n    // Your code here\n    false\n}\n\nfn main() {\n    assert_eq!(is_palindrome(\"racecar\"), true);\n    assert_eq!(is_palindrome(\"hello\"), false);\n    assert!(is_palindrome(\"madam\"));\n    println!(\"\\\"racecar\\\" is a palindrome: {}\", is_palindrome(\"racecar\"));\n    println!(\"\\\"hello\\\" is a palindrome: {}\", is_palindrome(\"hello\"));\n}\n",
+                    "hint": "Compare the string with its reverse: s.chars().rev().collect::<String>() == s.",
+                    "solution": {
+                        "code": "fn is_palindrome(s: &str) -> bool {\n    let rev: String = s.chars().rev().collect();\n    s == rev\n}\n\nfn main() {\n    assert_eq!(is_palindrome(\"racecar\"), true);\n    assert_eq!(is_palindrome(\"hello\"), false);\n    assert!(is_palindrome(\"madam\"));\n    println!(\"\\\"racecar\\\" is a palindrome: {}\", is_palindrome(\"racecar\"));\n    println!(\"\\\"hello\\\" is a palindrome: {}\", is_palindrome(\"hello\"));\n}",
+                        "steps": [
+                            {
+                                "title": "Reverse and compare",
+                                "explanation": "Collect the reversed characters into a String, then compare with the original.",
+                                "code": "let rev: String = s.chars().rev().collect();\ns == rev"
+                            },
+                            {
+                                "title": "Assert correctness",
+                                "explanation": "assert_eq! panics if values don't match, assert! panics if false. These verify our function before printing.",
+                                "code": "assert_eq!(is_palindrome(\"racecar\"), true);"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "\"racecar\" reversed is \"racecar\" (true), \"hello\" reversed is \"olleh\" (false). Assertions pass."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-94",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Debug Format",
+                    "description": "Define a struct `Point` with fields `x: f64` and `y: f64`. Derive the `Debug` trait. Print it using both `{:?}` and `{:#?}` (pretty-print) formats.\n\nExpected output:\n```\nPoint { x: 3.0, y: 4.0 }\nPoint {\n    x: 3.0,\n    y: 4.0,\n}\n```",
+                    "starterCode": "#[derive(Debug)]\nstruct Point {\n    x: f64,\n    y: f64,\n}\n\nfn main() {\n    let p = Point { x: 3.0, y: 4.0 };\n    // Print using {:?} and {:#?}\n    println!(\"TODO\");\n}\n",
+                    "hint": "Use {:?} for compact debug output and {:#?} for pretty-printed debug output.",
+                    "solution": {
+                        "code": "#[derive(Debug)]\nstruct Point {\n    x: f64,\n    y: f64,\n}\n\nfn main() {\n    let p = Point { x: 3.0, y: 4.0 };\n    println!(\"{:?}\", p);\n    println!(\"{:#?}\", p);\n}",
+                        "steps": [
+                            {
+                                "title": "Derive Debug",
+                                "explanation": "#[derive(Debug)] automatically implements the Debug trait, enabling {:?} formatting.",
+                                "code": "#[derive(Debug)]\nstruct Point { x: f64, y: f64 }"
+                            },
+                            {
+                                "title": "Compact debug",
+                                "explanation": "{:?} prints in a single line: Point { x: 3.0, y: 4.0 }.",
+                                "code": "println!(\"{:?}\", p);"
+                            },
+                            {
+                                "title": "Pretty debug",
+                                "explanation": "{:#?} formats with indentation across multiple lines, useful for complex structures.",
+                                "code": "println!(\"{:#?}\", p);"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-95",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Pad Align",
+                    "description": "Use format specifiers to demonstrate padding and alignment. Print a word right-aligned in 10 chars, left-aligned in 10 chars, and center-aligned in 10 chars, each surrounded by brackets.\n\nExpected output:\n```\n[     hello]\n[hello     ]\n[  hello   ]\n```",
+                    "starterCode": "fn main() {\n    let word = \"hello\";\n    // Print with right, left, and center alignment in width 10\n    println!(\"TODO\");\n}\n",
+                    "hint": "Use {: >10} for right-align, {: <10} for left-align, and {: ^10} for center-align inside format strings.",
+                    "solution": {
+                        "code": "fn main() {\n    let word = \"hello\";\n    println!(\"[{:>10}]\", word);\n    println!(\"[{:<10}]\", word);\n    println!(\"[{:^10}]\", word);\n}",
+                        "steps": [
+                            {
+                                "title": "Right align",
+                                "explanation": "{:>10} pads with spaces on the left to reach width 10, pushing the text right.",
+                                "code": "println!(\"[{:>10}]\", word);"
+                            },
+                            {
+                                "title": "Left align",
+                                "explanation": "{:<10} pads with spaces on the right. This is also the default for strings.",
+                                "code": "println!(\"[{:<10}]\", word);"
+                            },
+                            {
+                                "title": "Center align",
+                                "explanation": "{:^10} distributes padding on both sides. With 5 chars in 10 width: 2 left + 3 right spaces.",
+                                "code": "println!(\"[{:^10}]\", word);"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-96",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Caesar Cipher",
+                    "description": "Write a function `caesar_encrypt(text: &str, shift: u8) -> String` that shifts each lowercase letter by `shift` positions (wrapping around). Non-lowercase characters stay unchanged.\n\nEncrypt \"hello rust\" with shift 3.\n\nExpected output:\n```\nkhoor uxvw\n```",
+                    "starterCode": "fn caesar_encrypt(text: &str, shift: u8) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", caesar_encrypt(\"hello rust\", 3));\n}\n",
+                    "hint": "For each char, check if it's lowercase. If so, subtract 'a', add shift, mod 26, add 'a' back. Use `as u8` and `as char` for conversion.",
+                    "solution": {
+                        "code": "fn caesar_encrypt(text: &str, shift: u8) -> String {\n    text.chars()\n        .map(|c| {\n            if c.is_ascii_lowercase() {\n                let shifted = (c as u8 - b'a' + shift) % 26 + b'a';\n                shifted as char\n            } else {\n                c\n            }\n        })\n        .collect()\n}\n\nfn main() {\n    println!(\"{}\", caesar_encrypt(\"hello rust\", 3));\n}",
+                        "steps": [
+                            {
+                                "title": "Map each character",
+                                "explanation": "Iterate over characters and transform each one individually.",
+                                "code": "text.chars().map(|c| { ... }).collect()"
+                            },
+                            {
+                                "title": "Shift lowercase letters",
+                                "explanation": "Subtract b'a' to get 0-25, add shift, mod 26 to wrap, add b'a' back to get the ASCII code.",
+                                "code": "let shifted = (c as u8 - b'a' + shift) % 26 + b'a';"
+                            },
+                            {
+                                "title": "Preserve other chars",
+                                "explanation": "Spaces and non-lowercase chars pass through unchanged. 'h'+3='k', 'e'+3='h', etc."
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "h->k, e->h, l->o, l->o, o->r, (space stays), r->u, u->x, s->v, t->w. Output: \"khoor uxvw\"."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-97",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "ROT13 Cipher",
+                    "description": "Write a function `rot13(text: &str) -> String` that applies ROT13 to each ASCII letter (both upper and lowercase). Non-letter characters stay unchanged.\n\nExpected output:\n```\nUryyb, Ehfg!\n```",
+                    "starterCode": "fn rot13(text: &str) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", rot13(\"Hello, Rust!\"));\n}\n",
+                    "hint": "ROT13 shifts by 13. Handle both uppercase (A-Z) and lowercase (a-z) separately using b'A'/b'a' as the base.",
+                    "solution": {
+                        "code": "fn rot13(text: &str) -> String {\n    text.chars()\n        .map(|c| match c {\n            'a'..='z' => ((c as u8 - b'a' + 13) % 26 + b'a') as char,\n            'A'..='Z' => ((c as u8 - b'A' + 13) % 26 + b'A') as char,\n            _ => c,\n        })\n        .collect()\n}\n\nfn main() {\n    println!(\"{}\", rot13(\"Hello, Rust!\"));\n}",
+                        "steps": [
+                            {
+                                "title": "Match on ranges",
+                                "explanation": "Use Rust's range patterns 'a'..='z' and 'A'..='Z' to handle lowercase and uppercase separately.",
+                                "code": "match c {\n    'a'..='z' => ...,\n    'A'..='Z' => ...,\n    _ => c,\n}"
+                            },
+                            {
+                                "title": "Apply ROT13",
+                                "explanation": "Shift by 13 with wrapping: subtract base, add 13, mod 26, add base back.",
+                                "code": "((c as u8 - b'a' + 13) % 26 + b'a') as char"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "H->U, e->r, l->y, l->y, o->b gives \"Uryyb\". Comma and space unchanged. R->E, u->h, s->f, t->g gives \"Ehfg!\"."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-98",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Bracket Check",
+                    "description": "Write a function `is_balanced(s: &str) -> bool` that checks if parentheses, brackets, and braces are properly balanced.\n\nTest with `\"{[()]}\"` (balanced) and `\"{[(])}\"` (unbalanced).\n\nExpected output:\n```\n{[()]}: true\n{[(])}: false\n```",
+                    "starterCode": "fn is_balanced(s: &str) -> bool {\n    // Your code here\n    false\n}\n\nfn main() {\n    println!(\"{{[()]}}: {}\", is_balanced(\"{[()]}\"));\n    println!(\"{{[(])}}: {}\", is_balanced(\"{[(])}\"));\n}\n",
+                    "hint": "Use a Vec as a stack. Push opening brackets, pop on closing brackets and check they match. Return true if stack is empty at the end.",
+                    "solution": {
+                        "code": "fn is_balanced(s: &str) -> bool {\n    let mut stack = Vec::new();\n    for c in s.chars() {\n        match c {\n            '(' | '[' | '{' => stack.push(c),\n            ')' => if stack.pop() != Some('(') { return false; },\n            ']' => if stack.pop() != Some('[') { return false; },\n            '}' => if stack.pop() != Some('{') { return false; },\n            _ => {}\n        }\n    }\n    stack.is_empty()\n}\n\nfn main() {\n    println!(\"{{[()]}}: {}\", is_balanced(\"{[()]}\"));\n    println!(\"{{[(])}}: {}\", is_balanced(\"{[(])}\"));\n}",
+                        "steps": [
+                            {
+                                "title": "Stack-based approach",
+                                "explanation": "Use a Vec as a stack. Push opening brackets and pop when we see closing ones.",
+                                "code": "let mut stack = Vec::new();"
+                            },
+                            {
+                                "title": "Match and validate",
+                                "explanation": "For each closing bracket, pop the stack and verify it matches. If not, return false immediately.",
+                                "code": "')' => if stack.pop() != Some('(') { return false; },"
+                            },
+                            {
+                                "title": "Check empty stack",
+                                "explanation": "After processing all chars, the stack must be empty for the string to be balanced.",
+                                "code": "stack.is_empty()"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "\"{[()]}\" is properly nested (true). \"{[(])}\" has mismatched brackets (false)."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-99",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "RLE Encoder",
+                    "description": "Write a function `rle_encode(s: &str) -> String` that performs run-length encoding. Consecutive identical characters are replaced with the character followed by its count.\n\nEncode \"aaabbbccddddee\".\n\nExpected output:\n```\na3b3c2d4e2\n```",
+                    "starterCode": "fn rle_encode(s: &str) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", rle_encode(\"aaabbbccddddee\"));\n}\n",
+                    "hint": "Track the current character and its count. When the character changes (or at end of string), append the char and count to the result.",
+                    "solution": {
+                        "code": "fn rle_encode(s: &str) -> String {\n    if s.is_empty() {\n        return String::new();\n    }\n    let mut result = String::new();\n    let chars: Vec<char> = s.chars().collect();\n    let mut count = 1;\n    for i in 1..chars.len() {\n        if chars[i] == chars[i - 1] {\n            count += 1;\n        } else {\n            result.push(chars[i - 1]);\n            result.push_str(&count.to_string());\n            count = 1;\n        }\n    }\n    result.push(chars[chars.len() - 1]);\n    result.push_str(&count.to_string());\n    result\n}\n\nfn main() {\n    println!(\"{}\", rle_encode(\"aaabbbccddddee\"));\n}",
+                        "steps": [
+                            {
+                                "title": "Track runs",
+                                "explanation": "Compare each character with the previous one. If they match, increment the counter.",
+                                "code": "if chars[i] == chars[i - 1] { count += 1; }"
+                            },
+                            {
+                                "title": "Emit on change",
+                                "explanation": "When the character changes, append the previous char and its count to the result, then reset the counter.",
+                                "code": "result.push(chars[i - 1]);\nresult.push_str(&count.to_string());\ncount = 1;"
+                            },
+                            {
+                                "title": "Handle last run",
+                                "explanation": "After the loop, don't forget to emit the last character group.",
+                                "code": "result.push(chars[chars.len() - 1]);\nresult.push_str(&count.to_string());"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "aaa->a3, bbb->b3, cc->c2, dddd->d4, ee->e2. Output: \"a3b3c2d4e2\"."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-100",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Simple Calc",
+                    "description": "Write a function `calculate(a: f64, op: char, b: f64) -> Option<f64>` that performs basic arithmetic (+, -, *, /). Return None for division by zero or unknown operators.\n\nTest several operations and print results.\n\nExpected output:\n```\n10 + 3 = 13\n10 - 3 = 7\n10 * 3 = 30\n10 / 3 = 3.3333\n10 / 0 = error\n```",
+                    "starterCode": "fn calculate(a: f64, op: char, b: f64) -> Option<f64> {\n    // Your code here\n    None\n}\n\nfn main() {\n    let ops = [(10.0, '+', 3.0), (10.0, '-', 3.0), (10.0, '*', 3.0), (10.0, '/', 3.0), (10.0, '/', 0.0)];\n    for (a, op, b) in &ops {\n        match calculate(*a, *op, *b) {\n            Some(r) => {\n                if r.fract() == 0.0 {\n                    println!(\"{} {} {} = {}\", *a as i32, op, *b as i32, r as i32);\n                } else {\n                    println!(\"{} {} {} = {:.4}\", *a as i32, op, *b as i32, r);\n                }\n            }\n            None => println!(\"{} {} {} = error\", *a as i32, op, *b as i32),\n        }\n    }\n}\n",
+                    "hint": "Use a match on the operator char. For division, check if b is 0.0 first. Return Some(result) for valid operations.",
+                    "solution": {
+                        "code": "fn calculate(a: f64, op: char, b: f64) -> Option<f64> {\n    match op {\n        '+' => Some(a + b),\n        '-' => Some(a - b),\n        '*' => Some(a * b),\n        '/' => if b.abs() < f64::EPSILON { None } else { Some(a / b) },\n        _ => None,\n    }\n}\n\nfn main() {\n    let ops = [(10.0, '+', 3.0), (10.0, '-', 3.0), (10.0, '*', 3.0), (10.0, '/', 3.0), (10.0, '/', 0.0)];\n    for (a, op, b) in &ops {\n        match calculate(*a, *op, *b) {\n            Some(r) => {\n                if r.fract() == 0.0 {\n                    println!(\"{} {} {} = {}\", *a as i32, op, *b as i32, r as i32);\n                } else {\n                    println!(\"{} {} {} = {:.4}\", *a as i32, op, *b as i32, r);\n                }\n            }\n            None => println!(\"{} {} {} = error\", *a as i32, op, *b as i32),\n        }\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Match on operator",
+                                "explanation": "Use a match expression on the char to handle each arithmetic operation.",
+                                "code": "match op {\n    '+' => Some(a + b),\n    '-' => Some(a - b),\n    '*' => Some(a * b),\n    ..."
+                            },
+                            {
+                                "title": "Handle division safely",
+                                "explanation": "Check for division by zero and return None. Otherwise return Some(a / b).",
+                                "code": "'/' => if b.abs() < f64::EPSILON { None } else { Some(a / b) },"
+                            },
+                            {
+                                "title": "Format results",
+                                "explanation": "For whole numbers, cast to i32 for clean output. For fractional results, use {:.4} for 4 decimal places.",
+                                "code": "if r.fract() == 0.0 { println!(\"...\", r as i32); }"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "10+3=13.0000, 10-3=7.0000, 10*3=30.0000, 10/3=3.3333, 10/0=error."
+                            }
+                        ]
+                    }
                 }
             ]
         },
