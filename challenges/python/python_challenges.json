@@ -683,6 +683,411 @@
               }
             ]
           }
+        },
+        {
+          "id": "py-beginner-6",
+          "language": "python",
+          "level": "beginner",
+          "title": "Char Counter",
+          "description": "Write `count_char(text, ch)` that returns how many times character `ch` appears in `text`. Example: `(\"banana\", \"a\") -> 3`.",
+          "starterCode": "def count_char(text, ch):\n    # Your code here\n    pass\n",
+          "hint": "Strings have a built-in .count() method.",
+          "solution": {
+            "code": "def count_char(text, ch):\n    return text.count(ch)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to count how many times a specific character appears in a given string and return that integer count."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use the str.count() method which returns the number of non-overlapping occurrences of a substring.",
+                "code": "def count_char(text, ch):\n    return text.count(ch)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call count_char(\"banana\", \"a\") and confirm it returns 3, since 'a' appears at indices 1, 3, and 5."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-beginner-7",
+          "language": "python",
+          "level": "beginner",
+          "title": "Dupe Dropper",
+          "description": "Write `remove_dupes(items)` that returns a new list with duplicates removed while preserving original order. Example: `[3, 1, 3, 2, 1] -> [3, 1, 2]`.",
+          "starterCode": "def remove_dupes(items):\n    # Your code here\n    pass\n",
+          "hint": "Use a set to track seen items and a list to collect unique ones.",
+          "solution": {
+            "code": "def remove_dupes(items):\n    seen = set()\n    result = []\n    for x in items:\n        if x not in seen:\n            seen.add(x)\n            result.append(x)\n    return result",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to remove duplicate values from a list but keep the first occurrence of each element in the original order."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Iterate through the list, track seen items in a set for O(1) lookup, and append only unseen items to the result list.",
+                "code": "def remove_dupes(items):\n    seen = set()\n    result = []\n    for x in items:\n        if x not in seen:\n            seen.add(x)\n            result.append(x)\n    return result"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call remove_dupes([3, 1, 3, 2, 1]) and confirm it returns [3, 1, 2] with order preserved."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-beginner-8",
+          "language": "python",
+          "level": "beginner",
+          "title": "Title Maker",
+          "description": "Write `capitalize_words(text)` that returns the string with the first letter of each word capitalized. Example: `\"hello world\" -> \"Hello World\"`.",
+          "starterCode": "def capitalize_words(text):\n    # Your code here\n    pass\n",
+          "hint": "Python strings have a .title() method that capitalizes each word.",
+          "solution": {
+            "code": "def capitalize_words(text):\n    return text.title()",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to capitalize the first letter of every word in a sentence and return the result."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use the str.title() method which capitalizes the first character of each word.",
+                "code": "def capitalize_words(text):\n    return text.title()"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call capitalize_words(\"hello world\") and confirm it returns \"Hello World\"."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-beginner-9",
+          "language": "python",
+          "level": "beginner",
+          "title": "Palindrome Check",
+          "description": "Write `is_palindrome(text)` that returns True if the string reads the same forward and backward (case-insensitive). Example: `\"Racecar\" -> True`, `\"hello\" -> False`.",
+          "starterCode": "def is_palindrome(text):\n    # Your code here\n    pass\n",
+          "hint": "Lowercase the string first, then compare it to its reverse.",
+          "solution": {
+            "code": "def is_palindrome(text):\n    t = text.lower()\n    return t == t[::-1]",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to check whether a string is a palindrome, ignoring letter case, and return a boolean."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Convert the string to lowercase, then compare it with its reverse using slicing [::-1].",
+                "code": "def is_palindrome(text):\n    t = text.lower()\n    return t == t[::-1]"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call is_palindrome(\"Racecar\") to confirm True, and is_palindrome(\"hello\") to confirm False."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-beginner-10",
+          "language": "python",
+          "level": "beginner",
+          "title": "Flat Pack",
+          "description": "Write `flatten_pairs(pairs)` that takes a list of two-element lists and returns a single flat list. Example: `[[1, 2], [3, 4], [5, 6]] -> [1, 2, 3, 4, 5, 6]`.",
+          "starterCode": "def flatten_pairs(pairs):\n    # Your code here\n    pass\n",
+          "hint": "A nested list comprehension can iterate over each pair and each element within.",
+          "solution": {
+            "code": "def flatten_pairs(pairs):\n    return [x for pair in pairs for x in pair]",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to take a list of sublists (pairs) and combine all elements into a single flat list."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use a nested list comprehension: the outer loop iterates over pairs and the inner loop over elements in each pair.",
+                "code": "def flatten_pairs(pairs):\n    return [x for pair in pairs for x in pair]"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call flatten_pairs([[1, 2], [3, 4], [5, 6]]) and confirm it returns [1, 2, 3, 4, 5, 6]."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-beginner-11",
+          "language": "python",
+          "level": "beginner",
+          "title": "Silver Medal",
+          "description": "Write `second_largest(numbers)` that returns the second largest value in a list of at least two distinct integers. Example: `[10, 5, 8, 12] -> 10`.",
+          "starterCode": "def second_largest(numbers):\n    # Your code here\n    pass\n",
+          "hint": "Sort the unique values and pick the second from the end.",
+          "solution": {
+            "code": "def second_largest(numbers):\n    unique = sorted(set(numbers))\n    return unique[-2]",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to find the second largest distinct value in a list and return it."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Convert to a set to remove duplicates, sort in ascending order, and return the second-to-last element.",
+                "code": "def second_largest(numbers):\n    unique = sorted(set(numbers))\n    return unique[-2]"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call second_largest([10, 5, 8, 12]) and confirm it returns 10, since 12 is the largest."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-beginner-12",
+          "language": "python",
+          "level": "beginner",
+          "title": "Word Tally",
+          "description": "Write `count_words(sentence)` that returns the number of words in a sentence (words are separated by spaces). Example: `\"Python is fun\" -> 3`.",
+          "starterCode": "def count_words(sentence):\n    # Your code here\n    pass\n",
+          "hint": "The str.split() method splits on whitespace and returns a list of words.",
+          "solution": {
+            "code": "def count_words(sentence):\n    return len(sentence.split())",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to count how many words are in a given sentence string and return that count as an integer."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use split() to break the sentence into a list of words, then return the length of that list.",
+                "code": "def count_words(sentence):\n    return len(sentence.split())"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call count_words(\"Python is fun\") and confirm it returns 3."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-beginner-13",
+          "language": "python",
+          "level": "beginner",
+          "title": "Zip Dict",
+          "description": "Write `make_dict(keys, values)` that returns a dictionary mapping each key to its corresponding value. Example: `([\"a\", \"b\"], [1, 2]) -> {\"a\": 1, \"b\": 2}`.",
+          "starterCode": "def make_dict(keys, values):\n    # Your code here\n    pass\n",
+          "hint": "The zip() function pairs elements, and dict() converts pairs to a dictionary.",
+          "solution": {
+            "code": "def make_dict(keys, values):\n    return dict(zip(keys, values))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to combine two lists into a dictionary where elements at the same index form key-value pairs."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use zip() to pair corresponding elements from keys and values, then wrap with dict() to create the dictionary.",
+                "code": "def make_dict(keys, values):\n    return dict(zip(keys, values))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call make_dict([\"a\", \"b\"], [1, 2]) and confirm it returns {\"a\": 1, \"b\": 2}."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-beginner-14",
+          "language": "python",
+          "level": "beginner",
+          "title": "Space Eraser",
+          "description": "Write `remove_spaces(text)` that returns the string with all whitespace characters removed. Example: `\" h e l l o \" -> \"hello\"`.",
+          "starterCode": "def remove_spaces(text):\n    # Your code here\n    pass\n",
+          "hint": "The str.replace() method can replace spaces, or try joining split() results.",
+          "solution": {
+            "code": "def remove_spaces(text):\n    return \"\".join(text.split())",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to strip every whitespace character from the input string and return the cleaned result."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use split() with no arguments to break on all whitespace, then join the pieces back together with an empty string.",
+                "code": "def remove_spaces(text):\n    return \"\".join(text.split())"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call remove_spaces(\" h e l l o \") and confirm it returns \"hello\"."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-beginner-15",
+          "language": "python",
+          "level": "beginner",
+          "title": "Digit Sum",
+          "description": "Write `sum_digits(n)` that returns the sum of all digits of a non-negative integer. Example: `1234 -> 10`.",
+          "starterCode": "def sum_digits(n):\n    # Your code here\n    pass\n",
+          "hint": "Convert the number to a string, then sum the int value of each character.",
+          "solution": {
+            "code": "def sum_digits(n):\n    return sum(int(d) for d in str(n))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to add together every individual digit of a non-negative integer and return the total."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Convert the integer to a string, iterate over each character, convert back to int, and sum them all.",
+                "code": "def sum_digits(n):\n    return sum(int(d) for d in str(n))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call sum_digits(1234) and confirm it returns 10 (1+2+3+4)."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-beginner-16",
+          "language": "python",
+          "level": "beginner",
+          "title": "Common Ground",
+          "description": "Write `common_elements(list_a, list_b)` that returns a sorted list of elements present in both lists. Example: `([1, 2, 3], [2, 3, 4]) -> [2, 3]`.",
+          "starterCode": "def common_elements(list_a, list_b):\n    # Your code here\n    pass\n",
+          "hint": "Set intersection finds common elements; sort the result before returning.",
+          "solution": {
+            "code": "def common_elements(list_a, list_b):\n    return sorted(set(list_a) & set(list_b))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to find elements that appear in both input lists and return them as a sorted list."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Convert both lists to sets, use the & operator for intersection, then sort the result.",
+                "code": "def common_elements(list_a, list_b):\n    return sorted(set(list_a) & set(list_b))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call common_elements([1, 2, 3], [2, 3, 4]) and confirm it returns [2, 3]."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-beginner-17",
+          "language": "python",
+          "level": "beginner",
+          "title": "Length Sort",
+          "description": "Write `sort_by_length(words)` that returns a new list of strings sorted by length (shortest first). Example: `[\"banana\", \"kiwi\", \"fig\"] -> [\"fig\", \"kiwi\", \"banana\"]`.",
+          "starterCode": "def sort_by_length(words):\n    # Your code here\n    pass\n",
+          "hint": "The sorted() function accepts a key parameter \u2014 try key=len.",
+          "solution": {
+            "code": "def sort_by_length(words):\n    return sorted(words, key=len)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to sort a list of strings by their length in ascending order and return the new sorted list."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use sorted() with key=len so that strings are compared by their character count.",
+                "code": "def sort_by_length(words):\n    return sorted(words, key=len)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call sort_by_length([\"banana\", \"kiwi\", \"fig\"]) and confirm it returns [\"fig\", \"kiwi\", \"banana\"]."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-beginner-18",
+          "language": "python",
+          "level": "beginner",
+          "title": "All Positive",
+          "description": "Write `all_positive(numbers)` that returns True if every element in the list is greater than zero, otherwise False. Example: `[3, 7, 1] -> True`, `[3, -1, 2] -> False`.",
+          "starterCode": "def all_positive(numbers):\n    # Your code here\n    pass\n",
+          "hint": "The all() built-in checks if every element in an iterable is truthy.",
+          "solution": {
+            "code": "def all_positive(numbers):\n    return all(n > 0 for n in numbers)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to check whether every number in the list is strictly greater than zero and return a boolean."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use all() with a generator expression that checks n > 0 for each element.",
+                "code": "def all_positive(numbers):\n    return all(n > 0 for n in numbers)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call all_positive([3, 7, 1]) to confirm True, and all_positive([3, -1, 2]) to confirm False."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-beginner-19",
+          "language": "python",
+          "level": "beginner",
+          "title": "Sorted Merge",
+          "description": "Write `merge_sorted(list_a, list_b)` that merges two already-sorted lists into one sorted list. Example: `([1, 3, 5], [2, 4, 6]) -> [1, 2, 3, 4, 5, 6]`.",
+          "starterCode": "def merge_sorted(list_a, list_b):\n    # Your code here\n    pass\n",
+          "hint": "Concatenate both lists and sort, or walk through both with two pointers.",
+          "solution": {
+            "code": "def merge_sorted(list_a, list_b):\n    return sorted(list_a + list_b)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to combine two pre-sorted lists into a single sorted list and return it."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Concatenate the two lists with + and use sorted() to produce a new sorted list.",
+                "code": "def merge_sorted(list_a, list_b):\n    return sorted(list_a + list_b)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call merge_sorted([1, 3, 5], [2, 4, 6]) and confirm it returns [1, 2, 3, 4, 5, 6]."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-beginner-20",
+          "language": "python",
+          "level": "beginner",
+          "title": "Upper Tally",
+          "description": "Write `count_upper(text)` that returns the number of uppercase letters in a string. Example: `\"Hello World\" -> 2`.",
+          "starterCode": "def count_upper(text):\n    # Your code here\n    pass\n",
+          "hint": "Use a generator expression with the .isupper() string method inside sum().",
+          "solution": {
+            "code": "def count_upper(text):\n    return sum(1 for c in text if c.isupper())",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to count how many characters in the string are uppercase letters and return that count."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use sum() with a generator that yields 1 for each character where .isupper() is True.",
+                "code": "def count_upper(text):\n    return sum(1 for c in text if c.isupper())"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call count_upper(\"Hello World\") and confirm it returns 2 (H and W)."
+              }
+            ]
+          }
         }
       ]
     },
