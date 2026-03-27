@@ -5953,6 +5953,2222 @@
                             }
                         ]
                     }
+                },
+                {
+                    "id": "sql-intermediate-21",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Running Total",
+                    "description": "Using `transactions(id, amount, created_at)`, return each transaction with a running total of `amount` ordered by `created_at`. Output columns: `id`, `amount`, `running_total`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use SUM() as a window function with ORDER BY created_at.",
+                    "solution": {
+                        "code": "SELECT id, amount, SUM(amount) OVER (ORDER BY created_at) AS running_total\nFROM transactions",
+                        "steps": [
+                            {
+                                "title": "Identify the window",
+                                "explanation": "A running total means each row sums all previous amounts. A window function with ORDER BY achieves this.",
+                                "code": "SUM(amount) OVER (ORDER BY created_at)"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select id, amount, and the running total expression from transactions.",
+                                "code": "SELECT id, amount, SUM(amount) OVER (ORDER BY created_at) AS running_total\nFROM transactions"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each row's running_total should equal the sum of all amounts up to and including that row when sorted by created_at."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-22",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Row Numbering",
+                    "description": "Using `products(id, name, price)`, return all products with a row number ordered by `price` descending. Output columns: `row_num`, `name`, `price`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use ROW_NUMBER() OVER (ORDER BY price DESC).",
+                    "solution": {
+                        "code": "SELECT ROW_NUMBER() OVER (ORDER BY price DESC) AS row_num, name, price\nFROM products",
+                        "steps": [
+                            {
+                                "title": "Choose the function",
+                                "explanation": "ROW_NUMBER() assigns a unique sequential integer to each row in a result set.",
+                                "code": "ROW_NUMBER() OVER (ORDER BY price DESC)"
+                            },
+                            {
+                                "title": "Write the full query",
+                                "explanation": "Select the row number, name, and price from products.",
+                                "code": "SELECT ROW_NUMBER() OVER (ORDER BY price DESC) AS row_num, name, price\nFROM products"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Row 1 should be the most expensive product, row 2 the next, and so on."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-23",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Dense Ranks",
+                    "description": "Using `scores(student_id, score)`, rank students by `score` descending without gaps. Output columns: `student_id`, `score`, `rank`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "DENSE_RANK() assigns ranks without skipping numbers for ties.",
+                    "solution": {
+                        "code": "SELECT student_id, score, DENSE_RANK() OVER (ORDER BY score DESC) AS rank\nFROM scores",
+                        "steps": [
+                            {
+                                "title": "Choose DENSE_RANK",
+                                "explanation": "Unlike RANK(), DENSE_RANK() does not leave gaps after ties.",
+                                "code": "DENSE_RANK() OVER (ORDER BY score DESC)"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select student_id, score, and the dense rank from scores.",
+                                "code": "SELECT student_id, score, DENSE_RANK() OVER (ORDER BY score DESC) AS rank\nFROM scores"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "If two students tie at rank 1, the next student should be rank 2, not 3."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-24",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Partition Rank",
+                    "description": "Using `sales(department, employee, revenue)`, rank employees within each department by `revenue` descending. Output: `department`, `employee`, `revenue`, `dept_rank`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use RANK() with PARTITION BY department.",
+                    "solution": {
+                        "code": "SELECT department, employee, revenue, RANK() OVER (PARTITION BY department ORDER BY revenue DESC) AS dept_rank\nFROM sales",
+                        "steps": [
+                            {
+                                "title": "Partition the data",
+                                "explanation": "PARTITION BY department restarts the ranking for each department.",
+                                "code": "RANK() OVER (PARTITION BY department ORDER BY revenue DESC)"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select all required columns with the rank expression.",
+                                "code": "SELECT department, employee, revenue, RANK() OVER (PARTITION BY department ORDER BY revenue DESC) AS dept_rank\nFROM sales"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each department should have its own ranking starting from 1."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-25",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Top Per Group",
+                    "description": "Using `sales(department, employee, revenue)`, return only the top earner per department. Output: `department`, `employee`, `revenue`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use a subquery with ROW_NUMBER() partitioned by department, then filter for row 1.",
+                    "solution": {
+                        "code": "SELECT department, employee, revenue\nFROM (\n  SELECT department, employee, revenue,\n    ROW_NUMBER() OVER (PARTITION BY department ORDER BY revenue DESC) AS rn\n  FROM sales\n) ranked\nWHERE rn = 1",
+                        "steps": [
+                            {
+                                "title": "Rank within groups",
+                                "explanation": "Use ROW_NUMBER() partitioned by department to number employees by revenue.",
+                                "code": "ROW_NUMBER() OVER (PARTITION BY department ORDER BY revenue DESC) AS rn"
+                            },
+                            {
+                                "title": "Filter top row",
+                                "explanation": "Wrap in a subquery and keep only rn = 1.",
+                                "code": "SELECT department, employee, revenue\nFROM (\n  SELECT department, employee, revenue,\n    ROW_NUMBER() OVER (PARTITION BY department ORDER BY revenue DESC) AS rn\n  FROM sales\n) ranked\nWHERE rn = 1"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each department should appear exactly once with its highest revenue employee."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-26",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Lag Behind",
+                    "description": "Using `stock_prices(trade_date, price)`, return each date with the previous day's price. Output: `trade_date`, `price`, `prev_price`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use LAG(price) OVER (ORDER BY trade_date).",
+                    "solution": {
+                        "code": "SELECT trade_date, price, LAG(price) OVER (ORDER BY trade_date) AS prev_price\nFROM stock_prices",
+                        "steps": [
+                            {
+                                "title": "Use LAG",
+                                "explanation": "LAG() accesses the value of a previous row without a self-join.",
+                                "code": "LAG(price) OVER (ORDER BY trade_date)"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select trade_date, price, and the lagged price.",
+                                "code": "SELECT trade_date, price, LAG(price) OVER (ORDER BY trade_date) AS prev_price\nFROM stock_prices"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "The first row should have NULL for prev_price. Subsequent rows show the prior day's price."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-27",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Lead Ahead",
+                    "description": "Using `stock_prices(trade_date, price)`, return each date with the next day's price. Output: `trade_date`, `price`, `next_price`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use LEAD(price) OVER (ORDER BY trade_date).",
+                    "solution": {
+                        "code": "SELECT trade_date, price, LEAD(price) OVER (ORDER BY trade_date) AS next_price\nFROM stock_prices",
+                        "steps": [
+                            {
+                                "title": "Use LEAD",
+                                "explanation": "LEAD() looks forward to the next row's value in the ordered set.",
+                                "code": "LEAD(price) OVER (ORDER BY trade_date)"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select trade_date, price, and the next price.",
+                                "code": "SELECT trade_date, price, LEAD(price) OVER (ORDER BY trade_date) AS next_price\nFROM stock_prices"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "The last row should have NULL for next_price. Other rows show the following day's price."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-28",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Price Change",
+                    "description": "Using `stock_prices(trade_date, price)`, return each date with the price difference from the previous day. Output: `trade_date`, `price`, `price_change`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Subtract LAG(price) from the current price.",
+                    "solution": {
+                        "code": "SELECT trade_date, price, price - LAG(price) OVER (ORDER BY trade_date) AS price_change\nFROM stock_prices",
+                        "steps": [
+                            {
+                                "title": "Calculate the difference",
+                                "explanation": "Subtract the previous price from the current price using LAG().",
+                                "code": "price - LAG(price) OVER (ORDER BY trade_date) AS price_change"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select trade_date, price, and the computed price_change.",
+                                "code": "SELECT trade_date, price, price - LAG(price) OVER (ORDER BY trade_date) AS price_change\nFROM stock_prices"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "First row shows NULL change. Positive values mean price went up, negative means down."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-29",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Cumulative Count",
+                    "description": "Using `events(event_date, event_type)`, return each row with a cumulative count of events by `event_type`. Output: `event_date`, `event_type`, `cum_count`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use COUNT(*) OVER (PARTITION BY event_type ORDER BY event_date).",
+                    "solution": {
+                        "code": "SELECT event_date, event_type, COUNT(*) OVER (PARTITION BY event_type ORDER BY event_date) AS cum_count\nFROM events",
+                        "steps": [
+                            {
+                                "title": "Window by type",
+                                "explanation": "PARTITION BY event_type creates separate running counts per type.",
+                                "code": "COUNT(*) OVER (PARTITION BY event_type ORDER BY event_date)"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select all columns plus the cumulative count.",
+                                "code": "SELECT event_date, event_type, COUNT(*) OVER (PARTITION BY event_type ORDER BY event_date) AS cum_count\nFROM events"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each event_type should show an increasing count as dates progress."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-30",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Moving Average",
+                    "description": "Using `daily_sales(sale_date, amount)`, compute a 3-day moving average of `amount`. Output: `sale_date`, `amount`, `moving_avg`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use AVG() with ROWS BETWEEN 2 PRECEDING AND CURRENT ROW.",
+                    "solution": {
+                        "code": "SELECT sale_date, amount, AVG(amount) OVER (ORDER BY sale_date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS moving_avg\nFROM daily_sales",
+                        "steps": [
+                            {
+                                "title": "Define the window frame",
+                                "explanation": "ROWS BETWEEN 2 PRECEDING AND CURRENT ROW creates a 3-row sliding window.",
+                                "code": "AVG(amount) OVER (ORDER BY sale_date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW)"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select sale_date, amount, and the moving average.",
+                                "code": "SELECT sale_date, amount, AVG(amount) OVER (ORDER BY sale_date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS moving_avg\nFROM daily_sales"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each row's moving_avg should be the average of the current and up to two prior rows."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-31",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Union Merge",
+                    "description": "Using `employees_ny(name)` and `employees_la(name)`, return a combined unique list of all employee names. Output: `name`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "UNION removes duplicates automatically.",
+                    "solution": {
+                        "code": "SELECT name FROM employees_ny\nUNION\nSELECT name FROM employees_la",
+                        "steps": [
+                            {
+                                "title": "Combine with UNION",
+                                "explanation": "UNION merges two result sets and removes duplicates.",
+                                "code": "SELECT name FROM employees_ny\nUNION\nSELECT name FROM employees_la"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Names appearing in both offices should appear only once in the result."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-32",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Union All",
+                    "description": "Using `employees_ny(name)` and `employees_la(name)`, return all employee names including duplicates. Output: `name`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "UNION ALL keeps all rows including duplicates.",
+                    "solution": {
+                        "code": "SELECT name FROM employees_ny\nUNION ALL\nSELECT name FROM employees_la",
+                        "steps": [
+                            {
+                                "title": "Combine with UNION ALL",
+                                "explanation": "Unlike UNION, UNION ALL preserves duplicate rows.",
+                                "code": "SELECT name FROM employees_ny\nUNION ALL\nSELECT name FROM employees_la"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "The total row count should equal the sum of both tables' row counts."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-33",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Intersect Check",
+                    "description": "Using `employees_ny(name)` and `employees_la(name)`, return names that exist in both offices. Output: `name`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "INTERSECT returns only rows common to both queries.",
+                    "solution": {
+                        "code": "SELECT name FROM employees_ny\nINTERSECT\nSELECT name FROM employees_la",
+                        "steps": [
+                            {
+                                "title": "Find common rows",
+                                "explanation": "INTERSECT keeps only rows present in both result sets.",
+                                "code": "SELECT name FROM employees_ny\nINTERSECT\nSELECT name FROM employees_la"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Only names appearing in both tables should be returned."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-34",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Set Difference",
+                    "description": "Using `employees_ny(name)` and `employees_la(name)`, return names only in NY and not in LA. Output: `name`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "EXCEPT removes rows from the first set that appear in the second.",
+                    "solution": {
+                        "code": "SELECT name FROM employees_ny\nEXCEPT\nSELECT name FROM employees_la",
+                        "steps": [
+                            {
+                                "title": "Subtract sets",
+                                "explanation": "EXCEPT returns rows in the first query that are not in the second.",
+                                "code": "SELECT name FROM employees_ny\nEXCEPT\nSELECT name FROM employees_la"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Returned names should exist in employees_ny but not in employees_la."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-35",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Correlated Sub",
+                    "description": "Using `employees(id, name, salary, department_id)`, return employees earning more than their department average. Output: `name`, `salary`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use a correlated subquery that computes AVG(salary) for the same department.",
+                    "solution": {
+                        "code": "SELECT name, salary\nFROM employees e\nWHERE salary > (\n  SELECT AVG(salary) FROM employees WHERE department_id = e.department_id\n)",
+                        "steps": [
+                            {
+                                "title": "Understand correlated subqueries",
+                                "explanation": "The inner query references the outer query's row, re-executing for each employee.",
+                                "code": "SELECT AVG(salary) FROM employees WHERE department_id = e.department_id"
+                            },
+                            {
+                                "title": "Build the full query",
+                                "explanation": "Filter employees whose salary exceeds their department average.",
+                                "code": "SELECT name, salary\nFROM employees e\nWHERE salary > (\n  SELECT AVG(salary) FROM employees WHERE department_id = e.department_id\n)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each returned employee's salary should be above their department's average."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-36",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Exists Filter",
+                    "description": "Using `customers(id, name)` and `orders(customer_id)`, return customers who have at least one order. Output: `id`, `name`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use EXISTS with a subquery matching customer_id.",
+                    "solution": {
+                        "code": "SELECT id, name\nFROM customers c\nWHERE EXISTS (\n  SELECT 1 FROM orders WHERE customer_id = c.id\n)",
+                        "steps": [
+                            {
+                                "title": "Use EXISTS",
+                                "explanation": "EXISTS returns true if the subquery produces at least one row.",
+                                "code": "EXISTS (\n  SELECT 1 FROM orders WHERE customer_id = c.id\n)"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select customers where a matching order exists.",
+                                "code": "SELECT id, name\nFROM customers c\nWHERE EXISTS (\n  SELECT 1 FROM orders WHERE customer_id = c.id\n)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Only customers with at least one order should appear."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-37",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Not Exists",
+                    "description": "Using `customers(id, name)` and `orders(customer_id)`, return customers with zero orders using NOT EXISTS. Output: `id`, `name`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "NOT EXISTS is true when the subquery returns no rows.",
+                    "solution": {
+                        "code": "SELECT id, name\nFROM customers c\nWHERE NOT EXISTS (\n  SELECT 1 FROM orders WHERE customer_id = c.id\n)",
+                        "steps": [
+                            {
+                                "title": "Use NOT EXISTS",
+                                "explanation": "NOT EXISTS filters rows where the correlated subquery finds no matches.",
+                                "code": "NOT EXISTS (\n  SELECT 1 FROM orders WHERE customer_id = c.id\n)"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select customers with no matching orders.",
+                                "code": "SELECT id, name\nFROM customers c\nWHERE NOT EXISTS (\n  SELECT 1 FROM orders WHERE customer_id = c.id\n)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Returned customers should have no entries in the orders table."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-38",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Inline View",
+                    "description": "Using `orders(customer_id, amount)`, find the customer_id with the highest total spending. Output: `customer_id`, `total_spent`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use a subquery in FROM to group first, then ORDER BY and LIMIT.",
+                    "solution": {
+                        "code": "SELECT customer_id, total_spent\nFROM (\n  SELECT customer_id, SUM(amount) AS total_spent\n  FROM orders\n  GROUP BY customer_id\n) totals\nORDER BY total_spent DESC\nLIMIT 1",
+                        "steps": [
+                            {
+                                "title": "Create the inline view",
+                                "explanation": "Group orders by customer in a subquery to calculate totals.",
+                                "code": "SELECT customer_id, SUM(amount) AS total_spent\nFROM orders\nGROUP BY customer_id"
+                            },
+                            {
+                                "title": "Select the top spender",
+                                "explanation": "Order by total_spent descending and limit to 1 row.",
+                                "code": "SELECT customer_id, total_spent\nFROM (\n  SELECT customer_id, SUM(amount) AS total_spent\n  FROM orders\n  GROUP BY customer_id\n) totals\nORDER BY total_spent DESC\nLIMIT 1"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "The result should be the single customer with the highest total amount."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-39",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "HAVING Filter",
+                    "description": "Using `orders(customer_id, amount)`, return customers who have placed more than 5 orders. Output: `customer_id`, `order_count`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use GROUP BY with HAVING COUNT(*) > 5.",
+                    "solution": {
+                        "code": "SELECT customer_id, COUNT(*) AS order_count\nFROM orders\nGROUP BY customer_id\nHAVING COUNT(*) > 5",
+                        "steps": [
+                            {
+                                "title": "Group and count",
+                                "explanation": "GROUP BY customer_id and COUNT(*) gives the number of orders per customer.",
+                                "code": "SELECT customer_id, COUNT(*) AS order_count\nFROM orders\nGROUP BY customer_id"
+                            },
+                            {
+                                "title": "Filter with HAVING",
+                                "explanation": "HAVING filters groups after aggregation, unlike WHERE.",
+                                "code": "SELECT customer_id, COUNT(*) AS order_count\nFROM orders\nGROUP BY customer_id\nHAVING COUNT(*) > 5"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All returned customers should have more than 5 orders."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-40",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Multi Aggregate",
+                    "description": "Using `products(category, price)`, return each category with its min, max, and average price. Output: `category`, `min_price`, `max_price`, `avg_price`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use MIN(), MAX(), and AVG() with GROUP BY category.",
+                    "solution": {
+                        "code": "SELECT category, MIN(price) AS min_price, MAX(price) AS max_price, AVG(price) AS avg_price\nFROM products\nGROUP BY category",
+                        "steps": [
+                            {
+                                "title": "Apply multiple aggregates",
+                                "explanation": "You can use several aggregate functions in the same SELECT.",
+                                "code": "MIN(price) AS min_price, MAX(price) AS max_price, AVG(price) AS avg_price"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Group by category and compute all three aggregates.",
+                                "code": "SELECT category, MIN(price) AS min_price, MAX(price) AS max_price, AVG(price) AS avg_price\nFROM products\nGROUP BY category"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each category should show its price range and average."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-41",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "COALESCE Fill",
+                    "description": "Using `employees(name, phone, email)`, return each employee's name and their first available contact: phone if not NULL, otherwise email. Output: `name`, `contact`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "COALESCE returns the first non-NULL argument.",
+                    "solution": {
+                        "code": "SELECT name, COALESCE(phone, email) AS contact\nFROM employees",
+                        "steps": [
+                            {
+                                "title": "Understand COALESCE",
+                                "explanation": "COALESCE(a, b) returns a if a is not NULL, otherwise returns b.",
+                                "code": "COALESCE(phone, email)"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select name and the coalesced contact.",
+                                "code": "SELECT name, COALESCE(phone, email) AS contact\nFROM employees"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Employees with a phone show phone. Those with NULL phone show email."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-42",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "NULLIF Guard",
+                    "description": "Using `metrics(name, value, baseline)`, return each metric with a ratio of `value / baseline`, using NULLIF to avoid division by zero. Output: `name`, `ratio`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "NULLIF(baseline, 0) returns NULL when baseline is 0, preventing errors.",
+                    "solution": {
+                        "code": "SELECT name, value * 1.0 / NULLIF(baseline, 0) AS ratio\nFROM metrics",
+                        "steps": [
+                            {
+                                "title": "Prevent division by zero",
+                                "explanation": "NULLIF(baseline, 0) returns NULL if baseline is 0, making the division yield NULL instead of an error.",
+                                "code": "NULLIF(baseline, 0)"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Divide value by the guarded baseline for each metric.",
+                                "code": "SELECT name, value * 1.0 / NULLIF(baseline, 0) AS ratio\nFROM metrics"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Rows with baseline = 0 should show NULL for ratio, others show the correct division."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-43",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "CASE Label",
+                    "description": "Using `employees(name, salary)`, classify each employee as 'High' (salary >= 80000), 'Mid' (>= 50000), or 'Low'. Output: `name`, `salary`, `band`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use CASE WHEN with multiple conditions.",
+                    "solution": {
+                        "code": "SELECT name, salary,\n  CASE\n    WHEN salary >= 80000 THEN 'High'\n    WHEN salary >= 50000 THEN 'Mid'\n    ELSE 'Low'\n  END AS band\nFROM employees",
+                        "steps": [
+                            {
+                                "title": "Define CASE expression",
+                                "explanation": "CASE evaluates conditions in order and returns the first match.",
+                                "code": "CASE\n  WHEN salary >= 80000 THEN 'High'\n  WHEN salary >= 50000 THEN 'Mid'\n  ELSE 'Low'\nEND"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select name, salary, and the CASE expression as band.",
+                                "code": "SELECT name, salary,\n  CASE\n    WHEN salary >= 80000 THEN 'High'\n    WHEN salary >= 50000 THEN 'Mid'\n    ELSE 'Low'\n  END AS band\nFROM employees"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Employees with salary 80000+ show High, 50000-79999 show Mid, below 50000 show Low."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-44",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Conditional Count",
+                    "description": "Using `orders(status)`, count orders per status. Output: `status`, `order_count`. Order by `order_count` descending.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "GROUP BY status and COUNT(*), then ORDER BY the count.",
+                    "solution": {
+                        "code": "SELECT status, COUNT(*) AS order_count\nFROM orders\nGROUP BY status\nORDER BY order_count DESC",
+                        "steps": [
+                            {
+                                "title": "Group by status",
+                                "explanation": "GROUP BY status groups all orders by their status value.",
+                                "code": "SELECT status, COUNT(*) AS order_count\nFROM orders\nGROUP BY status"
+                            },
+                            {
+                                "title": "Sort results",
+                                "explanation": "ORDER BY order_count DESC shows the most common status first.",
+                                "code": "SELECT status, COUNT(*) AS order_count\nFROM orders\nGROUP BY status\nORDER BY order_count DESC"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "The status with the most orders should appear first."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-45",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Pivot Count",
+                    "description": "Using `orders(customer_id, status)`, count how many 'pending' and 'shipped' orders each customer has. Output: `customer_id`, `pending_count`, `shipped_count`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use SUM(CASE WHEN status = '...' THEN 1 ELSE 0 END) for each status.",
+                    "solution": {
+                        "code": "SELECT customer_id,\n  SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0 END) AS pending_count,\n  SUM(CASE WHEN status = 'shipped' THEN 1 ELSE 0 END) AS shipped_count\nFROM orders\nGROUP BY customer_id",
+                        "steps": [
+                            {
+                                "title": "Use conditional aggregation",
+                                "explanation": "CASE inside SUM counts only rows matching the condition.",
+                                "code": "SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0 END) AS pending_count"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Apply this pattern for both statuses grouped by customer.",
+                                "code": "SELECT customer_id,\n  SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0 END) AS pending_count,\n  SUM(CASE WHEN status = 'shipped' THEN 1 ELSE 0 END) AS shipped_count\nFROM orders\nGROUP BY customer_id"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each row shows one customer with their counts for pending and shipped orders."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-46",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "String Concat",
+                    "description": "Using `employees(first_name, last_name)`, return each employee's full name. Output: `full_name`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use the || operator or CONCAT() to join strings.",
+                    "solution": {
+                        "code": "SELECT first_name || ' ' || last_name AS full_name\nFROM employees",
+                        "steps": [
+                            {
+                                "title": "Concatenate strings",
+                                "explanation": "The || operator joins strings together with a space in between.",
+                                "code": "first_name || ' ' || last_name"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select the concatenated full name from employees.",
+                                "code": "SELECT first_name || ' ' || last_name AS full_name\nFROM employees"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each row should contain a single full_name like 'John Doe'."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-47",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Upper Lower",
+                    "description": "Using `products(name)`, return each product name in uppercase and lowercase. Output: `upper_name`, `lower_name`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use UPPER() and LOWER() functions.",
+                    "solution": {
+                        "code": "SELECT UPPER(name) AS upper_name, LOWER(name) AS lower_name\nFROM products",
+                        "steps": [
+                            {
+                                "title": "Apply string functions",
+                                "explanation": "UPPER() converts to uppercase, LOWER() converts to lowercase.",
+                                "code": "UPPER(name) AS upper_name, LOWER(name) AS lower_name"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select both transformed versions of name.",
+                                "code": "SELECT UPPER(name) AS upper_name, LOWER(name) AS lower_name\nFROM products"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each row should show the name in all caps and all lowercase."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-48",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Length Check",
+                    "description": "Using `products(name)`, return products whose name is longer than 20 characters. Output: `name`, `name_length`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use LENGTH() or LEN() to measure string length.",
+                    "solution": {
+                        "code": "SELECT name, LENGTH(name) AS name_length\nFROM products\nWHERE LENGTH(name) > 20",
+                        "steps": [
+                            {
+                                "title": "Use LENGTH",
+                                "explanation": "LENGTH(name) returns the number of characters in the string.",
+                                "code": "LENGTH(name) AS name_length"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Filter products by name length and return both columns.",
+                                "code": "SELECT name, LENGTH(name) AS name_length\nFROM products\nWHERE LENGTH(name) > 20"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All returned names should have more than 20 characters."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-49",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Trim Spaces",
+                    "description": "Using `inputs(raw_text)`, return cleaned text with leading and trailing spaces removed. Output: `cleaned`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use TRIM() to remove surrounding whitespace.",
+                    "solution": {
+                        "code": "SELECT TRIM(raw_text) AS cleaned\nFROM inputs",
+                        "steps": [
+                            {
+                                "title": "Apply TRIM",
+                                "explanation": "TRIM() removes leading and trailing whitespace from a string.",
+                                "code": "TRIM(raw_text) AS cleaned"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select the trimmed text from inputs.",
+                                "code": "SELECT TRIM(raw_text) AS cleaned\nFROM inputs"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Output strings should have no leading or trailing spaces."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-50",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Replace Text",
+                    "description": "Using `messages(body)`, replace all occurrences of 'error' with 'warning' in the body. Output: `updated_body`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use REPLACE(body, 'error', 'warning').",
+                    "solution": {
+                        "code": "SELECT REPLACE(body, 'error', 'warning') AS updated_body\nFROM messages",
+                        "steps": [
+                            {
+                                "title": "Use REPLACE",
+                                "explanation": "REPLACE(string, from, to) substitutes all occurrences of a substring.",
+                                "code": "REPLACE(body, 'error', 'warning')"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select the replaced body from messages.",
+                                "code": "SELECT REPLACE(body, 'error', 'warning') AS updated_body\nFROM messages"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "No 'error' substring should remain in the output."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-51",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Date Diff",
+                    "description": "Using `projects(name, start_date, end_date)`, return each project with its duration in days. Output: `name`, `duration_days`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Subtract start_date from end_date or use DATEDIFF/JULIANDAY depending on your database.",
+                    "solution": {
+                        "code": "SELECT name, CAST(JULIANDAY(end_date) - JULIANDAY(start_date) AS INTEGER) AS duration_days\nFROM projects",
+                        "steps": [
+                            {
+                                "title": "Calculate date difference",
+                                "explanation": "JULIANDAY converts dates to a numeric value so subtraction gives the day count.",
+                                "code": "JULIANDAY(end_date) - JULIANDAY(start_date)"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Cast to integer and select both columns.",
+                                "code": "SELECT name, CAST(JULIANDAY(end_date) - JULIANDAY(start_date) AS INTEGER) AS duration_days\nFROM projects"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each project should show the correct number of days between start and end."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-52",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Extract Year",
+                    "description": "Using `orders(order_date, amount)`, return total amount per year. Output: `order_year`, `total_amount`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use STRFTIME('%Y', order_date) to extract the year.",
+                    "solution": {
+                        "code": "SELECT STRFTIME('%Y', order_date) AS order_year, SUM(amount) AS total_amount\nFROM orders\nGROUP BY order_year",
+                        "steps": [
+                            {
+                                "title": "Extract the year",
+                                "explanation": "STRFTIME('%Y', date) extracts the four-digit year from a date.",
+                                "code": "STRFTIME('%Y', order_date) AS order_year"
+                            },
+                            {
+                                "title": "Aggregate by year",
+                                "explanation": "Group by the extracted year and sum the amounts.",
+                                "code": "SELECT STRFTIME('%Y', order_date) AS order_year, SUM(amount) AS total_amount\nFROM orders\nGROUP BY order_year"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each year should show the total amount of all orders placed that year."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-53",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Month Group",
+                    "description": "Using `orders(order_date, amount)`, return total amount per month (YYYY-MM format). Output: `month`, `total_amount`. Order by month.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use STRFTIME('%Y-%m', order_date) for month grouping.",
+                    "solution": {
+                        "code": "SELECT STRFTIME('%Y-%m', order_date) AS month, SUM(amount) AS total_amount\nFROM orders\nGROUP BY month\nORDER BY month",
+                        "steps": [
+                            {
+                                "title": "Format month",
+                                "explanation": "STRFTIME('%Y-%m', date) gives a YYYY-MM string suitable for grouping.",
+                                "code": "STRFTIME('%Y-%m', order_date) AS month"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Group by month, sum amounts, and order chronologically.",
+                                "code": "SELECT STRFTIME('%Y-%m', order_date) AS month, SUM(amount) AS total_amount\nFROM orders\nGROUP BY month\nORDER BY month"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Results should be in chronological month order with correct totals."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-54",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Weekday Name",
+                    "description": "Using `events(event_date, title)`, return each event with its day of week (0=Sunday to 6=Saturday). Output: `title`, `event_date`, `day_of_week`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use STRFTIME('%w', event_date) for the day of week number.",
+                    "solution": {
+                        "code": "SELECT title, event_date, STRFTIME('%w', event_date) AS day_of_week\nFROM events",
+                        "steps": [
+                            {
+                                "title": "Extract day of week",
+                                "explanation": "STRFTIME('%w', date) returns 0 for Sunday through 6 for Saturday.",
+                                "code": "STRFTIME('%w', event_date) AS day_of_week"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select title, event_date, and the day of week.",
+                                "code": "SELECT title, event_date, STRFTIME('%w', event_date) AS day_of_week\nFROM events"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each row should show a number 0-6 representing the day of the week."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-55",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Date Range",
+                    "description": "Using `orders(order_date, amount)`, return orders placed in the first quarter of 2024 (January to March). Output: `order_date`, `amount`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use BETWEEN for date range filtering.",
+                    "solution": {
+                        "code": "SELECT order_date, amount\nFROM orders\nWHERE order_date BETWEEN '2024-01-01' AND '2024-03-31'",
+                        "steps": [
+                            {
+                                "title": "Define date boundaries",
+                                "explanation": "BETWEEN '2024-01-01' AND '2024-03-31' includes all dates in Q1 2024.",
+                                "code": "WHERE order_date BETWEEN '2024-01-01' AND '2024-03-31'"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select order_date and amount within the range.",
+                                "code": "SELECT order_date, amount\nFROM orders\nWHERE order_date BETWEEN '2024-01-01' AND '2024-03-31'"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All returned dates should fall within January to March 2024."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-56",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Self Join",
+                    "description": "Using `employees(id, name, manager_id)`, return each employee with their manager's name. Output: `employee_name`, `manager_name`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Join the employees table to itself on manager_id = id.",
+                    "solution": {
+                        "code": "SELECT e.name AS employee_name, m.name AS manager_name\nFROM employees e\nJOIN employees m ON e.manager_id = m.id",
+                        "steps": [
+                            {
+                                "title": "Self join concept",
+                                "explanation": "A self join joins a table to itself using different aliases.",
+                                "code": "FROM employees e\nJOIN employees m ON e.manager_id = m.id"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select employee and manager names using the aliases.",
+                                "code": "SELECT e.name AS employee_name, m.name AS manager_name\nFROM employees e\nJOIN employees m ON e.manager_id = m.id"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each row should pair an employee with their direct manager."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-57",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Cross Join",
+                    "description": "Using `colors(color)` and `sizes(size)`, generate all possible color-size combinations. Output: `color`, `size`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "CROSS JOIN produces the Cartesian product of two tables.",
+                    "solution": {
+                        "code": "SELECT c.color, s.size\nFROM colors c\nCROSS JOIN sizes s",
+                        "steps": [
+                            {
+                                "title": "Understand CROSS JOIN",
+                                "explanation": "CROSS JOIN pairs every row from the first table with every row from the second.",
+                                "code": "FROM colors c\nCROSS JOIN sizes s"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select color and size from the cross join.",
+                                "code": "SELECT c.color, s.size\nFROM colors c\nCROSS JOIN sizes s"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Row count should equal (number of colors) \u00d7 (number of sizes)."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-58",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Full Outer",
+                    "description": "Using `students(id, name)` and `enrollments(student_id, course)`, return all students and all enrollments, including unmatched rows. Output: `name`, `course`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use FULL OUTER JOIN to keep unmatched rows from both sides.",
+                    "solution": {
+                        "code": "SELECT s.name, e.course\nFROM students s\nFULL OUTER JOIN enrollments e ON s.id = e.student_id",
+                        "steps": [
+                            {
+                                "title": "Understand FULL OUTER JOIN",
+                                "explanation": "It returns all rows from both tables, filling NULL where there is no match.",
+                                "code": "FULL OUTER JOIN enrollments e ON s.id = e.student_id"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select name and course from the full outer join.",
+                                "code": "SELECT s.name, e.course\nFROM students s\nFULL OUTER JOIN enrollments e ON s.id = e.student_id"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Students without courses show NULL course. Courses without students show NULL name."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-59",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Multi Table Join",
+                    "description": "Using `orders(id, customer_id)`, `customers(id, name)`, and `products(id, order_id, product_name)`, return customer name and product name for each order. Output: `name`, `product_name`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Chain two JOINs: orders to customers, then orders to products.",
+                    "solution": {
+                        "code": "SELECT c.name, p.product_name\nFROM orders o\nJOIN customers c ON o.customer_id = c.id\nJOIN products p ON o.id = p.order_id",
+                        "steps": [
+                            {
+                                "title": "Chain joins",
+                                "explanation": "Join orders to customers first, then join the result to products.",
+                                "code": "FROM orders o\nJOIN customers c ON o.customer_id = c.id\nJOIN products p ON o.id = p.order_id"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select the customer name and product name.",
+                                "code": "SELECT c.name, p.product_name\nFROM orders o\nJOIN customers c ON o.customer_id = c.id\nJOIN products p ON o.id = p.order_id"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each row should pair a customer with a product they ordered."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-60",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "IN Subquery",
+                    "description": "Using `employees(id, name, department_id)` and `departments(id, name)` where department name is 'Engineering', return employees in that department. Output: `name`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use WHERE department_id IN (SELECT id FROM departments WHERE ...).",
+                    "solution": {
+                        "code": "SELECT name\nFROM employees\nWHERE department_id IN (\n  SELECT id FROM departments WHERE name = 'Engineering'\n)",
+                        "steps": [
+                            {
+                                "title": "Create subquery",
+                                "explanation": "The subquery finds the department id for Engineering.",
+                                "code": "SELECT id FROM departments WHERE name = 'Engineering'"
+                            },
+                            {
+                                "title": "Use IN filter",
+                                "explanation": "Filter employees whose department_id is in the subquery result.",
+                                "code": "SELECT name\nFROM employees\nWHERE department_id IN (\n  SELECT id FROM departments WHERE name = 'Engineering'\n)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Only employees from the Engineering department should be returned."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-61",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Scalar Sub",
+                    "description": "Using `employees(name, salary)`, return all employees and how much their salary differs from the overall average. Output: `name`, `salary`, `diff_from_avg`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Subtract a scalar subquery of AVG(salary) from each employee's salary.",
+                    "solution": {
+                        "code": "SELECT name, salary, salary - (SELECT AVG(salary) FROM employees) AS diff_from_avg\nFROM employees",
+                        "steps": [
+                            {
+                                "title": "Compute average",
+                                "explanation": "A scalar subquery returns one value: the overall average salary.",
+                                "code": "(SELECT AVG(salary) FROM employees)"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Subtract the average from each employee's salary.",
+                                "code": "SELECT name, salary, salary - (SELECT AVG(salary) FROM employees) AS diff_from_avg\nFROM employees"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Positive diff means above average, negative means below."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-62",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Group Concat",
+                    "description": "Using `tags(article_id, tag)`, return each article_id with all its tags concatenated into one string. Output: `article_id`, `all_tags`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use GROUP_CONCAT(tag) grouped by article_id.",
+                    "solution": {
+                        "code": "SELECT article_id, GROUP_CONCAT(tag, ', ') AS all_tags\nFROM tags\nGROUP BY article_id",
+                        "steps": [
+                            {
+                                "title": "Use GROUP_CONCAT",
+                                "explanation": "GROUP_CONCAT joins values from multiple rows into a single string.",
+                                "code": "GROUP_CONCAT(tag, ', ') AS all_tags"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Group by article_id and concatenate all tags.",
+                                "code": "SELECT article_id, GROUP_CONCAT(tag, ', ') AS all_tags\nFROM tags\nGROUP BY article_id"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each article should show a comma-separated list of its tags."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-63",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Distinct Count",
+                    "description": "Using `orders(customer_id, product_id)`, return the number of unique products each customer ordered. Output: `customer_id`, `unique_products`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use COUNT(DISTINCT product_id).",
+                    "solution": {
+                        "code": "SELECT customer_id, COUNT(DISTINCT product_id) AS unique_products\nFROM orders\nGROUP BY customer_id",
+                        "steps": [
+                            {
+                                "title": "Count unique values",
+                                "explanation": "COUNT(DISTINCT column) counts only unique non-NULL values.",
+                                "code": "COUNT(DISTINCT product_id) AS unique_products"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Group by customer and count distinct products.",
+                                "code": "SELECT customer_id, COUNT(DISTINCT product_id) AS unique_products\nFROM orders\nGROUP BY customer_id"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "A customer who ordered the same product twice should show unique_products = 1."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-64",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Percent Rank",
+                    "description": "Using `employees(name, salary)`, return each employee with their percent rank by salary. Output: `name`, `salary`, `pct_rank`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use PERCENT_RANK() OVER (ORDER BY salary).",
+                    "solution": {
+                        "code": "SELECT name, salary, PERCENT_RANK() OVER (ORDER BY salary) AS pct_rank\nFROM employees",
+                        "steps": [
+                            {
+                                "title": "Use PERCENT_RANK",
+                                "explanation": "PERCENT_RANK() returns the relative rank as a value between 0 and 1.",
+                                "code": "PERCENT_RANK() OVER (ORDER BY salary)"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select name, salary, and percent rank.",
+                                "code": "SELECT name, salary, PERCENT_RANK() OVER (ORDER BY salary) AS pct_rank\nFROM employees"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "The lowest salary should have pct_rank 0, the highest close to 1."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-65",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "NTILE Split",
+                    "description": "Using `employees(name, salary)`, divide employees into 4 salary quartiles. Output: `name`, `salary`, `quartile`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use NTILE(4) OVER (ORDER BY salary).",
+                    "solution": {
+                        "code": "SELECT name, salary, NTILE(4) OVER (ORDER BY salary) AS quartile\nFROM employees",
+                        "steps": [
+                            {
+                                "title": "Use NTILE",
+                                "explanation": "NTILE(n) distributes rows into n approximately equal groups.",
+                                "code": "NTILE(4) OVER (ORDER BY salary)"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select name, salary, and the quartile assignment.",
+                                "code": "SELECT name, salary, NTILE(4) OVER (ORDER BY salary) AS quartile\nFROM employees"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Quartile values should be 1 through 4, with lower salaries in quartile 1."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-66",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "First Value",
+                    "description": "Using `sales(department, employee, revenue)`, return each row with the top earner's revenue in their department. Output: `department`, `employee`, `revenue`, `top_revenue`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use FIRST_VALUE(revenue) OVER (PARTITION BY department ORDER BY revenue DESC).",
+                    "solution": {
+                        "code": "SELECT department, employee, revenue,\n  FIRST_VALUE(revenue) OVER (PARTITION BY department ORDER BY revenue DESC) AS top_revenue\nFROM sales",
+                        "steps": [
+                            {
+                                "title": "Use FIRST_VALUE",
+                                "explanation": "FIRST_VALUE returns the first value in the ordered partition window.",
+                                "code": "FIRST_VALUE(revenue) OVER (PARTITION BY department ORDER BY revenue DESC)"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select all columns plus the top revenue per department.",
+                                "code": "SELECT department, employee, revenue,\n  FIRST_VALUE(revenue) OVER (PARTITION BY department ORDER BY revenue DESC) AS top_revenue\nFROM sales"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All rows in a department should show the same top_revenue value."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-67",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Round Values",
+                    "description": "Using `measurements(sensor_id, reading)`, return each reading rounded to 2 decimal places. Output: `sensor_id`, `rounded_reading`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use ROUND(reading, 2).",
+                    "solution": {
+                        "code": "SELECT sensor_id, ROUND(reading, 2) AS rounded_reading\nFROM measurements",
+                        "steps": [
+                            {
+                                "title": "Use ROUND",
+                                "explanation": "ROUND(value, n) rounds to n decimal places.",
+                                "code": "ROUND(reading, 2) AS rounded_reading"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select sensor_id and the rounded reading.",
+                                "code": "SELECT sensor_id, ROUND(reading, 2) AS rounded_reading\nFROM measurements"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All readings should display with at most 2 decimal places."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-68",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "ABS Difference",
+                    "description": "Using `forecasts(item, predicted, actual)`, return each item with the absolute error. Output: `item`, `abs_error`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use ABS(predicted - actual).",
+                    "solution": {
+                        "code": "SELECT item, ABS(predicted - actual) AS abs_error\nFROM forecasts",
+                        "steps": [
+                            {
+                                "title": "Compute absolute value",
+                                "explanation": "ABS() returns the non-negative value of the difference.",
+                                "code": "ABS(predicted - actual) AS abs_error"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select item and the absolute error.",
+                                "code": "SELECT item, ABS(predicted - actual) AS abs_error\nFROM forecasts"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All abs_error values should be non-negative."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-69",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "LIKE Pattern",
+                    "description": "Using `products(name, category)`, return products whose name starts with 'Pro'. Output: `name`, `category`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use WHERE name LIKE 'Pro%'.",
+                    "solution": {
+                        "code": "SELECT name, category\nFROM products\nWHERE name LIKE 'Pro%'",
+                        "steps": [
+                            {
+                                "title": "Use LIKE",
+                                "explanation": "LIKE 'Pro%' matches any string starting with 'Pro'.",
+                                "code": "WHERE name LIKE 'Pro%'"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select name and category with the LIKE filter.",
+                                "code": "SELECT name, category\nFROM products\nWHERE name LIKE 'Pro%'"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All returned product names should begin with 'Pro'."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-70",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "GLOB Match",
+                    "description": "Using `files(filename)`, return files ending with '.csv'. Output: `filename`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use WHERE filename LIKE '%.csv'.",
+                    "solution": {
+                        "code": "SELECT filename\nFROM files\nWHERE filename LIKE '%.csv'",
+                        "steps": [
+                            {
+                                "title": "Pattern match suffix",
+                                "explanation": "LIKE '%.csv' matches any filename ending in .csv.",
+                                "code": "WHERE filename LIKE '%.csv'"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select filenames with the pattern filter.",
+                                "code": "SELECT filename\nFROM files\nWHERE filename LIKE '%.csv'"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All returned filenames should end with .csv."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-71",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Between Range",
+                    "description": "Using `products(name, price)`, return products priced between 10 and 50 inclusive. Output: `name`, `price`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use WHERE price BETWEEN 10 AND 50.",
+                    "solution": {
+                        "code": "SELECT name, price\nFROM products\nWHERE price BETWEEN 10 AND 50",
+                        "steps": [
+                            {
+                                "title": "Use BETWEEN",
+                                "explanation": "BETWEEN is inclusive on both ends: 10 <= price <= 50.",
+                                "code": "WHERE price BETWEEN 10 AND 50"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select name and price within the range.",
+                                "code": "SELECT name, price\nFROM products\nWHERE price BETWEEN 10 AND 50"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All returned prices should be between 10 and 50 inclusive."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-72",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "IN List",
+                    "description": "Using `employees(name, department)`, return employees in 'Sales', 'Marketing', or 'Support'. Output: `name`, `department`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use WHERE department IN ('Sales', 'Marketing', 'Support').",
+                    "solution": {
+                        "code": "SELECT name, department\nFROM employees\nWHERE department IN ('Sales', 'Marketing', 'Support')",
+                        "steps": [
+                            {
+                                "title": "Use IN clause",
+                                "explanation": "IN checks membership against a list of values.",
+                                "code": "WHERE department IN ('Sales', 'Marketing', 'Support')"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select name and department with the IN filter.",
+                                "code": "SELECT name, department\nFROM employees\nWHERE department IN ('Sales', 'Marketing', 'Support')"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Only employees from the three listed departments should appear."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-73",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "NULL Hunter",
+                    "description": "Using `contacts(name, email)`, return contacts where email is NULL. Output: `name`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use IS NULL, not = NULL.",
+                    "solution": {
+                        "code": "SELECT name\nFROM contacts\nWHERE email IS NULL",
+                        "steps": [
+                            {
+                                "title": "Check for NULL",
+                                "explanation": "IS NULL is the correct way to test for NULL values. = NULL does not work.",
+                                "code": "WHERE email IS NULL"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select names of contacts with no email.",
+                                "code": "SELECT name\nFROM contacts\nWHERE email IS NULL"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All returned rows should have a NULL email value."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-74",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Dual Sort",
+                    "description": "Using `employees(name, department, salary)`, order by department ascending then salary descending. Output: `name`, `department`, `salary`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use ORDER BY department ASC, salary DESC.",
+                    "solution": {
+                        "code": "SELECT name, department, salary\nFROM employees\nORDER BY department ASC, salary DESC",
+                        "steps": [
+                            {
+                                "title": "Multi-column sort",
+                                "explanation": "ORDER BY can sort by multiple columns with different directions.",
+                                "code": "ORDER BY department ASC, salary DESC"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select all columns with the multi-column sort.",
+                                "code": "SELECT name, department, salary\nFROM employees\nORDER BY department ASC, salary DESC"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Departments appear alphabetically. Within each department, highest salary comes first."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-75",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Offset Page",
+                    "description": "Using `products(name, price)`, return products 11 through 20 when ordered by price ascending (page 2, 10 per page). Output: `name`, `price`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use ORDER BY, LIMIT, and OFFSET for pagination.",
+                    "solution": {
+                        "code": "SELECT name, price\nFROM products\nORDER BY price ASC\nLIMIT 10 OFFSET 10",
+                        "steps": [
+                            {
+                                "title": "Understand pagination",
+                                "explanation": "LIMIT sets page size, OFFSET skips rows. Page 2 with 10 per page means OFFSET 10.",
+                                "code": "LIMIT 10 OFFSET 10"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Order by price, then apply limit and offset.",
+                                "code": "SELECT name, price\nFROM products\nORDER BY price ASC\nLIMIT 10 OFFSET 10"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Exactly 10 rows should be returned, starting from the 11th cheapest product."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-76",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Subquery Column",
+                    "description": "Using `employees(name, department_id)` and `departments(id, name)`, return each employee with their department name using a subquery in SELECT. Output: `name`, `dept_name`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use a correlated subquery in the SELECT clause.",
+                    "solution": {
+                        "code": "SELECT e.name,\n  (SELECT d.name FROM departments d WHERE d.id = e.department_id) AS dept_name\nFROM employees e",
+                        "steps": [
+                            {
+                                "title": "Subquery in SELECT",
+                                "explanation": "A correlated subquery in the SELECT list computes a value per row.",
+                                "code": "(SELECT d.name FROM departments d WHERE d.id = e.department_id) AS dept_name"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select employee name and department name via subquery.",
+                                "code": "SELECT e.name,\n  (SELECT d.name FROM departments d WHERE d.id = e.department_id) AS dept_name\nFROM employees e"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each employee should show their department's name."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-77",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Count Null",
+                    "description": "Using `survey(response)`, count how many rows have NULL response and how many have non-NULL. Output: `null_count`, `non_null_count`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use SUM with CASE to count NULLs and non-NULLs.",
+                    "solution": {
+                        "code": "SELECT\n  SUM(CASE WHEN response IS NULL THEN 1 ELSE 0 END) AS null_count,\n  SUM(CASE WHEN response IS NOT NULL THEN 1 ELSE 0 END) AS non_null_count\nFROM survey",
+                        "steps": [
+                            {
+                                "title": "Count conditionally",
+                                "explanation": "CASE WHEN inside SUM lets you count specific conditions.",
+                                "code": "SUM(CASE WHEN response IS NULL THEN 1 ELSE 0 END) AS null_count"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Count both NULL and non-NULL responses.",
+                                "code": "SELECT\n  SUM(CASE WHEN response IS NULL THEN 1 ELSE 0 END) AS null_count,\n  SUM(CASE WHEN response IS NOT NULL THEN 1 ELSE 0 END) AS non_null_count\nFROM survey"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "null_count + non_null_count should equal the total row count."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-78",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Duplicate Finder",
+                    "description": "Using `emails(email)`, find all email addresses that appear more than once. Output: `email`, `occurrences`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "GROUP BY email and HAVING COUNT(*) > 1.",
+                    "solution": {
+                        "code": "SELECT email, COUNT(*) AS occurrences\nFROM emails\nGROUP BY email\nHAVING COUNT(*) > 1",
+                        "steps": [
+                            {
+                                "title": "Group and count",
+                                "explanation": "GROUP BY email with COUNT(*) reveals how often each email appears.",
+                                "code": "SELECT email, COUNT(*) AS occurrences\nFROM emails\nGROUP BY email"
+                            },
+                            {
+                                "title": "Filter duplicates",
+                                "explanation": "HAVING COUNT(*) > 1 keeps only emails that appear more than once.",
+                                "code": "SELECT email, COUNT(*) AS occurrences\nFROM emails\nGROUP BY email\nHAVING COUNT(*) > 1"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Every returned email should have occurrences of at least 2."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-79",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Avg vs Total",
+                    "description": "Using `orders(customer_id, amount)`, return each customer's average order amount and total amount. Output: `customer_id`, `avg_amount`, `total_amount`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use AVG() and SUM() together with GROUP BY.",
+                    "solution": {
+                        "code": "SELECT customer_id, AVG(amount) AS avg_amount, SUM(amount) AS total_amount\nFROM orders\nGROUP BY customer_id",
+                        "steps": [
+                            {
+                                "title": "Multiple aggregates",
+                                "explanation": "You can use AVG() and SUM() in the same query on the same column.",
+                                "code": "AVG(amount) AS avg_amount, SUM(amount) AS total_amount"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Group by customer and compute both aggregates.",
+                                "code": "SELECT customer_id, AVG(amount) AS avg_amount, SUM(amount) AS total_amount\nFROM orders\nGROUP BY customer_id"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "avg_amount \u00d7 number of orders should approximately equal total_amount."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-80",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Median Trick",
+                    "description": "Using `scores(value)`, find the median value by selecting the middle row. Output: `median_value`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Order by value, use LIMIT 1 OFFSET (count/2).",
+                    "solution": {
+                        "code": "SELECT value AS median_value\nFROM scores\nORDER BY value\nLIMIT 1\nOFFSET (SELECT COUNT(*) / 2 FROM scores)",
+                        "steps": [
+                            {
+                                "title": "Find the middle",
+                                "explanation": "For an odd count, the median is the value at position count/2 (integer division).",
+                                "code": "OFFSET (SELECT COUNT(*) / 2 FROM scores)"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Order values and skip to the middle row.",
+                                "code": "SELECT value AS median_value\nFROM scores\nORDER BY value\nLIMIT 1\nOFFSET (SELECT COUNT(*) / 2 FROM scores)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "The returned value should be the middle value when all scores are sorted."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-81",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Top N Filter",
+                    "description": "Using `products(name, price)`, return the 3 most expensive products. Output: `name`, `price`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use ORDER BY price DESC LIMIT 3.",
+                    "solution": {
+                        "code": "SELECT name, price\nFROM products\nORDER BY price DESC\nLIMIT 3",
+                        "steps": [
+                            {
+                                "title": "Sort descending",
+                                "explanation": "ORDER BY price DESC puts the most expensive first.",
+                                "code": "ORDER BY price DESC"
+                            },
+                            {
+                                "title": "Limit results",
+                                "explanation": "LIMIT 3 returns only the top 3 rows.",
+                                "code": "SELECT name, price\nFROM products\nORDER BY price DESC\nLIMIT 3"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Exactly 3 products should be returned, all with the highest prices."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-82",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Bottom N",
+                    "description": "Using `employees(name, salary)`, return the 5 lowest-paid employees. Output: `name`, `salary`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use ORDER BY salary ASC LIMIT 5.",
+                    "solution": {
+                        "code": "SELECT name, salary\nFROM employees\nORDER BY salary ASC\nLIMIT 5",
+                        "steps": [
+                            {
+                                "title": "Sort ascending",
+                                "explanation": "ORDER BY salary ASC puts the lowest salary first.",
+                                "code": "ORDER BY salary ASC"
+                            },
+                            {
+                                "title": "Limit results",
+                                "explanation": "LIMIT 5 returns only the bottom 5.",
+                                "code": "SELECT name, salary\nFROM employees\nORDER BY salary ASC\nLIMIT 5"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "The 5 returned employees should have the lowest salaries."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-83",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Nested Agg",
+                    "description": "Using `orders(customer_id, amount)`, find the maximum total spending among all customers. Output: `max_total`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use a subquery to compute per-customer totals, then take the MAX.",
+                    "solution": {
+                        "code": "SELECT MAX(total_spent) AS max_total\nFROM (\n  SELECT SUM(amount) AS total_spent\n  FROM orders\n  GROUP BY customer_id\n) totals",
+                        "steps": [
+                            {
+                                "title": "Aggregate first",
+                                "explanation": "The inner query computes each customer's total spending.",
+                                "code": "SELECT SUM(amount) AS total_spent\nFROM orders\nGROUP BY customer_id"
+                            },
+                            {
+                                "title": "Aggregate again",
+                                "explanation": "The outer query finds the maximum of those totals.",
+                                "code": "SELECT MAX(total_spent) AS max_total\nFROM (\n  SELECT SUM(amount) AS total_spent\n  FROM orders\n  GROUP BY customer_id\n) totals"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "The result should be a single value: the highest total spent by any customer."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-84",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "CTE Basics",
+                    "description": "Using `orders(customer_id, amount)`, use a CTE to compute per-customer totals, then return customers spending over 1000. Output: `customer_id`, `total_spent`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Define a WITH clause to compute totals, then filter in the main query.",
+                    "solution": {
+                        "code": "WITH customer_totals AS (\n  SELECT customer_id, SUM(amount) AS total_spent\n  FROM orders\n  GROUP BY customer_id\n)\nSELECT customer_id, total_spent\nFROM customer_totals\nWHERE total_spent > 1000",
+                        "steps": [
+                            {
+                                "title": "Define the CTE",
+                                "explanation": "WITH creates a named temporary result set for use in the main query.",
+                                "code": "WITH customer_totals AS (\n  SELECT customer_id, SUM(amount) AS total_spent\n  FROM orders\n  GROUP BY customer_id\n)"
+                            },
+                            {
+                                "title": "Query the CTE",
+                                "explanation": "Use the CTE like a table and apply the filter.",
+                                "code": "SELECT customer_id, total_spent\nFROM customer_totals\nWHERE total_spent > 1000"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All returned customers should have total_spent above 1000."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-85",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Multi CTE",
+                    "description": "Using `orders(customer_id, amount)` and `customers(id, name)`, use two CTEs to find top spenders with names. Output: `name`, `total_spent`. Return only the top 5.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Define two CTEs: one for totals and one joined with customer names.",
+                    "solution": {
+                        "code": "WITH totals AS (\n  SELECT customer_id, SUM(amount) AS total_spent\n  FROM orders\n  GROUP BY customer_id\n),\nnamed_totals AS (\n  SELECT c.name, t.total_spent\n  FROM totals t\n  JOIN customers c ON t.customer_id = c.id\n)\nSELECT name, total_spent\nFROM named_totals\nORDER BY total_spent DESC\nLIMIT 5",
+                        "steps": [
+                            {
+                                "title": "First CTE",
+                                "explanation": "Compute per-customer totals.",
+                                "code": "WITH totals AS (\n  SELECT customer_id, SUM(amount) AS total_spent\n  FROM orders\n  GROUP BY customer_id\n)"
+                            },
+                            {
+                                "title": "Second CTE",
+                                "explanation": "Join totals with customer names.",
+                                "code": "named_totals AS (\n  SELECT c.name, t.total_spent\n  FROM totals t\n  JOIN customers c ON t.customer_id = c.id\n)"
+                            },
+                            {
+                                "title": "Final query",
+                                "explanation": "Select from the second CTE, ordered and limited.",
+                                "code": "SELECT name, total_spent\nFROM named_totals\nORDER BY total_spent DESC\nLIMIT 5"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-86",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Update Calc",
+                    "description": "Using `products(id, name, price)`, write a query to show what prices would look like after a 10% increase. Output: `name`, `new_price`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Multiply price by 1.10 to simulate the increase.",
+                    "solution": {
+                        "code": "SELECT name, ROUND(price * 1.10, 2) AS new_price\nFROM products",
+                        "steps": [
+                            {
+                                "title": "Calculate new price",
+                                "explanation": "Multiply by 1.10 to add 10%. ROUND to 2 decimals for currency.",
+                                "code": "ROUND(price * 1.10, 2) AS new_price"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select name and computed new price.",
+                                "code": "SELECT name, ROUND(price * 1.10, 2) AS new_price\nFROM products"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each new_price should be exactly 10% more than the original price."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-87",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Percentage Share",
+                    "description": "Using `sales(product, revenue)`, return each product with its percentage of total revenue. Output: `product`, `revenue`, `pct_share`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Divide each revenue by the total (from a subquery) and multiply by 100.",
+                    "solution": {
+                        "code": "SELECT product, revenue,\n  ROUND(revenue * 100.0 / (SELECT SUM(revenue) FROM sales), 2) AS pct_share\nFROM sales",
+                        "steps": [
+                            {
+                                "title": "Compute total",
+                                "explanation": "A scalar subquery calculates the sum of all revenue.",
+                                "code": "(SELECT SUM(revenue) FROM sales)"
+                            },
+                            {
+                                "title": "Calculate percentage",
+                                "explanation": "Divide each product's revenue by the total and multiply by 100.",
+                                "code": "ROUND(revenue * 100.0 / (SELECT SUM(revenue) FROM sales), 2) AS pct_share"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All pct_share values should sum to approximately 100."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-88",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Year Over Year",
+                    "description": "Using `annual_sales(year, revenue)`, return each year with the previous year's revenue using LAG. Output: `year`, `revenue`, `prev_revenue`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use LAG(revenue) OVER (ORDER BY year).",
+                    "solution": {
+                        "code": "SELECT year, revenue, LAG(revenue) OVER (ORDER BY year) AS prev_revenue\nFROM annual_sales",
+                        "steps": [
+                            {
+                                "title": "Use LAG for prior year",
+                                "explanation": "LAG(revenue) looks back one row when ordered by year.",
+                                "code": "LAG(revenue) OVER (ORDER BY year) AS prev_revenue"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select year, revenue, and previous year's revenue.",
+                                "code": "SELECT year, revenue, LAG(revenue) OVER (ORDER BY year) AS prev_revenue\nFROM annual_sales"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "First year shows NULL prev_revenue. Others show the prior year's revenue."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-89",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Growth Rate",
+                    "description": "Using `annual_sales(year, revenue)`, calculate the year-over-year growth rate as a percentage. Output: `year`, `revenue`, `growth_pct`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use LAG to get previous revenue, then compute (current - previous) / previous * 100.",
+                    "solution": {
+                        "code": "SELECT year, revenue,\n  ROUND((revenue - LAG(revenue) OVER (ORDER BY year)) * 100.0 / LAG(revenue) OVER (ORDER BY year), 2) AS growth_pct\nFROM annual_sales",
+                        "steps": [
+                            {
+                                "title": "Get previous value",
+                                "explanation": "LAG(revenue) OVER (ORDER BY year) gives the prior year's revenue."
+                            },
+                            {
+                                "title": "Compute growth",
+                                "explanation": "Subtract previous from current, divide by previous, multiply by 100.",
+                                "code": "ROUND((revenue - LAG(revenue) OVER (ORDER BY year)) * 100.0 / LAG(revenue) OVER (ORDER BY year), 2) AS growth_pct"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "First year shows NULL growth. A revenue increase shows positive growth_pct."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-90",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Conditional Join",
+                    "description": "Using `employees(id, name, salary)` and `bonuses(employee_id, bonus)`, return all employees with their bonus (0 if no bonus). Output: `name`, `salary`, `bonus`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use LEFT JOIN and COALESCE to replace NULL bonus with 0.",
+                    "solution": {
+                        "code": "SELECT e.name, e.salary, COALESCE(b.bonus, 0) AS bonus\nFROM employees e\nLEFT JOIN bonuses b ON e.id = b.employee_id",
+                        "steps": [
+                            {
+                                "title": "Left join for all employees",
+                                "explanation": "LEFT JOIN keeps all employees even if they have no bonus record.",
+                                "code": "FROM employees e\nLEFT JOIN bonuses b ON e.id = b.employee_id"
+                            },
+                            {
+                                "title": "Handle NULL bonus",
+                                "explanation": "COALESCE(b.bonus, 0) replaces NULL with 0 for employees without bonuses.",
+                                "code": "COALESCE(b.bonus, 0) AS bonus"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All employees appear. Those without a bonus show 0 instead of NULL."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-91",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Multiple OR",
+                    "description": "Using `logs(event_type, message, created_at)`, return logs where event_type is 'error' or 'critical', ordered by created_at descending. Output: `event_type`, `message`, `created_at`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use WHERE event_type IN ('error', 'critical') for cleaner syntax than OR.",
+                    "solution": {
+                        "code": "SELECT event_type, message, created_at\nFROM logs\nWHERE event_type IN ('error', 'critical')\nORDER BY created_at DESC",
+                        "steps": [
+                            {
+                                "title": "Filter multiple values",
+                                "explanation": "IN is cleaner than chaining multiple OR conditions.",
+                                "code": "WHERE event_type IN ('error', 'critical')"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select matching logs ordered by most recent first.",
+                                "code": "SELECT event_type, message, created_at\nFROM logs\nWHERE event_type IN ('error', 'critical')\nORDER BY created_at DESC"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Only error and critical events should appear, newest first."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-92",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Grouped Having",
+                    "description": "Using `products(category, price)`, return categories where the average price exceeds 100. Output: `category`, `avg_price`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use GROUP BY category HAVING AVG(price) > 100.",
+                    "solution": {
+                        "code": "SELECT category, AVG(price) AS avg_price\nFROM products\nGROUP BY category\nHAVING AVG(price) > 100",
+                        "steps": [
+                            {
+                                "title": "Group and aggregate",
+                                "explanation": "GROUP BY category with AVG(price) computes the average per category.",
+                                "code": "SELECT category, AVG(price) AS avg_price\nFROM products\nGROUP BY category"
+                            },
+                            {
+                                "title": "Filter with HAVING",
+                                "explanation": "HAVING filters after aggregation, keeping only high-average categories.",
+                                "code": "HAVING AVG(price) > 100"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All returned categories should have an average price above 100."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-93",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Left Anti Join",
+                    "description": "Using `products(id, name)` and `reviews(product_id)`, return products with no reviews. Output: `id`, `name`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "LEFT JOIN reviews and filter WHERE reviews.product_id IS NULL.",
+                    "solution": {
+                        "code": "SELECT p.id, p.name\nFROM products p\nLEFT JOIN reviews r ON p.id = r.product_id\nWHERE r.product_id IS NULL",
+                        "steps": [
+                            {
+                                "title": "Left join",
+                                "explanation": "LEFT JOIN keeps all products. Products with no reviews will have NULL in the review columns.",
+                                "code": "FROM products p\nLEFT JOIN reviews r ON p.id = r.product_id"
+                            },
+                            {
+                                "title": "Anti join filter",
+                                "explanation": "WHERE r.product_id IS NULL keeps only unmatched products.",
+                                "code": "WHERE r.product_id IS NULL"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Returned products should have zero entries in the reviews table."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-94",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Concat Filter",
+                    "description": "Using `users(first_name, last_name, city)`, return users from 'Chicago' with their full name. Output: `full_name`, `city`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Concatenate names and filter by city in the same query.",
+                    "solution": {
+                        "code": "SELECT first_name || ' ' || last_name AS full_name, city\nFROM users\nWHERE city = 'Chicago'",
+                        "steps": [
+                            {
+                                "title": "Concatenate and filter",
+                                "explanation": "Combine string concatenation with a WHERE clause.",
+                                "code": "SELECT first_name || ' ' || last_name AS full_name, city\nFROM users\nWHERE city = 'Chicago'"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All returned rows should show city as Chicago and a properly formatted full name."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-95",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Ratio Query",
+                    "description": "Using `departments(id, name)` and `employees(department_id)`, return each department with its employee count and percentage of total employees. Output: `name`, `emp_count`, `pct_of_total`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use COUNT with GROUP BY and a scalar subquery for total count.",
+                    "solution": {
+                        "code": "SELECT d.name, COUNT(e.department_id) AS emp_count,\n  ROUND(COUNT(e.department_id) * 100.0 / (SELECT COUNT(*) FROM employees), 2) AS pct_of_total\nFROM departments d\nLEFT JOIN employees e ON d.id = e.department_id\nGROUP BY d.id, d.name",
+                        "steps": [
+                            {
+                                "title": "Count per department",
+                                "explanation": "JOIN departments to employees and count per group.",
+                                "code": "COUNT(e.department_id) AS emp_count"
+                            },
+                            {
+                                "title": "Calculate percentage",
+                                "explanation": "Divide department count by total employees from a subquery.",
+                                "code": "ROUND(COUNT(e.department_id) * 100.0 / (SELECT COUNT(*) FROM employees), 2) AS pct_of_total"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All pct_of_total values should sum to approximately 100."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-96",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Age Calc",
+                    "description": "Using `users(name, birth_date)`, return each user with their age in years (as of '2024-01-01'). Output: `name`, `age`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Subtract birth year from 2024 using STRFTIME.",
+                    "solution": {
+                        "code": "SELECT name,\n  CAST(STRFTIME('%Y', '2024-01-01') AS INTEGER) - CAST(STRFTIME('%Y', birth_date) AS INTEGER) AS age\nFROM users",
+                        "steps": [
+                            {
+                                "title": "Extract years",
+                                "explanation": "STRFTIME('%Y', date) extracts the year as a string. CAST to integer for arithmetic.",
+                                "code": "CAST(STRFTIME('%Y', '2024-01-01') AS INTEGER) - CAST(STRFTIME('%Y', birth_date) AS INTEGER)"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select name and computed age.",
+                                "code": "SELECT name,\n  CAST(STRFTIME('%Y', '2024-01-01') AS INTEGER) - CAST(STRFTIME('%Y', birth_date) AS INTEGER) AS age\nFROM users"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each user's age should be the difference between 2024 and their birth year."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-97",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Window Sum",
+                    "description": "Using `sales(region, month, revenue)`, return each row with the total revenue for its region. Output: `region`, `month`, `revenue`, `region_total`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use SUM(revenue) OVER (PARTITION BY region).",
+                    "solution": {
+                        "code": "SELECT region, month, revenue,\n  SUM(revenue) OVER (PARTITION BY region) AS region_total\nFROM sales",
+                        "steps": [
+                            {
+                                "title": "Partition sum",
+                                "explanation": "SUM with PARTITION BY computes the total per group without collapsing rows.",
+                                "code": "SUM(revenue) OVER (PARTITION BY region) AS region_total"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select all columns plus the region total.",
+                                "code": "SELECT region, month, revenue,\n  SUM(revenue) OVER (PARTITION BY region) AS region_total\nFROM sales"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All rows in the same region should show the same region_total value."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-98",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Window Count",
+                    "description": "Using `orders(customer_id, order_date)`, return each order with the total number of orders for that customer. Output: `customer_id`, `order_date`, `customer_orders`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use COUNT(*) OVER (PARTITION BY customer_id).",
+                    "solution": {
+                        "code": "SELECT customer_id, order_date,\n  COUNT(*) OVER (PARTITION BY customer_id) AS customer_orders\nFROM orders",
+                        "steps": [
+                            {
+                                "title": "Partition count",
+                                "explanation": "COUNT(*) with PARTITION BY counts rows per group without aggregation.",
+                                "code": "COUNT(*) OVER (PARTITION BY customer_id) AS customer_orders"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select all columns plus the per-customer order count.",
+                                "code": "SELECT customer_id, order_date,\n  COUNT(*) OVER (PARTITION BY customer_id) AS customer_orders\nFROM orders"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All rows for the same customer should show the same customer_orders count."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-99",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Difference Flag",
+                    "description": "Using `inventory(product, stock, reorder_level)`, return products where stock is below reorder_level. Output: `product`, `stock`, `reorder_level`, `deficit`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Compute reorder_level - stock as deficit and filter with WHERE.",
+                    "solution": {
+                        "code": "SELECT product, stock, reorder_level, reorder_level - stock AS deficit\nFROM inventory\nWHERE stock < reorder_level",
+                        "steps": [
+                            {
+                                "title": "Calculate deficit",
+                                "explanation": "Subtract stock from reorder_level to see how much is needed.",
+                                "code": "reorder_level - stock AS deficit"
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Filter for low stock and include the deficit.",
+                                "code": "SELECT product, stock, reorder_level, reorder_level - stock AS deficit\nFROM inventory\nWHERE stock < reorder_level"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All returned products should have stock below reorder_level and positive deficit."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-intermediate-100",
+                    "language": "sql",
+                    "level": "intermediate",
+                    "title": "Chained CTE",
+                    "description": "Using `orders(customer_id, amount, order_date)`, use a CTE to find each customer's latest order date and amount. Output: `customer_id`, `last_order_date`, `last_amount`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use ROW_NUMBER in a CTE partitioned by customer, ordered by date descending, then filter for row 1.",
+                    "solution": {
+                        "code": "WITH ranked AS (\n  SELECT customer_id, order_date AS last_order_date, amount AS last_amount,\n    ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY order_date DESC) AS rn\n  FROM orders\n)\nSELECT customer_id, last_order_date, last_amount\nFROM ranked\nWHERE rn = 1",
+                        "steps": [
+                            {
+                                "title": "Rank by date",
+                                "explanation": "ROW_NUMBER partitioned by customer gives each order a rank by recency.",
+                                "code": "ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY order_date DESC) AS rn"
+                            },
+                            {
+                                "title": "Build the CTE",
+                                "explanation": "Wrap the ranking in a CTE for clarity.",
+                                "code": "WITH ranked AS (\n  SELECT customer_id, order_date AS last_order_date, amount AS last_amount,\n    ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY order_date DESC) AS rn\n  FROM orders\n)"
+                            },
+                            {
+                                "title": "Filter latest",
+                                "explanation": "Select only the most recent order (rn = 1) per customer.",
+                                "code": "SELECT customer_id, last_order_date, last_amount\nFROM ranked\nWHERE rn = 1"
+                            }
+                        ]
+                    }
                 }
             ]
         },
