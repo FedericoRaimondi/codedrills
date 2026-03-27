@@ -3248,6 +3248,2166 @@
                             }
                         ]
                     }
+                },
+                {
+                    "id": "sql-beginner-21",
+                    "title": "Equal Match",
+                    "description": "Using `employees(id, name, department, salary)`, return all columns for employees in the 'Sales' department.",
+                    "hint": "Use WHERE department = 'Sales' to filter rows.",
+                    "solution": {
+                        "code": "SELECT *\nFROM employees\nWHERE department = 'Sales'",
+                        "steps": [
+                            {
+                                "title": "Identify the filter",
+                                "explanation": "We need only rows where the department column equals 'Sales'."
+                            },
+                            {
+                                "title": "Write the query",
+                                "explanation": "SELECT all columns and add a WHERE clause with the equality operator.",
+                                "code": "SELECT *\nFROM employees\nWHERE department = 'Sales'"
+                            },
+                            {
+                                "title": "Check the output",
+                                "explanation": "Every returned row should have 'Sales' in the department column."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-22",
+                    "title": "Not Equal",
+                    "description": "Using `products(id, name, category, price)`, return all products whose category is NOT 'Electronics'.",
+                    "hint": "The != or <> operator excludes a value.",
+                    "solution": {
+                        "code": "SELECT *\nFROM products\nWHERE category != 'Electronics'",
+                        "steps": [
+                            {
+                                "title": "Understand the filter",
+                                "explanation": "We want every product except those in the Electronics category."
+                            },
+                            {
+                                "title": "Apply the operator",
+                                "explanation": "Use != to exclude the unwanted category.",
+                                "code": "SELECT *\nFROM products\nWHERE category != 'Electronics'"
+                            },
+                            {
+                                "title": "Verify results",
+                                "explanation": "No row in the result should have category equal to 'Electronics'."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-23",
+                    "title": "Cheap Finds",
+                    "description": "Using `products(id, name, price)`, return the name and price of products that cost less than 20.",
+                    "hint": "Use the < operator in your WHERE clause.",
+                    "solution": {
+                        "code": "SELECT name, price\nFROM products\nWHERE price < 20",
+                        "steps": [
+                            {
+                                "title": "Set the threshold",
+                                "explanation": "We need products priced strictly below 20."
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Select only name and price columns, filtering with the less-than operator.",
+                                "code": "SELECT name, price\nFROM products\nWHERE price < 20"
+                            },
+                            {
+                                "title": "Confirm output",
+                                "explanation": "Every price value returned should be less than 20."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-24",
+                    "title": "High Earners",
+                    "description": "Using `employees(id, name, salary)`, return names of employees earning 70000 or more.",
+                    "hint": "Use >= to include the boundary value.",
+                    "solution": {
+                        "code": "SELECT name\nFROM employees\nWHERE salary >= 70000",
+                        "steps": [
+                            {
+                                "title": "Define the cutoff",
+                                "explanation": "We want employees with salary greater than or equal to 70000."
+                            },
+                            {
+                                "title": "Write the filter",
+                                "explanation": "Use >= in the WHERE clause to include the boundary.",
+                                "code": "SELECT name\nFROM employees\nWHERE salary >= 70000"
+                            },
+                            {
+                                "title": "Validate",
+                                "explanation": "All returned employees should have salary of 70000 or above."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-25",
+                    "title": "Range Check",
+                    "description": "Using `products(id, name, price)`, return all products with a price between 10 and 50 inclusive.",
+                    "hint": "BETWEEN includes both endpoints.",
+                    "solution": {
+                        "code": "SELECT *\nFROM products\nWHERE price BETWEEN 10 AND 50",
+                        "steps": [
+                            {
+                                "title": "Understand BETWEEN",
+                                "explanation": "BETWEEN 10 AND 50 is equivalent to price >= 10 AND price <= 50."
+                            },
+                            {
+                                "title": "Apply the filter",
+                                "explanation": "Use BETWEEN in the WHERE clause for a clean range check.",
+                                "code": "SELECT *\nFROM products\nWHERE price BETWEEN 10 AND 50"
+                            },
+                            {
+                                "title": "Verify range",
+                                "explanation": "Every returned price should be between 10 and 50."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-26",
+                    "title": "Pick List",
+                    "description": "Using `employees(id, name, department)`, return all employees in 'HR', 'Finance', or 'Legal' departments.",
+                    "hint": "Use IN to match against a list of values.",
+                    "solution": {
+                        "code": "SELECT *\nFROM employees\nWHERE department IN ('HR', 'Finance', 'Legal')",
+                        "steps": [
+                            {
+                                "title": "Know your targets",
+                                "explanation": "Three department values need to be matched."
+                            },
+                            {
+                                "title": "Use IN clause",
+                                "explanation": "IN lets you match against multiple values without chaining OR conditions.",
+                                "code": "SELECT *\nFROM employees\nWHERE department IN ('HR', 'Finance', 'Legal')"
+                            },
+                            {
+                                "title": "Check results",
+                                "explanation": "Only rows with one of the three listed departments should appear."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-27",
+                    "title": "Starts With",
+                    "description": "Using `customers(id, name, email)`, return all customers whose name starts with 'A'.",
+                    "hint": "Use LIKE 'A%' to match names beginning with A.",
+                    "solution": {
+                        "code": "SELECT *\nFROM customers\nWHERE name LIKE 'A%'",
+                        "steps": [
+                            {
+                                "title": "Understand wildcards",
+                                "explanation": "The % wildcard matches zero or more characters after A."
+                            },
+                            {
+                                "title": "Write the pattern",
+                                "explanation": "LIKE 'A%' finds any name starting with the letter A.",
+                                "code": "SELECT *\nFROM customers\nWHERE name LIKE 'A%'"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Every returned name should begin with the letter A."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-28",
+                    "title": "Double Filter",
+                    "description": "Using `employees(id, name, department, salary)`, return employees in the 'Engineering' department who earn more than 80000.",
+                    "hint": "Combine two conditions with AND.",
+                    "solution": {
+                        "code": "SELECT *\nFROM employees\nWHERE department = 'Engineering'\nAND salary > 80000",
+                        "steps": [
+                            {
+                                "title": "Identify conditions",
+                                "explanation": "Two requirements must both be true: department is Engineering AND salary exceeds 80000."
+                            },
+                            {
+                                "title": "Combine with AND",
+                                "explanation": "Both conditions must be true for a row to be included.",
+                                "code": "SELECT *\nFROM employees\nWHERE department = 'Engineering'\nAND salary > 80000"
+                            },
+                            {
+                                "title": "Confirm",
+                                "explanation": "Each row should satisfy both conditions simultaneously."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-29",
+                    "title": "Either Way",
+                    "description": "Using `orders(id, status, total)`, return orders where status is 'pending' OR total exceeds 500.",
+                    "hint": "Use OR so that satisfying either condition includes the row.",
+                    "solution": {
+                        "code": "SELECT *\nFROM orders\nWHERE status = 'pending'\nOR total > 500",
+                        "steps": [
+                            {
+                                "title": "Understand OR logic",
+                                "explanation": "A row is included if at least one of the two conditions is true."
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Combine the two conditions with OR.",
+                                "code": "SELECT *\nFROM orders\nWHERE status = 'pending'\nOR total > 500"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Rows should have status 'pending' or total greater than 500 or both."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-30",
+                    "title": "Not This",
+                    "description": "Using `products(id, name, category, discontinued)`, return products where discontinued is NOT true (i.e., discontinued = 0 or false).",
+                    "hint": "Use NOT or != to exclude discontinued products.",
+                    "solution": {
+                        "code": "SELECT *\nFROM products\nWHERE NOT discontinued",
+                        "steps": [
+                            {
+                                "title": "Identify negation",
+                                "explanation": "We want only active products, so we negate the discontinued flag."
+                            },
+                            {
+                                "title": "Apply NOT",
+                                "explanation": "NOT discontinued evaluates to true when the column is false or 0.",
+                                "code": "SELECT *\nFROM products\nWHERE NOT discontinued"
+                            },
+                            {
+                                "title": "Check output",
+                                "explanation": "No returned product should have discontinued set to true."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-31",
+                    "title": "Alpha Sort",
+                    "description": "Using `customers(id, name, city)`, return all customers sorted by name in alphabetical order.",
+                    "hint": "ORDER BY defaults to ascending (A-Z).",
+                    "solution": {
+                        "code": "SELECT *\nFROM customers\nORDER BY name ASC",
+                        "steps": [
+                            {
+                                "title": "Choose sort column",
+                                "explanation": "Alphabetical order means sorting by the name column ascending."
+                            },
+                            {
+                                "title": "Write the query",
+                                "explanation": "Add ORDER BY name ASC to sort alphabetically.",
+                                "code": "SELECT *\nFROM customers\nORDER BY name ASC"
+                            },
+                            {
+                                "title": "Verify order",
+                                "explanation": "Names should appear from A to Z in the result set."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-32",
+                    "title": "Price Drop",
+                    "description": "Using `products(id, name, price)`, return all products sorted by price from highest to lowest.",
+                    "hint": "Use ORDER BY with DESC for descending order.",
+                    "solution": {
+                        "code": "SELECT *\nFROM products\nORDER BY price DESC",
+                        "steps": [
+                            {
+                                "title": "Determine direction",
+                                "explanation": "Highest to lowest means descending order."
+                            },
+                            {
+                                "title": "Apply DESC",
+                                "explanation": "ORDER BY price DESC sorts from the most expensive down.",
+                                "code": "SELECT *\nFROM products\nORDER BY price DESC"
+                            },
+                            {
+                                "title": "Check",
+                                "explanation": "The first row should have the highest price and the last the lowest."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-33",
+                    "title": "Double Sort",
+                    "description": "Using `employees(id, name, department, salary)`, return all employees sorted by department ascending, then by salary descending within each department.",
+                    "hint": "List multiple columns in ORDER BY separated by commas.",
+                    "solution": {
+                        "code": "SELECT *\nFROM employees\nORDER BY department ASC, salary DESC",
+                        "steps": [
+                            {
+                                "title": "Understand multi-sort",
+                                "explanation": "First sort by department alphabetically, then within each department sort salary highest first."
+                            },
+                            {
+                                "title": "Write multi-column ORDER BY",
+                                "explanation": "Comma-separate the sort columns with their directions.",
+                                "code": "SELECT *\nFROM employees\nORDER BY department ASC, salary DESC"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Departments should be in A-Z order, and within each department salaries should decrease."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-34",
+                    "title": "Top Five",
+                    "description": "Using `products(id, name, price)`, return the 5 most expensive products.",
+                    "hint": "Sort by price descending and use LIMIT to restrict rows.",
+                    "solution": {
+                        "code": "SELECT *\nFROM products\nORDER BY price DESC\nLIMIT 5",
+                        "steps": [
+                            {
+                                "title": "Sort first",
+                                "explanation": "Order products by price descending so the most expensive are on top."
+                            },
+                            {
+                                "title": "Limit output",
+                                "explanation": "LIMIT 5 keeps only the first 5 rows after sorting.",
+                                "code": "SELECT *\nFROM products\nORDER BY price DESC\nLIMIT 5"
+                            },
+                            {
+                                "title": "Validate count",
+                                "explanation": "The result should contain exactly 5 rows."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-35",
+                    "title": "Skip Ahead",
+                    "description": "Using `employees(id, name, salary)`, return employees ranked 6th to 10th by salary (highest first).",
+                    "hint": "Use LIMIT with OFFSET to skip the first 5 rows.",
+                    "solution": {
+                        "code": "SELECT *\nFROM employees\nORDER BY salary DESC\nLIMIT 5 OFFSET 5",
+                        "steps": [
+                            {
+                                "title": "Plan pagination",
+                                "explanation": "Skip the top 5 earners and take the next 5."
+                            },
+                            {
+                                "title": "Use OFFSET",
+                                "explanation": "OFFSET 5 skips 5 rows, LIMIT 5 takes the next 5.",
+                                "code": "SELECT *\nFROM employees\nORDER BY salary DESC\nLIMIT 5 OFFSET 5"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "The result should show employees ranked 6th through 10th by salary."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-36",
+                    "title": "Unique Cities",
+                    "description": "Using `customers(id, name, city)`, return a list of all unique cities where customers are located.",
+                    "hint": "DISTINCT removes duplicate values from the result.",
+                    "solution": {
+                        "code": "SELECT DISTINCT city\nFROM customers",
+                        "steps": [
+                            {
+                                "title": "Spot duplicates",
+                                "explanation": "Multiple customers may live in the same city, so we need to de-duplicate."
+                            },
+                            {
+                                "title": "Apply DISTINCT",
+                                "explanation": "SELECT DISTINCT city returns each city only once.",
+                                "code": "SELECT DISTINCT city\nFROM customers"
+                            },
+                            {
+                                "title": "Confirm",
+                                "explanation": "No city should appear more than once in the results."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-37",
+                    "title": "Sum It Up",
+                    "description": "Using `orders(id, customer_id, total)`, return the total revenue across all orders as `total_revenue`.",
+                    "hint": "SUM adds up all values in a column.",
+                    "solution": {
+                        "code": "SELECT SUM(total) AS total_revenue\nFROM orders",
+                        "steps": [
+                            {
+                                "title": "Identify the aggregate",
+                                "explanation": "We need a single number representing the sum of all order totals."
+                            },
+                            {
+                                "title": "Use SUM",
+                                "explanation": "SUM(total) adds every value in the total column.",
+                                "code": "SELECT SUM(total) AS total_revenue\nFROM orders"
+                            },
+                            {
+                                "title": "Check",
+                                "explanation": "The result should be one row with one column named total_revenue."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-38",
+                    "title": "Average Age",
+                    "description": "Using `employees(id, name, age)`, return the average employee age as `avg_age`.",
+                    "hint": "AVG computes the arithmetic mean of a numeric column.",
+                    "solution": {
+                        "code": "SELECT AVG(age) AS avg_age\nFROM employees",
+                        "steps": [
+                            {
+                                "title": "Know the function",
+                                "explanation": "AVG returns the mean of all non-NULL values in a column."
+                            },
+                            {
+                                "title": "Write the aggregate",
+                                "explanation": "Alias the result as avg_age for clarity.",
+                                "code": "SELECT AVG(age) AS avg_age\nFROM employees"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Result should be a single row with the average age value."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-39",
+                    "title": "Row Count",
+                    "description": "Using `products(id, name, category, price)`, return the number of distinct categories as `category_count`.",
+                    "hint": "Combine COUNT with DISTINCT inside the parentheses.",
+                    "solution": {
+                        "code": "SELECT COUNT(DISTINCT category) AS category_count\nFROM products",
+                        "steps": [
+                            {
+                                "title": "Combine concepts",
+                                "explanation": "We need to count unique categories, not total rows."
+                            },
+                            {
+                                "title": "Nest DISTINCT inside COUNT",
+                                "explanation": "COUNT(DISTINCT category) counts unique category values.",
+                                "code": "SELECT COUNT(DISTINCT category) AS category_count\nFROM products"
+                            },
+                            {
+                                "title": "Validate",
+                                "explanation": "The single number returned should match the number of unique categories."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-40",
+                    "title": "Extremes",
+                    "description": "Using `products(id, name, price)`, return the cheapest and most expensive price as `min_price` and `max_price` in one row.",
+                    "hint": "Use MIN and MAX together in a single SELECT.",
+                    "solution": {
+                        "code": "SELECT MIN(price) AS min_price, MAX(price) AS max_price\nFROM products",
+                        "steps": [
+                            {
+                                "title": "Plan the output",
+                                "explanation": "We need two aggregate values in a single result row."
+                            },
+                            {
+                                "title": "Use MIN and MAX",
+                                "explanation": "Both aggregate functions can appear in the same SELECT.",
+                                "code": "SELECT MIN(price) AS min_price, MAX(price) AS max_price\nFROM products"
+                            },
+                            {
+                                "title": "Confirm",
+                                "explanation": "One row with two columns showing the lowest and highest prices."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-41",
+                    "title": "Group Count",
+                    "description": "Using `orders(id, customer_id, total)`, return each customer_id with the number of orders they placed as `order_count`.",
+                    "hint": "GROUP BY customer_id then COUNT the rows per group.",
+                    "solution": {
+                        "code": "SELECT customer_id, COUNT(*) AS order_count\nFROM orders\nGROUP BY customer_id",
+                        "steps": [
+                            {
+                                "title": "Group the data",
+                                "explanation": "Each customer_id should form its own group."
+                            },
+                            {
+                                "title": "Count per group",
+                                "explanation": "COUNT(*) inside each group gives the number of orders.",
+                                "code": "SELECT customer_id, COUNT(*) AS order_count\nFROM orders\nGROUP BY customer_id"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each customer_id should appear once with their order count."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-42",
+                    "title": "Dept Totals",
+                    "description": "Using `employees(id, name, department, salary)`, return each department with the total salary paid as `total_salary`.",
+                    "hint": "GROUP BY department and use SUM on salary.",
+                    "solution": {
+                        "code": "SELECT department, SUM(salary) AS total_salary\nFROM employees\nGROUP BY department",
+                        "steps": [
+                            {
+                                "title": "Choose grouping",
+                                "explanation": "Group rows by the department column."
+                            },
+                            {
+                                "title": "Aggregate with SUM",
+                                "explanation": "SUM(salary) totals the salaries within each department.",
+                                "code": "SELECT department, SUM(salary) AS total_salary\nFROM employees\nGROUP BY department"
+                            },
+                            {
+                                "title": "Check",
+                                "explanation": "Each department should appear once with its total salary."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-43",
+                    "title": "Having Filter",
+                    "description": "Using `orders(id, customer_id, total)`, return customer_ids who have placed more than 3 orders. Show customer_id and order_count.",
+                    "hint": "Use HAVING after GROUP BY to filter groups by aggregate values.",
+                    "solution": {
+                        "code": "SELECT customer_id, COUNT(*) AS order_count\nFROM orders\nGROUP BY customer_id\nHAVING COUNT(*) > 3",
+                        "steps": [
+                            {
+                                "title": "Group first",
+                                "explanation": "Group by customer_id and count orders per customer."
+                            },
+                            {
+                                "title": "Filter groups with HAVING",
+                                "explanation": "HAVING filters after grouping, unlike WHERE which filters before.",
+                                "code": "SELECT customer_id, COUNT(*) AS order_count\nFROM orders\nGROUP BY customer_id\nHAVING COUNT(*) > 3"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Every customer in the result should have an order_count greater than 3."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-44",
+                    "title": "Rich Depts",
+                    "description": "Using `employees(id, name, department, salary)`, return departments where the average salary exceeds 60000. Show department and avg_salary.",
+                    "hint": "Use HAVING with AVG to filter department groups.",
+                    "solution": {
+                        "code": "SELECT department, AVG(salary) AS avg_salary\nFROM employees\nGROUP BY department\nHAVING AVG(salary) > 60000",
+                        "steps": [
+                            {
+                                "title": "Group by department",
+                                "explanation": "Calculate the average salary per department."
+                            },
+                            {
+                                "title": "Apply HAVING",
+                                "explanation": "Filter out departments whose average salary is 60000 or below.",
+                                "code": "SELECT department, AVG(salary) AS avg_salary\nFROM employees\nGROUP BY department\nHAVING AVG(salary) > 60000"
+                            },
+                            {
+                                "title": "Check",
+                                "explanation": "All returned departments should have avg_salary above 60000."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-45",
+                    "title": "Category Stats",
+                    "description": "Using `products(id, name, category, price)`, return each category with the count of products, average price (as `avg_price`), and maximum price (as `max_price`).",
+                    "hint": "You can use COUNT, AVG, and MAX all in one SELECT with GROUP BY.",
+                    "solution": {
+                        "code": "SELECT category, COUNT(*) AS product_count, AVG(price) AS avg_price, MAX(price) AS max_price\nFROM products\nGROUP BY category",
+                        "steps": [
+                            {
+                                "title": "Plan the columns",
+                                "explanation": "Three different aggregates are needed per category."
+                            },
+                            {
+                                "title": "Combine aggregates",
+                                "explanation": "Multiple aggregate functions can coexist in a single SELECT.",
+                                "code": "SELECT category, COUNT(*) AS product_count, AVG(price) AS avg_price, MAX(price) AS max_price\nFROM products\nGROUP BY category"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each category row should show its count, average price, and max price."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-46",
+                    "title": "Busy Days",
+                    "description": "Using `orders(id, order_date, total)`, return each order_date with the total revenue as `daily_revenue`, sorted by daily_revenue descending.",
+                    "hint": "GROUP BY order_date, SUM the totals, then ORDER BY the alias.",
+                    "solution": {
+                        "code": "SELECT order_date, SUM(total) AS daily_revenue\nFROM orders\nGROUP BY order_date\nORDER BY daily_revenue DESC",
+                        "steps": [
+                            {
+                                "title": "Group by date",
+                                "explanation": "Each order_date becomes a group."
+                            },
+                            {
+                                "title": "Sum and sort",
+                                "explanation": "SUM(total) gives daily revenue, ORDER BY sorts it highest first.",
+                                "code": "SELECT order_date, SUM(total) AS daily_revenue\nFROM orders\nGROUP BY order_date\nORDER BY daily_revenue DESC"
+                            },
+                            {
+                                "title": "Check",
+                                "explanation": "Dates should be ordered from highest to lowest daily revenue."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-47",
+                    "title": "Min Per Group",
+                    "description": "Using `products(id, name, category, price)`, return each category with its cheapest product price as `lowest_price`.",
+                    "hint": "Use MIN inside GROUP BY to find the smallest value per group.",
+                    "solution": {
+                        "code": "SELECT category, MIN(price) AS lowest_price\nFROM products\nGROUP BY category",
+                        "steps": [
+                            {
+                                "title": "Group by category",
+                                "explanation": "We need the minimum price within each category."
+                            },
+                            {
+                                "title": "Apply MIN",
+                                "explanation": "MIN(price) returns the smallest price in each group.",
+                                "code": "SELECT category, MIN(price) AS lowest_price\nFROM products\nGROUP BY category"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each category should show its single lowest price."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-48",
+                    "title": "Big Groups",
+                    "description": "Using `employees(id, name, department)`, return departments that have 5 or more employees. Show department and `emp_count`.",
+                    "hint": "GROUP BY department, then HAVING COUNT(*) >= 5.",
+                    "solution": {
+                        "code": "SELECT department, COUNT(*) AS emp_count\nFROM employees\nGROUP BY department\nHAVING COUNT(*) >= 5",
+                        "steps": [
+                            {
+                                "title": "Count per department",
+                                "explanation": "Group employees by department and count them."
+                            },
+                            {
+                                "title": "Filter with HAVING",
+                                "explanation": "Only keep groups with 5 or more members.",
+                                "code": "SELECT department, COUNT(*) AS emp_count\nFROM employees\nGROUP BY department\nHAVING COUNT(*) >= 5"
+                            },
+                            {
+                                "title": "Confirm",
+                                "explanation": "Every returned department should have emp_count >= 5."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-49",
+                    "title": "Salary Spread",
+                    "description": "Using `employees(id, name, department, salary)`, return each department with the difference between the max and min salary as `salary_range`.",
+                    "hint": "Subtract MIN from MAX within each group.",
+                    "solution": {
+                        "code": "SELECT department, MAX(salary) - MIN(salary) AS salary_range\nFROM employees\nGROUP BY department",
+                        "steps": [
+                            {
+                                "title": "Define the metric",
+                                "explanation": "Salary range is the difference between the highest and lowest salary."
+                            },
+                            {
+                                "title": "Compute in SELECT",
+                                "explanation": "Use MAX(salary) - MIN(salary) as a computed column.",
+                                "code": "SELECT department, MAX(salary) - MIN(salary) AS salary_range\nFROM employees\nGROUP BY department"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each department should show a non-negative salary range."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-50",
+                    "title": "Top Grouped",
+                    "description": "Using `orders(id, customer_id, total)`, return the top 3 customers by total spending. Show customer_id and `total_spent`.",
+                    "hint": "GROUP BY, SUM, ORDER BY DESC, and LIMIT together.",
+                    "solution": {
+                        "code": "SELECT customer_id, SUM(total) AS total_spent\nFROM orders\nGROUP BY customer_id\nORDER BY total_spent DESC\nLIMIT 3",
+                        "steps": [
+                            {
+                                "title": "Aggregate spending",
+                                "explanation": "Sum totals per customer using GROUP BY."
+                            },
+                            {
+                                "title": "Sort and limit",
+                                "explanation": "Order by total_spent descending and take only 3.",
+                                "code": "SELECT customer_id, SUM(total) AS total_spent\nFROM orders\nGROUP BY customer_id\nORDER BY total_spent DESC\nLIMIT 3"
+                            },
+                            {
+                                "title": "Confirm",
+                                "explanation": "Exactly 3 rows should appear with the highest spenders on top."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-51",
+                    "title": "Basic Join",
+                    "description": "Using `orders(id, customer_id, total)` and `customers(id, name)`, return order id, customer name, and total for every order.",
+                    "hint": "INNER JOIN orders with customers on orders.customer_id = customers.id.",
+                    "solution": {
+                        "code": "SELECT orders.id, customers.name, orders.total\nFROM orders\nINNER JOIN customers ON orders.customer_id = customers.id",
+                        "steps": [
+                            {
+                                "title": "Identify the link",
+                                "explanation": "orders.customer_id references customers.id."
+                            },
+                            {
+                                "title": "Write the JOIN",
+                                "explanation": "INNER JOIN combines rows where the foreign key matches the primary key.",
+                                "code": "SELECT orders.id, customers.name, orders.total\nFROM orders\nINNER JOIN customers ON orders.customer_id = customers.id"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Every order should now display the customer name instead of just the ID."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-52",
+                    "title": "Left Reach",
+                    "description": "Using `customers(id, name)` and `orders(id, customer_id, total)`, return all customers and their order totals. Customers with no orders should still appear with NULL totals.",
+                    "hint": "LEFT JOIN keeps all rows from the left table even without matches.",
+                    "solution": {
+                        "code": "SELECT customers.name, orders.total\nFROM customers\nLEFT JOIN orders ON customers.id = orders.customer_id",
+                        "steps": [
+                            {
+                                "title": "Choose JOIN type",
+                                "explanation": "LEFT JOIN ensures every customer row appears, even those with no orders."
+                            },
+                            {
+                                "title": "Build the query",
+                                "explanation": "Place customers on the left side of the JOIN.",
+                                "code": "SELECT customers.name, orders.total\nFROM customers\nLEFT JOIN orders ON customers.id = orders.customer_id"
+                            },
+                            {
+                                "title": "Check NULLs",
+                                "explanation": "Customers without orders should show NULL in the total column."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-53",
+                    "title": "Join Filter",
+                    "description": "Using `employees(id, name, department_id)` and `departments(id, dept_name)`, return employee names and department names for employees in the 'Marketing' department.",
+                    "hint": "JOIN the tables first, then filter with WHERE.",
+                    "solution": {
+                        "code": "SELECT employees.name, departments.dept_name\nFROM employees\nINNER JOIN departments ON employees.department_id = departments.id\nWHERE departments.dept_name = 'Marketing'",
+                        "steps": [
+                            {
+                                "title": "Link the tables",
+                                "explanation": "Join employees to departments using the foreign key."
+                            },
+                            {
+                                "title": "Add the filter",
+                                "explanation": "WHERE clause filters the joined result to only Marketing.",
+                                "code": "SELECT employees.name, departments.dept_name\nFROM employees\nINNER JOIN departments ON employees.department_id = departments.id\nWHERE departments.dept_name = 'Marketing'"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All rows should show 'Marketing' as the department name."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-54",
+                    "title": "Join Alias",
+                    "description": "Using `employees(id, name, department_id)` and `departments(id, dept_name)`, return employee name as `employee` and department name as `department`. Use table aliases e and d.",
+                    "hint": "Alias tables with short names: employees e, departments d.",
+                    "solution": {
+                        "code": "SELECT e.name AS employee, d.dept_name AS department\nFROM employees e\nINNER JOIN departments d ON e.department_id = d.id",
+                        "steps": [
+                            {
+                                "title": "Create aliases",
+                                "explanation": "Short table aliases make queries easier to read and write."
+                            },
+                            {
+                                "title": "Use aliases throughout",
+                                "explanation": "Reference columns with the alias prefix.",
+                                "code": "SELECT e.name AS employee, d.dept_name AS department\nFROM employees e\nINNER JOIN departments d ON e.department_id = d.id"
+                            },
+                            {
+                                "title": "Check",
+                                "explanation": "Columns should be labeled employee and department in the output."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-55",
+                    "title": "Join Count",
+                    "description": "Using `customers(id, name)` and `orders(id, customer_id)`, return each customer name with the number of orders as `order_count`, sorted by order_count descending.",
+                    "hint": "JOIN, GROUP BY, COUNT, then ORDER BY.",
+                    "solution": {
+                        "code": "SELECT c.name, COUNT(o.id) AS order_count\nFROM customers c\nINNER JOIN orders o ON c.id = o.customer_id\nGROUP BY c.name\nORDER BY order_count DESC",
+                        "steps": [
+                            {
+                                "title": "Join the tables",
+                                "explanation": "Link customers to their orders."
+                            },
+                            {
+                                "title": "Group and count",
+                                "explanation": "GROUP BY customer name and COUNT order IDs.",
+                                "code": "SELECT c.name, COUNT(o.id) AS order_count\nFROM customers c\nINNER JOIN orders o ON c.id = o.customer_id\nGROUP BY c.name\nORDER BY order_count DESC"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Customers should be sorted from most to fewest orders."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-56",
+                    "title": "Left Count",
+                    "description": "Using `customers(id, name)` and `orders(id, customer_id)`, return every customer with their order count as `order_count`. Customers with no orders should show 0.",
+                    "hint": "Use LEFT JOIN so all customers appear, and COUNT the order id (not *).",
+                    "solution": {
+                        "code": "SELECT c.name, COUNT(o.id) AS order_count\nFROM customers c\nLEFT JOIN orders o ON c.id = o.customer_id\nGROUP BY c.name",
+                        "steps": [
+                            {
+                                "title": "Use LEFT JOIN",
+                                "explanation": "LEFT JOIN preserves customers even when they have no matching orders."
+                            },
+                            {
+                                "title": "Count correctly",
+                                "explanation": "COUNT(o.id) returns 0 for NULLs (no orders), unlike COUNT(*).",
+                                "code": "SELECT c.name, COUNT(o.id) AS order_count\nFROM customers c\nLEFT JOIN orders o ON c.id = o.customer_id\nGROUP BY c.name"
+                            },
+                            {
+                                "title": "Confirm zeroes",
+                                "explanation": "Customers without orders should have order_count = 0."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-57",
+                    "title": "Join Sum",
+                    "description": "Using `customers(id, name)` and `orders(id, customer_id, total)`, return each customer name with their total spending as `total_spent`.",
+                    "hint": "JOIN the tables and SUM the total column grouped by customer.",
+                    "solution": {
+                        "code": "SELECT c.name, SUM(o.total) AS total_spent\nFROM customers c\nINNER JOIN orders o ON c.id = o.customer_id\nGROUP BY c.name",
+                        "steps": [
+                            {
+                                "title": "Link tables",
+                                "explanation": "Join customers to orders on the foreign key."
+                            },
+                            {
+                                "title": "Sum per customer",
+                                "explanation": "GROUP BY name and SUM the order totals.",
+                                "code": "SELECT c.name, SUM(o.total) AS total_spent\nFROM customers c\nINNER JOIN orders o ON c.id = o.customer_id\nGROUP BY c.name"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each customer should show one row with their total spending."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-58",
+                    "title": "Product Orders",
+                    "description": "Using `products(id, name, price)` and `order_items(id, order_id, product_id, quantity)`, return each product name with the total quantity sold as `total_sold`.",
+                    "hint": "JOIN products to order_items, then GROUP BY product name and SUM quantity.",
+                    "solution": {
+                        "code": "SELECT p.name, SUM(oi.quantity) AS total_sold\nFROM products p\nINNER JOIN order_items oi ON p.id = oi.product_id\nGROUP BY p.name",
+                        "steps": [
+                            {
+                                "title": "Identify the relationship",
+                                "explanation": "order_items.product_id links to products.id."
+                            },
+                            {
+                                "title": "Join and aggregate",
+                                "explanation": "Join the tables and sum quantity per product.",
+                                "code": "SELECT p.name, SUM(oi.quantity) AS total_sold\nFROM products p\nINNER JOIN order_items oi ON p.id = oi.product_id\nGROUP BY p.name"
+                            },
+                            {
+                                "title": "Check",
+                                "explanation": "Each product should appear once with its total quantity sold."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-59",
+                    "title": "No Orders",
+                    "description": "Using `customers(id, name)` and `orders(id, customer_id)`, return names of customers who have never placed an order.",
+                    "hint": "LEFT JOIN and filter WHERE orders.id IS NULL.",
+                    "solution": {
+                        "code": "SELECT c.name\nFROM customers c\nLEFT JOIN orders o ON c.id = o.customer_id\nWHERE o.id IS NULL",
+                        "steps": [
+                            {
+                                "title": "Plan the approach",
+                                "explanation": "LEFT JOIN keeps all customers. Unmatched orders will have NULL columns."
+                            },
+                            {
+                                "title": "Filter for NULLs",
+                                "explanation": "WHERE o.id IS NULL finds customers with no matching orders.",
+                                "code": "SELECT c.name\nFROM customers c\nLEFT JOIN orders o ON c.id = o.customer_id\nWHERE o.id IS NULL"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Returned customers should not exist in the orders table."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-60",
+                    "title": "Multi Join",
+                    "description": "Using `orders(id, customer_id)`, `customers(id, name)`, and `order_items(id, order_id, product_id, quantity)`, return customer name and total quantity of items ordered as `items_bought`.",
+                    "hint": "Join all three tables, then GROUP BY customer name and SUM quantity.",
+                    "solution": {
+                        "code": "SELECT c.name, SUM(oi.quantity) AS items_bought\nFROM customers c\nINNER JOIN orders o ON c.id = o.customer_id\nINNER JOIN order_items oi ON o.id = oi.order_id\nGROUP BY c.name",
+                        "steps": [
+                            {
+                                "title": "Chain the joins",
+                                "explanation": "Link customers to orders, then orders to order_items."
+                            },
+                            {
+                                "title": "Write multi-table JOIN",
+                                "explanation": "Two INNER JOINs connect the three tables.",
+                                "code": "SELECT c.name, SUM(oi.quantity) AS items_bought\nFROM customers c\nINNER JOIN orders o ON c.id = o.customer_id\nINNER JOIN order_items oi ON o.id = oi.order_id\nGROUP BY c.name"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each customer should show the total number of items across all their orders."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-61",
+                    "title": "Shout Names",
+                    "description": "Using `employees(id, name)`, return each employee's name converted to uppercase as `upper_name`.",
+                    "hint": "Use the UPPER function to convert text to uppercase.",
+                    "solution": {
+                        "code": "SELECT UPPER(name) AS upper_name\nFROM employees",
+                        "steps": [
+                            {
+                                "title": "Know the function",
+                                "explanation": "UPPER converts all characters in a string to uppercase."
+                            },
+                            {
+                                "title": "Apply it",
+                                "explanation": "Wrap the name column with UPPER and alias the result.",
+                                "code": "SELECT UPPER(name) AS upper_name\nFROM employees"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All names should appear in full uppercase."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-62",
+                    "title": "Whisper Mode",
+                    "description": "Using `products(id, name)`, return each product name in lowercase as `lower_name`.",
+                    "hint": "LOWER converts text to lowercase.",
+                    "solution": {
+                        "code": "SELECT LOWER(name) AS lower_name\nFROM products",
+                        "steps": [
+                            {
+                                "title": "Identify the function",
+                                "explanation": "LOWER transforms every character to its lowercase equivalent."
+                            },
+                            {
+                                "title": "Write the query",
+                                "explanation": "Apply LOWER to the name column.",
+                                "code": "SELECT LOWER(name) AS lower_name\nFROM products"
+                            },
+                            {
+                                "title": "Check",
+                                "explanation": "All product names should now be in lowercase."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-63",
+                    "title": "Name Size",
+                    "description": "Using `customers(id, name)`, return each customer's name and its character count as `name_length`.",
+                    "hint": "Use LENGTH to count characters in a string.",
+                    "solution": {
+                        "code": "SELECT name, LENGTH(name) AS name_length\nFROM customers",
+                        "steps": [
+                            {
+                                "title": "Pick the function",
+                                "explanation": "LENGTH returns the number of characters in a string."
+                            },
+                            {
+                                "title": "Apply LENGTH",
+                                "explanation": "Select name alongside its length.",
+                                "code": "SELECT name, LENGTH(name) AS name_length\nFROM customers"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "The name_length should match the actual character count of each name."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-64",
+                    "title": "Text Swap",
+                    "description": "Using `products(id, name)`, return each product name with all spaces replaced by hyphens as `slug`.",
+                    "hint": "REPLACE(string, old, new) substitutes characters.",
+                    "solution": {
+                        "code": "SELECT REPLACE(name, ' ', '-') AS slug\nFROM products",
+                        "steps": [
+                            {
+                                "title": "Understand REPLACE",
+                                "explanation": "REPLACE finds all occurrences of a substring and swaps them."
+                            },
+                            {
+                                "title": "Build the slug",
+                                "explanation": "Replace spaces with hyphens to create URL-friendly names.",
+                                "code": "SELECT REPLACE(name, ' ', '-') AS slug\nFROM products"
+                            },
+                            {
+                                "title": "Check",
+                                "explanation": "No spaces should remain in the slug column."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-65",
+                    "title": "First Three",
+                    "description": "Using `employees(id, name)`, return each employee's name and the first 3 characters of their name as `initials`.",
+                    "hint": "Use SUBSTR(name, 1, 3) to extract characters.",
+                    "solution": {
+                        "code": "SELECT name, SUBSTR(name, 1, 3) AS initials\nFROM employees",
+                        "steps": [
+                            {
+                                "title": "Know SUBSTR",
+                                "explanation": "SUBSTR extracts a portion of a string given a start position and length."
+                            },
+                            {
+                                "title": "Extract characters",
+                                "explanation": "Start at position 1 and take 3 characters.",
+                                "code": "SELECT name, SUBSTR(name, 1, 3) AS initials\nFROM employees"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "The initials column should always be 3 characters long (or less for very short names)."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-66",
+                    "title": "Full Name",
+                    "description": "Using `employees(id, first_name, last_name)`, return each employee's full name as `full_name` by concatenating first_name, a space, and last_name.",
+                    "hint": "Use CONCAT or the || operator to join strings.",
+                    "solution": {
+                        "code": "SELECT CONCAT(first_name, ' ', last_name) AS full_name\nFROM employees",
+                        "steps": [
+                            {
+                                "title": "Plan concatenation",
+                                "explanation": "Combine first name, a space, and last name into one string."
+                            },
+                            {
+                                "title": "Use CONCAT",
+                                "explanation": "CONCAT joins multiple string values together.",
+                                "code": "SELECT CONCAT(first_name, ' ', last_name) AS full_name\nFROM employees"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each full_name should look like 'John Smith' with a space between parts."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-67",
+                    "title": "Salary Label",
+                    "description": "Using `employees(id, name, salary)`, return name and a `salary_tier` column: 'High' if salary > 80000, 'Medium' if salary > 50000, otherwise 'Low'.",
+                    "hint": "Use a CASE expression with multiple WHEN conditions.",
+                    "solution": {
+                        "code": "SELECT name,\nCASE\nWHEN salary > 80000 THEN 'High'\nWHEN salary > 50000 THEN 'Medium'\nELSE 'Low'\nEND AS salary_tier\nFROM employees",
+                        "steps": [
+                            {
+                                "title": "Plan the tiers",
+                                "explanation": "Three ranges: above 80k is High, 50k to 80k is Medium, below 50k is Low."
+                            },
+                            {
+                                "title": "Write the CASE",
+                                "explanation": "CASE evaluates WHEN conditions top-down and returns the first match.",
+                                "code": "SELECT name,\nCASE\nWHEN salary > 80000 THEN 'High'\nWHEN salary > 50000 THEN 'Medium'\nELSE 'Low'\nEND AS salary_tier\nFROM employees"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Check a few rows to confirm salary values map to the correct tier."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-68",
+                    "title": "Null Hunt",
+                    "description": "Using `employees(id, name, email)`, return all employees where the email column is NULL.",
+                    "hint": "Use IS NULL, not = NULL, to check for null values.",
+                    "solution": {
+                        "code": "SELECT *\nFROM employees\nWHERE email IS NULL",
+                        "steps": [
+                            {
+                                "title": "Understand NULL",
+                                "explanation": "NULL represents a missing value. It cannot be compared with the equals sign."
+                            },
+                            {
+                                "title": "Use IS NULL",
+                                "explanation": "IS NULL is the correct way to test for null values.",
+                                "code": "SELECT *\nFROM employees\nWHERE email IS NULL"
+                            },
+                            {
+                                "title": "Confirm",
+                                "explanation": "Every returned row should have a NULL email value."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-69",
+                    "title": "Null Swap",
+                    "description": "Using `employees(id, name, phone)`, return name and phone, replacing NULL phone values with 'N/A' as `contact_phone`.",
+                    "hint": "COALESCE returns the first non-NULL argument.",
+                    "solution": {
+                        "code": "SELECT name, COALESCE(phone, 'N/A') AS contact_phone\nFROM employees",
+                        "steps": [
+                            {
+                                "title": "Know COALESCE",
+                                "explanation": "COALESCE checks each argument and returns the first non-NULL one."
+                            },
+                            {
+                                "title": "Apply the default",
+                                "explanation": "If phone is NULL, 'N/A' is used instead.",
+                                "code": "SELECT name, COALESCE(phone, 'N/A') AS contact_phone\nFROM employees"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "No NULL values should appear in the contact_phone column."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-70",
+                    "title": "Has Email",
+                    "description": "Using `employees(id, name, email)`, return names of employees whose email IS NOT NULL.",
+                    "hint": "IS NOT NULL filters out rows with missing values.",
+                    "solution": {
+                        "code": "SELECT name\nFROM employees\nWHERE email IS NOT NULL",
+                        "steps": [
+                            {
+                                "title": "Understand the filter",
+                                "explanation": "We want only employees who have an email address on file."
+                            },
+                            {
+                                "title": "Use IS NOT NULL",
+                                "explanation": "This condition keeps rows where the email column has a value.",
+                                "code": "SELECT name\nFROM employees\nWHERE email IS NOT NULL"
+                            },
+                            {
+                                "title": "Confirm",
+                                "explanation": "Every returned row should have a non-NULL email."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-71",
+                    "title": "Sub Filter",
+                    "description": "Using `employees(id, name, salary)`, return employees who earn more than the company average salary.",
+                    "hint": "Use a subquery in WHERE to compute the average first.",
+                    "solution": {
+                        "code": "SELECT *\nFROM employees\nWHERE salary > (SELECT AVG(salary) FROM employees)",
+                        "steps": [
+                            {
+                                "title": "Plan the subquery",
+                                "explanation": "First compute the average salary, then compare each row against it."
+                            },
+                            {
+                                "title": "Nest the query",
+                                "explanation": "The subquery runs first and returns a single value for comparison.",
+                                "code": "SELECT *\nFROM employees\nWHERE salary > (SELECT AVG(salary) FROM employees)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All returned employees should have a salary above the company average."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-72",
+                    "title": "In Subquery",
+                    "description": "Using `orders(id, customer_id, total)` and `customers(id, name, city)`, return all orders placed by customers from 'New York' without using a JOIN.",
+                    "hint": "Use IN with a subquery that selects customer ids from New York.",
+                    "solution": {
+                        "code": "SELECT *\nFROM orders\nWHERE customer_id IN (SELECT id FROM customers WHERE city = 'New York')",
+                        "steps": [
+                            {
+                                "title": "Build the inner query",
+                                "explanation": "First, select IDs of customers located in New York."
+                            },
+                            {
+                                "title": "Use IN with subquery",
+                                "explanation": "The outer query filters orders whose customer_id matches the inner result.",
+                                "code": "SELECT *\nFROM orders\nWHERE customer_id IN (SELECT id FROM customers WHERE city = 'New York')"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All returned orders should belong to New York customers."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-73",
+                    "title": "Max Earner",
+                    "description": "Using `employees(id, name, salary)`, return the name and salary of the employee(s) with the highest salary using a subquery.",
+                    "hint": "Use WHERE salary = (SELECT MAX(salary) FROM employees).",
+                    "solution": {
+                        "code": "SELECT name, salary\nFROM employees\nWHERE salary = (SELECT MAX(salary) FROM employees)",
+                        "steps": [
+                            {
+                                "title": "Find the max",
+                                "explanation": "A subquery computes the maximum salary."
+                            },
+                            {
+                                "title": "Match against it",
+                                "explanation": "The outer query returns rows matching that maximum.",
+                                "code": "SELECT name, salary\nFROM employees\nWHERE salary = (SELECT MAX(salary) FROM employees)"
+                            },
+                            {
+                                "title": "Check",
+                                "explanation": "Returned employees should all share the highest salary value."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-74",
+                    "title": "Derived Table",
+                    "description": "Using `orders(id, customer_id, total)`, find the average of per-customer order totals. Return it as `avg_customer_total`. First compute each customer's total in a subquery.",
+                    "hint": "Use a subquery in FROM to create a derived table of customer totals, then AVG it.",
+                    "solution": {
+                        "code": "SELECT AVG(customer_total) AS avg_customer_total\nFROM (SELECT customer_id, SUM(total) AS customer_total FROM orders GROUP BY customer_id) sub",
+                        "steps": [
+                            {
+                                "title": "Build the inner table",
+                                "explanation": "First compute each customer's total spending with GROUP BY."
+                            },
+                            {
+                                "title": "Average the derived table",
+                                "explanation": "Wrap the grouped query as a subquery and take AVG of its results.",
+                                "code": "SELECT AVG(customer_total) AS avg_customer_total\nFROM (SELECT customer_id, SUM(total) AS customer_total FROM orders GROUP BY customer_id) sub"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Result should be a single number representing the average of customer totals."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-75",
+                    "title": "Stack Up",
+                    "description": "Using `employees(id, name)` and `contractors(id, name)`, combine both name lists into one result set without duplicates.",
+                    "hint": "UNION automatically removes duplicate rows.",
+                    "solution": {
+                        "code": "SELECT name FROM employees\nUNION\nSELECT name FROM contractors",
+                        "steps": [
+                            {
+                                "title": "Understand UNION",
+                                "explanation": "UNION combines two result sets and removes duplicate rows."
+                            },
+                            {
+                                "title": "Write the UNION",
+                                "explanation": "Both SELECT statements must have the same number of columns.",
+                                "code": "SELECT name FROM employees\nUNION\nSELECT name FROM contractors"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Names appearing in both tables should show up only once."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-76",
+                    "title": "Stack All",
+                    "description": "Using `employees(id, name)` and `contractors(id, name)`, combine both name lists keeping all rows including duplicates.",
+                    "hint": "UNION ALL preserves duplicate rows unlike UNION.",
+                    "solution": {
+                        "code": "SELECT name FROM employees\nUNION ALL\nSELECT name FROM contractors",
+                        "steps": [
+                            {
+                                "title": "Know the difference",
+                                "explanation": "UNION ALL keeps all rows, even if names appear in both tables."
+                            },
+                            {
+                                "title": "Write UNION ALL",
+                                "explanation": "Simply replace UNION with UNION ALL.",
+                                "code": "SELECT name FROM employees\nUNION ALL\nSELECT name FROM contractors"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Total row count should equal the sum of rows from both tables."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-77",
+                    "title": "Math Column",
+                    "description": "Using `products(id, name, price, tax_rate)`, return name, price, and a computed column `total_price` calculated as price * (1 + tax_rate).",
+                    "hint": "Create a computed column using arithmetic in the SELECT.",
+                    "solution": {
+                        "code": "SELECT name, price, price * (1 + tax_rate) AS total_price\nFROM products",
+                        "steps": [
+                            {
+                                "title": "Plan the formula",
+                                "explanation": "Total price is the base price plus tax: price * (1 + tax_rate)."
+                            },
+                            {
+                                "title": "Add the expression",
+                                "explanation": "SQL lets you include arithmetic expressions as computed columns.",
+                                "code": "SELECT name, price, price * (1 + tax_rate) AS total_price\nFROM products"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "total_price should always be greater than or equal to price."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-78",
+                    "title": "Discount Calc",
+                    "description": "Using `orders(id, total, discount_pct)`, return id, total, and the discounted amount as `final_total` computed as total * (1 - discount_pct / 100).",
+                    "hint": "Use arithmetic to apply the percentage discount.",
+                    "solution": {
+                        "code": "SELECT id, total, total * (1 - discount_pct / 100.0) AS final_total\nFROM orders",
+                        "steps": [
+                            {
+                                "title": "Understand the formula",
+                                "explanation": "Subtract the discount fraction from 1, then multiply by total."
+                            },
+                            {
+                                "title": "Write the expression",
+                                "explanation": "Divide discount_pct by 100.0 to get a decimal fraction.",
+                                "code": "SELECT id, total, total * (1 - discount_pct / 100.0) AS final_total\nFROM orders"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "final_total should be less than or equal to total for all rows."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-79",
+                    "title": "Round Price",
+                    "description": "Using `products(id, name, price)`, return name and price rounded to 2 decimal places as `rounded_price`.",
+                    "hint": "ROUND(value, 2) rounds to 2 decimal places.",
+                    "solution": {
+                        "code": "SELECT name, ROUND(price, 2) AS rounded_price\nFROM products",
+                        "steps": [
+                            {
+                                "title": "Know ROUND",
+                                "explanation": "ROUND takes a number and the number of decimal places to keep."
+                            },
+                            {
+                                "title": "Apply rounding",
+                                "explanation": "ROUND(price, 2) ensures exactly 2 decimal places.",
+                                "code": "SELECT name, ROUND(price, 2) AS rounded_price\nFROM products"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All rounded_price values should have at most 2 decimal digits."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-80",
+                    "title": "Abs Value",
+                    "description": "Using `transactions(id, amount)`, return id and the absolute value of amount as `abs_amount`. Some amounts are negative (refunds).",
+                    "hint": "ABS returns the absolute value of a number.",
+                    "solution": {
+                        "code": "SELECT id, ABS(amount) AS abs_amount\nFROM transactions",
+                        "steps": [
+                            {
+                                "title": "Understand ABS",
+                                "explanation": "ABS converts negative numbers to positive, leaving positives unchanged."
+                            },
+                            {
+                                "title": "Apply the function",
+                                "explanation": "Wrap the amount column with ABS.",
+                                "code": "SELECT id, ABS(amount) AS abs_amount\nFROM transactions"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All abs_amount values should be zero or positive."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-81",
+                    "title": "Ends With",
+                    "description": "Using `customers(id, name, email)`, return customers whose email ends with '@gmail.com'.",
+                    "hint": "Use LIKE '%@gmail.com' to match the ending.",
+                    "solution": {
+                        "code": "SELECT *\nFROM customers\nWHERE email LIKE '%@gmail.com'",
+                        "steps": [
+                            {
+                                "title": "Pattern matching",
+                                "explanation": "The % wildcard at the start matches any characters before @gmail.com."
+                            },
+                            {
+                                "title": "Write the LIKE",
+                                "explanation": "Place % before the literal string to match the suffix.",
+                                "code": "SELECT *\nFROM customers\nWHERE email LIKE '%@gmail.com'"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All returned emails should end with @gmail.com."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-82",
+                    "title": "Contains Word",
+                    "description": "Using `products(id, name, description)`, return products whose description contains the word 'premium'.",
+                    "hint": "Use LIKE '%premium%' to find the word anywhere in the text.",
+                    "solution": {
+                        "code": "SELECT *\nFROM products\nWHERE description LIKE '%premium%'",
+                        "steps": [
+                            {
+                                "title": "Wrap with wildcards",
+                                "explanation": "Percent signs on both sides match 'premium' anywhere in the string."
+                            },
+                            {
+                                "title": "Write the filter",
+                                "explanation": "LIKE '%premium%' is a substring search.",
+                                "code": "SELECT *\nFROM products\nWHERE description LIKE '%premium%'"
+                            },
+                            {
+                                "title": "Check",
+                                "explanation": "Every returned description should contain the word 'premium'."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-83",
+                    "title": "Single Char",
+                    "description": "Using `employees(id, name)`, return employees whose name is exactly 3 characters long.",
+                    "hint": "Use LIKE '___' with exactly three underscores, each matching one character.",
+                    "solution": {
+                        "code": "SELECT *\nFROM employees\nWHERE name LIKE '___'",
+                        "steps": [
+                            {
+                                "title": "Understand underscore",
+                                "explanation": "The _ wildcard matches exactly one character."
+                            },
+                            {
+                                "title": "Use three underscores",
+                                "explanation": "Three underscores match exactly three characters.",
+                                "code": "SELECT *\nFROM employees\nWHERE name LIKE '___'"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All returned names should be exactly 3 characters long."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-84",
+                    "title": "Date Range",
+                    "description": "Using `orders(id, order_date, total)`, return orders placed between '2024-03-01' and '2024-03-31' inclusive.",
+                    "hint": "BETWEEN works with dates just like numbers.",
+                    "solution": {
+                        "code": "SELECT *\nFROM orders\nWHERE order_date BETWEEN '2024-03-01' AND '2024-03-31'",
+                        "steps": [
+                            {
+                                "title": "Date boundaries",
+                                "explanation": "BETWEEN with dates includes both the start and end dates."
+                            },
+                            {
+                                "title": "Apply BETWEEN",
+                                "explanation": "Filter order_date to the March 2024 range.",
+                                "code": "SELECT *\nFROM orders\nWHERE order_date BETWEEN '2024-03-01' AND '2024-03-31'"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All returned orders should have order_date in March 2024."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-85",
+                    "title": "Not In List",
+                    "description": "Using `products(id, name, category)`, return products whose category is NOT in ('Electronics', 'Clothing', 'Food').",
+                    "hint": "Use NOT IN to exclude multiple values at once.",
+                    "solution": {
+                        "code": "SELECT *\nFROM products\nWHERE category NOT IN ('Electronics', 'Clothing', 'Food')",
+                        "steps": [
+                            {
+                                "title": "Understand NOT IN",
+                                "explanation": "NOT IN excludes rows matching any value in the given list."
+                            },
+                            {
+                                "title": "Write the exclusion",
+                                "explanation": "List all categories to exclude inside NOT IN.",
+                                "code": "SELECT *\nFROM products\nWHERE category NOT IN ('Electronics', 'Clothing', 'Food')"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "No returned product should have one of the three excluded categories."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-86",
+                    "title": "Exists Check",
+                    "description": "Using `customers(id, name)` and `orders(id, customer_id)`, return customers who have placed at least one order using EXISTS.",
+                    "hint": "EXISTS returns true if the subquery returns any rows.",
+                    "solution": {
+                        "code": "SELECT *\nFROM customers c\nWHERE EXISTS (SELECT 1 FROM orders o WHERE o.customer_id = c.id)",
+                        "steps": [
+                            {
+                                "title": "Understand EXISTS",
+                                "explanation": "EXISTS checks whether a correlated subquery returns at least one row."
+                            },
+                            {
+                                "title": "Write correlated subquery",
+                                "explanation": "The inner query references the outer table's id.",
+                                "code": "SELECT *\nFROM customers c\nWHERE EXISTS (SELECT 1 FROM orders o WHERE o.customer_id = c.id)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All returned customers should have at least one matching order."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-87",
+                    "title": "Not Exists",
+                    "description": "Using `products(id, name)` and `order_items(id, product_id)`, return products that have never been ordered using NOT EXISTS.",
+                    "hint": "NOT EXISTS returns true when the subquery returns zero rows.",
+                    "solution": {
+                        "code": "SELECT *\nFROM products p\nWHERE NOT EXISTS (SELECT 1 FROM order_items oi WHERE oi.product_id = p.id)",
+                        "steps": [
+                            {
+                                "title": "Understand NOT EXISTS",
+                                "explanation": "NOT EXISTS is true when no matching rows are found in the subquery."
+                            },
+                            {
+                                "title": "Write the query",
+                                "explanation": "The correlated subquery checks for any order_item referencing the product.",
+                                "code": "SELECT *\nFROM products p\nWHERE NOT EXISTS (SELECT 1 FROM order_items oi WHERE oi.product_id = p.id)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Returned products should have no entries in the order_items table."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-88",
+                    "title": "Age Groups",
+                    "description": "Using `employees(id, name, age)`, return employees whose age is between 25 and 35, or between 45 and 55.",
+                    "hint": "Combine two BETWEEN conditions with OR.",
+                    "solution": {
+                        "code": "SELECT *\nFROM employees\nWHERE age BETWEEN 25 AND 35\nOR age BETWEEN 45 AND 55",
+                        "steps": [
+                            {
+                                "title": "Define ranges",
+                                "explanation": "Two separate age ranges need to be combined."
+                            },
+                            {
+                                "title": "Use OR with BETWEEN",
+                                "explanation": "Each BETWEEN covers one range, connected by OR.",
+                                "code": "SELECT *\nFROM employees\nWHERE age BETWEEN 25 AND 35\nOR age BETWEEN 45 AND 55"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Returned employees should fall within one of the two age ranges."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-89",
+                    "title": "Pattern Mix",
+                    "description": "Using `customers(id, name, email)`, return customers whose name starts with 'J' and email contains 'yahoo'.",
+                    "hint": "Combine two LIKE conditions with AND.",
+                    "solution": {
+                        "code": "SELECT *\nFROM customers\nWHERE name LIKE 'J%'\nAND email LIKE '%yahoo%'",
+                        "steps": [
+                            {
+                                "title": "Two patterns",
+                                "explanation": "One LIKE for the name prefix, another for the email substring."
+                            },
+                            {
+                                "title": "Combine with AND",
+                                "explanation": "Both conditions must be true for a row to be included.",
+                                "code": "SELECT *\nFROM customers\nWHERE name LIKE 'J%'\nAND email LIKE '%yahoo%'"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Names should start with J and emails should contain 'yahoo'."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-90",
+                    "title": "In Sublist",
+                    "description": "Using `employees(id, name, department_id)` and `departments(id, dept_name)`, return employees whose department_id is in the set of departments with 'Engineering' in the name, using a subquery with IN.",
+                    "hint": "Use IN with a subquery that selects department IDs by name pattern.",
+                    "solution": {
+                        "code": "SELECT *\nFROM employees\nWHERE department_id IN (SELECT id FROM departments WHERE dept_name LIKE '%Engineering%')",
+                        "steps": [
+                            {
+                                "title": "Build inner query",
+                                "explanation": "Select department IDs where dept_name contains 'Engineering'."
+                            },
+                            {
+                                "title": "Filter with IN",
+                                "explanation": "The outer query keeps employees whose department_id matches the subquery results.",
+                                "code": "SELECT *\nFROM employees\nWHERE department_id IN (SELECT id FROM departments WHERE dept_name LIKE '%Engineering%')"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All returned employees should belong to departments with 'Engineering' in the name."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-91",
+                    "title": "Join & Case",
+                    "description": "Using `orders(id, customer_id, total)` and `customers(id, name)`, return customer name, total, and an `order_size` label: 'Large' if total > 500, 'Medium' if total > 100, else 'Small'.",
+                    "hint": "JOIN the tables, then use CASE in the SELECT.",
+                    "solution": {
+                        "code": "SELECT c.name, o.total,\nCASE\nWHEN o.total > 500 THEN 'Large'\nWHEN o.total > 100 THEN 'Medium'\nELSE 'Small'\nEND AS order_size\nFROM orders o\nINNER JOIN customers c ON o.customer_id = c.id",
+                        "steps": [
+                            {
+                                "title": "Join first",
+                                "explanation": "Connect orders to customers to get names."
+                            },
+                            {
+                                "title": "Add CASE expression",
+                                "explanation": "Classify each order's total into a size category.",
+                                "code": "SELECT c.name, o.total,\nCASE\nWHEN o.total > 500 THEN 'Large'\nWHEN o.total > 100 THEN 'Medium'\nELSE 'Small'\nEND AS order_size\nFROM orders o\nINNER JOIN customers c ON o.customer_id = c.id"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each order should have the correct size label based on its total."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-92",
+                    "title": "Group & Sort",
+                    "description": "Using `products(id, name, category, price)`, return each category with the average price as `avg_price` rounded to 2 decimals, sorted by avg_price ascending.",
+                    "hint": "Combine GROUP BY, AVG, ROUND, and ORDER BY.",
+                    "solution": {
+                        "code": "SELECT category, ROUND(AVG(price), 2) AS avg_price\nFROM products\nGROUP BY category\nORDER BY avg_price ASC",
+                        "steps": [
+                            {
+                                "title": "Group and average",
+                                "explanation": "GROUP BY category, then compute AVG(price)."
+                            },
+                            {
+                                "title": "Round and sort",
+                                "explanation": "Wrap AVG in ROUND for clean output, then ORDER BY ascending.",
+                                "code": "SELECT category, ROUND(AVG(price), 2) AS avg_price\nFROM products\nGROUP BY category\nORDER BY avg_price ASC"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Categories should be ordered from cheapest to most expensive average."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-93",
+                    "title": "Null & Join",
+                    "description": "Using `employees(id, name, manager_id)`, return employee name and their manager's name as `manager_name`. If an employee has no manager (NULL manager_id), show 'No Manager'.",
+                    "hint": "Use LEFT JOIN on the same table (self-join) and COALESCE for NULLs.",
+                    "solution": {
+                        "code": "SELECT e.name, COALESCE(m.name, 'No Manager') AS manager_name\nFROM employees e\nLEFT JOIN employees m ON e.manager_id = m.id",
+                        "steps": [
+                            {
+                                "title": "Self-join",
+                                "explanation": "Join the employees table to itself to match employees with their managers."
+                            },
+                            {
+                                "title": "Handle NULLs",
+                                "explanation": "LEFT JOIN keeps employees without managers. COALESCE replaces NULL with 'No Manager'.",
+                                "code": "SELECT e.name, COALESCE(m.name, 'No Manager') AS manager_name\nFROM employees e\nLEFT JOIN employees m ON e.manager_id = m.id"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Employees with no manager should show 'No Manager' instead of NULL."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-94",
+                    "title": "Filter & Limit",
+                    "description": "Using `orders(id, customer_id, total, order_date)`, return the 3 most recent orders over 200. Show all columns.",
+                    "hint": "WHERE filters first, then ORDER BY and LIMIT restrict the output.",
+                    "solution": {
+                        "code": "SELECT *\nFROM orders\nWHERE total > 200\nORDER BY order_date DESC\nLIMIT 3",
+                        "steps": [
+                            {
+                                "title": "Filter first",
+                                "explanation": "Remove orders with total of 200 or less."
+                            },
+                            {
+                                "title": "Sort and limit",
+                                "explanation": "Order by date descending and take only 3 rows.",
+                                "code": "SELECT *\nFROM orders\nWHERE total > 200\nORDER BY order_date DESC\nLIMIT 3"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Only 3 rows should remain, all with total > 200, newest first."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-95",
+                    "title": "Having & Sort",
+                    "description": "Using `employees(id, name, department, salary)`, return departments with more than 3 employees, showing department, employee count as `emp_count`, and average salary as `avg_salary`, sorted by avg_salary descending.",
+                    "hint": "GROUP BY, HAVING on count, then ORDER BY avg_salary DESC.",
+                    "solution": {
+                        "code": "SELECT department, COUNT(*) AS emp_count, AVG(salary) AS avg_salary\nFROM employees\nGROUP BY department\nHAVING COUNT(*) > 3\nORDER BY avg_salary DESC",
+                        "steps": [
+                            {
+                                "title": "Group and count",
+                                "explanation": "Group by department and compute count and average salary."
+                            },
+                            {
+                                "title": "Filter and sort",
+                                "explanation": "HAVING removes small departments, ORDER BY sorts by average.",
+                                "code": "SELECT department, COUNT(*) AS emp_count, AVG(salary) AS avg_salary\nFROM employees\nGROUP BY department\nHAVING COUNT(*) > 3\nORDER BY avg_salary DESC"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "All departments should have more than 3 employees, sorted by avg_salary."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-96",
+                    "title": "Concat & Filter",
+                    "description": "Using `employees(id, first_name, last_name, department)`, return the full name as `full_name` (first + space + last) for employees in the 'Sales' department, sorted alphabetically by last_name.",
+                    "hint": "Use CONCAT in SELECT, WHERE for the department, ORDER BY last_name.",
+                    "solution": {
+                        "code": "SELECT CONCAT(first_name, ' ', last_name) AS full_name\nFROM employees\nWHERE department = 'Sales'\nORDER BY last_name ASC",
+                        "steps": [
+                            {
+                                "title": "Build the name",
+                                "explanation": "CONCAT joins first_name, a space, and last_name."
+                            },
+                            {
+                                "title": "Filter and sort",
+                                "explanation": "WHERE restricts to Sales, ORDER BY sorts alphabetically.",
+                                "code": "SELECT CONCAT(first_name, ' ', last_name) AS full_name\nFROM employees\nWHERE department = 'Sales'\nORDER BY last_name ASC"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Only Sales employees should appear, sorted by last name."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-97",
+                    "title": "Subquery Join",
+                    "description": "Using `products(id, name, price, category)`, return products that are priced above the average price of their own category.",
+                    "hint": "Use a correlated subquery comparing each product's price to its category average.",
+                    "solution": {
+                        "code": "SELECT *\nFROM products p\nWHERE price > (SELECT AVG(price) FROM products WHERE category = p.category)",
+                        "steps": [
+                            {
+                                "title": "Plan the logic",
+                                "explanation": "For each product, compare its price to the average of its category."
+                            },
+                            {
+                                "title": "Write correlated subquery",
+                                "explanation": "The inner query recalculates the average for the current row's category.",
+                                "code": "SELECT *\nFROM products p\nWHERE price > (SELECT AVG(price) FROM products WHERE category = p.category)"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Each returned product should be priced above its category's average."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-98",
+                    "title": "Union Label",
+                    "description": "Using `employees(id, name)` and `contractors(id, name)`, create a combined list with each name and a `source` column showing 'Employee' or 'Contractor'.",
+                    "hint": "Add a literal string column in each SELECT before combining with UNION ALL.",
+                    "solution": {
+                        "code": "SELECT name, 'Employee' AS source FROM employees\nUNION ALL\nSELECT name, 'Contractor' AS source FROM contractors",
+                        "steps": [
+                            {
+                                "title": "Add a label column",
+                                "explanation": "Include a literal string to identify the source of each row."
+                            },
+                            {
+                                "title": "Combine with UNION ALL",
+                                "explanation": "UNION ALL keeps all rows from both labeled queries.",
+                                "code": "SELECT name, 'Employee' AS source FROM employees\nUNION ALL\nSELECT name, 'Contractor' AS source FROM contractors"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "Every row should have either 'Employee' or 'Contractor' in the source column."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-99",
+                    "title": "Floor & Ceil",
+                    "description": "Using `products(id, name, price)`, return name, FLOOR(price) as `floor_price`, and CEIL(price) as `ceil_price`.",
+                    "hint": "FLOOR rounds down, CEIL rounds up to the nearest integer.",
+                    "solution": {
+                        "code": "SELECT name, FLOOR(price) AS floor_price, CEIL(price) AS ceil_price\nFROM products",
+                        "steps": [
+                            {
+                                "title": "Know the functions",
+                                "explanation": "FLOOR rounds down to the nearest integer, CEIL rounds up."
+                            },
+                            {
+                                "title": "Apply both",
+                                "explanation": "Use FLOOR and CEIL together in the SELECT.",
+                                "code": "SELECT name, FLOOR(price) AS floor_price, CEIL(price) AS ceil_price\nFROM products"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "floor_price should be <= price and ceil_price should be >= price."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
+                },
+                {
+                    "id": "sql-beginner-100",
+                    "title": "Grand Finale",
+                    "description": "Using `orders(id, customer_id, total, order_date)` and `customers(id, name, city)`, return the city, number of orders as `order_count`, and total revenue as `city_revenue` for cities with more than 5 orders, sorted by city_revenue descending. Limit to top 10.",
+                    "hint": "JOIN, GROUP BY city, HAVING on count, ORDER BY revenue DESC, LIMIT 10.",
+                    "solution": {
+                        "code": "SELECT c.city, COUNT(*) AS order_count, SUM(o.total) AS city_revenue\nFROM orders o\nINNER JOIN customers c ON o.customer_id = c.id\nGROUP BY c.city\nHAVING COUNT(*) > 5\nORDER BY city_revenue DESC\nLIMIT 10",
+                        "steps": [
+                            {
+                                "title": "Join and group",
+                                "explanation": "Link orders to customers, then group by city."
+                            },
+                            {
+                                "title": "Aggregate and filter",
+                                "explanation": "Count orders and sum revenue per city, keeping only cities with more than 5 orders.",
+                                "code": "SELECT c.city, COUNT(*) AS order_count, SUM(o.total) AS city_revenue\nFROM orders o\nINNER JOIN customers c ON o.customer_id = c.id\nGROUP BY c.city\nHAVING COUNT(*) > 5\nORDER BY city_revenue DESC\nLIMIT 10"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "At most 10 cities shown, each with more than 5 orders, sorted by revenue."
+                            }
+                        ]
+                    },
+                    "language": "sql",
+                    "level": "beginner",
+                    "starterCode": "-- Write your query below\n"
                 }
             ]
         },
