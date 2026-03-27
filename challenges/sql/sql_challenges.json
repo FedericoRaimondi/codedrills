@@ -8714,6 +8714,1626 @@
                             }
                         ]
                     }
+                },
+                {
+                    "id": "sql-advanced-21",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Lag Behind",
+                    "description": "Using `sales(id, sale_date, revenue)`, return each row plus a column `prev_revenue` showing the previous row's revenue ordered by `sale_date`. If there is no previous row, show NULL.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use the LAG() window function with ORDER BY sale_date.",
+                    "solution": {
+                        "code": "SELECT\n  id,\n  sale_date,\n  revenue,\n  LAG(revenue) OVER (ORDER BY sale_date) AS prev_revenue\nFROM sales\nORDER BY sale_date",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Use LAG(revenue) OVER (ORDER BY sale_date) to access the previous row's revenue value.",
+                                "code": "SELECT\n  id,\n  sale_date,\n  revenue,\n  LAG(revenue) OVER (ORDER BY sale_date) AS prev_revenue\nFROM sales\nORDER BY sale_date"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-22",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Lead Ahead",
+                    "description": "Using `sales(id, sale_date, revenue)`, return each row plus a column `next_revenue` showing the next row's revenue ordered by `sale_date`. If there is no next row, show NULL.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use the LEAD() window function with ORDER BY sale_date.",
+                    "solution": {
+                        "code": "SELECT\n  id,\n  sale_date,\n  revenue,\n  LEAD(revenue) OVER (ORDER BY sale_date) AS next_revenue\nFROM sales\nORDER BY sale_date",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Use LEAD(revenue) OVER (ORDER BY sale_date) to peek at the next row's revenue.",
+                                "code": "SELECT\n  id,\n  sale_date,\n  revenue,\n  LEAD(revenue) OVER (ORDER BY sale_date) AS next_revenue\nFROM sales\nORDER BY sale_date"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-23",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Day Diff",
+                    "description": "Using `events(id, event_date)`, return each row plus `days_since_prev` showing the number of days between the current and previous event. Use NULL for the first row. Order by `event_date`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Combine LAG() with a date difference function.",
+                    "solution": {
+                        "code": "SELECT\n  id,\n  event_date,\n  CAST(julianday(event_date) - julianday(LAG(event_date) OVER (ORDER BY event_date)) AS INTEGER) AS days_since_prev\nFROM events\nORDER BY event_date",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Use LAG(event_date) to get the previous date, then compute the difference in days.",
+                                "code": "SELECT\n  id,\n  event_date,\n  CAST(julianday(event_date) - julianday(LAG(event_date) OVER (ORDER BY event_date)) AS INTEGER) AS days_since_prev\nFROM events\nORDER BY event_date"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-24",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Row Numberer",
+                    "description": "Using `products(id, category, price)`, assign a row number to each product within its category ordered by price descending. Return `category`, `id`, `price`, and `rn`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC).",
+                    "solution": {
+                        "code": "SELECT\n  category,\n  id,\n  price,\n  ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC) AS rn\nFROM products\nORDER BY category, rn",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "ROW_NUMBER() with PARTITION BY category assigns sequential numbers within each category group.",
+                                "code": "SELECT\n  category,\n  id,\n  price,\n  ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC) AS rn\nFROM products\nORDER BY category, rn"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-25",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Ntile Split",
+                    "description": "Using `employees(id, name, salary)`, divide all employees into 4 equal groups (tiles) based on salary descending. Return `name`, `salary`, and `tile`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use the NTILE(4) window function.",
+                    "solution": {
+                        "code": "SELECT\n  name,\n  salary,\n  NTILE(4) OVER (ORDER BY salary DESC) AS tile\nFROM employees\nORDER BY salary DESC",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "NTILE(4) splits ordered rows into 4 roughly equal buckets.",
+                                "code": "SELECT\n  name,\n  salary,\n  NTILE(4) OVER (ORDER BY salary DESC) AS tile\nFROM employees\nORDER BY salary DESC"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-26",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "First Value Pick",
+                    "description": "Using `orders(id, customer_id, amount)`, return each order plus `first_order_amount` showing the amount of each customer's smallest order. Order by `customer_id`, `amount`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use FIRST_VALUE(amount) OVER (PARTITION BY customer_id ORDER BY amount).",
+                    "solution": {
+                        "code": "SELECT\n  id,\n  customer_id,\n  amount,\n  FIRST_VALUE(amount) OVER (PARTITION BY customer_id ORDER BY amount) AS first_order_amount\nFROM orders\nORDER BY customer_id, amount",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "FIRST_VALUE picks the first value in the window frame, which is the smallest amount when ordered ascending.",
+                                "code": "SELECT\n  id,\n  customer_id,\n  amount,\n  FIRST_VALUE(amount) OVER (PARTITION BY customer_id ORDER BY amount) AS first_order_amount\nFROM orders\nORDER BY customer_id, amount"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-27",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Recursive Counter",
+                    "description": "Generate a sequence of numbers from 1 to 10 using a recursive CTE. Return a single column `n`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Start the CTE with SELECT 1 and UNION ALL with n + 1 WHERE n < 10.",
+                    "solution": {
+                        "code": "WITH RECURSIVE counter(n) AS (\n  SELECT 1\n  UNION ALL\n  SELECT n + 1 FROM counter WHERE n < 10\n)\nSELECT n FROM counter",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "A recursive CTE has a base case (SELECT 1) and a recursive step (n + 1) with a termination condition (n < 10).",
+                                "code": "WITH RECURSIVE counter(n) AS (\n  SELECT 1\n  UNION ALL\n  SELECT n + 1 FROM counter WHERE n < 10\n)\nSELECT n FROM counter"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-28",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Self Join Manager",
+                    "description": "Using `employees(id, name, manager_id)`, return each employee's name as `employee` and their manager's name as `manager`. Exclude employees with no manager.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Join the table to itself on manager_id = id.",
+                    "solution": {
+                        "code": "SELECT\n  e.name AS employee,\n  m.name AS manager\nFROM employees e\nJOIN employees m ON e.manager_id = m.id\nORDER BY e.name",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "A self-join matches each employee row with the manager row using the manager_id foreign key.",
+                                "code": "SELECT\n  e.name AS employee,\n  m.name AS manager\nFROM employees e\nJOIN employees m ON e.manager_id = m.id\nORDER BY e.name"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-29",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Correlated Sub",
+                    "description": "Using `products(id, category, price)`, return products whose price is above the average price of their own category. Return `id`, `category`, `price`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use a correlated subquery in the WHERE clause to compute average per category.",
+                    "solution": {
+                        "code": "SELECT id, category, price\nFROM products p\nWHERE price > (\n  SELECT AVG(price) FROM products WHERE category = p.category\n)\nORDER BY category, price DESC",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "The correlated subquery re-evaluates AVG(price) for each row's category, filtering rows above their group average.",
+                                "code": "SELECT id, category, price\nFROM products p\nWHERE price > (\n  SELECT AVG(price) FROM products WHERE category = p.category\n)\nORDER BY category, price DESC"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-30",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Exists Check",
+                    "description": "Using `customers(id, name)` and `orders(id, customer_id)`, return customers who have at least one order. Return `id` and `name`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use EXISTS with a subquery that checks the orders table.",
+                    "solution": {
+                        "code": "SELECT id, name\nFROM customers c\nWHERE EXISTS (\n  SELECT 1 FROM orders WHERE customer_id = c.id\n)\nORDER BY id",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "EXISTS returns true if the subquery produces any rows, efficiently checking for related records.",
+                                "code": "SELECT id, name\nFROM customers c\nWHERE EXISTS (\n  SELECT 1 FROM orders WHERE customer_id = c.id\n)\nORDER BY id"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-31",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Not Exists Filter",
+                    "description": "Using `customers(id, name)` and `orders(id, customer_id)`, return customers who have no orders at all. Return `id` and `name`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use NOT EXISTS with a correlated subquery on orders.",
+                    "solution": {
+                        "code": "SELECT id, name\nFROM customers c\nWHERE NOT EXISTS (\n  SELECT 1 FROM orders WHERE customer_id = c.id\n)\nORDER BY id",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "NOT EXISTS filters to rows where the correlated subquery returns zero matches.",
+                                "code": "SELECT id, name\nFROM customers c\nWHERE NOT EXISTS (\n  SELECT 1 FROM orders WHERE customer_id = c.id\n)\nORDER BY id"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-32",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Inline View",
+                    "description": "Using `orders(id, customer_id, amount)`, return each customer's total spending using a derived table (inline view). Return `customer_id` and `total_spent`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Write a subquery in the FROM clause that groups by customer_id.",
+                    "solution": {
+                        "code": "SELECT customer_id, total_spent\nFROM (\n  SELECT customer_id, SUM(amount) AS total_spent\n  FROM orders\n  GROUP BY customer_id\n) t\nORDER BY total_spent DESC",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "A derived table (subquery in FROM) computes aggregates that can then be filtered or joined.",
+                                "code": "SELECT customer_id, total_spent\nFROM (\n  SELECT customer_id, SUM(amount) AS total_spent\n  FROM orders\n  GROUP BY customer_id\n) t\nORDER BY total_spent DESC"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-33",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Union Merge",
+                    "description": "Using `active_users(id, name)` and `inactive_users(id, name)`, combine both tables removing duplicates. Return `id` and `name` ordered by `id`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use UNION to merge and deduplicate rows from both tables.",
+                    "solution": {
+                        "code": "SELECT id, name FROM active_users\nUNION\nSELECT id, name FROM inactive_users\nORDER BY id",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "UNION combines result sets and automatically removes duplicate rows.",
+                                "code": "SELECT id, name FROM active_users\nUNION\nSELECT id, name FROM inactive_users\nORDER BY id"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-34",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Intersect Match",
+                    "description": "Using `list_a(id, name)` and `list_b(id, name)`, find names that appear in both lists. Return `name` ordered alphabetically.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use INTERSECT to find common rows.",
+                    "solution": {
+                        "code": "SELECT name FROM list_a\nINTERSECT\nSELECT name FROM list_b\nORDER BY name",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "INTERSECT returns only rows that exist in both result sets.",
+                                "code": "SELECT name FROM list_a\nINTERSECT\nSELECT name FROM list_b\nORDER BY name"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-35",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Except Diff",
+                    "description": "Using `all_users(id, name)` and `banned_users(id, name)`, return users who are not banned. Return `name` ordered alphabetically.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use EXCEPT to subtract banned users from all users.",
+                    "solution": {
+                        "code": "SELECT name FROM all_users\nEXCEPT\nSELECT name FROM banned_users\nORDER BY name",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "EXCEPT returns rows from the first query that do not appear in the second query.",
+                                "code": "SELECT name FROM all_users\nEXCEPT\nSELECT name FROM banned_users\nORDER BY name"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-36",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Conditional Sum",
+                    "description": "Using `orders(id, status, amount)`, return a single row with `completed_total` and `pending_total` summing amounts by status 'completed' and 'pending' respectively.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use SUM with CASE WHEN inside to conditionally aggregate.",
+                    "solution": {
+                        "code": "SELECT\n  SUM(CASE WHEN status = 'completed' THEN amount ELSE 0 END) AS completed_total,\n  SUM(CASE WHEN status = 'pending' THEN amount ELSE 0 END) AS pending_total\nFROM orders",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "CASE WHEN inside SUM lets you create conditional aggregates in a single pass over the data.",
+                                "code": "SELECT\n  SUM(CASE WHEN status = 'completed' THEN amount ELSE 0 END) AS completed_total,\n  SUM(CASE WHEN status = 'pending' THEN amount ELSE 0 END) AS pending_total\nFROM orders"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-37",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Group Concat",
+                    "description": "Using `tags(id, post_id, tag_name)`, return each `post_id` with all its tags concatenated into a single comma-separated string called `all_tags`. Order by `post_id`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use GROUP_CONCAT(tag_name) grouped by post_id.",
+                    "solution": {
+                        "code": "SELECT\n  post_id,\n  GROUP_CONCAT(tag_name, ', ') AS all_tags\nFROM tags\nGROUP BY post_id\nORDER BY post_id",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "GROUP_CONCAT aggregates string values from multiple rows into one delimited string per group.",
+                                "code": "SELECT\n  post_id,\n  GROUP_CONCAT(tag_name, ', ') AS all_tags\nFROM tags\nGROUP BY post_id\nORDER BY post_id"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-38",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Having Filter",
+                    "description": "Using `orders(id, customer_id, amount)`, return customers who have placed more than 3 orders. Return `customer_id` and `order_count`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use GROUP BY with HAVING COUNT(*) > 3.",
+                    "solution": {
+                        "code": "SELECT\n  customer_id,\n  COUNT(*) AS order_count\nFROM orders\nGROUP BY customer_id\nHAVING COUNT(*) > 3\nORDER BY order_count DESC",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "HAVING filters groups after aggregation, unlike WHERE which filters rows before grouping.",
+                                "code": "SELECT\n  customer_id,\n  COUNT(*) AS order_count\nFROM orders\nGROUP BY customer_id\nHAVING COUNT(*) > 3\nORDER BY order_count DESC"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-39",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Coalesce Default",
+                    "description": "Using `users(id, name, nickname)`, return `id`, `name`, and `display_name` where `display_name` is the nickname if available, otherwise the name. Order by `id`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use COALESCE to pick the first non-NULL value.",
+                    "solution": {
+                        "code": "SELECT\n  id,\n  name,\n  COALESCE(nickname, name) AS display_name\nFROM users\nORDER BY id",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "COALESCE returns the first non-NULL argument, providing a fallback chain.",
+                                "code": "SELECT\n  id,\n  name,\n  COALESCE(nickname, name) AS display_name\nFROM users\nORDER BY id"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-40",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Nullif Guard",
+                    "description": "Using `metrics(id, value_a, value_b)`, compute `value_a / value_b` as `ratio` but return NULL instead of dividing by zero. Return `id` and `ratio`. Order by `id`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use NULLIF(value_b, 0) to convert zero to NULL before dividing.",
+                    "solution": {
+                        "code": "SELECT\n  id,\n  CAST(value_a AS REAL) / NULLIF(value_b, 0) AS ratio\nFROM metrics\nORDER BY id",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "NULLIF(value_b, 0) returns NULL when value_b is 0, preventing a division-by-zero error.",
+                                "code": "SELECT\n  id,\n  CAST(value_a AS REAL) / NULLIF(value_b, 0) AS ratio\nFROM metrics\nORDER BY id"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-41",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Multi CTE",
+                    "description": "Using `orders(id, customer_id, amount)`, write a query with two CTEs: one computing total per customer, another computing the overall average. Return customers whose total exceeds the overall average. Return `customer_id` and `total`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Define two CTEs and join or filter in the final SELECT.",
+                    "solution": {
+                        "code": "WITH customer_totals AS (\n  SELECT customer_id, SUM(amount) AS total\n  FROM orders\n  GROUP BY customer_id\n),\navg_total AS (\n  SELECT AVG(total) AS avg_val FROM customer_totals\n)\nSELECT ct.customer_id, ct.total\nFROM customer_totals ct, avg_total a\nWHERE ct.total > a.avg_val\nORDER BY ct.total DESC",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Chain multiple CTEs to build intermediate results, then combine them in the final query.",
+                                "code": "WITH customer_totals AS (\n  SELECT customer_id, SUM(amount) AS total\n  FROM orders\n  GROUP BY customer_id\n),\navg_total AS (\n  SELECT AVG(total) AS avg_val FROM customer_totals\n)\nSELECT ct.customer_id, ct.total\nFROM customer_totals ct, avg_total a\nWHERE ct.total > a.avg_val\nORDER BY ct.total DESC"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-42",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Window Frame",
+                    "description": "Using `sales(id, sale_date, amount)`, compute a 3-row moving average of `amount` ordered by `sale_date`. Return `sale_date`, `amount`, and `moving_avg`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use AVG(amount) OVER with ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING.",
+                    "solution": {
+                        "code": "SELECT\n  sale_date,\n  amount,\n  ROUND(AVG(amount) OVER (ORDER BY sale_date ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING), 2) AS moving_avg\nFROM sales\nORDER BY sale_date",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "The ROWS BETWEEN clause defines a sliding window frame of 3 rows centered on the current row.",
+                                "code": "SELECT\n  sale_date,\n  amount,\n  ROUND(AVG(amount) OVER (ORDER BY sale_date ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING), 2) AS moving_avg\nFROM sales\nORDER BY sale_date"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-43",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Cumulative Count",
+                    "description": "Using `logins(id, user_id, login_date)`, return each row plus `cumulative_logins` showing the running count of logins per user ordered by `login_date`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use COUNT(*) OVER (PARTITION BY user_id ORDER BY login_date).",
+                    "solution": {
+                        "code": "SELECT\n  id,\n  user_id,\n  login_date,\n  COUNT(*) OVER (PARTITION BY user_id ORDER BY login_date) AS cumulative_logins\nFROM logins\nORDER BY user_id, login_date",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "A partitioned COUNT with ORDER BY computes a running count within each user's login history.",
+                                "code": "SELECT\n  id,\n  user_id,\n  login_date,\n  COUNT(*) OVER (PARTITION BY user_id ORDER BY login_date) AS cumulative_logins\nFROM logins\nORDER BY user_id, login_date"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-44",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Percent Rank",
+                    "description": "Using `scores(id, student_id, score)`, compute the percent rank of each student's score. Return `student_id`, `score`, and `pct_rank` rounded to 2 decimal places. Order by `score` descending.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use the PERCENT_RANK() window function.",
+                    "solution": {
+                        "code": "SELECT\n  student_id,\n  score,\n  ROUND(PERCENT_RANK() OVER (ORDER BY score), 2) AS pct_rank\nFROM scores\nORDER BY score DESC",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "PERCENT_RANK() computes the relative rank of each row as a value between 0 and 1.",
+                                "code": "SELECT\n  student_id,\n  score,\n  ROUND(PERCENT_RANK() OVER (ORDER BY score), 2) AS pct_rank\nFROM scores\nORDER BY score DESC"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-45",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Cume Dist",
+                    "description": "Using `scores(id, student_id, score)`, compute the cumulative distribution of each score. Return `student_id`, `score`, and `cume` rounded to 2 decimals. Order by `score`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use the CUME_DIST() window function.",
+                    "solution": {
+                        "code": "SELECT\n  student_id,\n  score,\n  ROUND(CUME_DIST() OVER (ORDER BY score), 2) AS cume\nFROM scores\nORDER BY score",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "CUME_DIST() returns the fraction of rows with values less than or equal to the current row's value.",
+                                "code": "SELECT\n  student_id,\n  score,\n  ROUND(CUME_DIST() OVER (ORDER BY score), 2) AS cume\nFROM scores\nORDER BY score"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-46",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Island Detect",
+                    "description": "Using `attendance(id, employee_id, work_date)`, find consecutive work-day islands per employee. Return `employee_id`, `island_start`, `island_end`, and `streak_days`. Order by `employee_id`, `island_start`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Subtract a ROW_NUMBER from the date to create a grouping key for consecutive dates.",
+                    "solution": {
+                        "code": "WITH numbered AS (\n  SELECT\n    employee_id,\n    work_date,\n    DATE(work_date, '-' || (ROW_NUMBER() OVER (PARTITION BY employee_id ORDER BY work_date) - 1) || ' days') AS grp\n  FROM attendance\n)\nSELECT\n  employee_id,\n  MIN(work_date) AS island_start,\n  MAX(work_date) AS island_end,\n  COUNT(*) AS streak_days\nFROM numbered\nGROUP BY employee_id, grp\nORDER BY employee_id, island_start",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Subtracting a sequential number from each date creates a constant for consecutive dates, enabling grouping.",
+                                "code": "WITH numbered AS (\n  SELECT\n    employee_id,\n    work_date,\n    DATE(work_date, '-' || (ROW_NUMBER() OVER (PARTITION BY employee_id ORDER BY work_date) - 1) || ' days') AS grp\n  FROM attendance\n)\nSELECT\n  employee_id,\n  MIN(work_date) AS island_start,\n  MAX(work_date) AS island_end,\n  COUNT(*) AS streak_days\nFROM numbered\nGROUP BY employee_id, grp\nORDER BY employee_id, island_start"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-47",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Anti Join",
+                    "description": "Using `products(id, name)` and `order_items(id, product_id)`, find products that have never been ordered. Return `id` and `name`. Order by `id`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use a LEFT JOIN and filter WHERE order_items columns are NULL.",
+                    "solution": {
+                        "code": "SELECT p.id, p.name\nFROM products p\nLEFT JOIN order_items oi ON p.id = oi.product_id\nWHERE oi.id IS NULL\nORDER BY p.id",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "A LEFT JOIN combined with a NULL check on the right table acts as an anti-join, finding unmatched rows.",
+                                "code": "SELECT p.id, p.name\nFROM products p\nLEFT JOIN order_items oi ON p.id = oi.product_id\nWHERE oi.id IS NULL\nORDER BY p.id"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-48",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Cross Join Grid",
+                    "description": "Using `colors(name)` with values ('red', 'blue') and `sizes(name)` with values ('S', 'M', 'L'), generate all possible color-size combinations. Return `color` and `size`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use CROSS JOIN to create a Cartesian product.",
+                    "solution": {
+                        "code": "SELECT\n  c.name AS color,\n  s.name AS size\nFROM colors c\nCROSS JOIN sizes s\nORDER BY c.name, s.name",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "CROSS JOIN pairs every row from one table with every row from another, creating all combinations.",
+                                "code": "SELECT\n  c.name AS color,\n  s.name AS size\nFROM colors c\nCROSS JOIN sizes s\nORDER BY c.name, s.name"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-49",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Running Max",
+                    "description": "Using `stock_prices(id, trade_date, price)`, return each row plus `running_max` showing the highest price seen so far ordered by `trade_date`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use MAX(price) OVER (ORDER BY trade_date) as a running aggregate.",
+                    "solution": {
+                        "code": "SELECT\n  id,\n  trade_date,\n  price,\n  MAX(price) OVER (ORDER BY trade_date) AS running_max\nFROM stock_prices\nORDER BY trade_date",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "MAX() with an ORDER BY window clause computes the maximum over all preceding rows plus the current row.",
+                                "code": "SELECT\n  id,\n  trade_date,\n  price,\n  MAX(price) OVER (ORDER BY trade_date) AS running_max\nFROM stock_prices\nORDER BY trade_date"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-50",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Running Min",
+                    "description": "Using `stock_prices(id, trade_date, price)`, return each row plus `running_min` showing the lowest price seen so far ordered by `trade_date`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use MIN(price) OVER (ORDER BY trade_date) as a running aggregate.",
+                    "solution": {
+                        "code": "SELECT\n  id,\n  trade_date,\n  price,\n  MIN(price) OVER (ORDER BY trade_date) AS running_min\nFROM stock_prices\nORDER BY trade_date",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "MIN() with an ORDER BY window clause computes the minimum over all preceding rows plus the current row.",
+                                "code": "SELECT\n  id,\n  trade_date,\n  price,\n  MIN(price) OVER (ORDER BY trade_date) AS running_min\nFROM stock_prices\nORDER BY trade_date"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-51",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Rank vs Dense",
+                    "description": "Using `results(id, name, score)`, return each row with both `rank_num` using RANK() and `dense_num` using DENSE_RANK() ordered by `score` descending.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "RANK() leaves gaps after ties while DENSE_RANK() does not.",
+                    "solution": {
+                        "code": "SELECT\n  name,\n  score,\n  RANK() OVER (ORDER BY score DESC) AS rank_num,\n  DENSE_RANK() OVER (ORDER BY score DESC) AS dense_num\nFROM results\nORDER BY score DESC",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "RANK and DENSE_RANK both rank rows, but RANK skips numbers after ties while DENSE_RANK assigns consecutive values.",
+                                "code": "SELECT\n  name,\n  score,\n  RANK() OVER (ORDER BY score DESC) AS rank_num,\n  DENSE_RANK() OVER (ORDER BY score DESC) AS dense_num\nFROM results\nORDER BY score DESC"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-52",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Conditional Count",
+                    "description": "Using `tickets(id, status, priority)`, return a single row with `high_open` counting tickets where status is 'open' and priority is 'high', and `total` counting all tickets.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use COUNT with CASE WHEN for conditional counting and COUNT(*) for the total.",
+                    "solution": {
+                        "code": "SELECT\n  COUNT(CASE WHEN status = 'open' AND priority = 'high' THEN 1 END) AS high_open,\n  COUNT(*) AS total\nFROM tickets",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "CASE inside COUNT returns a value only for matching rows; non-matching rows produce NULL which COUNT ignores.",
+                                "code": "SELECT\n  COUNT(CASE WHEN status = 'open' AND priority = 'high' THEN 1 END) AS high_open,\n  COUNT(*) AS total\nFROM tickets"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-53",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "IIF Shortcut",
+                    "description": "Using `employees(id, name, salary)`, return each employee with a `salary_band` column: 'high' if salary >= 80000, otherwise 'standard'. Order by `salary` descending.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use IIF(condition, true_val, false_val) or CASE WHEN.",
+                    "solution": {
+                        "code": "SELECT\n  name,\n  salary,\n  CASE WHEN salary >= 80000 THEN 'high' ELSE 'standard' END AS salary_band\nFROM employees\nORDER BY salary DESC",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "CASE WHEN provides inline conditional logic to classify rows into categories.",
+                                "code": "SELECT\n  name,\n  salary,\n  CASE WHEN salary >= 80000 THEN 'high' ELSE 'standard' END AS salary_band\nFROM employees\nORDER BY salary DESC"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-54",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Scalar Subquery",
+                    "description": "Using `products(id, name, price)`, return each product with a column `avg_price` showing the average price of all products. Return `name`, `price`, and `avg_price` rounded to 2 decimals.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Put a SELECT AVG(price) subquery in the SELECT list.",
+                    "solution": {
+                        "code": "SELECT\n  name,\n  price,\n  ROUND((SELECT AVG(price) FROM products), 2) AS avg_price\nFROM products\nORDER BY price DESC",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "A scalar subquery in the SELECT clause returns a single value that repeats on every output row.",
+                                "code": "SELECT\n  name,\n  price,\n  ROUND((SELECT AVG(price) FROM products), 2) AS avg_price\nFROM products\nORDER BY price DESC"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-55",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Top N Per Group",
+                    "description": "Using `reviews(id, product_id, rating, review_date)`, return the top 2 highest-rated reviews per product. Return `product_id`, `id`, `rating`. Order by `product_id`, `rating` descending.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use ROW_NUMBER() partitioned by product_id ordered by rating DESC, then filter rn <= 2.",
+                    "solution": {
+                        "code": "SELECT product_id, id, rating\nFROM (\n  SELECT\n    product_id,\n    id,\n    rating,\n    ROW_NUMBER() OVER (PARTITION BY product_id ORDER BY rating DESC) AS rn\n  FROM reviews\n) t\nWHERE rn <= 2\nORDER BY product_id, rating DESC",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "ROW_NUMBER partitioned by group lets you pick the top N items per group by filtering on the row number.",
+                                "code": "SELECT product_id, id, rating\nFROM (\n  SELECT\n    product_id,\n    id,\n    rating,\n    ROW_NUMBER() OVER (PARTITION BY product_id ORDER BY rating DESC) AS rn\n  FROM reviews\n) t\nWHERE rn <= 2\nORDER BY product_id, rating DESC"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-56",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Delta Change",
+                    "description": "Using `metrics(id, recorded_at, value)`, return each row plus `delta` showing the difference between the current value and the previous value ordered by `recorded_at`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Subtract LAG(value) from value to get the change.",
+                    "solution": {
+                        "code": "SELECT\n  id,\n  recorded_at,\n  value,\n  value - LAG(value) OVER (ORDER BY recorded_at) AS delta\nFROM metrics\nORDER BY recorded_at",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Subtracting LAG(value) from the current value computes the row-over-row change.",
+                                "code": "SELECT\n  id,\n  recorded_at,\n  value,\n  value - LAG(value) OVER (ORDER BY recorded_at) AS delta\nFROM metrics\nORDER BY recorded_at"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-57",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Ratio to Total",
+                    "description": "Using `sales(id, region, amount)`, return each sale with `region_pct` showing what percentage that sale is of its region's total, rounded to 1 decimal. Order by `region`, `amount` descending.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Divide amount by SUM(amount) OVER (PARTITION BY region) and multiply by 100.",
+                    "solution": {
+                        "code": "SELECT\n  id,\n  region,\n  amount,\n  ROUND(amount * 100.0 / SUM(amount) OVER (PARTITION BY region), 1) AS region_pct\nFROM sales\nORDER BY region, amount DESC",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Dividing each value by the partitioned SUM gives the ratio of each row to its group total.",
+                                "code": "SELECT\n  id,\n  region,\n  amount,\n  ROUND(amount * 100.0 / SUM(amount) OVER (PARTITION BY region), 1) AS region_pct\nFROM sales\nORDER BY region, amount DESC"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-58",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Last Value Trap",
+                    "description": "Using `prices(id, product_id, effective_date, price)`, return each row plus `latest_price` showing the last price per product by date. Use the correct frame clause. Order by `product_id`, `effective_date`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "LAST_VALUE needs ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING to see the full partition.",
+                    "solution": {
+                        "code": "SELECT\n  id,\n  product_id,\n  effective_date,\n  price,\n  LAST_VALUE(price) OVER (\n    PARTITION BY product_id\n    ORDER BY effective_date\n    ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING\n  ) AS latest_price\nFROM prices\nORDER BY product_id, effective_date",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "LAST_VALUE requires an explicit frame extending to UNBOUNDED FOLLOWING, otherwise the default frame stops at the current row.",
+                                "code": "SELECT\n  id,\n  product_id,\n  effective_date,\n  price,\n  LAST_VALUE(price) OVER (\n    PARTITION BY product_id\n    ORDER BY effective_date\n    ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING\n  ) AS latest_price\nFROM prices\nORDER BY product_id, effective_date"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-59",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Recursive Fibonacci",
+                    "description": "Generate the first 10 Fibonacci numbers using a recursive CTE. Return columns `n` (position 1-10) and `fib` (Fibonacci value).",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Track two values (current and previous) in the recursive CTE and add them each step.",
+                    "solution": {
+                        "code": "WITH RECURSIVE fib_cte(n, fib, prev) AS (\n  SELECT 1, 0, 1\n  UNION ALL\n  SELECT n + 1, prev, fib + prev FROM fib_cte WHERE n < 10\n)\nSELECT n, fib FROM fib_cte",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "The recursive CTE carries both current and previous Fibonacci values, computing the next by addition.",
+                                "code": "WITH RECURSIVE fib_cte(n, fib, prev) AS (\n  SELECT 1, 0, 1\n  UNION ALL\n  SELECT n + 1, prev, fib + prev FROM fib_cte WHERE n < 10\n)\nSELECT n, fib FROM fib_cte"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-60",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Date Series",
+                    "description": "Generate all dates from '2024-01-01' to '2024-01-10' using a recursive CTE. Return a single column `dt`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Start with the first date and add 1 day in each recursive step.",
+                    "solution": {
+                        "code": "WITH RECURSIVE dates(dt) AS (\n  SELECT '2024-01-01'\n  UNION ALL\n  SELECT DATE(dt, '+1 day') FROM dates WHERE dt < '2024-01-10'\n)\nSELECT dt FROM dates",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "A recursive CTE can generate date ranges by incrementing the date in each iteration until the end date.",
+                                "code": "WITH RECURSIVE dates(dt) AS (\n  SELECT '2024-01-01'\n  UNION ALL\n  SELECT DATE(dt, '+1 day') FROM dates WHERE dt < '2024-01-10'\n)\nSELECT dt FROM dates"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-61",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Unpivot Rows",
+                    "description": "Using `quarterly(id, q1, q2, q3, q4)`, convert columns q1-q4 into rows with columns `id`, `quarter`, and `value`. Order by `id`, `quarter`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use UNION ALL to select each quarter column as a separate row.",
+                    "solution": {
+                        "code": "SELECT id, 'Q1' AS quarter, q1 AS value FROM quarterly\nUNION ALL\nSELECT id, 'Q2', q2 FROM quarterly\nUNION ALL\nSELECT id, 'Q3', q3 FROM quarterly\nUNION ALL\nSELECT id, 'Q4', q4 FROM quarterly\nORDER BY id, quarter",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Without a native UNPIVOT, use UNION ALL to transform each column into a separate row with a label.",
+                                "code": "SELECT id, 'Q1' AS quarter, q1 AS value FROM quarterly\nUNION ALL\nSELECT id, 'Q2', q2 FROM quarterly\nUNION ALL\nSELECT id, 'Q3', q3 FROM quarterly\nUNION ALL\nSELECT id, 'Q4', q4 FROM quarterly\nORDER BY id, quarter"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-62",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Duplicate Finder",
+                    "description": "Using `contacts(id, email)`, find email addresses that appear more than once. Return `email` and `count` ordered by `count` descending.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "GROUP BY email and use HAVING COUNT(*) > 1.",
+                    "solution": {
+                        "code": "SELECT\n  email,\n  COUNT(*) AS count\nFROM contacts\nGROUP BY email\nHAVING COUNT(*) > 1\nORDER BY count DESC",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "GROUP BY with HAVING COUNT(*) > 1 identifies values that occur more than once.",
+                                "code": "SELECT\n  email,\n  COUNT(*) AS count\nFROM contacts\nGROUP BY email\nHAVING COUNT(*) > 1\nORDER BY count DESC"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-63",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Keep First Dup",
+                    "description": "Using `contacts(id, email)`, return only the first occurrence (lowest id) of each duplicate email. Return `id` and `email`. Order by `id`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use MIN(id) grouped by email in a subquery.",
+                    "solution": {
+                        "code": "SELECT id, email\nFROM contacts\nWHERE id IN (\n  SELECT MIN(id) FROM contacts GROUP BY email\n)\nORDER BY id",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "MIN(id) per email group identifies the earliest record for each unique email address.",
+                                "code": "SELECT id, email\nFROM contacts\nWHERE id IN (\n  SELECT MIN(id) FROM contacts GROUP BY email\n)\nORDER BY id"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-64",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Window Count",
+                    "description": "Using `orders(id, customer_id, order_date)`, return each order plus `customer_total_orders` showing the total number of orders that customer has placed. Order by `customer_id`, `order_date`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use COUNT(*) OVER (PARTITION BY customer_id) without ORDER BY to get the total.",
+                    "solution": {
+                        "code": "SELECT\n  id,\n  customer_id,\n  order_date,\n  COUNT(*) OVER (PARTITION BY customer_id) AS customer_total_orders\nFROM orders\nORDER BY customer_id, order_date",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "COUNT(*) OVER (PARTITION BY ...) without ORDER BY gives the total count per group on every row.",
+                                "code": "SELECT\n  id,\n  customer_id,\n  order_date,\n  COUNT(*) OVER (PARTITION BY customer_id) AS customer_total_orders\nFROM orders\nORDER BY customer_id, order_date"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-65",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "String Split",
+                    "description": "Using `data(id, csv_values)` where csv_values contains comma-separated numbers like '10,20,30', extract the first value as `first_val`. Return `id` and `first_val`. Order by `id`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use SUBSTR and INSTR to extract text before the first comma.",
+                    "solution": {
+                        "code": "SELECT\n  id,\n  SUBSTR(csv_values, 1, INSTR(csv_values, ',') - 1) AS first_val\nFROM data\nORDER BY id",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "INSTR finds the comma position and SUBSTR extracts the text before it.",
+                                "code": "SELECT\n  id,\n  SUBSTR(csv_values, 1, INSTR(csv_values, ',') - 1) AS first_val\nFROM data\nORDER BY id"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-66",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Type Cast",
+                    "description": "Using `raw_data(id, amount_text)` where amount_text is a string like '150.50', convert it to a number and return `id` and `amount` as a real number. Order by `amount` descending.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use CAST(amount_text AS REAL) to convert text to a number.",
+                    "solution": {
+                        "code": "SELECT\n  id,\n  CAST(amount_text AS REAL) AS amount\nFROM raw_data\nORDER BY amount DESC",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "CAST converts data types, here turning text into REAL for numeric operations and sorting.",
+                                "code": "SELECT\n  id,\n  CAST(amount_text AS REAL) AS amount\nFROM raw_data\nORDER BY amount DESC"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-67",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Full Outer Sim",
+                    "description": "Using `left_t(id, val)` and `right_t(id, val)`, simulate a full outer join returning all rows from both tables. Return `id`, `left_val`, `right_val`. Order by `id`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use a LEFT JOIN unioned with rows from right_t that have no match in left_t.",
+                    "solution": {
+                        "code": "SELECT\n  COALESCE(l.id, r.id) AS id,\n  l.val AS left_val,\n  r.val AS right_val\nFROM left_t l\nLEFT JOIN right_t r ON l.id = r.id\nUNION ALL\nSELECT\n  r.id,\n  NULL,\n  r.val\nFROM right_t r\nWHERE NOT EXISTS (SELECT 1 FROM left_t l WHERE l.id = r.id)\nORDER BY id",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Simulating FULL OUTER JOIN with LEFT JOIN plus a NOT EXISTS query covers both unmatched sides.",
+                                "code": "SELECT\n  COALESCE(l.id, r.id) AS id,\n  l.val AS left_val,\n  r.val AS right_val\nFROM left_t l\nLEFT JOIN right_t r ON l.id = r.id\nUNION ALL\nSELECT\n  r.id,\n  NULL,\n  r.val\nFROM right_t r\nWHERE NOT EXISTS (SELECT 1 FROM left_t l WHERE l.id = r.id)\nORDER BY id"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-68",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Dense Gap Fill",
+                    "description": "Using `monthly_sales(month_num, revenue)` with some months missing from 1-12, generate all 12 months and show 0 for missing months. Return `month_num` and `revenue`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Generate months 1-12 with a recursive CTE, then LEFT JOIN to actual data.",
+                    "solution": {
+                        "code": "WITH RECURSIVE months(month_num) AS (\n  SELECT 1\n  UNION ALL\n  SELECT month_num + 1 FROM months WHERE month_num < 12\n)\nSELECT\n  m.month_num,\n  COALESCE(s.revenue, 0) AS revenue\nFROM months m\nLEFT JOIN monthly_sales s ON m.month_num = s.month_num\nORDER BY m.month_num",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "A recursive CTE generates the complete month series, and LEFT JOIN with COALESCE fills missing values with 0.",
+                                "code": "WITH RECURSIVE months(month_num) AS (\n  SELECT 1\n  UNION ALL\n  SELECT month_num + 1 FROM months WHERE month_num < 12\n)\nSELECT\n  m.month_num,\n  COALESCE(s.revenue, 0) AS revenue\nFROM months m\nLEFT JOIN monthly_sales s ON m.month_num = s.month_num\nORDER BY m.month_num"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-69",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Running Distinct",
+                    "description": "Using `visits(id, user_id, visit_date)`, return each date with `unique_visitors` showing the count of distinct users who visited on or before that date. Order by `visit_date`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use a correlated subquery to count distinct users up to each date.",
+                    "solution": {
+                        "code": "SELECT DISTINCT\n  v.visit_date,\n  (SELECT COUNT(DISTINCT user_id) FROM visits WHERE visit_date <= v.visit_date) AS unique_visitors\nFROM visits v\nORDER BY v.visit_date",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "A correlated subquery with COUNT(DISTINCT) computes a running distinct count up to each date.",
+                                "code": "SELECT DISTINCT\n  v.visit_date,\n  (SELECT COUNT(DISTINCT user_id) FROM visits WHERE visit_date <= v.visit_date) AS unique_visitors\nFROM visits v\nORDER BY v.visit_date"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-70",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Avg Without Max",
+                    "description": "Using `scores(id, student_id, score)`, compute each student's average score excluding their highest score. Return `student_id` and `avg_without_max` rounded to 2 decimals. Order by `student_id`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Subtract the MAX and adjust the count: (SUM - MAX) / (COUNT - 1).",
+                    "solution": {
+                        "code": "SELECT\n  student_id,\n  ROUND((SUM(score) - MAX(score)) * 1.0 / (COUNT(score) - 1), 2) AS avg_without_max\nFROM scores\nGROUP BY student_id\nHAVING COUNT(score) > 1\nORDER BY student_id",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Remove the maximum value from the sum and reduce the count by one to compute the adjusted average.",
+                                "code": "SELECT\n  student_id,\n  ROUND((SUM(score) - MAX(score)) * 1.0 / (COUNT(score) - 1), 2) AS avg_without_max\nFROM scores\nGROUP BY student_id\nHAVING COUNT(score) > 1\nORDER BY student_id"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-71",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Chain CTE",
+                    "description": "Using `transactions(id, account_id, amount, txn_date)`, write a 3-level CTE chain: first compute daily totals per account, then monthly totals, then return accounts whose any month exceeds 10000. Return `account_id` and `monthly_total`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Each CTE references the previous one to build up aggregation levels.",
+                    "solution": {
+                        "code": "WITH daily AS (\n  SELECT\n    account_id,\n    txn_date,\n    SUM(amount) AS daily_total\n  FROM transactions\n  GROUP BY account_id, txn_date\n),\nmonthly AS (\n  SELECT\n    account_id,\n    SUBSTR(txn_date, 1, 7) AS month,\n    SUM(daily_total) AS monthly_total\n  FROM daily\n  GROUP BY account_id, SUBSTR(txn_date, 1, 7)\n)\nSELECT account_id, monthly_total\nFROM monthly\nWHERE monthly_total > 10000\nORDER BY monthly_total DESC",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Chained CTEs build incremental aggregation layers, each refining the results of the previous step.",
+                                "code": "WITH daily AS (\n  SELECT\n    account_id,\n    txn_date,\n    SUM(amount) AS daily_total\n  FROM transactions\n  GROUP BY account_id, txn_date\n),\nmonthly AS (\n  SELECT\n    account_id,\n    SUBSTR(txn_date, 1, 7) AS month,\n    SUM(daily_total) AS monthly_total\n  FROM daily\n  GROUP BY account_id, SUBSTR(txn_date, 1, 7)\n)\nSELECT account_id, monthly_total\nFROM monthly\nWHERE monthly_total > 10000\nORDER BY monthly_total DESC"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-72",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Lateral Trick",
+                    "description": "Using `departments(id, name)` and `employees(id, dept_id, salary)`, return each department with the highest paid employee's salary. Return `dept_name` and `max_salary`. Order by `max_salary` descending.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use a correlated subquery or join with a grouped subquery.",
+                    "solution": {
+                        "code": "SELECT\n  d.name AS dept_name,\n  (\n    SELECT MAX(salary) FROM employees WHERE dept_id = d.id\n  ) AS max_salary\nFROM departments d\nORDER BY max_salary DESC",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "A correlated scalar subquery computes the max salary for each department row.",
+                                "code": "SELECT\n  d.name AS dept_name,\n  (\n    SELECT MAX(salary) FROM employees WHERE dept_id = d.id\n  ) AS max_salary\nFROM departments d\nORDER BY max_salary DESC"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-73",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Pivot Counts",
+                    "description": "Using `orders(id, status)` where status can be 'pending', 'shipped', or 'delivered', return a single row with columns `pending`, `shipped`, and `delivered` showing the count of each status.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use SUM(CASE WHEN status = ... THEN 1 ELSE 0 END) for each status.",
+                    "solution": {
+                        "code": "SELECT\n  SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0 END) AS pending,\n  SUM(CASE WHEN status = 'shipped' THEN 1 ELSE 0 END) AS shipped,\n  SUM(CASE WHEN status = 'delivered' THEN 1 ELSE 0 END) AS delivered\nFROM orders",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "CASE WHEN inside SUM pivots row values into columns by conditionally counting each status.",
+                                "code": "SELECT\n  SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0 END) AS pending,\n  SUM(CASE WHEN status = 'shipped' THEN 1 ELSE 0 END) AS shipped,\n  SUM(CASE WHEN status = 'delivered' THEN 1 ELSE 0 END) AS delivered\nFROM orders"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-74",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Overlap Detect",
+                    "description": "Using `bookings(id, room_id, start_date, end_date)`, find pairs of overlapping bookings for the same room. Return `booking_a`, `booking_b`, `room_id`. Order by `room_id`, `booking_a`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Self-join where a.start < b.end AND b.start < a.end AND a.id < b.id.",
+                    "solution": {
+                        "code": "SELECT\n  a.id AS booking_a,\n  b.id AS booking_b,\n  a.room_id\nFROM bookings a\nJOIN bookings b ON a.room_id = b.room_id\n  AND a.id < b.id\n  AND a.start_date < b.end_date\n  AND b.start_date < a.end_date\nORDER BY a.room_id, a.id",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Two date ranges overlap when each starts before the other ends. The id < condition avoids duplicate pairs.",
+                                "code": "SELECT\n  a.id AS booking_a,\n  b.id AS booking_b,\n  a.room_id\nFROM bookings a\nJOIN bookings b ON a.room_id = b.room_id\n  AND a.id < b.id\n  AND a.start_date < b.end_date\n  AND b.start_date < a.end_date\nORDER BY a.room_id, a.id"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-75",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Windowed Diff",
+                    "description": "Using `sensor_data(id, sensor_id, reading, ts)`, compute the difference between each reading and the sensor's average reading. Return `sensor_id`, `ts`, `reading`, and `diff_from_avg` rounded to 2 decimals.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use reading - AVG(reading) OVER (PARTITION BY sensor_id).",
+                    "solution": {
+                        "code": "SELECT\n  sensor_id,\n  ts,\n  reading,\n  ROUND(reading - AVG(reading) OVER (PARTITION BY sensor_id), 2) AS diff_from_avg\nFROM sensor_data\nORDER BY sensor_id, ts",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Subtracting a partitioned AVG from each reading shows how much each value deviates from its group mean.",
+                                "code": "SELECT\n  sensor_id,\n  ts,\n  reading,\n  ROUND(reading - AVG(reading) OVER (PARTITION BY sensor_id), 2) AS diff_from_avg\nFROM sensor_data\nORDER BY sensor_id, ts"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-76",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Row Filter CTE",
+                    "description": "Using `logs(id, user_id, action, ts)`, return the second most recent action per user. Return `user_id`, `action`, `ts`. Order by `user_id`.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use ROW_NUMBER in a CTE partitioned by user_id, then filter for rn = 2.",
+                    "solution": {
+                        "code": "WITH ranked AS (\n  SELECT\n    user_id,\n    action,\n    ts,\n    ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY ts DESC) AS rn\n  FROM logs\n)\nSELECT user_id, action, ts\nFROM ranked\nWHERE rn = 2\nORDER BY user_id",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "ROW_NUMBER assigns positions per user ordered by recency; filtering rn = 2 picks the second most recent.",
+                                "code": "WITH ranked AS (\n  SELECT\n    user_id,\n    action,\n    ts,\n    ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY ts DESC) AS rn\n  FROM logs\n)\nSELECT user_id, action, ts\nFROM ranked\nWHERE rn = 2\nORDER BY user_id"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-77",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Nth Value Pick",
+                    "description": "Using `leaderboard(id, player, score)`, return each row plus `third_highest` showing the 3rd highest score overall. Order by `score` descending.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use NTH_VALUE(score, 3) OVER (ORDER BY score DESC ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING).",
+                    "solution": {
+                        "code": "SELECT\n  player,\n  score,\n  NTH_VALUE(score, 3) OVER (\n    ORDER BY score DESC\n    ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING\n  ) AS third_highest\nFROM leaderboard\nORDER BY score DESC",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "NTH_VALUE retrieves the value at a specific position in the window frame; the full frame ensures it's always visible.",
+                                "code": "SELECT\n  player,\n  score,\n  NTH_VALUE(score, 3) OVER (\n    ORDER BY score DESC\n    ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING\n  ) AS third_highest\nFROM leaderboard\nORDER BY score DESC"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-78",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Case Pivot Avg",
+                    "description": "Using `reviews(id, product_id, rating, source)` where source is 'web' or 'app', return each product's average rating by source. Return `product_id`, `web_avg`, `app_avg` rounded to 1 decimal.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use AVG with CASE WHEN source = 'web' for web_avg and CASE WHEN source = 'app' for app_avg.",
+                    "solution": {
+                        "code": "SELECT\n  product_id,\n  ROUND(AVG(CASE WHEN source = 'web' THEN rating END), 1) AS web_avg,\n  ROUND(AVG(CASE WHEN source = 'app' THEN rating END), 1) AS app_avg\nFROM reviews\nGROUP BY product_id\nORDER BY product_id",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "CASE inside AVG filters which rows contribute to each aggregate, creating a pivot by source.",
+                                "code": "SELECT\n  product_id,\n  ROUND(AVG(CASE WHEN source = 'web' THEN rating END), 1) AS web_avg,\n  ROUND(AVG(CASE WHEN source = 'app' THEN rating END), 1) AS app_avg\nFROM reviews\nGROUP BY product_id\nORDER BY product_id"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-79",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Recursive Hierarchy",
+                    "description": "Using `categories(id, name, parent_id)`, build the full path for each category from root to leaf. Return `id`, `name`, and `path` (e.g., 'Electronics > Phones > Smartphones'). Root categories have NULL parent_id.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Use a recursive CTE starting from roots (parent_id IS NULL) and concatenate names.",
+                    "solution": {
+                        "code": "WITH RECURSIVE cat_path AS (\n  SELECT id, name, CAST(name AS TEXT) AS path\n  FROM categories\n  WHERE parent_id IS NULL\n  UNION ALL\n  SELECT c.id, c.name, cp.path || ' > ' || c.name\n  FROM categories c\n  JOIN cat_path cp ON c.parent_id = cp.id\n)\nSELECT id, name, path\nFROM cat_path\nORDER BY path",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "The recursive CTE starts at root nodes and builds the full path by concatenating names at each level.",
+                                "code": "WITH RECURSIVE cat_path AS (\n  SELECT id, name, CAST(name AS TEXT) AS path\n  FROM categories\n  WHERE parent_id IS NULL\n  UNION ALL\n  SELECT c.id, c.name, cp.path || ' > ' || c.name\n  FROM categories c\n  JOIN cat_path cp ON c.parent_id = cp.id\n)\nSELECT id, name, path\nFROM cat_path\nORDER BY path"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "sql-advanced-80",
+                    "language": "sql",
+                    "level": "advanced",
+                    "title": "Grand Finale",
+                    "description": "Using `sales(id, product_id, region, amount, sale_date)`, return each region's best-selling product (highest total amount). Return `region`, `product_id`, and `total_amount`. Break ties by lowest product_id.",
+                    "starterCode": "-- Write your query below\n",
+                    "hint": "Aggregate by region and product, rank within each region, then filter for rank 1.",
+                    "solution": {
+                        "code": "WITH product_totals AS (\n  SELECT\n    region,\n    product_id,\n    SUM(amount) AS total_amount,\n    ROW_NUMBER() OVER (\n      PARTITION BY region\n      ORDER BY SUM(amount) DESC, product_id\n    ) AS rn\n  FROM sales\n  GROUP BY region, product_id\n)\nSELECT region, product_id, total_amount\nFROM product_totals\nWHERE rn = 1\nORDER BY region",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                            },
+                            {
+                                "title": "Implement the core logic",
+                                "explanation": "Aggregate sales per region and product, then use ROW_NUMBER to pick the top seller per region with a tiebreaker.",
+                                "code": "WITH product_totals AS (\n  SELECT\n    region,\n    product_id,\n    SUM(amount) AS total_amount,\n    ROW_NUMBER() OVER (\n      PARTITION BY region\n      ORDER BY SUM(amount) DESC, product_id\n    ) AS rn\n  FROM sales\n  GROUP BY region, product_id\n)\nSELECT region, product_id, total_amount\nFROM product_totals\nWHERE rn = 1\nORDER BY region"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                            }
+                        ]
+                    }
                 }
             ]
         }
