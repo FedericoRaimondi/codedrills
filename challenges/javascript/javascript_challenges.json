@@ -1088,6 +1088,1626 @@
                             }
                         ]
                     }
+                },
+                {
+                    "id": "js-beginner-21",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Repeat It",
+                    "description": "Write function repeatStr(str, n) that repeats a string n times. Test with repeatStr(\"ha\", 3). Expected output: `hahaha`.",
+                    "starterCode": "function repeatStr(str, n) {\n  // Your code here\n}\n",
+                    "hint": "Use the built-in repeat() method on strings.",
+                    "solution": {
+                        "code": "function repeatStr(str, n) {\n  return str.repeat(n);\n}\nconsole.log(repeatStr(\"ha\", 3));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to repeat a given string a specified number of times."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "JavaScript strings have a built-in repeat() method that duplicates the string n times.",
+                                "code": "function repeatStr(str, n) {\n  return str.repeat(n);\n}\nconsole.log(repeatStr(\"ha\", 3));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with \"ha\" and 3 outputs hahaha, confirming the string is repeated correctly."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-22",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Last Element",
+                    "description": "Write function lastItem(arr) that returns the last element of an array. Test with lastItem([10, 20, 30]). Expected output: `30`.",
+                    "starterCode": "function lastItem(arr) {\n  // Your code here\n}\n",
+                    "hint": "Use arr.length - 1 as the index.",
+                    "solution": {
+                        "code": "function lastItem(arr) {\n  return arr[arr.length - 1];\n}\nconsole.log(lastItem([10, 20, 30]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to access the final element of a given array."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use bracket notation with arr.length - 1 to get the last index.",
+                                "code": "function lastItem(arr) {\n  return arr[arr.length - 1];\n}\nconsole.log(lastItem([10, 20, 30]));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [10, 20, 30] prints 30, the last element."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-23",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Average Calc",
+                    "description": "Write function average(numbers) that returns the average of an array of numbers. Test with average([10, 20, 30]). Expected output: `20`.",
+                    "starterCode": "function average(numbers) {\n  // Your code here\n}\n",
+                    "hint": "Sum all elements and divide by the array length.",
+                    "solution": {
+                        "code": "function average(numbers) {\n  const sum = numbers.reduce((a, b) => a + b, 0);\n  return sum / numbers.length;\n}\nconsole.log(average([10, 20, 30]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to compute the arithmetic mean of an array of numbers."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use reduce to sum all elements, then divide by the array length.",
+                                "code": "function average(numbers) {\n  const sum = numbers.reduce((a, b) => a + b, 0);\n  return sum / numbers.length;\n}\nconsole.log(average([10, 20, 30]));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [10, 20, 30] gives (10+20+30)/3 = 20."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-24",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "String Chop",
+                    "description": "Write function firstNChars(str, n) that returns the first n characters of a string. Test with firstNChars(\"JavaScript\", 4). Expected output: `Java`.",
+                    "starterCode": "function firstNChars(str, n) {\n  // Your code here\n}\n",
+                    "hint": "Use the slice() method.",
+                    "solution": {
+                        "code": "function firstNChars(str, n) {\n  return str.slice(0, n);\n}\nconsole.log(firstNChars(\"JavaScript\", 4));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to extract the first n characters from a string."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use slice(0, n) to get the substring from the start up to (but not including) index n.",
+                                "code": "function firstNChars(str, n) {\n  return str.slice(0, n);\n}\nconsole.log(firstNChars(\"JavaScript\", 4));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with \"JavaScript\" and 4 outputs Java, the first 4 characters."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-25",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Negative Flip",
+                    "description": "Write function absoluteVal(n) that returns the absolute value of a number. Test with absoluteVal(-42). Expected output: `42`.",
+                    "starterCode": "function absoluteVal(n) {\n  // Your code here\n}\n",
+                    "hint": "Use Math.abs().",
+                    "solution": {
+                        "code": "function absoluteVal(n) {\n  return Math.abs(n);\n}\nconsole.log(absoluteVal(-42));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to convert a negative number to its positive equivalent."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Math.abs() returns the absolute value of any number.",
+                                "code": "function absoluteVal(n) {\n  return Math.abs(n);\n}\nconsole.log(absoluteVal(-42));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with -42 outputs 42, the absolute value."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-26",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Power Up",
+                    "description": "Write function power(base, exp) that returns base raised to the exp power. Test with power(2, 8). Expected output: `256`.",
+                    "starterCode": "function power(base, exp) {\n  // Your code here\n}\n",
+                    "hint": "Use Math.pow() or the ** operator.",
+                    "solution": {
+                        "code": "function power(base, exp) {\n  return base ** exp;\n}\nconsole.log(power(2, 8));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to compute exponentiation of a base by an exponent."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "The ** operator performs exponentiation in JavaScript.",
+                                "code": "function power(base, exp) {\n  return base ** exp;\n}\nconsole.log(power(2, 8));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with 2 and 8 outputs 256, since 2^8 = 256."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-27",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Odd Filter",
+                    "description": "Write function onlyOdd(numbers) that returns only odd numbers from an array. Test with onlyOdd([1, 2, 3, 4, 5]). Expected output: `1,3,5`.",
+                    "starterCode": "function onlyOdd(numbers) {\n  // Your code here\n}\n",
+                    "hint": "Use filter with % 2 !== 0.",
+                    "solution": {
+                        "code": "function onlyOdd(numbers) {\n  return numbers.filter(n => n % 2 !== 0);\n}\nconsole.log(onlyOdd([1, 2, 3, 4, 5]).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to keep only the odd numbers from an array."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use filter with a modulo check: n % 2 !== 0 identifies odd numbers.",
+                                "code": "function onlyOdd(numbers) {\n  return numbers.filter(n => n % 2 !== 0);\n}\nconsole.log(onlyOdd([1, 2, 3, 4, 5]).join(\",\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [1,2,3,4,5] outputs 1,3,5, the odd numbers only."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-28",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Merge Two",
+                    "description": "Write function mergeArrays(a, b) that merges two arrays into one. Test with mergeArrays([1, 2], [3, 4]). Expected output: `1,2,3,4`.",
+                    "starterCode": "function mergeArrays(a, b) {\n  // Your code here\n}\n",
+                    "hint": "Use the spread operator or concat().",
+                    "solution": {
+                        "code": "function mergeArrays(a, b) {\n  return [...a, ...b];\n}\nconsole.log(mergeArrays([1, 2], [3, 4]).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to combine two arrays into a single array."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use the spread operator to unpack both arrays into a new array.",
+                                "code": "function mergeArrays(a, b) {\n  return [...a, ...b];\n}\nconsole.log(mergeArrays([1, 2], [3, 4]).join(\",\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [1,2] and [3,4] outputs 1,2,3,4."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-29",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Smallest One",
+                    "description": "Write function minInArray(numbers) that returns the smallest value in a non-empty array. Test with minInArray([7, 2, 9, 1]). Expected output: `1`.",
+                    "starterCode": "function minInArray(numbers) {\n  // Your code here\n}\n",
+                    "hint": "Use Math.min with spread.",
+                    "solution": {
+                        "code": "function minInArray(numbers) {\n  return Math.min(...numbers);\n}\nconsole.log(minInArray([7, 2, 9, 1]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to find the minimum value in an array of numbers."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Spread the array into Math.min() which returns the smallest argument.",
+                                "code": "function minInArray(numbers) {\n  return Math.min(...numbers);\n}\nconsole.log(minInArray([7, 2, 9, 1]));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [7,2,9,1] outputs 1, the smallest value."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-30",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Char At",
+                    "description": "Write function nthChar(str, n) that returns the character at index n. Test with nthChar(\"hello\", 1). Expected output: `e`.",
+                    "starterCode": "function nthChar(str, n) {\n  // Your code here\n}\n",
+                    "hint": "Use bracket notation or charAt().",
+                    "solution": {
+                        "code": "function nthChar(str, n) {\n  return str.charAt(n);\n}\nconsole.log(nthChar(\"hello\", 1));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to get a single character at a given index position."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use charAt(n) to retrieve the character at the specified index.",
+                                "code": "function nthChar(str, n) {\n  return str.charAt(n);\n}\nconsole.log(nthChar(\"hello\", 1));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with \"hello\" and index 1 outputs e, the second character."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-31",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Contains Check",
+                    "description": "Write function includes(arr, val) that returns true if the array contains the value. Test with includes([1, 2, 3], 2). Expected output: `true`.",
+                    "starterCode": "function includes(arr, val) {\n  // Your code here\n}\n",
+                    "hint": "Use the Array includes() method.",
+                    "solution": {
+                        "code": "function includes(arr, val) {\n  return arr.includes(val);\n}\nconsole.log(includes([1, 2, 3], 2));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to check if a specific value exists in an array."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Array.includes() returns true if the array contains the given value.",
+                                "code": "function includes(arr, val) {\n  return arr.includes(val);\n}\nconsole.log(includes([1, 2, 3], 2));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [1,2,3] and 2 outputs true since 2 is in the array."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-32",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Index Finder",
+                    "description": "Write function findIndex(arr, val) that returns the index of val in arr, or -1 if not found. Test with findIndex([\"a\", \"b\", \"c\"], \"b\"). Expected output: `1`.",
+                    "starterCode": "function findIndex(arr, val) {\n  // Your code here\n}\n",
+                    "hint": "Use indexOf().",
+                    "solution": {
+                        "code": "function findIndex(arr, val) {\n  return arr.indexOf(val);\n}\nconsole.log(findIndex([\"a\", \"b\", \"c\"], \"b\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to find the position of a value in an array."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "indexOf() returns the first index of a value, or -1 if not found.",
+                                "code": "function findIndex(arr, val) {\n  return arr.indexOf(val);\n}\nconsole.log(findIndex([\"a\", \"b\", \"c\"], \"b\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [\"a\",\"b\",\"c\"] and \"b\" outputs 1, the correct index."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-33",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Square All",
+                    "description": "Write function squareAll(numbers) that returns an array with each number squared. Test with squareAll([1, 2, 3, 4]). Expected output: `1,4,9,16`.",
+                    "starterCode": "function squareAll(numbers) {\n  // Your code here\n}\n",
+                    "hint": "Use map() with n * n or n ** 2.",
+                    "solution": {
+                        "code": "function squareAll(numbers) {\n  return numbers.map(n => n ** 2);\n}\nconsole.log(squareAll([1, 2, 3, 4]).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to square every number in an array."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use map() to transform each element by squaring it with the ** operator.",
+                                "code": "function squareAll(numbers) {\n  return numbers.map(n => n ** 2);\n}\nconsole.log(squareAll([1, 2, 3, 4]).join(\",\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [1,2,3,4] outputs 1,4,9,16."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-34",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Even Check",
+                    "description": "Write function isEven(n) that returns true if n is even, false otherwise. Test with isEven(4). Expected output: `true`.",
+                    "starterCode": "function isEven(n) {\n  // Your code here\n}\n",
+                    "hint": "Use the modulo operator % 2.",
+                    "solution": {
+                        "code": "function isEven(n) {\n  return n % 2 === 0;\n}\nconsole.log(isEven(4));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to determine if a number is even."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "A number is even if its remainder when divided by 2 is zero.",
+                                "code": "function isEven(n) {\n  return n % 2 === 0;\n}\nconsole.log(isEven(4));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with 4 outputs true because 4 % 2 === 0."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-35",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Starts With",
+                    "description": "Write function startsWith(str, prefix) that checks if a string starts with a given prefix. Test with startsWith(\"JavaScript\", \"Java\"). Expected output: `true`.",
+                    "starterCode": "function startsWith(str, prefix) {\n  // Your code here\n}\n",
+                    "hint": "Use the built-in startsWith() method.",
+                    "solution": {
+                        "code": "function startsWith(str, prefix) {\n  return str.startsWith(prefix);\n}\nconsole.log(startsWith(\"JavaScript\", \"Java\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to check if a string begins with a specific prefix."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "The String startsWith() method checks if the string begins with the given substring.",
+                                "code": "function startsWith(str, prefix) {\n  return str.startsWith(prefix);\n}\nconsole.log(startsWith(\"JavaScript\", \"Java\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with \"JavaScript\" and \"Java\" outputs true."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-36",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Ends With",
+                    "description": "Write function endsWith(str, suffix) that checks if a string ends with a given suffix. Test with endsWith(\"filename.js\", \".js\"). Expected output: `true`.",
+                    "starterCode": "function endsWith(str, suffix) {\n  // Your code here\n}\n",
+                    "hint": "Use the built-in endsWith() method.",
+                    "solution": {
+                        "code": "function endsWith(str, suffix) {\n  return str.endsWith(suffix);\n}\nconsole.log(endsWith(\"filename.js\", \".js\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to check if a string ends with a specific suffix."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "The String endsWith() method checks if the string ends with the given substring.",
+                                "code": "function endsWith(str, suffix) {\n  return str.endsWith(suffix);\n}\nconsole.log(endsWith(\"filename.js\", \".js\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with \"filename.js\" and \".js\" outputs true."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-37",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Reverse Array",
+                    "description": "Write function reverseArr(arr) that returns a new reversed array without modifying the original. Test with reverseArr([1, 2, 3]). Expected output: `3,2,1`.",
+                    "starterCode": "function reverseArr(arr) {\n  // Your code here\n}\n",
+                    "hint": "Use slice() to copy, then reverse().",
+                    "solution": {
+                        "code": "function reverseArr(arr) {\n  return arr.slice().reverse();\n}\nconsole.log(reverseArr([1, 2, 3]).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to reverse an array without mutating the original."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use slice() to make a shallow copy, then reverse() the copy.",
+                                "code": "function reverseArr(arr) {\n  return arr.slice().reverse();\n}\nconsole.log(reverseArr([1, 2, 3]).join(\",\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [1,2,3] outputs 3,2,1 and the original stays unchanged."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-38",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Sum Range",
+                    "description": "Write function sumRange(a, b) that returns the sum of all integers from a to b inclusive. Test with sumRange(1, 5). Expected output: `15`.",
+                    "starterCode": "function sumRange(a, b) {\n  // Your code here\n}\n",
+                    "hint": "Use the formula n*(n+1)/2 or a simple loop.",
+                    "solution": {
+                        "code": "function sumRange(a, b) {\n  let sum = 0;\n  for (let i = a; i <= b; i++) sum += i;\n  return sum;\n}\nconsole.log(sumRange(1, 5));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to add all integers in the range [a, b]."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Loop from a to b, accumulating each value into a sum variable.",
+                                "code": "function sumRange(a, b) {\n  let sum = 0;\n  for (let i = a; i <= b; i++) sum += i;\n  return sum;\n}\nconsole.log(sumRange(1, 5));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with 1 and 5 outputs 15 (1+2+3+4+5)."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-39",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Type Check",
+                    "description": "Write function getType(val) that returns the type of a value as a string. Test with getType(42). Expected output: `number`.",
+                    "starterCode": "function getType(val) {\n  // Your code here\n}\n",
+                    "hint": "Use the typeof operator.",
+                    "solution": {
+                        "code": "function getType(val) {\n  return typeof val;\n}\nconsole.log(getType(42));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to determine the JavaScript type of a given value."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "The typeof operator returns a string indicating the type of a value.",
+                                "code": "function getType(val) {\n  return typeof val;\n}\nconsole.log(getType(42));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with 42 outputs number."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-40",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Clamp Value",
+                    "description": "Write function clamp(val, min, max) that restricts val to the range [min, max]. Test with clamp(15, 0, 10). Expected output: `10`.",
+                    "starterCode": "function clamp(val, min, max) {\n  // Your code here\n}\n",
+                    "hint": "Use Math.min and Math.max together.",
+                    "solution": {
+                        "code": "function clamp(val, min, max) {\n  return Math.max(min, Math.min(max, val));\n}\nconsole.log(clamp(15, 0, 10));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to ensure a value stays within a given range."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use Math.min to cap the upper bound, then Math.max to enforce the lower bound.",
+                                "code": "function clamp(val, min, max) {\n  return Math.max(min, Math.min(max, val));\n}\nconsole.log(clamp(15, 0, 10));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with 15, 0, 10 outputs 10 since 15 exceeds the max."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-41",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Count Down",
+                    "description": "Write function countdown(n) that returns a string counting down from n to 1 separated by commas. Test with countdown(5). Expected output: `5,4,3,2,1`.",
+                    "starterCode": "function countdown(n) {\n  // Your code here\n}\n",
+                    "hint": "Use a for loop that decrements from n to 1.",
+                    "solution": {
+                        "code": "function countdown(n) {\n  const result = [];\n  for (let i = n; i >= 1; i--) result.push(i);\n  return result.join(\",\");\n}\nconsole.log(countdown(5));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to produce a descending sequence from n down to 1."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Loop from n down to 1, collecting each number, then join with commas.",
+                                "code": "function countdown(n) {\n  const result = [];\n  for (let i = n; i >= 1; i--) result.push(i);\n  return result.join(\",\");\n}\nconsole.log(countdown(5));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with 5 outputs 5,4,3,2,1."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-42",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Multiply List",
+                    "description": "Write function product(numbers) that returns the product of all numbers in an array. Test with product([2, 3, 4]). Expected output: `24`.",
+                    "starterCode": "function product(numbers) {\n  // Your code here\n}\n",
+                    "hint": "Use reduce() with multiplication.",
+                    "solution": {
+                        "code": "function product(numbers) {\n  return numbers.reduce((acc, n) => acc * n, 1);\n}\nconsole.log(product([2, 3, 4]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to multiply all numbers in an array together."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use reduce with multiplication, starting with 1 as the initial accumulator.",
+                                "code": "function product(numbers) {\n  return numbers.reduce((acc, n) => acc * n, 1);\n}\nconsole.log(product([2, 3, 4]));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [2,3,4] outputs 24 (2*3*4)."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-43",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Pad Left",
+                    "description": "Write function padLeft(str, len, ch) that pads a string on the left with ch until it reaches length len. Test with padLeft(\"42\", 5, \"0\"). Expected output: `00042`.",
+                    "starterCode": "function padLeft(str, len, ch) {\n  // Your code here\n}\n",
+                    "hint": "Use padStart() or build a string manually.",
+                    "solution": {
+                        "code": "function padLeft(str, len, ch) {\n  return str.padStart(len, ch);\n}\nconsole.log(padLeft(\"42\", 5, \"0\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to pad a string on the left until it reaches a target length."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "The padStart() method pads the current string with another string until it reaches the given length.",
+                                "code": "function padLeft(str, len, ch) {\n  return str.padStart(len, ch);\n}\nconsole.log(padLeft(\"42\", 5, \"0\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with \"42\", 5, \"0\" outputs 00042."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-44",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Trim Spaces",
+                    "description": "Write function trimAll(str) that removes leading and trailing whitespace from a string. Test with trimAll(\"  hello  \"). Expected output: `hello`.",
+                    "starterCode": "function trimAll(str) {\n  // Your code here\n}\n",
+                    "hint": "Use the built-in trim() method.",
+                    "solution": {
+                        "code": "function trimAll(str) {\n  return str.trim();\n}\nconsole.log(trimAll(\"  hello  \"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to strip whitespace from both ends of a string."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "The trim() method removes whitespace from both ends of a string.",
+                                "code": "function trimAll(str) {\n  return str.trim();\n}\nconsole.log(trimAll(\"  hello  \"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with \"  hello  \" outputs hello with no surrounding spaces."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-45",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Swap Case",
+                    "description": "Write function swapCase(str) that swaps uppercase to lowercase and vice versa. Test with swapCase(\"Hello World\"). Expected output: `hELLO wORLD`.",
+                    "starterCode": "function swapCase(str) {\n  // Your code here\n}\n",
+                    "hint": "Check each character's case and convert accordingly.",
+                    "solution": {
+                        "code": "function swapCase(str) {\n  return str.split(\"\").map(c => c === c.toUpperCase() ? c.toLowerCase() : c.toUpperCase()).join(\"\");\n}\nconsole.log(swapCase(\"Hello World\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to invert the case of every letter in a string."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Split into characters, check if each is uppercase or lowercase, and convert to the opposite.",
+                                "code": "function swapCase(str) {\n  return str.split(\"\").map(c => c === c.toUpperCase() ? c.toLowerCase() : c.toUpperCase()).join(\"\");\n}\nconsole.log(swapCase(\"Hello World\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with \"Hello World\" outputs hELLO wORLD."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-46",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Chunk Array",
+                    "description": "Write function chunk(arr, size) that splits an array into groups of the given size. Test with chunk([1, 2, 3, 4, 5], 2). Expected output: `1,2|3,4|5`.",
+                    "starterCode": "function chunk(arr, size) {\n  // Your code here\n}\n",
+                    "hint": "Use a loop with slice() to grab chunks.",
+                    "solution": {
+                        "code": "function chunk(arr, size) {\n  const result = [];\n  for (let i = 0; i < arr.length; i += size) {\n    result.push(arr.slice(i, i + size));\n  }\n  return result;\n}\nconsole.log(chunk([1, 2, 3, 4, 5], 2).map(c => c.join(\",\")).join(\"|\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to split an array into smaller sub-arrays of a specified size."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Loop through the array in steps of size, slicing out chunks and pushing them to the result.",
+                                "code": "function chunk(arr, size) {\n  const result = [];\n  for (let i = 0; i < arr.length; i += size) {\n    result.push(arr.slice(i, i + size));\n  }\n  return result;\n}\nconsole.log(chunk([1, 2, 3, 4, 5], 2).map(c => c.join(\",\")).join(\"|\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [1,2,3,4,5] and size 2 outputs 1,2|3,4|5."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-47",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Zip Arrays",
+                    "description": "Write function zip(a, b) that pairs elements from two arrays. Test with zip([1, 2, 3], [\"a\", \"b\", \"c\"]). Expected output: `1:a,2:b,3:c`.",
+                    "starterCode": "function zip(a, b) {\n  // Your code here\n}\n",
+                    "hint": "Use map with index to pair elements.",
+                    "solution": {
+                        "code": "function zip(a, b) {\n  return a.map((val, i) => [val, b[i]]);\n}\nconsole.log(zip([1, 2, 3], [\"a\", \"b\", \"c\"]).map(p => p.join(\":\")).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to pair corresponding elements from two arrays into sub-arrays."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use map on the first array, pairing each element with the element at the same index in the second array.",
+                                "code": "function zip(a, b) {\n  return a.map((val, i) => [val, b[i]]);\n}\nconsole.log(zip([1, 2, 3], [\"a\", \"b\", \"c\"]).map(p => p.join(\":\")).join(\",\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [1,2,3] and [\"a\",\"b\",\"c\"] outputs 1:a,2:b,3:c."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-48",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Unique Count",
+                    "description": "Write function countUnique(arr) that returns the number of unique values in an array. Test with countUnique([1, 2, 2, 3, 3, 3]). Expected output: `3`.",
+                    "starterCode": "function countUnique(arr) {\n  // Your code here\n}\n",
+                    "hint": "Use a Set and check its size.",
+                    "solution": {
+                        "code": "function countUnique(arr) {\n  return new Set(arr).size;\n}\nconsole.log(countUnique([1, 2, 2, 3, 3, 3]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to count how many distinct values exist in an array."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Convert the array to a Set which automatically removes duplicates, then return its size.",
+                                "code": "function countUnique(arr) {\n  return new Set(arr).size;\n}\nconsole.log(countUnique([1, 2, 2, 3, 3, 3]));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [1,2,2,3,3,3] outputs 3 since there are 3 unique values."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-49",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Object Keys",
+                    "description": "Write function getKeys(obj) that returns the keys of an object as a comma-separated string. Test with getKeys({name: \"Alice\", age: 30}). Expected output: `name,age`.",
+                    "starterCode": "function getKeys(obj) {\n  // Your code here\n}\n",
+                    "hint": "Use Object.keys().",
+                    "solution": {
+                        "code": "function getKeys(obj) {\n  return Object.keys(obj);\n}\nconsole.log(getKeys({ name: \"Alice\", age: 30 }).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to extract all property names from an object."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Object.keys() returns an array of an object's own enumerable property names.",
+                                "code": "function getKeys(obj) {\n  return Object.keys(obj);\n}\nconsole.log(getKeys({ name: \"Alice\", age: 30 }).join(\",\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with {name:\"Alice\",age:30} outputs name,age."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-50",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Object Values",
+                    "description": "Write function getValues(obj) that returns the values of an object as a comma-separated string. Test with getValues({x: 10, y: 20}). Expected output: `10,20`.",
+                    "starterCode": "function getValues(obj) {\n  // Your code here\n}\n",
+                    "hint": "Use Object.values().",
+                    "solution": {
+                        "code": "function getValues(obj) {\n  return Object.values(obj);\n}\nconsole.log(getValues({ x: 10, y: 20 }).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to extract all property values from an object."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Object.values() returns an array of an object's own enumerable property values.",
+                                "code": "function getValues(obj) {\n  return Object.values(obj);\n}\nconsole.log(getValues({ x: 10, y: 20 }).join(\",\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with {x:10,y:20} outputs 10,20."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-51",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Is Positive",
+                    "description": "Write function isPositive(n) that returns true if n is greater than zero. Test with isPositive(5). Expected output: `true`.",
+                    "starterCode": "function isPositive(n) {\n  // Your code here\n}\n",
+                    "hint": "Compare n with 0 using the > operator.",
+                    "solution": {
+                        "code": "function isPositive(n) {\n  return n > 0;\n}\nconsole.log(isPositive(5));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to check if a number is strictly greater than zero."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Simply compare n > 0, which returns a boolean.",
+                                "code": "function isPositive(n) {\n  return n > 0;\n}\nconsole.log(isPositive(5));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with 5 outputs true since 5 > 0."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-52",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Double Each",
+                    "description": "Write function doubleAll(numbers) that doubles every number in an array. Test with doubleAll([1, 2, 3]). Expected output: `2,4,6`.",
+                    "starterCode": "function doubleAll(numbers) {\n  // Your code here\n}\n",
+                    "hint": "Use map() to multiply each element by 2.",
+                    "solution": {
+                        "code": "function doubleAll(numbers) {\n  return numbers.map(n => n * 2);\n}\nconsole.log(doubleAll([1, 2, 3]).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to multiply every element in an array by 2."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use map() to create a new array where each element is doubled.",
+                                "code": "function doubleAll(numbers) {\n  return numbers.map(n => n * 2);\n}\nconsole.log(doubleAll([1, 2, 3]).join(\",\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [1,2,3] outputs 2,4,6."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-53",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "String Length",
+                    "description": "Write function strLen(str) that returns the length of a string. Test with strLen(\"CodeDrills\"). Expected output: `10`.",
+                    "starterCode": "function strLen(str) {\n  // Your code here\n}\n",
+                    "hint": "Use the .length property.",
+                    "solution": {
+                        "code": "function strLen(str) {\n  return str.length;\n}\nconsole.log(strLen(\"CodeDrills\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to determine how many characters are in a string."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Every string in JavaScript has a .length property that returns its character count.",
+                                "code": "function strLen(str) {\n  return str.length;\n}\nconsole.log(strLen(\"CodeDrills\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with \"CodeDrills\" outputs 10."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-54",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Replace Text",
+                    "description": "Write function replaceWord(str, oldW, newW) that replaces all occurrences of oldW with newW. Test with replaceWord(\"I like cats and cats like me\", \"cats\", \"dogs\"). Expected output: `I like dogs and dogs like me`.",
+                    "starterCode": "function replaceWord(str, oldW, newW) {\n  // Your code here\n}\n",
+                    "hint": "Use replaceAll() or split/join.",
+                    "solution": {
+                        "code": "function replaceWord(str, oldW, newW) {\n  return str.split(oldW).join(newW);\n}\nconsole.log(replaceWord(\"I like cats and cats like me\", \"cats\", \"dogs\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to replace every occurrence of a substring with a new one."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Split the string by the old word, then join with the new word to replace all occurrences.",
+                                "code": "function replaceWord(str, oldW, newW) {\n  return str.split(oldW).join(newW);\n}\nconsole.log(replaceWord(\"I like cats and cats like me\", \"cats\", \"dogs\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running the code outputs I like dogs and dogs like me."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-55",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Count Char",
+                    "description": "Write function countChar(str, ch) that counts how many times ch appears in str. Test with countChar(\"banana\", \"a\"). Expected output: `3`.",
+                    "starterCode": "function countChar(str, ch) {\n  // Your code here\n}\n",
+                    "hint": "Split by the character and count the pieces minus one.",
+                    "solution": {
+                        "code": "function countChar(str, ch) {\n  return str.split(ch).length - 1;\n}\nconsole.log(countChar(\"banana\", \"a\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to count occurrences of a specific character in a string."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Splitting by the target character creates one more piece than there are occurrences, so subtract 1.",
+                                "code": "function countChar(str, ch) {\n  return str.split(ch).length - 1;\n}\nconsole.log(countChar(\"banana\", \"a\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with \"banana\" and \"a\" outputs 3."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-56",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Sum Positives",
+                    "description": "Write function sumPositives(numbers) that sums only the positive numbers in an array. Test with sumPositives([1, -2, 3, -4, 5]). Expected output: `9`.",
+                    "starterCode": "function sumPositives(numbers) {\n  // Your code here\n}\n",
+                    "hint": "Filter positives first, then reduce to sum.",
+                    "solution": {
+                        "code": "function sumPositives(numbers) {\n  return numbers.filter(n => n > 0).reduce((a, b) => a + b, 0);\n}\nconsole.log(sumPositives([1, -2, 3, -4, 5]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to add up only the numbers greater than zero."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Filter to keep only positive values, then use reduce to sum them.",
+                                "code": "function sumPositives(numbers) {\n  return numbers.filter(n => n > 0).reduce((a, b) => a + b, 0);\n}\nconsole.log(sumPositives([1, -2, 3, -4, 5]));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [1,-2,3,-4,5] outputs 9 (1+3+5)."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-57",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "First Duplicate",
+                    "description": "Write function firstDuplicate(arr) that returns the first value that appears more than once. Test with firstDuplicate([1, 2, 3, 2, 1]). Expected output: `2`.",
+                    "starterCode": "function firstDuplicate(arr) {\n  // Your code here\n}\n",
+                    "hint": "Use a Set to track seen values as you iterate.",
+                    "solution": {
+                        "code": "function firstDuplicate(arr) {\n  const seen = new Set();\n  for (const val of arr) {\n    if (seen.has(val)) return val;\n    seen.add(val);\n  }\n  return -1;\n}\nconsole.log(firstDuplicate([1, 2, 3, 2, 1]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to find the first element that appears for the second time."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Iterate through the array, tracking seen values in a Set. Return the first value already in the Set.",
+                                "code": "function firstDuplicate(arr) {\n  const seen = new Set();\n  for (const val of arr) {\n    if (seen.has(val)) return val;\n    seen.add(val);\n  }\n  return -1;\n}\nconsole.log(firstDuplicate([1, 2, 3, 2, 1]));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [1,2,3,2,1] outputs 2, the first repeated value."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-58",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Capitalize First",
+                    "description": "Write function capitalize(str) that capitalizes the first character of a string. Test with capitalize(\"hello\"). Expected output: `Hello`.",
+                    "starterCode": "function capitalize(str) {\n  // Your code here\n}\n",
+                    "hint": "Use charAt(0).toUpperCase() + slice(1).",
+                    "solution": {
+                        "code": "function capitalize(str) {\n  return str.charAt(0).toUpperCase() + str.slice(1);\n}\nconsole.log(capitalize(\"hello\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to make the first letter of a string uppercase."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Take the first character, convert it to uppercase, and concatenate with the rest of the string.",
+                                "code": "function capitalize(str) {\n  return str.charAt(0).toUpperCase() + str.slice(1);\n}\nconsole.log(capitalize(\"hello\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with \"hello\" outputs Hello."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-59",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Is Leap Year",
+                    "description": "Write function isLeapYear(year) that returns true if the year is a leap year. Test with isLeapYear(2024). Expected output: `true`.",
+                    "starterCode": "function isLeapYear(year) {\n  // Your code here\n}\n",
+                    "hint": "Divisible by 4, but not 100, unless also by 400.",
+                    "solution": {
+                        "code": "function isLeapYear(year) {\n  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;\n}\nconsole.log(isLeapYear(2024));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to determine if a year follows the leap year rules."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "A year is a leap year if divisible by 4, except centuries unless also divisible by 400.",
+                                "code": "function isLeapYear(year) {\n  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;\n}\nconsole.log(isLeapYear(2024));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with 2024 outputs true since 2024 is divisible by 4 but not 100."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-60",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "To Celsius",
+                    "description": "Write function toCelsius(f) that converts Fahrenheit to Celsius rounded to 1 decimal. Test with toCelsius(98.6). Expected output: `37`.",
+                    "starterCode": "function toCelsius(f) {\n  // Your code here\n}\n",
+                    "hint": "Use the formula (F - 32) * 5/9.",
+                    "solution": {
+                        "code": "function toCelsius(f) {\n  return Math.round(((f - 32) * 5) / 9);\n}\nconsole.log(toCelsius(98.6));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to convert a Fahrenheit temperature to Celsius."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Apply the formula (F - 32) * 5/9 and round the result.",
+                                "code": "function toCelsius(f) {\n  return Math.round(((f - 32) * 5) / 9);\n}\nconsole.log(toCelsius(98.6));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with 98.6 outputs 37, the expected Celsius equivalent."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-61",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Remove Falsy",
+                    "description": "Write function removeFalsy(arr) that removes all falsy values from an array. Test with removeFalsy([0, 1, false, 2, \"\", 3]). Expected output: `1,2,3`.",
+                    "starterCode": "function removeFalsy(arr) {\n  // Your code here\n}\n",
+                    "hint": "Use filter with Boolean as the callback.",
+                    "solution": {
+                        "code": "function removeFalsy(arr) {\n  return arr.filter(Boolean);\n}\nconsole.log(removeFalsy([0, 1, false, 2, \"\", 3]).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to remove all falsy values like 0, false, \"\", null, undefined from an array."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Pass Boolean as the filter callback; it converts each value to true/false, keeping only truthy values.",
+                                "code": "function removeFalsy(arr) {\n  return arr.filter(Boolean);\n}\nconsole.log(removeFalsy([0, 1, false, 2, \"\", 3]).join(\",\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [0,1,false,2,\"\",3] outputs 1,2,3."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-62",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Initials",
+                    "description": "Write function getInitials(name) that returns the uppercase initials of a full name. Test with getInitials(\"john doe\"). Expected output: `JD`.",
+                    "starterCode": "function getInitials(name) {\n  // Your code here\n}\n",
+                    "hint": "Split by space, take the first character of each word, and uppercase.",
+                    "solution": {
+                        "code": "function getInitials(name) {\n  return name.split(\" \").map(w => w[0].toUpperCase()).join(\"\");\n}\nconsole.log(getInitials(\"john doe\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to extract and uppercase the first letter of each word."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Split the name into words, map each to its first character uppercased, then join.",
+                                "code": "function getInitials(name) {\n  return name.split(\" \").map(w => w[0].toUpperCase()).join(\"\");\n}\nconsole.log(getInitials(\"john doe\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with \"john doe\" outputs JD."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-63",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Array Rotate",
+                    "description": "Write function rotateLeft(arr) that moves the first element to the end. Test with rotateLeft([1, 2, 3, 4]). Expected output: `2,3,4,1`.",
+                    "starterCode": "function rotateLeft(arr) {\n  // Your code here\n}\n",
+                    "hint": "Use slice and concat or spread to rearrange.",
+                    "solution": {
+                        "code": "function rotateLeft(arr) {\n  return [...arr.slice(1), arr[0]];\n}\nconsole.log(rotateLeft([1, 2, 3, 4]).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to move the first element of an array to the last position."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Take everything from index 1 onward, then append the first element at the end.",
+                                "code": "function rotateLeft(arr) {\n  return [...arr.slice(1), arr[0]];\n}\nconsole.log(rotateLeft([1, 2, 3, 4]).join(\",\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [1,2,3,4] outputs 2,3,4,1."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-64",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Sum Digits",
+                    "description": "Write function sumOfDigits(n) that returns the sum of all digits of a positive integer. Test with sumOfDigits(1234). Expected output: `10`.",
+                    "starterCode": "function sumOfDigits(n) {\n  // Your code here\n}\n",
+                    "hint": "Convert to string, split into chars, and sum the numeric values.",
+                    "solution": {
+                        "code": "function sumOfDigits(n) {\n  return String(n).split(\"\").reduce((sum, d) => sum + Number(d), 0);\n}\nconsole.log(sumOfDigits(1234));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to add up every individual digit of a number."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Convert the number to a string, split into characters, convert each back to a number, and reduce to sum them.",
+                                "code": "function sumOfDigits(n) {\n  return String(n).split(\"\").reduce((sum, d) => sum + Number(d), 0);\n}\nconsole.log(sumOfDigits(1234));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with 1234 outputs 10 (1+2+3+4)."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-65",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Camel Case",
+                    "description": "Write function toCamelCase(str) that converts a hyphen-separated string to camelCase. Test with toCamelCase(\"my-function-name\"). Expected output: `myFunctionName`.",
+                    "starterCode": "function toCamelCase(str) {\n  // Your code here\n}\n",
+                    "hint": "Split by hyphen, capitalize the first letter of each part except the first.",
+                    "solution": {
+                        "code": "function toCamelCase(str) {\n  return str.split(\"-\").map((w, i) => i === 0 ? w : w[0].toUpperCase() + w.slice(1)).join(\"\");\n}\nconsole.log(toCamelCase(\"my-function-name\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to transform a hyphen-separated string into camelCase notation."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Split by hyphens, keep the first word lowercase, capitalize the first letter of subsequent words, and join.",
+                                "code": "function toCamelCase(str) {\n  return str.split(\"-\").map((w, i) => i === 0 ? w : w[0].toUpperCase() + w.slice(1)).join(\"\");\n}\nconsole.log(toCamelCase(\"my-function-name\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with \"my-function-name\" outputs myFunctionName."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-66",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Snake Case",
+                    "description": "Write function toSnakeCase(str) that converts a space-separated string to snake_case (lowercase with underscores). Test with toSnakeCase(\"Hello World Test\"). Expected output: `hello_world_test`.",
+                    "starterCode": "function toSnakeCase(str) {\n  // Your code here\n}\n",
+                    "hint": "Lowercase the string and replace spaces with underscores.",
+                    "solution": {
+                        "code": "function toSnakeCase(str) {\n  return str.toLowerCase().split(\" \").join(\"_\");\n}\nconsole.log(toSnakeCase(\"Hello World Test\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to convert a space-separated string to lowercase with underscores."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Lowercase the entire string, then replace spaces with underscores using split/join.",
+                                "code": "function toSnakeCase(str) {\n  return str.toLowerCase().split(\" \").join(\"_\");\n}\nconsole.log(toSnakeCase(\"Hello World Test\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with \"Hello World Test\" outputs hello_world_test."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-67",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Flatten Once",
+                    "description": "Write function flattenOnce(arr) that flattens a nested array by one level. Test with flattenOnce([[1, 2], [3, 4], [5]]). Expected output: `1,2,3,4,5`.",
+                    "starterCode": "function flattenOnce(arr) {\n  // Your code here\n}\n",
+                    "hint": "Use flat() or concat with spread.",
+                    "solution": {
+                        "code": "function flattenOnce(arr) {\n  return arr.flat();\n}\nconsole.log(flattenOnce([[1, 2], [3, 4], [5]]).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to flatten one level of nested arrays into a single array."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "The flat() method flattens an array by one level by default.",
+                                "code": "function flattenOnce(arr) {\n  return arr.flat();\n}\nconsole.log(flattenOnce([[1, 2], [3, 4], [5]]).join(\",\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [[1,2],[3,4],[5]] outputs 1,2,3,4,5."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-68",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Count Words",
+                    "description": "Write function wordCount(str) that returns the number of words in a string. Test with wordCount(\"The quick brown fox\"). Expected output: `4`.",
+                    "starterCode": "function wordCount(str) {\n  // Your code here\n}\n",
+                    "hint": "Split by spaces and count the resulting array length.",
+                    "solution": {
+                        "code": "function wordCount(str) {\n  return str.trim().split(/\\s+/).length;\n}\nconsole.log(wordCount(\"The quick brown fox\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to count how many words are in a sentence."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Trim the string, split by whitespace using a regex, and return the array length.",
+                                "code": "function wordCount(str) {\n  return str.trim().split(/\\s+/).length;\n}\nconsole.log(wordCount(\"The quick brown fox\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with \"The quick brown fox\" outputs 4."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-69",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Max Difference",
+                    "description": "Write function maxDiff(numbers) that returns the difference between the largest and smallest values. Test with maxDiff([3, 7, 1, 9, 4]). Expected output: `8`.",
+                    "starterCode": "function maxDiff(numbers) {\n  // Your code here\n}\n",
+                    "hint": "Find the max and min, then subtract.",
+                    "solution": {
+                        "code": "function maxDiff(numbers) {\n  return Math.max(...numbers) - Math.min(...numbers);\n}\nconsole.log(maxDiff([3, 7, 1, 9, 4]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the range of an array: the difference between its maximum and minimum."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use Math.max and Math.min with spread, then subtract.",
+                                "code": "function maxDiff(numbers) {\n  return Math.max(...numbers) - Math.min(...numbers);\n}\nconsole.log(maxDiff([3, 7, 1, 9, 4]));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [3,7,1,9,4] outputs 8 (9-1)."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-70",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Repeat Array",
+                    "description": "Write function repeatArr(arr, n) that repeats an array n times. Test with repeatArr([1, 2], 3). Expected output: `1,2,1,2,1,2`.",
+                    "starterCode": "function repeatArr(arr, n) {\n  // Your code here\n}\n",
+                    "hint": "Use Array(n).fill(arr).flat() or a loop with concat.",
+                    "solution": {
+                        "code": "function repeatArr(arr, n) {\n  return Array(n).fill(arr).flat();\n}\nconsole.log(repeatArr([1, 2], 3).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to repeat the elements of an array n times."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Create an array of n copies of arr using fill, then flatten one level.",
+                                "code": "function repeatArr(arr, n) {\n  return Array(n).fill(arr).flat();\n}\nconsole.log(repeatArr([1, 2], 3).join(\",\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [1,2] and 3 outputs 1,2,1,2,1,2."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-71",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Is Sorted",
+                    "description": "Write function isSorted(arr) that returns true if the array is sorted in ascending order. Test with isSorted([1, 2, 3, 4]). Expected output: `true`.",
+                    "starterCode": "function isSorted(arr) {\n  // Your code here\n}\n",
+                    "hint": "Compare each element with the next one using every().",
+                    "solution": {
+                        "code": "function isSorted(arr) {\n  return arr.every((val, i) => i === 0 || val >= arr[i - 1]);\n}\nconsole.log(isSorted([1, 2, 3, 4]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to verify that every element is greater than or equal to the previous one."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use every() to check that each element is at least as large as the one before it.",
+                                "code": "function isSorted(arr) {\n  return arr.every((val, i) => i === 0 || val >= arr[i - 1]);\n}\nconsole.log(isSorted([1, 2, 3, 4]));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [1,2,3,4] outputs true since the array is sorted."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-72",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "GCD Finder",
+                    "description": "Write function gcd(a, b) that returns the greatest common divisor of two numbers. Test with gcd(12, 8). Expected output: `4`.",
+                    "starterCode": "function gcd(a, b) {\n  // Your code here\n}\n",
+                    "hint": "Use the Euclidean algorithm: repeatedly replace the larger with the remainder.",
+                    "solution": {
+                        "code": "function gcd(a, b) {\n  while (b) {\n    [a, b] = [b, a % b];\n  }\n  return a;\n}\nconsole.log(gcd(12, 8));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to find the largest number that divides both a and b evenly."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Apply the Euclidean algorithm: swap a with b and b with a%b until b is zero.",
+                                "code": "function gcd(a, b) {\n  while (b) {\n    [a, b] = [b, a % b];\n  }\n  return a;\n}\nconsole.log(gcd(12, 8));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with 12 and 8 outputs 4, since 4 is the GCD."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-73",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Is Prime",
+                    "description": "Write function isPrime(n) that returns true if n is a prime number. Test with isPrime(7). Expected output: `true`.",
+                    "starterCode": "function isPrime(n) {\n  // Your code here\n}\n",
+                    "hint": "Check divisibility from 2 up to the square root of n.",
+                    "solution": {
+                        "code": "function isPrime(n) {\n  if (n < 2) return false;\n  for (let i = 2; i <= Math.sqrt(n); i++) {\n    if (n % i === 0) return false;\n  }\n  return true;\n}\nconsole.log(isPrime(7));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to determine if a number has no divisors other than 1 and itself."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Check all potential factors from 2 to sqrt(n). If none divide evenly, the number is prime.",
+                                "code": "function isPrime(n) {\n  if (n < 2) return false;\n  for (let i = 2; i <= Math.sqrt(n); i++) {\n    if (n % i === 0) return false;\n  }\n  return true;\n}\nconsole.log(isPrime(7));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with 7 outputs true since 7 is only divisible by 1 and itself."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-74",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Remove At",
+                    "description": "Write function removeAt(arr, index) that returns a new array with the element at index removed. Test with removeAt([10, 20, 30, 40], 1). Expected output: `10,30,40`.",
+                    "starterCode": "function removeAt(arr, index) {\n  // Your code here\n}\n",
+                    "hint": "Use filter with index comparison or slice and concat.",
+                    "solution": {
+                        "code": "function removeAt(arr, index) {\n  return arr.filter((_, i) => i !== index);\n}\nconsole.log(removeAt([10, 20, 30, 40], 1).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to create a new array excluding the element at a specific index."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use filter to keep only elements whose index doesn't match the target.",
+                                "code": "function removeAt(arr, index) {\n  return arr.filter((_, i) => i !== index);\n}\nconsole.log(removeAt([10, 20, 30, 40], 1).join(\",\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [10,20,30,40] and index 1 outputs 10,30,40."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-75",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Insert At",
+                    "description": "Write function insertAt(arr, index, val) that returns a new array with val inserted at the given index. Test with insertAt([1, 2, 4], 2, 3). Expected output: `1,2,3,4`.",
+                    "starterCode": "function insertAt(arr, index, val) {\n  // Your code here\n}\n",
+                    "hint": "Use slice to split and spread to rebuild.",
+                    "solution": {
+                        "code": "function insertAt(arr, index, val) {\n  return [...arr.slice(0, index), val, ...arr.slice(index)];\n}\nconsole.log(insertAt([1, 2, 4], 2, 3).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to insert a value at a specific position in an array."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use slice to get elements before and after the index, then spread them with the new value in between.",
+                                "code": "function insertAt(arr, index, val) {\n  return [...arr.slice(0, index), val, ...arr.slice(index)];\n}\nconsole.log(insertAt([1, 2, 4], 2, 3).join(\",\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [1,2,4], index 2, value 3 outputs 1,2,3,4."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-76",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Longest Word",
+                    "description": "Write function longestWord(str) that returns the longest word in a sentence. Test with longestWord(\"The quick brown fox\"). Expected output: `quick`.",
+                    "starterCode": "function longestWord(str) {\n  // Your code here\n}\n",
+                    "hint": "Split into words and find the one with the greatest length.",
+                    "solution": {
+                        "code": "function longestWord(str) {\n  return str.split(\" \").reduce((a, b) => b.length > a.length ? b : a);\n}\nconsole.log(longestWord(\"The quick brown fox\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to find the word with the most characters in a sentence."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Split the string into words and use reduce to find the longest one.",
+                                "code": "function longestWord(str) {\n  return str.split(\" \").reduce((a, b) => b.length > a.length ? b : a);\n}\nconsole.log(longestWord(\"The quick brown fox\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with \"The quick brown fox\" outputs quick (5 chars, tied with brown but quick appears first)."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-77",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Frequency Map",
+                    "description": "Write function frequency(arr) that returns a string showing each element and its count. Test with frequency([\"a\", \"b\", \"a\", \"c\", \"b\", \"a\"]). Expected output: `a:3,b:2,c:1`.",
+                    "starterCode": "function frequency(arr) {\n  // Your code here\n}\n",
+                    "hint": "Use an object to count occurrences of each element.",
+                    "solution": {
+                        "code": "function frequency(arr) {\n  const map = {};\n  for (const item of arr) {\n    map[item] = (map[item] || 0) + 1;\n  }\n  return map;\n}\nconst result = frequency([\"a\", \"b\", \"a\", \"c\", \"b\", \"a\"]);\nconsole.log(Object.entries(result).map(([k, v]) => k + \":\" + v).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to count how many times each element appears in an array."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Iterate through the array, using an object to accumulate counts for each element.",
+                                "code": "function frequency(arr) {\n  const map = {};\n  for (const item of arr) {\n    map[item] = (map[item] || 0) + 1;\n  }\n  return map;\n}\nconst result = frequency([\"a\", \"b\", \"a\", \"c\", \"b\", \"a\"]);\nconsole.log(Object.entries(result).map(([k, v]) => k + \":\" + v).join(\",\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [\"a\",\"b\",\"a\",\"c\",\"b\",\"a\"] outputs a:3,b:2,c:1."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-78",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Array Diff",
+                    "description": "Write function difference(a, b) that returns elements in a that are not in b. Test with difference([1, 2, 3, 4], [2, 4]). Expected output: `1,3`.",
+                    "starterCode": "function difference(a, b) {\n  // Your code here\n}\n",
+                    "hint": "Use filter to keep elements from a that are not included in b.",
+                    "solution": {
+                        "code": "function difference(a, b) {\n  const setB = new Set(b);\n  return a.filter(x => !setB.has(x));\n}\nconsole.log(difference([1, 2, 3, 4], [2, 4]).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to find elements present in the first array but not the second."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Convert b to a Set for fast lookup, then filter a to keep only values not in the Set.",
+                                "code": "function difference(a, b) {\n  const setB = new Set(b);\n  return a.filter(x => !setB.has(x));\n}\nconsole.log(difference([1, 2, 3, 4], [2, 4]).join(\",\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with [1,2,3,4] and [2,4] outputs 1,3."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-79",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Title Slug",
+                    "description": "Write function slugify(title) that converts a title to a URL-friendly slug. Test with slugify(\"Hello World Test\"). Expected output: `hello-world-test`.",
+                    "starterCode": "function slugify(title) {\n  // Your code here\n}\n",
+                    "hint": "Lowercase the string and replace spaces with hyphens.",
+                    "solution": {
+                        "code": "function slugify(title) {\n  return title.toLowerCase().trim().split(/\\s+/).join(\"-\");\n}\nconsole.log(slugify(\"Hello World Test\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to transform a title into a lowercase, hyphen-separated URL slug."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Lowercase the string, trim whitespace, split by spaces, and join with hyphens.",
+                                "code": "function slugify(title) {\n  return title.toLowerCase().trim().split(/\\s+/).join(\"-\");\n}\nconsole.log(slugify(\"Hello World Test\"));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with \"Hello World Test\" outputs hello-world-test."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-beginner-80",
+                    "language": "javascript",
+                    "level": "beginner",
+                    "title": "Deep Equal",
+                    "description": "Write function isEqual(a, b) that checks if two values are deeply equal using JSON comparison. Test with isEqual({x: 1, y: 2}, {x: 1, y: 2}). Expected output: `true`.",
+                    "starterCode": "function isEqual(a, b) {\n  // Your code here\n}\n",
+                    "hint": "Convert both values to JSON strings and compare.",
+                    "solution": {
+                        "code": "function isEqual(a, b) {\n  return JSON.stringify(a) === JSON.stringify(b);\n}\nconsole.log(isEqual({ x: 1, y: 2 }, { x: 1, y: 2 }));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to check if two values have the same structure and content."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "JSON.stringify converts objects to strings, making deep comparison straightforward.",
+                                "code": "function isEqual(a, b) {\n  return JSON.stringify(a) === JSON.stringify(b);\n}\nconsole.log(isEqual({ x: 1, y: 2 }, { x: 1, y: 2 }));"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Running with two identical objects outputs true."
+                            }
+                        ]
+                    }
                 }
             ]
         },
