@@ -543,6 +543,2166 @@
                             }
                         ]
                     }
+                },
+                {
+                    "id": "rs-new-21",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Unsigned Integer",
+                    "description": "Declare a variable of type u32 with value 42 and print it. Expected output: `42`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use `let x: u32 = 42;` to specify the type.",
+                    "solution": {
+                        "code": "fn main() {\n    let x: u32 = 42;\n    println!(\"{}\", x);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand u32",
+                                "explanation": "u32 is an unsigned 32-bit integer type that holds non-negative values."
+                            },
+                            {
+                                "title": "Declare and print",
+                                "explanation": "Declare a u32 variable and use println! to display it.",
+                                "code": "fn main() {\n    let x: u32 = 42;\n    println!(\"{}\", x);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 42."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-22",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Signed 64-bit",
+                    "description": "Declare a variable of type i64 with value -100000 and print it. Expected output: `-100000`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use `let x: i64 = -100000;` for a 64-bit signed integer.",
+                    "solution": {
+                        "code": "fn main() {\n    let x: i64 = -100000;\n    println!(\"{}\", x);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand i64",
+                                "explanation": "i64 is a signed 64-bit integer that can hold very large positive or negative numbers."
+                            },
+                            {
+                                "title": "Declare and print",
+                                "explanation": "Create an i64 variable with value -100000 and print it.",
+                                "code": "fn main() {\n    let x: i64 = -100000;\n    println!(\"{}\", x);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints -100000."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-23",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Usize Type",
+                    "description": "Declare a variable of type usize with value 10 and print it. Expected output: `10`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "usize is the pointer-sized unsigned integer type, commonly used for indexing.",
+                    "solution": {
+                        "code": "fn main() {\n    let x: usize = 10;\n    println!(\"{}\", x);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand usize",
+                                "explanation": "usize is an unsigned integer whose size depends on the platform, often used for array indexing."
+                            },
+                            {
+                                "title": "Declare and print",
+                                "explanation": "Create a usize variable with value 10 and print it.",
+                                "code": "fn main() {\n    let x: usize = 10;\n    println!(\"{}\", x);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 10."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-24",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Remainder Op",
+                    "description": "Calculate the remainder of 17 divided by 5 and print the result. Expected output: `2`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use the % operator to get the remainder of integer division.",
+                    "solution": {
+                        "code": "fn main() {\n    let result = 17 % 5;\n    println!(\"{}\", result);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand remainder",
+                                "explanation": "The % operator returns the remainder after integer division."
+                            },
+                            {
+                                "title": "Calculate and print",
+                                "explanation": "Use 17 % 5 to get the remainder and print it.",
+                                "code": "fn main() {\n    let result = 17 % 5;\n    println!(\"{}\", result);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 2."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-25",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Negate Number",
+                    "description": "Store the value 7 in a variable and print its negation. Expected output: `-7`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use the unary minus operator to negate a number: -variable.",
+                    "solution": {
+                        "code": "fn main() {\n    let x = 7;\n    println!(\"{}\", -x);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand negation",
+                                "explanation": "The unary minus operator flips the sign of a number."
+                            },
+                            {
+                                "title": "Negate and print",
+                                "explanation": "Store 7 in a variable and print -x.",
+                                "code": "fn main() {\n    let x = 7;\n    println!(\"{}\", -x);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints -7."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-26",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Uppercase String",
+                    "description": "Convert the string \"hello rust\" to uppercase and print it. Expected output: `HELLO RUST`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use the .to_uppercase() method on a string.",
+                    "solution": {
+                        "code": "fn main() {\n    let s = \"hello rust\";\n    println!(\"{}\", s.to_uppercase());\n}",
+                        "steps": [
+                            {
+                                "title": "Understand to_uppercase",
+                                "explanation": "The to_uppercase() method returns a new String with all characters converted to uppercase."
+                            },
+                            {
+                                "title": "Convert and print",
+                                "explanation": "Call to_uppercase() on the string and print the result.",
+                                "code": "fn main() {\n    let s = \"hello rust\";\n    println!(\"{}\", s.to_uppercase());\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints HELLO RUST."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-27",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Lowercase String",
+                    "description": "Convert the string \"GOODBYE WORLD\" to lowercase and print it. Expected output: `goodbye world`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use the .to_lowercase() method on a string.",
+                    "solution": {
+                        "code": "fn main() {\n    let s = \"GOODBYE WORLD\";\n    println!(\"{}\", s.to_lowercase());\n}",
+                        "steps": [
+                            {
+                                "title": "Understand to_lowercase",
+                                "explanation": "The to_lowercase() method returns a new String with all characters in lowercase."
+                            },
+                            {
+                                "title": "Convert and print",
+                                "explanation": "Call to_lowercase() on the string and print it.",
+                                "code": "fn main() {\n    let s = \"GOODBYE WORLD\";\n    println!(\"{}\", s.to_lowercase());\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints goodbye world."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-28",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "String Contains",
+                    "description": "Check if \"Rust is fun\" contains the word \"fun\" and print the result. Expected output: `true`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use the .contains() method to check for a substring.",
+                    "solution": {
+                        "code": "fn main() {\n    let s = \"Rust is fun\";\n    println!(\"{}\", s.contains(\"fun\"));\n}",
+                        "steps": [
+                            {
+                                "title": "Understand contains",
+                                "explanation": "The contains() method returns true if the string contains the given substring."
+                            },
+                            {
+                                "title": "Check and print",
+                                "explanation": "Call contains(\"fun\") on the string and print the boolean result.",
+                                "code": "fn main() {\n    let s = \"Rust is fun\";\n    println!(\"{}\", s.contains(\"fun\"));\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints true."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-29",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Starts With",
+                    "description": "Check if \"Rustacean\" starts with \"Rust\" and print the result. Expected output: `true`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use the .starts_with() method on a string.",
+                    "solution": {
+                        "code": "fn main() {\n    let s = \"Rustacean\";\n    println!(\"{}\", s.starts_with(\"Rust\"));\n}",
+                        "steps": [
+                            {
+                                "title": "Understand starts_with",
+                                "explanation": "The starts_with() method returns true if the string begins with the given prefix."
+                            },
+                            {
+                                "title": "Check and print",
+                                "explanation": "Call starts_with(\"Rust\") on the string and print the result.",
+                                "code": "fn main() {\n    let s = \"Rustacean\";\n    println!(\"{}\", s.starts_with(\"Rust\"));\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints true."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-30",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Trim Spaces",
+                    "description": "Trim the whitespace from \"  hello  \" and print the result. Expected output: `hello`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use the .trim() method to remove leading and trailing whitespace.",
+                    "solution": {
+                        "code": "fn main() {\n    let s = \"  hello  \";\n    println!(\"{}\", s.trim());\n}",
+                        "steps": [
+                            {
+                                "title": "Understand trim",
+                                "explanation": "The trim() method removes whitespace from both ends of a string."
+                            },
+                            {
+                                "title": "Trim and print",
+                                "explanation": "Call trim() on the padded string and print the result.",
+                                "code": "fn main() {\n    let s = \"  hello  \";\n    println!(\"{}\", s.trim());\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints hello."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-31",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Alpha Check",
+                    "description": "Check if the character 'A' is alphabetic and print the result. Expected output: `true`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use the .is_alphabetic() method on a char.",
+                    "solution": {
+                        "code": "fn main() {\n    let ch = 'A';\n    println!(\"{}\", ch.is_alphabetic());\n}",
+                        "steps": [
+                            {
+                                "title": "Understand is_alphabetic",
+                                "explanation": "The is_alphabetic() method returns true if the character is a letter."
+                            },
+                            {
+                                "title": "Check and print",
+                                "explanation": "Call is_alphabetic() on char 'A' and print the result.",
+                                "code": "fn main() {\n    let ch = 'A';\n    println!(\"{}\", ch.is_alphabetic());\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints true."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-32",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Digit Check",
+                    "description": "Check if the character '7' is a digit and print the result. Expected output: `true`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use the .is_ascii_digit() method on a char.",
+                    "solution": {
+                        "code": "fn main() {\n    let ch = '7';\n    println!(\"{}\", ch.is_ascii_digit());\n}",
+                        "steps": [
+                            {
+                                "title": "Understand is_ascii_digit",
+                                "explanation": "The is_ascii_digit() method returns true if the character is a digit 0-9."
+                            },
+                            {
+                                "title": "Check and print",
+                                "explanation": "Call is_ascii_digit() on '7' and print the result.",
+                                "code": "fn main() {\n    let ch = '7';\n    println!(\"{}\", ch.is_ascii_digit());\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints true."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-33",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Char Uppercase",
+                    "description": "Convert the character 'r' to uppercase and print it. Expected output: `R`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use .to_uppercase() on a char and iterate over the result to print it.",
+                    "solution": {
+                        "code": "fn main() {\n    let ch = 'r';\n    for c in ch.to_uppercase() {\n        println!(\"{}\", c);\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Understand char to_uppercase",
+                                "explanation": "For chars, to_uppercase() returns an iterator because some characters map to multiple chars."
+                            },
+                            {
+                                "title": "Convert and print",
+                                "explanation": "Use a for loop over ch.to_uppercase() and print each resulting character.",
+                                "code": "fn main() {\n    let ch = 'r';\n    for c in ch.to_uppercase() {\n        println!(\"{}\", c);\n    }\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints R."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-34",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "ASCII Value",
+                    "description": "Print the ASCII value of the character 'A'. Expected output: `65`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Cast a char to u32 using `as u32` to get its numeric value.",
+                    "solution": {
+                        "code": "fn main() {\n    let ch = 'A';\n    println!(\"{}\", ch as u32);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand char to number",
+                                "explanation": "Characters can be cast to integers using `as` to get their Unicode/ASCII code point."
+                            },
+                            {
+                                "title": "Cast and print",
+                                "explanation": "Use `ch as u32` to convert the character to its numeric value and print it.",
+                                "code": "fn main() {\n    let ch = 'A';\n    println!(\"{}\", ch as u32);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 65."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-35",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Lowercase Char",
+                    "description": "Check if the character 'z' is lowercase and print the result. Expected output: `true`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use the .is_lowercase() method on a char.",
+                    "solution": {
+                        "code": "fn main() {\n    let ch = 'z';\n    println!(\"{}\", ch.is_lowercase());\n}",
+                        "steps": [
+                            {
+                                "title": "Understand is_lowercase",
+                                "explanation": "The is_lowercase() method returns true if the character is a lowercase letter."
+                            },
+                            {
+                                "title": "Check and print",
+                                "explanation": "Call is_lowercase() on 'z' and print the boolean result.",
+                                "code": "fn main() {\n    let ch = 'z';\n    println!(\"{}\", ch.is_lowercase());\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints true."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-36",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Power Up",
+                    "description": "Calculate 2 raised to the power of 10 using i32 and print the result. Expected output: `1024`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use the .pow() method on an integer: (2_i32).pow(10).",
+                    "solution": {
+                        "code": "fn main() {\n    let result = (2_i32).pow(10);\n    println!(\"{}\", result);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand pow",
+                                "explanation": "The pow() method raises an integer to the given power. The base needs a type suffix."
+                            },
+                            {
+                                "title": "Calculate and print",
+                                "explanation": "Use (2_i32).pow(10) to compute 2^10 and print the result.",
+                                "code": "fn main() {\n    let result = (2_i32).pow(10);\n    println!(\"{}\", result);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 1024."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-37",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Absolute Value",
+                    "description": "Find the absolute value of -25 and print it. Expected output: `25`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use the .abs() method on a signed integer.",
+                    "solution": {
+                        "code": "fn main() {\n    let x: i32 = -25;\n    println!(\"{}\", x.abs());\n}",
+                        "steps": [
+                            {
+                                "title": "Understand abs",
+                                "explanation": "The abs() method returns the absolute (non-negative) value of a number."
+                            },
+                            {
+                                "title": "Calculate and print",
+                                "explanation": "Call .abs() on -25 and print the result.",
+                                "code": "fn main() {\n    let x: i32 = -25;\n    println!(\"{}\", x.abs());\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 25."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-38",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Min Method",
+                    "description": "Use the .min() method to find the smaller of 15 and 8, then print it. Expected output: `8`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Call .min() on one value passing the other: (15_i32).min(8).",
+                    "solution": {
+                        "code": "fn main() {\n    let result = (15_i32).min(8);\n    println!(\"{}\", result);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand min method",
+                                "explanation": "The .min() method on integers returns the smaller of two values."
+                            },
+                            {
+                                "title": "Compare and print",
+                                "explanation": "Use (15_i32).min(8) and print the result.",
+                                "code": "fn main() {\n    let result = (15_i32).min(8);\n    println!(\"{}\", result);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 8."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-39",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Integer Division",
+                    "description": "Divide 17 by 3 using integer division and print the result. Expected output: `5`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Integer division in Rust truncates the decimal part automatically.",
+                    "solution": {
+                        "code": "fn main() {\n    let result = 17 / 3;\n    println!(\"{}\", result);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand integer division",
+                                "explanation": "When dividing two integers in Rust, the result is truncated toward zero."
+                            },
+                            {
+                                "title": "Divide and print",
+                                "explanation": "Compute 17 / 3 and print the result.",
+                                "code": "fn main() {\n    let result = 17 / 3;\n    println!(\"{}\", result);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 5."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-40",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Even Check",
+                    "description": "Check if 42 is even using the modulo operator and print the result. Expected output: `true`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "A number is even if number % 2 == 0.",
+                    "solution": {
+                        "code": "fn main() {\n    let n = 42;\n    println!(\"{}\", n % 2 == 0);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand even check",
+                                "explanation": "A number is even when dividing by 2 leaves no remainder."
+                            },
+                            {
+                                "title": "Check and print",
+                                "explanation": "Use n % 2 == 0 to test if 42 is even and print the boolean.",
+                                "code": "fn main() {\n    let n = 42;\n    println!(\"{}\", n % 2 == 0);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints true."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-41",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Boolean AND",
+                    "description": "Evaluate true AND false and print the result. Expected output: `false`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use the && operator for logical AND.",
+                    "solution": {
+                        "code": "fn main() {\n    let result = true && false;\n    println!(\"{}\", result);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand AND",
+                                "explanation": "The && operator returns true only when both operands are true."
+                            },
+                            {
+                                "title": "Evaluate and print",
+                                "explanation": "Compute true && false and print the result.",
+                                "code": "fn main() {\n    let result = true && false;\n    println!(\"{}\", result);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints false."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-42",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Boolean OR",
+                    "description": "Evaluate true OR false and print the result. Expected output: `true`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use the || operator for logical OR.",
+                    "solution": {
+                        "code": "fn main() {\n    let result = true || false;\n    println!(\"{}\", result);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand OR",
+                                "explanation": "The || operator returns true when at least one operand is true."
+                            },
+                            {
+                                "title": "Evaluate and print",
+                                "explanation": "Compute true || false and print the result.",
+                                "code": "fn main() {\n    let result = true || false;\n    println!(\"{}\", result);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints true."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-43",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Boolean NOT",
+                    "description": "Negate the boolean value true and print the result. Expected output: `false`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use the ! operator to negate a boolean.",
+                    "solution": {
+                        "code": "fn main() {\n    let result = !true;\n    println!(\"{}\", result);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand NOT",
+                                "explanation": "The ! operator flips a boolean value: true becomes false and vice versa."
+                            },
+                            {
+                                "title": "Negate and print",
+                                "explanation": "Use !true and print the result.",
+                                "code": "fn main() {\n    let result = !true;\n    println!(\"{}\", result);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints false."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-44",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Comparison Chain",
+                    "description": "Check if 5 is greater than 3 AND less than 10, then print the result. Expected output: `true`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Combine two comparisons with &&: (5 > 3) && (5 < 10).",
+                    "solution": {
+                        "code": "fn main() {\n    let x = 5;\n    let result = x > 3 && x < 10;\n    println!(\"{}\", result);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand chained comparisons",
+                                "explanation": "You can combine multiple comparisons using && to check if all conditions hold."
+                            },
+                            {
+                                "title": "Chain and print",
+                                "explanation": "Check if x > 3 && x < 10 and print the result.",
+                                "code": "fn main() {\n    let x = 5;\n    let result = x > 3 && x < 10;\n    println!(\"{}\", result);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints true."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-45",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Compound Logic",
+                    "description": "Check if 15 is divisible by 3 or divisible by 7, then print the result. Expected output: `true`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use % to check divisibility and || to combine conditions.",
+                    "solution": {
+                        "code": "fn main() {\n    let n = 15;\n    let result = n % 3 == 0 || n % 7 == 0;\n    println!(\"{}\", result);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand compound conditions",
+                                "explanation": "Combine divisibility checks with || to see if either condition is true."
+                            },
+                            {
+                                "title": "Check and print",
+                                "explanation": "Use n % 3 == 0 || n % 7 == 0 and print the result.",
+                                "code": "fn main() {\n    let n = 15;\n    let result = n % 3 == 0 || n % 7 == 0;\n    println!(\"{}\", result);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints true."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-46",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Nested If",
+                    "description": "Given x = 15, check if it is positive. If positive, check if it is greater than 10 and print \"big positive\", otherwise print \"small positive\". Expected output: `big positive`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use an if inside another if to handle nested conditions.",
+                    "solution": {
+                        "code": "fn main() {\n    let x = 15;\n    if x > 0 {\n        if x > 10 {\n            println!(\"big positive\");\n        } else {\n            println!(\"small positive\");\n        }\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Understand nested if",
+                                "explanation": "You can place an if/else block inside another if block for more specific checks."
+                            },
+                            {
+                                "title": "Implement nested check",
+                                "explanation": "First check if x > 0, then inside check if x > 10.",
+                                "code": "fn main() {\n    let x = 15;\n    if x > 0 {\n        if x > 10 {\n            println!(\"big positive\");\n        } else {\n            println!(\"small positive\");\n        }\n    }\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints big positive."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-47",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "If Expression",
+                    "description": "Use if as an expression to assign \"even\" or \"odd\" to a variable for the number 4, then print it. Expected output: `even`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "In Rust, if/else can return a value: let result = if condition { \"a\" } else { \"b\" };",
+                    "solution": {
+                        "code": "fn main() {\n    let n = 4;\n    let result = if n % 2 == 0 { \"even\" } else { \"odd\" };\n    println!(\"{}\", result);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand if expression",
+                                "explanation": "In Rust, if/else blocks can be used as expressions that return values."
+                            },
+                            {
+                                "title": "Use if as expression",
+                                "explanation": "Assign the result of if/else to a variable and print it.",
+                                "code": "fn main() {\n    let n = 4;\n    let result = if n % 2 == 0 { \"even\" } else { \"odd\" };\n    println!(\"{}\", result);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints even."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-48",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Triple Branch",
+                    "description": "Given a score of 85, print \"excellent\" if >= 90, \"good\" if >= 70, or \"needs work\" otherwise. Expected output: `good`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use if / else if / else for multiple branches.",
+                    "solution": {
+                        "code": "fn main() {\n    let score = 85;\n    if score >= 90 {\n        println!(\"excellent\");\n    } else if score >= 70 {\n        println!(\"good\");\n    } else {\n        println!(\"needs work\");\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Understand else if",
+                                "explanation": "Use else if to add more branches between if and else."
+                            },
+                            {
+                                "title": "Implement grade logic",
+                                "explanation": "Check >= 90 first, then >= 70, then default to needs work.",
+                                "code": "fn main() {\n    let score = 85;\n    if score >= 90 {\n        println!(\"excellent\");\n    } else if score >= 70 {\n        println!(\"good\");\n    } else {\n        println!(\"needs work\");\n    }\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints good."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-49",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Grade Checker",
+                    "description": "Given a score of 92, print the letter grade: A for >= 90, B for >= 80, C for >= 70, F otherwise. Expected output: `A`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use if / else if chains to map score ranges to letter grades.",
+                    "solution": {
+                        "code": "fn main() {\n    let score = 92;\n    if score >= 90 {\n        println!(\"A\");\n    } else if score >= 80 {\n        println!(\"B\");\n    } else if score >= 70 {\n        println!(\"C\");\n    } else {\n        println!(\"F\");\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Plan the grade ranges",
+                                "explanation": "Map score ranges: >= 90 is A, >= 80 is B, >= 70 is C, else F."
+                            },
+                            {
+                                "title": "Implement grade checker",
+                                "explanation": "Use an if/else if chain to print the correct letter grade.",
+                                "code": "fn main() {\n    let score = 92;\n    if score >= 90 {\n        println!(\"A\");\n    } else if score >= 80 {\n        println!(\"B\");\n    } else if score >= 70 {\n        println!(\"C\");\n    } else {\n        println!(\"F\");\n    }\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints A."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-50",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Sign Check",
+                    "description": "Given a number -3, print \"positive\", \"negative\", or \"zero\" based on its sign. Expected output: `negative`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use if / else if / else to check > 0, < 0, or equal to 0.",
+                    "solution": {
+                        "code": "fn main() {\n    let n = -3;\n    if n > 0 {\n        println!(\"positive\");\n    } else if n < 0 {\n        println!(\"negative\");\n    } else {\n        println!(\"zero\");\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Plan sign detection",
+                                "explanation": "A number is positive if > 0, negative if < 0, and zero otherwise."
+                            },
+                            {
+                                "title": "Implement sign check",
+                                "explanation": "Use if/else if/else to check the sign and print the result.",
+                                "code": "fn main() {\n    let n = -3;\n    if n > 0 {\n        println!(\"positive\");\n    } else if n < 0 {\n        println!(\"negative\");\n    } else {\n        println!(\"zero\");\n    }\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints negative."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-51",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Match Ranges",
+                    "description": "Use match with ranges to classify age 25: 0-12 prints \"child\", 13-19 prints \"teen\", 20-64 prints \"adult\", _ prints \"senior\". Expected output: `adult`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use the ..= syntax for inclusive ranges in match arms: 0..=12 => ...",
+                    "solution": {
+                        "code": "fn main() {\n    let age = 25;\n    match age {\n        0..=12 => println!(\"child\"),\n        13..=19 => println!(\"teen\"),\n        20..=64 => println!(\"adult\"),\n        _ => println!(\"senior\"),\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Understand match ranges",
+                                "explanation": "Match arms can use inclusive ranges like 0..=12 to match a span of values."
+                            },
+                            {
+                                "title": "Implement age classifier",
+                                "explanation": "Use match with range patterns to classify the age.",
+                                "code": "fn main() {\n    let age = 25;\n    match age {\n        0..=12 => println!(\"child\"),\n        13..=19 => println!(\"teen\"),\n        20..=64 => println!(\"adult\"),\n        _ => println!(\"senior\"),\n    }\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints adult."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-52",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Match Strings",
+                    "description": "Match the string \"rust\" and print a response: \"rust\" prints \"systems language\", \"python\" prints \"scripting language\", anything else prints \"unknown\". Expected output: `systems language`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use match on a &str value with string literal patterns.",
+                    "solution": {
+                        "code": "fn main() {\n    let lang = \"rust\";\n    match lang {\n        \"rust\" => println!(\"systems language\"),\n        \"python\" => println!(\"scripting language\"),\n        _ => println!(\"unknown\"),\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Understand string matching",
+                                "explanation": "You can match on &str values directly using string literal patterns."
+                            },
+                            {
+                                "title": "Match and print",
+                                "explanation": "Match the lang variable against string patterns and print the result.",
+                                "code": "fn main() {\n    let lang = \"rust\";\n    match lang {\n        \"rust\" => println!(\"systems language\"),\n        \"python\" => println!(\"scripting language\"),\n        _ => println!(\"unknown\"),\n    }\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints systems language."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-53",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Multi Match",
+                    "description": "Use match to check if a number 6 is 1, 2, or 3 (print \"small\"), 4, 5, or 6 (print \"medium\"), or anything else (print \"large\"). Expected output: `medium`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use the | operator in match arms to combine multiple values: 1 | 2 | 3 => ...",
+                    "solution": {
+                        "code": "fn main() {\n    let n = 6;\n    match n {\n        1 | 2 | 3 => println!(\"small\"),\n        4 | 5 | 6 => println!(\"medium\"),\n        _ => println!(\"large\"),\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Understand multi-value arms",
+                                "explanation": "The | operator in match lets you combine multiple patterns in one arm."
+                            },
+                            {
+                                "title": "Match with multiple values",
+                                "explanation": "Group 1|2|3 as small, 4|5|6 as medium, and _ as large.",
+                                "code": "fn main() {\n    let n = 6;\n    match n {\n        1 | 2 | 3 => println!(\"small\"),\n        4 | 5 | 6 => println!(\"medium\"),\n        _ => println!(\"large\"),\n    }\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints medium."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-54",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Match Return",
+                    "description": "Use match as an expression to assign a value to a variable. Match day number 3 to a day name (1=Mon, 2=Tue, 3=Wed) and print it. Expected output: `Wed`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Match can return a value: let result = match x { 1 => \"Mon\", ... };",
+                    "solution": {
+                        "code": "fn main() {\n    let day = 3;\n    let name = match day {\n        1 => \"Mon\",\n        2 => \"Tue\",\n        3 => \"Wed\",\n        _ => \"Other\",\n    };\n    println!(\"{}\", name);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand match expression",
+                                "explanation": "Match can be used as an expression that returns a value to be stored in a variable."
+                            },
+                            {
+                                "title": "Use match as expression",
+                                "explanation": "Assign the result of a match expression to a variable and print it.",
+                                "code": "fn main() {\n    let day = 3;\n    let name = match day {\n        1 => \"Mon\",\n        2 => \"Tue\",\n        3 => \"Wed\",\n        _ => \"Other\",\n    };\n    println!(\"{}\", name);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints Wed."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-55",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Match Boolean",
+                    "description": "Use match on a boolean value true to print \"yes\" for true and \"no\" for false. Expected output: `yes`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "You can match on bool values: match flag { true => ..., false => ... }.",
+                    "solution": {
+                        "code": "fn main() {\n    let flag = true;\n    match flag {\n        true => println!(\"yes\"),\n        false => println!(\"no\"),\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Understand bool matching",
+                                "explanation": "You can match directly on boolean values true and false."
+                            },
+                            {
+                                "title": "Match bool and print",
+                                "explanation": "Match the flag variable on true and false patterns.",
+                                "code": "fn main() {\n    let flag = true;\n    match flag {\n        true => println!(\"yes\"),\n        false => println!(\"no\"),\n    }\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints yes."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-56",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "While Loop",
+                    "description": "Use a while loop to print numbers 1 through 5, each on a new line. Expected output: `1\\n2\\n3\\n4\\n5`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use a mutable counter and a while loop: while i <= 5 { ... i += 1; }.",
+                    "solution": {
+                        "code": "fn main() {\n    let mut i = 1;\n    while i <= 5 {\n        println!(\"{}\", i);\n        i += 1;\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Understand while loop",
+                                "explanation": "A while loop repeats as long as its condition is true."
+                            },
+                            {
+                                "title": "Implement counter loop",
+                                "explanation": "Start at 1, loop while <= 5, print and increment each iteration.",
+                                "code": "fn main() {\n    let mut i = 1;\n    while i <= 5 {\n        println!(\"{}\", i);\n        i += 1;\n    }\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 1 through 5 on separate lines."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-57",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Loop Break",
+                    "description": "Use a loop with break to find the first number divisible by 7 starting from 1. Print it. Expected output: `7`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use loop { if condition { break; } } to stop when you find the answer.",
+                    "solution": {
+                        "code": "fn main() {\n    let mut i = 1;\n    loop {\n        if i % 7 == 0 {\n            println!(\"{}\", i);\n            break;\n        }\n        i += 1;\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Understand loop with break",
+                                "explanation": "The loop keyword creates an infinite loop; use break to exit when a condition is met."
+                            },
+                            {
+                                "title": "Find first divisible",
+                                "explanation": "Increment i from 1 until i % 7 == 0, then print and break.",
+                                "code": "fn main() {\n    let mut i = 1;\n    loop {\n        if i % 7 == 0 {\n            println!(\"{}\", i);\n            break;\n        }\n        i += 1;\n    }\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 7."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-58",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Countdown",
+                    "description": "Print a countdown from 5 to 1 using a while loop, each on a new line. Expected output: `5\\n4\\n3\\n2\\n1`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Start a mutable variable at 5 and decrement with -= 1 while it is >= 1.",
+                    "solution": {
+                        "code": "fn main() {\n    let mut i = 5;\n    while i >= 1 {\n        println!(\"{}\", i);\n        i -= 1;\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Plan the countdown",
+                                "explanation": "Start at 5 and count down to 1, printing each number."
+                            },
+                            {
+                                "title": "Implement countdown",
+                                "explanation": "Use a while loop that decrements from 5 to 1.",
+                                "code": "fn main() {\n    let mut i = 5;\n    while i >= 1 {\n        println!(\"{}\", i);\n        i -= 1;\n    }\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 5 through 1 on separate lines."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-59",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Loop Value",
+                    "description": "Use loop to compute the sum of 1 to 5 by breaking with a value. Print the result. Expected output: `15`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "A loop can return a value with break: let result = loop { break value; };",
+                    "solution": {
+                        "code": "fn main() {\n    let mut sum = 0;\n    let mut i = 1;\n    let result = loop {\n        sum += i;\n        i += 1;\n        if i > 5 {\n            break sum;\n        }\n    };\n    println!(\"{}\", result);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand loop return",
+                                "explanation": "In Rust, loop can return a value via break: let x = loop { break 42; };"
+                            },
+                            {
+                                "title": "Sum with loop return",
+                                "explanation": "Accumulate a sum in a loop and break with the final value.",
+                                "code": "fn main() {\n    let mut sum = 0;\n    let mut i = 1;\n    let result = loop {\n        sum += i;\n        i += 1;\n        if i > 5 {\n            break sum;\n        }\n    };\n    println!(\"{}\", result);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 15."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-60",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "For Range",
+                    "description": "Use a for loop with a range to print the squares of numbers 1 to 4, each on a new line. Expected output: `1\\n4\\n9\\n16`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use for i in 1..=4 to iterate over an inclusive range.",
+                    "solution": {
+                        "code": "fn main() {\n    for i in 1..=4 {\n        println!(\"{}\", i * i);\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Understand for with range",
+                                "explanation": "The for i in 1..=4 syntax iterates from 1 to 4 inclusive."
+                            },
+                            {
+                                "title": "Print squares",
+                                "explanation": "Loop through 1..=4 and print i * i for each value.",
+                                "code": "fn main() {\n    for i in 1..=4 {\n        println!(\"{}\", i * i);\n    }\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 1, 4, 9, 16 on separate lines."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-61",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Array Declare",
+                    "description": "Declare an array of integers [10, 20, 30] and print the whole array using debug format. Expected output: `[10, 20, 30]`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use {:?} in println! to print an array in debug format.",
+                    "solution": {
+                        "code": "fn main() {\n    let arr = [10, 20, 30];\n    println!(\"{:?}\", arr);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand arrays",
+                                "explanation": "Arrays in Rust are fixed-size collections declared with square brackets."
+                            },
+                            {
+                                "title": "Declare and debug print",
+                                "explanation": "Create an array and use {:?} to print it.",
+                                "code": "fn main() {\n    let arr = [10, 20, 30];\n    println!(\"{:?}\", arr);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints [10, 20, 30]."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-62",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Array Access",
+                    "description": "Declare an array [100, 200, 300, 400] and print the element at index 2. Expected output: `300`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Access array elements with square brackets: arr[2] gives the third element.",
+                    "solution": {
+                        "code": "fn main() {\n    let arr = [100, 200, 300, 400];\n    println!(\"{}\", arr[2]);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand array indexing",
+                                "explanation": "Array indices start at 0, so index 2 is the third element."
+                            },
+                            {
+                                "title": "Access and print",
+                                "explanation": "Use arr[2] to get the element at index 2 and print it.",
+                                "code": "fn main() {\n    let arr = [100, 200, 300, 400];\n    println!(\"{}\", arr[2]);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 300."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-63",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Array Length",
+                    "description": "Declare an array [5, 10, 15, 20, 25] and print its length. Expected output: `5`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use .len() to get the number of elements in an array.",
+                    "solution": {
+                        "code": "fn main() {\n    let arr = [5, 10, 15, 20, 25];\n    println!(\"{}\", arr.len());\n}",
+                        "steps": [
+                            {
+                                "title": "Understand array length",
+                                "explanation": "The .len() method returns the number of elements in an array."
+                            },
+                            {
+                                "title": "Get length and print",
+                                "explanation": "Call .len() on the array and print the result.",
+                                "code": "fn main() {\n    let arr = [5, 10, 15, 20, 25];\n    println!(\"{}\", arr.len());\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 5."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-64",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Array Iterate",
+                    "description": "Declare an array [1, 2, 3] and use a for loop to print each element on a new line. Expected output: `1\\n2\\n3`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use for item in arr.iter() or for item in &arr to iterate over elements.",
+                    "solution": {
+                        "code": "fn main() {\n    let arr = [1, 2, 3];\n    for item in arr.iter() {\n        println!(\"{}\", item);\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Understand array iteration",
+                                "explanation": "Use .iter() or a reference to iterate over array elements without consuming them."
+                            },
+                            {
+                                "title": "Iterate and print",
+                                "explanation": "Loop through the array with for item in arr.iter() and print each item.",
+                                "code": "fn main() {\n    let arr = [1, 2, 3];\n    for item in arr.iter() {\n        println!(\"{}\", item);\n    }\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 1, 2, 3 on separate lines."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-65",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Array Sum",
+                    "description": "Declare an array [4, 8, 15, 16, 23] and compute the sum using iter().sum(). Print the result. Expected output: `66`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use arr.iter().sum::<i32>() to sum all elements in an integer array.",
+                    "solution": {
+                        "code": "fn main() {\n    let arr = [4, 8, 15, 16, 23];\n    let total: i32 = arr.iter().sum();\n    println!(\"{}\", total);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand iter sum",
+                                "explanation": "The iter().sum() chain sums all elements; you may need to specify the result type."
+                            },
+                            {
+                                "title": "Sum and print",
+                                "explanation": "Use arr.iter().sum() with a type annotation and print the total.",
+                                "code": "fn main() {\n    let arr = [4, 8, 15, 16, 23];\n    let total: i32 = arr.iter().sum();\n    println!(\"{}\", total);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 66."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-66",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Vector Create",
+                    "description": "Create a vector with values 1, 2, 3 using the vec! macro and print it with debug format. Expected output: `[1, 2, 3]`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use vec![1, 2, 3] to create a vector and {:?} to print it.",
+                    "solution": {
+                        "code": "fn main() {\n    let v = vec![1, 2, 3];\n    println!(\"{:?}\", v);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand Vec",
+                                "explanation": "A Vec is a growable array. The vec! macro creates one with initial values."
+                            },
+                            {
+                                "title": "Create and print",
+                                "explanation": "Use vec![1, 2, 3] and print with {:?}.",
+                                "code": "fn main() {\n    let v = vec![1, 2, 3];\n    println!(\"{:?}\", v);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints [1, 2, 3]."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-67",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Vector Push",
+                    "description": "Create an empty Vec<i32>, push 10 and 20 onto it, then print it. Expected output: `[10, 20]`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use Vec::new() to create an empty vector and .push() to add elements.",
+                    "solution": {
+                        "code": "fn main() {\n    let mut v: Vec<i32> = Vec::new();\n    v.push(10);\n    v.push(20);\n    println!(\"{:?}\", v);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand push",
+                                "explanation": "The .push() method adds an element to the end of a mutable vector."
+                            },
+                            {
+                                "title": "Create, push, and print",
+                                "explanation": "Create an empty Vec, push 10 and 20, then print it.",
+                                "code": "fn main() {\n    let mut v: Vec<i32> = Vec::new();\n    v.push(10);\n    v.push(20);\n    println!(\"{:?}\", v);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints [10, 20]."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-68",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Vector Length",
+                    "description": "Create a vector with values [5, 10, 15, 20] and print its length. Expected output: `4`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use .len() on a vector to get the number of elements.",
+                    "solution": {
+                        "code": "fn main() {\n    let v = vec![5, 10, 15, 20];\n    println!(\"{}\", v.len());\n}",
+                        "steps": [
+                            {
+                                "title": "Understand vec length",
+                                "explanation": "The .len() method returns the number of elements in a vector."
+                            },
+                            {
+                                "title": "Get length and print",
+                                "explanation": "Call .len() on the vector and print the result.",
+                                "code": "fn main() {\n    let v = vec![5, 10, 15, 20];\n    println!(\"{}\", v.len());\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 4."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-69",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Vector Access",
+                    "description": "Create a vector [100, 200, 300] and print the element at index 1. Expected output: `200`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Access vector elements with square brackets like an array: v[1].",
+                    "solution": {
+                        "code": "fn main() {\n    let v = vec![100, 200, 300];\n    println!(\"{}\", v[1]);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand vector indexing",
+                                "explanation": "Vectors are indexed starting at 0, just like arrays."
+                            },
+                            {
+                                "title": "Access and print",
+                                "explanation": "Use v[1] to get the second element and print it.",
+                                "code": "fn main() {\n    let v = vec![100, 200, 300];\n    println!(\"{}\", v[1]);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 200."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-70",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Vector Contains",
+                    "description": "Create a vector [1, 3, 5, 7, 9] and check if it contains 5. Print the result. Expected output: `true`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use .contains(&value) to check if a vector has a specific element.",
+                    "solution": {
+                        "code": "fn main() {\n    let v = vec![1, 3, 5, 7, 9];\n    println!(\"{}\", v.contains(&5));\n}",
+                        "steps": [
+                            {
+                                "title": "Understand contains",
+                                "explanation": "The .contains() method takes a reference and returns true if the element exists."
+                            },
+                            {
+                                "title": "Check and print",
+                                "explanation": "Call .contains(&5) on the vector and print the result.",
+                                "code": "fn main() {\n    let v = vec![1, 3, 5, 7, 9];\n    println!(\"{}\", v.contains(&5));\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints true."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-71",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Return Function",
+                    "description": "Write a function called double that takes an i32 and returns it multiplied by 2. Call it with 7 and print the result. Expected output: `14`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Define a function with fn double(x: i32) -> i32 { x * 2 }.",
+                    "solution": {
+                        "code": "fn double(x: i32) -> i32 {\n    x * 2\n}\n\nfn main() {\n    println!(\"{}\", double(7));\n}",
+                        "steps": [
+                            {
+                                "title": "Understand function return",
+                                "explanation": "Functions use -> to specify a return type. The last expression without ; is the return value."
+                            },
+                            {
+                                "title": "Implement double function",
+                                "explanation": "Define fn double(x: i32) -> i32 that returns x * 2, then call it in main.",
+                                "code": "fn double(x: i32) -> i32 {\n    x * 2\n}\n\nfn main() {\n    println!(\"{}\", double(7));\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 14."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-72",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Add Function",
+                    "description": "Write a function add that takes two i32 parameters and returns their sum. Call it with 15 and 27 and print the result. Expected output: `42`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Define fn add(a: i32, b: i32) -> i32 { a + b }.",
+                    "solution": {
+                        "code": "fn add(a: i32, b: i32) -> i32 {\n    a + b\n}\n\nfn main() {\n    println!(\"{}\", add(15, 27));\n}",
+                        "steps": [
+                            {
+                                "title": "Understand multiple parameters",
+                                "explanation": "Functions can take multiple parameters, each with a type annotation."
+                            },
+                            {
+                                "title": "Implement add function",
+                                "explanation": "Define fn add with two i32 params that returns their sum.",
+                                "code": "fn add(a: i32, b: i32) -> i32 {\n    a + b\n}\n\nfn main() {\n    println!(\"{}\", add(15, 27));\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 42."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-73",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Bool Function",
+                    "description": "Write a function is_positive that takes an i32 and returns true if it is greater than 0. Call it with 5 and print the result. Expected output: `true`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Define fn is_positive(n: i32) -> bool { n > 0 }.",
+                    "solution": {
+                        "code": "fn is_positive(n: i32) -> bool {\n    n > 0\n}\n\nfn main() {\n    println!(\"{}\", is_positive(5));\n}",
+                        "steps": [
+                            {
+                                "title": "Understand bool return",
+                                "explanation": "A function can return bool by specifying -> bool as the return type."
+                            },
+                            {
+                                "title": "Implement is_positive",
+                                "explanation": "Return the expression n > 0 directly as the function result.",
+                                "code": "fn is_positive(n: i32) -> bool {\n    n > 0\n}\n\nfn main() {\n    println!(\"{}\", is_positive(5));\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints true."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-74",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "String Function",
+                    "description": "Write a function greet that takes a &str name and returns a String greeting. Call it with \"Rust\" and print the result. Expected output: `Hello, Rust!`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use format! to build a String: format!(\"Hello, {}!\", name).",
+                    "solution": {
+                        "code": "fn greet(name: &str) -> String {\n    format!(\"Hello, {}!\", name)\n}\n\nfn main() {\n    println!(\"{}\", greet(\"Rust\"));\n}",
+                        "steps": [
+                            {
+                                "title": "Understand String return",
+                                "explanation": "Functions can return a String built with format! macro."
+                            },
+                            {
+                                "title": "Implement greet function",
+                                "explanation": "Use format! to create the greeting and return it.",
+                                "code": "fn greet(name: &str) -> String {\n    format!(\"Hello, {}!\", name)\n}\n\nfn main() {\n    println!(\"{}\", greet(\"Rust\"));\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints Hello, Rust!."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-75",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Max Function",
+                    "description": "Write a function max_of_three that takes three i32 values and returns the largest. Call it with 10, 25, 18 and print the result. Expected output: `25`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use if expressions or the .max() method to find the largest of three numbers.",
+                    "solution": {
+                        "code": "fn max_of_three(a: i32, b: i32, c: i32) -> i32 {\n    a.max(b).max(c)\n}\n\nfn main() {\n    println!(\"{}\", max_of_three(10, 25, 18));\n}",
+                        "steps": [
+                            {
+                                "title": "Plan max of three",
+                                "explanation": "Chain the .max() method: find max of a and b, then max of that and c."
+                            },
+                            {
+                                "title": "Implement max_of_three",
+                                "explanation": "Use a.max(b).max(c) to find the largest value.",
+                                "code": "fn max_of_three(a: i32, b: i32, c: i32) -> i32 {\n    a.max(b).max(c)\n}\n\nfn main() {\n    println!(\"{}\", max_of_three(10, 25, 18));\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 25."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-76",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Tuple Index",
+                    "description": "Create a tuple (10, 20, 30) and print the second element using index access. Expected output: `20`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Access tuple elements with dot notation: tuple.0, tuple.1, tuple.2.",
+                    "solution": {
+                        "code": "fn main() {\n    let t = (10, 20, 30);\n    println!(\"{}\", t.1);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand tuple access",
+                                "explanation": "Tuple elements are accessed with .0, .1, .2, etc."
+                            },
+                            {
+                                "title": "Access second element",
+                                "explanation": "Use t.1 to get the second element and print it.",
+                                "code": "fn main() {\n    let t = (10, 20, 30);\n    println!(\"{}\", t.1);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 20."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-77",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Mixed Tuple",
+                    "description": "Create a tuple with a string, an integer, and a boolean (\"Rust\", 2015, true) and print all three values. Expected output: `Rust 2015 true`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Tuples can hold different types. Access each element with .0, .1, .2.",
+                    "solution": {
+                        "code": "fn main() {\n    let t = (\"Rust\", 2015, true);\n    println!(\"{} {} {}\", t.0, t.1, t.2);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand mixed tuples",
+                                "explanation": "Tuples in Rust can hold elements of different types."
+                            },
+                            {
+                                "title": "Create and print mixed tuple",
+                                "explanation": "Build a tuple with &str, i32, and bool, then print all elements.",
+                                "code": "fn main() {\n    let t = (\"Rust\", 2015, true);\n    println!(\"{} {} {}\", t.0, t.1, t.2);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints Rust 2015 true."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-78",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Tuple Function",
+                    "description": "Write a function swap that takes two i32 values and returns them as a tuple in reversed order. Call with (1, 2) and print. Expected output: `(2, 1)`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Return a tuple from a function: fn swap(a: i32, b: i32) -> (i32, i32) { (b, a) }.",
+                    "solution": {
+                        "code": "fn swap(a: i32, b: i32) -> (i32, i32) {\n    (b, a)\n}\n\nfn main() {\n    let result = swap(1, 2);\n    println!(\"({}, {})\", result.0, result.1);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand tuple return",
+                                "explanation": "Functions can return tuples to pass back multiple values."
+                            },
+                            {
+                                "title": "Implement swap function",
+                                "explanation": "Return (b, a) from the function and print the result.",
+                                "code": "fn swap(a: i32, b: i32) -> (i32, i32) {\n    (b, a)\n}\n\nfn main() {\n    let result = swap(1, 2);\n    println!(\"({}, {})\", result.0, result.1);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints (2, 1)."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-79",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Destructure Tuple",
+                    "description": "Create a tuple (3, 6, 9) and destructure it into variables a, b, c. Print their sum. Expected output: `18`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use let (a, b, c) = tuple; to destructure a tuple into separate variables.",
+                    "solution": {
+                        "code": "fn main() {\n    let t = (3, 6, 9);\n    let (a, b, c) = t;\n    println!(\"{}\", a + b + c);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand destructuring",
+                                "explanation": "Tuple destructuring lets you bind each element to a separate variable."
+                            },
+                            {
+                                "title": "Destructure and sum",
+                                "explanation": "Use let (a, b, c) = t to unpack, then print a + b + c.",
+                                "code": "fn main() {\n    let t = (3, 6, 9);\n    let (a, b, c) = t;\n    println!(\"{}\", a + b + c);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 18."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-80",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Debug Tuple",
+                    "description": "Create a tuple (\"hello\", 42) and print it using debug format. Expected output: `(\"hello\", 42)`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use {:?} to print a tuple in debug format.",
+                    "solution": {
+                        "code": "fn main() {\n    let t = (\"hello\", 42);\n    println!(\"{:?}\", t);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand debug format",
+                                "explanation": "The {:?} format specifier prints values using their Debug trait implementation."
+                            },
+                            {
+                                "title": "Print with debug",
+                                "explanation": "Use println!(\"{:?}\", t) to display the tuple in debug format.",
+                                "code": "fn main() {\n    let t = (\"hello\", 42);\n    println!(\"{:?}\", t);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints (\"hello\", 42)."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-81",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Right Pad",
+                    "description": "Print the word \"hi\" right-padded to a width of 10 characters, followed by a pipe. Expected output: `hi        |`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use {:<width} for left-aligned (right-padded) formatting.",
+                    "solution": {
+                        "code": "fn main() {\n    println!(\"{:<10}|\", \"hi\");\n}",
+                        "steps": [
+                            {
+                                "title": "Understand padding",
+                                "explanation": "The {:<10} format specifier left-aligns text in a field of width 10."
+                            },
+                            {
+                                "title": "Format and print",
+                                "explanation": "Use println! with {:<10} to pad the string.",
+                                "code": "fn main() {\n    println!(\"{:<10}|\", \"hi\");\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints hi followed by 8 spaces and a pipe."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-82",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Decimal Places",
+                    "description": "Print the value of 3.14159 rounded to 2 decimal places. Expected output: `3.14`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use {:.2} to format a float with 2 decimal places.",
+                    "solution": {
+                        "code": "fn main() {\n    let pi = 3.14159;\n    println!(\"{:.2}\", pi);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand decimal formatting",
+                                "explanation": "The {:.2} specifier formats a float to 2 decimal places."
+                            },
+                            {
+                                "title": "Format and print",
+                                "explanation": "Use println!(\"{:.2}\", pi) to print with 2 decimal places.",
+                                "code": "fn main() {\n    let pi = 3.14159;\n    println!(\"{:.2}\", pi);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 3.14."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-83",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Debug Print",
+                    "description": "Create a vector [1, 2, 3] and print it using the debug format. Expected output: `[1, 2, 3]`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use {:?} to print any type that implements the Debug trait.",
+                    "solution": {
+                        "code": "fn main() {\n    let v = vec![1, 2, 3];\n    println!(\"{:?}\", v);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand debug printing",
+                                "explanation": "The {:?} format works with any type that derives or implements Debug."
+                            },
+                            {
+                                "title": "Debug print vector",
+                                "explanation": "Use println!(\"{:?}\", v) to print the vector.",
+                                "code": "fn main() {\n    let v = vec![1, 2, 3];\n    println!(\"{:?}\", v);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints [1, 2, 3]."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-84",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Named Arguments",
+                    "description": "Use named arguments in println! to print \"Alice is 30 years old\". Expected output: `Alice is 30 years old`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use named arguments: println!(\"{name} is {age} years old\", name=\"Alice\", age=30).",
+                    "solution": {
+                        "code": "fn main() {\n    println!(\"{name} is {age} years old\", name=\"Alice\", age=30);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand named arguments",
+                                "explanation": "println! supports named placeholders like {name} matched by keyword arguments."
+                            },
+                            {
+                                "title": "Use named args",
+                                "explanation": "Pass name=\"Alice\" and age=30 as named arguments to println!.",
+                                "code": "fn main() {\n    println!(\"{name} is {age} years old\", name=\"Alice\", age=30);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints Alice is 30 years old."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-85",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Multi Line",
+                    "description": "Print three lines in a single println! using \\n. Print \"line 1\", \"line 2\", and \"line 3\". Expected output: `line 1\\nline 2\\nline 3`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use \\n inside a string literal to insert newlines.",
+                    "solution": {
+                        "code": "fn main() {\n    println!(\"line 1\\nline 2\\nline 3\");\n}",
+                        "steps": [
+                            {
+                                "title": "Understand newlines",
+                                "explanation": "The escape sequence \\n creates a new line within a string."
+                            },
+                            {
+                                "title": "Print multiple lines",
+                                "explanation": "Use a single println! with \\n to output three lines.",
+                                "code": "fn main() {\n    println!(\"line 1\\nline 2\\nline 3\");\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints three separate lines."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-86",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Int to String",
+                    "description": "Convert the integer 42 to a String using .to_string() and print it. Expected output: `42`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use .to_string() to convert a number to a String.",
+                    "solution": {
+                        "code": "fn main() {\n    let n = 42;\n    let s = n.to_string();\n    println!(\"{}\", s);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand to_string",
+                                "explanation": "The .to_string() method converts any type implementing Display into a String."
+                            },
+                            {
+                                "title": "Convert and print",
+                                "explanation": "Call .to_string() on the integer and print the resulting String.",
+                                "code": "fn main() {\n    let n = 42;\n    let s = n.to_string();\n    println!(\"{}\", s);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 42."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-87",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "String to Str",
+                    "description": "Create a String from \"hello\" and borrow it as a &str to print. Expected output: `hello`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use String::from() to create a String. It automatically coerces to &str when needed.",
+                    "solution": {
+                        "code": "fn main() {\n    let s = String::from(\"hello\");\n    let r: &str = &s;\n    println!(\"{}\", r);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand String vs &str",
+                                "explanation": "String is an owned type; &str is a borrowed string slice. You can borrow a String as &str."
+                            },
+                            {
+                                "title": "Create and borrow",
+                                "explanation": "Make a String, borrow it as &str, and print.",
+                                "code": "fn main() {\n    let s = String::from(\"hello\");\n    let r: &str = &s;\n    println!(\"{}\", r);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints hello."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-88",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Parse String",
+                    "description": "Parse the string \"100\" into an i32 and print the result. Expected output: `100`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use .parse::<i32>().unwrap() to convert a string to an integer.",
+                    "solution": {
+                        "code": "fn main() {\n    let s = \"100\";\n    let n: i32 = s.parse().unwrap();\n    println!(\"{}\", n);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand parse",
+                                "explanation": "The .parse() method converts a string to another type. Use .unwrap() for simple cases."
+                            },
+                            {
+                                "title": "Parse and print",
+                                "explanation": "Parse the string to i32 and print the result.",
+                                "code": "fn main() {\n    let s = \"100\";\n    let n: i32 = s.parse().unwrap();\n    println!(\"{}\", n);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 100."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-89",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Float Round",
+                    "description": "Round the float 3.7 to the nearest integer using .round() and print it. Expected output: `4`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use .round() on a f64, then cast to i32 with `as i32`.",
+                    "solution": {
+                        "code": "fn main() {\n    let x: f64 = 3.7;\n    let rounded = x.round() as i32;\n    println!(\"{}\", rounded);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand rounding",
+                                "explanation": "The .round() method rounds a float to the nearest whole number, returning f64."
+                            },
+                            {
+                                "title": "Round and print",
+                                "explanation": "Round 3.7 and cast to i32 to print as an integer.",
+                                "code": "fn main() {\n    let x: f64 = 3.7;\n    let rounded = x.round() as i32;\n    println!(\"{}\", rounded);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 4."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-90",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Char to Number",
+                    "description": "Convert the character '9' to the digit 9 as a u32 and print it. Expected output: `9`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use .to_digit(10).unwrap() to convert a char to its numeric value in base 10.",
+                    "solution": {
+                        "code": "fn main() {\n    let ch = '9';\n    let n = ch.to_digit(10).unwrap();\n    println!(\"{}\", n);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand to_digit",
+                                "explanation": "The .to_digit(radix) method converts a char to its numeric value in the given base."
+                            },
+                            {
+                                "title": "Convert and print",
+                                "explanation": "Call .to_digit(10).unwrap() on '9' and print the result.",
+                                "code": "fn main() {\n    let ch = '9';\n    let n = ch.to_digit(10).unwrap();\n    println!(\"{}\", n);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 9."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-91",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Clone String",
+                    "description": "Create a String \"hello\", clone it into a second variable, and print both. Expected output: `hello hello`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use .clone() to create a deep copy of a String.",
+                    "solution": {
+                        "code": "fn main() {\n    let s1 = String::from(\"hello\");\n    let s2 = s1.clone();\n    println!(\"{} {}\", s1, s2);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand clone",
+                                "explanation": "Cloning creates an independent copy so both variables remain valid."
+                            },
+                            {
+                                "title": "Clone and print",
+                                "explanation": "Clone s1 into s2 and print both.",
+                                "code": "fn main() {\n    let s1 = String::from(\"hello\");\n    let s2 = s1.clone();\n    println!(\"{} {}\", s1, s2);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints hello hello."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-92",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "String From",
+                    "description": "Create a String from a string literal using String::from() and print its length. Expected output: `5`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "String::from(\"hello\") creates an owned String from a &str literal.",
+                    "solution": {
+                        "code": "fn main() {\n    let s = String::from(\"hello\");\n    println!(\"{}\", s.len());\n}",
+                        "steps": [
+                            {
+                                "title": "Understand String::from",
+                                "explanation": "String::from() converts a &str literal into an owned, heap-allocated String."
+                            },
+                            {
+                                "title": "Create and measure",
+                                "explanation": "Create a String from \"hello\" and print its length.",
+                                "code": "fn main() {\n    let s = String::from(\"hello\");\n    println!(\"{}\", s.len());\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 5."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-93",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "To String",
+                    "description": "Convert the number 256 to a String using .to_string() and print its length. Expected output: `3`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Numbers can be converted to String with .to_string(). Then use .len() for length.",
+                    "solution": {
+                        "code": "fn main() {\n    let s = 256.to_string();\n    println!(\"{}\", s.len());\n}",
+                        "steps": [
+                            {
+                                "title": "Understand to_string",
+                                "explanation": "The .to_string() method creates a String representation of any Display type."
+                            },
+                            {
+                                "title": "Convert and measure",
+                                "explanation": "Convert 256 to a String and print its character length.",
+                                "code": "fn main() {\n    let s = 256.to_string();\n    println!(\"{}\", s.len());\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 3."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-94",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "String Concat",
+                    "description": "Concatenate two Strings \"Hello, \" and \"world!\" using format! and print the result. Expected output: `Hello, world!`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use format!(\"{}{}\", s1, s2) to concatenate strings without consuming them.",
+                    "solution": {
+                        "code": "fn main() {\n    let s1 = String::from(\"Hello, \");\n    let s2 = String::from(\"world!\");\n    let result = format!(\"{}{}\", s1, s2);\n    println!(\"{}\", result);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand string concatenation",
+                                "explanation": "format! is a clean way to join strings without ownership issues."
+                            },
+                            {
+                                "title": "Concatenate and print",
+                                "explanation": "Use format! to join s1 and s2, then print the result.",
+                                "code": "fn main() {\n    let s1 = String::from(\"Hello, \");\n    let s2 = String::from(\"world!\");\n    let result = format!(\"{}{}\", s1, s2);\n    println!(\"{}\", result);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints Hello, world!."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-95",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "String Slice",
+                    "description": "Create the string \"Rustacean\" and print a slice of the first 4 characters. Expected output: `Rust`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use &s[0..4] to get a slice of the first 4 bytes (which are 4 ASCII chars here).",
+                    "solution": {
+                        "code": "fn main() {\n    let s = String::from(\"Rustacean\");\n    println!(\"{}\", &s[0..4]);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand string slicing",
+                                "explanation": "String slicing with &s[start..end] gives a &str view of a portion of the string."
+                            },
+                            {
+                                "title": "Slice and print",
+                                "explanation": "Use &s[0..4] to extract and print the first 4 characters.",
+                                "code": "fn main() {\n    let s = String::from(\"Rustacean\");\n    println!(\"{}\", &s[0..4]);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints Rust."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-96",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Constant Value",
+                    "description": "Declare a constant MAX_SCORE of type i32 with value 100 and print it. Expected output: `100`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use const NAME: Type = value; to declare a constant. Constants must have a type annotation.",
+                    "solution": {
+                        "code": "fn main() {\n    const MAX_SCORE: i32 = 100;\n    println!(\"{}\", MAX_SCORE);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand const",
+                                "explanation": "Constants are declared with const, require a type, and are always immutable."
+                            },
+                            {
+                                "title": "Declare and print",
+                                "explanation": "Declare const MAX_SCORE: i32 = 100 and print it.",
+                                "code": "fn main() {\n    const MAX_SCORE: i32 = 100;\n    println!(\"{}\", MAX_SCORE);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 100."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-97",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Shadow Variable",
+                    "description": "Declare a variable x with value 5, then shadow it by declaring a new x with value x + 10. Print the final x. Expected output: `15`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Shadowing lets you redeclare a variable with the same name using let again.",
+                    "solution": {
+                        "code": "fn main() {\n    let x = 5;\n    let x = x + 10;\n    println!(\"{}\", x);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand shadowing",
+                                "explanation": "Shadowing creates a new variable with the same name, hiding the previous one."
+                            },
+                            {
+                                "title": "Shadow and print",
+                                "explanation": "Declare x = 5, then let x = x + 10, and print the new x.",
+                                "code": "fn main() {\n    let x = 5;\n    let x = x + 10;\n    println!(\"{}\", x);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 15."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-98",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Scope Basics",
+                    "description": "Demonstrate variable scope: create x = 10 in main, then create y = 20 inside a block. Print x after the block. Expected output: `10`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Variables declared inside { } go out of scope when the block ends.",
+                    "solution": {
+                        "code": "fn main() {\n    let x = 10;\n    {\n        let _y = 20;\n    }\n    println!(\"{}\", x);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand scope",
+                                "explanation": "Variables are only valid within the block { } where they are declared."
+                            },
+                            {
+                                "title": "Use block scope",
+                                "explanation": "Create x outside a block and _y inside it. Print x after the block.",
+                                "code": "fn main() {\n    let x = 10;\n    {\n        let _y = 20;\n    }\n    println!(\"{}\", x);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 10."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-99",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Block Expression",
+                    "description": "Use a block expression to compute a value: let result = { let a = 3; let b = 4; a + b }; Print result. Expected output: `7`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "A block { } in Rust is an expression. Its last expression (without ;) becomes its value.",
+                    "solution": {
+                        "code": "fn main() {\n    let result = {\n        let a = 3;\n        let b = 4;\n        a + b\n    };\n    println!(\"{}\", result);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand block expressions",
+                                "explanation": "A block { } evaluates to its last expression. This value can be assigned to a variable."
+                            },
+                            {
+                                "title": "Compute with block",
+                                "explanation": "Use a block to compute a + b and assign the result.",
+                                "code": "fn main() {\n    let result = {\n        let a = 3;\n        let b = 4;\n        a + b\n    };\n    println!(\"{}\", result);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 7."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-100",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Type Alias",
+                    "description": "Create a type alias Meters for i32, declare a variable of that type with value 1500, and print it. Expected output: `1500`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use type Meters = i32; to create a type alias.",
+                    "solution": {
+                        "code": "fn main() {\n    type Meters = i32;\n    let distance: Meters = 1500;\n    println!(\"{}\", distance);\n}",
+                        "steps": [
+                            {
+                                "title": "Understand type aliases",
+                                "explanation": "The type keyword creates an alias for an existing type, improving code readability."
+                            },
+                            {
+                                "title": "Alias and use",
+                                "explanation": "Define type Meters = i32, create a variable of that type, and print it.",
+                                "code": "fn main() {\n    type Meters = i32;\n    let distance: Meters = 1500;\n    println!(\"{}\", distance);\n}"
+                            },
+                            {
+                                "title": "Verify output",
+                                "explanation": "Run the code and confirm it prints 1500."
+                            }
+                        ]
+                    }
                 }
             ]
         },
