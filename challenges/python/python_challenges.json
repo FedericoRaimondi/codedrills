@@ -988,7 +988,7 @@
           "title": "Length Sort",
           "description": "Write `sort_by_length(words)` that returns a new list of strings sorted by length (shortest first). Example: `[\"banana\", \"kiwi\", \"fig\"] -> [\"fig\", \"kiwi\", \"banana\"]`.",
           "starterCode": "def sort_by_length(words):\n    # Your code here\n    pass\n",
-          "hint": "The sorted() function accepts a key parameter \u2014 try key=len.",
+          "hint": "The sorted() function accepts a key parameter — try key=len.",
           "solution": {
             "code": "def sort_by_length(words):\n    return sorted(words, key=len)",
             "steps": [
@@ -1770,6 +1770,411 @@
               {
                 "title": "Verify expected result",
                 "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-6",
+          "language": "python",
+          "level": "advanced",
+          "title": "Trie Builder",
+          "description": "Implement a `Trie` class with `insert(word)`, `search(word)` (exact match, returns bool), and `starts_with(prefix)` (returns bool). Example: after `insert(\"apple\")`, `search(\"apple\") -> True`, `search(\"app\") -> False`, `starts_with(\"app\") -> True`.",
+          "starterCode": "class Trie:\n    def __init__(self):\n        # Your code here\n        pass\n\n    def insert(self, word: str) -> None:\n        # Your code here\n        pass\n\n    def search(self, word: str) -> bool:\n        # Your code here\n        pass\n\n    def starts_with(self, prefix: str) -> bool:\n        # Your code here\n        pass\n",
+          "hint": "Each node is a dict of children plus an end-of-word flag.",
+          "solution": {
+            "code": "class Trie:\n    def __init__(self):\n        self.root = {}\n\n    def insert(self, word: str) -> None:\n        node = self.root\n        for ch in word:\n            node = node.setdefault(ch, {})\n        node['#'] = True\n\n    def search(self, word: str) -> bool:\n        node = self.root\n        for ch in word:\n            if ch not in node:\n                return False\n            node = node[ch]\n        return '#' in node\n\n    def starts_with(self, prefix: str) -> bool:\n        node = self.root\n        for ch in prefix:\n            if ch not in node:\n                return False\n            node = node[ch]\n        return True",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Build a prefix tree that supports inserting words and querying for exact matches or prefix matches. Each node maps characters to child nodes, and a sentinel marks word endings."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use nested dicts as trie nodes. Walk the tree character by character for insert, search, and starts_with. Mark end-of-word with a '#' key.",
+                "code": "class Trie:\n    def __init__(self):\n        self.root = {}\n\n    def insert(self, word: str) -> None:\n        node = self.root\n        for ch in word:\n            node = node.setdefault(ch, {})\n        node['#'] = True\n\n    def search(self, word: str) -> bool:\n        node = self.root\n        for ch in word:\n            if ch not in node:\n                return False\n            node = node[ch]\n        return '#' in node\n\n    def starts_with(self, prefix: str) -> bool:\n        node = self.root\n        for ch in prefix:\n            if ch not in node:\n                return False\n            node = node[ch]\n        return True"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Create a Trie, insert 'apple', then confirm search('apple') returns True, search('app') returns False, and starts_with('app') returns True."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-7",
+          "language": "python",
+          "level": "advanced",
+          "title": "Topo Sort",
+          "description": "Write `topological_sort(num_nodes, edges)` that returns a valid topological ordering of a DAG. `num_nodes` is the count of nodes (0-indexed), `edges` is a list of `[u, v]` pairs meaning u -> v. Example: `topological_sort(4, [[0,1],[0,2],[1,3],[2,3]]) -> [0, 2, 1, 3]` (or any valid ordering).",
+          "starterCode": "def topological_sort(num_nodes, edges):\n    # Your code here\n    pass\n",
+          "hint": "Track in-degrees and use a queue seeded with zero-degree nodes (Kahn's algorithm).",
+          "solution": {
+            "code": "from collections import deque, defaultdict\n\ndef topological_sort(num_nodes, edges):\n    graph = defaultdict(list)\n    in_degree = [0] * num_nodes\n    for u, v in edges:\n        graph[u].append(v)\n        in_degree[v] += 1\n    queue = deque(i for i in range(num_nodes) if in_degree[i] == 0)\n    order = []\n    while queue:\n        node = queue.popleft()\n        order.append(node)\n        for neighbor in graph[node]:\n            in_degree[neighbor] -= 1\n            if in_degree[neighbor] == 0:\n                queue.append(neighbor)\n    return order",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Produce a linear ordering of nodes in a directed acyclic graph such that for every edge u -> v, u appears before v in the ordering."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use Kahn's algorithm: build an adjacency list and in-degree array, enqueue all nodes with in-degree 0, then repeatedly dequeue, append to result, and decrement neighbors' in-degrees.",
+                "code": "from collections import deque, defaultdict\n\ndef topological_sort(num_nodes, edges):\n    graph = defaultdict(list)\n    in_degree = [0] * num_nodes\n    for u, v in edges:\n        graph[u].append(v)\n        in_degree[v] += 1\n    queue = deque(i for i in range(num_nodes) if in_degree[i] == 0)\n    order = []\n    while queue:\n        node = queue.popleft()\n        order.append(node)\n        for neighbor in graph[node]:\n            in_degree[neighbor] -= 1\n            if in_degree[neighbor] == 0:\n                queue.append(neighbor)\n    return order"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call with 4 nodes and edges [[0,1],[0,2],[1,3],[2,3]]. Confirm the result is a valid topological order where 0 appears before 1 and 2, and both 1 and 2 appear before 3."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-8",
+          "language": "python",
+          "level": "advanced",
+          "title": "RPN Evaluator",
+          "description": "Write `eval_rpn(tokens)` that evaluates a reverse Polish notation expression. `tokens` is a list of strings, each an integer or one of `+`, `-`, `*`, `/`. Division truncates toward zero. Example: `eval_rpn([\"2\",\"1\",\"+\",\"3\",\"*\"]) -> 9`.",
+          "starterCode": "def eval_rpn(tokens):\n    # Your code here\n    pass\n",
+          "hint": "Push numbers onto a stack; when you hit an operator, pop two operands, apply it, and push the result.",
+          "solution": {
+            "code": "def eval_rpn(tokens):\n    stack = []\n    ops = {\n        '+': lambda a, b: a + b,\n        '-': lambda a, b: a - b,\n        '*': lambda a, b: a * b,\n        '/': lambda a, b: int(a / b),\n    }\n    for t in tokens:\n        if t in ops:\n            b, a = stack.pop(), stack.pop()\n            stack.append(ops[t](a, b))\n        else:\n            stack.append(int(t))\n    return stack[0]",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Evaluate a math expression given in postfix (reverse Polish) notation. Operands come before their operator, so a stack naturally tracks pending values."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Iterate tokens: push integers onto a stack; for operators pop two values (second popped is left operand), compute, and push the result. Use int(a/b) for truncation toward zero.",
+                "code": "def eval_rpn(tokens):\n    stack = []\n    ops = {\n        '+': lambda a, b: a + b,\n        '-': lambda a, b: a - b,\n        '*': lambda a, b: a * b,\n        '/': lambda a, b: int(a / b),\n    }\n    for t in tokens:\n        if t in ops:\n            b, a = stack.pop(), stack.pop()\n            stack.append(ops[t](a, b))\n        else:\n            stack.append(int(t))\n    return stack[0]"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call eval_rpn([\"2\",\"1\",\"+\",\"3\",\"*\"]). Steps: 2+1=3, 3*3=9. Confirm the return value is 9."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-9",
+          "language": "python",
+          "level": "advanced",
+          "title": "Palindrome Hunt",
+          "description": "Write `longest_palindrome(s)` returning the longest palindromic substring of `s`. If there are ties, return the one that appears first. Example: `longest_palindrome(\"babad\") -> \"bab\"`, `longest_palindrome(\"cbbd\") -> \"bb\"`.",
+          "starterCode": "def longest_palindrome(s):\n    # Your code here\n    pass\n",
+          "hint": "Expand around each index (and each pair of adjacent indices) to find both odd- and even-length palindromes.",
+          "solution": {
+            "code": "def longest_palindrome(s):\n    def expand(l, r):\n        while l >= 0 and r < len(s) and s[l] == s[r]:\n            l -= 1\n            r += 1\n        return s[l+1:r]\n\n    best = \"\"\n    for i in range(len(s)):\n        odd = expand(i, i)\n        even = expand(i, i + 1)\n        if len(odd) > len(best):\n            best = odd\n        if len(even) > len(best):\n            best = even\n    return best",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Find the longest contiguous substring that reads the same forwards and backwards. Handle both odd-length (single center) and even-length (two-char center) palindromes."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "For each index, expand outward comparing characters for odd and even centers. Track the longest result found so far.",
+                "code": "def longest_palindrome(s):\n    def expand(l, r):\n        while l >= 0 and r < len(s) and s[l] == s[r]:\n            l -= 1\n            r += 1\n        return s[l+1:r]\n\n    best = \"\"\n    for i in range(len(s)):\n        odd = expand(i, i)\n        even = expand(i, i + 1)\n        if len(odd) > len(best):\n            best = odd\n        if len(even) > len(best):\n            best = even\n    return best"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call longest_palindrome(\"babad\") and confirm it returns \"bab\". Call with \"cbbd\" and confirm \"bb\"."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-10",
+          "language": "python",
+          "level": "advanced",
+          "title": "Min Stack",
+          "description": "Implement a `MinStack` class supporting `push(val)`, `pop()`, `top()`, and `get_min()`, all in O(1) time. Example: after `push(-2), push(0), push(-3)`: `get_min() -> -3`, then `pop()`, `get_min() -> -2`.",
+          "starterCode": "class MinStack:\n    def __init__(self):\n        # Your code here\n        pass\n\n    def push(self, val: int) -> None:\n        # Your code here\n        pass\n\n    def pop(self) -> None:\n        # Your code here\n        pass\n\n    def top(self) -> int:\n        # Your code here\n        pass\n\n    def get_min(self) -> int:\n        # Your code here\n        pass\n",
+          "hint": "Store tuples of (value, current_min) so each stack frame remembers its own minimum.",
+          "solution": {
+            "code": "class MinStack:\n    def __init__(self):\n        self.stack = []\n\n    def push(self, val: int) -> None:\n        current_min = min(val, self.stack[-1][1]) if self.stack else val\n        self.stack.append((val, current_min))\n\n    def pop(self) -> None:\n        self.stack.pop()\n\n    def top(self) -> int:\n        return self.stack[-1][0]\n\n    def get_min(self) -> int:\n        return self.stack[-1][1]",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Design a stack that can report its minimum element in constant time alongside normal push, pop, and top operations."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Store each element as a tuple (value, current_min). On push, compare the new value with the top's min. Pop, top, and get_min all read from the top tuple in O(1).",
+                "code": "class MinStack:\n    def __init__(self):\n        self.stack = []\n\n    def push(self, val: int) -> None:\n        current_min = min(val, self.stack[-1][1]) if self.stack else val\n        self.stack.append((val, current_min))\n\n    def pop(self) -> None:\n        self.stack.pop()\n\n    def top(self) -> int:\n        return self.stack[-1][0]\n\n    def get_min(self) -> int:\n        return self.stack[-1][1]"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Push -2, 0, -3. Confirm get_min() returns -3. Pop once, then confirm get_min() returns -2 and top() returns 0."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-11",
+          "language": "python",
+          "level": "advanced",
+          "title": "Graph Codec",
+          "description": "Write `serialize_graph(adj)` and `deserialize_graph(s)` for an adjacency-list graph. `adj` is a dict mapping node (str) to list of neighbor strings. The serialized string must round-trip: `deserialize_graph(serialize_graph(adj)) == adj`. Example: `{\"A\":[\"B\",\"C\"],\"B\":[],\"C\":[\"A\"]}` serializes to `\"A:B,C;B:;C:A\"` and back.",
+          "starterCode": "def serialize_graph(adj):\n    # Your code here\n    pass\n\ndef deserialize_graph(s):\n    # Your code here\n    pass\n",
+          "hint": "Join each node's neighbors with commas, join nodes with semicolons, and reverse the process for deserialize.",
+          "solution": {
+            "code": "def serialize_graph(adj):\n    parts = []\n    for node in sorted(adj):\n        neighbors = ','.join(adj[node])\n        parts.append(f\"{node}:{neighbors}\")\n    return ';'.join(parts)\n\ndef deserialize_graph(s):\n    adj = {}\n    if not s:\n        return adj\n    for part in s.split(';'):\n        node, neighbors = part.split(':')\n        adj[node] = neighbors.split(',') if neighbors else []\n    return adj",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Convert a graph represented as an adjacency-list dict into a compact string and back, ensuring the round-trip produces an identical dict."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Serialize: sort nodes for determinism, join neighbors with commas, join entries with semicolons. Deserialize: split on semicolons, then on colons and commas to rebuild the dict.",
+                "code": "def serialize_graph(adj):\n    parts = []\n    for node in sorted(adj):\n        neighbors = ','.join(adj[node])\n        parts.append(f\"{node}:{neighbors}\")\n    return ';'.join(parts)\n\ndef deserialize_graph(s):\n    adj = {}\n    if not s:\n        return adj\n    for part in s.split(';'):\n        node, neighbors = part.split(':')\n        adj[node] = neighbors.split(',') if neighbors else []\n    return adj"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Serialize {\"A\":[\"B\",\"C\"],\"B\":[],\"C\":[\"A\"]} and confirm the output is \"A:B,C;B:;C:A\". Deserialize that string and confirm it equals the original dict."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-12",
+          "language": "python",
+          "level": "advanced",
+          "title": "Memo Magic",
+          "description": "Write a `memoize` decorator that caches function results by arguments. It should work with any positional arguments. Example: `@memoize\\ndef add(a, b): return a + b` — calling `add(1, 2)` twice should compute only once. `add.cache` should be a dict mapping arg tuples to results. Example: `add(1,2) -> 3`, `add.cache -> {(1,2): 3}`.",
+          "starterCode": "def memoize(fn):\n    # Your code here\n    pass\n",
+          "hint": "Use a wrapper function with a dict attached as an attribute. Use args tuple as the cache key.",
+          "solution": {
+            "code": "import functools\n\ndef memoize(fn):\n    cache = {}\n    @functools.wraps(fn)\n    def wrapper(*args):\n        if args not in cache:\n            cache[args] = fn(*args)\n        return cache[args]\n    wrapper.cache = cache\n    return wrapper",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Create a decorator that transparently caches return values keyed by the function's positional arguments, exposing the cache dict as an attribute."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Define an inner wrapper that checks a dict for the args tuple key. On miss, call the original function and store the result. Attach the cache dict to the wrapper.",
+                "code": "import functools\n\ndef memoize(fn):\n    cache = {}\n    @functools.wraps(fn)\n    def wrapper(*args):\n        if args not in cache:\n            cache[args] = fn(*args)\n        return cache[args]\n    wrapper.cache = cache\n    return wrapper"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Decorate a simple add function, call add(1,2) twice, confirm it returns 3 both times and add.cache equals {(1,2): 3}."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-13",
+          "language": "python",
+          "level": "advanced",
+          "title": "Unique Permutations",
+          "description": "Write `unique_permutations(nums)` returning all unique permutations of a list of integers (may contain duplicates), sorted in ascending order. Example: `unique_permutations([1,1,2]) -> [[1,1,2],[1,2,1],[2,1,1]]`.",
+          "starterCode": "def unique_permutations(nums):\n    # Your code here\n    pass\n",
+          "hint": "Sort the input, then backtrack and skip duplicates at each recursion level.",
+          "solution": {
+            "code": "def unique_permutations(nums):\n    results = []\n    nums.sort()\n    used = [False] * len(nums)\n\n    def backtrack(path):\n        if len(path) == len(nums):\n            results.append(path[:])\n            return\n        for i in range(len(nums)):\n            if used[i]:\n                continue\n            if i > 0 and nums[i] == nums[i-1] and not used[i-1]:\n                continue\n            used[i] = True\n            path.append(nums[i])\n            backtrack(path)\n            path.pop()\n            used[i] = False\n\n    backtrack([])\n    return results",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Generate every distinct ordering of the input list. Duplicates in the input must not produce duplicate permutations in the output."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Sort the array first. Use backtracking with a used-flags array. Skip an element if it equals the previous unused element at the same recursion level to avoid duplicates.",
+                "code": "def unique_permutations(nums):\n    results = []\n    nums.sort()\n    used = [False] * len(nums)\n\n    def backtrack(path):\n        if len(path) == len(nums):\n            results.append(path[:])\n            return\n        for i in range(len(nums)):\n            if used[i]:\n                continue\n            if i > 0 and nums[i] == nums[i-1] and not used[i-1]:\n                continue\n            used[i] = True\n            path.append(nums[i])\n            backtrack(path)\n            path.pop()\n            used[i] = False\n\n    backtrack([])\n    return results"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call unique_permutations([1,1,2]) and confirm the result is [[1,1,2],[1,2,1],[2,1,1]] with no duplicates."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-14",
+          "language": "python",
+          "level": "advanced",
+          "title": "Knapsack 0/1",
+          "description": "Write `knapsack(capacity, weights, values)` returning the maximum total value achievable without exceeding `capacity`. Each item can be taken at most once. Example: `knapsack(7, [1,3,4,5], [1,4,5,7]) -> 9` (items with weights 3 and 4, values 4+5).",
+          "starterCode": "def knapsack(capacity, weights, values):\n    # Your code here\n    pass\n",
+          "hint": "Build a 2D DP table where dp[i][w] is the best value using the first i items with capacity w.",
+          "solution": {
+            "code": "def knapsack(capacity, weights, values):\n    n = len(weights)\n    dp = [[0] * (capacity + 1) for _ in range(n + 1)]\n    for i in range(1, n + 1):\n        w, v = weights[i-1], values[i-1]\n        for c in range(capacity + 1):\n            dp[i][c] = dp[i-1][c]\n            if c >= w:\n                dp[i][c] = max(dp[i][c], dp[i-1][c-w] + v)\n    return dp[n][capacity]",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Solve the classic 0/1 knapsack problem: maximize total value of selected items without exceeding a weight capacity, where each item is either fully taken or skipped."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use bottom-up DP with a table dp[i][c]. For each item i and capacity c, choose the max of skipping the item or taking it (if it fits).",
+                "code": "def knapsack(capacity, weights, values):\n    n = len(weights)\n    dp = [[0] * (capacity + 1) for _ in range(n + 1)]\n    for i in range(1, n + 1):\n        w, v = weights[i-1], values[i-1]\n        for c in range(capacity + 1):\n            dp[i][c] = dp[i-1][c]\n            if c >= w:\n                dp[i][c] = max(dp[i][c], dp[i-1][c-w] + v)\n    return dp[n][capacity]"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call knapsack(7, [1,3,4,5], [1,4,5,7]) and confirm the result is 9, achieved by taking items with weights 3 and 4."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-15",
+          "language": "python",
+          "level": "advanced",
+          "title": "Cycle Detector",
+          "description": "Write `has_cycle(num_nodes, edges)` returning True if a directed graph contains a cycle. Nodes are 0-indexed, edges is a list of `[u, v]` pairs. Example: `has_cycle(3, [[0,1],[1,2],[2,0]]) -> True`, `has_cycle(3, [[0,1],[1,2]]) -> False`.",
+          "starterCode": "def has_cycle(num_nodes, edges):\n    # Your code here\n    pass\n",
+          "hint": "Use DFS with three states: unvisited, in-progress, and done. A back-edge to an in-progress node means a cycle.",
+          "solution": {
+            "code": "from collections import defaultdict\n\ndef has_cycle(num_nodes, edges):\n    graph = defaultdict(list)\n    for u, v in edges:\n        graph[u].append(v)\n    WHITE, GRAY, BLACK = 0, 1, 2\n    color = [WHITE] * num_nodes\n\n    def dfs(node):\n        color[node] = GRAY\n        for nei in graph[node]:\n            if color[nei] == GRAY:\n                return True\n            if color[nei] == WHITE and dfs(nei):\n                return True\n        color[node] = BLACK\n        return False\n\n    return any(color[i] == WHITE and dfs(i) for i in range(num_nodes))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Determine whether a directed graph contains any cycle. A cycle exists if DFS encounters a node that is currently being explored (a back edge)."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Color each node white (unvisited), gray (in progress), or black (done). During DFS, if we reach a gray node, a cycle exists. Process all components.",
+                "code": "from collections import defaultdict\n\ndef has_cycle(num_nodes, edges):\n    graph = defaultdict(list)\n    for u, v in edges:\n        graph[u].append(v)\n    WHITE, GRAY, BLACK = 0, 1, 2\n    color = [WHITE] * num_nodes\n\n    def dfs(node):\n        color[node] = GRAY\n        for nei in graph[node]:\n            if color[nei] == GRAY:\n                return True\n            if color[nei] == WHITE and dfs(nei):\n                return True\n        color[node] = BLACK\n        return False\n\n    return any(color[i] == WHITE and dfs(i) for i in range(num_nodes))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call has_cycle(3, [[0,1],[1,2],[2,0]]) and confirm True. Call has_cycle(3, [[0,1],[1,2]]) and confirm False."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-16",
+          "language": "python",
+          "level": "advanced",
+          "title": "LCS Finder",
+          "description": "Write `longest_common_subsequence(s1, s2)` returning the length of the longest common subsequence of two strings. Example: `longest_common_subsequence(\"abcde\", \"ace\") -> 3` (the LCS is \"ace\").",
+          "starterCode": "def longest_common_subsequence(s1, s2):\n    # Your code here\n    pass\n",
+          "hint": "Build a 2D DP table comparing each character pair; if they match, extend the diagonal, otherwise take the max of left or top.",
+          "solution": {
+            "code": "def longest_common_subsequence(s1, s2):\n    m, n = len(s1), len(s2)\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if s1[i-1] == s2[j-1]:\n                dp[i][j] = dp[i-1][j-1] + 1\n            else:\n                dp[i][j] = max(dp[i-1][j], dp[i][j-1])\n    return dp[m][n]",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Find the length of the longest subsequence common to both strings. A subsequence preserves order but not contiguity."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use a 2D DP table of size (m+1)x(n+1). When characters match, add 1 to the diagonal value. Otherwise, take the max of the cell above or to the left.",
+                "code": "def longest_common_subsequence(s1, s2):\n    m, n = len(s1), len(s2)\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if s1[i-1] == s2[j-1]:\n                dp[i][j] = dp[i-1][j-1] + 1\n            else:\n                dp[i][j] = max(dp[i-1][j], dp[i][j-1])\n    return dp[m][n]"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call longest_common_subsequence(\"abcde\", \"ace\") and confirm it returns 3."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-17",
+          "language": "python",
+          "level": "advanced",
+          "title": "Deep Flatten",
+          "description": "Write `flatten(iterable)` that returns a generator yielding all non-iterable leaf values from an arbitrarily nested structure of lists and tuples. Strings are treated as leaf values. Example: `list(flatten([1,[2,[3,4],(5,)],\"hi\"])) -> [1,2,3,4,5,\"hi\"]`.",
+          "starterCode": "def flatten(iterable):\n    # Your code here\n    pass\n",
+          "hint": "Recursively yield from sub-iterables, but treat strings as atoms (not iterable for this purpose).",
+          "solution": {
+            "code": "def flatten(iterable):\n    for item in iterable:\n        if isinstance(item, (list, tuple)):\n            yield from flatten(item)\n        else:\n            yield item",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Build a generator that walks through nested lists and tuples, yielding every leaf element in order. Strings should not be iterated character-by-character."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "For each item, check if it is a list or tuple. If so, recursively yield from flatten(item). Otherwise, yield the item directly.",
+                "code": "def flatten(iterable):\n    for item in iterable:\n        if isinstance(item, (list, tuple)):\n            yield from flatten(item)\n        else:\n            yield item"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call list(flatten([1,[2,[3,4],(5,)],\"hi\"])) and confirm the result is [1, 2, 3, 4, 5, \"hi\"]."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-18",
+          "language": "python",
+          "level": "advanced",
+          "title": "Gen Pipeline",
+          "description": "Write `producer(items)` — a generator that yields each item from `items`, and `consumer(gen, transform)` — a function that takes a generator and a transform function, returning a list of transformed values. Example: `consumer(producer([1,2,3]), lambda x: x*x) -> [1,4,9]`.",
+          "starterCode": "def producer(items):\n    # Your code here\n    pass\n\ndef consumer(gen, transform):\n    # Your code here\n    pass\n",
+          "hint": "producer is a simple generator with yield; consumer iterates the generator applying the transform.",
+          "solution": {
+            "code": "def producer(items):\n    for item in items:\n        yield item\n\ndef consumer(gen, transform):\n    return [transform(value) for value in gen]",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Model a producer-consumer pattern using generators. The producer lazily yields items; the consumer pulls from the generator and applies a transformation."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "producer uses yield to lazily emit items. consumer iterates the generator, applying the transform function to each value, and collects results in a list.",
+                "code": "def producer(items):\n    for item in items:\n        yield item\n\ndef consumer(gen, transform):\n    return [transform(value) for value in gen]"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call consumer(producer([1,2,3]), lambda x: x*x) and confirm the result is [1, 4, 9]."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-19",
+          "language": "python",
+          "level": "advanced",
+          "title": "Regex Lite",
+          "description": "Write `is_match(s, p)` where `s` is an input string and `p` is a pattern with `.` (matches any single char) and `*` (zero or more of the preceding element). The match must cover the entire string. Example: `is_match(\"aab\", \"c*a*b\") -> True`, `is_match(\"ab\", \".*\") -> True`, `is_match(\"mississippi\", \"mis*is*p*.\") -> False`.",
+          "starterCode": "def is_match(s, p):\n    # Your code here\n    pass\n",
+          "hint": "Use dynamic programming: dp[i][j] is True if s[:i] matches p[:j]. Handle '*' by checking zero-use and one-use cases.",
+          "solution": {
+            "code": "def is_match(s, p):\n    m, n = len(s), len(p)\n    dp = [[False] * (n + 1) for _ in range(m + 1)]\n    dp[0][0] = True\n    for j in range(1, n + 1):\n        if p[j-1] == '*':\n            dp[0][j] = dp[0][j-2]\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if p[j-1] == '*':\n                dp[i][j] = dp[i][j-2]\n                if p[j-2] == '.' or p[j-2] == s[i-1]:\n                    dp[i][j] = dp[i][j] or dp[i-1][j]\n            elif p[j-1] == '.' or p[j-1] == s[i-1]:\n                dp[i][j] = dp[i-1][j-1]\n    return dp[m][n]",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Implement basic regex matching supporting '.' (any single char) and '*' (zero or more of the preceding char). The pattern must match the full string."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Build a DP table where dp[i][j] indicates if s[:i] matches p[:j]. For '*', consider using zero copies (dp[i][j-2]) or one more copy if the preceding char matches (dp[i-1][j]).",
+                "code": "def is_match(s, p):\n    m, n = len(s), len(p)\n    dp = [[False] * (n + 1) for _ in range(m + 1)]\n    dp[0][0] = True\n    for j in range(1, n + 1):\n        if p[j-1] == '*':\n            dp[0][j] = dp[0][j-2]\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if p[j-1] == '*':\n                dp[i][j] = dp[i][j-2]\n                if p[j-2] == '.' or p[j-2] == s[i-1]:\n                    dp[i][j] = dp[i][j] or dp[i-1][j]\n            elif p[j-1] == '.' or p[j-1] == s[i-1]:\n                dp[i][j] = dp[i-1][j-1]\n    return dp[m][n]"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Confirm is_match(\"aab\", \"c*a*b\") returns True, is_match(\"ab\", \".*\") returns True, and is_match(\"mississippi\", \"mis*is*p*.\") returns False."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-20",
+          "language": "python",
+          "level": "advanced",
+          "title": "BFS Shortest",
+          "description": "Write `shortest_path(num_nodes, edges, start, end)` returning the shortest path (as a list of nodes) in an unweighted undirected graph, or an empty list if unreachable. Nodes are 0-indexed, edges is a list of `[u, v]` pairs. Example: `shortest_path(5, [[0,1],[1,2],[0,3],[3,4],[4,2]], 0, 2) -> [0,1,2]`.",
+          "starterCode": "def shortest_path(num_nodes, edges, start, end):\n    # Your code here\n    pass\n",
+          "hint": "Use BFS from start, tracking each node's parent to reconstruct the path once end is reached.",
+          "solution": {
+            "code": "from collections import deque, defaultdict\n\ndef shortest_path(num_nodes, edges, start, end):\n    graph = defaultdict(list)\n    for u, v in edges:\n        graph[u].append(v)\n        graph[v].append(u)\n    visited = {start}\n    queue = deque([(start, [start])])\n    while queue:\n        node, path = queue.popleft()\n        if node == end:\n            return path\n        for neighbor in graph[node]:\n            if neighbor not in visited:\n                visited.add(neighbor)\n                queue.append((neighbor, path + [neighbor]))\n    return []",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Find the shortest path between two nodes in an unweighted graph. BFS naturally explores nodes level by level, guaranteeing the first path found to the target is shortest."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Build an adjacency list for the undirected graph. BFS from start, carrying the current path. When end is reached, return the path. Track visited nodes to avoid cycles.",
+                "code": "from collections import deque, defaultdict\n\ndef shortest_path(num_nodes, edges, start, end):\n    graph = defaultdict(list)\n    for u, v in edges:\n        graph[u].append(v)\n        graph[v].append(u)\n    visited = {start}\n    queue = deque([(start, [start])])\n    while queue:\n        node, path = queue.popleft()\n        if node == end:\n            return path\n        for neighbor in graph[node]:\n            if neighbor not in visited:\n                visited.add(neighbor)\n                queue.append((neighbor, path + [neighbor]))\n    return []"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call shortest_path(5, [[0,1],[1,2],[0,3],[3,4],[4,2]], 0, 2) and confirm the result is [0, 1, 2], the shortest 2-edge path."
               }
             ]
           }
