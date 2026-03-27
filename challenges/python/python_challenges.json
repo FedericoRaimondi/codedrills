@@ -1088,6 +1088,2166 @@
               }
             ]
           }
+        },
+        {
+          "id": "py-beginner-21",
+          "title": "Shout It",
+          "description": "Write a program that stores the string `\"hello world\"` in a variable and prints it converted to uppercase. Expected output: `HELLO WORLD`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use the .upper() string method to convert text to uppercase.",
+          "solution": {
+            "code": "text = \"hello world\"\nprint(text.upper())",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to take a lowercase string and print its uppercase version."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Store the string in a variable and call .upper() to convert all characters to uppercase, then print the result.",
+                "code": "text = \"hello world\"\nprint(text.upper())"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Run the code and confirm the output is exactly HELLO WORLD."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-22",
+          "title": "Whisper Mode",
+          "description": "Write a program that stores `\"PYTHON IS FUN\"` and prints it in lowercase. Expected output: `python is fun`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "The .lower() method converts all characters to lowercase.",
+          "solution": {
+            "code": "text = \"PYTHON IS FUN\"\nprint(text.lower())",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to convert an uppercase string to lowercase and print it."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Store the string and use .lower() to convert every character to lowercase.",
+                "code": "text = \"PYTHON IS FUN\"\nprint(text.lower())"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Run the code and confirm the output is python is fun."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-23",
+          "title": "First Half",
+          "description": "Write a program that takes the string `\"abcdef\"` and prints only its first half. Expected output: `abc`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use string slicing with len() divided by 2 to find the midpoint.",
+          "solution": {
+            "code": "text = \"abcdef\"\nprint(text[:len(text) // 2])",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to extract and print the first half of a string using its length."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Calculate the midpoint with integer division and slice the string from the start to that point.",
+                "code": "text = \"abcdef\"\nprint(text[:len(text) // 2])"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "The string has 6 characters, so the first half is the first 3: abc."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-24",
+          "title": "Repeat Echo",
+          "description": "Write a program that prints the string `\"ha\"` repeated 5 times. Expected output: `hahahahaha`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "The * operator repeats a string a given number of times.",
+          "solution": {
+            "code": "print(\"ha\" * 5)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to repeat a short string multiple times and print the result."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use the multiplication operator on the string to repeat it 5 times.",
+                "code": "print(\"ha\" * 5)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Run the code and confirm the output is hahahahaha (ha printed 5 times)."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-25",
+          "title": "Char Swap",
+          "description": "Write a program that replaces every `'a'` with `'@'` in the string `\"banana\"` and prints the result. Expected output: `b@n@n@`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "The .replace() method substitutes all occurrences of a character.",
+          "solution": {
+            "code": "text = \"banana\"\nprint(text.replace(\"a\", \"@\"))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to replace every occurrence of the letter a with the @ symbol in a string."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use str.replace() to swap all a characters with @.",
+                "code": "text = \"banana\"\nprint(text.replace(\"a\", \"@\"))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Run the code and confirm the output is b@n@n@ with all three a's replaced."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-26",
+          "title": "Word Joiner",
+          "description": "Write a program that joins the list `[\"red\", \"green\", \"blue\"]` into a single string separated by commas and prints it. Expected output: `red,green,blue`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "The str.join() method connects list items with a separator string.",
+          "solution": {
+            "code": "colors = [\"red\", \"green\", \"blue\"]\nprint(\",\".join(colors))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to combine a list of strings into one string with commas between them."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use the join() method on a comma string, passing the list as the argument.",
+                "code": "colors = [\"red\", \"green\", \"blue\"]\nprint(\",\".join(colors))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Run the code and confirm the output is red,green,blue."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-27",
+          "title": "Slug Maker",
+          "description": "Write a program that converts `\"Hello World Python\"` into a URL-friendly slug and prints it. Expected output: `hello-world-python`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Lowercase the string first, then replace spaces with hyphens.",
+          "solution": {
+            "code": "text = \"Hello World Python\"\nprint(text.lower().replace(\" \", \"-\"))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to create a URL slug by lowercasing the text and replacing spaces with hyphens."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Chain .lower() and .replace() to transform the string in one expression.",
+                "code": "text = \"Hello World Python\"\nprint(text.lower().replace(\" \", \"-\"))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Run the code and confirm the output is hello-world-python."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-28",
+          "title": "Initials",
+          "description": "Write a program that extracts the initials from `\"Ada Grace Lovelace\"` and prints them. Expected output: `A.G.L.`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Split the name into words and take the first character of each.",
+          "solution": {
+            "code": "name = \"Ada Grace Lovelace\"\ninitials = \".\".join(w[0] for w in name.split()) + \".\"\nprint(initials)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to extract the first letter of each word in a name and join them with dots."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Split the name into words, grab the first character of each, join with dots, and add a trailing dot.",
+                "code": "name = \"Ada Grace Lovelace\"\ninitials = \".\".join(w[0] for w in name.split()) + \".\"\nprint(initials)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Run the code and confirm the output is A.G.L. with dots between and after each initial."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-29",
+          "title": "Vowel Strip",
+          "description": "Write a program that removes all vowels from `\"programming\"` and prints the result. Expected output: `prgrmmng`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use a list comprehension or join() to keep only non-vowel characters.",
+          "solution": {
+            "code": "text = \"programming\"\nprint(\"\".join(c for c in text if c not in \"aeiouAEIOU\"))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to remove all vowel characters from a string and print what remains."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Iterate through each character, keep it only if it is not a vowel, and join the result.",
+                "code": "text = \"programming\"\nprint(\"\".join(c for c in text if c not in \"aeiouAEIOU\"))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Run the code and confirm the output is prgrmmng with all vowels removed."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-30",
+          "title": "Zigzag Case",
+          "description": "Write a program that converts `\"python\"` so that characters alternate between upper and lower case starting with upper. Expected output: `PyThOn`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use enumerate() to check if the index is even or odd.",
+          "solution": {
+            "code": "text = \"python\"\nresult = \"\".join(c.upper() if i % 2 == 0 else c.lower() for i, c in enumerate(text))\nprint(result)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to alternate the case of each character: uppercase at even indices, lowercase at odd indices."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use enumerate to get each character with its index, apply upper() for even indices and lower() for odd.",
+                "code": "text = \"python\"\nresult = \"\".join(c.upper() if i % 2 == 0 else c.lower() for i, c in enumerate(text))\nprint(result)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Indices 0,2,4 become P,T,O (upper) and 1,3,5 become y,h,n (lower) giving PyThOn."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-31",
+          "title": "Acronym Builder",
+          "description": "Write a program that creates an acronym from `\"Portable Network Graphics\"` by taking the first letter of each word. Expected output: `PNG`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Split the phrase into words and collect each first character.",
+          "solution": {
+            "code": "phrase = \"Portable Network Graphics\"\nprint(\"\".join(w[0] for w in phrase.split()))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to build an acronym by extracting the first letter of each word in a phrase."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Split the phrase by spaces, take the first character of each word, and join them together.",
+                "code": "phrase = \"Portable Network Graphics\"\nprint(\"\".join(w[0] for w in phrase.split()))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "The first letters are P, N, G, so the output is PNG."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-32",
+          "title": "Pig Latin",
+          "description": "Write a program that converts the word `\"python\"` to pig latin by moving the first letter to the end and adding `\"ay\"`. Expected output: `ythonpay`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Slice the string from index 1 onward, append the first character, then add 'ay'.",
+          "solution": {
+            "code": "word = \"python\"\nprint(word[1:] + word[0] + \"ay\")",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Pig latin moves the first consonant to the end of the word and appends 'ay'."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Take the substring from index 1, concatenate the first letter, and add 'ay'.",
+                "code": "word = \"python\"\nprint(word[1:] + word[0] + \"ay\")"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "python becomes ython + p + ay = ythonpay."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-33",
+          "title": "Pangram Test",
+          "description": "Write a program that checks if `\"The quick brown fox jumps over the lazy dog\"` contains every letter of the alphabet and prints the result. Expected output: `True`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Convert to lowercase, create a set of letters, and compare with the alphabet set.",
+          "solution": {
+            "code": "sentence = \"The quick brown fox jumps over the lazy dog\"\nprint(set(\"abcdefghijklmnopqrstuvwxyz\").issubset(set(sentence.lower())))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "A pangram uses every letter of the alphabet at least once. We need to verify this and print True or False."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Convert the sentence to lowercase, turn it into a set, and check if all 26 letters are present using issubset().",
+                "code": "sentence = \"The quick brown fox jumps over the lazy dog\"\nprint(set(\"abcdefghijklmnopqrstuvwxyz\").issubset(set(sentence.lower())))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "This famous sentence contains all 26 letters, so the output is True."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-34",
+          "title": "Censor Word",
+          "description": "Write a program that replaces the word `\"bad\"` with `\"***\"` in the string `\"this is a bad example\"` and prints the result. Expected output: `this is a *** example`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "The str.replace() method can replace whole words too.",
+          "solution": {
+            "code": "text = \"this is a bad example\"\nprint(text.replace(\"bad\", \"***\"))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to find a specific word in a sentence and replace it with asterisks."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use .replace() to substitute the target word with the censored version.",
+                "code": "text = \"this is a bad example\"\nprint(text.replace(\"bad\", \"***\"))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Run the code and confirm the output is: this is a *** example."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-35",
+          "title": "String Squeeze",
+          "description": "Write a program that removes all duplicate characters from `\"aabbccdd\"` keeping only the first occurrence of each, and prints the result. Expected output: `abcd`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use dict.fromkeys() to preserve order while removing duplicates.",
+          "solution": {
+            "code": "text = \"aabbccdd\"\nprint(\"\".join(dict.fromkeys(text)))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to remove repeated characters from a string, keeping each character's first appearance."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "dict.fromkeys() creates a dict with unique keys in insertion order; join the keys back into a string.",
+                "code": "text = \"aabbccdd\"\nprint(\"\".join(dict.fromkeys(text)))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "The unique characters in order are a, b, c, d so the output is abcd."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-36",
+          "title": "Last Item",
+          "description": "Write a program that prints the last element of the list `[10, 20, 30, 40, 50]`. Expected output: `50`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use index -1 to access the last element of a list.",
+          "solution": {
+            "code": "nums = [10, 20, 30, 40, 50]\nprint(nums[-1])",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to retrieve and print the last element from a list without knowing its length."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Negative indexing in Python lets us access elements from the end; -1 gives the last item.",
+                "code": "nums = [10, 20, 30, 40, 50]\nprint(nums[-1])"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "The last element is 50, so the output is 50."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-37",
+          "title": "Odd Squad",
+          "description": "Write a program that filters only the odd numbers from `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]` and prints the result as a list. Expected output: `[1, 3, 5, 7, 9]`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "A list comprehension with n % 2 != 0 selects odd numbers.",
+          "solution": {
+            "code": "nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nprint([n for n in nums if n % 2 != 0])",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to keep only the odd numbers from a list and print the filtered list."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use a list comprehension that checks if each number is not divisible by 2.",
+                "code": "nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nprint([n for n in nums if n % 2 != 0])"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Odd numbers from 1-10 are 1, 3, 5, 7, 9 so the output is [1, 3, 5, 7, 9]."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-38",
+          "title": "Every Other",
+          "description": "Write a program that prints every other element from the list `[\"a\", \"b\", \"c\", \"d\", \"e\", \"f\"]` starting from the first. Expected output: `['a', 'c', 'e']`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Slice with a step of 2 using [::2] to skip every other element.",
+          "solution": {
+            "code": "items = [\"a\", \"b\", \"c\", \"d\", \"e\", \"f\"]\nprint(items[::2])",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to select elements at even indices (0, 2, 4) from the list."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use slice notation with step 2 to grab every other element starting from index 0.",
+                "code": "items = [\"a\", \"b\", \"c\", \"d\", \"e\", \"f\"]\nprint(items[::2])"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Elements at indices 0, 2, 4 are a, c, e so the output is ['a', 'c', 'e']."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-39",
+          "title": "Rotate Left",
+          "description": "Write a program that rotates the list `[1, 2, 3, 4, 5]` two positions to the left and prints it. Expected output: `[3, 4, 5, 1, 2]`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Slice the list at position k and concatenate the two parts in reverse order.",
+          "solution": {
+            "code": "nums = [1, 2, 3, 4, 5]\nk = 2\nprint(nums[k:] + nums[:k])",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Rotating left by 2 means moving the first 2 elements to the end of the list."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Slice the list into two parts at index k and concatenate them: everything from k onward, then everything before k.",
+                "code": "nums = [1, 2, 3, 4, 5]\nk = 2\nprint(nums[k:] + nums[:k])"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "nums[2:] is [3,4,5] and nums[:2] is [1,2], combined gives [3, 4, 5, 1, 2]."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-40",
+          "title": "Chunk It",
+          "description": "Write a program that splits the list `[1, 2, 3, 4, 5, 6]` into chunks of size 2 and prints the result. Expected output: `[[1, 2], [3, 4], [5, 6]]`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use a list comprehension with range() stepping by the chunk size.",
+          "solution": {
+            "code": "nums = [1, 2, 3, 4, 5, 6]\nsize = 2\nprint([nums[i:i+size] for i in range(0, len(nums), size)])",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to divide a list into smaller sub-lists of equal size."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use range with a step equal to chunk size, slicing the list at each step.",
+                "code": "nums = [1, 2, 3, 4, 5, 6]\nsize = 2\nprint([nums[i:i+size] for i in range(0, len(nums), size)])"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Chunks of 2 from [1,2,3,4,5,6] gives [[1,2], [3,4], [5,6]]."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-41",
+          "title": "Frequency Map",
+          "description": "Write a program that counts how many times each element appears in `[\"a\", \"b\", \"a\", \"c\", \"b\", \"a\"]` and prints the result as a dictionary. Expected output: `{'a': 3, 'b': 2, 'c': 1}`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Loop through the list and use a dictionary to track counts, or try dict comprehension with .count().",
+          "solution": {
+            "code": "items = [\"a\", \"b\", \"a\", \"c\", \"b\", \"a\"]\ncounts = {}\nfor item in items:\n    counts[item] = counts.get(item, 0) + 1\nprint(counts)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to count occurrences of each element and store them in a dictionary."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Iterate through the list, using dict.get() with a default of 0 to safely increment each count.",
+                "code": "items = [\"a\", \"b\", \"a\", \"c\", \"b\", \"a\"]\ncounts = {}\nfor item in items:\n    counts[item] = counts.get(item, 0) + 1\nprint(counts)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "a appears 3 times, b appears 2 times, c appears 1 time."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-42",
+          "title": "Running Total",
+          "description": "Write a program that computes the running sum of `[1, 2, 3, 4, 5]` and prints it. Expected output: `[1, 3, 6, 10, 15]`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Keep a running total variable and append it to a new list at each step.",
+          "solution": {
+            "code": "nums = [1, 2, 3, 4, 5]\ntotal = 0\nresult = []\nfor n in nums:\n    total += n\n    result.append(total)\nprint(result)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Each element in the output should be the sum of all elements up to that index."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Maintain a running total, add each number to it, and append the current total to the result list.",
+                "code": "nums = [1, 2, 3, 4, 5]\ntotal = 0\nresult = []\nfor n in nums:\n    total += n\n    result.append(total)\nprint(result)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Running sums: 1, 1+2=3, 3+3=6, 6+4=10, 10+5=15 giving [1, 3, 6, 10, 15]."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-43",
+          "title": "List Sandwich",
+          "description": "Write a program that prints a list containing only the first and last elements of `[10, 20, 30, 40, 50]`. Expected output: `[10, 50]`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Access the first element with index 0 and the last with index -1.",
+          "solution": {
+            "code": "nums = [10, 20, 30, 40, 50]\nprint([nums[0], nums[-1]])",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to extract the first and last items from a list and print them as a new list."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use index 0 for the first element and -1 for the last, combining them in a new list.",
+                "code": "nums = [10, 20, 30, 40, 50]\nprint([nums[0], nums[-1]])"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "The first element is 10 and the last is 50, so the output is [10, 50]."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-44",
+          "title": "Compact List",
+          "description": "Write a program that removes all falsy values from `[0, 1, \"\", 2, None, 3, False, 4]` and prints the result. Expected output: `[1, 2, 3, 4]`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use filter() with None as the function, or a list comprehension that tests truthiness.",
+          "solution": {
+            "code": "items = [0, 1, \"\", 2, None, 3, False, 4]\nprint([x for x in items if x])",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Falsy values in Python include 0, empty string, None, and False. We need to remove them all."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "A list comprehension with 'if x' keeps only truthy values.",
+                "code": "items = [0, 1, \"\", 2, None, 3, False, 4]\nprint([x for x in items if x])"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Only 1, 2, 3, and 4 are truthy, so the output is [1, 2, 3, 4]."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-45",
+          "title": "Interleave",
+          "description": "Write a program that interleaves `[1, 3, 5]` and `[2, 4, 6]` into one list and prints it. Expected output: `[1, 2, 3, 4, 5, 6]`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use zip() to pair elements from both lists, then flatten the pairs.",
+          "solution": {
+            "code": "a = [1, 3, 5]\nb = [2, 4, 6]\nresult = [x for pair in zip(a, b) for x in pair]\nprint(result)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to merge two lists by alternating elements: one from each list in turn."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use zip() to create pairs, then a nested list comprehension to flatten them.",
+                "code": "a = [1, 3, 5]\nb = [2, 4, 6]\nresult = [x for pair in zip(a, b) for x in pair]\nprint(result)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Pairs are (1,2), (3,4), (5,6) which flatten to [1, 2, 3, 4, 5, 6]."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-46",
+          "title": "Partition",
+          "description": "Write a program that splits `[1, 2, 3, 4, 5, 6]` into two lists: evens and odds, and prints them. Expected output:\n`[2, 4, 6]`\n`[1, 3, 5]`",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use two list comprehensions: one filtering even and one filtering odd numbers.",
+          "solution": {
+            "code": "nums = [1, 2, 3, 4, 5, 6]\nevens = [n for n in nums if n % 2 == 0]\nodds = [n for n in nums if n % 2 != 0]\nprint(evens)\nprint(odds)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to separate a list into two groups based on whether each number is even or odd."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Create two list comprehensions: one keeping numbers divisible by 2, the other keeping the rest.",
+                "code": "nums = [1, 2, 3, 4, 5, 6]\nevens = [n for n in nums if n % 2 == 0]\nodds = [n for n in nums if n % 2 != 0]\nprint(evens)\nprint(odds)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Evens are [2, 4, 6] and odds are [1, 3, 5]."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-47",
+          "title": "Matrix Flip",
+          "description": "Write a program that transposes the matrix `[[1, 2, 3], [4, 5, 6]]` and prints each row. Expected output:\n`(1, 4)`\n`(2, 5)`\n`(3, 6)`",
+          "starterCode": "# Write your code below\n",
+          "hint": "The zip() function with unpacking (*) can transpose rows and columns.",
+          "solution": {
+            "code": "matrix = [[1, 2, 3], [4, 5, 6]]\nfor row in zip(*matrix):\n    print(row)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Transposing swaps rows and columns: element at [i][j] moves to [j][i]."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use zip(*matrix) to unpack rows and zip columns together, then print each resulting tuple.",
+                "code": "matrix = [[1, 2, 3], [4, 5, 6]]\nfor row in zip(*matrix):\n    print(row)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Columns become rows: (1,4), (2,5), (3,6)."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-48",
+          "title": "Reverse List",
+          "description": "Write a program that reverses the list `[5, 4, 3, 2, 1]` and prints it. Expected output: `[1, 2, 3, 4, 5]`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use slice notation [::-1] to reverse a list.",
+          "solution": {
+            "code": "nums = [5, 4, 3, 2, 1]\nprint(nums[::-1])",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to reverse the order of elements in a list and print the result."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use [::-1] slice notation which creates a reversed copy of the list.",
+                "code": "nums = [5, 4, 3, 2, 1]\nprint(nums[::-1])"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Reversing [5,4,3,2,1] gives [1, 2, 3, 4, 5]."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-49",
+          "title": "Index Hunt",
+          "description": "Write a program that finds the index of the value `30` in the list `[10, 20, 30, 40, 50]` and prints it. Expected output: `2`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "The .index() method returns the position of the first occurrence.",
+          "solution": {
+            "code": "nums = [10, 20, 30, 40, 50]\nprint(nums.index(30))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to find the position (index) of a specific value in a list."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use the .index() method which returns the first index where the value is found.",
+                "code": "nums = [10, 20, 30, 40, 50]\nprint(nums.index(30))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "30 is at index 2 (zero-based), so the output is 2."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-50",
+          "title": "Nested Flat",
+          "description": "Write a program that flattens the nested list `[[1, 2], [3, 4], [5, 6]]` into a single list and prints it. Expected output: `[1, 2, 3, 4, 5, 6]`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use a nested list comprehension to iterate over each sublist and each item.",
+          "solution": {
+            "code": "nested = [[1, 2], [3, 4], [5, 6]]\nprint([x for sub in nested for x in sub])",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to convert a list of lists into a single flat list containing all elements."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "A nested list comprehension iterates through each sublist and then each element within it.",
+                "code": "nested = [[1, 2], [3, 4], [5, 6]]\nprint([x for sub in nested for x in sub])"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "All sublists combined in order gives [1, 2, 3, 4, 5, 6]."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-51",
+          "title": "Cube It",
+          "description": "Write a program that calculates the cube of `7` and prints the result. Expected output: `343`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use the ** exponentiation operator to raise a number to a power.",
+          "solution": {
+            "code": "num = 7\nprint(num ** 3)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to compute the cube (third power) of a number and print it."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use the ** operator with 3 as the exponent to calculate the cube.",
+                "code": "num = 7\nprint(num ** 3)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "7 cubed is 7 * 7 * 7 = 343."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-52",
+          "title": "Average Joe",
+          "description": "Write a program that calculates the average of `[10, 20, 30, 40, 50]` and prints it. Expected output: `30.0`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Divide the sum of the list by its length.",
+          "solution": {
+            "code": "nums = [10, 20, 30, 40, 50]\nprint(sum(nums) / len(nums))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "The average is the total of all values divided by the number of values."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use sum() to get the total and len() to get the count, then divide.",
+                "code": "nums = [10, 20, 30, 40, 50]\nprint(sum(nums) / len(nums))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Sum is 150, length is 5, so 150/5 = 30.0."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-53",
+          "title": "Factorial Fun",
+          "description": "Write a program that computes the factorial of `6` using a loop and prints it. Expected output: `720`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Start with result = 1 and multiply by each number from 1 to n.",
+          "solution": {
+            "code": "n = 6\nresult = 1\nfor i in range(1, n + 1):\n    result *= i\nprint(result)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Factorial of n is the product of all integers from 1 to n. We compute it with a loop."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Initialize result to 1 and multiply it by each number from 1 through n.",
+                "code": "n = 6\nresult = 1\nfor i in range(1, n + 1):\n    result *= i\nprint(result)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "6! = 1*2*3*4*5*6 = 720."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-54",
+          "title": "Even Sum",
+          "description": "Write a program that calculates the sum of all even numbers from 1 to 20 and prints it. Expected output: `110`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use range() with a step of 2 starting from 2, or filter with a condition.",
+          "solution": {
+            "code": "print(sum(range(2, 21, 2)))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to add up all even numbers between 1 and 20 inclusive."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use range(2, 21, 2) to generate even numbers from 2 to 20 and pass them to sum().",
+                "code": "print(sum(range(2, 21, 2)))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Even numbers 2+4+6+8+10+12+14+16+18+20 = 110."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-55",
+          "title": "Fizz Check",
+          "description": "Write a program that prints `\"FizzBuzz\"` if a number is divisible by both 3 and 5, `\"Fizz\"` if only by 3, `\"Buzz\"` if only by 5, otherwise the number itself. Test with `15`. Expected output: `FizzBuzz`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Check divisibility by both 3 and 5 first, then by 3 alone, then by 5 alone.",
+          "solution": {
+            "code": "n = 15\nif n % 3 == 0 and n % 5 == 0:\n    print(\"FizzBuzz\")\nelif n % 3 == 0:\n    print(\"Fizz\")\nelif n % 5 == 0:\n    print(\"Buzz\")\nelse:\n    print(n)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "This is the classic FizzBuzz problem applied to a single number with specific rules for divisibility."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use if/elif/else to check divisibility conditions in the correct order, starting with the combined check.",
+                "code": "n = 15\nif n % 3 == 0 and n % 5 == 0:\n    print(\"FizzBuzz\")\nelif n % 3 == 0:\n    print(\"Fizz\")\nelif n % 5 == 0:\n    print(\"Buzz\")\nelse:\n    print(n)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "15 is divisible by both 3 and 5, so the output is FizzBuzz."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-56",
+          "title": "Prime Check",
+          "description": "Write a program that checks if `29` is a prime number and prints `True` or `False`. Expected output: `True`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Check if the number is divisible by any integer from 2 up to its square root.",
+          "solution": {
+            "code": "n = 29\nis_prime = n > 1 and all(n % i != 0 for i in range(2, int(n**0.5) + 1))\nprint(is_prime)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "A prime number is only divisible by 1 and itself. We check this and print True or False."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use all() with a generator to verify no number from 2 to sqrt(n) divides n evenly.",
+                "code": "n = 29\nis_prime = n > 1 and all(n % i != 0 for i in range(2, int(n**0.5) + 1))\nprint(is_prime)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "29 has no divisors other than 1 and 29, so the output is True."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-57",
+          "title": "Digit Count",
+          "description": "Write a program that counts the number of digits in `123456` and prints the result. Expected output: `6`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Convert the number to a string and measure its length.",
+          "solution": {
+            "code": "num = 123456\nprint(len(str(num)))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to count how many digits are in an integer."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Convert the number to a string with str() and use len() to count characters.",
+                "code": "num = 123456\nprint(len(str(num)))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "123456 has 6 digits, so the output is 6."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-58",
+          "title": "GCD Finder",
+          "description": "Write a program that finds the greatest common divisor of `48` and `18` and prints it. Expected output: `6`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Import math and use math.gcd(), or implement Euclid's algorithm.",
+          "solution": {
+            "code": "import math\nprint(math.gcd(48, 18))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "The GCD is the largest number that divides both integers without a remainder."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Python's math module provides gcd() which efficiently computes the greatest common divisor.",
+                "code": "import math\nprint(math.gcd(48, 18))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "The largest number dividing both 48 and 18 is 6."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-59",
+          "title": "Fibonacci Gen",
+          "description": "Write a program that generates the first `8` Fibonacci numbers and prints them as a list. Expected output: `[0, 1, 1, 2, 3, 5, 8, 13]`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Start with [0, 1] and keep appending the sum of the last two elements.",
+          "solution": {
+            "code": "n = 8\nfib = [0, 1]\nfor _ in range(n - 2):\n    fib.append(fib[-1] + fib[-2])\nprint(fib)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Each Fibonacci number is the sum of the two preceding ones, starting from 0 and 1."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Initialize the list with [0, 1] and loop, appending the sum of the last two elements each time.",
+                "code": "n = 8\nfib = [0, 1]\nfor _ in range(n - 2):\n    fib.append(fib[-1] + fib[-2])\nprint(fib)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "The first 8 Fibonacci numbers are 0, 1, 1, 2, 3, 5, 8, 13."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-60",
+          "title": "Collatz Count",
+          "description": "Write a program that counts how many steps it takes for `6` to reach `1` using the Collatz sequence and prints it. If even, halve it; if odd, triple and add 1. Expected output: `8`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use a while loop: divide by 2 if even, multiply by 3 and add 1 if odd. Count each step.",
+          "solution": {
+            "code": "n = 6\nsteps = 0\nwhile n != 1:\n    n = n // 2 if n % 2 == 0 else 3 * n + 1\n    steps += 1\nprint(steps)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "The Collatz conjecture applies a simple rule repeatedly until reaching 1. We count the steps."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Loop while n is not 1, applying the even/odd rule and incrementing a counter each iteration.",
+                "code": "n = 6\nsteps = 0\nwhile n != 1:\n    n = n // 2 if n % 2 == 0 else 3 * n + 1\n    steps += 1\nprint(steps)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "6 -> 3 -> 10 -> 5 -> 16 -> 8 -> 4 -> 2 -> 1 takes 8 steps."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-61",
+          "title": "Perfect Square",
+          "description": "Write a program that checks if `49` is a perfect square and prints `True` or `False`. Expected output: `True`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Take the square root and check if it is a whole number.",
+          "solution": {
+            "code": "n = 49\nprint(int(n**0.5) ** 2 == n)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "A perfect square has an integer square root. We check this and print a boolean."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Compute the integer square root, square it back, and compare with the original number.",
+                "code": "n = 49\nprint(int(n**0.5) ** 2 == n)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "sqrt(49) = 7, and 7*7 = 49, so the output is True."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-62",
+          "title": "Number Flip",
+          "description": "Write a program that reverses the digits of `12345` and prints the result as an integer. Expected output: `54321`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Convert to string, reverse it, then convert back to int.",
+          "solution": {
+            "code": "num = 12345\nprint(int(str(num)[::-1]))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to reverse the digit order of a number and print the result as an integer."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Convert to string, reverse with [::-1], and convert back to int to drop any leading zeros.",
+                "code": "num = 12345\nprint(int(str(num)[::-1]))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Reversing the digits of 12345 gives 54321."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-63",
+          "title": "Value Flip",
+          "description": "Write a program that swaps the keys and values of `{\"a\": 1, \"b\": 2, \"c\": 3}` and prints the result. Expected output: `{1: 'a', 2: 'b', 3: 'c'}`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use a dictionary comprehension iterating over .items() with key and value swapped.",
+          "solution": {
+            "code": "d = {\"a\": 1, \"b\": 2, \"c\": 3}\nprint({v: k for k, v in d.items()})",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to create a new dictionary where each original value becomes a key and vice versa."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use a dict comprehension that iterates over items and swaps k and v.",
+                "code": "d = {\"a\": 1, \"b\": 2, \"c\": 3}\nprint({v: k for k, v in d.items()})"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Keys become values and values become keys: {1: 'a', 2: 'b', 3: 'c'}."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-64",
+          "title": "Merge Dicts",
+          "description": "Write a program that merges `{\"x\": 1, \"y\": 2}` and `{\"y\": 3, \"z\": 4}` and prints the result. The second dict's values should win on conflicts. Expected output: `{'x': 1, 'y': 3, 'z': 4}`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use the {**dict1, **dict2} unpacking syntax or the | operator in Python 3.9+.",
+          "solution": {
+            "code": "a = {\"x\": 1, \"y\": 2}\nb = {\"y\": 3, \"z\": 4}\nprint({**a, **b})",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We combine two dictionaries into one. When both have the same key, the second dict's value is kept."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use dictionary unpacking with ** to merge both dicts; the second overwrites shared keys.",
+                "code": "a = {\"x\": 1, \"y\": 2}\nb = {\"y\": 3, \"z\": 4}\nprint({**a, **b})"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "x:1 from a, y:3 from b (overrides a), z:4 from b gives {'x': 1, 'y': 3, 'z': 4}."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-65",
+          "title": "Key Max",
+          "description": "Write a program that finds the key with the highest value in `{\"alice\": 88, \"bob\": 95, \"carol\": 72}` and prints it. Expected output: `bob`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use max() with a key parameter that looks up each dictionary value.",
+          "solution": {
+            "code": "scores = {\"alice\": 88, \"bob\": 95, \"carol\": 72}\nprint(max(scores, key=scores.get))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to find which key in the dictionary has the largest associated value."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Pass the dict to max() with key=scores.get so it compares by value instead of key name.",
+                "code": "scores = {\"alice\": 88, \"bob\": 95, \"carol\": 72}\nprint(max(scores, key=scores.get))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Bob has the highest score (95), so the output is bob."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-66",
+          "title": "Filter Dict",
+          "description": "Write a program that keeps only entries with values greater than `80` from `{\"math\": 95, \"art\": 60, \"science\": 85, \"music\": 70}` and prints the result. Expected output: `{'math': 95, 'science': 85}`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use a dictionary comprehension with a condition on the value.",
+          "solution": {
+            "code": "grades = {\"math\": 95, \"art\": 60, \"science\": 85, \"music\": 70}\nprint({k: v for k, v in grades.items() if v > 80})",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to create a new dictionary containing only the entries whose values exceed 80."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use a dict comprehension that iterates over items and includes only those with value > 80.",
+                "code": "grades = {\"math\": 95, \"art\": 60, \"science\": 85, \"music\": 70}\nprint({k: v for k, v in grades.items() if v > 80})"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Only math (95) and science (85) exceed 80, so the output is {'math': 95, 'science': 85}."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-67",
+          "title": "Nested Get",
+          "description": "Write a program that retrieves the value of `\"city\"` from the nested dictionary `{\"user\": {\"name\": \"Ada\", \"address\": {\"city\": \"London\"}}}` and prints it. Expected output: `London`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Chain dictionary access with multiple bracket lookups.",
+          "solution": {
+            "code": "data = {\"user\": {\"name\": \"Ada\", \"address\": {\"city\": \"London\"}}}\nprint(data[\"user\"][\"address\"][\"city\"])",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to navigate through nested dictionaries to access a deeply stored value."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Chain bracket access to drill into each level of the nested dictionary.",
+                "code": "data = {\"user\": {\"name\": \"Ada\", \"address\": {\"city\": \"London\"}}}\nprint(data[\"user\"][\"address\"][\"city\"])"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Accessing user -> address -> city yields London."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-68",
+          "title": "Dict Sort",
+          "description": "Write a program that sorts `{\"banana\": 3, \"apple\": 1, \"cherry\": 2}` by values in ascending order and prints the result. Expected output: `{'apple': 1, 'cherry': 2, 'banana': 3}`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use sorted() on .items() with a key that selects the value, then convert back to a dict.",
+          "solution": {
+            "code": "fruits = {\"banana\": 3, \"apple\": 1, \"cherry\": 2}\nprint(dict(sorted(fruits.items(), key=lambda x: x[1])))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to reorder dictionary entries so that values are in ascending order."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Sort the items by value using a lambda, then wrap in dict() to rebuild the dictionary.",
+                "code": "fruits = {\"banana\": 3, \"apple\": 1, \"cherry\": 2}\nprint(dict(sorted(fruits.items(), key=lambda x: x[1])))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Sorted by value: apple(1), cherry(2), banana(3)."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-69",
+          "title": "Group By Len",
+          "description": "Write a program that groups `[\"hi\", \"hey\", \"go\", \"wow\", \"yes\"]` by word length and prints the result. Expected output: `{2: ['hi', 'go'], 3: ['hey', 'wow', 'yes']}`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Create an empty dict and append each word to the list under its length key.",
+          "solution": {
+            "code": "words = [\"hi\", \"hey\", \"go\", \"wow\", \"yes\"]\ngroups = {}\nfor w in words:\n    groups.setdefault(len(w), []).append(w)\nprint(groups)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to organize words into groups where the key is the word length and the value is a list of words with that length."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use setdefault() to create a new list for each new length, then append the word.",
+                "code": "words = [\"hi\", \"hey\", \"go\", \"wow\", \"yes\"]\ngroups = {}\nfor w in words:\n    groups.setdefault(len(w), []).append(w)\nprint(groups)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "2-letter words: hi, go. 3-letter words: hey, wow, yes."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-70",
+          "title": "Char Tally",
+          "description": "Write a program that counts the frequency of each character in `\"hello\"` and prints the result. Expected output: `{'h': 1, 'e': 1, 'l': 2, 'o': 1}`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Loop through each character and use a dictionary to track counts.",
+          "solution": {
+            "code": "text = \"hello\"\ncounts = {}\nfor c in text:\n    counts[c] = counts.get(c, 0) + 1\nprint(counts)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to count how many times each character appears in the string."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Iterate over each character, using dict.get() with default 0 to increment counts safely.",
+                "code": "text = \"hello\"\ncounts = {}\nfor c in text:\n    counts[c] = counts.get(c, 0) + 1\nprint(counts)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "h:1, e:1, l:2, o:1 matches the expected output."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-71",
+          "title": "Dict Diff",
+          "description": "Write a program that finds keys that exist in `{\"a\": 1, \"b\": 2, \"c\": 3}` but not in `{\"b\": 4, \"c\": 5, \"d\": 6}` and prints them as a sorted list. Expected output: `['a']`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use set difference on the dictionary keys.",
+          "solution": {
+            "code": "d1 = {\"a\": 1, \"b\": 2, \"c\": 3}\nd2 = {\"b\": 4, \"c\": 5, \"d\": 6}\nprint(sorted(d1.keys() - d2.keys()))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to find keys present in the first dictionary that are absent from the second."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use the - operator on dict keys (which act like sets) to find the difference, then sort.",
+                "code": "d1 = {\"a\": 1, \"b\": 2, \"c\": 3}\nd2 = {\"b\": 4, \"c\": 5, \"d\": 6}\nprint(sorted(d1.keys() - d2.keys()))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Only 'a' is in d1 but not in d2, so the output is ['a']."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-72",
+          "title": "Default Val",
+          "description": "Write a program that safely looks up the key `\"color\"` in `{\"name\": \"hat\", \"size\": \"M\"}` with a default of `\"unknown\"` and prints the result. Expected output: `unknown`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "The .get() method accepts a second argument as the default value.",
+          "solution": {
+            "code": "item = {\"name\": \"hat\", \"size\": \"M\"}\nprint(item.get(\"color\", \"unknown\"))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to access a dictionary key that may not exist, returning a default value instead of raising an error."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use .get() with the key and a fallback value so missing keys return the default.",
+                "code": "item = {\"name\": \"hat\", \"size\": \"M\"}\nprint(item.get(\"color\", \"unknown\"))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "The key 'color' does not exist, so .get() returns 'unknown'."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-73",
+          "title": "Leap Year",
+          "description": "Write a program that checks if `2024` is a leap year and prints `True` or `False`. A leap year is divisible by 4 but not by 100, unless also divisible by 400. Expected output: `True`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use the modulo operator with the leap year rules: divisible by 4 AND (not by 100 OR by 400).",
+          "solution": {
+            "code": "year = 2024\nprint(year % 4 == 0 and (year % 100 != 0 or year % 400 == 0))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to apply the leap year rules: divisible by 4, but skip centuries unless also divisible by 400."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Combine the three conditions with and/or operators in a single boolean expression.",
+                "code": "year = 2024\nprint(year % 4 == 0 and (year % 100 != 0 or year % 400 == 0))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "2024 is divisible by 4 and not by 100, so it is a leap year: True."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-74",
+          "title": "Grade Book",
+          "description": "Write a program that converts a score of `85` to a letter grade and prints it. Use: A (90-100), B (80-89), C (70-79), D (60-69), F (below 60). Expected output: `B`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use if/elif/else to check the score ranges from highest to lowest.",
+          "solution": {
+            "code": "score = 85\nif score >= 90:\n    grade = \"A\"\nelif score >= 80:\n    grade = \"B\"\nelif score >= 70:\n    grade = \"C\"\nelif score >= 60:\n    grade = \"D\"\nelse:\n    grade = \"F\"\nprint(grade)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We map a numeric score to a letter grade using defined ranges."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Check score ranges from highest to lowest using if/elif/else, then print the grade.",
+                "code": "score = 85\nif score >= 90:\n    grade = \"A\"\nelif score >= 80:\n    grade = \"B\"\nelif score >= 70:\n    grade = \"C\"\nelif score >= 60:\n    grade = \"D\"\nelse:\n    grade = \"F\"\nprint(grade)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "85 falls in the 80-89 range, so the grade is B."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-75",
+          "title": "Clamp Value",
+          "description": "Write a program that clamps the value `150` to the range `[0, 100]` and prints the result. If the value is above the max, return max; if below the min, return min. Expected output: `100`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use min() and max() together, or a simple if/elif/else chain.",
+          "solution": {
+            "code": "value = 150\nprint(max(0, min(100, value)))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Clamping restricts a value to stay within a specified minimum and maximum range."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Nest min() and max(): min ensures the value doesn't exceed the upper bound, max ensures it stays above the lower bound.",
+                "code": "value = 150\nprint(max(0, min(100, value)))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "150 exceeds 100, so it gets clamped to 100."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-76",
+          "title": "Sign Check",
+          "description": "Write a program that prints `\"positive\"`, `\"negative\"`, or `\"zero\"` for the number `-7`. Expected output: `negative`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use if/elif/else to compare the number with zero.",
+          "solution": {
+            "code": "n = -7\nif n > 0:\n    print(\"positive\")\nelif n < 0:\n    print(\"negative\")\nelse:\n    print(\"zero\")",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to classify a number as positive, negative, or zero and print the label."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use simple comparisons with if/elif/else to check if n is greater than, less than, or equal to zero.",
+                "code": "n = -7\nif n > 0:\n    print(\"positive\")\nelif n < 0:\n    print(\"negative\")\nelse:\n    print(\"zero\")"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "-7 is less than 0, so the output is negative."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-77",
+          "title": "Triangle Check",
+          "description": "Write a program that checks if sides `3, 4, 5` can form a valid triangle and prints `True` or `False`. A triangle is valid if the sum of any two sides exceeds the third. Expected output: `True`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Check all three combinations: a+b > c, a+c > b, and b+c > a.",
+          "solution": {
+            "code": "a, b, c = 3, 4, 5\nprint(a + b > c and a + c > b and b + c > a)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "The triangle inequality theorem requires that the sum of any two sides must be greater than the third side."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Check all three pairwise conditions with and operators.",
+                "code": "a, b, c = 3, 4, 5\nprint(a + b > c and a + c > b and b + c > a)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "3+4>5, 3+5>4, 4+5>3 are all true, so the output is True."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-78",
+          "title": "Ticket Price",
+          "description": "Write a program that calculates a ticket price based on age `12`. Children (0-12): $5, Teens (13-17): $8, Adults (18-64): $12, Seniors (65+): $6. Expected output: `5`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use if/elif/else with age range checks.",
+          "solution": {
+            "code": "age = 12\nif age <= 12:\n    price = 5\nelif age <= 17:\n    price = 8\nelif age <= 64:\n    price = 12\nelse:\n    price = 6\nprint(price)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We classify an age into a category and assign the corresponding ticket price."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use if/elif/else to check age ranges from youngest to oldest and assign the correct price.",
+                "code": "age = 12\nif age <= 12:\n    price = 5\nelif age <= 17:\n    price = 8\nelif age <= 64:\n    price = 12\nelse:\n    price = 6\nprint(price)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Age 12 falls in the children category (0-12), so the price is 5."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-79",
+          "title": "Season Finder",
+          "description": "Write a program that determines the season for month number `11`. Use: Spring (3-5), Summer (6-8), Autumn (9-11), Winter (12, 1, 2). Expected output: `Autumn`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use if/elif/else to check which range the month falls into.",
+          "solution": {
+            "code": "month = 11\nif month in (3, 4, 5):\n    print(\"Spring\")\nelif month in (6, 7, 8):\n    print(\"Summer\")\nelif month in (9, 10, 11):\n    print(\"Autumn\")\nelse:\n    print(\"Winter\")",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to map a month number (1-12) to its corresponding season name."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use tuple membership checks with 'in' to determine which season group the month belongs to.",
+                "code": "month = 11\nif month in (3, 4, 5):\n    print(\"Spring\")\nelif month in (6, 7, 8):\n    print(\"Summer\")\nelif month in (9, 10, 11):\n    print(\"Autumn\")\nelse:\n    print(\"Winter\")"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Month 11 (November) is in the 9-11 range, so the output is Autumn."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-80",
+          "title": "Temp Convert",
+          "description": "Write a program that converts `100` degrees Celsius to Fahrenheit and prints the result. Formula: F = C * 9/5 + 32. Expected output: `212.0`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Multiply by 9/5 and add 32 to convert Celsius to Fahrenheit.",
+          "solution": {
+            "code": "celsius = 100\nfahrenheit = celsius * 9/5 + 32\nprint(fahrenheit)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We apply the Celsius to Fahrenheit conversion formula and print the result."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Multiply the Celsius value by 9/5 and add 32.",
+                "code": "celsius = 100\nfahrenheit = celsius * 9/5 + 32\nprint(fahrenheit)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "100 * 9/5 + 32 = 180 + 32 = 212.0."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-81",
+          "title": "Weekday Name",
+          "description": "Write a program that maps the number `3` to a weekday name where 1=Monday, 2=Tuesday, etc., and prints it. Expected output: `Wednesday`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Store weekday names in a list and use the number as an index (adjusting for zero-based indexing).",
+          "solution": {
+            "code": "days = [\"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\", \"Sunday\"]\nprint(days[3 - 1])",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to convert a weekday number (1-7) to the corresponding day name."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Store day names in a list and access by index, subtracting 1 since lists are zero-indexed.",
+                "code": "days = [\"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\", \"Sunday\"]\nprint(days[3 - 1])"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Day 3 maps to index 2, which is Wednesday."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-82",
+          "title": "Power List",
+          "description": "Write a program that creates a list of squares from 1 to 10 and prints it. Expected output: `[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use a list comprehension with the ** operator inside range().",
+          "solution": {
+            "code": "print([x**2 for x in range(1, 11)])",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to generate and print a list of squares of numbers from 1 to 10."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use a list comprehension that squares each number in range(1, 11).",
+                "code": "print([x**2 for x in range(1, 11)])"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "1, 4, 9, 16, 25, 36, 49, 64, 81, 100 are the squares of 1 through 10."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-83",
+          "title": "Set Diff",
+          "description": "Write a program that finds elements in `{1, 2, 3, 4}` that are not in `{3, 4, 5, 6}` and prints them sorted. Expected output: `[1, 2]`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use the - operator for set difference, then sort the result.",
+          "solution": {
+            "code": "a = {1, 2, 3, 4}\nb = {3, 4, 5, 6}\nprint(sorted(a - b))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Set difference gives elements in the first set that are absent from the second."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use the - operator on sets, then sort the result for a consistent output.",
+                "code": "a = {1, 2, 3, 4}\nb = {3, 4, 5, 6}\nprint(sorted(a - b))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "1 and 2 are in a but not in b, so the output is [1, 2]."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-84",
+          "title": "Symmetric Diff",
+          "description": "Write a program that finds elements in either `{1, 2, 3}` or `{2, 3, 4}` but not both, and prints them sorted. Expected output: `[1, 4]`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use the ^ operator for symmetric difference between two sets.",
+          "solution": {
+            "code": "a = {1, 2, 3}\nb = {2, 3, 4}\nprint(sorted(a ^ b))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Symmetric difference includes elements that are in one set or the other, but not in both."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use the ^ operator which computes the symmetric difference of two sets.",
+                "code": "a = {1, 2, 3}\nb = {2, 3, 4}\nprint(sorted(a ^ b))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "1 is only in a, 4 is only in b, so the output is [1, 4]."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-85",
+          "title": "Subset Test",
+          "description": "Write a program that checks if `{1, 2}` is a subset of `{1, 2, 3, 4}` and prints `True` or `False`. Expected output: `True`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use the .issubset() method or the <= operator on sets.",
+          "solution": {
+            "code": "a = {1, 2}\nb = {1, 2, 3, 4}\nprint(a.issubset(b))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "A set A is a subset of B if every element of A is also in B."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use .issubset() to check if all elements of a are contained in b.",
+                "code": "a = {1, 2}\nb = {1, 2, 3, 4}\nprint(a.issubset(b))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Both 1 and 2 are in b, so {1, 2} is a subset: True."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-86",
+          "title": "Unique Sort",
+          "description": "Write a program that removes duplicates from `[4, 2, 3, 2, 1, 4, 3]` and prints the unique values sorted. Expected output: `[1, 2, 3, 4]`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Convert to a set to remove duplicates, then sort.",
+          "solution": {
+            "code": "nums = [4, 2, 3, 2, 1, 4, 3]\nprint(sorted(set(nums)))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to eliminate duplicate values and return a sorted list of unique items."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Convert the list to a set (removes duplicates) and then sort the result.",
+                "code": "nums = [4, 2, 3, 2, 1, 4, 3]\nprint(sorted(set(nums)))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Unique values sorted: [1, 2, 3, 4]."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-87",
+          "title": "Tuple Sort",
+          "description": "Write a program that sorts `[(\"b\", 2), (\"a\", 3), (\"c\", 1)]` by the second element of each tuple and prints the result. Expected output: `[('c', 1), ('b', 2), ('a', 3)]`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use sorted() with a key function that returns the second element of each tuple.",
+          "solution": {
+            "code": "items = [(\"b\", 2), (\"a\", 3), (\"c\", 1)]\nprint(sorted(items, key=lambda x: x[1]))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to sort a list of tuples based on the value at index 1 in each tuple."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use sorted() with a lambda that extracts the second element for comparison.",
+                "code": "items = [(\"b\", 2), (\"a\", 3), (\"c\", 1)]\nprint(sorted(items, key=lambda x: x[1]))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Sorted by second element: (c,1), (b,2), (a,3)."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-88",
+          "title": "Set Union",
+          "description": "Write a program that finds the union of `{1, 2, 3}` and `{3, 4, 5}` and prints the result sorted. Expected output: `[1, 2, 3, 4, 5]`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use the | operator or .union() method to combine two sets.",
+          "solution": {
+            "code": "a = {1, 2, 3}\nb = {3, 4, 5}\nprint(sorted(a | b))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Set union combines all unique elements from both sets."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use the | operator to get the union of both sets, then sort for a predictable output.",
+                "code": "a = {1, 2, 3}\nb = {3, 4, 5}\nprint(sorted(a | b))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Union of both sets contains 1, 2, 3, 4, 5."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-89",
+          "title": "Tuple Swap",
+          "description": "Write a program that swaps the values in the tuple `(\"hello\", \"world\")` and prints the result. Expected output: `('world', 'hello')`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use Python's tuple unpacking to swap values elegantly.",
+          "solution": {
+            "code": "t = (\"hello\", \"world\")\nprint((t[1], t[0]))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to reverse the order of elements in a two-element tuple."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Create a new tuple with the elements in reversed order using indexing.",
+                "code": "t = (\"hello\", \"world\")\nprint((t[1], t[0]))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Swapping gives ('world', 'hello')."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-90",
+          "title": "Enumerate It",
+          "description": "Write a program that prints each item in `[\"apple\", \"banana\", \"cherry\"]` with its index. Expected output:\n`0: apple`\n`1: banana`\n`2: cherry`",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use enumerate() to get both the index and value in a loop.",
+          "solution": {
+            "code": "fruits = [\"apple\", \"banana\", \"cherry\"]\nfor i, fruit in enumerate(fruits):\n    print(f\"{i}: {fruit}\")",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to print each list item alongside its index position."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "enumerate() provides (index, value) pairs; use an f-string to format each line.",
+                "code": "fruits = [\"apple\", \"banana\", \"cherry\"]\nfor i, fruit in enumerate(fruits):\n    print(f\"{i}: {fruit}\")"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Output shows 0: apple, 1: banana, 2: cherry on separate lines."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-91",
+          "title": "Caesar Shift",
+          "description": "Write a program that shifts each letter in `\"abc\"` forward by `3` positions in the alphabet and prints the result. Expected output: `def`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use ord() and chr() to convert between characters and their numeric codes.",
+          "solution": {
+            "code": "text = \"abc\"\nshift = 3\nresult = \"\".join(chr((ord(c) - ord('a') + shift) % 26 + ord('a')) for c in text)\nprint(result)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Caesar cipher shifts each letter by a fixed number of positions in the alphabet."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Convert each character to a number, add the shift with modulo 26 for wrapping, and convert back.",
+                "code": "text = \"abc\"\nshift = 3\nresult = \"\".join(chr((ord(c) - ord('a') + shift) % 26 + ord('a')) for c in text)\nprint(result)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "a->d, b->e, c->f gives def."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-92",
+          "title": "Anagram Check",
+          "description": "Write a program that checks if `\"listen\"` and `\"silent\"` are anagrams and prints `True` or `False`. Expected output: `True`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Two words are anagrams if their sorted characters are identical.",
+          "solution": {
+            "code": "word1 = \"listen\"\nword2 = \"silent\"\nprint(sorted(word1) == sorted(word2))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Anagrams contain the same letters in different order. We compare by sorting both."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Sort both strings and compare the results. If equal, they are anagrams.",
+                "code": "word1 = \"listen\"\nword2 = \"silent\"\nprint(sorted(word1) == sorted(word2))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Both sorted give ['e','i','l','n','s','t'], so the output is True."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-93",
+          "title": "RLE Encode",
+          "description": "Write a program that applies run-length encoding to `\"aaabbc\"` and prints the result. Each group becomes the character followed by its count. Expected output: `a3b2c1`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Iterate through the string, counting consecutive identical characters.",
+          "solution": {
+            "code": "text = \"aaabbc\"\nresult = \"\"\ni = 0\nwhile i < len(text):\n    count = 1\n    while i + count < len(text) and text[i + count] == text[i]:\n        count += 1\n    result += text[i] + str(count)\n    i += count\nprint(result)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Run-length encoding compresses consecutive repeated characters into the character plus a count."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use a while loop to count consecutive identical characters, append the character and count, then advance.",
+                "code": "text = \"aaabbc\"\nresult = \"\"\ni = 0\nwhile i < len(text):\n    count = 1\n    while i + count < len(text) and text[i + count] == text[i]:\n        count += 1\n    result += text[i] + str(count)\n    i += count\nprint(result)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "aaa->a3, bb->b2, c->c1 gives a3b2c1."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-94",
+          "title": "Binary Convert",
+          "description": "Write a program that converts the decimal number `42` to its binary string representation and prints it. Expected output: `101010`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use bin() and slice off the '0b' prefix, or use format().",
+          "solution": {
+            "code": "print(bin(42)[2:])",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to convert a decimal integer to its binary representation as a string."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use bin() which returns a string like '0b101010', then slice from index 2 to remove the prefix.",
+                "code": "print(bin(42)[2:])"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "42 in binary is 101010."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-95",
+          "title": "Hex Convert",
+          "description": "Write a program that converts the decimal number `255` to its hexadecimal string representation and prints it. Expected output: `ff`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use hex() and remove the '0x' prefix.",
+          "solution": {
+            "code": "print(hex(255)[2:])",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to convert a decimal integer to its hexadecimal representation."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use hex() which returns '0xff', then slice from index 2 to get just the hex digits.",
+                "code": "print(hex(255)[2:])"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "255 in hexadecimal is ff."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-96",
+          "title": "Star Stairs",
+          "description": "Write a program that prints a staircase of stars with 5 steps. Expected output:\n`*`\n`**`\n`***`\n`****`\n`*****`",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use a for loop and string multiplication to print increasing numbers of stars.",
+          "solution": {
+            "code": "for i in range(1, 6):\n    print(\"*\" * i)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to print a staircase pattern where each line has one more star than the previous."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Loop from 1 to 5 and use string multiplication to create the right number of stars per line.",
+                "code": "for i in range(1, 6):\n    print(\"*\" * i)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Line 1 has 1 star, line 2 has 2, up to line 5 with 5 stars."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-97",
+          "title": "Sum Range",
+          "description": "Write a program that calculates the sum of all integers from `1` to `100` and prints it. Expected output: `5050`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use sum() with range() to add all numbers in the sequence.",
+          "solution": {
+            "code": "print(sum(range(1, 101)))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to add up all integers from 1 to 100 inclusive."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use sum(range(1, 101)) which generates numbers 1 through 100 and sums them.",
+                "code": "print(sum(range(1, 101)))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "The sum of 1 to 100 is 5050, famously discovered by Gauss."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-98",
+          "title": "Count Down",
+          "description": "Write a program that prints a countdown from `5` to `1`, each on a new line. Expected output:\n`5`\n`4`\n`3`\n`2`\n`1`",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use range() with a negative step to count backwards.",
+          "solution": {
+            "code": "for i in range(5, 0, -1):\n    print(i)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to print numbers from 5 down to 1, one per line."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use range(5, 0, -1) which counts from 5 down to 1 (stop is exclusive).",
+                "code": "for i in range(5, 0, -1):\n    print(i)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Output prints 5, 4, 3, 2, 1 on separate lines."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-99",
+          "title": "Times Table",
+          "description": "Write a program that prints the multiplication table for `7` from 1 to 5. Expected output:\n`7 x 1 = 7`\n`7 x 2 = 14`\n`7 x 3 = 21`\n`7 x 4 = 28`\n`7 x 5 = 35`",
+          "starterCode": "# Write your code below\n",
+          "hint": "Use a for loop with range and an f-string to format each line.",
+          "solution": {
+            "code": "n = 7\nfor i in range(1, 6):\n    print(f\"{n} x {i} = {n * i}\")",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to print a formatted multiplication table showing 7 times 1 through 5."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Loop from 1 to 5 and use an f-string to format each multiplication expression and result.",
+                "code": "n = 7\nfor i in range(1, 6):\n    print(f\"{n} x {i} = {n * i}\")"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Each line shows 7 multiplied by 1 through 5 with the correct product."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
+        },
+        {
+          "id": "py-beginner-100",
+          "title": "List Product",
+          "description": "Write a program that calculates the product of all numbers in `[1, 2, 3, 4, 5]` and prints the result. Expected output: `120`.",
+          "starterCode": "# Write your code below\n",
+          "hint": "Start with result = 1 and multiply by each element in the list using a loop.",
+          "solution": {
+            "code": "nums = [1, 2, 3, 4, 5]\nresult = 1\nfor n in nums:\n    result *= n\nprint(result)",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to multiply all elements of a list together and print the total product."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Initialize result to 1 and multiply it by each number in the list using a for loop.",
+                "code": "nums = [1, 2, 3, 4, 5]\nresult = 1\nfor n in nums:\n    result *= n\nprint(result)"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "1*2*3*4*5 = 120."
+              }
+            ]
+          },
+          "language": "python",
+          "level": "beginner"
         }
       ]
     },
