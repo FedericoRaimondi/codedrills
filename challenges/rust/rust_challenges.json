@@ -683,6 +683,423 @@
                             }
                         ]
                     }
+                },
+                {
+                    "id": "rs-beginner-6",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Above Threshold",
+                    "description": "Write `count_above(nums: &[i32], threshold: i32) -> usize` that returns how many elements are strictly greater than `threshold`.\n\nExample: `count_above(&[3, 7, 1, 9, 4], 4)` returns `2` (7 and 9).\n\nExpected output:\n```\n2\n```",
+                    "starterCode": "fn count_above(nums: &[i32], threshold: i32) -> usize {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", count_above(&[3, 7, 1, 9, 4], 4));\n}\n",
+                    "hint": "Use iter().filter() with a closure that compares each element to the threshold, then call .count().",
+                    "solution": {
+                        "code": "fn count_above(nums: &[i32], threshold: i32) -> usize {\n    nums.iter().filter(|&&x| x > threshold).count()\n}\n\nfn main() {\n    println!(\"{}\", count_above(&[3, 7, 1, 9, 4], 4));\n}",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to count how many elements in a slice are strictly greater than a given threshold value."
+                            },
+                            {
+                                "title": "Iterate and filter",
+                                "explanation": "Use iter() to get references to each element, then filter() with a closure. Since iter() yields &&i32, we double-dereference with |&&x|.",
+                                "code": "nums.iter().filter(|&&x| x > threshold)"
+                            },
+                            {
+                                "title": "Count the matches",
+                                "explanation": "Chain .count() to get the number of elements that passed the filter.",
+                                "code": "fn count_above(nums: &[i32], threshold: i32) -> usize {\n    nums.iter().filter(|&&x| x > threshold).count()\n}"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-7",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Cap First",
+                    "description": "Write `capitalize_first(word: &str) -> String` that capitalizes the first letter of a word, leaving the rest unchanged.\n\nExample: `capitalize_first(\"hello\")` returns `\"Hello\"`.\n\nExpected output:\n```\nHello\n```",
+                    "starterCode": "fn capitalize_first(word: &str) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", capitalize_first(\"hello\"));\n}\n",
+                    "hint": "Use chars() to get a mutable iterator. Call next() for the first character, uppercase it with to_uppercase(), then append chars.as_str() for the rest.",
+                    "solution": {
+                        "code": "fn capitalize_first(word: &str) -> String {\n    let mut chars = word.chars();\n    match chars.next() {\n        None => String::new(),\n        Some(c) => c.to_uppercase().to_string() + chars.as_str(),\n    }\n}\n\nfn main() {\n    println!(\"{}\", capitalize_first(\"hello\"));\n}",
+                        "steps": [
+                            {
+                                "title": "Extract the first character",
+                                "explanation": "Use chars() to get an iterator over Unicode characters, then call next() to get the first one as an Option<char>.",
+                                "code": "let mut chars = word.chars();\nlet first = chars.next();"
+                            },
+                            {
+                                "title": "Handle empty string with match",
+                                "explanation": "Pattern match on the Option. If None, return an empty String. If Some(c), uppercase the character and append the rest.",
+                                "code": "match chars.next() {\n    None => String::new(),\n    Some(c) => c.to_uppercase().to_string() + chars.as_str(),\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The main function calls capitalize_first(\"hello\") and prints the result, which should be \"Hello\"."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-8",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Sort Check",
+                    "description": "Write `is_sorted(nums: &[i32]) -> bool` that returns true if the slice is sorted in non-decreasing order.\n\nExample: `is_sorted(&[1, 2, 2, 5])` returns `true`, `is_sorted(&[3, 1, 2])` returns `false`.\n\nExpected output:\n```\ntrue\nfalse\n```",
+                    "starterCode": "fn is_sorted(nums: &[i32]) -> bool {\n    // Your code here\n    false\n}\n\nfn main() {\n    println!(\"{}\", is_sorted(&[1, 2, 2, 5]));\n    println!(\"{}\", is_sorted(&[3, 1, 2]));\n}\n",
+                    "hint": "Use the windows(2) method on slices to compare each pair of consecutive elements.",
+                    "solution": {
+                        "code": "fn is_sorted(nums: &[i32]) -> bool {\n    nums.windows(2).all(|w| w[0] <= w[1])\n}\n\nfn main() {\n    println!(\"{}\", is_sorted(&[1, 2, 2, 5]));\n    println!(\"{}\", is_sorted(&[3, 1, 2]));\n}",
+                        "steps": [
+                            {
+                                "title": "Understand sorted order",
+                                "explanation": "A slice is sorted in non-decreasing order if every element is less than or equal to the next one."
+                            },
+                            {
+                                "title": "Use windows for pairwise comparison",
+                                "explanation": "The windows(2) method yields overlapping pairs [w[0], w[1]]. The all() adapter checks that every pair satisfies w[0] <= w[1].",
+                                "code": "fn is_sorted(nums: &[i32]) -> bool {\n    nums.windows(2).all(|w| w[0] <= w[1])\n}"
+                            },
+                            {
+                                "title": "Verify with test cases",
+                                "explanation": "For [1,2,2,5] every pair is non-decreasing so it returns true. For [3,1,2] the pair [3,1] fails so it returns false."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-9",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Mean Value",
+                    "description": "Write `average(nums: &[i32]) -> f64` that returns the arithmetic mean of the elements. Assume the slice is non-empty.\n\nExample: `average(&[10, 20, 30])` returns `20.0`.\n\nExpected output:\n```\n20\n```",
+                    "starterCode": "fn average(nums: &[i32]) -> f64 {\n    // Your code here\n    0.0\n}\n\nfn main() {\n    println!(\"{}\", average(&[10, 20, 30]));\n}\n",
+                    "hint": "Sum the elements with iter().sum::<i32>(), cast to f64, then divide by the length as f64.",
+                    "solution": {
+                        "code": "fn average(nums: &[i32]) -> f64 {\n    let sum: i32 = nums.iter().sum();\n    sum as f64 / nums.len() as f64\n}\n\nfn main() {\n    println!(\"{}\", average(&[10, 20, 30]));\n}",
+                        "steps": [
+                            {
+                                "title": "Sum the elements",
+                                "explanation": "Use iter().sum::<i32>() to compute the total. The turbofish ::<i32> tells Rust what type to sum into.",
+                                "code": "let sum: i32 = nums.iter().sum();"
+                            },
+                            {
+                                "title": "Compute the mean",
+                                "explanation": "Cast both the sum and the length to f64 before dividing to get a floating-point result.",
+                                "code": "sum as f64 / nums.len() as f64"
+                            },
+                            {
+                                "title": "Verify the output",
+                                "explanation": "For [10, 20, 30], sum is 60 and length is 3, so 60.0 / 3.0 = 20.0. Rust prints this as 20."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-10",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Unique Only",
+                    "description": "Write `remove_duplicates(nums: Vec<i32>) -> Vec<i32>` that removes duplicate values, keeping the first occurrence, preserving order.\n\nExample: `remove_duplicates(vec![1, 2, 2, 3, 1, 4])` returns `[1, 2, 3, 4]`.\n\nExpected output:\n```\n[1, 2, 3, 4]\n```",
+                    "starterCode": "fn remove_duplicates(nums: Vec<i32>) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", remove_duplicates(vec![1, 2, 2, 3, 1, 4]));\n}\n",
+                    "hint": "Create a Vec and a HashSet. Iterate over nums; if the set doesn't contain the value, insert it into both the set and the result vec.",
+                    "solution": {
+                        "code": "use std::collections::HashSet;\n\nfn remove_duplicates(nums: Vec<i32>) -> Vec<i32> {\n    let mut seen = HashSet::new();\n    let mut result = Vec::new();\n    for n in nums {\n        if seen.insert(n) {\n            result.push(n);\n        }\n    }\n    result\n}\n\nfn main() {\n    println!(\"{:?}\", remove_duplicates(vec![1, 2, 2, 3, 1, 4]));\n}",
+                        "steps": [
+                            {
+                                "title": "Track seen values",
+                                "explanation": "Use a HashSet to efficiently track which values we have already encountered. HashSet::insert returns true if the value was newly inserted.",
+                                "code": "let mut seen = HashSet::new();"
+                            },
+                            {
+                                "title": "Build the result",
+                                "explanation": "Iterate over the input. For each element, try to insert into the set. If insert returns true (new value), push it onto the result vector.",
+                                "code": "for n in nums {\n    if seen.insert(n) {\n        result.push(n);\n    }\n}"
+                            },
+                            {
+                                "title": "Verify order is preserved",
+                                "explanation": "Since we iterate in order and only add new values, the first occurrence order is preserved. Output: [1, 2, 3, 4]."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-11",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "String Joiner",
+                    "description": "Write `join_words(words: &[&str], sep: &str) -> String` that joins the words with the given separator.\n\nExample: `join_words(&[\"rust\", \"is\", \"fun\"], \"-\")` returns `\"rust-is-fun\"`.\n\nExpected output:\n```\nrust-is-fun\n```",
+                    "starterCode": "fn join_words(words: &[&str], sep: &str) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", join_words(&[\"rust\", \"is\", \"fun\"], \"-\"));\n}\n",
+                    "hint": "You can collect the slice into a Vec<&str> (it already is one) and use the .join(sep) method on slices of strings.",
+                    "solution": {
+                        "code": "fn join_words(words: &[&str], sep: &str) -> String {\n    words.join(sep)\n}\n\nfn main() {\n    println!(\"{}\", join_words(&[\"rust\", \"is\", \"fun\"], \"-\"));\n}",
+                        "steps": [
+                            {
+                                "title": "Understand join",
+                                "explanation": "Rust slices of strings (&[&str]) have a built-in .join(separator) method that concatenates elements with the separator between them."
+                            },
+                            {
+                                "title": "Implement the function",
+                                "explanation": "Simply call words.join(sep) which returns a new String with all words connected by the separator.",
+                                "code": "fn join_words(words: &[&str], sep: &str) -> String {\n    words.join(sep)\n}"
+                            },
+                            {
+                                "title": "Verify the output",
+                                "explanation": "For [\"rust\", \"is\", \"fun\"] with separator \"-\", the output is \"rust-is-fun\"."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-12",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Struct Method",
+                    "description": "Define a struct `Rectangle` with fields `width: f64` and `height: f64`. Implement a method `area(&self) -> f64` that returns the area.\n\nExpected output:\n```\n15\n```",
+                    "starterCode": "struct Rectangle {\n    width: f64,\n    height: f64,\n}\n\nimpl Rectangle {\n    fn area(&self) -> f64 {\n        // Your code here\n        0.0\n    }\n}\n\nfn main() {\n    let rect = Rectangle { width: 3.0, height: 5.0 };\n    println!(\"{}\", rect.area());\n}\n",
+                    "hint": "Multiply self.width by self.height to get the area.",
+                    "solution": {
+                        "code": "struct Rectangle {\n    width: f64,\n    height: f64,\n}\n\nimpl Rectangle {\n    fn area(&self) -> f64 {\n        self.width * self.height\n    }\n}\n\nfn main() {\n    let rect = Rectangle { width: 3.0, height: 5.0 };\n    println!(\"{}\", rect.area());\n}",
+                        "steps": [
+                            {
+                                "title": "Define the struct",
+                                "explanation": "A struct in Rust groups related data. Rectangle has two f64 fields: width and height.",
+                                "code": "struct Rectangle {\n    width: f64,\n    height: f64,\n}"
+                            },
+                            {
+                                "title": "Implement the method",
+                                "explanation": "Use an impl block to define methods. The &self parameter borrows the struct. Multiply the fields to get the area.",
+                                "code": "impl Rectangle {\n    fn area(&self) -> f64 {\n        self.width * self.height\n    }\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "3.0 * 5.0 = 15.0, which Rust prints as 15."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-13",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Silver Medal",
+                    "description": "Write `second_largest(nums: &[i32]) -> Option<i32>` that returns the second largest value, or None if it doesn't exist. Assume values may repeat.\n\nExample: `second_largest(&[5, 3, 9, 9, 1])` returns `Some(5)`.\n\nExpected output:\n```\n5\n```",
+                    "starterCode": "fn second_largest(nums: &[i32]) -> Option<i32> {\n    // Your code here\n    None\n}\n\nfn main() {\n    match second_largest(&[5, 3, 9, 9, 1]) {\n        Some(v) => println!(\"{}\", v),\n        None => println!(\"None\"),\n    }\n}\n",
+                    "hint": "Sort a mutable copy in descending order, deduplicate it, then return the second element if it exists.",
+                    "solution": {
+                        "code": "fn second_largest(nums: &[i32]) -> Option<i32> {\n    let mut sorted = nums.to_vec();\n    sorted.sort_unstable();\n    sorted.dedup();\n    if sorted.len() >= 2 {\n        Some(sorted[sorted.len() - 2])\n    } else {\n        None\n    }\n}\n\nfn main() {\n    match second_largest(&[5, 3, 9, 9, 1]) {\n        Some(v) => println!(\"{}\", v),\n        None => println!(\"None\"),\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Clone and sort",
+                                "explanation": "Convert the slice to a Vec with to_vec(), then sort it. sort_unstable() is faster and works fine when we don't need stability.",
+                                "code": "let mut sorted = nums.to_vec();\nsorted.sort_unstable();"
+                            },
+                            {
+                                "title": "Remove duplicates",
+                                "explanation": "dedup() removes consecutive duplicates from a sorted vec, giving us unique values in ascending order.",
+                                "code": "sorted.dedup();"
+                            },
+                            {
+                                "title": "Return the second largest",
+                                "explanation": "After sorting ascending and deduplicating, the second largest is at index len()-2. Return None if fewer than 2 unique values.",
+                                "code": "if sorted.len() >= 2 {\n    Some(sorted[sorted.len() - 2])\n} else {\n    None\n}"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-14",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Char Count",
+                    "description": "Write `count_char(text: &str, target: char) -> usize` that counts how many times `target` appears in `text`.\n\nExample: `count_char(\"abracadabra\", 'a')` returns `5`.\n\nExpected output:\n```\n5\n```",
+                    "starterCode": "fn count_char(text: &str, target: char) -> usize {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", count_char(\"abracadabra\", 'a'));\n}\n",
+                    "hint": "Use chars().filter() to keep only characters equal to target, then call .count().",
+                    "solution": {
+                        "code": "fn count_char(text: &str, target: char) -> usize {\n    text.chars().filter(|&c| c == target).count()\n}\n\nfn main() {\n    println!(\"{}\", count_char(\"abracadabra\", 'a'));\n}",
+                        "steps": [
+                            {
+                                "title": "Iterate over characters",
+                                "explanation": "Use chars() to get an iterator over each Unicode character in the string.",
+                                "code": "text.chars()"
+                            },
+                            {
+                                "title": "Filter and count",
+                                "explanation": "Chain filter(|&c| c == target) to keep only matching characters, then .count() to get the total.",
+                                "code": "fn count_char(text: &str, target: char) -> usize {\n    text.chars().filter(|&c| c == target).count()\n}"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "In \"abracadabra\", the letter 'a' appears at positions 0, 3, 5, 7, 10 — five times total."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-15",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "FizzBuzz Run",
+                    "description": "Write `fizzbuzz(n: u32) -> String` that returns:\n- `\"FizzBuzz\"` if n is divisible by both 3 and 5\n- `\"Fizz\"` if divisible by 3 only\n- `\"Buzz\"` if divisible by 5 only\n- the number as a string otherwise.\n\nPrint the result for 1..=15, each on its own line.\n\nExpected output:\n```\n1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz\n```",
+                    "starterCode": "fn fizzbuzz(n: u32) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    for i in 1..=15 {\n        println!(\"{}\", fizzbuzz(i));\n    }\n}\n",
+                    "hint": "Use match with a tuple (n % 3, n % 5). Match (0, 0) for FizzBuzz, (0, _) for Fizz, (_, 0) for Buzz, and _ for the number.",
+                    "solution": {
+                        "code": "fn fizzbuzz(n: u32) -> String {\n    match (n % 3, n % 5) {\n        (0, 0) => \"FizzBuzz\".to_string(),\n        (0, _) => \"Fizz\".to_string(),\n        (_, 0) => \"Buzz\".to_string(),\n        _ => n.to_string(),\n    }\n}\n\nfn main() {\n    for i in 1..=15 {\n        println!(\"{}\", fizzbuzz(i));\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Understand FizzBuzz rules",
+                                "explanation": "FizzBuzz is a classic problem: replace multiples of 3 with Fizz, multiples of 5 with Buzz, and multiples of both with FizzBuzz."
+                            },
+                            {
+                                "title": "Use tuple matching",
+                                "explanation": "Create a tuple (n % 3, n % 5) and match it. This elegantly handles all four cases without nested ifs.",
+                                "code": "match (n % 3, n % 5) {\n    (0, 0) => \"FizzBuzz\".to_string(),\n    (0, _) => \"Fizz\".to_string(),\n    (_, 0) => \"Buzz\".to_string(),\n    _ => n.to_string(),\n}"
+                            },
+                            {
+                                "title": "Loop and print",
+                                "explanation": "Use a range 1..=15 to iterate and print each result. The ..= syntax creates an inclusive range."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-16",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Palindrome Test",
+                    "description": "Write `is_palindrome(s: &str) -> bool` that checks if a string reads the same forwards and backwards (case-sensitive).\n\nExample: `is_palindrome(\"racecar\")` returns `true`, `is_palindrome(\"hello\")` returns `false`.\n\nExpected output:\n```\ntrue\nfalse\n```",
+                    "starterCode": "fn is_palindrome(s: &str) -> bool {\n    // Your code here\n    false\n}\n\nfn main() {\n    println!(\"{}\", is_palindrome(\"racecar\"));\n    println!(\"{}\", is_palindrome(\"hello\"));\n}\n",
+                    "hint": "Compare the original chars iterator with its reversed version using eq().",
+                    "solution": {
+                        "code": "fn is_palindrome(s: &str) -> bool {\n    let chars: Vec<char> = s.chars().collect();\n    chars == chars.iter().copied().rev().collect::<Vec<char>>()\n}\n\nfn main() {\n    println!(\"{}\", is_palindrome(\"racecar\"));\n    println!(\"{}\", is_palindrome(\"hello\"));\n}",
+                        "steps": [
+                            {
+                                "title": "Collect characters",
+                                "explanation": "Convert the string to a Vec<char> so we can easily compare it with its reverse.",
+                                "code": "let chars: Vec<char> = s.chars().collect();"
+                            },
+                            {
+                                "title": "Compare with reverse",
+                                "explanation": "Reverse the vector and compare. If they are equal, the string is a palindrome.",
+                                "code": "chars == chars.iter().copied().rev().collect::<Vec<char>>()"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "\"racecar\" reversed is \"racecar\" (same), so true. \"hello\" reversed is \"olleh\" (different), so false."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-17",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Flat Merge",
+                    "description": "Write `flatten(nested: Vec<Vec<i32>>) -> Vec<i32>` that flattens a vector of vectors into a single vector.\n\nExample: `flatten(vec![vec![1, 2], vec![3], vec![4, 5, 6]])` returns `[1, 2, 3, 4, 5, 6]`.\n\nExpected output:\n```\n[1, 2, 3, 4, 5, 6]\n```",
+                    "starterCode": "fn flatten(nested: Vec<Vec<i32>>) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", flatten(vec![vec![1, 2], vec![3], vec![4, 5, 6]]));\n}\n",
+                    "hint": "Use into_iter().flatten().collect() to flatten the nested iterators into a single collection.",
+                    "solution": {
+                        "code": "fn flatten(nested: Vec<Vec<i32>>) -> Vec<i32> {\n    nested.into_iter().flatten().collect()\n}\n\nfn main() {\n    println!(\"{:?}\", flatten(vec![vec![1, 2], vec![3], vec![4, 5, 6]]));\n}",
+                        "steps": [
+                            {
+                                "title": "Understand flatten",
+                                "explanation": "The flatten() adapter on iterators takes an iterator of iterables and yields all inner elements sequentially."
+                            },
+                            {
+                                "title": "Chain the operations",
+                                "explanation": "Use into_iter() to consume the outer Vec, flatten() to merge inner Vecs, and collect() to gather results.",
+                                "code": "fn flatten(nested: Vec<Vec<i32>>) -> Vec<i32> {\n    nested.into_iter().flatten().collect()\n}"
+                            },
+                            {
+                                "title": "Verify the output",
+                                "explanation": "The three inner vectors [1,2], [3], [4,5,6] are merged into [1, 2, 3, 4, 5, 6]."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-18",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Square Map",
+                    "description": "Write `square_all(nums: &[i32]) -> Vec<i32>` that returns a new vector where each element is the square of the original.\n\nExample: `square_all(&[1, 2, 3, 4])` returns `[1, 4, 9, 16]`.\n\nExpected output:\n```\n[1, 4, 9, 16]\n```",
+                    "starterCode": "fn square_all(nums: &[i32]) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", square_all(&[1, 2, 3, 4]));\n}\n",
+                    "hint": "Use iter().map() with a closure that squares each element, then collect() into a Vec.",
+                    "solution": {
+                        "code": "fn square_all(nums: &[i32]) -> Vec<i32> {\n    nums.iter().map(|&x| x * x).collect()\n}\n\nfn main() {\n    println!(\"{:?}\", square_all(&[1, 2, 3, 4]));\n}",
+                        "steps": [
+                            {
+                                "title": "Use map to transform",
+                                "explanation": "The map() adapter applies a closure to each element. |&x| x * x dereferences and squares each value.",
+                                "code": "nums.iter().map(|&x| x * x)"
+                            },
+                            {
+                                "title": "Collect the results",
+                                "explanation": "Chain collect() to gather the mapped values into a new Vec<i32>.",
+                                "code": "fn square_all(nums: &[i32]) -> Vec<i32> {\n    nums.iter().map(|&x| x * x).collect()\n}"
+                            },
+                            {
+                                "title": "Verify",
+                                "explanation": "1*1=1, 2*2=4, 3*3=9, 4*4=16 — output is [1, 4, 9, 16]."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-19",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Word Frequency",
+                    "description": "Write `word_freq(text: &str) -> std::collections::HashMap<String, usize>` that counts how often each word appears. Words are split by whitespace.\n\nPrint the count of \"the\" in the sentence: `\"the cat and the dog and the fish\"`.\n\nExpected output:\n```\n3\n```",
+                    "starterCode": "use std::collections::HashMap;\n\nfn word_freq(text: &str) -> HashMap<String, usize> {\n    // Your code here\n    HashMap::new()\n}\n\nfn main() {\n    let freq = word_freq(\"the cat and the dog and the fish\");\n    println!(\"{}\", freq.get(\"the\").unwrap_or(&0));\n}\n",
+                    "hint": "Split the text by whitespace, iterate, and use the entry API with or_insert(0) to increment counts.",
+                    "solution": {
+                        "code": "use std::collections::HashMap;\n\nfn word_freq(text: &str) -> HashMap<String, usize> {\n    let mut map = HashMap::new();\n    for word in text.split_whitespace() {\n        *map.entry(word.to_string()).or_insert(0) += 1;\n    }\n    map\n}\n\nfn main() {\n    let freq = word_freq(\"the cat and the dog and the fish\");\n    println!(\"{}\", freq.get(\"the\").unwrap_or(&0));\n}",
+                        "steps": [
+                            {
+                                "title": "Split into words",
+                                "explanation": "Use split_whitespace() to get an iterator over words, which handles multiple spaces and trims edges.",
+                                "code": "text.split_whitespace()"
+                            },
+                            {
+                                "title": "Count with entry API",
+                                "explanation": "The entry() API on HashMap provides an efficient way to insert-or-update. or_insert(0) gives a mutable reference to the count, which we increment with +=1.",
+                                "code": "for word in text.split_whitespace() {\n    *map.entry(word.to_string()).or_insert(0) += 1;\n}"
+                            },
+                            {
+                                "title": "Look up a specific word",
+                                "explanation": "Use map.get(\"the\") which returns Option<&usize>. unwrap_or(&0) provides a default if the key is missing."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-beginner-20",
+                    "language": "rust",
+                    "level": "beginner",
+                    "title": "Enum Display",
+                    "description": "Define an enum `Color` with variants `Red`, `Green`, and `Blue`. Implement a method `name(&self) -> &str` that returns the color as a string.\n\nPrint each color name on its own line.\n\nExpected output:\n```\nRed\nGreen\nBlue\n```",
+                    "starterCode": "enum Color {\n    Red,\n    Green,\n    Blue,\n}\n\nimpl Color {\n    fn name(&self) -> &str {\n        // Your code here\n        \"\"\n    }\n}\n\nfn main() {\n    let colors = [Color::Red, Color::Green, Color::Blue];\n    for c in &colors {\n        println!(\"{}\", c.name());\n    }\n}\n",
+                    "hint": "Use match on self to return a string slice for each variant: Self::Red => \"Red\", etc.",
+                    "solution": {
+                        "code": "enum Color {\n    Red,\n    Green,\n    Blue,\n}\n\nimpl Color {\n    fn name(&self) -> &str {\n        match self {\n            Color::Red => \"Red\",\n            Color::Green => \"Green\",\n            Color::Blue => \"Blue\",\n        }\n    }\n}\n\nfn main() {\n    let colors = [Color::Red, Color::Green, Color::Blue];\n    for c in &colors {\n        println!(\"{}\", c.name());\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Define the enum",
+                                "explanation": "Rust enums define a type with a fixed set of variants. Each variant is like a named constant.",
+                                "code": "enum Color {\n    Red,\n    Green,\n    Blue,\n}"
+                            },
+                            {
+                                "title": "Match on self",
+                                "explanation": "In the impl block, use match self to return a different string slice for each variant. Rust enforces exhaustive matching.",
+                                "code": "match self {\n    Color::Red => \"Red\",\n    Color::Green => \"Green\",\n    Color::Blue => \"Blue\",\n}"
+                            },
+                            {
+                                "title": "Iterate and print",
+                                "explanation": "Create an array of all variants and loop with for c in &colors to borrow each one, calling c.name() to print."
+                            }
+                        ]
+                    }
                 }
             ]
         },
