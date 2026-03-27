@@ -138,6 +138,411 @@
                             }
                         ]
                     }
+                },
+                {
+                    "id": "rs-new-6",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Bool Blast",
+                    "description": "Create two boolean variables: `let a = true;` and `let b = false;`. Print each on its own line. Expected output:\ntrue\nfalse",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Booleans print as lowercase true or false with println!.",
+                    "solution": {
+                        "code": "fn main() {\n    let a = true;\n    let b = false;\n    println!(\"{}\", a);\n    println!(\"{}\", b);\n}",
+                        "steps": [
+                            {
+                                "title": "Declare boolean variables",
+                                "explanation": "Use `let` to create two variables of type bool, one set to true and one to false."
+                            },
+                            {
+                                "title": "Print each boolean",
+                                "explanation": "Use println! with a {} placeholder to display each boolean value on its own line.",
+                                "code": "fn main() {\n    let a = true;\n    let b = false;\n    println!(\"{}\", a);\n    println!(\"{}\", b);\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code and confirm it prints true on the first line and false on the second line."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-7",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Half Split",
+                    "description": "Divide 7.0 by 2.0 using f64 variables and print the result. Expected output: `3.5`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use f64 literals like 7.0 and 2.0 so Rust performs float division.",
+                    "solution": {
+                        "code": "fn main() {\n    let a: f64 = 7.0;\n    let b: f64 = 2.0;\n    println!(\"{}\", a / b);\n}",
+                        "steps": [
+                            {
+                                "title": "Declare float variables",
+                                "explanation": "Create two f64 variables holding 7.0 and 2.0 to ensure floating-point division."
+                            },
+                            {
+                                "title": "Divide and print",
+                                "explanation": "Use the / operator inside println! to compute and display the result.",
+                                "code": "fn main() {\n    let a: f64 = 7.0;\n    let b: f64 = 2.0;\n    println!(\"{}\", a / b);\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code and confirm the output is 3.5."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-8",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Length Check",
+                    "description": "Create `let word = \"Rustacean\";` and print its length. Expected output: `9`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "String slices have a .len() method that returns the number of bytes.",
+                    "solution": {
+                        "code": "fn main() {\n    let word = \"Rustacean\";\n    println!(\"{}\", word.len());\n}",
+                        "steps": [
+                            {
+                                "title": "Store the string",
+                                "explanation": "Use let to bind the string literal \"Rustacean\" to a variable."
+                            },
+                            {
+                                "title": "Print the length",
+                                "explanation": "Call .len() on the string slice and pass the result to println!.",
+                                "code": "fn main() {\n    let word = \"Rustacean\";\n    println!(\"{}\", word.len());\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code and confirm it prints 9."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-9",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Even Gate",
+                    "description": "Create `let n = 4;`. Use if/else to check whether n is even or odd, then print the result. Expected output: `even`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use the modulo operator % to check divisibility by 2.",
+                    "solution": {
+                        "code": "fn main() {\n    let n = 4;\n    if n % 2 == 0 {\n        println!(\"even\");\n    } else {\n        println!(\"odd\");\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Declare the variable",
+                                "explanation": "Create an integer variable n with value 4."
+                            },
+                            {
+                                "title": "Write the if/else check",
+                                "explanation": "Use n % 2 == 0 as the condition. If true print \"even\", otherwise print \"odd\".",
+                                "code": "fn main() {\n    let n = 4;\n    if n % 2 == 0 {\n        println!(\"even\");\n    } else {\n        println!(\"odd\");\n    }\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code and confirm it prints even."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-10",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Combo Print",
+                    "description": "Create `let city = \"Tokyo\";` and `let pop = 14;`. Print them in one line. Expected output: `Tokyo has 14 million people`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use multiple {} placeholders in a single println! call.",
+                    "solution": {
+                        "code": "fn main() {\n    let city = \"Tokyo\";\n    let pop = 14;\n    println!(\"{} has {} million people\", city, pop);\n}",
+                        "steps": [
+                            {
+                                "title": "Declare variables",
+                                "explanation": "Create a string slice for the city name and an integer for the population."
+                            },
+                            {
+                                "title": "Format the output",
+                                "explanation": "Use println! with two {} placeholders to combine both values into one sentence.",
+                                "code": "fn main() {\n    let city = \"Tokyo\";\n    let pop = 14;\n    println!(\"{} has {} million people\", city, pop);\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code and confirm it prints Tokyo has 14 million people."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-11",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Sum Five",
+                    "description": "Use a for loop to sum the numbers from 1 to 5 (inclusive) and print the total. Expected output: `15`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use `for i in 1..=5` for an inclusive range and accumulate into a mutable variable.",
+                    "solution": {
+                        "code": "fn main() {\n    let mut sum = 0;\n    for i in 1..=5 {\n        sum += i;\n    }\n    println!(\"{}\", sum);\n}",
+                        "steps": [
+                            {
+                                "title": "Initialize a mutable accumulator",
+                                "explanation": "Declare `let mut sum = 0;` so you can update the value inside the loop."
+                            },
+                            {
+                                "title": "Loop and accumulate",
+                                "explanation": "Use `for i in 1..=5` to iterate from 1 to 5 inclusive, adding each value to sum.",
+                                "code": "fn main() {\n    let mut sum = 0;\n    for i in 1..=5 {\n        sum += i;\n    }\n    println!(\"{}\", sum);\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code and confirm the output is 15."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-12",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Tuple Pop",
+                    "description": "Create `let pair = (\"Rust\", 2015);`. Unpack it into two variables and print them. Expected output: `Rust was released in 2015`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use `let (name, year) = pair;` to destructure the tuple.",
+                    "solution": {
+                        "code": "fn main() {\n    let pair = (\"Rust\", 2015);\n    let (name, year) = pair;\n    println!(\"{} was released in {}\", name, year);\n}",
+                        "steps": [
+                            {
+                                "title": "Create the tuple",
+                                "explanation": "Define a tuple containing a string slice and an integer."
+                            },
+                            {
+                                "title": "Destructure and print",
+                                "explanation": "Use pattern matching with let to unpack the tuple into named variables, then print them.",
+                                "code": "fn main() {\n    let pair = (\"Rust\", 2015);\n    let (name, year) = pair;\n    println!(\"{} was released in {}\", name, year);\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code and confirm it prints Rust was released in 2015."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-13",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Char Count",
+                    "description": "Create `let text = \"hello!\";` and print the number of characters. Expected output: `6`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use .chars().count() to count Unicode characters in a string.",
+                    "solution": {
+                        "code": "fn main() {\n    let text = \"hello!\";\n    println!(\"{}\", text.chars().count());\n}",
+                        "steps": [
+                            {
+                                "title": "Store the string",
+                                "explanation": "Bind the string literal to a variable with let."
+                            },
+                            {
+                                "title": "Count characters and print",
+                                "explanation": "Call .chars() to get an iterator of characters, then .count() to get the total, and print it.",
+                                "code": "fn main() {\n    let text = \"hello!\";\n    println!(\"{}\", text.chars().count());\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code and confirm it prints 6."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-14",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Type Shift",
+                    "description": "Create `let x: i32 = 10;`. Convert it to f64 and print it. Expected output: `10.5` after adding 0.5 to the converted value.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use the `as` keyword to convert between numeric types, e.g. `x as f64`.",
+                    "solution": {
+                        "code": "fn main() {\n    let x: i32 = 10;\n    let y: f64 = x as f64 + 0.5;\n    println!(\"{}\", y);\n}",
+                        "steps": [
+                            {
+                                "title": "Declare the integer",
+                                "explanation": "Create an i32 variable with value 10."
+                            },
+                            {
+                                "title": "Convert and compute",
+                                "explanation": "Use `x as f64` to cast the integer to a float, then add 0.5 and store the result.",
+                                "code": "fn main() {\n    let x: i32 = 10;\n    let y: f64 = x as f64 + 0.5;\n    println!(\"{}\", y);\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code and confirm the output is 10.5."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-15",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Mut Bump",
+                    "description": "Create `let mut count = 1;`. Increment it twice and print the final value. Expected output: `3`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Declare the variable with `mut` so you can reassign or modify it with +=.",
+                    "solution": {
+                        "code": "fn main() {\n    let mut count = 1;\n    count += 1;\n    count += 1;\n    println!(\"{}\", count);\n}",
+                        "steps": [
+                            {
+                                "title": "Declare a mutable variable",
+                                "explanation": "Use `let mut` to create a variable whose value can be changed after creation."
+                            },
+                            {
+                                "title": "Increment and print",
+                                "explanation": "Use += to add 1 twice, then print the result.",
+                                "code": "fn main() {\n    let mut count = 1;\n    count += 1;\n    count += 1;\n    println!(\"{}\", count);\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code and confirm the output is 3."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-16",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Glue Words",
+                    "description": "Use format! to join `let a = \"Hello\";` and `let b = \"Rust\";` into one string and print it. Expected output: `Hello, Rust!`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "The format! macro works like println! but returns a String instead of printing.",
+                    "solution": {
+                        "code": "fn main() {\n    let a = \"Hello\";\n    let b = \"Rust\";\n    let msg = format!(\"{}, {}!\", a, b);\n    println!(\"{}\", msg);\n}",
+                        "steps": [
+                            {
+                                "title": "Declare the parts",
+                                "explanation": "Create two string slice variables holding the words to join."
+                            },
+                            {
+                                "title": "Format and print",
+                                "explanation": "Use format! to build a new String with placeholders, then print it with println!.",
+                                "code": "fn main() {\n    let a = \"Hello\";\n    let b = \"Rust\";\n    let msg = format!(\"{}, {}!\", a, b);\n    println!(\"{}\", msg);\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code and confirm it prints Hello, Rust!."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-17",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Min Pick",
+                    "description": "Create `let a = 8;` and `let b = 3;`. Use if/else to find and print the smaller value. Expected output: `3`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Compare a and b with < in an if expression and print the smaller one.",
+                    "solution": {
+                        "code": "fn main() {\n    let a = 8;\n    let b = 3;\n    if a < b {\n        println!(\"{}\", a);\n    } else {\n        println!(\"{}\", b);\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Declare two variables",
+                                "explanation": "Create two integer variables to compare."
+                            },
+                            {
+                                "title": "Compare and print the minimum",
+                                "explanation": "Use an if/else to check which value is smaller and print it.",
+                                "code": "fn main() {\n    let a = 8;\n    let b = 3;\n    if a < b {\n        println!(\"{}\", a);\n    } else {\n        println!(\"{}\", b);\n    }\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code and confirm the output is 3."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-18",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Odd Loop",
+                    "description": "Use a for loop over 1..=10 and print only the odd numbers, each on its own line. Expected output:\n1\n3\n5\n7\n9",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Inside the loop, use an if with the % operator to check for odd numbers.",
+                    "solution": {
+                        "code": "fn main() {\n    for i in 1..=10 {\n        if i % 2 != 0 {\n            println!(\"{}\", i);\n        }\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Set up the loop",
+                                "explanation": "Use `for i in 1..=10` to iterate through numbers 1 to 10 inclusive."
+                            },
+                            {
+                                "title": "Filter odd numbers",
+                                "explanation": "Inside the loop, check if i % 2 != 0 and only print when the condition is true.",
+                                "code": "fn main() {\n    for i in 1..=10 {\n        if i % 2 != 0 {\n            println!(\"{}\", i);\n        }\n    }\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code and confirm it prints 1, 3, 5, 7, 9 each on a separate line."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-19",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Match Day",
+                    "description": "Create `let day = 3;`. Use a match expression to print the weekday name where 1=Monday, 2=Tuesday, 3=Wednesday, and anything else prints \"other\". Expected output: `Wednesday`.",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use `match day { 1 => ..., 2 => ..., _ => ... }` with a wildcard for the default case.",
+                    "solution": {
+                        "code": "fn main() {\n    let day = 3;\n    match day {\n        1 => println!(\"Monday\"),\n        2 => println!(\"Tuesday\"),\n        3 => println!(\"Wednesday\"),\n        _ => println!(\"other\"),\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Declare the variable",
+                                "explanation": "Create an integer variable representing a day number."
+                            },
+                            {
+                                "title": "Write the match expression",
+                                "explanation": "Use match with arms for 1, 2, 3 mapping to weekday names, and _ as the catch-all default.",
+                                "code": "fn main() {\n    let day = 3;\n    match day {\n        1 => println!(\"Monday\"),\n        2 => println!(\"Tuesday\"),\n        3 => println!(\"Wednesday\"),\n        _ => println!(\"other\"),\n    }\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code and confirm it prints Wednesday."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-new-20",
+                    "language": "rust",
+                    "level": "new",
+                    "title": "Rust Card",
+                    "description": "Create variables `let name = \"Ferris\";`, `let age = 9;`, and `let is_crab = true;`. Print a three-line info card. Expected output:\nName: Ferris\nAge: 9\nCrab: true",
+                    "starterCode": "fn main() {\n    // Write your code below\n}\n",
+                    "hint": "Use three separate println! calls, each with a {} placeholder for one variable.",
+                    "solution": {
+                        "code": "fn main() {\n    let name = \"Ferris\";\n    let age = 9;\n    let is_crab = true;\n    println!(\"Name: {}\", name);\n    println!(\"Age: {}\", age);\n    println!(\"Crab: {}\", is_crab);\n}",
+                        "steps": [
+                            {
+                                "title": "Declare all variables",
+                                "explanation": "Create three variables of different types: a string slice, an integer, and a boolean."
+                            },
+                            {
+                                "title": "Print the info card",
+                                "explanation": "Use three println! calls to display each variable with its label on a separate line.",
+                                "code": "fn main() {\n    let name = \"Ferris\";\n    let age = 9;\n    let is_crab = true;\n    println!(\"Name: {}\", name);\n    println!(\"Age: {}\", age);\n    println!(\"Crab: {}\", is_crab);\n}"
+                            },
+                            {
+                                "title": "Verify expected result",
+                                "explanation": "Run the code and confirm three lines appear: Name: Ferris, Age: 9, and Crab: true."
+                            }
+                        ]
+                    }
                 }
             ]
         },
