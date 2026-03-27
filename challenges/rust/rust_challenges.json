@@ -1795,6 +1795,433 @@
                             }
                         ]
                     }
+                },
+                {
+                    "id": "rs-advanced-6",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "LRU Cache",
+                    "description": "Implement a Least Recently Used (LRU) cache with a fixed capacity using a HashMap and VecDeque. Implement `LruCache::new(capacity)`, `get(&mut self, key: i32) -> Option<i32>`, and `put(&mut self, key: i32, value: i32)`. When the cache exceeds capacity, evict the least recently used entry. In main, create a cache with capacity 2, then: put(1,10), put(2,20), print get(1) -> Some(10), put(3,30) which evicts key 2, print get(2) -> None, print get(3) -> Some(30).\n\nExpected output:\nSome(10)\nNone\nSome(30)",
+                    "starterCode": "use std::collections::{HashMap, VecDeque};\n\nstruct LruCache {\n    capacity: usize,\n    map: HashMap<i32, i32>,\n    order: VecDeque<i32>,\n}\n\nimpl LruCache {\n    fn new(capacity: usize) -> Self {\n        // Your code here\n        todo!()\n    }\n\n    fn get(&mut self, key: i32) -> Option<i32> {\n        // Your code here\n        todo!()\n    }\n\n    fn put(&mut self, key: i32, value: i32) {\n        // Your code here\n    }\n}\n\nfn main() {\n    let mut cache = LruCache::new(2);\n    cache.put(1, 10);\n    cache.put(2, 20);\n    println!(\"{:?}\", cache.get(1));\n    cache.put(3, 30);\n    println!(\"{:?}\", cache.get(2));\n    println!(\"{:?}\", cache.get(3));\n}\n",
+                    "hint": "When accessing or inserting a key, remove it from the VecDeque and push it to the back so the front always holds the least recently used key.",
+                    "solution": {
+                        "code": "use std::collections::{HashMap, VecDeque};\n\nstruct LruCache {\n    capacity: usize,\n    map: HashMap<i32, i32>,\n    order: VecDeque<i32>,\n}\n\nimpl LruCache {\n    fn new(capacity: usize) -> Self {\n        LruCache {\n            capacity,\n            map: HashMap::new(),\n            order: VecDeque::new(),\n        }\n    }\n\n    fn get(&mut self, key: i32) -> Option<i32> {\n        if let Some(&val) = self.map.get(&key) {\n            self.order.retain(|&k| k != key);\n            self.order.push_back(key);\n            Some(val)\n        } else {\n            None\n        }\n    }\n\n    fn put(&mut self, key: i32, value: i32) {\n        if self.map.contains_key(&key) {\n            self.order.retain(|&k| k != key);\n        } else if self.map.len() == self.capacity {\n            if let Some(old) = self.order.pop_front() {\n                self.map.remove(&old);\n            }\n        }\n        self.map.insert(key, value);\n        self.order.push_back(key);\n    }\n}\n\nfn main() {\n    let mut cache = LruCache::new(2);\n    cache.put(1, 10);\n    cache.put(2, 20);\n    println!(\"{:?}\", cache.get(1));\n    cache.put(3, 30);\n    println!(\"{:?}\", cache.get(2));\n    println!(\"{:?}\", cache.get(3));\n}",
+                        "steps": [
+                            {
+                                "title": "Design the LRU data structure",
+                                "explanation": "Use a HashMap for O(1) key-value lookups and a VecDeque to track access order. The front of the VecDeque holds the least recently used key, the back holds the most recent.",
+                                "code": "struct LruCache {\n    capacity: usize,\n    map: HashMap<i32, i32>,\n    order: VecDeque<i32>,\n}"
+                            },
+                            {
+                                "title": "Implement get with recency update",
+                                "explanation": "On get, if the key exists, remove it from VecDeque and push it to the back to mark it as most recently used. Return None if the key is absent.",
+                                "code": "fn get(&mut self, key: i32) -> Option<i32> {\n    if let Some(&val) = self.map.get(&key) {\n        self.order.retain(|&k| k != key);\n        self.order.push_back(key);\n        Some(val)\n    } else {\n        None\n    }\n}"
+                            },
+                            {
+                                "title": "Implement put with eviction",
+                                "explanation": "On put, if the key already exists, update it and refresh its position. If at capacity, evict the front of the VecDeque (least recently used) and remove it from the HashMap before inserting the new entry.",
+                                "code": "fn put(&mut self, key: i32, value: i32) {\n    if self.map.contains_key(&key) {\n        self.order.retain(|&k| k != key);\n    } else if self.map.len() == self.capacity {\n        if let Some(old) = self.order.pop_front() {\n            self.map.remove(&old);\n        }\n    }\n    self.map.insert(key, value);\n    self.order.push_back(key);\n}"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-advanced-7",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Trie Search",
+                    "description": "Implement a Trie (prefix tree) with `insert(&mut self, word: &str)` and `search(&self, word: &str) -> bool`. Use a HashMap<char, TrieNode> for children and a bool to mark end-of-word. In main, insert \"apple\" and \"app\", then search for \"apple\" (true), \"app\" (true), \"ap\" (false), \"orange\" (false). Print each result on its own line.\n\nExpected output:\ntrue\ntrue\nfalse\nfalse",
+                    "starterCode": "use std::collections::HashMap;\n\nstruct TrieNode {\n    children: HashMap<char, TrieNode>,\n    is_end: bool,\n}\n\nstruct Trie {\n    root: TrieNode,\n}\n\nimpl Trie {\n    fn new() -> Self {\n        // Your code here\n        todo!()\n    }\n\n    fn insert(&mut self, word: &str) {\n        // Your code here\n    }\n\n    fn search(&self, word: &str) -> bool {\n        // Your code here\n        false\n    }\n}\n\nfn main() {\n    let mut trie = Trie::new();\n    trie.insert(\"apple\");\n    trie.insert(\"app\");\n    println!(\"{}\", trie.search(\"apple\"));\n    println!(\"{}\", trie.search(\"app\"));\n    println!(\"{}\", trie.search(\"ap\"));\n    println!(\"{}\", trie.search(\"orange\"));\n}\n",
+                    "hint": "For insert, iterate over characters creating child nodes as needed. For search, walk the trie char by char and check is_end at the final node.",
+                    "solution": {
+                        "code": "use std::collections::HashMap;\n\nstruct TrieNode {\n    children: HashMap<char, TrieNode>,\n    is_end: bool,\n}\n\nstruct Trie {\n    root: TrieNode,\n}\n\nimpl Trie {\n    fn new() -> Self {\n        Trie {\n            root: TrieNode {\n                children: HashMap::new(),\n                is_end: false,\n            },\n        }\n    }\n\n    fn insert(&mut self, word: &str) {\n        let mut node = &mut self.root;\n        for ch in word.chars() {\n            node = node.children.entry(ch).or_insert(TrieNode {\n                children: HashMap::new(),\n                is_end: false,\n            });\n        }\n        node.is_end = true;\n    }\n\n    fn search(&self, word: &str) -> bool {\n        let mut node = &self.root;\n        for ch in word.chars() {\n            match node.children.get(&ch) {\n                Some(next) => node = next,\n                None => return false,\n            }\n        }\n        node.is_end\n    }\n}\n\nfn main() {\n    let mut trie = Trie::new();\n    trie.insert(\"apple\");\n    trie.insert(\"app\");\n    println!(\"{}\", trie.search(\"apple\"));\n    println!(\"{}\", trie.search(\"app\"));\n    println!(\"{}\", trie.search(\"ap\"));\n    println!(\"{}\", trie.search(\"orange\"));\n}",
+                        "steps": [
+                            {
+                                "title": "Model the Trie nodes",
+                                "explanation": "Each TrieNode has a HashMap mapping characters to child nodes and a boolean is_end to mark whether a complete word ends at this node. The Trie struct holds the root node.",
+                                "code": "struct TrieNode {\n    children: HashMap<char, TrieNode>,\n    is_end: bool,\n}"
+                            },
+                            {
+                                "title": "Implement insert",
+                                "explanation": "Walk through each character of the word, creating a new child TrieNode via entry().or_insert() if it doesn't exist. Mark the last node's is_end as true.",
+                                "code": "fn insert(&mut self, word: &str) {\n    let mut node = &mut self.root;\n    for ch in word.chars() {\n        node = node.children.entry(ch).or_insert(TrieNode {\n            children: HashMap::new(),\n            is_end: false,\n        });\n    }\n    node.is_end = true;\n}"
+                            },
+                            {
+                                "title": "Implement search",
+                                "explanation": "Traverse the trie character by character. If any character is missing, return false. If all characters are found, return the is_end flag of the final node to distinguish complete words from prefixes.",
+                                "code": "fn search(&self, word: &str) -> bool {\n    let mut node = &self.root;\n    for ch in word.chars() {\n        match node.children.get(&ch) {\n            Some(next) => node = next,\n            None => return false,\n        }\n    }\n    node.is_end\n}"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-advanced-8",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Bound Extremes",
+                    "description": "Write a generic function `min_max<T: PartialOrd + Clone>(items: &[T]) -> Option<(T, T)>` that returns the minimum and maximum of a slice in a single pass. Return None for empty slices. In main, call it with `[3, 1, 4, 1, 5, 9, 2, 6]` and print the result, then call it on an empty i32 slice and print.\n\nExpected output:\nSome((1, 9))\nNone",
+                    "starterCode": "fn min_max<T: PartialOrd + Clone>(items: &[T]) -> Option<(T, T)> {\n    // Your code here\n    None\n}\n\nfn main() {\n    let nums = [3, 1, 4, 1, 5, 9, 2, 6];\n    println!(\"{:?}\", min_max(&nums));\n    let empty: &[i32] = &[];\n    println!(\"{:?}\", min_max(empty));\n}\n",
+                    "hint": "Initialize min and max from the first element, then iterate over the rest comparing with PartialOrd.",
+                    "solution": {
+                        "code": "fn min_max<T: PartialOrd + Clone>(items: &[T]) -> Option<(T, T)> {\n    let first = items.first()?.clone();\n    let mut min = first.clone();\n    let mut max = first;\n    for item in items.iter().skip(1) {\n        if *item < min {\n            min = item.clone();\n        }\n        if *item > max {\n            max = item.clone();\n        }\n    }\n    Some((min, max))\n}\n\nfn main() {\n    let nums = [3, 1, 4, 1, 5, 9, 2, 6];\n    println!(\"{:?}\", min_max(&nums));\n    let empty: &[i32] = &[];\n    println!(\"{:?}\", min_max(empty));\n}",
+                        "steps": [
+                            {
+                                "title": "Use trait bounds for generics",
+                                "explanation": "The function signature `<T: PartialOrd + Clone>` ensures T can be compared and cloned. This allows the function to work with any type that supports ordering, not just integers.",
+                                "code": "fn min_max<T: PartialOrd + Clone>(items: &[T]) -> Option<(T, T)>"
+                            },
+                            {
+                                "title": "Handle the empty case with ?",
+                                "explanation": "Use items.first()? to return None immediately for empty slices. The ? operator on Option is idiomatic Rust for early returns.",
+                                "code": "let first = items.first()?.clone();"
+                            },
+                            {
+                                "title": "Single-pass min/max scan",
+                                "explanation": "Initialize min and max from the first element, then iterate through the rest. Compare each item against both min and max, updating via clone when a new extreme is found.",
+                                "code": "for item in items.iter().skip(1) {\n    if *item < min {\n        min = item.clone();\n    }\n    if *item > max {\n        max = item.clone();\n    }\n}"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-advanced-9",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Rising Sequence",
+                    "description": "Write `lis_length(nums: &[i32]) -> usize` to compute the length of the longest increasing subsequence using dynamic programming with O(n^2) approach. For `[10, 9, 2, 5, 3, 7, 101, 18]` the LIS is `[2, 3, 7, 101]` with length 4. For `[0, 1, 0, 3, 2, 3]` the answer is 4. Print both results.\n\nExpected output:\n4\n4",
+                    "starterCode": "fn lis_length(nums: &[i32]) -> usize {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", lis_length(&[10, 9, 2, 5, 3, 7, 101, 18]));\n    println!(\"{}\", lis_length(&[0, 1, 0, 3, 2, 3]));\n}\n",
+                    "hint": "Create a dp array where dp[i] = length of LIS ending at index i. For each i, check all j < i where nums[j] < nums[i] and take dp[j] + 1. Answer is the max of the dp array.",
+                    "solution": {
+                        "code": "fn lis_length(nums: &[i32]) -> usize {\n    if nums.is_empty() {\n        return 0;\n    }\n    let n = nums.len();\n    let mut dp = vec![1usize; n];\n    for i in 1..n {\n        for j in 0..i {\n            if nums[j] < nums[i] {\n                dp[i] = dp[i].max(dp[j] + 1);\n            }\n        }\n    }\n    *dp.iter().max().unwrap()\n}\n\nfn main() {\n    println!(\"{}\", lis_length(&[10, 9, 2, 5, 3, 7, 101, 18]));\n    println!(\"{}\", lis_length(&[0, 1, 0, 3, 2, 3]));\n}",
+                        "steps": [
+                            {
+                                "title": "Set up the DP table",
+                                "explanation": "Create a dp vector of length n, all initialized to 1, because the minimum LIS ending at any element is the element itself (length 1).",
+                                "code": "let mut dp = vec![1usize; n];"
+                            },
+                            {
+                                "title": "Fill the DP table with nested loops",
+                                "explanation": "For each index i from 1..n, check all previous indices j. If nums[j] < nums[i], then we can extend the subsequence ending at j, so dp[i] = max(dp[i], dp[j] + 1). This is the classic O(n^2) DP approach.",
+                                "code": "for i in 1..n {\n    for j in 0..i {\n        if nums[j] < nums[i] {\n            dp[i] = dp[i].max(dp[j] + 1);\n        }\n    }\n}"
+                            },
+                            {
+                                "title": "Return the maximum",
+                                "explanation": "The answer is the maximum value in the dp array, since the LIS could end at any position.",
+                                "code": "*dp.iter().max().unwrap()"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-advanced-10",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Graph Shortest",
+                    "description": "Implement BFS shortest path on an unweighted directed graph using an adjacency list. Write `bfs_shortest(adj: &Vec<Vec<usize>>, start: usize, end: usize) -> Option<usize>` returning the shortest distance. Build a graph with 6 nodes and edges: 0->1, 0->2, 1->3, 2->3, 3->4, 4->5, 2->5. Find shortest path from 0 to 5 (length 3) and from 0 to 6 which doesn't exist (None).\n\nExpected output:\nSome(3)\nNone",
+                    "starterCode": "use std::collections::VecDeque;\n\nfn bfs_shortest(adj: &Vec<Vec<usize>>, start: usize, end: usize) -> Option<usize> {\n    // Your code here\n    None\n}\n\nfn main() {\n    let mut adj = vec![vec![]; 6];\n    adj[0].push(1);\n    adj[0].push(2);\n    adj[1].push(3);\n    adj[2].push(3);\n    adj[3].push(4);\n    adj[4].push(5);\n    adj[2].push(5);\n    println!(\"{:?}\", bfs_shortest(&adj, 0, 5));\n    println!(\"{:?}\", bfs_shortest(&adj, 0, 6));\n}\n",
+                    "hint": "Use a VecDeque as a queue of (node, distance) pairs. Track visited nodes with a Vec<bool>. Return Some(distance) when you reach the end node.",
+                    "solution": {
+                        "code": "use std::collections::VecDeque;\n\nfn bfs_shortest(adj: &Vec<Vec<usize>>, start: usize, end: usize) -> Option<usize> {\n    if start == end {\n        return Some(0);\n    }\n    let n = adj.len();\n    if start >= n || end >= n {\n        return None;\n    }\n    let mut visited = vec![false; n];\n    let mut queue = VecDeque::new();\n    visited[start] = true;\n    queue.push_back((start, 0usize));\n    while let Some((node, dist)) = queue.pop_front() {\n        for &neighbor in &adj[node] {\n            if neighbor == end {\n                return Some(dist + 1);\n            }\n            if !visited[neighbor] {\n                visited[neighbor] = true;\n                queue.push_back((neighbor, dist + 1));\n            }\n        }\n    }\n    None\n}\n\nfn main() {\n    let mut adj = vec![vec![]; 6];\n    adj[0].push(1);\n    adj[0].push(2);\n    adj[1].push(3);\n    adj[2].push(3);\n    adj[3].push(4);\n    adj[4].push(5);\n    adj[2].push(5);\n    println!(\"{:?}\", bfs_shortest(&adj, 0, 5));\n    println!(\"{:?}\", bfs_shortest(&adj, 0, 6));\n}",
+                        "steps": [
+                            {
+                                "title": "Handle edge cases",
+                                "explanation": "Check if start equals end (distance 0) and if the indices are within the graph bounds. Return None for out-of-bound targets.",
+                                "code": "if start == end {\n    return Some(0);\n}\nif start >= n || end >= n {\n    return None;\n}"
+                            },
+                            {
+                                "title": "BFS with distance tracking",
+                                "explanation": "Use a VecDeque as a FIFO queue, pushing (node, distance) pairs. Mark nodes visited when enqueued to prevent revisiting. BFS guarantees the first time we reach the end node, it's via the shortest path.",
+                                "code": "let mut queue = VecDeque::new();\nvisited[start] = true;\nqueue.push_back((start, 0usize));\nwhile let Some((node, dist)) = queue.pop_front() {\n    for &neighbor in &adj[node] {\n        if neighbor == end {\n            return Some(dist + 1);\n        }\n        if !visited[neighbor] {\n            visited[neighbor] = true;\n            queue.push_back((neighbor, dist + 1));\n        }\n    }\n}"
+                            },
+                            {
+                                "title": "Return None if unreachable",
+                                "explanation": "If the BFS completes without reaching the end node, the target is not reachable from start, so return None."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-advanced-11",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Matrix Chain",
+                    "description": "Write `matrix_chain_order(dims: &[usize]) -> usize` implementing the matrix chain multiplication DP algorithm. Given dimensions array where matrix i has dimensions dims[i-1] x dims[i], find the minimum number of scalar multiplications. For dims = [10, 30, 5, 60], there are 3 matrices (10x30, 30x5, 5x60) and the optimal cost is 4500. For dims = [40, 20, 30, 10, 30], the optimal cost is 26000.\n\nExpected output:\n4500\n26000",
+                    "starterCode": "fn matrix_chain_order(dims: &[usize]) -> usize {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", matrix_chain_order(&[10, 30, 5, 60]));\n    println!(\"{}\", matrix_chain_order(&[40, 20, 30, 10, 30]));\n}\n",
+                    "hint": "Use a 2D DP table m[i][j] = minimum cost to multiply matrices i..j. Fill diagonally by chain length. For each split point k, cost = m[i][k] + m[k+1][j] + dims[i-1]*dims[k]*dims[j].",
+                    "solution": {
+                        "code": "fn matrix_chain_order(dims: &[usize]) -> usize {\n    let n = dims.len() - 1;\n    if n <= 1 {\n        return 0;\n    }\n    let mut m = vec![vec![0usize; n]; n];\n    for chain_len in 2..=n {\n        for i in 0..=(n - chain_len) {\n            let j = i + chain_len - 1;\n            m[i][j] = usize::MAX;\n            for k in i..j {\n                let cost = m[i][k] + m[k + 1][j] + dims[i] * dims[k + 1] * dims[j + 1];\n                if cost < m[i][j] {\n                    m[i][j] = cost;\n                }\n            }\n        }\n    }\n    m[0][n - 1]\n}\n\nfn main() {\n    println!(\"{}\", matrix_chain_order(&[10, 30, 5, 60]));\n    println!(\"{}\", matrix_chain_order(&[40, 20, 30, 10, 30]));\n}",
+                        "steps": [
+                            {
+                                "title": "Understand the DP table",
+                                "explanation": "m[i][j] stores the minimum cost to multiply matrices from index i to j. Single matrices (chain length 1) have zero cost. We fill the table by increasing chain length.",
+                                "code": "let mut m = vec![vec![0usize; n]; n];"
+                            },
+                            {
+                                "title": "Iterate by chain length and split points",
+                                "explanation": "For each chain length from 2 to n, and each starting index i, compute all possible split points k. The cost of splitting at k is: cost of left subchain + cost of right subchain + cost of multiplying the two resulting matrices.",
+                                "code": "for chain_len in 2..=n {\n    for i in 0..=(n - chain_len) {\n        let j = i + chain_len - 1;\n        m[i][j] = usize::MAX;\n        for k in i..j {\n            let cost = m[i][k] + m[k + 1][j] + dims[i] * dims[k + 1] * dims[j + 1];\n            if cost < m[i][j] {\n                m[i][j] = cost;\n            }\n        }\n    }\n}"
+                            },
+                            {
+                                "title": "Return the optimal cost",
+                                "explanation": "The answer is m[0][n-1], which represents the minimum cost to multiply the entire chain of matrices from the first to the last.",
+                                "code": "m[0][n - 1]"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-advanced-12",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Trait Convert",
+                    "description": "Define a `Celsius(f64)` struct and a `Fahrenheit(f64)` struct. Implement `From<Celsius> for Fahrenheit` using the formula F = C * 9/5 + 32, and `From<Fahrenheit> for Celsius` using C = (F - 32) * 5/9. In main, convert 100.0 Celsius to Fahrenheit and print it, then convert 32.0 Fahrenheit to Celsius and print it. Use the `.into()` syntax to demonstrate the Into trait auto-derivation.\n\nExpected output:\n212\n0",
+                    "starterCode": "struct Celsius(f64);\nstruct Fahrenheit(f64);\n\nimpl From<Celsius> for Fahrenheit {\n    fn from(c: Celsius) -> Self {\n        // Your code here\n        todo!()\n    }\n}\n\nimpl From<Fahrenheit> for Celsius {\n    fn from(f: Fahrenheit) -> Self {\n        // Your code here\n        todo!()\n    }\n}\n\nfn main() {\n    let boiling: Fahrenheit = Celsius(100.0).into();\n    println!(\"{}\", boiling.0 as i32);\n    let freezing: Celsius = Fahrenheit(32.0).into();\n    println!(\"{}\", freezing.0 as i32);\n}\n",
+                    "hint": "Implement From<Celsius> for Fahrenheit with Fahrenheit(c.0 * 9.0/5.0 + 32.0). Rust auto-derives Into when you implement From.",
+                    "solution": {
+                        "code": "struct Celsius(f64);\nstruct Fahrenheit(f64);\n\nimpl From<Celsius> for Fahrenheit {\n    fn from(c: Celsius) -> Self {\n        Fahrenheit(c.0 * 9.0 / 5.0 + 32.0)\n    }\n}\n\nimpl From<Fahrenheit> for Celsius {\n    fn from(f: Fahrenheit) -> Self {\n        Celsius((f.0 - 32.0) * 5.0 / 9.0)\n    }\n}\n\nfn main() {\n    let boiling: Fahrenheit = Celsius(100.0).into();\n    println!(\"{}\", boiling.0 as i32);\n    let freezing: Celsius = Fahrenheit(32.0).into();\n    println!(\"{}\", freezing.0 as i32);\n}",
+                        "steps": [
+                            {
+                                "title": "Define newtype structs",
+                                "explanation": "Celsius(f64) and Fahrenheit(f64) are tuple structs (newtypes). They wrap f64 to create distinct types that the compiler treats as different, enabling type-safe conversions.",
+                                "code": "struct Celsius(f64);\nstruct Fahrenheit(f64);"
+                            },
+                            {
+                                "title": "Implement the From trait",
+                                "explanation": "Rust's From trait defines how to create one type from another. By implementing From<Celsius> for Fahrenheit, Rust automatically provides Into<Fahrenheit> for Celsius. This is idiomatic Rust: always implement From, not Into.",
+                                "code": "impl From<Celsius> for Fahrenheit {\n    fn from(c: Celsius) -> Self {\n        Fahrenheit(c.0 * 9.0 / 5.0 + 32.0)\n    }\n}"
+                            },
+                            {
+                                "title": "Use .into() for ergonomic conversion",
+                                "explanation": "In main, `Celsius(100.0).into()` works because Rust auto-derives Into from our From implementation. The type annotation on the variable tells the compiler which Into conversion to use.",
+                                "code": "let boiling: Fahrenheit = Celsius(100.0).into();"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-advanced-13",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Config Builder",
+                    "description": "Implement the Builder pattern for a `Config` struct with fields: host (String), port (u16), max_retries (u8). Create a `ConfigBuilder` with methods `host()`, `port()`, `max_retries()` that return `&mut Self` for chaining, and `build()` returning `Result<Config, String>`. host is required (error if empty), port defaults to 8080, max_retries defaults to 3. In main, build a valid config and print it, then try building with empty host and print the error.\n\nExpected output:\nConfig { host: \"localhost\", port: 3000, max_retries: 5 }\nError: host is required",
+                    "starterCode": "#[derive(Debug)]\nstruct Config {\n    host: String,\n    port: u16,\n    max_retries: u8,\n}\n\nstruct ConfigBuilder {\n    host: Option<String>,\n    port: u16,\n    max_retries: u8,\n}\n\nimpl ConfigBuilder {\n    fn new() -> Self {\n        // Your code here\n        todo!()\n    }\n\n    fn host(&mut self, h: &str) -> &mut Self {\n        // Your code here\n        self\n    }\n\n    fn port(&mut self, p: u16) -> &mut Self {\n        // Your code here\n        self\n    }\n\n    fn max_retries(&mut self, r: u8) -> &mut Self {\n        // Your code here\n        self\n    }\n\n    fn build(&self) -> Result<Config, String> {\n        // Your code here\n        todo!()\n    }\n}\n\nfn main() {\n    let config = ConfigBuilder::new()\n        .host(\"localhost\")\n        .port(3000)\n        .max_retries(5)\n        .build();\n    match config {\n        Ok(c) => println!(\"{:?}\", c),\n        Err(e) => println!(\"Error: {}\", e),\n    }\n    let bad = ConfigBuilder::new().build();\n    match bad {\n        Ok(c) => println!(\"{:?}\", c),\n        Err(e) => println!(\"Error: {}\", e),\n    }\n}\n",
+                    "hint": "Store host as Option<String> in the builder. In build(), check if host is Some and non-empty, otherwise return Err. Use default values for port and max_retries.",
+                    "solution": {
+                        "code": "#[derive(Debug)]\nstruct Config {\n    host: String,\n    port: u16,\n    max_retries: u8,\n}\n\nstruct ConfigBuilder {\n    host: Option<String>,\n    port: u16,\n    max_retries: u8,\n}\n\nimpl ConfigBuilder {\n    fn new() -> Self {\n        ConfigBuilder {\n            host: None,\n            port: 8080,\n            max_retries: 3,\n        }\n    }\n\n    fn host(&mut self, h: &str) -> &mut Self {\n        self.host = Some(h.to_string());\n        self\n    }\n\n    fn port(&mut self, p: u16) -> &mut Self {\n        self.port = p;\n        self\n    }\n\n    fn max_retries(&mut self, r: u8) -> &mut Self {\n        self.max_retries = r;\n        self\n    }\n\n    fn build(&self) -> Result<Config, String> {\n        match &self.host {\n            Some(h) if !h.is_empty() => Ok(Config {\n                host: h.clone(),\n                port: self.port,\n                max_retries: self.max_retries,\n            }),\n            _ => Err(\"host is required\".to_string()),\n        }\n    }\n}\n\nfn main() {\n    let config = ConfigBuilder::new()\n        .host(\"localhost\")\n        .port(3000)\n        .max_retries(5)\n        .build();\n    match config {\n        Ok(c) => println!(\"{:?}\", c),\n        Err(e) => println!(\"Error: {}\", e),\n    }\n    let bad = ConfigBuilder::new().build();\n    match bad {\n        Ok(c) => println!(\"{:?}\", c),\n        Err(e) => println!(\"Error: {}\", e),\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Define Config and ConfigBuilder",
+                                "explanation": "The Config struct holds the final values. The ConfigBuilder uses Option<String> for host (to detect if it was set) and plain values with defaults for port and max_retries.",
+                                "code": "struct ConfigBuilder {\n    host: Option<String>,\n    port: u16,\n    max_retries: u8,\n}"
+                            },
+                            {
+                                "title": "Chain setter methods with &mut Self",
+                                "explanation": "Each setter takes &mut self and returns &mut Self, enabling method chaining like builder.host(\"x\").port(3000). This is the standard Rust builder pattern.",
+                                "code": "fn host(&mut self, h: &str) -> &mut Self {\n    self.host = Some(h.to_string());\n    self\n}"
+                            },
+                            {
+                                "title": "Validate in build()",
+                                "explanation": "The build method validates required fields and returns Result. Using match with a guard clause (Some(h) if !h.is_empty()) elegantly handles both None and empty string cases.",
+                                "code": "fn build(&self) -> Result<Config, String> {\n    match &self.host {\n        Some(h) if !h.is_empty() => Ok(Config {\n            host: h.clone(),\n            port: self.port,\n            max_retries: self.max_retries,\n        }),\n        _ => Err(\"host is required\".to_string()),\n    }\n}"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-advanced-14",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Median Merge",
+                    "description": "Write `find_median_sorted(a: &[i32], b: &[i32]) -> f64` that finds the median of two sorted arrays. Use a merge approach: merge both arrays into one sorted array, then compute the median. For a=[1,3] and b=[2], the median is 2.0. For a=[1,2] and b=[3,4], the median is 2.5.\n\nExpected output:\n2\n2.5",
+                    "starterCode": "fn find_median_sorted(a: &[i32], b: &[i32]) -> f64 {\n    // Your code here\n    0.0\n}\n\nfn main() {\n    let r1 = find_median_sorted(&[1, 3], &[2]);\n    if r1.fract() == 0.0 {\n        println!(\"{}\", r1 as i32);\n    } else {\n        println!(\"{}\", r1);\n    }\n    let r2 = find_median_sorted(&[1, 2], &[3, 4]);\n    if r2.fract() == 0.0 {\n        println!(\"{}\", r2 as i32);\n    } else {\n        println!(\"{}\", r2);\n    }\n}\n",
+                    "hint": "Merge both arrays into a single sorted vector using two pointers. Then if the total length is odd, return the middle element; if even, return the average of the two middle elements.",
+                    "solution": {
+                        "code": "fn find_median_sorted(a: &[i32], b: &[i32]) -> f64 {\n    let mut merged = Vec::with_capacity(a.len() + b.len());\n    let (mut i, mut j) = (0, 0);\n    while i < a.len() && j < b.len() {\n        if a[i] <= b[j] {\n            merged.push(a[i]);\n            i += 1;\n        } else {\n            merged.push(b[j]);\n            j += 1;\n        }\n    }\n    while i < a.len() {\n        merged.push(a[i]);\n        i += 1;\n    }\n    while j < b.len() {\n        merged.push(b[j]);\n        j += 1;\n    }\n    let n = merged.len();\n    if n % 2 == 1 {\n        merged[n / 2] as f64\n    } else {\n        (merged[n / 2 - 1] + merged[n / 2]) as f64 / 2.0\n    }\n}\n\nfn main() {\n    let r1 = find_median_sorted(&[1, 3], &[2]);\n    if r1.fract() == 0.0 {\n        println!(\"{}\", r1 as i32);\n    } else {\n        println!(\"{}\", r1);\n    }\n    let r2 = find_median_sorted(&[1, 2], &[3, 4]);\n    if r2.fract() == 0.0 {\n        println!(\"{}\", r2 as i32);\n    } else {\n        println!(\"{}\", r2);\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Merge two sorted arrays",
+                                "explanation": "Use two pointers i and j to merge the sorted arrays into one. Compare elements and push the smaller one. After one array is exhausted, append the remainder of the other.",
+                                "code": "let (mut i, mut j) = (0, 0);\nwhile i < a.len() && j < b.len() {\n    if a[i] <= b[j] {\n        merged.push(a[i]);\n        i += 1;\n    } else {\n        merged.push(b[j]);\n        j += 1;\n    }\n}"
+                            },
+                            {
+                                "title": "Compute the median",
+                                "explanation": "For odd-length merged array, the median is the middle element. For even length, it's the average of the two middle elements. Integer division n/2 gives the correct index.",
+                                "code": "let n = merged.len();\nif n % 2 == 1 {\n    merged[n / 2] as f64\n} else {\n    (merged[n / 2 - 1] + merged[n / 2]) as f64 / 2.0\n}"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-advanced-15",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Cycle Detect",
+                    "description": "Write `has_cycle(adj: &Vec<Vec<usize>>, n: usize) -> bool` that detects if a directed graph has a cycle using DFS with three-color marking (white=unvisited, gray=in-progress, black=done). A back edge to a gray node means a cycle. Test with a graph that has a cycle: 0->1, 1->2, 2->0, 2->3 (true), and one without: 0->1, 1->2, 2->3 (false).\n\nExpected output:\ntrue\nfalse",
+                    "starterCode": "fn has_cycle(adj: &Vec<Vec<usize>>, n: usize) -> bool {\n    // Your code here\n    false\n}\n\nfn main() {\n    let mut g1 = vec![vec![]; 4];\n    g1[0].push(1);\n    g1[1].push(2);\n    g1[2].push(0);\n    g1[2].push(3);\n    println!(\"{}\", has_cycle(&g1, 4));\n\n    let mut g2 = vec![vec![]; 4];\n    g2[0].push(1);\n    g2[1].push(2);\n    g2[2].push(3);\n    println!(\"{}\", has_cycle(&g2, 4));\n}\n",
+                    "hint": "Use an array of colors (0=white, 1=gray, 2=black). In DFS, mark a node gray on entry. If you see a gray neighbor, there's a cycle. Mark black on exit.",
+                    "solution": {
+                        "code": "fn has_cycle(adj: &Vec<Vec<usize>>, n: usize) -> bool {\n    let mut color = vec![0u8; n];\n    for i in 0..n {\n        if color[i] == 0 {\n            if dfs(adj, i, &mut color) {\n                return true;\n            }\n        }\n    }\n    false\n}\n\nfn dfs(adj: &Vec<Vec<usize>>, node: usize, color: &mut Vec<u8>) -> bool {\n    color[node] = 1;\n    for &neighbor in &adj[node] {\n        if color[neighbor] == 1 {\n            return true;\n        }\n        if color[neighbor] == 0 && dfs(adj, neighbor, color) {\n            return true;\n        }\n    }\n    color[node] = 2;\n    false\n}\n\nfn main() {\n    let mut g1 = vec![vec![]; 4];\n    g1[0].push(1);\n    g1[1].push(2);\n    g1[2].push(0);\n    g1[2].push(3);\n    println!(\"{}\", has_cycle(&g1, 4));\n\n    let mut g2 = vec![vec![]; 4];\n    g2[0].push(1);\n    g2[1].push(2);\n    g2[2].push(3);\n    println!(\"{}\", has_cycle(&g2, 4));\n}",
+                        "steps": [
+                            {
+                                "title": "Three-color DFS scheme",
+                                "explanation": "White (0) = unvisited, Gray (1) = currently being explored (on the recursion stack), Black (2) = fully explored. A back edge to a gray node proves a cycle exists in a directed graph.",
+                                "code": "let mut color = vec![0u8; n];"
+                            },
+                            {
+                                "title": "Recursive DFS with cycle detection",
+                                "explanation": "Mark the current node gray. For each neighbor: if gray, we found a cycle (back edge). If white, recurse. After exploring all neighbors, mark the node black. This correctly handles disconnected components by starting DFS from every unvisited node.",
+                                "code": "fn dfs(adj: &Vec<Vec<usize>>, node: usize, color: &mut Vec<u8>) -> bool {\n    color[node] = 1;\n    for &neighbor in &adj[node] {\n        if color[neighbor] == 1 {\n            return true;\n        }\n        if color[neighbor] == 0 && dfs(adj, neighbor, color) {\n            return true;\n        }\n    }\n    color[node] = 2;\n    false\n}"
+                            },
+                            {
+                                "title": "Handle disconnected components",
+                                "explanation": "The outer loop starts DFS from each unvisited (white) node, ensuring cycles in disconnected components are also detected.",
+                                "code": "for i in 0..n {\n    if color[i] == 0 {\n        if dfs(adj, i, &mut color) {\n            return true;\n        }\n    }\n}"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-advanced-16",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Expr Evaluate",
+                    "description": "Write `evaluate(expr: &str) -> i64` that evaluates a simple arithmetic expression containing non-negative integers, +, -, and parentheses. Use a stack-based approach. Examples: \"3+(2-1)\" = 4, \"10-(2+3-(1+1))\" = 7. Print both results.\n\nExpected output:\n4\n7",
+                    "starterCode": "fn evaluate(expr: &str) -> i64 {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", evaluate(\"3+(2-1)\"));\n    println!(\"{}\", evaluate(\"10-(2+3-(1+1))\"));\n}\n",
+                    "hint": "Maintain a running result and a sign. When you hit '(', push the current result and sign onto a stack. When you hit ')', pop and combine. Parse multi-digit numbers by accumulating digits.",
+                    "solution": {
+                        "code": "fn evaluate(expr: &str) -> i64 {\n    let mut stack: Vec<(i64, i64)> = Vec::new();\n    let mut result: i64 = 0;\n    let mut sign: i64 = 1;\n    let mut num: i64 = 0;\n    let chars: Vec<char> = expr.chars().collect();\n    let mut i = 0;\n    while i < chars.len() {\n        let ch = chars[i];\n        if ch.is_ascii_digit() {\n            num = 0;\n            while i < chars.len() && chars[i].is_ascii_digit() {\n                num = num * 10 + (chars[i] as i64 - '0' as i64);\n                i += 1;\n            }\n            result += sign * num;\n            continue;\n        } else if ch == '+' {\n            sign = 1;\n        } else if ch == '-' {\n            sign = -1;\n        } else if ch == '(' {\n            stack.push((result, sign));\n            result = 0;\n            sign = 1;\n        } else if ch == ')' {\n            let (prev_result, prev_sign) = stack.pop().unwrap();\n            result = prev_result + prev_sign * result;\n        }\n        i += 1;\n    }\n    result\n}\n\nfn main() {\n    println!(\"{}\", evaluate(\"3+(2-1)\"));\n    println!(\"{}\", evaluate(\"10-(2+3-(1+1))\"));\n}",
+                        "steps": [
+                            {
+                                "title": "Parse numbers and operators",
+                                "explanation": "Iterate through characters. Accumulate consecutive digits into a number. On + or -, update the sign. Apply sign * num to the running result each time a complete number is parsed.",
+                                "code": "if ch.is_ascii_digit() {\n    num = 0;\n    while i < chars.len() && chars[i].is_ascii_digit() {\n        num = num * 10 + (chars[i] as i64 - '0' as i64);\n        i += 1;\n    }\n    result += sign * num;\n    continue;\n}"
+                            },
+                            {
+                                "title": "Handle parentheses with a stack",
+                                "explanation": "On '(', push the current (result, sign) and reset them — starting a fresh sub-expression. On ')', pop the saved state and combine: result = prev_result + prev_sign * current_result. This correctly handles nested parentheses.",
+                                "code": "} else if ch == '(' {\n    stack.push((result, sign));\n    result = 0;\n    sign = 1;\n} else if ch == ')' {\n    let (prev_result, prev_sign) = stack.pop().unwrap();\n    result = prev_result + prev_sign * result;\n}"
+                            },
+                            {
+                                "title": "Why this works for nested expressions",
+                                "explanation": "Each '(' creates a new scope by saving state to the stack. Nested parentheses simply add more frames. When ')' is encountered, we collapse the innermost scope back into its parent. This is elegant because there's no recursion — just a stack."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-advanced-17",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Knapsack Pack",
+                    "description": "Implement `knapsack(weights: &[usize], values: &[usize], capacity: usize) -> usize` for the 0/1 knapsack problem using bottom-up DP. Each item can be taken at most once. For weights=[1,2,3], values=[6,10,12], capacity=5, the max value is 22 (items 2 and 3). For weights=[2,3,4,5], values=[3,4,5,6], capacity=5, the max value is 7.\n\nExpected output:\n22\n7",
+                    "starterCode": "fn knapsack(weights: &[usize], values: &[usize], capacity: usize) -> usize {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", knapsack(&[1, 2, 3], &[6, 10, 12], 5));\n    println!(\"{}\", knapsack(&[2, 3, 4, 5], &[3, 4, 5, 6], 5));\n}\n",
+                    "hint": "Use a 1D DP array of size capacity+1. Iterate items in outer loop and capacities from capacity down to weight[i] in inner loop to avoid using an item twice.",
+                    "solution": {
+                        "code": "fn knapsack(weights: &[usize], values: &[usize], capacity: usize) -> usize {\n    let n = weights.len();\n    let mut dp = vec![0usize; capacity + 1];\n    for i in 0..n {\n        for w in (weights[i]..=capacity).rev() {\n            dp[w] = dp[w].max(dp[w - weights[i]] + values[i]);\n        }\n    }\n    dp[capacity]\n}\n\nfn main() {\n    println!(\"{}\", knapsack(&[1, 2, 3], &[6, 10, 12], 5));\n    println!(\"{}\", knapsack(&[2, 3, 4, 5], &[3, 4, 5, 6], 5));\n}",
+                        "steps": [
+                            {
+                                "title": "Space-optimized 1D DP",
+                                "explanation": "Instead of a 2D table [items][capacity], use a 1D array of size capacity+1. dp[w] represents the maximum value achievable with capacity w. This reduces space from O(n*W) to O(W).",
+                                "code": "let mut dp = vec![0usize; capacity + 1];"
+                            },
+                            {
+                                "title": "Iterate in reverse to prevent reuse",
+                                "explanation": "For each item, iterate capacity from high to low. This ensures each item is considered only once (0/1 constraint). If we iterated forward, dp[w - weight] might already include the current item, effectively allowing unlimited reuse.",
+                                "code": "for i in 0..n {\n    for w in (weights[i]..=capacity).rev() {\n        dp[w] = dp[w].max(dp[w - weights[i]] + values[i]);\n    }\n}"
+                            },
+                            {
+                                "title": "Read the answer",
+                                "explanation": "dp[capacity] holds the maximum value achievable using any subset of items within the given capacity. The reverse iteration guarantees correctness of the 0/1 constraint.",
+                                "code": "dp[capacity]"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-advanced-18",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Deref Magic",
+                    "description": "Create a custom smart pointer `MyBox<T>` that wraps a value and implements the `Deref` trait to allow transparent access to the inner value. Implement `MyBox::new(x: T)` and `Deref` for `MyBox<T>`. In main, create a MyBox<String> holding \"hello world\", then call a function `print_len(s: &str)` that prints the length — demonstrating Deref coercion from &MyBox<String> -> &String -> &str. Also print the value via *my_box.\n\nExpected output:\n11\nhello world",
+                    "starterCode": "use std::ops::Deref;\n\nstruct MyBox<T> {\n    value: T,\n}\n\nimpl<T> MyBox<T> {\n    fn new(x: T) -> Self {\n        // Your code here\n        todo!()\n    }\n}\n\nimpl<T> Deref for MyBox<T> {\n    type Target = T;\n\n    fn deref(&self) -> &T {\n        // Your code here\n        todo!()\n    }\n}\n\nfn print_len(s: &str) {\n    println!(\"{}\", s.len());\n}\n\nfn main() {\n    let my_box = MyBox::new(String::from(\"hello world\"));\n    print_len(&my_box);\n    println!(\"{}\", &*my_box);\n}\n",
+                    "hint": "Deref's deref() method returns &self.value. Rust's Deref coercion will automatically chain: &MyBox<String> -> &String -> &str when needed.",
+                    "solution": {
+                        "code": "use std::ops::Deref;\n\nstruct MyBox<T> {\n    value: T,\n}\n\nimpl<T> MyBox<T> {\n    fn new(x: T) -> Self {\n        MyBox { value: x }\n    }\n}\n\nimpl<T> Deref for MyBox<T> {\n    type Target = T;\n\n    fn deref(&self) -> &T {\n        &self.value\n    }\n}\n\nfn print_len(s: &str) {\n    println!(\"{}\", s.len());\n}\n\nfn main() {\n    let my_box = MyBox::new(String::from(\"hello world\"));\n    print_len(&my_box);\n    println!(\"{}\", &*my_box);\n}",
+                        "steps": [
+                            {
+                                "title": "Define the smart pointer struct",
+                                "explanation": "MyBox<T> is a generic struct that owns a value of type T. This mimics how Box<T> works, but on the stack. The new() method simply wraps the value.",
+                                "code": "struct MyBox<T> {\n    value: T,\n}\n\nimpl<T> MyBox<T> {\n    fn new(x: T) -> Self {\n        MyBox { value: x }\n    }\n}"
+                            },
+                            {
+                                "title": "Implement Deref trait",
+                                "explanation": "The Deref trait has an associated type Target = T and requires fn deref(&self) -> &T. By returning &self.value, the * operator and automatic Deref coercion work seamlessly.",
+                                "code": "impl<T> Deref for MyBox<T> {\n    type Target = T;\n\n    fn deref(&self) -> &T {\n        &self.value\n    }\n}"
+                            },
+                            {
+                                "title": "Deref coercion in action",
+                                "explanation": "When print_len(&my_box) is called, Rust automatically applies Deref coercion: &MyBox<String> -> &String (via our Deref impl) -> &str (via String's Deref impl). This chain happens implicitly and is one of Rust's most powerful ergonomic features.",
+                                "code": "print_len(&my_box);"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-advanced-19",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "Custom Serialize",
+                    "description": "Define a `User` struct with fields name (String), age (u32), and active (bool). Implement a `serialize(&self) -> String` method that produces the format \"name:age:active\". Also implement `deserialize(s: &str) -> Option<User>` that parses this format back. In main, serialize a user, print it, then deserialize it back and print the fields.\n\nExpected output:\nAlice:30:true\nname=Alice, age=30, active=true",
+                    "starterCode": "#[derive(Debug)]\nstruct User {\n    name: String,\n    age: u32,\n    active: bool,\n}\n\nimpl User {\n    fn serialize(&self) -> String {\n        // Your code here\n        String::new()\n    }\n\n    fn deserialize(s: &str) -> Option<User> {\n        // Your code here\n        None\n    }\n}\n\nfn main() {\n    let user = User {\n        name: \"Alice\".to_string(),\n        age: 30,\n        active: true,\n    };\n    let encoded = user.serialize();\n    println!(\"{}\", encoded);\n    if let Some(decoded) = User::deserialize(&encoded) {\n        println!(\"name={}, age={}, active={}\", decoded.name, decoded.age, decoded.active);\n    }\n}\n",
+                    "hint": "For serialize, use format!() with colon separators. For deserialize, split by ':', parse each field, and return None if parsing fails.",
+                    "solution": {
+                        "code": "#[derive(Debug)]\nstruct User {\n    name: String,\n    age: u32,\n    active: bool,\n}\n\nimpl User {\n    fn serialize(&self) -> String {\n        format!(\"{}:{}:{}\", self.name, self.age, self.active)\n    }\n\n    fn deserialize(s: &str) -> Option<User> {\n        let parts: Vec<&str> = s.split(':').collect();\n        if parts.len() != 3 {\n            return None;\n        }\n        let name = parts[0].to_string();\n        let age = parts[1].parse::<u32>().ok()?;\n        let active = parts[2].parse::<bool>().ok()?;\n        Some(User { name, age, active })\n    }\n}\n\nfn main() {\n    let user = User {\n        name: \"Alice\".to_string(),\n        age: 30,\n        active: true,\n    };\n    let encoded = user.serialize();\n    println!(\"{}\", encoded);\n    if let Some(decoded) = User::deserialize(&encoded) {\n        println!(\"name={}, age={}, active={}\", decoded.name, decoded.age, decoded.active);\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Implement serialize with format!",
+                                "explanation": "Use Rust's format! macro to join fields with a colon delimiter. The Display trait on String, u32, and bool handles conversion automatically.",
+                                "code": "fn serialize(&self) -> String {\n    format!(\"{}:{}:{}\", self.name, self.age, self.active)\n}"
+                            },
+                            {
+                                "title": "Implement deserialize with parsing",
+                                "explanation": "Split the string by ':', validate we have exactly 3 parts, then parse each field. Use the ? operator on .ok() to convert parse errors into None, making the function return Option<User> cleanly.",
+                                "code": "fn deserialize(s: &str) -> Option<User> {\n    let parts: Vec<&str> = s.split(':').collect();\n    if parts.len() != 3 {\n        return None;\n    }\n    let name = parts[0].to_string();\n    let age = parts[1].parse::<u32>().ok()?;\n    let active = parts[2].parse::<bool>().ok()?;\n    Some(User { name, age, active })\n}"
+                            },
+                            {
+                                "title": "Round-trip test",
+                                "explanation": "Serializing then deserializing should produce identical data. The .ok()? pattern converts Result to Option, propagating None on any parse failure — a common Rust idiom for fallible parsing."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-advanced-20",
+                    "language": "rust",
+                    "level": "advanced",
+                    "title": "State Machine",
+                    "description": "Model a turnstile state machine with enums. Define `enum State { Locked, Unlocked }` and `enum Event { Coin, Push }`. Implement `fn transition(state: State, event: Event) -> State` using match. Rules: Locked+Coin->Unlocked, Locked+Push->Locked, Unlocked+Coin->Unlocked, Unlocked+Push->Locked. In main, start from Locked and apply events [Coin, Push, Push, Coin, Coin, Push], printing the state after each.\n\nExpected output:\nUnlocked\nLocked\nLocked\nUnlocked\nUnlocked\nLocked",
+                    "starterCode": "#[derive(Debug, Clone)]\nenum State {\n    Locked,\n    Unlocked,\n}\n\nenum Event {\n    Coin,\n    Push,\n}\n\nfn transition(state: State, event: Event) -> State {\n    // Your code here\n    state\n}\n\nfn main() {\n    let events = vec![\n        Event::Coin,\n        Event::Push,\n        Event::Push,\n        Event::Coin,\n        Event::Coin,\n        Event::Push,\n    ];\n    let mut state = State::Locked;\n    for event in events {\n        state = transition(state, event);\n        println!(\"{:?}\", state);\n    }\n}\n",
+                    "hint": "Use a nested match: match (state, event) with four arms covering all combinations of State and Event.",
+                    "solution": {
+                        "code": "#[derive(Debug, Clone)]\nenum State {\n    Locked,\n    Unlocked,\n}\n\nenum Event {\n    Coin,\n    Push,\n}\n\nfn transition(state: State, event: Event) -> State {\n    match (state, event) {\n        (State::Locked, Event::Coin) => State::Unlocked,\n        (State::Locked, Event::Push) => State::Locked,\n        (State::Unlocked, Event::Coin) => State::Unlocked,\n        (State::Unlocked, Event::Push) => State::Locked,\n    }\n}\n\nfn main() {\n    let events = vec![\n        Event::Coin,\n        Event::Push,\n        Event::Push,\n        Event::Coin,\n        Event::Coin,\n        Event::Push,\n    ];\n    let mut state = State::Locked;\n    for event in events {\n        state = transition(state, event);\n        println!(\"{:?}\", state);\n    }\n}",
+                        "steps": [
+                            {
+                                "title": "Model states and events as enums",
+                                "explanation": "Enums are perfect for state machines in Rust because the compiler ensures exhaustive matching — you can't forget a state/event combination. Derive Debug for printing and Clone so state can be moved through transitions.",
+                                "code": "#[derive(Debug, Clone)]\nenum State {\n    Locked,\n    Unlocked,\n}\n\nenum Event {\n    Coin,\n    Push,\n}"
+                            },
+                            {
+                                "title": "Implement transitions with tuple matching",
+                                "explanation": "Match on (state, event) tuples to handle all four combinations. The compiler guarantees exhaustiveness — if you add a new State or Event variant later, Rust will force you to handle it.",
+                                "code": "fn transition(state: State, event: Event) -> State {\n    match (state, event) {\n        (State::Locked, Event::Coin) => State::Unlocked,\n        (State::Locked, Event::Push) => State::Locked,\n        (State::Unlocked, Event::Coin) => State::Unlocked,\n        (State::Unlocked, Event::Push) => State::Locked,\n    }\n}"
+                            },
+                            {
+                                "title": "Drive the state machine",
+                                "explanation": "Process a sequence of events by folding over them, updating state at each step. Printing after each transition shows the machine's behavior. This pattern scales well — add more states/events and Rust ensures correctness at compile time.",
+                                "code": "let mut state = State::Locked;\nfor event in events {\n    state = transition(state, event);\n    println!(\"{:?}\", state);\n}"
+                            }
+                        ]
+                    }
                 }
             ]
         }
