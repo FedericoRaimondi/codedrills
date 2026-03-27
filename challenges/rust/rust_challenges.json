@@ -1234,7 +1234,7 @@
                     "title": "Factorial Fun",
                     "description": "Write a function `factorial(n: u64) -> u64` that computes the factorial of `n`.\n\nExample: `factorial(6)` returns `720` because 6! = 720.\n\nExpected output:\n```\n720\n```",
                     "starterCode": "fn factorial(n: u64) -> u64 {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", factorial(6));\n}\n",
-                    "hint": "You can use (1..=n).product() to multiply all numbers from 1 to n, or use a recursive approach.",
+                    "hint": "You can use (1..=n).product() to multiply all numbers from 1 to n in a concise way.",
                     "solution": {
                         "code": "fn factorial(n: u64) -> u64 {\n    (1..=n).product()\n}\n\nfn main() {\n    println!(\"{}\", factorial(6));\n}",
                         "steps": [
@@ -3313,7 +3313,7 @@
                     "starterCode": "fn calculate(a: f64, op: char, b: f64) -> Option<f64> {\n    // Your code here\n    None\n}\n\nfn main() {\n    let ops = [(10.0, '+', 3.0), (10.0, '-', 3.0), (10.0, '*', 3.0), (10.0, '/', 3.0), (10.0, '/', 0.0)];\n    for (a, op, b) in &ops {\n        match calculate(*a, *op, *b) {\n            Some(r) => {\n                if r.fract() == 0.0 {\n                    println!(\"{} {} {} = {}\", *a as i32, op, *b as i32, r as i32);\n                } else {\n                    println!(\"{} {} {} = {:.4}\", *a as i32, op, *b as i32, r);\n                }\n            }\n            None => println!(\"{} {} {} = error\", *a as i32, op, *b as i32),\n        }\n    }\n}\n",
                     "hint": "Use a match on the operator char. For division, check if b is 0.0 first. Return Some(result) for valid operations.",
                     "solution": {
-                        "code": "fn calculate(a: f64, op: char, b: f64) -> Option<f64> {\n    match op {\n        '+' => Some(a + b),\n        '-' => Some(a - b),\n        '*' => Some(a * b),\n        '/' => if b == 0.0 { None } else { Some(a / b) },\n        _ => None,\n    }\n}\n\nfn main() {\n    let ops = [(10.0, '+', 3.0), (10.0, '-', 3.0), (10.0, '*', 3.0), (10.0, '/', 3.0), (10.0, '/', 0.0)];\n    for (a, op, b) in &ops {\n        match calculate(*a, *op, *b) {\n            Some(r) => {\n                if r.fract() == 0.0 {\n                    println!(\"{} {} {} = {}\", *a as i32, op, *b as i32, r as i32);\n                } else {\n                    println!(\"{} {} {} = {:.4}\", *a as i32, op, *b as i32, r);\n                }\n            }\n            None => println!(\"{} {} {} = error\", *a as i32, op, *b as i32),\n        }\n    }\n}",
+                        "code": "fn calculate(a: f64, op: char, b: f64) -> Option<f64> {\n    match op {\n        '+' => Some(a + b),\n        '-' => Some(a - b),\n        '*' => Some(a * b),\n        '/' => if b.abs() < f64::EPSILON { None } else { Some(a / b) },\n        _ => None,\n    }\n}\n\nfn main() {\n    let ops = [(10.0, '+', 3.0), (10.0, '-', 3.0), (10.0, '*', 3.0), (10.0, '/', 3.0), (10.0, '/', 0.0)];\n    for (a, op, b) in &ops {\n        match calculate(*a, *op, *b) {\n            Some(r) => {\n                if r.fract() == 0.0 {\n                    println!(\"{} {} {} = {}\", *a as i32, op, *b as i32, r as i32);\n                } else {\n                    println!(\"{} {} {} = {:.4}\", *a as i32, op, *b as i32, r);\n                }\n            }\n            None => println!(\"{} {} {} = error\", *a as i32, op, *b as i32),\n        }\n    }\n}",
                         "steps": [
                             {
                                 "title": "Match on operator",
@@ -3323,7 +3323,7 @@
                             {
                                 "title": "Handle division safely",
                                 "explanation": "Check for division by zero and return None. Otherwise return Some(a / b).",
-                                "code": "'/' => if b == 0.0 { None } else { Some(a / b) },"
+                                "code": "'/' => if b.abs() < f64::EPSILON { None } else { Some(a / b) },"
                             },
                             {
                                 "title": "Format results",
