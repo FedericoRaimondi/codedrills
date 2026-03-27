@@ -1833,7 +1833,7 @@
                     "language": "javascript",
                     "level": "advanced",
                     "title": "Topo Sort",
-                    "description": "Write function topoSort(graph) that performs topological sort on a directed acyclic graph represented as an adjacency list. Test with {a:[\"b\",\"c\"], b:[\"d\"], c:[\"d\"], d:[]}. Expected output: `a,c,b,d`.",
+                    "description": "Write function topoSort(graph) that performs a DFS-based topological sort on a directed acyclic graph. Iterate nodes in insertion order and visit neighbors left-to-right. Test with {a:[\"b\",\"c\"], b:[\"d\"], c:[\"d\"], d:[]}. Expected output: `a,c,b,d`.",
                     "starterCode": "function topoSort(graph) {\n  // Your code here\n}\n",
                     "hint": "Use DFS with a visited set; prepend each node to the result after visiting all its neighbors.",
                     "solution": {
@@ -1941,7 +1941,7 @@
                     "language": "javascript",
                     "level": "advanced",
                     "title": "Rate Gate",
-                    "description": "Write function createRateLimiter(maxCalls, windowMs) that returns a function allowing at most maxCalls within windowMs milliseconds. Test with a limit of 2 calls. Expected output: `true`, `true`, then `false`.",
+                    "description": "Write function createRateLimiter(maxCalls, windowMs) that returns a function allowing at most maxCalls within a sliding time window. Call it 3 times synchronously with a limit of 2 — the third call exceeds the limit. Expected output: `true`, `true`, then `false`.",
                     "starterCode": "function createRateLimiter(maxCalls, windowMs) {\n  // Your code here\n}\n",
                     "hint": "Track call timestamps and remove expired ones before checking the limit.",
                     "solution": {
