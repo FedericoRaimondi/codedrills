@@ -32,6 +32,7 @@ import sys
 OUTPUT_DIR = "output"
 CHALLENGES_OUTPUT = "challenges.json"
 LESSONS_OUTPUT = "lessons.json"
+LEVELS = ["new", "beginner", "intermediate", "advanced"]
 
 # ---------------------------------------------------------------------------
 # JSON helpers
@@ -58,6 +59,7 @@ def write_json(path: str, data: dict) -> None:
         json.dump(data, fh, ensure_ascii=False, indent=2)
         fh.write("\n")
 
+
 # ---------------------------------------------------------------------------
 # Collection helpers
 # ---------------------------------------------------------------------------
@@ -74,6 +76,7 @@ def _iter_json_files(base_dir: str) -> list[str]:
                 paths.append(os.path.join(dirpath, fname))
     return sorted(paths)
 
+
 # ---------------------------------------------------------------------------
 # Challenges
 # ---------------------------------------------------------------------------
@@ -82,28 +85,47 @@ def _iter_json_files(base_dir: str) -> list[str]:
 def merge_challenges(root: str, output_path: str) -> None:
     """Collect all challenges from ``challenges/`` and write *output_path*.
 
+    Output is grouped by language and level:
+    ``{"languages": [{"language": "...", "levels": [{"level": "...", "challenges": [...]}]}]}``
+
     If *output_path* already exists its entries are loaded first and take
     priority over the freshly read source files.
     """
-    # Seed with existing output so existing IDs take priority.
+    # existing_ids tracks all IDs seen so far for deduplication.
     existing_ids: set[str] = set()
-    merged: list[dict] = []
+    # lang_level_map: language -> level -> list[dict]
+    lang_level_map: dict[str, dict[str, list[dict]]] = {}
 
+    # Seed with existing output so existing IDs take priority.
     if os.path.isfile(output_path):
         existing = load_json_or_exit(output_path)
-        for ch in existing.get("challenges", []):
-            cid = ch.get("id")
-            if cid and cid not in existing_ids:
-                merged.append(ch)
-                existing_ids.add(cid)
-        print(f"  Loaded {len(merged)} existing challenge(s) from '{output_path}'.")
+        count = 0
+        for lang_obj in existing.get("languages", []):
+            lang = lang_obj.get("language", "")
+            if lang not in lang_level_map:
+                lang_level_map[lang] = {lv: [] for lv in LEVELS}
+            for level_obj in lang_obj.get("levels", []):
+                lv = level_obj.get("level", "")
+                for ch in level_obj.get("challenges", []):
+                    cid = ch.get("id")
+                    if cid and cid not in existing_ids:
+                        lang_level_map[lang].setdefault(lv, []).append(ch)
+                        existing_ids.add(cid)
+                        count += 1
+        print(f"  Loaded {count} existing challenge(s) from '{output_path}'.")
 
     added = 0
     skipped = 0
     challenges_dir = os.path.join(root, "challenges")
     for path in _iter_json_files(challenges_dir):
         data = load_json_or_exit(path)
+        lang = data.get("language", "")
+        if not lang:
+            continue
+        if lang not in lang_level_map:
+            lang_level_map[lang] = {lv: [] for lv in LEVELS}
         for level_obj in data.get("levels", []):
+            lv = level_obj.get("level", "")
             for ch in level_obj.get("challenges", []):
                 cid = ch.get("id")
                 if not cid:
@@ -111,18 +133,31 @@ def merge_challenges(root: str, output_path: str) -> None:
                 if cid in existing_ids:
                     skipped += 1
                 else:
-                    merged.append(ch)
+                    lang_level_map[lang].setdefault(lv, []).append(ch)
                     existing_ids.add(cid)
                     added += 1
 
-    output = {
-        "challenges": merged,
-    }
+    # Build output structure.
+    languages_list: list[dict] = []
+    for lang in sorted(lang_level_map):
+        levels_list: list[dict] = []
+        for lv in LEVELS:
+            levels_list.append(
+                {
+                    "level": lv,
+                    "challenges": lang_level_map[lang].get(lv, []),
+                }
+            )
+        languages_list.append({"language": lang, "levels": levels_list})
+
+    output = {"languages": languages_list}
     write_json(output_path, output)
+    total = sum(len(v) for m in lang_level_map.values() for v in m.values())
     print(
         f"  Challenges: {added} added, {skipped} duplicate(s) skipped. "
-        f"Total: {len(merged)}. Saved to '{output_path}'."
+        f"Total: {total}. Saved to '{output_path}'."
     )
+
 
 # ---------------------------------------------------------------------------
 # Lessons (topics)
@@ -132,27 +167,45 @@ def merge_challenges(root: str, output_path: str) -> None:
 def merge_lessons(root: str, output_path: str) -> None:
     """Collect all topics from ``topics/`` and write *output_path*.
 
+    Output is grouped by language and level:
+    ``{"languages": [{"language": "...", "levels": [{"level": "...", "topics": [...]}]}]}``
+
     If *output_path* already exists its entries are loaded first and take
     priority over the freshly read source files.
     """
     existing_ids: set[str] = set()
-    merged: list[dict] = []
+    # lang_level_map: language -> level -> list[dict]
+    lang_level_map: dict[str, dict[str, list[dict]]] = {}
 
     if os.path.isfile(output_path):
         existing = load_json_or_exit(output_path)
-        for topic in existing.get("topics", []):
-            tid = topic.get("id")
-            if tid and tid not in existing_ids:
-                merged.append(topic)
-                existing_ids.add(tid)
-        print(f"  Loaded {len(merged)} existing topic(s) from '{output_path}'.")
+        count = 0
+        for lang_obj in existing.get("languages", []):
+            lang = lang_obj.get("language", "")
+            if lang not in lang_level_map:
+                lang_level_map[lang] = {lv: [] for lv in LEVELS}
+            for level_obj in lang_obj.get("levels", []):
+                lv = level_obj.get("level", "")
+                for topic in level_obj.get("topics", []):
+                    tid = topic.get("id")
+                    if tid and tid not in existing_ids:
+                        lang_level_map[lang].setdefault(lv, []).append(topic)
+                        existing_ids.add(tid)
+                        count += 1
+        print(f"  Loaded {count} existing topic(s) from '{output_path}'.")
 
     added = 0
     skipped = 0
     topics_dir = os.path.join(root, "topics")
     for path in _iter_json_files(topics_dir):
         data = load_json_or_exit(path)
+        lang = data.get("language", "")
+        if not lang:
+            continue
+        if lang not in lang_level_map:
+            lang_level_map[lang] = {lv: [] for lv in LEVELS}
         for level_obj in data.get("levels", []):
+            lv = level_obj.get("level", "")
             for topic in level_obj.get("topics", []):
                 tid = topic.get("id")
                 if not tid:
@@ -160,18 +213,31 @@ def merge_lessons(root: str, output_path: str) -> None:
                 if tid in existing_ids:
                     skipped += 1
                 else:
-                    merged.append(topic)
+                    lang_level_map[lang].setdefault(lv, []).append(topic)
                     existing_ids.add(tid)
                     added += 1
 
-    output = {
-        "topics": merged,
-    }
+    # Build output structure.
+    languages_list: list[dict] = []
+    for lang in sorted(lang_level_map):
+        levels_list: list[dict] = []
+        for lv in LEVELS:
+            levels_list.append(
+                {
+                    "level": lv,
+                    "topics": lang_level_map[lang].get(lv, []),
+                }
+            )
+        languages_list.append({"language": lang, "levels": levels_list})
+
+    output = {"languages": languages_list}
     write_json(output_path, output)
+    total = sum(len(v) for m in lang_level_map.values() for v in m.values())
     print(
         f"  Lessons: {added} added, {skipped} duplicate(s) skipped. "
-        f"Total: {len(merged)}. Saved to '{output_path}'."
+        f"Total: {total}. Saved to '{output_path}'."
     )
+
 
 # ---------------------------------------------------------------------------
 # Entry point
