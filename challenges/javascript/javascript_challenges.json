@@ -1833,7 +1833,7 @@
                     "language": "javascript",
                     "level": "advanced",
                     "title": "Topo Sort",
-                    "description": "Write function topoSort(graph) that performs topological sort on a directed acyclic graph represented as an adjacency list. Test with {a:[\"b\",\"c\"], b:[\"d\"], c:[\"d\"], d:[]}. Expected output: `a,b,c,d`.",
+                    "description": "Write function topoSort(graph) that performs topological sort on a directed acyclic graph represented as an adjacency list. Test with {a:[\"b\",\"c\"], b:[\"d\"], c:[\"d\"], d:[]}. Expected output: `a,c,b,d`.",
                     "starterCode": "function topoSort(graph) {\n  // Your code here\n}\n",
                     "hint": "Use DFS with a visited set; prepend each node to the result after visiting all its neighbors.",
                     "solution": {
@@ -1850,7 +1850,7 @@
                             },
                             {
                                 "title": "Verify the result",
-                                "explanation": "Running the code prints a,b,c,d — a valid topological ordering."
+                                "explanation": "Running the code prints a,c,b,d — a valid topological ordering."
                             }
                         ]
                     }
