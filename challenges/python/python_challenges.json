@@ -5419,24 +5419,24 @@
           "language": "python",
           "level": "intermediate",
           "title": "FizzBuzz Flow",
-          "description": "Write `fizzbuzz(n)` returning a list from 1..n with `Fizz` for multiples of 3, `Buzz` for 5, `FizzBuzz` for both, else number as string. Example `n=5 -> [\"1\",\"2\",\"Fizz\",\"4\",\"Buzz\"]`.",
+          "description": "Write `fizzbuzz(n)` returning a list from 1..n with `Fizz` for multiples of 3, `Buzz` for 5, `FizzBuzz` for both, else the number as a string. Example: `fizzbuzz(5)` -> `[\"1\",\"2\",\"Fizz\",\"4\",\"Buzz\"]`.",
           "starterCode": "def fizzbuzz(n):\n    # Your code here\n    pass\n",
           "hint": "Check divisibility by 15 before 3 or 5.",
           "solution": {
-            "code": "def fizzbuzz(n):\n    out = []\n    for i in range(1, n + 1):\n        if i % 15 == 0:\n            out.append(\"FizzBuzz\")\n        elif i % 3 == 0:\n            out.append(\"Fizz\")\n        elif i % 5 == 0:\n            out.append(\"Buzz\")\n        else:\n            out.append(str(i))\n    return out",
+            "code": "def fizzbuzz(n):\n    result = []\n    for i in range(1, n + 1):\n        if i % 15 == 0:\n            result.append(\"FizzBuzz\")\n        elif i % 3 == 0:\n            result.append(\"Fizz\")\n        elif i % 5 == 0:\n            result.append(\"Buzz\")\n        else:\n            result.append(str(i))\n    return result",
             "steps": [
               {
                 "title": "Understand the goal",
-                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                "explanation": "We must produce a list with special labels for multiples of 3 and 5."
               },
               {
                 "title": "Implement the core logic",
-                "explanation": "Apply the language feature that directly solves the task.",
-                "code": "def fizzbuzz(n):\n    out = []\n    for i in range(1, n + 1):\n        if i % 15 == 0:\n            out.append(\"FizzBuzz\")\n        elif i % 3 == 0:\n            out.append(\"Fizz\")\n        elif i % 5 == 0:\n            out.append(\"Buzz\")\n        else:\n            out.append(str(i))\n    return out"
+                "explanation": "Loop through 1..n and append the correct string for each value.",
+                "code": "def fizzbuzz(n):\n    result = []\n    for i in range(1, n + 1):\n        if i % 15 == 0:\n            result.append(\"FizzBuzz\")\n        elif i % 3 == 0:\n            result.append(\"Fizz\")\n        elif i % 5 == 0:\n            result.append(\"Buzz\")\n        else:\n            result.append(str(i))\n    return result"
               },
               {
                 "title": "Verify expected result",
-                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                "explanation": "Call fizzbuzz(5) and confirm the list matches the example output."
               }
             ]
           }
@@ -5445,25 +5445,25 @@
           "id": "py-intermediate-2",
           "language": "python",
           "level": "intermediate",
-          "title": "Run Counter",
-          "description": "Write `running_sum(numbers)` returning cumulative totals. Example: `[2,1,3] -> [2,3,6]`.",
-          "starterCode": "def running_sum(numbers):\n    # Your code here\n    pass\n",
-          "hint": "Keep a running total and append it each loop.",
+          "title": "Running Sum",
+          "description": "Write `running_sum(nums)` returning cumulative totals. Example: `running_sum([2,1,3])` -> `[2,3,6]`.",
+          "starterCode": "def running_sum(nums):\n    # Your code here\n    pass\n",
+          "hint": "Keep a running total and append it each step.",
           "solution": {
-            "code": "def running_sum(numbers):\n    total = 0\n    result = []\n    for n in numbers:\n        total += n\n        result.append(total)\n    return result",
+            "code": "def running_sum(nums):\n    total = 0\n    out = []\n    for n in nums:\n        total += n\n        out.append(total)\n    return out",
             "steps": [
               {
                 "title": "Understand the goal",
-                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                "explanation": "Each position should hold the sum of all elements up to that index."
               },
               {
                 "title": "Implement the core logic",
-                "explanation": "Apply the language feature that directly solves the task.",
-                "code": "def running_sum(numbers):\n    total = 0\n    result = []\n    for n in numbers:\n        total += n\n        result.append(total)\n    return result"
+                "explanation": "Accumulate a running total and append it to the output list.",
+                "code": "def running_sum(nums):\n    total = 0\n    out = []\n    for n in nums:\n        total += n\n        out.append(total)\n    return out"
               },
               {
                 "title": "Verify expected result",
-                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                "explanation": "Call running_sum([2,1,3]) and confirm it returns [2,3,6]."
               }
             ]
           }
@@ -5473,24 +5473,24 @@
           "language": "python",
           "level": "intermediate",
           "title": "Group By First",
-          "description": "Write `group_by_first(words)` mapping each first letter to list of words in input order. Example: `[\"cat\",\"car\",\"dog\"] -> {\"c\":[\"cat\",\"car\"],\"d\":[\"dog\"]}`.",
+          "description": "Write `group_by_first(words)` mapping each first letter to a list of words in input order. Example: `group_by_first([\"cat\",\"car\",\"dog\"])` -> `{\"c\": [\"cat\", \"car\"], \"d\": [\"dog\"]}`.",
           "starterCode": "def group_by_first(words):\n    # Your code here\n    pass\n",
-          "hint": "Use setdefault(key, []) before append.",
+          "hint": "Use a dictionary and append to a list for each starting letter.",
           "solution": {
             "code": "def group_by_first(words):\n    groups = {}\n    for word in words:\n        key = word[0]\n        groups.setdefault(key, []).append(word)\n    return groups",
             "steps": [
               {
                 "title": "Understand the goal",
-                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                "explanation": "We group words by their first character while keeping order."
               },
               {
                 "title": "Implement the core logic",
-                "explanation": "Apply the language feature that directly solves the task.",
+                "explanation": "Use setdefault to create lists per key and append each word.",
                 "code": "def group_by_first(words):\n    groups = {}\n    for word in words:\n        key = word[0]\n        groups.setdefault(key, []).append(word)\n    return groups"
               },
               {
                 "title": "Verify expected result",
-                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                "explanation": "Call group_by_first([\"cat\",\"car\",\"dog\"]) and confirm the dictionary matches the example."
               }
             ]
           }
@@ -5499,8 +5499,8 @@
           "id": "py-intermediate-4",
           "language": "python",
           "level": "intermediate",
-          "title": "Prime Checkpoint",
-          "description": "Write `is_prime(n)` that returns True for primes and False otherwise. `n < 2` is not prime. Examples: `11 -> True`, `12 -> False`.",
+          "title": "Prime Check",
+          "description": "Write `is_prime(n)` returning True for primes and False otherwise. `n < 2` is not prime. Example: `is_prime(11)` -> `True`, `is_prime(12)` -> `False`.",
           "starterCode": "def is_prime(n):\n    # Your code here\n    pass\n",
           "hint": "Only test divisors up to int(sqrt(n)).",
           "solution": {
@@ -5508,16 +5508,16 @@
             "steps": [
               {
                 "title": "Understand the goal",
-                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                "explanation": "A prime has no positive divisors other than 1 and itself."
               },
               {
                 "title": "Implement the core logic",
-                "explanation": "Apply the language feature that directly solves the task.",
+                "explanation": "Check divisibility up to the square root to decide primality.",
                 "code": "def is_prime(n):\n    if n < 2:\n        return False\n    limit = int(n ** 0.5)\n    for d in range(2, limit + 1):\n        if n % d == 0:\n            return False\n    return True"
               },
               {
                 "title": "Verify expected result",
-                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                "explanation": "Confirm is_prime(11) is True and is_prime(12) is False."
               }
             ]
           }
@@ -5527,7 +5527,7 @@
           "language": "python",
           "level": "intermediate",
           "title": "Rotate Right",
-          "description": "Write `rotate_right(items, k)` returning a new list rotated right by k. Example: `[1,2,3,4],1 -> [4,1,2,3]`.",
+          "description": "Write `rotate_right(items, k)` returning a new list rotated right by k. Example: `rotate_right([1,2,3,4], 1)` -> `[4,1,2,3]`.",
           "starterCode": "def rotate_right(items, k):\n    # Your code here\n    pass\n",
           "hint": "Normalize k with modulo and combine slices.",
           "solution": {
@@ -5535,16 +5535,16 @@
             "steps": [
               {
                 "title": "Understand the goal",
-                "explanation": "Read the requirement carefully and focus on producing the exact expected output or return value."
+                "explanation": "Right rotation moves the last k elements to the front."
               },
               {
                 "title": "Implement the core logic",
-                "explanation": "Apply the language feature that directly solves the task.",
+                "explanation": "Use slicing after normalizing k with modulo.",
                 "code": "def rotate_right(items, k):\n    if not items:\n        return []\n    k = k % len(items)\n    return items[-k:] + items[:-k]"
               },
               {
                 "title": "Verify expected result",
-                "explanation": "Run the code with the example case and confirm the output/return value matches exactly."
+                "explanation": "Call rotate_right([1,2,3,4], 1) and confirm it returns [4,1,2,3]."
               }
             ]
           }
@@ -5553,20 +5553,20 @@
           "id": "py-intermediate-6",
           "language": "python",
           "level": "intermediate",
-          "title": "Matrix Flip",
-          "description": "Write `transpose(matrix)` that returns the transpose of a 2D list. Rows become columns and columns become rows. Example: `[[1,2,3],[4,5,6]]` -> `[[1,4],[2,5],[3,6]]`.",
+          "title": "Transpose",
+          "description": "Write `transpose(matrix)` that returns the transpose of a 2D list. Example: `transpose([[1,2,3],[4,5,6]])` -> `[[1,4],[2,5],[3,6]]`.",
           "starterCode": "def transpose(matrix):\n    # Your code here\n    pass\n",
-          "hint": "Use zip(*matrix) and convert each tuple back to a list.",
+          "hint": "Use zip(*matrix) and convert rows back to lists.",
           "solution": {
             "code": "def transpose(matrix):\n    return [list(row) for row in zip(*matrix)]",
             "steps": [
               {
                 "title": "Understand the goal",
-                "explanation": "We need to swap rows and columns of a 2D list so that element at position [i][j] moves to [j][i]."
+                "explanation": "Rows should become columns and columns become rows."
               },
               {
                 "title": "Implement the core logic",
-                "explanation": "Use zip(*matrix) to unpack rows as arguments to zip, which groups elements by column index. Convert each resulting tuple to a list.",
+                "explanation": "Use zip with unpacking and convert tuples to lists.",
                 "code": "def transpose(matrix):\n    return [list(row) for row in zip(*matrix)]"
               },
               {
@@ -5581,24 +5581,24 @@
           "language": "python",
           "level": "intermediate",
           "title": "Caesar Shift",
-          "description": "Write `caesar_encode(text, shift)` that shifts each letter by `shift` positions in the alphabet, wrapping around. Non-letter characters stay unchanged. Example: `caesar_encode('abc', 2)` -> `'cde'`, `caesar_encode('xyz', 3)` -> `'abc'`.",
+          "description": "Write `caesar_encode(text, shift)` that shifts each letter by `shift` positions, wrapping around. Non-letters stay unchanged. Example: `caesar_encode('abc', 2)` -> `'cde'`.",
           "starterCode": "def caesar_encode(text, shift):\n    # Your code here\n    pass\n",
-          "hint": "Use ord() and chr() with modulo 26 to wrap around the alphabet.",
+          "hint": "Use ord/chr and modulo 26 for wrapping.",
           "solution": {
-            "code": "def caesar_encode(text, shift):\n    result = []\n    for ch in text:\n        if ch.isalpha():\n            base = ord('A') if ch.isupper() else ord('a')\n            result.append(chr((ord(ch) - base + shift) % 26 + base))\n        else:\n            result.append(ch)\n    return ''.join(result)",
+            "code": "def caesar_encode(text, shift):\n    out = []\n    for ch in text:\n        if ch.isalpha():\n            base = ord('A') if ch.isupper() else ord('a')\n            out.append(chr((ord(ch) - base + shift) % 26 + base))\n        else:\n            out.append(ch)\n    return ''.join(out)",
             "steps": [
               {
                 "title": "Understand the goal",
-                "explanation": "Each letter in the text must be shifted forward by the given number of positions, wrapping z->a. Non-letter characters are left as-is."
+                "explanation": "We shift each letter within its alphabet and keep other characters."
               },
               {
                 "title": "Implement the core logic",
-                "explanation": "For each character, determine if it is a letter. If so, calculate its offset from 'a' or 'A', add the shift, use modulo 26 to wrap, and convert back with chr().",
-                "code": "def caesar_encode(text, shift):\n    result = []\n    for ch in text:\n        if ch.isalpha():\n            base = ord('A') if ch.isupper() else ord('a')\n            result.append(chr((ord(ch) - base + shift) % 26 + base))\n        else:\n            result.append(ch)\n    return ''.join(result)"
+                "explanation": "Compute letter offsets with ord/chr and wrap using modulo 26.",
+                "code": "def caesar_encode(text, shift):\n    out = []\n    for ch in text:\n        if ch.isalpha():\n            base = ord('A') if ch.isupper() else ord('a')\n            out.append(chr((ord(ch) - base + shift) % 26 + base))\n        else:\n            out.append(ch)\n    return ''.join(out)"
               },
               {
                 "title": "Verify expected result",
-                "explanation": "Call caesar_encode('abc', 2) and confirm it returns 'cde'. Call caesar_encode('xyz', 3) and confirm it returns 'abc'."
+                "explanation": "Call caesar_encode('abc', 2) and confirm it returns 'cde'."
               }
             ]
           }
@@ -5608,24 +5608,24 @@
           "language": "python",
           "level": "intermediate",
           "title": "Anagram Groups",
-          "description": "Write `anagram_groups(words)` that groups a list of strings into sublists of anagrams. Return a list of sorted groups, where each group is sorted alphabetically. Example: `anagram_groups(['eat','tea','tan','ate','nat','bat'])` -> `[['ate','eat','tea'],['bat'],['nat','tan']]`.",
+          "description": "Write `anagram_groups(words)` that groups words into lists of anagrams. Return the groups sorted alphabetically within each group. Example: `anagram_groups(['eat','tea','tan','ate','nat','bat'])` -> `[['ate','eat','tea'],['bat'],['nat','tan']]`.",
           "starterCode": "def anagram_groups(words):\n    # Your code here\n    pass\n",
-          "hint": "Sort the letters of each word to create a key, then group words sharing the same key using a dict.",
+          "hint": "Use sorted letters as a dictionary key.",
           "solution": {
-            "code": "def anagram_groups(words):\n    groups = {}\n    for word in words:\n        key = ''.join(sorted(word))\n        groups.setdefault(key, []).append(word)\n    return sorted(sorted(g) for g in groups.values())",
+            "code": "def anagram_groups(words):\n    groups = {}\n    for word in words:\n        key = ''.join(sorted(word))\n        groups.setdefault(key, []).append(word)\n    return sorted([sorted(g) for g in groups.values()])",
             "steps": [
               {
                 "title": "Understand the goal",
-                "explanation": "We need to group words that are anagrams of each other. Two words are anagrams if they contain the same letters in any order."
+                "explanation": "Anagrams share the same letters, so we can group by sorted characters."
               },
               {
                 "title": "Implement the core logic",
-                "explanation": "Use a dictionary where each key is the sorted letters of a word. Append each word to the list under its key. Finally sort each group and sort the list of groups.",
-                "code": "def anagram_groups(words):\n    groups = {}\n    for word in words:\n        key = ''.join(sorted(word))\n        groups.setdefault(key, []).append(word)\n    return sorted(sorted(g) for g in groups.values())"
+                "explanation": "Map sorted-word keys to lists, then sort each group and the group list.",
+                "code": "def anagram_groups(words):\n    groups = {}\n    for word in words:\n        key = ''.join(sorted(word))\n        groups.setdefault(key, []).append(word)\n    return sorted([sorted(g) for g in groups.values()])"
               },
               {
                 "title": "Verify expected result",
-                "explanation": "Call anagram_groups(['eat','tea','tan','ate','nat','bat']) and confirm the output is [['ate','eat','tea'],['bat'],['nat','tan']]."
+                "explanation": "Call anagram_groups(['eat','tea','tan','ate','nat','bat']) and confirm the grouped output."
               }
             ]
           }
@@ -5634,25 +5634,25 @@
           "id": "py-intermediate-9",
           "language": "python",
           "level": "intermediate",
-          "title": "Balanced Parens",
-          "description": "Write `is_balanced(s)` that returns True if the string has balanced parentheses, brackets, and braces. Example: `is_balanced('({[]})') -> True`, `is_balanced('([)]') -> False`.",
+          "title": "Balanced Brackets",
+          "description": "Write `is_balanced(s)` that returns True if parentheses, brackets, and braces are balanced. Example: `is_balanced('({[]})')` -> `True`, `is_balanced('([)]')` -> `False`.",
           "starterCode": "def is_balanced(s):\n    # Your code here\n    pass\n",
-          "hint": "Use a stack. Push opening brackets, pop on closing ones, and check they match.",
+          "hint": "Use a stack and a matching-pairs map.",
           "solution": {
             "code": "def is_balanced(s):\n    stack = []\n    pairs = {')': '(', ']': '[', '}': '{'}\n    for ch in s:\n        if ch in '([{':\n            stack.append(ch)\n        elif ch in pairs:\n            if not stack or stack[-1] != pairs[ch]:\n                return False\n            stack.pop()\n    return len(stack) == 0",
             "steps": [
               {
                 "title": "Understand the goal",
-                "explanation": "We must verify that every opening bracket has a matching closing bracket in the correct order. A stack is the classic data structure for this."
+                "explanation": "Each opener must be closed in the correct order."
               },
               {
                 "title": "Implement the core logic",
-                "explanation": "Iterate through the string. Push opening brackets onto a stack. When a closing bracket appears, check that the top of the stack is its matching opener. If not, return False. At the end, the stack must be empty.",
+                "explanation": "Push openers, pop on closers and verify matching pairs.",
                 "code": "def is_balanced(s):\n    stack = []\n    pairs = {')': '(', ']': '[', '}': '{'}\n    for ch in s:\n        if ch in '([{':\n            stack.append(ch)\n        elif ch in pairs:\n            if not stack or stack[-1] != pairs[ch]:\n                return False\n            stack.pop()\n    return len(stack) == 0"
               },
               {
                 "title": "Verify expected result",
-                "explanation": "Call is_balanced('({[]})') and confirm True. Call is_balanced('([)]') and confirm False."
+                "explanation": "Check that is_balanced('({[]})') is True and is_balanced('([)]') is False."
               }
             ]
           }
@@ -5662,24 +5662,24 @@
           "language": "python",
           "level": "intermediate",
           "title": "Roman Reader",
-          "description": "Write `roman_to_int(s)` that converts a Roman numeral string to an integer. Example: `roman_to_int('XIV')` -> `14`, `roman_to_int('MCMXCIV')` -> `1994`.",
+          "description": "Write `roman_to_int(s)` converting Roman numerals to integers. Example: `roman_to_int('XIV')` -> `14`.",
           "starterCode": "def roman_to_int(s):\n    # Your code here\n    pass\n",
-          "hint": "Map each Roman letter to its value. If a smaller value precedes a larger one, subtract it instead of adding.",
+          "hint": "If a smaller value precedes a larger one, subtract it.",
           "solution": {
-            "code": "def roman_to_int(s):\n    values = {'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000}\n    total = 0\n    for i in range(len(s)):\n        if i + 1 < len(s) and values[s[i]] < values[s[i+1]]:\n            total -= values[s[i]]\n        else:\n            total += values[s[i]]\n    return total",
+            "code": "def roman_to_int(s):\n    values = {'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000}\n    total = 0\n    for i in range(len(s)):\n        if i + 1 < len(s) and values[s[i]] < values[s[i + 1]]:\n            total -= values[s[i]]\n        else:\n            total += values[s[i]]\n    return total",
             "steps": [
               {
                 "title": "Understand the goal",
-                "explanation": "Roman numerals are normally additive (VI = 6), but a smaller numeral before a larger one means subtraction (IV = 4). We scan left to right and decide to add or subtract."
+                "explanation": "Roman numerals use subtraction when a smaller symbol comes before a larger one."
               },
               {
                 "title": "Implement the core logic",
-                "explanation": "Create a mapping of Roman characters to integer values. Iterate through the string; if the current value is less than the next value, subtract it, otherwise add it.",
-                "code": "def roman_to_int(s):\n    values = {'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000}\n    total = 0\n    for i in range(len(s)):\n        if i + 1 < len(s) and values[s[i]] < values[s[i+1]]:\n            total -= values[s[i]]\n        else:\n            total += values[s[i]]\n    return total"
+                "explanation": "Scan left to right, subtract when the next symbol is larger.",
+                "code": "def roman_to_int(s):\n    values = {'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000}\n    total = 0\n    for i in range(len(s)):\n        if i + 1 < len(s) and values[s[i]] < values[s[i + 1]]:\n            total -= values[s[i]]\n        else:\n            total += values[s[i]]\n    return total"
               },
               {
                 "title": "Verify expected result",
-                "explanation": "Call roman_to_int('XIV') and confirm it returns 14. Call roman_to_int('MCMXCIV') and confirm it returns 1994."
+                "explanation": "Call roman_to_int('XIV') and confirm it returns 14."
               }
             ]
           }
@@ -5688,25 +5688,25 @@
           "id": "py-intermediate-11",
           "language": "python",
           "level": "intermediate",
-          "title": "Spiral Walk",
-          "description": "Write `spiral_order(matrix)` that returns elements of an M x N matrix in spiral order (right, down, left, up, repeat). Example: `spiral_order([[1,2,3],[4,5,6],[7,8,9]])` -> `[1,2,3,6,9,8,7,4,5]`.",
-          "starterCode": "def spiral_order(matrix):\n    # Your code here\n    pass\n",
-          "hint": "Use four boundaries (top, bottom, left, right) and shrink them after traversing each edge.",
+          "title": "Unique Preserving",
+          "description": "Write `unique_preserving(nums)` that removes duplicates while keeping first-seen order. Example: `unique_preserving([3,1,3,2,1])` -> `[3,1,2]`.",
+          "starterCode": "def unique_preserving(nums):\n    # Your code here\n    pass\n",
+          "hint": "Track seen values in a set and append only once.",
           "solution": {
-            "code": "def spiral_order(matrix):\n    if not matrix:\n        return []\n    result = []\n    top, bottom, left, right = 0, len(matrix)-1, 0, len(matrix[0])-1\n    while top <= bottom and left <= right:\n        for c in range(left, right+1):\n            result.append(matrix[top][c])\n        top += 1\n        for r in range(top, bottom+1):\n            result.append(matrix[r][right])\n        right -= 1\n        if top <= bottom:\n            for c in range(right, left-1, -1):\n                result.append(matrix[bottom][c])\n            bottom -= 1\n        if left <= right:\n            for r in range(bottom, top-1, -1):\n                result.append(matrix[r][left])\n            left += 1\n    return result",
+            "code": "def unique_preserving(nums):\n    seen = set()\n    out = []\n    for n in nums:\n        if n not in seen:\n            seen.add(n)\n            out.append(n)\n    return out",
             "steps": [
               {
                 "title": "Understand the goal",
-                "explanation": "We traverse the matrix layer by layer from the outside inward, visiting elements in a clockwise spiral: right across the top, down the right side, left across the bottom, and up the left side."
+                "explanation": "We need to deduplicate while keeping the original order."
               },
               {
                 "title": "Implement the core logic",
-                "explanation": "Maintain four boundary variables. In each iteration, traverse one full spiral ring and shrink the boundaries inward. Add boundary checks before the bottom and left traversals to avoid duplicates.",
-                "code": "def spiral_order(matrix):\n    if not matrix:\n        return []\n    result = []\n    top, bottom, left, right = 0, len(matrix)-1, 0, len(matrix[0])-1\n    while top <= bottom and left <= right:\n        for c in range(left, right+1):\n            result.append(matrix[top][c])\n        top += 1\n        for r in range(top, bottom+1):\n            result.append(matrix[r][right])\n        right -= 1\n        if top <= bottom:\n            for c in range(right, left-1, -1):\n                result.append(matrix[bottom][c])\n            bottom -= 1\n        if left <= right:\n            for r in range(bottom, top-1, -1):\n                result.append(matrix[r][left])\n            left += 1\n    return result"
+                "explanation": "Use a set to track seen values and append when first encountered.",
+                "code": "def unique_preserving(nums):\n    seen = set()\n    out = []\n    for n in nums:\n        if n not in seen:\n            seen.add(n)\n            out.append(n)\n    return out"
               },
               {
                 "title": "Verify expected result",
-                "explanation": "Call spiral_order([[1,2,3],[4,5,6],[7,8,9]]) and confirm it returns [1,2,3,6,9,8,7,4,5]."
+                "explanation": "Call unique_preserving([3,1,3,2,1]) and confirm the output is [3,1,2]."
               }
             ]
           }
@@ -5715,25 +5715,25 @@
           "id": "py-intermediate-12",
           "language": "python",
           "level": "intermediate",
-          "title": "Longest Streak",
-          "description": "Write `longest_consecutive(nums)` that returns the length of the longest consecutive integer sequence in an unsorted list. Example: `longest_consecutive([100,4,200,1,3,2])` -> `4` (the sequence is 1,2,3,4).",
-          "starterCode": "def longest_consecutive(nums):\n    # Your code here\n    pass\n",
-          "hint": "Convert the list to a set. Only start counting from a number that has no predecessor in the set.",
+          "title": "Char Frequency",
+          "description": "Write `char_count(s)` returning a dictionary of character counts. Example: `char_count('aab')` -> `{\"a\": 2, \"b\": 1}`.",
+          "starterCode": "def char_count(s):\n    # Your code here\n    pass\n",
+          "hint": "Use a dictionary and increment per character.",
           "solution": {
-            "code": "def longest_consecutive(nums):\n    num_set = set(nums)\n    best = 0\n    for n in num_set:\n        if n - 1 not in num_set:\n            length = 1\n            while n + length in num_set:\n                length += 1\n            best = max(best, length)\n    return best",
+            "code": "def char_count(s):\n    counts = {}\n    for ch in s:\n        counts[ch] = counts.get(ch, 0) + 1\n    return counts",
             "steps": [
               {
                 "title": "Understand the goal",
-                "explanation": "We need to find the length of the longest run of consecutive integers in the list, regardless of their original order."
+                "explanation": "We need a frequency map from characters to counts."
               },
               {
                 "title": "Implement the core logic",
-                "explanation": "Put all numbers in a set for O(1) lookup. For each number that is the start of a sequence (no n-1 in set), count how far the sequence extends. Track the maximum length.",
-                "code": "def longest_consecutive(nums):\n    num_set = set(nums)\n    best = 0\n    for n in num_set:\n        if n - 1 not in num_set:\n            length = 1\n            while n + length in num_set:\n                length += 1\n            best = max(best, length)\n    return best"
+                "explanation": "Increment a counter in a dictionary for each character.",
+                "code": "def char_count(s):\n    counts = {}\n    for ch in s:\n        counts[ch] = counts.get(ch, 0) + 1\n    return counts"
               },
               {
                 "title": "Verify expected result",
-                "explanation": "Call longest_consecutive([100,4,200,1,3,2]) and confirm it returns 4."
+                "explanation": "Call char_count('aab') and confirm it returns {'a': 2, 'b': 1}."
               }
             ]
           }
@@ -5742,25 +5742,25 @@
           "id": "py-intermediate-13",
           "language": "python",
           "level": "intermediate",
-          "title": "Deep Flatten",
-          "description": "Write `flatten(lst)` that recursively flattens a nested list of arbitrary depth into a single flat list. Example: `flatten([1,[2,[3,4],5],6])` -> `[1,2,3,4,5,6]`.",
-          "starterCode": "def flatten(lst):\n    # Your code here\n    pass\n",
-          "hint": "Check if each element is a list. If so, recursively flatten it; otherwise append it to the result.",
+          "title": "Second Largest",
+          "description": "Write `second_largest(nums)` returning the second largest distinct value. Example: `second_largest([4,1,4,2])` -> `2`.",
+          "starterCode": "def second_largest(nums):\n    # Your code here\n    pass\n",
+          "hint": "Track the top two distinct values as you scan.",
           "solution": {
-            "code": "def flatten(lst):\n    result = []\n    for item in lst:\n        if isinstance(item, list):\n            result.extend(flatten(item))\n        else:\n            result.append(item)\n    return result",
+            "code": "def second_largest(nums):\n    first = None\n    second = None\n    for n in nums:\n        if first is None or n > first:\n            if n != first:\n                second = first\n            first = n\n        elif n != first and (second is None or n > second):\n            second = n\n    return second",
             "steps": [
               {
                 "title": "Understand the goal",
-                "explanation": "We need to take a list that may contain other lists nested to any depth and produce a single-level list with all the values in order."
+                "explanation": "We need the second largest distinct number, not just the second position."
               },
               {
                 "title": "Implement the core logic",
-                "explanation": "Iterate over each element. If the element is a list, recursively flatten it and extend the result. Otherwise, append the element directly.",
-                "code": "def flatten(lst):\n    result = []\n    for item in lst:\n        if isinstance(item, list):\n            result.extend(flatten(item))\n        else:\n            result.append(item)\n    return result"
+                "explanation": "Track the largest and second largest distinct values while iterating.",
+                "code": "def second_largest(nums):\n    first = None\n    second = None\n    for n in nums:\n        if first is None or n > first:\n            if n != first:\n                second = first\n            first = n\n        elif n != first and (second is None or n > second):\n            second = n\n    return second"
               },
               {
                 "title": "Verify expected result",
-                "explanation": "Call flatten([1,[2,[3,4],5],6]) and confirm it returns [1,2,3,4,5,6]."
+                "explanation": "Call second_largest([4,1,4,2]) and confirm it returns 2."
               }
             ]
           }
@@ -5769,25 +5769,25 @@
           "id": "py-intermediate-14",
           "language": "python",
           "level": "intermediate",
-          "title": "Pascal Row",
-          "description": "Write `pascal_row(n)` that returns the nth row (0-indexed) of Pascal's triangle as a list. Example: `pascal_row(0)` -> `[1]`, `pascal_row(4)` -> `[1,4,6,4,1]`.",
-          "starterCode": "def pascal_row(n):\n    # Your code here\n    pass\n",
-          "hint": "Start with [1] and iteratively build each row where each element is the sum of two elements above it.",
+          "title": "Merge Sorted",
+          "description": "Write `merge_sorted(a, b)` that merges two sorted lists into one sorted list. Example: `merge_sorted([1,3,5],[2,4])` -> `[1,2,3,4,5]`.",
+          "starterCode": "def merge_sorted(a, b):\n    # Your code here\n    pass\n",
+          "hint": "Use two pointers to choose the smaller next item.",
           "solution": {
-            "code": "def pascal_row(n):\n    row = [1]\n    for i in range(1, n + 1):\n        row.append(row[i - 1] * (n - i + 1) // i)\n    return row",
+            "code": "def merge_sorted(a, b):\n    i = 0\n    j = 0\n    out = []\n    while i < len(a) and j < len(b):\n        if a[i] <= b[j]:\n            out.append(a[i])\n            i += 1\n        else:\n            out.append(b[j])\n            j += 1\n    out.extend(a[i:])\n    out.extend(b[j:])\n    return out",
             "steps": [
               {
                 "title": "Understand the goal",
-                "explanation": "Pascal's triangle row n has n+1 elements. Each element equals the binomial coefficient C(n, k) for k from 0 to n."
+                "explanation": "We must combine two already sorted lists while keeping order."
               },
               {
                 "title": "Implement the core logic",
-                "explanation": "Start with [1]. Compute each next element by multiplying the previous element by (n - k + 1) / k, which gives the next binomial coefficient efficiently.",
-                "code": "def pascal_row(n):\n    row = [1]\n    for i in range(1, n + 1):\n        row.append(row[i - 1] * (n - i + 1) // i)\n    return row"
+                "explanation": "Use two indices and append the smaller element each step.",
+                "code": "def merge_sorted(a, b):\n    i = 0\n    j = 0\n    out = []\n    while i < len(a) and j < len(b):\n        if a[i] <= b[j]:\n            out.append(a[i])\n            i += 1\n        else:\n            out.append(b[j])\n            j += 1\n    out.extend(a[i:])\n    out.extend(b[j:])\n    return out"
               },
               {
                 "title": "Verify expected result",
-                "explanation": "Call pascal_row(4) and confirm it returns [1,4,6,4,1]. Call pascal_row(0) and confirm it returns [1]."
+                "explanation": "Call merge_sorted([1,3,5],[2,4]) and confirm it returns [1,2,3,4,5]."
               }
             ]
           }
@@ -5796,25 +5796,25 @@
           "id": "py-intermediate-15",
           "language": "python",
           "level": "intermediate",
-          "title": "String Compress",
-          "description": "Write `compress(s)` that performs run-length encoding on a string. Consecutive identical characters are replaced by the character followed by its count. Example: `compress('aaabbc')` -> `'a3b2c1'`.",
-          "starterCode": "def compress(s):\n    # Your code here\n    pass\n",
-          "hint": "Track the current character and a counter. When the character changes, append the character and count to the result.",
+          "title": "Count Vowels",
+          "description": "Write `count_vowels(s)` returning the number of vowels in a string (a, e, i, o, u). Example: `count_vowels('hello')` -> `2`.",
+          "starterCode": "def count_vowels(s):\n    # Your code here\n    pass\n",
+          "hint": "Check each character against a vowel set.",
           "solution": {
-            "code": "def compress(s):\n    if not s:\n        return ''\n    result = []\n    count = 1\n    for i in range(1, len(s)):\n        if s[i] == s[i - 1]:\n            count += 1\n        else:\n            result.append(s[i - 1] + str(count))\n            count = 1\n    result.append(s[-1] + str(count))\n    return ''.join(result)",
+            "code": "def count_vowels(s):\n    vowels = set('aeiouAEIOU')\n    return sum(1 for ch in s if ch in vowels)",
             "steps": [
               {
                 "title": "Understand the goal",
-                "explanation": "We encode a string by replacing each run of identical characters with the character followed by the number of times it appears consecutively."
+                "explanation": "We need to count how many characters are vowels."
               },
               {
                 "title": "Implement the core logic",
-                "explanation": "Iterate through the string, counting consecutive identical characters. When a different character appears, record the previous character and its count, then reset the counter.",
-                "code": "def compress(s):\n    if not s:\n        return ''\n    result = []\n    count = 1\n    for i in range(1, len(s)):\n        if s[i] == s[i - 1]:\n            count += 1\n        else:\n            result.append(s[i - 1] + str(count))\n            count = 1\n    result.append(s[-1] + str(count))\n    return ''.join(result)"
+                "explanation": "Use a set for O(1) membership checks and sum matches.",
+                "code": "def count_vowels(s):\n    vowels = set('aeiouAEIOU')\n    return sum(1 for ch in s if ch in vowels)"
               },
               {
                 "title": "Verify expected result",
-                "explanation": "Call compress('aaabbc') and confirm it returns 'a3b2c1'."
+                "explanation": "Call count_vowels('hello') and confirm it returns 2."
               }
             ]
           }
@@ -5823,25 +5823,25 @@
           "id": "py-intermediate-16",
           "language": "python",
           "level": "intermediate",
-          "title": "Sudoku Check",
-          "description": "Write `valid_sudoku_lines(board)` that checks whether each row and each column of a 9x9 Sudoku board contains no duplicate digits (1-9). Zeros represent empty cells and should be ignored. Return True if valid, False otherwise. Example: a board where row 0 is `[5,3,0,0,7,0,0,0,0]` and has no row/column duplicates -> `True`.",
-          "starterCode": "def valid_sudoku_lines(board):\n    # Your code here\n    pass\n",
-          "hint": "For each row and each column, collect non-zero values into a list and check if the length equals the set length.",
+          "title": "Chunk List",
+          "description": "Write `chunk_list(items, size)` that splits a list into chunks of length `size`. Example: `chunk_list([1,2,3,4,5], 2)` -> `[[1,2],[3,4],[5]]`.",
+          "starterCode": "def chunk_list(items, size):\n    # Your code here\n    pass\n",
+          "hint": "Slice the list in steps of size.",
           "solution": {
-            "code": "def valid_sudoku_lines(board):\n    for i in range(9):\n        row = [x for x in board[i] if x != 0]\n        if len(row) != len(set(row)):\n            return False\n        col = [board[r][i] for r in range(9) if board[r][i] != 0]\n        if len(col) != len(set(col)):\n            return False\n    return True",
+            "code": "def chunk_list(items, size):\n    return [items[i:i + size] for i in range(0, len(items), size)]",
             "steps": [
               {
                 "title": "Understand the goal",
-                "explanation": "We validate a partial Sudoku board by ensuring no row or column contains a repeated digit 1-9. Empty cells (0) are ignored."
+                "explanation": "We need to partition the list into consecutive sublists."
               },
               {
                 "title": "Implement the core logic",
-                "explanation": "For each index 0-8, extract non-zero values from the corresponding row and column. If any list has duplicates (length differs from its set), return False.",
-                "code": "def valid_sudoku_lines(board):\n    for i in range(9):\n        row = [x for x in board[i] if x != 0]\n        if len(row) != len(set(row)):\n            return False\n        col = [board[r][i] for r in range(9) if board[r][i] != 0]\n        if len(col) != len(set(col)):\n            return False\n    return True"
+                "explanation": "Use a step-based range and slice each chunk.",
+                "code": "def chunk_list(items, size):\n    return [items[i:i + size] for i in range(0, len(items), size)]"
               },
               {
                 "title": "Verify expected result",
-                "explanation": "Create a 9x9 board with no duplicate digits in any row or column and confirm valid_sudoku_lines returns True. Introduce a duplicate in one row and confirm it returns False."
+                "explanation": "Call chunk_list([1,2,3,4,5], 2) and confirm it returns [[1,2],[3,4],[5]]."
               }
             ]
           }
@@ -5850,25 +5850,25 @@
           "id": "py-intermediate-17",
           "language": "python",
           "level": "intermediate",
-          "title": "Missing Number",
-          "description": "Write `find_missing(nums)` that takes a list of n distinct integers from 0 to n and returns the one missing number. Example: `find_missing([3,0,1])` -> `2`, `find_missing([0,1])` -> `2`.",
-          "starterCode": "def find_missing(nums):\n    # Your code here\n    pass\n",
-          "hint": "The sum of 0..n is n*(n+1)//2. Subtract the actual sum to find the missing number.",
+          "title": "Clean Palindrome",
+          "description": "Write `is_palindrome_clean(s)` that checks if a string is a palindrome ignoring case and non-alphanumeric characters. Example: `is_palindrome_clean('A man, a plan, a canal: Panama')` -> `True`.",
+          "starterCode": "def is_palindrome_clean(s):\n    # Your code here\n    pass\n",
+          "hint": "Filter to alphanumeric, lower case, then compare to its reverse.",
           "solution": {
-            "code": "def find_missing(nums):\n    n = len(nums)\n    return n * (n + 1) // 2 - sum(nums)",
+            "code": "def is_palindrome_clean(s):\n    cleaned = ''.join(ch.lower() for ch in s if ch.isalnum())\n    return cleaned == cleaned[::-1]",
             "steps": [
               {
                 "title": "Understand the goal",
-                "explanation": "Given n numbers from the range [0, n], exactly one is missing. We need to identify which one."
+                "explanation": "We must ignore punctuation and casing when checking for a palindrome."
               },
               {
                 "title": "Implement the core logic",
-                "explanation": "The expected sum of integers from 0 to n is n*(n+1)//2. The missing number is the difference between this expected sum and the actual sum of the list.",
-                "code": "def find_missing(nums):\n    n = len(nums)\n    return n * (n + 1) // 2 - sum(nums)"
+                "explanation": "Normalize the string and compare it with its reversed form.",
+                "code": "def is_palindrome_clean(s):\n    cleaned = ''.join(ch.lower() for ch in s if ch.isalnum())\n    return cleaned == cleaned[::-1]"
               },
               {
                 "title": "Verify expected result",
-                "explanation": "Call find_missing([3,0,1]) and confirm it returns 2. Call find_missing([0,1]) and confirm it returns 2."
+                "explanation": "Call is_palindrome_clean('A man, a plan, a canal: Panama') and confirm it returns True."
               }
             ]
           }
@@ -5877,25 +5877,25 @@
           "id": "py-intermediate-18",
           "language": "python",
           "level": "intermediate",
-          "title": "Power Set",
-          "description": "Write `power_set(lst)` that returns all subsets of the given list, including the empty set and the full set. Return them sorted by length then lexicographically. Example: `power_set([1,2,3])` -> `[[],[1],[2],[3],[1,2],[1,3],[2,3],[1,2,3]]`.",
-          "starterCode": "def power_set(lst):\n    # Your code here\n    pass\n",
-          "hint": "Start with [[]] and for each element, add it to every existing subset to create new subsets.",
+          "title": "Longest Word",
+          "description": "Write `longest_word(sentence)` returning the longest word (first if tie). Example: `longest_word('smallest big bigger')` -> `'smallest'`.",
+          "starterCode": "def longest_word(sentence):\n    # Your code here\n    pass\n",
+          "hint": "Split on whitespace and track the longest length seen.",
           "solution": {
-            "code": "def power_set(lst):\n    result = [[]]\n    for item in sorted(lst):\n        result += [subset + [item] for subset in result]\n    return sorted(result, key=lambda x: (len(x), x))",
+            "code": "def longest_word(sentence):\n    words = sentence.split()\n    longest = ''\n    for w in words:\n        if len(w) > len(longest):\n            longest = w\n    return longest",
             "steps": [
               {
                 "title": "Understand the goal",
-                "explanation": "The power set of a list with n elements contains 2^n subsets, from the empty set to the full set. We must generate all of them."
+                "explanation": "We need the longest word by length, preferring the first if tied."
               },
               {
                 "title": "Implement the core logic",
-                "explanation": "Begin with the empty subset. For each element in the sorted input, create new subsets by appending that element to every existing subset. Sort the final result by length then value.",
-                "code": "def power_set(lst):\n    result = [[]]\n    for item in sorted(lst):\n        result += [subset + [item] for subset in result]\n    return sorted(result, key=lambda x: (len(x), x))"
+                "explanation": "Scan the words and update the longest when a longer word appears.",
+                "code": "def longest_word(sentence):\n    words = sentence.split()\n    longest = ''\n    for w in words:\n        if len(w) > len(longest):\n            longest = w\n    return longest"
               },
               {
                 "title": "Verify expected result",
-                "explanation": "Call power_set([1,2,3]) and confirm it returns [[],[1],[2],[3],[1,2],[1,3],[2,3],[1,2,3]]."
+                "explanation": "Call longest_word('smallest big bigger') and confirm it returns 'smallest'."
               }
             ]
           }
@@ -5904,25 +5904,25 @@
           "id": "py-intermediate-19",
           "language": "python",
           "level": "intermediate",
-          "title": "Binary Hunt",
-          "description": "Write `binary_search(arr, target)` that returns the index of target in a sorted list, or -1 if not found. Example: `binary_search([1,3,5,7,9], 5)` -> `2`, `binary_search([1,3,5,7,9], 4)` -> `-1`.",
-          "starterCode": "def binary_search(arr, target):\n    # Your code here\n    pass\n",
-          "hint": "Use two pointers (low, high). Compare the middle element to the target and halve the search space each step.",
+          "title": "Binary to Int",
+          "description": "Write `binary_to_int(s)` converting a binary string to an integer. Example: `binary_to_int('1011')` -> `11`.",
+          "starterCode": "def binary_to_int(s):\n    # Your code here\n    pass\n",
+          "hint": "Accumulate using base-2 positional values.",
           "solution": {
-            "code": "def binary_search(arr, target):\n    low, high = 0, len(arr) - 1\n    while low <= high:\n        mid = (low + high) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            low = mid + 1\n        else:\n            high = mid - 1\n    return -1",
+            "code": "def binary_to_int(s):\n    value = 0\n    for ch in s:\n        value = value * 2 + (ch == '1')\n    return value",
             "steps": [
               {
                 "title": "Understand the goal",
-                "explanation": "Binary search efficiently finds a target in a sorted array by repeatedly dividing the search interval in half, achieving O(log n) time."
+                "explanation": "Each bit shifts the previous value left by one."
               },
               {
                 "title": "Implement the core logic",
-                "explanation": "Initialize low and high pointers. Compute mid, compare arr[mid] to target. If equal, return mid. If less, search the right half. If greater, search the left half. Return -1 if not found.",
-                "code": "def binary_search(arr, target):\n    low, high = 0, len(arr) - 1\n    while low <= high:\n        mid = (low + high) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            low = mid + 1\n        else:\n            high = mid - 1\n    return -1"
+                "explanation": "Multiply by 2 and add the current bit as 0 or 1.",
+                "code": "def binary_to_int(s):\n    value = 0\n    for ch in s:\n        value = value * 2 + (ch == '1')\n    return value"
               },
               {
                 "title": "Verify expected result",
-                "explanation": "Call binary_search([1,3,5,7,9], 5) and confirm it returns 2. Call binary_search([1,3,5,7,9], 4) and confirm it returns -1."
+                "explanation": "Call binary_to_int('1011') and confirm it returns 11."
               }
             ]
           }
@@ -5931,25 +5931,1893 @@
           "id": "py-intermediate-20",
           "language": "python",
           "level": "intermediate",
-          "title": "RLE Decode",
-          "description": "Write `decompress(s)` that decodes a run-length encoded string. Each token is a character followed by its count. Example: `decompress('a3b2c1')` -> `'aaabbc'`, `decompress('x1y5')` -> `'xyyyyy'`.",
-          "starterCode": "def decompress(s):\n    # Your code here\n    pass\n",
-          "hint": "Walk through the string: every even index is a character, then collect the following digits as the repeat count.",
+          "title": "Int to Binary",
+          "description": "Write `int_to_binary(n)` returning a binary string without a prefix. Example: `int_to_binary(11)` -> `'1011'`.",
+          "starterCode": "def int_to_binary(n):\n    # Your code here\n    pass\n",
+          "hint": "Repeatedly divide by 2 and collect remainders.",
           "solution": {
-            "code": "def decompress(s):\n    result = []\n    i = 0\n    while i < len(s):\n        ch = s[i]\n        i += 1\n        num = ''\n        while i < len(s) and s[i].isdigit():\n            num += s[i]\n            i += 1\n        result.append(ch * int(num))\n    return ''.join(result)",
+            "code": "def int_to_binary(n):\n    if n == 0:\n        return '0'\n    bits = []\n    while n > 0:\n        bits.append(str(n % 2))\n        n //= 2\n    return ''.join(reversed(bits))",
             "steps": [
               {
                 "title": "Understand the goal",
-                "explanation": "A run-length encoded string pairs each character with a number indicating how many times to repeat it. We must expand each pair back into the original characters."
+                "explanation": "We need to express an integer in base 2 as a string."
               },
               {
                 "title": "Implement the core logic",
-                "explanation": "Iterate through the string. Read a character, then read all following digit characters to form the repeat count. Append the character repeated that many times to the result.",
-                "code": "def decompress(s):\n    result = []\n    i = 0\n    while i < len(s):\n        ch = s[i]\n        i += 1\n        num = ''\n        while i < len(s) and s[i].isdigit():\n            num += s[i]\n            i += 1\n        result.append(ch * int(num))\n    return ''.join(result)"
+                "explanation": "Collect remainders from dividing by 2 and reverse them.",
+                "code": "def int_to_binary(n):\n    if n == 0:\n        return '0'\n    bits = []\n    while n > 0:\n        bits.append(str(n % 2))\n        n //= 2\n    return ''.join(reversed(bits))"
               },
               {
                 "title": "Verify expected result",
-                "explanation": "Call decompress('a3b2c1') and confirm it returns 'aaabbc'. Call decompress('x1y5') and confirm it returns 'xyyyyy'."
+                "explanation": "Call int_to_binary(11) and confirm it returns '1011'."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-21",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Flatten One Level",
+          "description": "Write `flatten_one(nested)` that flattens one level of a list of lists. Example: `flatten_one([[1,2],[3],[4,5]])` -> `[1,2,3,4,5]`.",
+          "starterCode": "def flatten_one(nested):\n    # Your code here\n    pass\n",
+          "hint": "Loop through sublists and extend the output list.",
+          "solution": {
+            "code": "def flatten_one(nested):\n    out = []\n    for sub in nested:\n        out.extend(sub)\n    return out",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need a single list by concatenating each inner list."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Extend an output list with each sublist in order.",
+                "code": "def flatten_one(nested):\n    out = []\n    for sub in nested:\n        out.extend(sub)\n    return out"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call flatten_one([[1,2],[3],[4,5]]) and confirm it returns [1,2,3,4,5]."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-22",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Most Common",
+          "description": "Write `most_common(nums)` returning the most frequent value. Break ties by choosing the smallest value. Example: `most_common([2,1,2,3,3])` -> `2`.",
+          "starterCode": "def most_common(nums):\n    # Your code here\n    pass\n",
+          "hint": "Count frequencies and track the best by (count, -value).",
+          "solution": {
+            "code": "def most_common(nums):\n    counts = {}\n    for n in nums:\n        counts[n] = counts.get(n, 0) + 1\n    best = None\n    for value, count in counts.items():\n        if best is None or count > best[1] or (count == best[1] and value < best[0]):\n            best = (value, count)\n    return best[0]",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need the value with the highest frequency, smallest value on ties."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Count frequencies and keep track of the best candidate.",
+                "code": "def most_common(nums):\n    counts = {}\n    for n in nums:\n        counts[n] = counts.get(n, 0) + 1\n    best = None\n    for value, count in counts.items():\n        if best is None or count > best[1] or (count == best[1] and value < best[0]):\n            best = (value, count)\n    return best[0]"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call most_common([2,1,2,3,3]) and confirm it returns 2."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-23",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Pascal Row",
+          "description": "Write `pascal_row(n)` returning the nth row (0-indexed) of Pascal's triangle. Example: `pascal_row(4)` -> `[1,4,6,4,1]`.",
+          "starterCode": "def pascal_row(n):\n    # Your code here\n    pass\n",
+          "hint": "Build each row from the previous row using adjacent sums.",
+          "solution": {
+            "code": "def pascal_row(n):\n    row = [1]\n    for _ in range(n):\n        row = [1] + [row[i] + row[i + 1] for i in range(len(row) - 1)] + [1]\n    return row",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "Each row is formed by adding adjacent pairs from the previous row."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Iteratively build the row up to n.",
+                "code": "def pascal_row(n):\n    row = [1]\n    for _ in range(n):\n        row = [1] + [row[i] + row[i + 1] for i in range(len(row) - 1)] + [1]\n    return row"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call pascal_row(4) and confirm it returns [1,4,6,4,1]."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-24",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Two Sum Indices",
+          "description": "Write `two_sum(nums, target)` returning a tuple of indices for the first pair that sums to target. Example: `two_sum([2,7,11,15], 9)` -> `(0,1)`.",
+          "starterCode": "def two_sum(nums, target):\n    # Your code here\n    pass\n",
+          "hint": "Store seen values and their indices in a dictionary.",
+          "solution": {
+            "code": "def two_sum(nums, target):\n    seen = {}\n    for i, n in enumerate(nums):\n        need = target - n\n        if need in seen:\n            return (seen[need], i)\n        seen[n] = i",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We must find indices of two numbers that add to the target."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Track previously seen numbers and check for the needed complement.",
+                "code": "def two_sum(nums, target):\n    seen = {}\n    for i, n in enumerate(nums):\n        need = target - n\n        if need in seen:\n            return (seen[need], i)\n        seen[n] = i"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call two_sum([2,7,11,15], 9) and confirm it returns (0,1)."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-25",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Diagonal Sum",
+          "description": "Write `diagonal_sum(matrix)` returning the sum of the main diagonal. Example: `diagonal_sum([[1,2],[3,4]])` -> `5`.",
+          "starterCode": "def diagonal_sum(matrix):\n    # Your code here\n    pass\n",
+          "hint": "Sum matrix[i][i] for each row index.",
+          "solution": {
+            "code": "def diagonal_sum(matrix):\n    return sum(matrix[i][i] for i in range(len(matrix)))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We add elements from the top-left to the bottom-right."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Sum matrix[i][i] across the size of the square matrix.",
+                "code": "def diagonal_sum(matrix):\n    return sum(matrix[i][i] for i in range(len(matrix)))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call diagonal_sum([[1,2],[3,4]]) and confirm it returns 5."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-26",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Sort Dict by Value",
+          "description": "Write `sort_dict_by_value(d)` returning a list of (key, value) tuples sorted by value then key. Example: `sort_dict_by_value({'b':2,'a':2,'c':1})` -> `[('c',1),('a',2),('b',2)]`.",
+          "starterCode": "def sort_dict_by_value(d):\n    # Your code here\n    pass\n",
+          "hint": "Use sorted with a key that orders by (value, key).",
+          "solution": {
+            "code": "def sort_dict_by_value(d):\n    return sorted(d.items(), key=lambda kv: (kv[1], kv[0]))",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need a stable ordering by value, then by key."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Sort the items with a tuple key of (value, key).",
+                "code": "def sort_dict_by_value(d):\n    return sorted(d.items(), key=lambda kv: (kv[1], kv[0]))"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call sort_dict_by_value({'b':2,'a':2,'c':1}) and confirm the ordering."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-27",
+          "language": "python",
+          "level": "intermediate",
+          "title": "URLify",
+          "description": "Write `urlify(s)` replacing spaces with `%20`. Example: `urlify('hi there')` -> `'hi%20there'`.",
+          "starterCode": "def urlify(s):\n    # Your code here\n    pass\n",
+          "hint": "Use split/join or replace.",
+          "solution": {
+            "code": "def urlify(s):\n    return s.replace(' ', '%20')",
+            "steps": [
+              {
+                "title": "Understand the goal",
+                "explanation": "We need to replace all spaces with a URL-safe sequence."
+              },
+              {
+                "title": "Implement the core logic",
+                "explanation": "Use the built-in replace method.",
+                "code": "def urlify(s):\n    return s.replace(' ', '%20')"
+              },
+              {
+                "title": "Verify expected result",
+                "explanation": "Call urlify('hi there') and confirm it returns 'hi%20there'."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-28",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Title Case",
+          "description": "Write `title_case(s)` capitalizing the first letter of each word. Example: `title_case('hello world')` -> `'Hello World'`.",
+          "starterCode": "def title_case(s):\n    # Your code here\n    pass\n",
+          "hint": "Split, capitalize each word, then join.",
+          "solution": {
+            "code": "def title_case(s):\n    return ' '.join(word[:1].upper() + word[1:].lower() for word in s.split())",
+            "steps": [
+              {
+                "title": "Plan the transformation",
+                "explanation": "We need to change the first character of each word and keep the rest lowercase."
+              },
+              {
+                "title": "Build the result",
+                "explanation": "Transform each split word and rejoin with spaces.",
+                "code": "def title_case(s):\n    return ' '.join(word[:1].upper() + word[1:].lower() for word in s.split())"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-29",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Rotate String",
+          "description": "Write `rotate_string(s, k)` rotating characters right by k. Example: `rotate_string('abcd', 1)` -> `'dabc'`.",
+          "starterCode": "def rotate_string(s, k):\n    # Your code here\n    pass\n",
+          "hint": "Use modulo and slicing.",
+          "solution": {
+            "code": "def rotate_string(s, k):\n    if not s:\n        return s\n    k = k % len(s)\n    return s[-k:] + s[:-k]",
+            "steps": [
+              {
+                "title": "Plan the rotation",
+                "explanation": "Right rotation moves the last k characters to the front."
+              },
+              {
+                "title": "Build the result",
+                "explanation": "Slice the string using a normalized k.",
+                "code": "def rotate_string(s, k):\n    if not s:\n        return s\n    k = k % len(s)\n    return s[-k:] + s[:-k]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-30",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Valid IPv4",
+          "description": "Write `is_valid_ipv4(s)` returning True if s is a valid IPv4 address. Example: `is_valid_ipv4('192.168.1.1')` -> `True`, `is_valid_ipv4('256.1.1.1')` -> `False`.",
+          "starterCode": "def is_valid_ipv4(s):\n    # Your code here\n    pass\n",
+          "hint": "Split by '.' and validate four numeric parts in 0..255.",
+          "solution": {
+            "code": "def is_valid_ipv4(s):\n    parts = s.split('.')\n    if len(parts) != 4:\n        return False\n    for part in parts:\n        if not part.isdigit():\n            return False\n        if part != '0' and part.startswith('0'):\n            return False\n        value = int(part)\n        if value < 0 or value > 255:\n            return False\n    return True",
+            "steps": [
+              {
+                "title": "Plan the checks",
+                "explanation": "IPv4 requires four numeric parts between 0 and 255 with no extra leading zeros."
+              },
+              {
+                "title": "Validate each part",
+                "explanation": "Split, check numeric constraints, and ensure the range is valid.",
+                "code": "def is_valid_ipv4(s):\n    parts = s.split('.')\n    if len(parts) != 4:\n        return False\n    for part in parts:\n        if not part.isdigit():\n            return False\n        if part != '0' and part.startswith('0'):\n            return False\n        value = int(part)\n        if value < 0 or value > 255:\n            return False\n    return True"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-31",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Count Substring",
+          "description": "Write `count_substring(s, sub)` counting overlapping occurrences. Example: `count_substring('aaaa', 'aa')` -> `3`.",
+          "starterCode": "def count_substring(s, sub):\n    # Your code here\n    pass\n",
+          "hint": "Slide a window of length len(sub) across the string.",
+          "solution": {
+            "code": "def count_substring(s, sub):\n    if sub == '':\n        return 0\n    count = 0\n    for i in range(len(s) - len(sub) + 1):\n        if s[i:i + len(sub)] == sub:\n            count += 1\n    return count",
+            "steps": [
+              {
+                "title": "Plan the scan",
+                "explanation": "We need to check each possible starting index, including overlaps."
+              },
+              {
+                "title": "Count matches",
+                "explanation": "Compare slices of length len(sub) and increment on matches.",
+                "code": "def count_substring(s, sub):\n    if sub == '':\n        return 0\n    count = 0\n    for i in range(len(s) - len(sub) + 1):\n        if s[i:i + len(sub)] == sub:\n            count += 1\n    return count"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-32",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Unique Sorted",
+          "description": "Write `unique_sorted(nums)` returning a sorted list of unique values. Example: `unique_sorted([3,1,3,2])` -> `[1,2,3]`.",
+          "starterCode": "def unique_sorted(nums):\n    # Your code here\n    pass\n",
+          "hint": "Convert to a set and sort.",
+          "solution": {
+            "code": "def unique_sorted(nums):\n    return sorted(set(nums))",
+            "steps": [
+              {
+                "title": "Plan the approach",
+                "explanation": "A set removes duplicates, and sorted orders the result."
+              },
+              {
+                "title": "Build the result",
+                "explanation": "Convert to a set, then sort.",
+                "code": "def unique_sorted(nums):\n    return sorted(set(nums))"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-33",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Median",
+          "description": "Write `median(nums)` returning the median value. For even counts, return the average as a float. Example: `median([3,1,2,4])` -> `2.5`.",
+          "starterCode": "def median(nums):\n    # Your code here\n    pass\n",
+          "hint": "Sort a copy and handle odd/even lengths separately.",
+          "solution": {
+            "code": "def median(nums):\n    nums = sorted(nums)\n    mid = len(nums) // 2\n    if len(nums) % 2 == 1:\n        return nums[mid]\n    return (nums[mid - 1] + nums[mid]) / 2",
+            "steps": [
+              {
+                "title": "Plan the split",
+                "explanation": "The median depends on whether the count is odd or even."
+              },
+              {
+                "title": "Compute from sorted values",
+                "explanation": "Sort, then pick the middle or average the two middle values.",
+                "code": "def median(nums):\n    nums = sorted(nums)\n    mid = len(nums) // 2\n    if len(nums) % 2 == 1:\n        return nums[mid]\n    return (nums[mid - 1] + nums[mid]) / 2"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-34",
+          "language": "python",
+          "level": "intermediate",
+          "title": "GCD",
+          "description": "Write `gcd(a, b)` using the Euclidean algorithm. Example: `gcd(54, 24)` -> `6`.",
+          "starterCode": "def gcd(a, b):\n    # Your code here\n    pass\n",
+          "hint": "Repeatedly set (a, b) = (b, a % b) until b is 0.",
+          "solution": {
+            "code": "def gcd(a, b):\n    while b != 0:\n        a, b = b, a % b\n    return abs(a)",
+            "steps": [
+              {
+                "title": "Plan the algorithm",
+                "explanation": "Use the Euclidean algorithm to reduce the pair."
+              },
+              {
+                "title": "Iterate until remainder is zero",
+                "explanation": "Swap and mod until b becomes 0, then return a.",
+                "code": "def gcd(a, b):\n    while b != 0:\n        a, b = b, a % b\n    return abs(a)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-35",
+          "language": "python",
+          "level": "intermediate",
+          "title": "LCM",
+          "description": "Write `lcm(a, b)` returning the least common multiple. Example: `lcm(6, 8)` -> `24`.",
+          "starterCode": "def lcm(a, b):\n    # Your code here\n    pass\n",
+          "hint": "Use lcm = abs(a*b) // gcd(a,b).",
+          "solution": {
+            "code": "def lcm(a, b):\n    def gcd(x, y):\n        while y:\n            x, y = y, x % y\n        return abs(x)\n    return abs(a * b) // gcd(a, b) if a and b else 0",
+            "steps": [
+              {
+                "title": "Plan the formula",
+                "explanation": "LCM can be derived from the product and GCD."
+              },
+              {
+                "title": "Compute using GCD",
+                "explanation": "Calculate gcd and apply the formula.",
+                "code": "def lcm(a, b):\n    def gcd(x, y):\n        while y:\n            x, y = y, x % y\n        return abs(x)\n    return abs(a * b) // gcd(a, b) if a and b else 0"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-36",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Prime Factors",
+          "description": "Write `prime_factors(n)` returning the prime factors in ascending order. Example: `prime_factors(84)` -> `[2,2,3,7]`.",
+          "starterCode": "def prime_factors(n):\n    # Your code here\n    pass\n",
+          "hint": "Divide by 2, then test odd factors.",
+          "solution": {
+            "code": "def prime_factors(n):\n    factors = []\n    d = 2\n    while d * d <= n:\n        while n % d == 0:\n            factors.append(d)\n            n //= d\n        d += 1 if d == 2 else 2\n    if n > 1:\n        factors.append(n)\n    return factors",
+            "steps": [
+              {
+                "title": "Plan factorization",
+                "explanation": "Divide by small factors repeatedly to peel off primes."
+              },
+              {
+                "title": "Extract primes",
+                "explanation": "Test divisors and append each factor until n is reduced.",
+                "code": "def prime_factors(n):\n    factors = []\n    d = 2\n    while d * d <= n:\n        while n % d == 0:\n            factors.append(d)\n            n //= d\n        d += 1 if d == 2 else 2\n    if n > 1:\n        factors.append(n)\n    return factors"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-37",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Invert Dict",
+          "description": "Write `invert_dict(d)` swapping keys and values (assume values are unique). Example: `invert_dict({'a':1,'b':2})` -> `{1:'a', 2:'b'}`.",
+          "starterCode": "def invert_dict(d):\n    # Your code here\n    pass\n",
+          "hint": "Build a new dictionary from d.items().",
+          "solution": {
+            "code": "def invert_dict(d):\n    return {v: k for k, v in d.items()}",
+            "steps": [
+              {
+                "title": "Plan the swap",
+                "explanation": "Each original value becomes a key and each key becomes a value."
+              },
+              {
+                "title": "Build the inverted map",
+                "explanation": "Use a dictionary comprehension over items.",
+                "code": "def invert_dict(d):\n    return {v: k for k, v in d.items()}"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-38",
+          "language": "python",
+          "level": "intermediate",
+          "title": "RLE Encode",
+          "description": "Write `rle_encode(s)` using run-length encoding. Example: `rle_encode('aaabbc')` -> `'a3b2c1'`.",
+          "starterCode": "def rle_encode(s):\n    # Your code here\n    pass\n",
+          "hint": "Track the current character and count, then flush on change.",
+          "solution": {
+            "code": "def rle_encode(s):\n    if not s:\n        return ''\n    out = []\n    current = s[0]\n    count = 1\n    for ch in s[1:]:\n        if ch == current:\n            count += 1\n        else:\n            out.append(current + str(count))\n            current = ch\n            count = 1\n    out.append(current + str(count))\n    return ''.join(out)",
+            "steps": [
+              {
+                "title": "Plan the scan",
+                "explanation": "We need to compress consecutive runs of the same character."
+              },
+              {
+                "title": "Flush runs",
+                "explanation": "Append the character and count each time the run ends.",
+                "code": "def rle_encode(s):\n    if not s:\n        return ''\n    out = []\n    current = s[0]\n    count = 1\n    for ch in s[1:]:\n        if ch == current:\n            count += 1\n        else:\n            out.append(current + str(count))\n            current = ch\n            count = 1\n    out.append(current + str(count))\n    return ''.join(out)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-39",
+          "language": "python",
+          "level": "intermediate",
+          "title": "RLE Decode",
+          "description": "Write `rle_decode(s)` to expand a string like `'a3b2c1'` into `'aaabbc'`.",
+          "starterCode": "def rle_decode(s):\n    # Your code here\n    pass\n",
+          "hint": "Parse alternating character and number tokens.",
+          "solution": {
+            "code": "def rle_decode(s):\n    out = []\n    i = 0\n    while i < len(s):\n        ch = s[i]\n        i += 1\n        count = ''\n        while i < len(s) and s[i].isdigit():\n            count += s[i]\n            i += 1\n        out.append(ch * int(count))\n    return ''.join(out)",
+            "steps": [
+              {
+                "title": "Plan parsing",
+                "explanation": "Each letter is followed by its count as digits."
+              },
+              {
+                "title": "Expand the runs",
+                "explanation": "Read a letter, parse its count, and repeat it.",
+                "code": "def rle_decode(s):\n    out = []\n    i = 0\n    while i < len(s):\n        ch = s[i]\n        i += 1\n        count = ''\n        while i < len(s) and s[i].isdigit():\n            count += s[i]\n            i += 1\n        out.append(ch * int(count))\n    return ''.join(out)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-40",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Is Rotation",
+          "description": "Write `is_rotation(a, b)` returning True if b is a rotation of a. Example: `is_rotation('abcd', 'cdab')` -> `True`.",
+          "starterCode": "def is_rotation(a, b):\n    # Your code here\n    pass\n",
+          "hint": "Check if b is a substring of a + a.",
+          "solution": {
+            "code": "def is_rotation(a, b):\n    return len(a) == len(b) and b in (a + a)",
+            "steps": [
+              {
+                "title": "Plan the check",
+                "explanation": "A rotation of a must appear inside a + a."
+              },
+              {
+                "title": "Test substring",
+                "explanation": "Verify equal lengths and use substring search.",
+                "code": "def is_rotation(a, b):\n    return len(a) == len(b) and b in (a + a)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-41",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Longest Increasing Streak",
+          "description": "Write `longest_increasing_streak(nums)` returning the length of the longest strictly increasing contiguous streak. Example: `longest_increasing_streak([1,2,2,3,4])` -> `3`.",
+          "starterCode": "def longest_increasing_streak(nums):\n    # Your code here\n    pass\n",
+          "hint": "Track current streak length and update the best when it grows.",
+          "solution": {
+            "code": "def longest_increasing_streak(nums):\n    if not nums:\n        return 0\n    best = 1\n    current = 1\n    for i in range(1, len(nums)):\n        if nums[i] > nums[i - 1]:\n            current += 1\n        else:\n            current = 1\n        if current > best:\n            best = current\n    return best",
+            "steps": [
+              {
+                "title": "Plan the scan",
+                "explanation": "We need to track the length of each increasing run."
+              },
+              {
+                "title": "Update streaks",
+                "explanation": "Reset when the sequence stops increasing and keep the max.",
+                "code": "def longest_increasing_streak(nums):\n    if not nums:\n        return 0\n    best = 1\n    current = 1\n    for i in range(1, len(nums)):\n        if nums[i] > nums[i - 1]:\n            current += 1\n        else:\n            current = 1\n        if current > best:\n            best = current\n    return best"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-42",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Dedup By Key",
+          "description": "Write `dedup_by_key(items, key)` removing later dicts with duplicate key values. Example: `dedup_by_key([{'id':1},{'id':1},{'id':2}], 'id')` -> `[{\"id\":1},{\"id\":2}]`.",
+          "starterCode": "def dedup_by_key(items, key):\n    # Your code here\n    pass\n",
+          "hint": "Track seen key values and keep the first occurrence.",
+          "solution": {
+            "code": "def dedup_by_key(items, key):\n    seen = set()\n    out = []\n    for item in items:\n        value = item.get(key)\n        if value not in seen:\n            seen.add(value)\n            out.append(item)\n    return out",
+            "steps": [
+              {
+                "title": "Plan the filter",
+                "explanation": "We only keep the first item for each key value."
+              },
+              {
+                "title": "Filter by seen values",
+                "explanation": "Use a set to track which values have appeared.",
+                "code": "def dedup_by_key(items, key):\n    seen = set()\n    out = []\n    for item in items:\n        value = item.get(key)\n        if value not in seen:\n            seen.add(value)\n            out.append(item)\n    return out"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-43",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Snake to Camel",
+          "description": "Write `snake_to_camel(s)` converting snake_case to camelCase. Example: `snake_to_camel('hello_world')` -> `'helloWorld'`.",
+          "starterCode": "def snake_to_camel(s):\n    # Your code here\n    pass\n",
+          "hint": "Split on '_' and capitalize words after the first.",
+          "solution": {
+            "code": "def snake_to_camel(s):\n    parts = s.split('_')\n    return parts[0] + ''.join(p[:1].upper() + p[1:] for p in parts[1:])",
+            "steps": [
+              {
+                "title": "Plan the conversion",
+                "explanation": "Keep the first word lowercase and capitalize the rest."
+              },
+              {
+                "title": "Build camelCase",
+                "explanation": "Split, transform, and join the parts.",
+                "code": "def snake_to_camel(s):\n    parts = s.split('_')\n    return parts[0] + ''.join(p[:1].upper() + p[1:] for p in parts[1:])"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-44",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Camel to Snake",
+          "description": "Write `camel_to_snake(s)` converting camelCase to snake_case. Example: `camel_to_snake('helloWorld')` -> `'hello_world'`.",
+          "starterCode": "def camel_to_snake(s):\n    # Your code here\n    pass\n",
+          "hint": "Insert '_' before uppercase letters and lower them.",
+          "solution": {
+            "code": "def camel_to_snake(s):\n    out = []\n    for ch in s:\n        if ch.isupper():\n            out.append('_')\n            out.append(ch.lower())\n        else:\n            out.append(ch)\n    return ''.join(out)",
+            "steps": [
+              {
+                "title": "Plan the conversion",
+                "explanation": "Uppercase letters signal word boundaries in camelCase."
+              },
+              {
+                "title": "Insert underscores",
+                "explanation": "Build the output by adding '_' before uppercase letters.",
+                "code": "def camel_to_snake(s):\n    out = []\n    for ch in s:\n        if ch.isupper():\n            out.append('_')\n            out.append(ch.lower())\n        else:\n            out.append(ch)\n    return ''.join(out)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-45",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Sum Digits",
+          "description": "Write `sum_digits(n)` returning the sum of digits of a non-negative integer. Example: `sum_digits(402)` -> `6`.",
+          "starterCode": "def sum_digits(n):\n    # Your code here\n    pass\n",
+          "hint": "Use modulo 10 and integer division.",
+          "solution": {
+            "code": "def sum_digits(n):\n    total = 0\n    while n > 0:\n        total += n % 10\n        n //= 10\n    return total",
+            "steps": [
+              {
+                "title": "Plan the loop",
+                "explanation": "Each iteration extracts the last digit and reduces n."
+              },
+              {
+                "title": "Accumulate digits",
+                "explanation": "Add n % 10 to the total and divide by 10.",
+                "code": "def sum_digits(n):\n    total = 0\n    while n > 0:\n        total += n % 10\n        n //= 10\n    return total"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-46",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Reverse Words",
+          "description": "Write `reverse_words(sentence)` returning the words in reverse order. Example: `reverse_words('one two three')` -> `'three two one'`.",
+          "starterCode": "def reverse_words(sentence):\n    # Your code here\n    pass\n",
+          "hint": "Split, reverse the list, and join with spaces.",
+          "solution": {
+            "code": "def reverse_words(sentence):\n    return ' '.join(sentence.split()[::-1])",
+            "steps": [
+              {
+                "title": "Split and reverse",
+                "explanation": "Turn the sentence into words and reverse their order."
+              },
+              {
+                "title": "Join the result",
+                "explanation": "Join the reversed words with spaces.",
+                "code": "def reverse_words(sentence):\n    return ' '.join(sentence.split()[::-1])"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-47",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Array Intersection",
+          "description": "Write `intersection(a, b)` returning a sorted list of unique values present in both lists. Example: `intersection([1,2,2,3],[2,3,4])` -> `[2,3]`.",
+          "starterCode": "def intersection(a, b):\n    # Your code here\n    pass\n",
+          "hint": "Use set intersection and then sort.",
+          "solution": {
+            "code": "def intersection(a, b):\n    return sorted(set(a) & set(b))",
+            "steps": [
+              {
+                "title": "Use set intersection",
+                "explanation": "Convert to sets to remove duplicates and intersect them."
+              },
+              {
+                "title": "Sort the result",
+                "explanation": "Return a sorted list for stable output.",
+                "code": "def intersection(a, b):\n    return sorted(set(a) & set(b))"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-48",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Array Difference",
+          "description": "Write `difference(a, b)` returning items in `a` not in `b`, preserving order. Example: `difference([1,2,2,3],[2])` -> `[1,3]`.",
+          "starterCode": "def difference(a, b):\n    # Your code here\n    pass\n",
+          "hint": "Use a set for membership checks.",
+          "solution": {
+            "code": "def difference(a, b):\n    blocked = set(b)\n    return [x for x in a if x not in blocked]",
+            "steps": [
+              {
+                "title": "Prepare lookup",
+                "explanation": "Convert b to a set to speed up membership tests."
+              },
+              {
+                "title": "Filter a",
+                "explanation": "Keep elements of a that are not in b.",
+                "code": "def difference(a, b):\n    blocked = set(b)\n    return [x for x in a if x not in blocked]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-49",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Compress Spaces",
+          "description": "Write `compress_spaces(s)` replacing runs of whitespace with a single space. Example: `compress_spaces('a   b\n c')` -> `'a b c'`.",
+          "starterCode": "def compress_spaces(s):\n    # Your code here\n    pass\n",
+          "hint": "Split on whitespace and join with single spaces.",
+          "solution": {
+            "code": "def compress_spaces(s):\n    return ' '.join(s.split())",
+            "steps": [
+              {
+                "title": "Normalize whitespace",
+                "explanation": "Split collapses any whitespace; join inserts single spaces."
+              },
+              {
+                "title": "Return the string",
+                "explanation": "Join with a single space to compress runs.",
+                "code": "def compress_spaces(s):\n    return ' '.join(s.split())"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-50",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Matrix Row Sums",
+          "description": "Write `row_sums(matrix)` returning a list of row sums. Example: `row_sums([[1,2],[3,4]])` -> `[3,7]`.",
+          "starterCode": "def row_sums(matrix):\n    # Your code here\n    pass\n",
+          "hint": "Use sum on each row.",
+          "solution": {
+            "code": "def row_sums(matrix):\n    return [sum(row) for row in matrix]",
+            "steps": [
+              {
+                "title": "Sum each row",
+                "explanation": "Apply sum to every row list."
+              },
+              {
+                "title": "Collect results",
+                "explanation": "Use a list comprehension to build the output list.",
+                "code": "def row_sums(matrix):\n    return [sum(row) for row in matrix]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-51",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Matrix Col Sums",
+          "description": "Write `col_sums(matrix)` returning a list of column sums. Example: `col_sums([[1,2,3],[4,5,6]])` -> `[5,7,9]`.",
+          "starterCode": "def col_sums(matrix):\n    # Your code here\n    pass\n",
+          "hint": "Use zip(*matrix) to iterate columns.",
+          "solution": {
+            "code": "def col_sums(matrix):\n    return [sum(col) for col in zip(*matrix)]",
+            "steps": [
+              {
+                "title": "Turn columns into rows",
+                "explanation": "Use zip(*matrix) to iterate column groups."
+              },
+              {
+                "title": "Sum each column",
+                "explanation": "Apply sum to each column tuple.",
+                "code": "def col_sums(matrix):\n    return [sum(col) for col in zip(*matrix)]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-52",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Find Missing",
+          "description": "Write `find_missing(nums)` for 1..n with one missing number. Example: `find_missing([1,2,4,5])` -> `3`.",
+          "starterCode": "def find_missing(nums):\n    # Your code here\n    pass\n",
+          "hint": "Use expected sum minus actual sum.",
+          "solution": {
+            "code": "def find_missing(nums):\n    n = len(nums) + 1\n    return n * (n + 1) // 2 - sum(nums)",
+            "steps": [
+              {
+                "title": "Use sum formula",
+                "explanation": "Sum 1..n and subtract the list sum."
+              },
+              {
+                "title": "Return the missing value",
+                "explanation": "The difference is the missing number.",
+                "code": "def find_missing(nums):\n    n = len(nums) + 1\n    return n * (n + 1) // 2 - sum(nums)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-53",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Prefix Sums",
+          "description": "Write `prefix_sums(nums)` returning a list where each element is the sum of numbers before it (exclusive). Example: `prefix_sums([2,3,4])` -> `[0,2,5]`.",
+          "starterCode": "def prefix_sums(nums):\n    # Your code here\n    pass\n",
+          "hint": "Start with 0 and accumulate.",
+          "solution": {
+            "code": "def prefix_sums(nums):\n    total = 0\n    out = []\n    for n in nums:\n        out.append(total)\n        total += n\n    return out",
+            "steps": [
+              {
+                "title": "Plan accumulation",
+                "explanation": "Each prefix is the sum of elements before the current one."
+              },
+              {
+                "title": "Build the list",
+                "explanation": "Append the running total before adding the current element.",
+                "code": "def prefix_sums(nums):\n    total = 0\n    out = []\n    for n in nums:\n        out.append(total)\n        total += n\n    return out"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-54",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Suffix Sums",
+          "description": "Write `suffix_sums(nums)` returning a list where each element is the sum of numbers after it (exclusive). Example: `suffix_sums([2,3,4])` -> `[7,4,0]`.",
+          "starterCode": "def suffix_sums(nums):\n    # Your code here\n    pass\n",
+          "hint": "Accumulate from the right.",
+          "solution": {
+            "code": "def suffix_sums(nums):\n    total = 0\n    out = [0] * len(nums)\n    for i in range(len(nums) - 1, -1, -1):\n        out[i] = total\n        total += nums[i]\n    return out",
+            "steps": [
+              {
+                "title": "Plan reverse pass",
+                "explanation": "Each suffix excludes the current element and includes those to the right."
+              },
+              {
+                "title": "Build in reverse",
+                "explanation": "Track the running sum from the right.",
+                "code": "def suffix_sums(nums):\n    total = 0\n    out = [0] * len(nums)\n    for i in range(len(nums) - 1, -1, -1):\n        out[i] = total\n        total += nums[i]\n    return out"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-55",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Max Subarray Sum",
+          "description": "Write `max_subarray_sum(nums)` returning the maximum sum of any contiguous subarray. Example: `max_subarray_sum([-2,1,-3,4,-1,2,1])` -> `6`.",
+          "starterCode": "def max_subarray_sum(nums):\n    # Your code here\n    pass\n",
+          "hint": "Use Kadane's algorithm to track best ending here.",
+          "solution": {
+            "code": "def max_subarray_sum(nums):\n    best = nums[0]\n    current = nums[0]\n    for n in nums[1:]:\n        current = max(n, current + n)\n        best = max(best, current)\n    return best",
+            "steps": [
+              {
+                "title": "Track best ending here",
+                "explanation": "At each position, decide whether to start fresh or extend."
+              },
+              {
+                "title": "Update global best",
+                "explanation": "Keep the maximum seen so far.",
+                "code": "def max_subarray_sum(nums):\n    best = nums[0]\n    current = nums[0]\n    for n in nums[1:]:\n        current = max(n, current + n)\n        best = max(best, current)\n    return best"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-56",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Product Except Self",
+          "description": "Write `product_except_self(nums)` returning a list where each element is the product of all other numbers. Example: `product_except_self([1,2,3,4])` -> `[24,12,8,6]`.",
+          "starterCode": "def product_except_self(nums):\n    # Your code here\n    pass\n",
+          "hint": "Use prefix and suffix products without division.",
+          "solution": {
+            "code": "def product_except_self(nums):\n    n = len(nums)\n    out = [1] * n\n    prefix = 1\n    for i in range(n):\n        out[i] = prefix\n        prefix *= nums[i]\n    suffix = 1\n    for i in range(n - 1, -1, -1):\n        out[i] *= suffix\n        suffix *= nums[i]\n    return out",
+            "steps": [
+              {
+                "title": "Compute prefixes",
+                "explanation": "Store product of elements to the left for each index."
+              },
+              {
+                "title": "Multiply by suffixes",
+                "explanation": "Multiply each position by product of elements to the right.",
+                "code": "def product_except_self(nums):\n    n = len(nums)\n    out = [1] * n\n    prefix = 1\n    for i in range(n):\n        out[i] = prefix\n        prefix *= nums[i]\n    suffix = 1\n    for i in range(n - 1, -1, -1):\n        out[i] *= suffix\n        suffix *= nums[i]\n    return out"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-57",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Longest Common Prefix",
+          "description": "Write `longest_common_prefix(words)` returning the longest shared prefix. Example: `longest_common_prefix(['flower','flow','flight'])` -> `'fl'`.",
+          "starterCode": "def longest_common_prefix(words):\n    # Your code here\n    pass\n",
+          "hint": "Compare characters column by column using zip.",
+          "solution": {
+            "code": "def longest_common_prefix(words):\n    if not words:\n        return ''\n    prefix = []\n    for chars in zip(*words):\n        if len(set(chars)) == 1:\n            prefix.append(chars[0])\n        else:\n            break\n    return ''.join(prefix)",
+            "steps": [
+              {
+                "title": "Scan columns",
+                "explanation": "Use zip to compare each position across all words."
+              },
+              {
+                "title": "Build prefix",
+                "explanation": "Stop when characters differ.",
+                "code": "def longest_common_prefix(words):\n    if not words:\n        return ''\n    prefix = []\n    for chars in zip(*words):\n        if len(set(chars)) == 1:\n            prefix.append(chars[0])\n        else:\n            break\n    return ''.join(prefix)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-58",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Rotate Matrix",
+          "description": "Write `rotate_matrix(matrix)` rotating a square matrix 90 degrees clockwise. Example: `rotate_matrix([[1,2],[3,4]])` -> `[[3,1],[4,2]]`.",
+          "starterCode": "def rotate_matrix(matrix):\n    # Your code here\n    pass\n",
+          "hint": "Transpose then reverse each row.",
+          "solution": {
+            "code": "def rotate_matrix(matrix):\n    rotated = [list(row) for row in zip(*matrix)]\n    for row in rotated:\n        row.reverse()\n    return rotated",
+            "steps": [
+              {
+                "title": "Transpose",
+                "explanation": "Swap rows and columns to get a transposed matrix."
+              },
+              {
+                "title": "Reverse rows",
+                "explanation": "Reverse each row to complete the clockwise rotation.",
+                "code": "def rotate_matrix(matrix):\n    rotated = [list(row) for row in zip(*matrix)]\n    for row in rotated:\n        row.reverse()\n    return rotated"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-59",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Spiral Traverse",
+          "description": "Write `spiral_traverse(matrix)` returning elements in spiral order. Example: `spiral_traverse([[1,2,3],[4,5,6],[7,8,9]])` -> `[1,2,3,6,9,8,7,4,5]`.",
+          "starterCode": "def spiral_traverse(matrix):\n    # Your code here\n    pass\n",
+          "hint": "Peel top row, right column, bottom row, left column while shrinking bounds.",
+          "solution": {
+            "code": "def spiral_traverse(matrix):\n    if not matrix or not matrix[0]:\n        return []\n    top, bottom = 0, len(matrix) - 1\n    left, right = 0, len(matrix[0]) - 1\n    out = []\n    while top <= bottom and left <= right:\n        for c in range(left, right + 1):\n            out.append(matrix[top][c])\n        top += 1\n        for r in range(top, bottom + 1):\n            out.append(matrix[r][right])\n        right -= 1\n        if top <= bottom:\n            for c in range(right, left - 1, -1):\n                out.append(matrix[bottom][c])\n            bottom -= 1\n        if left <= right:\n            for r in range(bottom, top - 1, -1):\n                out.append(matrix[r][left])\n            left += 1\n    return out",
+            "steps": [
+              {
+                "title": "Manage bounds",
+                "explanation": "Track top, bottom, left, right edges and move inward."
+              },
+              {
+                "title": "Traverse layers",
+                "explanation": "Collect top row, right column, bottom row, left column in order.",
+                "code": "def spiral_traverse(matrix):\n    if not matrix or not matrix[0]:\n        return []\n    top, bottom = 0, len(matrix) - 1\n    left, right = 0, len(matrix[0]) - 1\n    out = []\n    while top <= bottom and left <= right:\n        for c in range(left, right + 1):\n            out.append(matrix[top][c])\n        top += 1\n        for r in range(top, bottom + 1):\n            out.append(matrix[r][right])\n        right -= 1\n        if top <= bottom:\n            for c in range(right, left - 1, -1):\n                out.append(matrix[bottom][c])\n            bottom -= 1\n        if left <= right:\n            for r in range(bottom, top - 1, -1):\n                out.append(matrix[r][left])\n            left += 1\n    return out"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-60",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Check Permutation",
+          "description": "Write `is_permutation(a, b)` returning True if strings are permutations. Example: `is_permutation('abc','bca')` -> `True`.",
+          "starterCode": "def is_permutation(a, b):\n    # Your code here\n    pass\n",
+          "hint": "Compare character counts.",
+          "solution": {
+            "code": "def is_permutation(a, b):\n    if len(a) != len(b):\n        return False\n    counts = {}\n    for ch in a:\n        counts[ch] = counts.get(ch, 0) + 1\n    for ch in b:\n        if ch not in counts:\n            return False\n        counts[ch] -= 1\n        if counts[ch] == 0:\n            del counts[ch]\n    return not counts",
+            "steps": [
+              {
+                "title": "Count characters",
+                "explanation": "A permutation has identical character counts."
+              },
+              {
+                "title": "Compare counts",
+                "explanation": "Decrement counts for the second string and ensure all zero.",
+                "code": "def is_permutation(a, b):\n    if len(a) != len(b):\n        return False\n    counts = {}\n    for ch in a:\n        counts[ch] = counts.get(ch, 0) + 1\n    for ch in b:\n        if ch not in counts:\n            return False\n        counts[ch] -= 1\n        if counts[ch] == 0:\n            del counts[ch]\n    return not counts"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-61",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Remove Duplicates In Place",
+          "description": "Write `dedup_sorted(nums)` removing duplicates from a sorted list and returning the new list. Example: `dedup_sorted([1,1,2,2,3])` -> `[1,2,3]`.",
+          "starterCode": "def dedup_sorted(nums):\n    # Your code here\n    pass\n",
+          "hint": "Use a write index to keep unique values.",
+          "solution": {
+            "code": "def dedup_sorted(nums):\n    if not nums:\n        return []\n    out = [nums[0]]\n    for n in nums[1:]:\n        if n != out[-1]:\n            out.append(n)\n    return out",
+            "steps": [
+              {
+                "title": "Scan sorted list",
+                "explanation": "Only append when the value changes."
+              },
+              {
+                "title": "Return uniques",
+                "explanation": "The output list contains unique values in order.",
+                "code": "def dedup_sorted(nums):\n    if not nums:\n        return []\n    out = [nums[0]]\n    for n in nums[1:]:\n        if n != out[-1]:\n            out.append(n)\n    return out"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-62",
+          "language": "python",
+          "level": "intermediate",
+          "title": "First Non-Repeating",
+          "description": "Write `first_non_repeating(s)` returning the first non-repeating character or '' if none. Example: `first_non_repeating('aabbcd')` -> `'c'`.",
+          "starterCode": "def first_non_repeating(s):\n    # Your code here\n    pass\n",
+          "hint": "Count characters then scan in order.",
+          "solution": {
+            "code": "def first_non_repeating(s):\n    counts = {}\n    for ch in s:\n        counts[ch] = counts.get(ch, 0) + 1\n    for ch in s:\n        if counts[ch] == 1:\n            return ch\n    return ''",
+            "steps": [
+              {
+                "title": "Count frequency",
+                "explanation": "Find how many times each character appears."
+              },
+              {
+                "title": "Scan in order",
+                "explanation": "Return the first character with count 1.",
+                "code": "def first_non_repeating(s):\n    counts = {}\n    for ch in s:\n        counts[ch] = counts.get(ch, 0) + 1\n    for ch in s:\n        if counts[ch] == 1:\n            return ch\n    return ''"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-63",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Count Islands",
+          "description": "Write `count_islands(grid)` counting 4-directional islands of '1's in a grid of '0' and '1'. Example: `count_islands([[\"1\",\"1\"],[\"0\",\"1\"]])` -> `1`.",
+          "starterCode": "def count_islands(grid):\n    # Your code here\n    pass\n",
+          "hint": "Use DFS/BFS to mark visited land cells.",
+          "solution": {
+            "code": "def count_islands(grid):\n    if not grid:\n        return 0\n    rows = len(grid)\n    cols = len(grid[0])\n    visited = [[False] * cols for _ in range(rows)]\n    def dfs(r, c):\n        stack = [(r, c)]\n        while stack:\n            cr, cc = stack.pop()\n            if visited[cr][cc]:\n                continue\n            visited[cr][cc] = True\n            for dr, dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                nr, nc = cr + dr, cc + dc\n                if 0 <= nr < rows and 0 <= nc < cols and not visited[nr][nc] and grid[nr][nc] == '1':\n                    stack.append((nr, nc))\n    count = 0\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == '1' and not visited[r][c]:\n                count += 1\n                dfs(r, c)\n    return count",
+            "steps": [
+              {
+                "title": "Traverse the grid",
+                "explanation": "Start a search whenever you find unvisited land."
+              },
+              {
+                "title": "Mark connected land",
+                "explanation": "DFS/BFS marks all connected '1' cells for one island.",
+                "code": "def count_islands(grid):\n    if not grid:\n        return 0\n    rows = len(grid)\n    cols = len(grid[0])\n    visited = [[False] * cols for _ in range(rows)]\n    def dfs(r, c):\n        stack = [(r, c)]\n        while stack:\n            cr, cc = stack.pop()\n            if visited[cr][cc]:\n                continue\n            visited[cr][cc] = True\n            for dr, dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                nr, nc = cr + dr, cc + dc\n                if 0 <= nr < rows and 0 <= nc < cols and not visited[nr][nc] and grid[nr][nc] == '1':\n                    stack.append((nr, nc))\n    count = 0\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == '1' and not visited[r][c]:\n                count += 1\n                dfs(r, c)\n    return count"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-64",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Time to Words",
+          "description": "Write `minutes_to_time(minutes)` returning HH:MM with zero padding. Example: `minutes_to_time(135)` -> `'02:15'`.",
+          "starterCode": "def minutes_to_time(minutes):\n    # Your code here\n    pass\n",
+          "hint": "Use divmod(minutes, 60).",
+          "solution": {
+            "code": "def minutes_to_time(minutes):\n    hours, mins = divmod(minutes, 60)\n    return f\"{hours:02d}:{mins:02d}\"",
+            "steps": [
+              {
+                "title": "Split hours and minutes",
+                "explanation": "divmod returns the hour and remainder minutes."
+              },
+              {
+                "title": "Format with padding",
+                "explanation": "Use two-digit formatting for HH and MM.",
+                "code": "def minutes_to_time(minutes):\n    hours, mins = divmod(minutes, 60)\n    return f\"{hours:02d}:{mins:02d}\""
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-65",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Merge Counts",
+          "description": "Write `merge_counts(a, b)` that merges two count dictionaries by summing values. Example: `merge_counts({'a':2},{'a':1,'b':3})` -> `{\"a\":3,\"b\":3}`.",
+          "starterCode": "def merge_counts(a, b):\n    # Your code here\n    pass\n",
+          "hint": "Start with a copy and add values from the other dict.",
+          "solution": {
+            "code": "def merge_counts(a, b):\n    out = dict(a)\n    for k, v in b.items():\n        out[k] = out.get(k, 0) + v\n    return out",
+            "steps": [
+              {
+                "title": "Plan the merge",
+                "explanation": "We need to sum counts for matching keys."
+              },
+              {
+                "title": "Accumulate values",
+                "explanation": "Copy a then add b's counts.",
+                "code": "def merge_counts(a, b):\n    out = dict(a)\n    for k, v in b.items():\n        out[k] = out.get(k, 0) + v\n    return out"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-66",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Group By Length",
+          "description": "Write `group_by_length(words)` mapping word lengths to lists in input order. Example: `group_by_length(['a','to','cat'])` -> `{1:['a'],2:['to'],3:['cat']}`.",
+          "starterCode": "def group_by_length(words):\n    # Your code here\n    pass\n",
+          "hint": "Use a dictionary and append by length.",
+          "solution": {
+            "code": "def group_by_length(words):\n    groups = {}\n    for word in words:\n        groups.setdefault(len(word), []).append(word)\n    return groups",
+            "steps": [
+              {
+                "title": "Compute lengths",
+                "explanation": "Use len(word) as the grouping key."
+              },
+              {
+                "title": "Append in order",
+                "explanation": "Maintain a list for each length.",
+                "code": "def group_by_length(words):\n    groups = {}\n    for word in words:\n        groups.setdefault(len(word), []).append(word)\n    return groups"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-67",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Chunk String",
+          "description": "Write `chunk_string(s, size)` splitting a string into chunks of length size. Example: `chunk_string('abcdef', 2)` -> `['ab','cd','ef']`.",
+          "starterCode": "def chunk_string(s, size):\n    # Your code here\n    pass\n",
+          "hint": "Slice the string in steps of size.",
+          "solution": {
+            "code": "def chunk_string(s, size):\n    return [s[i:i + size] for i in range(0, len(s), size)]",
+            "steps": [
+              {
+                "title": "Plan chunking",
+                "explanation": "Use a step-based range to slice chunks."
+              },
+              {
+                "title": "Build chunks",
+                "explanation": "Slice the string every size characters.",
+                "code": "def chunk_string(s, size):\n    return [s[i:i + size] for i in range(0, len(s), size)]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-68",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Kth Smallest",
+          "description": "Write `kth_smallest(nums, k)` returning the k-th smallest (1-indexed). Example: `kth_smallest([7,3,5,1], 2)` -> `3`.",
+          "starterCode": "def kth_smallest(nums, k):\n    # Your code here\n    pass\n",
+          "hint": "Sort a copy and index k-1.",
+          "solution": {
+            "code": "def kth_smallest(nums, k):\n    return sorted(nums)[k - 1]",
+            "steps": [
+              {
+                "title": "Sort values",
+                "explanation": "Ordering the list makes k-th smallest trivial."
+              },
+              {
+                "title": "Pick index",
+                "explanation": "Use k-1 for 1-indexed input.",
+                "code": "def kth_smallest(nums, k):\n    return sorted(nums)[k - 1]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-69",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Rotate Left",
+          "description": "Write `rotate_left(items, k)` rotating a list left by k. Example: `rotate_left([1,2,3,4], 1)` -> `[2,3,4,1]`.",
+          "starterCode": "def rotate_left(items, k):\n    # Your code here\n    pass\n",
+          "hint": "Normalize k and use slicing.",
+          "solution": {
+            "code": "def rotate_left(items, k):\n    if not items:\n        return []\n    k = k % len(items)\n    return items[k:] + items[:k]",
+            "steps": [
+              {
+                "title": "Normalize k",
+                "explanation": "Use modulo to handle large rotations."
+              },
+              {
+                "title": "Slice and combine",
+                "explanation": "Left rotation moves the first k elements to the end.",
+                "code": "def rotate_left(items, k):\n    if not items:\n        return []\n    k = k % len(items)\n    return items[k:] + items[:k]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-70",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Is Sorted",
+          "description": "Write `is_sorted(nums)` returning True if the list is non-decreasing. Example: `is_sorted([1,2,2,3])` -> `True`.",
+          "starterCode": "def is_sorted(nums):\n    # Your code here\n    pass\n",
+          "hint": "Check each pair of neighbors.",
+          "solution": {
+            "code": "def is_sorted(nums):\n    return all(nums[i] <= nums[i + 1] for i in range(len(nums) - 1))",
+            "steps": [
+              {
+                "title": "Check neighbors",
+                "explanation": "Every adjacent pair must be in order."
+              },
+              {
+                "title": "Return result",
+                "explanation": "Use all() to validate every comparison.",
+                "code": "def is_sorted(nums):\n    return all(nums[i] <= nums[i + 1] for i in range(len(nums) - 1))"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-71",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Longest Unique Substring",
+          "description": "Write `longest_unique_length(s)` returning the length of the longest substring with all unique characters. Example: `longest_unique_length('abcabcbb')` -> `3`.",
+          "starterCode": "def longest_unique_length(s):\n    # Your code here\n    pass\n",
+          "hint": "Use a sliding window with a set.",
+          "solution": {
+            "code": "def longest_unique_length(s):\n    seen = set()\n    left = 0\n    best = 0\n    for right, ch in enumerate(s):\n        while ch in seen:\n            seen.remove(s[left])\n            left += 1\n        seen.add(ch)\n        best = max(best, right - left + 1)\n    return best",
+            "steps": [
+              {
+                "title": "Use a sliding window",
+                "explanation": "Expand right, shrink left when duplicates appear."
+              },
+              {
+                "title": "Track the best",
+                "explanation": "Update the maximum window length as you go.",
+                "code": "def longest_unique_length(s):\n    seen = set()\n    left = 0\n    best = 0\n    for right, ch in enumerate(s):\n        while ch in seen:\n            seen.remove(s[left])\n            left += 1\n        seen.add(ch)\n        best = max(best, right - left + 1)\n    return best"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-72",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Palindrome Number",
+          "description": "Write `is_palindrome_number(n)` returning True if n reads the same backward. Example: `is_palindrome_number(1221)` -> `True`.",
+          "starterCode": "def is_palindrome_number(n):\n    # Your code here\n    pass\n",
+          "hint": "Convert to string and compare with its reverse.",
+          "solution": {
+            "code": "def is_palindrome_number(n):\n    s = str(n)\n    return s == s[::-1]",
+            "steps": [
+              {
+                "title": "Convert to string",
+                "explanation": "String reversal makes palindrome check simple."
+              },
+              {
+                "title": "Compare",
+                "explanation": "Return whether the string equals its reverse.",
+                "code": "def is_palindrome_number(n):\n    s = str(n)\n    return s == s[::-1]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-73",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Remove Vowels",
+          "description": "Write `remove_vowels(s)` removing all vowels from a string. Example: `remove_vowels('hello')` -> `'hll'`.",
+          "starterCode": "def remove_vowels(s):\n    # Your code here\n    pass\n",
+          "hint": "Filter characters not in a vowel set.",
+          "solution": {
+            "code": "def remove_vowels(s):\n    vowels = set('aeiouAEIOU')\n    return ''.join(ch for ch in s if ch not in vowels)",
+            "steps": [
+              {
+                "title": "Define vowels",
+                "explanation": "Use a set for quick membership checks."
+              },
+              {
+                "title": "Filter characters",
+                "explanation": "Keep only non-vowel characters.",
+                "code": "def remove_vowels(s):\n    vowels = set('aeiouAEIOU')\n    return ''.join(ch for ch in s if ch not in vowels)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-74",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Interleave Lists",
+          "description": "Write `interleave(a, b)` alternating elements from two lists (stop when both are consumed). Example: `interleave([1,2],[3,4,5])` -> `[1,3,2,4,5]`.",
+          "starterCode": "def interleave(a, b):\n    # Your code here\n    pass\n",
+          "hint": "Use indices and append from each list if available.",
+          "solution": {
+            "code": "def interleave(a, b):\n    out = []\n    i = 0\n    while i < len(a) or i < len(b):\n        if i < len(a):\n            out.append(a[i])\n        if i < len(b):\n            out.append(b[i])\n        i += 1\n    return out",
+            "steps": [
+              {
+                "title": "Alternate indices",
+                "explanation": "Use a single index to draw from both lists."
+              },
+              {
+                "title": "Append when available",
+                "explanation": "Check bounds before appending from each list.",
+                "code": "def interleave(a, b):\n    out = []\n    i = 0\n    while i < len(a) or i < len(b):\n        if i < len(a):\n            out.append(a[i])\n        if i < len(b):\n            out.append(b[i])\n        i += 1\n    return out"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-75",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Pair Sum Count",
+          "description": "Write `count_pairs(nums, target)` counting pairs i<j with sum target. Example: `count_pairs([1,2,3,2], 4)` -> `2`.",
+          "starterCode": "def count_pairs(nums, target):\n    # Your code here\n    pass\n",
+          "hint": "Use a frequency map as you scan.",
+          "solution": {
+            "code": "def count_pairs(nums, target):\n    counts = {}\n    total = 0\n    for n in nums:\n        total += counts.get(target - n, 0)\n        counts[n] = counts.get(n, 0) + 1\n    return total",
+            "steps": [
+              {
+                "title": "Track seen values",
+                "explanation": "Each new element pairs with prior complements."
+              },
+              {
+                "title": "Accumulate pairs",
+                "explanation": "Add counts of needed complements as you go.",
+                "code": "def count_pairs(nums, target):\n    counts = {}\n    total = 0\n    for n in nums:\n        total += counts.get(target - n, 0)\n        counts[n] = counts.get(n, 0) + 1\n    return total"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-76",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Identity Matrix",
+          "description": "Write `identity_matrix(n)` returning an n x n identity matrix. Example: `identity_matrix(3)` -> `[[1,0,0],[0,1,0],[0,0,1]]`.",
+          "starterCode": "def identity_matrix(n):\n    # Your code here\n    pass\n",
+          "hint": "Put 1 on the diagonal and 0 elsewhere.",
+          "solution": {
+            "code": "def identity_matrix(n):\n    return [[1 if i == j else 0 for j in range(n)] for i in range(n)]",
+            "steps": [
+              {
+                "title": "Fill the diagonal",
+                "explanation": "Use i==j to decide where to place 1s."
+              },
+              {
+                "title": "Build rows",
+                "explanation": "Create each row with a list comprehension.",
+                "code": "def identity_matrix(n):\n    return [[1 if i == j else 0 for j in range(n)] for i in range(n)]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-77",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Is Identity",
+          "description": "Write `is_identity(matrix)` returning True if a square matrix is an identity matrix. Example: `is_identity([[1,0],[0,1]])` -> `True`.",
+          "starterCode": "def is_identity(matrix):\n    # Your code here\n    pass\n",
+          "hint": "Check diagonal is 1 and others are 0.",
+          "solution": {
+            "code": "def is_identity(matrix):\n    n = len(matrix)\n    for i in range(n):\n        if len(matrix[i]) != n:\n            return False\n        for j in range(n):\n            if (i == j and matrix[i][j] != 1) or (i != j and matrix[i][j] != 0):\n                return False\n    return True",
+            "steps": [
+              {
+                "title": "Validate square shape",
+                "explanation": "Identity matrices must be square."
+              },
+              {
+                "title": "Check diagonal and off-diagonal",
+                "explanation": "Ensure 1s on the diagonal and 0s elsewhere.",
+                "code": "def is_identity(matrix):\n    n = len(matrix)\n    for i in range(n):\n        if len(matrix[i]) != n:\n            return False\n        for j in range(n):\n            if (i == j and matrix[i][j] != 1) or (i != j and matrix[i][j] != 0):\n                return False\n    return True"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-78",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Simplify Path",
+          "description": "Write `simplify_path(path)` simplifying a Unix-style path. Example: `simplify_path('/a/./b/../c')` -> `'/a/c'`.",
+          "starterCode": "def simplify_path(path):\n    # Your code here\n    pass\n",
+          "hint": "Use a stack to process path segments.",
+          "solution": {
+            "code": "def simplify_path(path):\n    parts = []\n    for part in path.split('/'):\n        if part == '' or part == '.':\n            continue\n        if part == '..':\n            if parts:\n                parts.pop()\n        else:\n            parts.append(part)\n    return '/' + '/'.join(parts)",
+            "steps": [
+              {
+                "title": "Process segments",
+                "explanation": "Ignore empty and '.' segments, pop on '..'."
+              },
+              {
+                "title": "Rebuild path",
+                "explanation": "Join the remaining stack with '/'.",
+                "code": "def simplify_path(path):\n    parts = []\n    for part in path.split('/'):\n        if part == '' or part == '.':\n            continue\n        if part == '..':\n            if parts:\n                parts.pop()\n        else:\n            parts.append(part)\n    return '/' + '/'.join(parts)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-79",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Hex to Int",
+          "description": "Write `hex_to_int(s)` converting a lowercase hex string to an int. Example: `hex_to_int('1a')` -> `26`.",
+          "starterCode": "def hex_to_int(s):\n    # Your code here\n    pass\n",
+          "hint": "Use int(s, 16).",
+          "solution": {
+            "code": "def hex_to_int(s):\n    return int(s, 16)",
+            "steps": [
+              {
+                "title": "Use base 16",
+                "explanation": "Python int can parse hex with a base argument."
+              },
+              {
+                "title": "Return value",
+                "explanation": "Convert and return the integer.",
+                "code": "def hex_to_int(s):\n    return int(s, 16)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-80",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Int to Hex",
+          "description": "Write `int_to_hex(n)` returning a lowercase hex string without `0x`. Example: `int_to_hex(26)` -> `'1a'`.",
+          "starterCode": "def int_to_hex(n):\n    # Your code here\n    pass\n",
+          "hint": "Use hex(n) and strip the prefix.",
+          "solution": {
+            "code": "def int_to_hex(n):\n    return hex(n)[2:]",
+            "steps": [
+              {
+                "title": "Convert to hex",
+                "explanation": "hex(n) returns a string like '0x1a'."
+              },
+              {
+                "title": "Strip prefix",
+                "explanation": "Drop the first two characters.",
+                "code": "def int_to_hex(n):\n    return hex(n)[2:]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-81",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Flatten Dict One Level",
+          "description": "Write `flatten_one_level(d)` flattening one nested dict level using dot keys. Example: `flatten_one_level({'a':1,'b':{'c':2}})` -> `{\"a\":1,\"b.c\":2}`.",
+          "starterCode": "def flatten_one_level(d):\n    # Your code here\n    pass\n",
+          "hint": "Only flatten nested dict values at one level.",
+          "solution": {
+            "code": "def flatten_one_level(d):\n    out = {}\n    for k, v in d.items():\n        if isinstance(v, dict):\n            for subk, subv in v.items():\n                out[f\"{k}.{subk}\"] = subv\n        else:\n            out[k] = v\n    return out",
+            "steps": [
+              {
+                "title": "Detect nested dicts",
+                "explanation": "Only flatten values that are dicts."
+              },
+              {
+                "title": "Build dot keys",
+                "explanation": "Concatenate parent and child keys with a dot.",
+                "code": "def flatten_one_level(d):\n    out = {}\n    for k, v in d.items():\n        if isinstance(v, dict):\n            for subk, subv in v.items():\n                out[f\"{k}.{subk}\"] = subv\n        else:\n            out[k] = v\n    return out"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-82",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Count Set Bits",
+          "description": "Write `count_set_bits(n)` returning the number of 1 bits in the binary representation. Example: `count_set_bits(13)` -> `3`.",
+          "starterCode": "def count_set_bits(n):\n    # Your code here\n    pass\n",
+          "hint": "Use n & 1 and shift right.",
+          "solution": {
+            "code": "def count_set_bits(n):\n    count = 0\n    while n > 0:\n        count += n & 1\n        n >>= 1\n    return count",
+            "steps": [
+              {
+                "title": "Scan bits",
+                "explanation": "Use bitwise operations to count 1s."
+              },
+              {
+                "title": "Accumulate",
+                "explanation": "Add the low bit and shift right.",
+                "code": "def count_set_bits(n):\n    count = 0\n    while n > 0:\n        count += n & 1\n        n >>= 1\n    return count"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-83",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Add Binary",
+          "description": "Write `add_binary(a, b)` returning the binary sum as a string. Example: `add_binary('101', '11')` -> `'1000'`.",
+          "starterCode": "def add_binary(a, b):\n    # Your code here\n    pass\n",
+          "hint": "Add from right to left with carry.",
+          "solution": {
+            "code": "def add_binary(a, b):\n    i = len(a) - 1\n    j = len(b) - 1\n    carry = 0\n    out = []\n    while i >= 0 or j >= 0 or carry:\n        total = carry\n        if i >= 0:\n            total += int(a[i])\n            i -= 1\n        if j >= 0:\n            total += int(b[j])\n            j -= 1\n        out.append(str(total % 2))\n        carry = total // 2\n    return ''.join(reversed(out))",
+            "steps": [
+              {
+                "title": "Add with carry",
+                "explanation": "Process digits from right to left."
+              },
+              {
+                "title": "Build result",
+                "explanation": "Collect bits and reverse them at the end.",
+                "code": "def add_binary(a, b):\n    i = len(a) - 1\n    j = len(b) - 1\n    carry = 0\n    out = []\n    while i >= 0 or j >= 0 or carry:\n        total = carry\n        if i >= 0:\n            total += int(a[i])\n            i -= 1\n        if j >= 0:\n            total += int(b[j])\n            j -= 1\n        out.append(str(total % 2))\n        carry = total // 2\n    return ''.join(reversed(out))"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-84",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Remove Adjacent Duplicates",
+          "description": "Write `remove_adjacent_duplicates(s)` removing repeated adjacent characters. Example: `remove_adjacent_duplicates('aabbccaa')` -> `'abca'`.",
+          "starterCode": "def remove_adjacent_duplicates(s):\n    # Your code here\n    pass\n",
+          "hint": "Use a stack-like list.",
+          "solution": {
+            "code": "def remove_adjacent_duplicates(s):\n    out = []\n    for ch in s:\n        if out and out[-1] == ch:\n            continue\n        out.append(ch)\n    return ''.join(out)",
+            "steps": [
+              {
+                "title": "Track last character",
+                "explanation": "Skip a character if it equals the last kept one."
+              },
+              {
+                "title": "Build output",
+                "explanation": "Append only when the character changes.",
+                "code": "def remove_adjacent_duplicates(s):\n    out = []\n    for ch in s:\n        if out and out[-1] == ch:\n            continue\n        out.append(ch)\n    return ''.join(out)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-85",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Longest Char Run",
+          "description": "Write `longest_char_run(s)` returning the length of the longest run of the same character. Example: `longest_char_run('aabbbcc')` -> `3`.",
+          "starterCode": "def longest_char_run(s):\n    # Your code here\n    pass\n",
+          "hint": "Track current run length and update best.",
+          "solution": {
+            "code": "def longest_char_run(s):\n    if not s:\n        return 0\n    best = 1\n    current = 1\n    for i in range(1, len(s)):\n        if s[i] == s[i - 1]:\n            current += 1\n        else:\n            current = 1\n        if current > best:\n            best = current\n    return best",
+            "steps": [
+              {
+                "title": "Track runs",
+                "explanation": "Increase the run on matches, reset on change."
+              },
+              {
+                "title": "Keep the maximum",
+                "explanation": "Update the best run length as you scan.",
+                "code": "def longest_char_run(s):\n    if not s:\n        return 0\n    best = 1\n    current = 1\n    for i in range(1, len(s)):\n        if s[i] == s[i - 1]:\n            current += 1\n        else:\n            current = 1\n        if current > best:\n            best = current\n    return best"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-86",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Ransom Note",
+          "description": "Write `can_build_note(note, magazine)` returning True if note can be built from magazine letters. Example: `can_build_note('aa', 'abca')` -> `True`.",
+          "starterCode": "def can_build_note(note, magazine):\n    # Your code here\n    pass\n",
+          "hint": "Count letters in magazine and decrement for note.",
+          "solution": {
+            "code": "def can_build_note(note, magazine):\n    counts = {}\n    for ch in magazine:\n        counts[ch] = counts.get(ch, 0) + 1\n    for ch in note:\n        if counts.get(ch, 0) == 0:\n            return False\n        counts[ch] -= 1\n    return True",
+            "steps": [
+              {
+                "title": "Count magazine letters",
+                "explanation": "We need enough of each letter to build the note."
+              },
+              {
+                "title": "Consume for note",
+                "explanation": "Decrement counts and fail if any letter runs out.",
+                "code": "def can_build_note(note, magazine):\n    counts = {}\n    for ch in magazine:\n        counts[ch] = counts.get(ch, 0) + 1\n    for ch in note:\n        if counts.get(ch, 0) == 0:\n            return False\n        counts[ch] -= 1\n    return True"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-87",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Zip To Dict",
+          "description": "Write `zip_to_dict(keys, values)` mapping keys to values (ignore extras). Example: `zip_to_dict(['a','b'], [1,2,3])` -> `{\"a\":1,\"b\":2}`.",
+          "starterCode": "def zip_to_dict(keys, values):\n    # Your code here\n    pass\n",
+          "hint": "Use dict(zip(keys, values)).",
+          "solution": {
+            "code": "def zip_to_dict(keys, values):\n    return dict(zip(keys, values))",
+            "steps": [
+              {
+                "title": "Zip pairs",
+                "explanation": "zip stops at the shorter list."
+              },
+              {
+                "title": "Build dict",
+                "explanation": "Convert the zipped pairs into a dictionary.",
+                "code": "def zip_to_dict(keys, values):\n    return dict(zip(keys, values))"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-88",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Square Map",
+          "description": "Write `square_map(nums)` returning a list of squares. Example: `square_map([1,2,3])` -> `[1,4,9]`.",
+          "starterCode": "def square_map(nums):\n    # Your code here\n    pass\n",
+          "hint": "Use a list comprehension.",
+          "solution": {
+            "code": "def square_map(nums):\n    return [n * n for n in nums]",
+            "steps": [
+              {
+                "title": "Map each value",
+                "explanation": "Multiply each number by itself."
+              },
+              {
+                "title": "Collect results",
+                "explanation": "Use a list comprehension to build the output.",
+                "code": "def square_map(nums):\n    return [n * n for n in nums]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-89",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Clamp Values",
+          "description": "Write `clamp_values(nums, lo, hi)` clamping each value to [lo, hi]. Example: `clamp_values([1,5,10], 3, 7)` -> `[3,5,7]`.",
+          "starterCode": "def clamp_values(nums, lo, hi):\n    # Your code here\n    pass\n",
+          "hint": "Use min/max for each value.",
+          "solution": {
+            "code": "def clamp_values(nums, lo, hi):\n    return [min(hi, max(lo, n)) for n in nums]",
+            "steps": [
+              {
+                "title": "Clamp each number",
+                "explanation": "Use max to apply the lower bound and min for the upper bound."
+              },
+              {
+                "title": "Build output",
+                "explanation": "Return the clamped list.",
+                "code": "def clamp_values(nums, lo, hi):\n    return [min(hi, max(lo, n)) for n in nums]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-90",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Count Prefix Matches",
+          "description": "Write `count_prefix_matches(words, prefix)` returning how many words start with prefix. Example: `count_prefix_matches(['apple','ape','bat'],'ap')` -> `2`.",
+          "starterCode": "def count_prefix_matches(words, prefix):\n    # Your code here\n    pass\n",
+          "hint": "Use str.startswith for each word.",
+          "solution": {
+            "code": "def count_prefix_matches(words, prefix):\n    return sum(1 for w in words if w.startswith(prefix))",
+            "steps": [
+              {
+                "title": "Check each word",
+                "explanation": "startswith verifies prefix matching."
+              },
+              {
+                "title": "Count matches",
+                "explanation": "Sum the True values.",
+                "code": "def count_prefix_matches(words, prefix):\n    return sum(1 for w in words if w.startswith(prefix))"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-91",
+          "language": "python",
+          "level": "intermediate",
+          "title": "All Unique Characters",
+          "description": "Write `all_unique(s)` returning True if all characters are unique. Example: `all_unique('abc')` -> `True`, `all_unique('aba')` -> `False`.",
+          "starterCode": "def all_unique(s):\n    # Your code here\n    pass\n",
+          "hint": "Compare length of set and string.",
+          "solution": {
+            "code": "def all_unique(s):\n    return len(set(s)) == len(s)",
+            "steps": [
+              {
+                "title": "Use a set",
+                "explanation": "A set removes duplicates."
+              },
+              {
+                "title": "Compare lengths",
+                "explanation": "If lengths match, all characters were unique.",
+                "code": "def all_unique(s):\n    return len(set(s)) == len(s)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-92",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Border Sum",
+          "description": "Write `border_sum(matrix)` returning the sum of border elements in a 2D list. Example: `border_sum([[1,2,3],[4,5,6],[7,8,9]])` -> `40`.",
+          "starterCode": "def border_sum(matrix):\n    # Your code here\n    pass\n",
+          "hint": "Sum first/last rows and first/last columns without double counting corners.",
+          "solution": {
+            "code": "def border_sum(matrix):\n    if not matrix or not matrix[0]:\n        return 0\n    rows = len(matrix)\n    cols = len(matrix[0])\n    total = sum(matrix[0]) + sum(matrix[rows - 1]) if rows > 1 else sum(matrix[0])\n    for r in range(1, rows - 1):\n        total += matrix[r][0]\n        if cols > 1:\n            total += matrix[r][cols - 1]\n    return total",
+            "steps": [
+              {
+                "title": "Sum top and bottom",
+                "explanation": "Add the first and last rows."
+              },
+              {
+                "title": "Add side borders",
+                "explanation": "Add first and last elements for middle rows.",
+                "code": "def border_sum(matrix):\n    if not matrix or not matrix[0]:\n        return 0\n    rows = len(matrix)\n    cols = len(matrix[0])\n    total = sum(matrix[0]) + sum(matrix[rows - 1]) if rows > 1 else sum(matrix[0])\n    for r in range(1, rows - 1):\n        total += matrix[r][0]\n        if cols > 1:\n            total += matrix[r][cols - 1]\n    return total"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-93",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Diagonal Difference",
+          "description": "Write `diagonal_difference(matrix)` returning abs(sum(primary) - sum(secondary)). Example: `diagonal_difference([[1,2],[3,4]])` -> `0`.",
+          "starterCode": "def diagonal_difference(matrix):\n    # Your code here\n    pass\n",
+          "hint": "Primary uses [i][i], secondary uses [i][n-1-i].",
+          "solution": {
+            "code": "def diagonal_difference(matrix):\n    n = len(matrix)\n    primary = sum(matrix[i][i] for i in range(n))\n    secondary = sum(matrix[i][n - 1 - i] for i in range(n))\n    return abs(primary - secondary)",
+            "steps": [
+              {
+                "title": "Compute both diagonals",
+                "explanation": "Sum primary and secondary diagonal elements."
+              },
+              {
+                "title": "Return absolute difference",
+                "explanation": "Subtract and apply abs().",
+                "code": "def diagonal_difference(matrix):\n    n = len(matrix)\n    primary = sum(matrix[i][i] for i in range(n))\n    secondary = sum(matrix[i][n - 1 - i] for i in range(n))\n    return abs(primary - secondary)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-94",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Strip Hash Comments",
+          "description": "Write `strip_hash_comments(lines)` removing any text after `#` on each line. Example: `strip_hash_comments(['a #x','b'])` -> `['a','b']`.",
+          "starterCode": "def strip_hash_comments(lines):\n    # Your code here\n    pass\n",
+          "hint": "Split each line on '#' and strip trailing spaces.",
+          "solution": {
+            "code": "def strip_hash_comments(lines):\n    out = []\n    for line in lines:\n        out.append(line.split('#', 1)[0].rstrip())\n    return out",
+            "steps": [
+              {
+                "title": "Split on hash",
+                "explanation": "Everything after '#' is removed."
+              },
+              {
+                "title": "Trim and collect",
+                "explanation": "Strip trailing spaces and store the cleaned line.",
+                "code": "def strip_hash_comments(lines):\n    out = []\n    for line in lines:\n        out.append(line.split('#', 1)[0].rstrip())\n    return out"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-95",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Parse Query String",
+          "description": "Write `parse_query(qs)` parsing a query string into a dict. Example: `parse_query('a=1&b=2')` -> `{\"a\":\"1\",\"b\":\"2\"}`.",
+          "starterCode": "def parse_query(qs):\n    # Your code here\n    pass\n",
+          "hint": "Split on '&' then split each pair on '='.",
+          "solution": {
+            "code": "def parse_query(qs):\n    out = {}\n    if qs == '':\n        return out\n    for part in qs.split('&'):\n        key, value = part.split('=', 1)\n        out[key] = value\n    return out",
+            "steps": [
+              {
+                "title": "Split pairs",
+                "explanation": "Break the string into key=value parts."
+              },
+              {
+                "title": "Build dict",
+                "explanation": "Split each pair and store it.",
+                "code": "def parse_query(qs):\n    out = {}\n    if qs == '':\n        return out\n    for part in qs.split('&'):\n        key, value = part.split('=', 1)\n        out[key] = value\n    return out"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-96",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Expand Ranges",
+          "description": "Write `expand_ranges(s)` expanding a comma-separated range string. Example: `expand_ranges('1-3,5')` -> `[1,2,3,5]`.",
+          "starterCode": "def expand_ranges(s):\n    # Your code here\n    pass\n",
+          "hint": "Split by commas, then handle a-b ranges.",
+          "solution": {
+            "code": "def expand_ranges(s):\n    out = []\n    if s == '':\n        return out\n    for part in s.split(','):\n        if '-' in part:\n            start, end = part.split('-', 1)\n            out.extend(range(int(start), int(end) + 1))\n        else:\n            out.append(int(part))\n    return out",
+            "steps": [
+              {
+                "title": "Parse parts",
+                "explanation": "Each part is either a number or a range."
+              },
+              {
+                "title": "Expand ranges",
+                "explanation": "Use range to add all values for a-b.",
+                "code": "def expand_ranges(s):\n    out = []\n    if s == '':\n        return out\n    for part in s.split(','):\n        if '-' in part:\n            start, end = part.split('-', 1)\n            out.extend(range(int(start), int(end) + 1))\n        else:\n            out.append(int(part))\n    return out"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-97",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Move Zeros",
+          "description": "Write `move_zeros(nums)` returning a list with zeros moved to the end, preserving order of non-zeros. Example: `move_zeros([0,1,0,3])` -> `[1,3,0,0]`.",
+          "starterCode": "def move_zeros(nums):\n    # Your code here\n    pass\n",
+          "hint": "Collect non-zeros then add the right number of zeros.",
+          "solution": {
+            "code": "def move_zeros(nums):\n    nonzeros = [n for n in nums if n != 0]\n    return nonzeros + [0] * (len(nums) - len(nonzeros))",
+            "steps": [
+              {
+                "title": "Filter non-zeros",
+                "explanation": "Keep the original order of non-zero values."
+              },
+              {
+                "title": "Append zeros",
+                "explanation": "Pad with zeros to reach the original length.",
+                "code": "def move_zeros(nums):\n    nonzeros = [n for n in nums if n != 0]\n    return nonzeros + [0] * (len(nums) - len(nonzeros))"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-98",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Count in Matrix",
+          "description": "Write `count_in_matrix(matrix, value)` returning how many times value appears. Example: `count_in_matrix([[1,2],[2,2]], 2)` -> `3`.",
+          "starterCode": "def count_in_matrix(matrix, value):\n    # Your code here\n    pass\n",
+          "hint": "Sum row counts.",
+          "solution": {
+            "code": "def count_in_matrix(matrix, value):\n    return sum(row.count(value) for row in matrix)",
+            "steps": [
+              {
+                "title": "Count per row",
+                "explanation": "Use list.count on each row."
+              },
+              {
+                "title": "Sum counts",
+                "explanation": "Add up all row totals.",
+                "code": "def count_in_matrix(matrix, value):\n    return sum(row.count(value) for row in matrix)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-99",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Sort By Length",
+          "description": "Write `sort_by_length(words)` returning a list sorted by word length (ascending), stable for ties. Example: `sort_by_length(['bbb','a','cc'])` -> `['a','cc','bbb']`.",
+          "starterCode": "def sort_by_length(words):\n    # Your code here\n    pass\n",
+          "hint": "Use sorted with key=len.",
+          "solution": {
+            "code": "def sort_by_length(words):\n    return sorted(words, key=len)",
+            "steps": [
+              {
+                "title": "Use length key",
+                "explanation": "Sorting with key=len orders by word length."
+              },
+              {
+                "title": "Return sorted list",
+                "explanation": "Python's sort is stable for ties.",
+                "code": "def sort_by_length(words):\n    return sorted(words, key=len)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-intermediate-100",
+          "language": "python",
+          "level": "intermediate",
+          "title": "Fibonacci N",
+          "description": "Write `fib(n)` returning the nth Fibonacci number (0-indexed). Example: `fib(7)` -> `13`.",
+          "starterCode": "def fib(n):\n    # Your code here\n    pass\n",
+          "hint": "Iteratively update two variables.",
+          "solution": {
+            "code": "def fib(n):\n    a, b = 0, 1\n    for _ in range(n):\n        a, b = b, a + b\n    return a",
+            "steps": [
+              {
+                "title": "Iterate n times",
+                "explanation": "Maintain the last two Fibonacci values."
+              },
+              {
+                "title": "Return current value",
+                "explanation": "After n steps, a holds fib(n).",
+                "code": "def fib(n):\n    a, b = 0, 1\n    for _ in range(n):\n        a, b = b, a + b\n    return a"
               }
             ]
           }
