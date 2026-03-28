@@ -6051,6 +6051,1801 @@
                             }
                         ]
                     }
+                },
+                {
+                    "id": "rs-intermediate-21",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Max Gap",
+                    "description": "Write `max_gap(nums: &[i32]) -> i32` that returns the largest difference between consecutive elements after sorting. Example: `[3,10,6,1]` -> `4` (sorted: [1,3,6,10]).\n\nExpected output:\n4",
+                    "starterCode": "fn max_gap(nums: &[i32]) -> i32 {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", max_gap(&[3, 10, 6, 1]));\n}\n",
+                    "hint": "Sort a copy, then scan and track the maximum difference between adjacent values.",
+                    "solution": {
+                        "code": "fn max_gap(nums: &[i32]) -> i32 {\n    if nums.len() < 2 {\n        return 0;\n    }\n    let mut sorted = nums.to_vec();\n    sorted.sort();\n    let mut max_gap = 0;\n    for i in 1..sorted.len() {\n        let gap = sorted[i] - sorted[i - 1];\n        if gap > max_gap {\n            max_gap = gap;\n        }\n    }\n    max_gap\n}\n\nfn main() {\n    println!(\"{}\", max_gap(&[3, 10, 6, 1]));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Sort the input",
+                                "explanation": "Make a mutable copy and sort it so consecutive elements can be compared.",
+                                "code": "let mut sorted = nums.to_vec();\nsorted.sort();"
+                            },
+                            {
+                                "title": "Scan for the largest gap",
+                                "explanation": "Iterate adjacent pairs and keep the maximum difference found.",
+                                "code": "for i in 1..sorted.len() {\n    let gap = sorted[i] - sorted[i - 1];\n    if gap > max_gap {\n        max_gap = gap;\n    }\n}"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-22",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Unique Chars",
+                    "description": "Write `all_unique(s: &str) -> bool` that returns true if all letters are unique, ignoring case. Example: \"Rust\" -> true, \"Hello\" -> false.\n\nExpected output:\ntrue\nfalse",
+                    "starterCode": "use std::collections::HashSet;\n\nfn all_unique(s: &str) -> bool {\n    // Your code here\n    false\n}\n\nfn main() {\n    println!(\"{}\", all_unique(\"Rust\"));\n    println!(\"{}\", all_unique(\"Hello\"));\n}\n",
+                    "hint": "Lowercase each character and insert into a HashSet; duplicates mean not unique.",
+                    "solution": {
+                        "code": "use std::collections::HashSet;\n\nfn all_unique(s: &str) -> bool {\n    let mut seen = HashSet::new();\n    for c in s.chars() {\n        let lc = c.to_ascii_lowercase();\n        if !seen.insert(lc) {\n            return false;\n        }\n    }\n    true\n}\n\nfn main() {\n    println!(\"{}\", all_unique(\"Rust\"));\n    println!(\"{}\", all_unique(\"Hello\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Track seen letters",
+                                "explanation": "Insert each lowercased character into a HashSet to detect duplicates.",
+                                "code": "let mut seen = HashSet::new();"
+                            },
+                            {
+                                "title": "Detect duplicates",
+                                "explanation": "If insert returns false, the letter already appeared, so return false.",
+                                "code": "if !seen.insert(lc) { return false; }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-23",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Vowel Count",
+                    "description": "Write `count_vowels(s: &str) -> usize` that counts vowels (a, e, i, o, u) case-insensitively. Example: \"Hello World\" -> 3.\n\nExpected output:\n3\n1",
+                    "starterCode": "fn count_vowels(s: &str) -> usize {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", count_vowels(\"Hello World\"));\n    println!(\"{}\", count_vowels(\"Rust\"));\n}\n",
+                    "hint": "Lowercase each char and check membership in a small vowel set.",
+                    "solution": {
+                        "code": "fn count_vowels(s: &str) -> usize {\n    let mut count = 0;\n    for c in s.chars() {\n        match c.to_ascii_lowercase() {\n            'a' | 'e' | 'i' | 'o' | 'u' => count += 1,\n            _ => {}\n        }\n    }\n    count\n}\n\nfn main() {\n    println!(\"{}\", count_vowels(\"Hello World\"));\n    println!(\"{}\", count_vowels(\"Rust\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Normalize case",
+                                "explanation": "Convert each character to lowercase so a single match set works for all cases.",
+                                "code": "c.to_ascii_lowercase()"
+                            },
+                            {
+                                "title": "Count vowels",
+                                "explanation": "Use a match to increment the counter only for vowel letters.",
+                                "code": "match lc { 'a' | 'e' | 'i' | 'o' | 'u' => count += 1, _ => {} }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-24",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Reverse Words",
+                    "description": "Write `reverse_words(s: &str) -> String` that reverses the order of words. Example: \"hello rust world\" -> \"world rust hello\".\n\nExpected output:\nworld rust hello",
+                    "starterCode": "fn reverse_words(s: &str) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", reverse_words(\"hello rust world\"));\n}\n",
+                    "hint": "Split by whitespace, reverse the iterator, then join with spaces.",
+                    "solution": {
+                        "code": "fn reverse_words(s: &str) -> String {\n    let mut words: Vec<&str> = s.split_whitespace().collect();\n    words.reverse();\n    words.join(\" \")\n}\n\nfn main() {\n    println!(\"{}\", reverse_words(\"hello rust world\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Collect words",
+                                "explanation": "Split the input into a Vec of words so it can be reversed in place.",
+                                "code": "let mut words: Vec<&str> = s.split_whitespace().collect();"
+                            },
+                            {
+                                "title": "Reverse and join",
+                                "explanation": "Reverse the Vec and join with spaces to build the final string.",
+                                "code": "words.reverse();\nwords.join(\" \")"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-25",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Dedup Sorted",
+                    "description": "Write `dedup_sorted(nums: &[i32]) -> Vec<i32>` that removes duplicates from a sorted slice. Example: `[1,1,2,2,2,3]` -> `[1,2,3]`.\n\nExpected output:\n[1, 2, 3]",
+                    "starterCode": "fn dedup_sorted(nums: &[i32]) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", dedup_sorted(&[1, 1, 2, 2, 2, 3]));\n}\n",
+                    "hint": "Track the last value pushed and skip if the current one is equal.",
+                    "solution": {
+                        "code": "fn dedup_sorted(nums: &[i32]) -> Vec<i32> {\n    let mut out = Vec::new();\n    for &n in nums {\n        if out.last() != Some(&n) {\n            out.push(n);\n        }\n    }\n    out\n}\n\nfn main() {\n    println!(\"{:?}\", dedup_sorted(&[1, 1, 2, 2, 2, 3]));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Build output incrementally",
+                                "explanation": "Only push a value if it differs from the last pushed value.",
+                                "code": "if out.last() != Some(&n) { out.push(n); }"
+                            },
+                            {
+                                "title": "Return the compacted list",
+                                "explanation": "Because the input is sorted, a single linear scan is enough.",
+                                "code": "out"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-26",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Second Largest",
+                    "description": "Write `second_largest(nums: &[i32]) -> Option<i32>` that returns the second largest distinct value. Example: `[5,1,5,2]` -> `Some(2)`. If it does not exist, return None.\n\nExpected output:\nSome(2)\nNone",
+                    "starterCode": "fn second_largest(nums: &[i32]) -> Option<i32> {\n    // Your code here\n    None\n}\n\nfn main() {\n    println!(\"{:?}\", second_largest(&[5, 1, 5, 2]));\n    println!(\"{:?}\", second_largest(&[7]));\n}\n",
+                    "hint": "Track the largest and second largest distinct values while scanning.",
+                    "solution": {
+                        "code": "fn second_largest(nums: &[i32]) -> Option<i32> {\n    let mut max1: Option<i32> = None;\n    let mut max2: Option<i32> = None;\n    for &n in nums {\n        if max1 == Some(n) {\n            continue;\n        }\n        if max1.map_or(true, |m| n > m) {\n            max2 = max1;\n            max1 = Some(n);\n        } else if max2.map_or(true, |m| n > m) {\n            max2 = Some(n);\n        }\n    }\n    max2\n}\n\nfn main() {\n    println!(\"{:?}\", second_largest(&[5, 1, 5, 2]));\n    println!(\"{:?}\", second_largest(&[7]));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Track top two values",
+                                "explanation": "Keep `max1` and `max2` as Option values so missing cases are handled cleanly.",
+                                "code": "let mut max1: Option<i32> = None;\nlet mut max2: Option<i32> = None;"
+                            },
+                            {
+                                "title": "Update on each element",
+                                "explanation": "Promote values when a larger distinct number is found and return max2 at the end.",
+                                "code": "if max1.map_or(true, |m| n > m) {\n    max2 = max1;\n    max1 = Some(n);\n}"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-27",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Balance Index",
+                    "description": "Write `balance_index(nums: &[i32]) -> Option<usize>` that returns an index where the sum of elements to the left equals the sum to the right. Example: `[1,7,3,6,5,6]` -> `Some(3)`.\n\nExpected output:\nSome(3)\nNone",
+                    "starterCode": "fn balance_index(nums: &[i32]) -> Option<usize> {\n    // Your code here\n    None\n}\n\nfn main() {\n    println!(\"{:?}\", balance_index(&[1, 7, 3, 6, 5, 6]));\n    println!(\"{:?}\", balance_index(&[1, 2, 3]));\n}\n",
+                    "hint": "Compute total sum, then scan and maintain a running left sum.",
+                    "solution": {
+                        "code": "fn balance_index(nums: &[i32]) -> Option<usize> {\n    let total: i32 = nums.iter().sum();\n    let mut left = 0;\n    for (i, &n) in nums.iter().enumerate() {\n        let right = total - left - n;\n        if left == right {\n            return Some(i);\n        }\n        left += n;\n    }\n    None\n}\n\nfn main() {\n    println!(\"{:?}\", balance_index(&[1, 7, 3, 6, 5, 6]));\n    println!(\"{:?}\", balance_index(&[1, 2, 3]));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Compute total sum",
+                                "explanation": "The right sum at each index can be derived from total - left - current.",
+                                "code": "let total: i32 = nums.iter().sum();"
+                            },
+                            {
+                                "title": "Scan with left sum",
+                                "explanation": "Compare left and right sums at each index and return the first match.",
+                                "code": "let right = total - left - n;\nif left == right { return Some(i); }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-28",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Digit Sum",
+                    "description": "Write `digit_sum(n: u64) -> u64` that returns the sum of its decimal digits. Example: `12345` -> `15`.\n\nExpected output:\n15",
+                    "starterCode": "fn digit_sum(n: u64) -> u64 {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", digit_sum(12345));\n}\n",
+                    "hint": "Repeatedly take n % 10 and divide by 10.",
+                    "solution": {
+                        "code": "fn digit_sum(mut n: u64) -> u64 {\n    let mut sum = 0;\n    while n > 0 {\n        sum += n % 10;\n        n /= 10;\n    }\n    sum\n}\n\nfn main() {\n    println!(\"{}\", digit_sum(12345));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Extract digits",
+                                "explanation": "Use modulo 10 to get the last digit and divide by 10 to move on.",
+                                "code": "sum += n % 10;\nn /= 10;"
+                            },
+                            {
+                                "title": "Accumulate the sum",
+                                "explanation": "Loop until n reaches 0 and return the running total.",
+                                "code": "while n > 0 { ... }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-29",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Factorial List",
+                    "description": "Write `factorials(n: u32) -> Vec<u64>` returning factorials from 1! to n!. Example: n=5 -> `[1,2,6,24,120]`.\n\nExpected output:\n[1, 2, 6, 24, 120]",
+                    "starterCode": "fn factorials(n: u32) -> Vec<u64> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", factorials(5));\n}\n",
+                    "hint": "Keep a running product and push after each multiplication.",
+                    "solution": {
+                        "code": "fn factorials(n: u32) -> Vec<u64> {\n    let mut out = Vec::with_capacity(n as usize);\n    let mut prod: u64 = 1;\n    for i in 1..=n as u64 {\n        prod *= i;\n        out.push(prod);\n    }\n    out\n}\n\nfn main() {\n    println!(\"{:?}\", factorials(5));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Maintain a running product",
+                                "explanation": "Multiply by each i and store the result in the output vector.",
+                                "code": "prod *= i;\nout.push(prod);"
+                            },
+                            {
+                                "title": "Return the list",
+                                "explanation": "The vector holds factorials in increasing order.",
+                                "code": "out"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-30",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "FizzBuzz Lite",
+                    "description": "Write `fizzbuzz(n: u32) -> Vec<String>` for 1..=n using \"Fizz\" for multiples of 3, \"Buzz\" for multiples of 5, and \"FizzBuzz\" for both. Example: n=15.\n\nExpected output:\n[\"1\", \"2\", \"Fizz\", \"4\", \"Buzz\", \"Fizz\", \"7\", \"8\", \"Fizz\", \"Buzz\", \"11\", \"Fizz\", \"13\", \"14\", \"FizzBuzz\"]",
+                    "starterCode": "fn fizzbuzz(n: u32) -> Vec<String> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", fizzbuzz(15));\n}\n",
+                    "hint": "Check divisible by 15 first, then 3, then 5.",
+                    "solution": {
+                        "code": "fn fizzbuzz(n: u32) -> Vec<String> {\n    let mut out = Vec::with_capacity(n as usize);\n    for i in 1..=n {\n        let s = if i % 15 == 0 {\n            \"FizzBuzz\".to_string()\n        } else if i % 3 == 0 {\n            \"Fizz\".to_string()\n        } else if i % 5 == 0 {\n            \"Buzz\".to_string()\n        } else {\n            i.to_string()\n        };\n        out.push(s);\n    }\n    out\n}\n\nfn main() {\n    println!(\"{:?}\", fizzbuzz(15));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Generate labels",
+                                "explanation": "For each number, choose the correct label with modulo checks.",
+                                "code": "if i % 15 == 0 { \"FizzBuzz\" } else if i % 3 == 0 { \"Fizz\" } else if i % 5 == 0 { \"Buzz\" } else { i.to_string() }"
+                            },
+                            {
+                                "title": "Collect results",
+                                "explanation": "Push each label into the output vector and return it.",
+                                "code": "out.push(s);"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-31",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Clean Palindrome",
+                    "description": "Write `is_palindrome_clean(s: &str) -> bool` that checks if a string is a palindrome after removing non-alphanumeric characters and ignoring case. Example: \"A man, a plan, a canal: Panama\" -> true.\n\nExpected output:\ntrue\nfalse",
+                    "starterCode": "fn is_palindrome_clean(s: &str) -> bool {\n    // Your code here\n    false\n}\n\nfn main() {\n    println!(\"{}\", is_palindrome_clean(\"A man, a plan, a canal: Panama\"));\n    println!(\"{}\", is_palindrome_clean(\"Rust\"));\n}\n",
+                    "hint": "Filter to alphanumeric lowercase chars, then compare with its reverse.",
+                    "solution": {
+                        "code": "fn is_palindrome_clean(s: &str) -> bool {\n    let filtered: Vec<char> = s.chars()\n        .filter(|c| c.is_ascii_alphanumeric())\n        .map(|c| c.to_ascii_lowercase())\n        .collect();\n    filtered.iter().eq(filtered.iter().rev())\n}\n\nfn main() {\n    println!(\"{}\", is_palindrome_clean(\"A man, a plan, a canal: Panama\"));\n    println!(\"{}\", is_palindrome_clean(\"Rust\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Normalize the input",
+                                "explanation": "Keep only alphanumeric characters and lowercase them for comparison.",
+                                "code": "let filtered: Vec<char> = s.chars()\n    .filter(|c| c.is_ascii_alphanumeric())\n    .map(|c| c.to_ascii_lowercase())\n    .collect();"
+                            },
+                            {
+                                "title": "Compare forward and reverse",
+                                "explanation": "Use iterator equality to compare the vector with its reverse.",
+                                "code": "filtered.iter().eq(filtered.iter().rev())"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-32",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Snake to Camel",
+                    "description": "Write `snake_to_camel(s: &str) -> String` that converts snake_case to lowerCamelCase. Example: \"rust_language\" -> \"rustLanguage\".\n\nExpected output:\nrustLanguage",
+                    "starterCode": "fn snake_to_camel(s: &str) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", snake_to_camel(\"rust_language\"));\n}\n",
+                    "hint": "Split by '_' and capitalize the first letter of each part after the first.",
+                    "solution": {
+                        "code": "fn snake_to_camel(s: &str) -> String {\n    let mut parts = s.split('_');\n    let first = parts.next().unwrap_or(\"\");\n    let mut out = first.to_string();\n    for part in parts {\n        let mut chars = part.chars();\n        if let Some(c) = chars.next() {\n            out.push(c.to_ascii_uppercase());\n            out.push_str(chars.as_str());\n        }\n    }\n    out\n}\n\nfn main() {\n    println!(\"{}\", snake_to_camel(\"rust_language\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Handle the first segment",
+                                "explanation": "The first part stays lowercase and starts the output.",
+                                "code": "let first = parts.next().unwrap_or(\"\");\nlet mut out = first.to_string();"
+                            },
+                            {
+                                "title": "Capitalize subsequent parts",
+                                "explanation": "Uppercase the first char of each remaining part and append the rest.",
+                                "code": "if let Some(c) = chars.next() {\n    out.push(c.to_ascii_uppercase());\n    out.push_str(chars.as_str());\n}"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-33",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Title Case",
+                    "description": "Write `title_case(s: &str) -> String` that capitalizes the first letter of each word and lowercases the rest. Example: \"hello RUST world\" -> \"Hello Rust World\".\n\nExpected output:\nHello Rust World",
+                    "starterCode": "fn title_case(s: &str) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", title_case(\"hello RUST world\"));\n}\n",
+                    "hint": "Split on whitespace and rebuild words with first char uppercase, rest lowercase.",
+                    "solution": {
+                        "code": "fn title_case(s: &str) -> String {\n    let mut out = Vec::new();\n    for word in s.split_whitespace() {\n        let mut chars = word.chars();\n        if let Some(first) = chars.next() {\n            let mut w = String::new();\n            w.push(first.to_ascii_uppercase());\n            w.push_str(&chars.as_str().to_ascii_lowercase());\n            out.push(w);\n        }\n    }\n    out.join(\" \")\n}\n\nfn main() {\n    println!(\"{}\", title_case(\"hello RUST world\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Process each word",
+                                "explanation": "Split by whitespace and rebuild each word with desired casing.",
+                                "code": "for word in s.split_whitespace() { ... }"
+                            },
+                            {
+                                "title": "Join with spaces",
+                                "explanation": "Collect the formatted words and join them back into a sentence.",
+                                "code": "out.join(\" \")"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-34",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Chunk It",
+                    "description": "Write `chunk_vec(nums: &[i32], size: usize) -> Vec<Vec<i32>>` that splits the slice into chunks of length `size`. The last chunk may be smaller. Example: `[1,2,3,4,5]`, size 2 -> `[[1,2],[3,4],[5]]`.\n\nExpected output:\n[[1, 2], [3, 4], [5]]",
+                    "starterCode": "fn chunk_vec(nums: &[i32], size: usize) -> Vec<Vec<i32>> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", chunk_vec(&[1, 2, 3, 4, 5], 2));\n}\n",
+                    "hint": "Use chunks(size) and collect each chunk into a Vec.",
+                    "solution": {
+                        "code": "fn chunk_vec(nums: &[i32], size: usize) -> Vec<Vec<i32>> {\n    if size == 0 {\n        return vec![];\n    }\n    nums.chunks(size).map(|c| c.to_vec()).collect()\n}\n\nfn main() {\n    println!(\"{:?}\", chunk_vec(&[1, 2, 3, 4, 5], 2));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Chunk the slice",
+                                "explanation": "Use `chunks(size)` to get an iterator of subslices.",
+                                "code": "nums.chunks(size)"
+                            },
+                            {
+                                "title": "Collect each chunk",
+                                "explanation": "Convert each subslice to Vec and collect the results.",
+                                "code": "map(|c| c.to_vec()).collect()"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-35",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Rotate Left",
+                    "description": "Write `rotate_left(items: &[i32], k: usize) -> Vec<i32>` rotating left by k. Example: `([1,2,3,4],2)` -> `[3,4,1,2]`.\n\nExpected output:\n[3, 4, 1, 2]",
+                    "starterCode": "fn rotate_left(items: &[i32], k: usize) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", rotate_left(&[1, 2, 3, 4], 2));\n}\n",
+                    "hint": "Use k % len and build a new vector from two slices.",
+                    "solution": {
+                        "code": "fn rotate_left(items: &[i32], k: usize) -> Vec<i32> {\n    if items.is_empty() {\n        return vec![];\n    }\n    let shift = k % items.len();\n    let mut out = Vec::with_capacity(items.len());\n    out.extend_from_slice(&items[shift..]);\n    out.extend_from_slice(&items[..shift]);\n    out\n}\n\nfn main() {\n    println!(\"{:?}\", rotate_left(&[1, 2, 3, 4], 2));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Normalize the shift",
+                                "explanation": "Use modulo so shifts larger than the length still work.",
+                                "code": "let shift = k % items.len();"
+                            },
+                            {
+                                "title": "Concatenate slices",
+                                "explanation": "Take the tail then the head to complete the left rotation.",
+                                "code": "out.extend_from_slice(&items[shift..]);\nout.extend_from_slice(&items[..shift]);"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-36",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Missing Number",
+                    "description": "Write `missing_number(nums: &[u32]) -> u32` for a list containing numbers in the range 0..=n with one missing. Example: `[3,0,1]` -> `2`.\n\nExpected output:\n2\n2",
+                    "starterCode": "fn missing_number(nums: &[u32]) -> u32 {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", missing_number(&[3, 0, 1]));\n    println!(\"{}\", missing_number(&[0, 1]));\n}\n",
+                    "hint": "Use sum of 0..=n minus the sum of the slice.",
+                    "solution": {
+                        "code": "fn missing_number(nums: &[u32]) -> u32 {\n    let n = nums.len() as u32;\n    let expected = n * (n + 1) / 2;\n    let actual: u32 = nums.iter().sum();\n    expected - actual\n}\n\nfn main() {\n    println!(\"{}\", missing_number(&[3, 0, 1]));\n    println!(\"{}\", missing_number(&[0, 1]));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Compute expected sum",
+                                "explanation": "Use the arithmetic series formula for 0..=n.",
+                                "code": "let expected = n * (n + 1) / 2;"
+                            },
+                            {
+                                "title": "Subtract actual sum",
+                                "explanation": "The difference is the missing number.",
+                                "code": "expected - actual"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-37",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Count Bits",
+                    "description": "Write `count_bits(n: u32) -> u32` that returns the number of set bits. Example: `29` (11101) -> `4`.\n\nExpected output:\n4",
+                    "starterCode": "fn count_bits(n: u32) -> u32 {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", count_bits(29));\n}\n",
+                    "hint": "Use Brian Kernighan's trick: n &= n - 1.",
+                    "solution": {
+                        "code": "fn count_bits(mut n: u32) -> u32 {\n    let mut count = 0;\n    while n != 0 {\n        n &= n - 1;\n        count += 1;\n    }\n    count\n}\n\nfn main() {\n    println!(\"{}\", count_bits(29));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Clear lowest set bit",
+                                "explanation": "Each `n &= n - 1` removes one set bit.",
+                                "code": "n &= n - 1;"
+                            },
+                            {
+                                "title": "Count iterations",
+                                "explanation": "The number of loop iterations equals the number of set bits.",
+                                "code": "count += 1;"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-38",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Binary to Dec",
+                    "description": "Write `binary_to_decimal(s: &str) -> u32` that converts a binary string to decimal. Example: \"101101\" -> 45.\n\nExpected output:\n45",
+                    "starterCode": "fn binary_to_decimal(s: &str) -> u32 {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", binary_to_decimal(\"101101\"));\n}\n",
+                    "hint": "Iterate characters and accumulate value = value * 2 + bit.",
+                    "solution": {
+                        "code": "fn binary_to_decimal(s: &str) -> u32 {\n    let mut value = 0u32;\n    for c in s.chars() {\n        value *= 2;\n        if c == '1' {\n            value += 1;\n        }\n    }\n    value\n}\n\nfn main() {\n    println!(\"{}\", binary_to_decimal(\"101101\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Accumulate base-2",
+                                "explanation": "Shift left by multiplying by 2 for each incoming bit.",
+                                "code": "value *= 2;"
+                            },
+                            {
+                                "title": "Add bit value",
+                                "explanation": "If the current char is '1', add one to the total.",
+                                "code": "if c == '1' { value += 1; }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-39",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Dec to Binary",
+                    "description": "Write `decimal_to_binary(n: u32) -> String` that returns the binary representation of n without leading zeros. Example: `13` -> \"1101\".\n\nExpected output:\n1101",
+                    "starterCode": "fn decimal_to_binary(n: u32) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", decimal_to_binary(13));\n}\n",
+                    "hint": "Repeatedly divide by 2 and collect remainders, then reverse.",
+                    "solution": {
+                        "code": "fn decimal_to_binary(mut n: u32) -> String {\n    if n == 0 {\n        return \"0\".to_string();\n    }\n    let mut bits = Vec::new();\n    while n > 0 {\n        bits.push(if n % 2 == 0 { '0' } else { '1' });\n        n /= 2;\n    }\n    bits.iter().rev().collect()\n}\n\nfn main() {\n    println!(\"{}\", decimal_to_binary(13));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Collect remainders",
+                                "explanation": "Each remainder is the next binary digit from least significant to most.",
+                                "code": "bits.push(if n % 2 == 0 { '0' } else { '1' });"
+                            },
+                            {
+                                "title": "Reverse the digits",
+                                "explanation": "The digits were built in reverse order, so reverse them to finish.",
+                                "code": "bits.iter().rev().collect()"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-40",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Merge Intervals",
+                    "description": "Write `merge_intervals(intervals: &[(i32, i32)]) -> Vec<(i32, i32)>` that merges overlapping intervals. Example: `[(1,3),(2,6),(8,10),(15,18)]` -> `[(1,6),(8,10),(15,18)]`.\n\nExpected output:\n[(1, 6), (8, 10), (15, 18)]",
+                    "starterCode": "fn merge_intervals(intervals: &[(i32, i32)]) -> Vec<(i32, i32)> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    let intervals = [(1, 3), (2, 6), (8, 10), (15, 18)];\n    println!(\"{:?}\", merge_intervals(&intervals));\n}\n",
+                    "hint": "Sort by start, then merge when current.start <= last.end.",
+                    "solution": {
+                        "code": "fn merge_intervals(intervals: &[(i32, i32)]) -> Vec<(i32, i32)> {\n    if intervals.is_empty() {\n        return vec![];\n    }\n    let mut sorted = intervals.to_vec();\n    sorted.sort_by_key(|x| x.0);\n    let mut out = vec![sorted[0]];\n    for (start, end) in sorted.into_iter().skip(1) {\n        let last = out.last_mut().unwrap();\n        if start <= last.1 {\n            if end > last.1 {\n                last.1 = end;\n            }\n        } else {\n            out.push((start, end));\n        }\n    }\n    out\n}\n\nfn main() {\n    let intervals = [(1, 3), (2, 6), (8, 10), (15, 18)];\n    println!(\"{:?}\", merge_intervals(&intervals));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Sort intervals",
+                                "explanation": "Sorting by start makes overlaps easy to detect in one pass.",
+                                "code": "sorted.sort_by_key(|x| x.0);"
+                            },
+                            {
+                                "title": "Merge in one scan",
+                                "explanation": "Extend the last interval when overlapping, otherwise start a new one.",
+                                "code": "if start <= last.1 { last.1 = last.1.max(end); } else { out.push((start, end)); }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-41",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Prefix Sums",
+                    "description": "Write `prefix_sums(nums: &[i32]) -> Vec<i32>` that returns running sums. Example: `[1,2,3,4]` -> `[1,3,6,10]`.\n\nExpected output:\n[1, 3, 6, 10]",
+                    "starterCode": "fn prefix_sums(nums: &[i32]) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", prefix_sums(&[1, 2, 3, 4]));\n}\n",
+                    "hint": "Track a running total and push after each addition.",
+                    "solution": {
+                        "code": "fn prefix_sums(nums: &[i32]) -> Vec<i32> {\n    let mut out = Vec::with_capacity(nums.len());\n    let mut sum = 0;\n    for &n in nums {\n        sum += n;\n        out.push(sum);\n    }\n    out\n}\n\nfn main() {\n    println!(\"{:?}\", prefix_sums(&[1, 2, 3, 4]));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Accumulate",
+                                "explanation": "Add each element to a running total.",
+                                "code": "sum += n;"
+                            },
+                            {
+                                "title": "Store each prefix",
+                                "explanation": "Push the running total after each step.",
+                                "code": "out.push(sum);"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-42",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Subsequence",
+                    "description": "Write `is_subsequence(s: &str, t: &str) -> bool` that checks if all characters of s appear in t in order. Example: \"ace\" in \"abcde\" -> true.\n\nExpected output:\ntrue\nfalse",
+                    "starterCode": "fn is_subsequence(s: &str, t: &str) -> bool {\n    // Your code here\n    false\n}\n\nfn main() {\n    println!(\"{}\", is_subsequence(\"ace\", \"abcde\"));\n    println!(\"{}\", is_subsequence(\"aec\", \"abcde\"));\n}\n",
+                    "hint": "Use an iterator over t and advance it while scanning s.",
+                    "solution": {
+                        "code": "fn is_subsequence(s: &str, t: &str) -> bool {\n    let mut it = t.chars();\n    for c in s.chars() {\n        if it.by_ref().find(|&x| x == c).is_none() {\n            return false;\n        }\n    }\n    true\n}\n\nfn main() {\n    println!(\"{}\", is_subsequence(\"ace\", \"abcde\"));\n    println!(\"{}\", is_subsequence(\"aec\", \"abcde\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Scan t once",
+                                "explanation": "Reuse a single iterator so the order is preserved.",
+                                "code": "let mut it = t.chars();"
+                            },
+                            {
+                                "title": "Match each char in s",
+                                "explanation": "Find the next matching character; if missing, return false.",
+                                "code": "if it.by_ref().find(|&x| x == c).is_none() { return false; }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-43",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Diagonal Sums",
+                    "description": "Write `diagonal_sums(matrix: &[Vec<i32>]) -> (i32, i32)` returning the primary and secondary diagonal sums of a square matrix. Example: 3x3 1..9 -> (15, 15).\n\nExpected output:\n(15, 15)",
+                    "starterCode": "fn diagonal_sums(matrix: &[Vec<i32>]) -> (i32, i32) {\n    // Your code here\n    (0, 0)\n}\n\nfn main() {\n    let m = vec![vec![1, 2, 3], vec![4, 5, 6], vec![7, 8, 9]];\n    println!(\"{:?}\", diagonal_sums(&m));\n}\n",
+                    "hint": "Primary: i,i. Secondary: i, n-1-i.",
+                    "solution": {
+                        "code": "fn diagonal_sums(matrix: &[Vec<i32>]) -> (i32, i32) {\n    let n = matrix.len();\n    let mut primary = 0;\n    let mut secondary = 0;\n    for i in 0..n {\n        primary += matrix[i][i];\n        secondary += matrix[i][n - 1 - i];\n    }\n    (primary, secondary)\n}\n\nfn main() {\n    let m = vec![vec![1, 2, 3], vec![4, 5, 6], vec![7, 8, 9]];\n    println!(\"{:?}\", diagonal_sums(&m));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Iterate the index",
+                                "explanation": "Use i from 0..n to access both diagonals.",
+                                "code": "for i in 0..n { ... }"
+                            },
+                            {
+                                "title": "Accumulate both sums",
+                                "explanation": "Add matrix[i][i] and matrix[i][n-1-i] each iteration.",
+                                "code": "primary += matrix[i][i];\nsecondary += matrix[i][n - 1 - i];"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-44",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Border Sum",
+                    "description": "Write `border_sum(matrix: &[Vec<i32>]) -> i32` that sums only the border elements of a matrix. Example: 3x3 1..9 -> 40.\n\nExpected output:\n40",
+                    "starterCode": "fn border_sum(matrix: &[Vec<i32>]) -> i32 {\n    // Your code here\n    0\n}\n\nfn main() {\n    let m = vec![vec![1, 2, 3], vec![4, 5, 6], vec![7, 8, 9]];\n    println!(\"{}\", border_sum(&m));\n}\n",
+                    "hint": "Sum first/last rows fully, plus first/last elements of middle rows.",
+                    "solution": {
+                        "code": "fn border_sum(matrix: &[Vec<i32>]) -> i32 {\n    if matrix.is_empty() {\n        return 0;\n    }\n    let rows = matrix.len();\n    let cols = matrix[0].len();\n    let mut sum = 0;\n    for r in 0..rows {\n        for c in 0..cols {\n            if r == 0 || r == rows - 1 || c == 0 || c == cols - 1 {\n                sum += matrix[r][c];\n            }\n        }\n    }\n    sum\n}\n\nfn main() {\n    let m = vec![vec![1, 2, 3], vec![4, 5, 6], vec![7, 8, 9]];\n    println!(\"{}\", border_sum(&m));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Identify border cells",
+                                "explanation": "A cell is on the border if it is in the first/last row or column.",
+                                "code": "if r == 0 || r == rows - 1 || c == 0 || c == cols - 1"
+                            },
+                            {
+                                "title": "Accumulate the sum",
+                                "explanation": "Add only the values that meet the border condition.",
+                                "code": "sum += matrix[r][c];"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-45",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Roman to Int",
+                    "description": "Write `roman_to_int(s: &str) -> i32` that converts a Roman numeral into an integer. Example: \"MCMXCIV\" -> 1994.\n\nExpected output:\n1994",
+                    "starterCode": "fn roman_to_int(s: &str) -> i32 {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", roman_to_int(\"MCMXCIV\"));\n}\n",
+                    "hint": "If a smaller value precedes a larger one, subtract it instead of adding.",
+                    "solution": {
+                        "code": "fn roman_to_int(s: &str) -> i32 {\n    let value = |c: char| -> i32 {\n        match c {\n            'I' => 1,\n            'V' => 5,\n            'X' => 10,\n            'L' => 50,\n            'C' => 100,\n            'D' => 500,\n            'M' => 1000,\n            _ => 0,\n        }\n    };\n    let chars: Vec<char> = s.chars().collect();\n    let mut total = 0;\n    for i in 0..chars.len() {\n        let curr = value(chars[i]);\n        let next = if i + 1 < chars.len() { value(chars[i + 1]) } else { 0 };\n        if curr < next {\n            total -= curr;\n        } else {\n            total += curr;\n        }\n    }\n    total\n}\n\nfn main() {\n    println!(\"{}\", roman_to_int(\"MCMXCIV\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Map symbols to values",
+                                "explanation": "Use a helper closure to convert each Roman character to its value.",
+                                "code": "let value = |c: char| -> i32 { match c { 'I' => 1, 'V' => 5, 'X' => 10, 'L' => 50, 'C' => 100, 'D' => 500, 'M' => 1000, _ => 0 } };"
+                            },
+                            {
+                                "title": "Apply subtractive rule",
+                                "explanation": "If a smaller value comes before a larger one, subtract it; otherwise add it.",
+                                "code": "if curr < next { total -= curr; } else { total += curr; }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-46",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Int to Roman",
+                    "description": "Write `int_to_roman(n: i32) -> String` that converts an integer to a Roman numeral. Example: 58 -> \"LVIII\".\n\nExpected output:\nLVIII",
+                    "starterCode": "fn int_to_roman(n: i32) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", int_to_roman(58));\n}\n",
+                    "hint": "Use a list of value-symbol pairs and subtract greedily.",
+                    "solution": {
+                        "code": "fn int_to_roman(mut n: i32) -> String {\n    let table = [\n        (1000, \"M\"), (900, \"CM\"), (500, \"D\"), (400, \"CD\"),\n        (100, \"C\"), (90, \"XC\"), (50, \"L\"), (40, \"XL\"),\n        (10, \"X\"), (9, \"IX\"), (5, \"V\"), (4, \"IV\"), (1, \"I\"),\n    ];\n    let mut out = String::new();\n    for (value, symbol) in table.iter() {\n        while n >= *value {\n            out.push_str(symbol);\n            n -= *value;\n        }\n    }\n    out\n}\n\nfn main() {\n    println!(\"{}\", int_to_roman(58));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Use a descending table",
+                                "explanation": "Include subtractive pairs like 900 (CM) and 4 (IV).",
+                                "code": "let table = [(1000, \"M\"), (900, \"CM\"), ... , (1, \"I\")];"
+                            },
+                            {
+                                "title": "Greedy subtraction",
+                                "explanation": "Repeatedly append symbols while the value fits into n.",
+                                "code": "while n >= *value { out.push_str(symbol); n -= *value; }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-47",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Top K",
+                    "description": "Write `top_k_frequent(nums: &[i32], k: usize) -> Vec<i32>` returning the k most frequent numbers. Break ties by smaller value first. Example: `[1,1,1,2,2,3]`, k=2 -> `[1,2]`.\n\nExpected output:\n[1, 2]",
+                    "starterCode": "use std::collections::HashMap;\n\nfn top_k_frequent(nums: &[i32], k: usize) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", top_k_frequent(&[1, 1, 1, 2, 2, 3], 2));\n}\n",
+                    "hint": "Count with HashMap, then sort by (-count, value).",
+                    "solution": {
+                        "code": "use std::collections::HashMap;\n\nfn top_k_frequent(nums: &[i32], k: usize) -> Vec<i32> {\n    let mut counts: HashMap<i32, usize> = HashMap::new();\n    for &n in nums {\n        *counts.entry(n).or_insert(0) += 1;\n    }\n    let mut items: Vec<(i32, usize)> = counts.into_iter().collect();\n    items.sort_by(|a, b| b.1.cmp(&a.1).then_with(|| a.0.cmp(&b.0)));\n    items.into_iter().take(k).map(|(v, _)| v).collect()\n}\n\nfn main() {\n    println!(\"{:?}\", top_k_frequent(&[1, 1, 1, 2, 2, 3], 2));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Count frequencies",
+                                "explanation": "Use a HashMap to count how many times each value appears.",
+                                "code": "*counts.entry(n).or_insert(0) += 1;"
+                            },
+                            {
+                                "title": "Sort and take k",
+                                "explanation": "Sort by count descending, then value ascending, and take the first k.",
+                                "code": "items.sort_by(|a, b| b.1.cmp(&a.1).then_with(|| a.0.cmp(&b.0)));"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-48",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Longest Word",
+                    "description": "Write `longest_word(s: &str) -> String` that returns the longest word. If tied, return the first. Example: \"Rust makes systems safe\" -> \"systems\".\n\nExpected output:\nsystems",
+                    "starterCode": "fn longest_word(s: &str) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", longest_word(\"Rust makes systems safe\"));\n}\n",
+                    "hint": "Split by whitespace and track the max length and word.",
+                    "solution": {
+                        "code": "fn longest_word(s: &str) -> String {\n    let mut best = \"\";\n    for word in s.split_whitespace() {\n        if word.len() > best.len() {\n            best = word;\n        }\n    }\n    best.to_string()\n}\n\nfn main() {\n    println!(\"{}\", longest_word(\"Rust makes systems safe\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Scan words",
+                                "explanation": "Compare each word length to the current best.",
+                                "code": "if word.len() > best.len() { best = word; }"
+                            },
+                            {
+                                "title": "Return the best word",
+                                "explanation": "Convert the best &str to a String at the end.",
+                                "code": "best.to_string()"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-49",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "String Rotation",
+                    "description": "Write `is_rotation(a: &str, b: &str) -> bool` that checks if b is a rotation of a. Example: \"waterbottle\" and \"erbottlewat\" -> true.\n\nExpected output:\ntrue\ntrue",
+                    "starterCode": "fn is_rotation(a: &str, b: &str) -> bool {\n    // Your code here\n    false\n}\n\nfn main() {\n    println!(\"{}\", is_rotation(\"waterbottle\", \"erbottlewat\"));\n    println!(\"{}\", is_rotation(\"rust\", \"ustr\"));\n}\n",
+                    "hint": "If lengths match, check if b is a substring of a+a.",
+                    "solution": {
+                        "code": "fn is_rotation(a: &str, b: &str) -> bool {\n    if a.len() != b.len() {\n        return false;\n    }\n    let doubled = format!(\"{}{}\", a, a);\n    doubled.contains(b)\n}\n\nfn main() {\n    println!(\"{}\", is_rotation(\"waterbottle\", \"erbottlewat\"));\n    println!(\"{}\", is_rotation(\"rust\", \"ustr\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Check length",
+                                "explanation": "Rotations must be the same length.",
+                                "code": "if a.len() != b.len() { return false; }"
+                            },
+                            {
+                                "title": "Search in doubled string",
+                                "explanation": "Any rotation of a appears as a substring of a+a.",
+                                "code": "let doubled = format!(\"{}{}\", a, a);\ndoubled.contains(b)"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-50",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Median Pair",
+                    "description": "Write `median_two_sorted(a: &[i32], b: &[i32]) -> f64` for two sorted slices. Example: `[1,3]` and `[2]` -> 2.0; `[1,2]` and `[3,4]` -> 2.5.\n\nExpected output:\n2.0\n2.5",
+                    "starterCode": "fn median_two_sorted(a: &[i32], b: &[i32]) -> f64 {\n    // Your code here\n    0.0\n}\n\nfn main() {\n    println!(\"{:.1}\", median_two_sorted(&[1, 3], &[2]));\n    println!(\"{:.1}\", median_two_sorted(&[1, 2], &[3, 4]));\n}\n",
+                    "hint": "Merge the arrays into one sorted Vec, then compute the median.",
+                    "solution": {
+                        "code": "fn median_two_sorted(a: &[i32], b: &[i32]) -> f64 {\n    let mut merged = Vec::with_capacity(a.len() + b.len());\n    let (mut i, mut j) = (0, 0);\n    while i < a.len() && j < b.len() {\n        if a[i] <= b[j] {\n            merged.push(a[i]);\n            i += 1;\n        } else {\n            merged.push(b[j]);\n            j += 1;\n        }\n    }\n    merged.extend_from_slice(&a[i..]);\n    merged.extend_from_slice(&b[j..]);\n    let mid = merged.len() / 2;\n    if merged.len() % 2 == 1 {\n        merged[mid] as f64\n    } else {\n        (merged[mid - 1] + merged[mid]) as f64 / 2.0\n    }\n}\n\nfn main() {\n    println!(\"{:.1}\", median_two_sorted(&[1, 3], &[2]));\n    println!(\"{:.1}\", median_two_sorted(&[1, 2], &[3, 4]));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Merge the arrays",
+                                "explanation": "Use two pointers to build a fully sorted merged Vec.",
+                                "code": "while i < a.len() && j < b.len() { ... }"
+                            },
+                            {
+                                "title": "Compute the median",
+                                "explanation": "Use the middle element(s) depending on even/odd length.",
+                                "code": "if merged.len() % 2 == 1 { merged[mid] as f64 } else { (merged[mid - 1] + merged[mid]) as f64 / 2.0 }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-51",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Product Except",
+                    "description": "Write `product_except_self(nums: &[i32]) -> Vec<i32>` where each output element is the product of all other elements. Example: `[1,2,3,4]` -> `[24,12,8,6]`.\n\nExpected output:\n[24, 12, 8, 6]",
+                    "starterCode": "fn product_except_self(nums: &[i32]) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", product_except_self(&[1, 2, 3, 4]));\n}\n",
+                    "hint": "Use prefix and suffix products without division.",
+                    "solution": {
+                        "code": "fn product_except_self(nums: &[i32]) -> Vec<i32> {\n    let n = nums.len();\n    let mut out = vec![1; n];\n    let mut prefix = 1;\n    for i in 0..n {\n        out[i] = prefix;\n        prefix *= nums[i];\n    }\n    let mut suffix = 1;\n    for i in (0..n).rev() {\n        out[i] *= suffix;\n        suffix *= nums[i];\n    }\n    out\n}\n\nfn main() {\n    println!(\"{:?}\", product_except_self(&[1, 2, 3, 4]));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Compute prefix products",
+                                "explanation": "Store product of elements before each index.",
+                                "code": "out[i] = prefix;\nprefix *= nums[i];"
+                            },
+                            {
+                                "title": "Multiply suffix products",
+                                "explanation": "Traverse from the right and multiply by product after each index.",
+                                "code": "out[i] *= suffix;\nsuffix *= nums[i];"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-52",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Even-Odd Zig",
+                    "description": "Write `even_then_odd(nums: &[i32]) -> Vec<i32>` that returns all even-indexed elements followed by all odd-indexed elements. Example: `[1,2,3,4,5]` -> `[1,3,5,2,4]`.\n\nExpected output:\n[1, 3, 5, 2, 4]",
+                    "starterCode": "fn even_then_odd(nums: &[i32]) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", even_then_odd(&[1, 2, 3, 4, 5]));\n}\n",
+                    "hint": "Collect values at even indices first, then odd indices.",
+                    "solution": {
+                        "code": "fn even_then_odd(nums: &[i32]) -> Vec<i32> {\n    let mut out = Vec::with_capacity(nums.len());\n    for i in (0..nums.len()).step_by(2) {\n        out.push(nums[i]);\n    }\n    for i in (1..nums.len()).step_by(2) {\n        out.push(nums[i]);\n    }\n    out\n}\n\nfn main() {\n    println!(\"{:?}\", even_then_odd(&[1, 2, 3, 4, 5]));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Collect even indices",
+                                "explanation": "Use step_by(2) to visit indices 0,2,4,...",
+                                "code": "for i in (0..nums.len()).step_by(2) { out.push(nums[i]); }"
+                            },
+                            {
+                                "title": "Append odd indices",
+                                "explanation": "Then visit indices 1,3,5,... and append.",
+                                "code": "for i in (1..nums.len()).step_by(2) { out.push(nums[i]); }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-53",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Stock Profit",
+                    "description": "Write `max_profit(prices: &[i32]) -> i32` that returns the max profit from one buy/sell. Example: `[7,1,5,3,6,4]` -> 5.\n\nExpected output:\n5\n0",
+                    "starterCode": "fn max_profit(prices: &[i32]) -> i32 {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", max_profit(&[7, 1, 5, 3, 6, 4]));\n    println!(\"{}\", max_profit(&[7, 6, 4, 3, 1]));\n}\n",
+                    "hint": "Track minimum price so far and update best profit each day.",
+                    "solution": {
+                        "code": "fn max_profit(prices: &[i32]) -> i32 {\n    let mut min_price = i32::MAX;\n    let mut best = 0;\n    for &p in prices {\n        if p < min_price {\n            min_price = p;\n        } else {\n            best = best.max(p - min_price);\n        }\n    }\n    best\n}\n\nfn main() {\n    println!(\"{}\", max_profit(&[7, 1, 5, 3, 6, 4]));\n    println!(\"{}\", max_profit(&[7, 6, 4, 3, 1]));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Track min price",
+                                "explanation": "Keep the lowest price seen so far to maximize future profits.",
+                                "code": "if p < min_price { min_price = p; }"
+                            },
+                            {
+                                "title": "Update best profit",
+                                "explanation": "Compare current price against min_price and keep the maximum difference.",
+                                "code": "best = best.max(p - min_price);"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-54",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Move Zeros",
+                    "description": "Write `move_zeros(nums: &[i32]) -> Vec<i32>` that moves all zeros to the end while keeping order of non-zero elements. Example: `[0,1,0,3,12]` -> `[1,3,12,0,0]`.\n\nExpected output:\n[1, 3, 12, 0, 0]",
+                    "starterCode": "fn move_zeros(nums: &[i32]) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", move_zeros(&[0, 1, 0, 3, 12]));\n}\n",
+                    "hint": "Collect non-zeros first, then append the required number of zeros.",
+                    "solution": {
+                        "code": "fn move_zeros(nums: &[i32]) -> Vec<i32> {\n    let mut out: Vec<i32> = nums.iter().cloned().filter(|&n| n != 0).collect();\n    let zeros = nums.len() - out.len();\n    out.extend(std::iter::repeat(0).take(zeros));\n    out\n}\n\nfn main() {\n    println!(\"{:?}\", move_zeros(&[0, 1, 0, 3, 12]));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Keep non-zeros",
+                                "explanation": "Filter out zeros and collect the remaining values.",
+                                "code": "let mut out: Vec<i32> = nums.iter().cloned().filter(|&n| n != 0).collect();"
+                            },
+                            {
+                                "title": "Append zeros",
+                                "explanation": "Add the missing count of zeros to the end.",
+                                "code": "out.extend(std::iter::repeat(0).take(zeros));"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-55",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "GCD LCM",
+                    "description": "Write `gcd_lcm(a: u64, b: u64) -> (u64, u64)` returning the greatest common divisor and least common multiple. Example: (21,6) -> (3,42).\n\nExpected output:\n(3, 42)",
+                    "starterCode": "fn gcd_lcm(a: u64, b: u64) -> (u64, u64) {\n    // Your code here\n    (0, 0)\n}\n\nfn main() {\n    println!(\"{:?}\", gcd_lcm(21, 6));\n}\n",
+                    "hint": "Use Euclid's algorithm for gcd; lcm = a / gcd * b.",
+                    "solution": {
+                        "code": "fn gcd_lcm(a: u64, b: u64) -> (u64, u64) {\n    fn gcd(mut x: u64, mut y: u64) -> u64 {\n        while y != 0 {\n            let t = x % y;\n            x = y;\n            y = t;\n        }\n        x\n    }\n    let g = gcd(a, b);\n    let l = a / g * b;\n    (g, l)\n}\n\nfn main() {\n    println!(\"{:?}\", gcd_lcm(21, 6));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Compute GCD",
+                                "explanation": "Apply Euclid's algorithm using modulo in a loop.",
+                                "code": "while y != 0 { let t = x % y; x = y; y = t; }"
+                            },
+                            {
+                                "title": "Derive LCM",
+                                "explanation": "Use lcm = a / gcd * b to avoid overflow where possible.",
+                                "code": "let l = a / g * b;"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-56",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Simplify Path",
+                    "description": "Write `simplify_path(path: &str) -> String` that simplifies a Unix path. Example: \"/a/./b/../../c/\" -> \"/c\".\n\nExpected output:\n/c\n/home/foo",
+                    "starterCode": "fn simplify_path(path: &str) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", simplify_path(\"/a/./b/../../c/\"));\n    println!(\"{}\", simplify_path(\"/home//foo/\"));\n}\n",
+                    "hint": "Use a stack; ignore '.' and pop on '..'.",
+                    "solution": {
+                        "code": "fn simplify_path(path: &str) -> String {\n    let mut stack: Vec<&str> = Vec::new();\n    for part in path.split('/') {\n        match part {\n            \"\" | \".\" => {},\n            \"..\" => { stack.pop(); },\n            _ => stack.push(part),\n        }\n    }\n    format!(\"/{}\", stack.join(\"/\"))\n}\n\nfn main() {\n    println!(\"{}\", simplify_path(\"/a/./b/../../c/\"));\n    println!(\"{}\", simplify_path(\"/home//foo/\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Process each segment",
+                                "explanation": "Skip empty and '.', pop on '..', push normal directory names.",
+                                "code": "match part { \"\" | \".\" => {}, \"..\" => { stack.pop(); }, _ => stack.push(part) }"
+                            },
+                            {
+                                "title": "Rebuild the path",
+                                "explanation": "Join stack entries with '/' and add the leading slash.",
+                                "code": "format!(\"/{}\", stack.join(\"/\"))"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-57",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "String Repeat",
+                    "description": "Write `repeat_str(s: &str, n: usize) -> String` that repeats a string n times. Example: \"ab\", 3 -> \"ababab\".\n\nExpected output:\nababab",
+                    "starterCode": "fn repeat_str(s: &str, n: usize) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", repeat_str(\"ab\", 3));\n}\n",
+                    "hint": "Use a String with capacity and push_str in a loop.",
+                    "solution": {
+                        "code": "fn repeat_str(s: &str, n: usize) -> String {\n    let mut out = String::with_capacity(s.len() * n);\n    for _ in 0..n {\n        out.push_str(s);\n    }\n    out\n}\n\nfn main() {\n    println!(\"{}\", repeat_str(\"ab\", 3));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Pre-allocate",
+                                "explanation": "Reserve enough capacity for the repeated string.",
+                                "code": "let mut out = String::with_capacity(s.len() * n);"
+                            },
+                            {
+                                "title": "Append n times",
+                                "explanation": "Push the input string in a loop.",
+                                "code": "for _ in 0..n { out.push_str(s); }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-58",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "First Unique",
+                    "description": "Write `first_unique(s: &str) -> Option<char>` that returns the first non-repeating character. Example: \"swiss\" -> 'w'.\n\nExpected output:\nSome('w')\nNone",
+                    "starterCode": "use std::collections::HashMap;\n\nfn first_unique(s: &str) -> Option<char> {\n    // Your code here\n    None\n}\n\nfn main() {\n    println!(\"{:?}\", first_unique(\"swiss\"));\n    println!(\"{:?}\", first_unique(\"aabb\"));\n}\n",
+                    "hint": "Count occurrences with a HashMap, then scan again for the first count of 1.",
+                    "solution": {
+                        "code": "use std::collections::HashMap;\n\nfn first_unique(s: &str) -> Option<char> {\n    let mut counts: HashMap<char, usize> = HashMap::new();\n    for c in s.chars() {\n        *counts.entry(c).or_insert(0) += 1;\n    }\n    for c in s.chars() {\n        if counts.get(&c) == Some(&1) {\n            return Some(c);\n        }\n    }\n    None\n}\n\nfn main() {\n    println!(\"{:?}\", first_unique(\"swiss\"));\n    println!(\"{:?}\", first_unique(\"aabb\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Count characters",
+                                "explanation": "Use a HashMap to count how many times each char appears.",
+                                "code": "*counts.entry(c).or_insert(0) += 1;"
+                            },
+                            {
+                                "title": "Find first with count 1",
+                                "explanation": "Scan in original order to find the first unique character.",
+                                "code": "if counts.get(&c) == Some(&1) { return Some(c); }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-59",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Freq Sort",
+                    "description": "Write `frequency_sort(s: &str) -> String` that sorts characters by descending frequency; ties use ascending character order. Example: \"tree\" -> \"eert\".\n\nExpected output:\neert",
+                    "starterCode": "use std::collections::HashMap;\n\nfn frequency_sort(s: &str) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", frequency_sort(\"tree\"));\n}\n",
+                    "hint": "Count with HashMap, then sort a Vec of (char, count).",
+                    "solution": {
+                        "code": "use std::collections::HashMap;\n\nfn frequency_sort(s: &str) -> String {\n    let mut counts: HashMap<char, usize> = HashMap::new();\n    for c in s.chars() {\n        *counts.entry(c).or_insert(0) += 1;\n    }\n    let mut items: Vec<(char, usize)> = counts.into_iter().collect();\n    items.sort_by(|a, b| b.1.cmp(&a.1).then_with(|| a.0.cmp(&b.0)));\n    let mut out = String::new();\n    for (c, cnt) in items {\n        for _ in 0..cnt {\n            out.push(c);\n        }\n    }\n    out\n}\n\nfn main() {\n    println!(\"{}\", frequency_sort(\"tree\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Count characters",
+                                "explanation": "Build a frequency map of each character.",
+                                "code": "*counts.entry(c).or_insert(0) += 1;"
+                            },
+                            {
+                                "title": "Sort and expand",
+                                "explanation": "Sort by frequency desc, then append each char count times.",
+                                "code": "items.sort_by(|a, b| b.1.cmp(&a.1).then_with(|| a.0.cmp(&b.0)));"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-60",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Kth Largest",
+                    "description": "Write `kth_largest(nums: &[i32], k: usize) -> Option<i32>` that returns the k-th largest value (1-based). Example: `[3,2,1,5,6,4]`, k=2 -> `Some(5)`.\n\nExpected output:\nSome(5)",
+                    "starterCode": "fn kth_largest(nums: &[i32], k: usize) -> Option<i32> {\n    // Your code here\n    None\n}\n\nfn main() {\n    println!(\"{:?}\", kth_largest(&[3, 2, 1, 5, 6, 4], 2));\n}\n",
+                    "hint": "Sort descending and pick index k-1 if it exists.",
+                    "solution": {
+                        "code": "fn kth_largest(nums: &[i32], k: usize) -> Option<i32> {\n    if k == 0 || k > nums.len() {\n        return None;\n    }\n    let mut sorted = nums.to_vec();\n    sorted.sort_by(|a, b| b.cmp(a));\n    Some(sorted[k - 1])\n}\n\nfn main() {\n    println!(\"{:?}\", kth_largest(&[3, 2, 1, 5, 6, 4], 2));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Sort descending",
+                                "explanation": "A descending sort places the k-th largest at index k-1.",
+                                "code": "sorted.sort_by(|a, b| b.cmp(a));"
+                            },
+                            {
+                                "title": "Return if in range",
+                                "explanation": "Validate k and return the element at k-1.",
+                                "code": "if k == 0 || k > nums.len() { return None; }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-61",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Word Count",
+                    "description": "Write `count_words(s: &str) -> usize` that counts whitespace-separated words. Example: \"one two  three\" -> 3.\n\nExpected output:\n3",
+                    "starterCode": "fn count_words(s: &str) -> usize {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", count_words(\"one two  three\"));\n}\n",
+                    "hint": "Use split_whitespace() and count.",
+                    "solution": {
+                        "code": "fn count_words(s: &str) -> usize {\n    s.split_whitespace().count()\n}\n\nfn main() {\n    println!(\"{}\", count_words(\"one two  three\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Split on whitespace",
+                                "explanation": "split_whitespace() handles multiple spaces automatically.",
+                                "code": "s.split_whitespace().count()"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-62",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Reverse Bits",
+                    "description": "Write `reverse_bits8(n: u8) -> u8` that reverses the bits in an 8-bit number. Example: 22 (00010110) -> 104 (01101000).\n\nExpected output:\n104",
+                    "starterCode": "fn reverse_bits8(n: u8) -> u8 {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", reverse_bits8(22));\n}\n",
+                    "hint": "Shift input right and build output left.",
+                    "solution": {
+                        "code": "fn reverse_bits8(mut n: u8) -> u8 {\n    let mut out = 0u8;\n    for _ in 0..8 {\n        out = (out << 1) | (n & 1);\n        n >>= 1;\n    }\n    out\n}\n\nfn main() {\n    println!(\"{}\", reverse_bits8(22));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Shift and collect",
+                                "explanation": "Move input bits right and append to output by shifting left.",
+                                "code": "out = (out << 1) | (n & 1);\nn >>= 1;"
+                            },
+                            {
+                                "title": "Repeat for 8 bits",
+                                "explanation": "Loop exactly 8 times for a full byte.",
+                                "code": "for _ in 0..8 { ... }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-63",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Triangular",
+                    "description": "Write `triangular_numbers(n: u32) -> Vec<u32>` returning the first n triangular numbers. Example: n=5 -> `[1,3,6,10,15]`.\n\nExpected output:\n[1, 3, 6, 10, 15]",
+                    "starterCode": "fn triangular_numbers(n: u32) -> Vec<u32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", triangular_numbers(5));\n}\n",
+                    "hint": "Keep a running sum of 1..i.",
+                    "solution": {
+                        "code": "fn triangular_numbers(n: u32) -> Vec<u32> {\n    let mut out = Vec::with_capacity(n as usize);\n    let mut sum = 0u32;\n    for i in 1..=n {\n        sum += i;\n        out.push(sum);\n    }\n    out\n}\n\nfn main() {\n    println!(\"{:?}\", triangular_numbers(5));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Accumulate",
+                                "explanation": "Add i to a running total and push it.",
+                                "code": "sum += i;\nout.push(sum);"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-64",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "CSV Split",
+                    "description": "Write `split_csv(line: &str) -> Vec<String>` that splits by commas and trims spaces around fields. Example: \"a, b,  c\" -> [\"a\",\"b\",\"c\"].\n\nExpected output:\n[\"a\", \"b\", \"c\"]",
+                    "starterCode": "fn split_csv(line: &str) -> Vec<String> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", split_csv(\"a, b,  c\"));\n}\n",
+                    "hint": "Split by ',' then trim each part.",
+                    "solution": {
+                        "code": "fn split_csv(line: &str) -> Vec<String> {\n    line.split(',')\n        .map(|s| s.trim().to_string())\n        .collect()\n}\n\nfn main() {\n    println!(\"{:?}\", split_csv(\"a, b,  c\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Split and trim",
+                                "explanation": "Trim whitespace on each field to get clean values.",
+                                "code": "line.split(',').map(|s| s.trim().to_string()).collect()"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-65",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Paren Match",
+                    "description": "Write `is_valid_parens(s: &str) -> bool` that checks if parentheses are balanced. Example: \"(()())\" -> true, \"(()\" -> false.\n\nExpected output:\ntrue\nfalse",
+                    "starterCode": "fn is_valid_parens(s: &str) -> bool {\n    // Your code here\n    false\n}\n\nfn main() {\n    println!(\"{}\", is_valid_parens(\"(()())\"));\n    println!(\"{}\", is_valid_parens(\"(()\"));\n}\n",
+                    "hint": "Use a counter that never goes negative and ends at zero.",
+                    "solution": {
+                        "code": "fn is_valid_parens(s: &str) -> bool {\n    let mut balance = 0;\n    for c in s.chars() {\n        if c == '(' {\n            balance += 1;\n        } else if c == ')' {\n            if balance == 0 {\n                return false;\n            }\n            balance -= 1;\n        }\n    }\n    balance == 0\n}\n\nfn main() {\n    println!(\"{}\", is_valid_parens(\"(()())\"));\n    println!(\"{}\", is_valid_parens(\"(()\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Track balance",
+                                "explanation": "Increment on '(' and decrement on ')', never below zero.",
+                                "code": "if balance == 0 { return false; }"
+                            },
+                            {
+                                "title": "Check final balance",
+                                "explanation": "Valid strings end with balance zero.",
+                                "code": "balance == 0"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-66",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Count Substr",
+                    "description": "Write `count_substring(s: &str, sub: &str) -> usize` that counts overlapping occurrences. Example: \"aaaa\" with \"aa\" -> 3.\n\nExpected output:\n3",
+                    "starterCode": "fn count_substring(s: &str, sub: &str) -> usize {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", count_substring(\"aaaa\", \"aa\"));\n}\n",
+                    "hint": "Slide a window of length sub.len() across the string.",
+                    "solution": {
+                        "code": "fn count_substring(s: &str, sub: &str) -> usize {\n    if sub.is_empty() {\n        return 0;\n    }\n    let mut count = 0;\n    for i in 0..=s.len().saturating_sub(sub.len()) {\n        if &s[i..i + sub.len()] == sub {\n            count += 1;\n        }\n    }\n    count\n}\n\nfn main() {\n    println!(\"{}\", count_substring(\"aaaa\", \"aa\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Slide a window",
+                                "explanation": "Check each possible start position for a match.",
+                                "code": "for i in 0..=s.len().saturating_sub(sub.len()) { ... }"
+                            },
+                            {
+                                "title": "Count matches",
+                                "explanation": "Increment whenever the substring equals the window.",
+                                "code": "if &s[i..i + sub.len()] == sub { count += 1; }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-67",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Repeat Char",
+                    "description": "Write `repeat_char(c: char, n: usize) -> String` that repeats a character. Example: ('x',5) -> \"xxxxx\".\n\nExpected output:\nxxxxx",
+                    "starterCode": "fn repeat_char(c: char, n: usize) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", repeat_char('x', 5));\n}\n",
+                    "hint": "Use std::iter::repeat and take(n).",
+                    "solution": {
+                        "code": "fn repeat_char(c: char, n: usize) -> String {\n    std::iter::repeat(c).take(n).collect()\n}\n\nfn main() {\n    println!(\"{}\", repeat_char('x', 5));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Repeat and collect",
+                                "explanation": "repeat(c) produces an infinite iterator; take(n) limits it.",
+                                "code": "std::iter::repeat(c).take(n).collect()"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-68",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Combinations",
+                    "description": "Write `ncr(n: u64, r: u64) -> u64` returning the binomial coefficient C(n, r). Example: 5 choose 2 -> 10.\n\nExpected output:\n10",
+                    "starterCode": "fn ncr(n: u64, r: u64) -> u64 {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", ncr(5, 2));\n}\n",
+                    "hint": "Use a multiplicative formula with r = min(r, n-r).",
+                    "solution": {
+                        "code": "fn ncr(n: u64, r: u64) -> u64 {\n    if r > n {\n        return 0;\n    }\n    let r = r.min(n - r);\n    let mut result = 1u64;\n    for i in 1..=r {\n        result = result * (n - r + i) / i;\n    }\n    result\n}\n\nfn main() {\n    println!(\"{}\", ncr(5, 2));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Reduce r",
+                                "explanation": "Use r = min(r, n-r) to keep the loop small.",
+                                "code": "let r = r.min(n - r);"
+                            },
+                            {
+                                "title": "Multiply and divide",
+                                "explanation": "Build the coefficient iteratively without overflow from factorials.",
+                                "code": "result = result * (n - r + i) / i;"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-69",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Collatz Steps",
+                    "description": "Write `collatz_steps(n: u64) -> u32` that returns the number of steps to reach 1 using the Collatz rules. Example: 12 -> 9.\n\nExpected output:\n9",
+                    "starterCode": "fn collatz_steps(n: u64) -> u32 {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", collatz_steps(12));\n}\n",
+                    "hint": "Loop while n != 1; if even divide by 2, else n = 3n + 1.",
+                    "solution": {
+                        "code": "fn collatz_steps(mut n: u64) -> u32 {\n    let mut steps = 0;\n    while n != 1 {\n        if n % 2 == 0 {\n            n /= 2;\n        } else {\n            n = 3 * n + 1;\n        }\n        steps += 1;\n    }\n    steps\n}\n\nfn main() {\n    println!(\"{}\", collatz_steps(12));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Apply Collatz rules",
+                                "explanation": "Divide by 2 if even, otherwise multiply by 3 and add 1.",
+                                "code": "if n % 2 == 0 { n /= 2; } else { n = 3 * n + 1; }"
+                            },
+                            {
+                                "title": "Count steps",
+                                "explanation": "Increment the step counter each iteration until n reaches 1.",
+                                "code": "steps += 1;"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-70",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Matrix Multiply",
+                    "description": "Write `mul2x2(a: [[i32; 2]; 2], b: [[i32; 2]; 2]) -> [[i32; 2]; 2]`. Example: [[1,2],[3,4]] * [[2,0],[1,2]] -> [[4,4],[10,8]].\n\nExpected output:\n[[4, 4], [10, 8]]",
+                    "starterCode": "fn mul2x2(a: [[i32; 2]; 2], b: [[i32; 2]; 2]) -> [[i32; 2]; 2] {\n    // Your code here\n    [[0, 0], [0, 0]]\n}\n\nfn main() {\n    let a = [[1, 2], [3, 4]];\n    let b = [[2, 0], [1, 2]];\n    println!(\"{:?}\", mul2x2(a, b));\n}\n",
+                    "hint": "Use the standard matrix multiplication formula for 2x2.",
+                    "solution": {
+                        "code": "fn mul2x2(a: [[i32; 2]; 2], b: [[i32; 2]; 2]) -> [[i32; 2]; 2] {\n    [\n        [a[0][0] * b[0][0] + a[0][1] * b[1][0], a[0][0] * b[0][1] + a[0][1] * b[1][1]],\n        [a[1][0] * b[0][0] + a[1][1] * b[1][0], a[1][0] * b[0][1] + a[1][1] * b[1][1]],\n    ]\n}\n\nfn main() {\n    let a = [[1, 2], [3, 4]];\n    let b = [[2, 0], [1, 2]];\n    println!(\"{:?}\", mul2x2(a, b));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Apply formula",
+                                "explanation": "Each cell is a dot product of row and column.",
+                                "code": "a[0][0] * b[0][0] + a[0][1] * b[1][0]"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-71",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Rotate Matrix",
+                    "description": "Write `rotate_90(matrix: [[i32; 2]; 2]) -> [[i32; 2]; 2]` that rotates a 2x2 matrix 90 degrees clockwise. Example: [[1,2],[3,4]] -> [[3,1],[4,2]].\n\nExpected output:\n[[3, 1], [4, 2]]",
+                    "starterCode": "fn rotate_90(matrix: [[i32; 2]; 2]) -> [[i32; 2]; 2] {\n    // Your code here\n    [[0, 0], [0, 0]]\n}\n\nfn main() {\n    let m = [[1, 2], [3, 4]];\n    println!(\"{:?}\", rotate_90(m));\n}\n",
+                    "hint": "New row i is old column i from bottom to top.",
+                    "solution": {
+                        "code": "fn rotate_90(matrix: [[i32; 2]; 2]) -> [[i32; 2]; 2] {\n    [\n        [matrix[1][0], matrix[0][0]],\n        [matrix[1][1], matrix[0][1]],\n    ]\n}\n\nfn main() {\n    let m = [[1, 2], [3, 4]];\n    println!(\"{:?}\", rotate_90(m));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Re-map indices",
+                                "explanation": "After a clockwise rotation, new[0][0] = old[1][0].",
+                                "code": "[matrix[1][0], matrix[0][0]]"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-72",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Char Histogram",
+                    "description": "Write `char_histogram(s: &str) -> Vec<(char, usize)>` that counts letters and returns a sorted list by character. Example: \"banana\" -> [('a',3),('b',1),('n',2)].\n\nExpected output:\n[('a', 3), ('b', 1), ('n', 2)]",
+                    "starterCode": "use std::collections::HashMap;\n\nfn char_histogram(s: &str) -> Vec<(char, usize)> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", char_histogram(\"banana\"));\n}\n",
+                    "hint": "Count with HashMap then sort by char.",
+                    "solution": {
+                        "code": "use std::collections::HashMap;\n\nfn char_histogram(s: &str) -> Vec<(char, usize)> {\n    let mut counts: HashMap<char, usize> = HashMap::new();\n    for c in s.chars() {\n        *counts.entry(c).or_insert(0) += 1;\n    }\n    let mut items: Vec<(char, usize)> = counts.into_iter().collect();\n    items.sort_by(|a, b| a.0.cmp(&b.0));\n    items\n}\n\nfn main() {\n    println!(\"{:?}\", char_histogram(\"banana\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Count and sort",
+                                "explanation": "Sort the (char, count) pairs by character.",
+                                "code": "items.sort_by(|a, b| a.0.cmp(&b.0));"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-73",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Sum Multiples",
+                    "description": "Write `sum_of_multiples(limit: i32, a: i32, b: i32) -> i32` summing numbers below limit divisible by a or b. Example: limit 10, a=3, b=5 -> 23.\n\nExpected output:\n23",
+                    "starterCode": "fn sum_of_multiples(limit: i32, a: i32, b: i32) -> i32 {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", sum_of_multiples(10, 3, 5));\n}\n",
+                    "hint": "Loop from 1 to limit-1 and add if divisible by a or b.",
+                    "solution": {
+                        "code": "fn sum_of_multiples(limit: i32, a: i32, b: i32) -> i32 {\n    let mut sum = 0;\n    for n in 1..limit {\n        if n % a == 0 || n % b == 0 {\n            sum += n;\n        }\n    }\n    sum\n}\n\nfn main() {\n    println!(\"{}\", sum_of_multiples(10, 3, 5));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Check divisibility",
+                                "explanation": "Add n if it's divisible by a or b.",
+                                "code": "if n % a == 0 || n % b == 0 { sum += n; }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-74",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Distance",
+                    "description": "Write `distance(p1: (f64, f64), p2: (f64, f64)) -> f64` returning Euclidean distance. Example: (0,0) to (3,4) -> 5.0.\n\nExpected output:\n5.0",
+                    "starterCode": "fn distance(p1: (f64, f64), p2: (f64, f64)) -> f64 {\n    // Your code here\n    0.0\n}\n\nfn main() {\n    println!(\"{:.1}\", distance((0.0, 0.0), (3.0, 4.0)));\n}\n",
+                    "hint": "Use sqrt((x2-x1)^2 + (y2-y1)^2).",
+                    "solution": {
+                        "code": "fn distance(p1: (f64, f64), p2: (f64, f64)) -> f64 {\n    let dx = p2.0 - p1.0;\n    let dy = p2.1 - p1.1;\n    (dx * dx + dy * dy).sqrt()\n}\n\nfn main() {\n    println!(\"{:.1}\", distance((0.0, 0.0), (3.0, 4.0)));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Compute deltas",
+                                "explanation": "Subtract coordinates to get dx and dy.",
+                                "code": "let dx = p2.0 - p1.0;\nlet dy = p2.1 - p1.1;"
+                            },
+                            {
+                                "title": "Apply distance formula",
+                                "explanation": "Take the square root of dx^2 + dy^2.",
+                                "code": "(dx * dx + dy * dy).sqrt()"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-75",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Clamp Values",
+                    "description": "Write `clamp_values(nums: &[i32], min_v: i32, max_v: i32) -> Vec<i32>` clamping each value into [min_v, max_v]. Example: [-2,5,12] with 0..10 -> [0,5,10].\n\nExpected output:\n[0, 5, 10]",
+                    "starterCode": "fn clamp_values(nums: &[i32], min_v: i32, max_v: i32) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", clamp_values(&[-2, 5, 12], 0, 10));\n}\n",
+                    "hint": "Use min/max comparisons for each element.",
+                    "solution": {
+                        "code": "fn clamp_values(nums: &[i32], min_v: i32, max_v: i32) -> Vec<i32> {\n    nums.iter()\n        .map(|&n| n.max(min_v).min(max_v))\n        .collect()\n}\n\nfn main() {\n    println!(\"{:?}\", clamp_values(&[-2, 5, 12], 0, 10));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Clamp each value",
+                                "explanation": "Apply max(min_v) then min(max_v) for each number.",
+                                "code": "n.max(min_v).min(max_v)"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-76",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "LIS Length",
+                    "description": "Write `lis_length(nums: &[i32]) -> usize` returning the length of the longest increasing subsequence. Example: `[10,9,2,5,3,7,101,18]` -> 4.\n\nExpected output:\n4",
+                    "starterCode": "fn lis_length(nums: &[i32]) -> usize {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", lis_length(&[10, 9, 2, 5, 3, 7, 101, 18]));\n}\n",
+                    "hint": "Use dynamic programming: dp[i] is LIS ending at i.",
+                    "solution": {
+                        "code": "fn lis_length(nums: &[i32]) -> usize {\n    if nums.is_empty() {\n        return 0;\n    }\n    let mut dp = vec![1usize; nums.len()];\n    for i in 0..nums.len() {\n        for j in 0..i {\n            if nums[j] < nums[i] {\n                dp[i] = dp[i].max(dp[j] + 1);\n            }\n        }\n    }\n    *dp.iter().max().unwrap()\n}\n\nfn main() {\n    println!(\"{}\", lis_length(&[10, 9, 2, 5, 3, 7, 101, 18]));\n}\n",
+                        "steps": [
+                            {
+                                "title": "DP by end index",
+                                "explanation": "dp[i] stores the LIS length ending at i.",
+                                "code": "let mut dp = vec![1usize; nums.len()];"
+                            },
+                            {
+                                "title": "Update from previous",
+                                "explanation": "For each i, extend any increasing subsequence ending before it.",
+                                "code": "if nums[j] < nums[i] { dp[i] = dp[i].max(dp[j] + 1); }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-77",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Shortest Word",
+                    "description": "Write `shortest_word(s: &str) -> String` that returns the shortest word; if tied, return the first. Example: \"tiny rust tasks\" -> \"tiny\".\n\nExpected output:\ntiny",
+                    "starterCode": "fn shortest_word(s: &str) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", shortest_word(\"tiny rust tasks\"));\n}\n",
+                    "hint": "Track the shortest word while scanning.",
+                    "solution": {
+                        "code": "fn shortest_word(s: &str) -> String {\n    let mut best: Option<&str> = None;\n    for word in s.split_whitespace() {\n        if best.map_or(true, |b| word.len() < b.len()) {\n            best = Some(word);\n        }\n    }\n    best.unwrap_or(\"\").to_string()\n}\n\nfn main() {\n    println!(\"{}\", shortest_word(\"tiny rust tasks\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Track shortest",
+                                "explanation": "Replace the best word only when a shorter one appears.",
+                                "code": "if best.map_or(true, |b| word.len() < b.len()) { best = Some(word); }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-78",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Remove Adjacent",
+                    "description": "Write `remove_adjacent_duplicates(s: &str) -> String` that removes adjacent duplicates repeatedly. Example: \"abbaca\" -> \"ca\".\n\nExpected output:\nca",
+                    "starterCode": "fn remove_adjacent_duplicates(s: &str) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", remove_adjacent_duplicates(\"abbaca\"));\n}\n",
+                    "hint": "Use a Vec<char> as a stack.",
+                    "solution": {
+                        "code": "fn remove_adjacent_duplicates(s: &str) -> String {\n    let mut stack: Vec<char> = Vec::new();\n    for c in s.chars() {\n        if stack.last() == Some(&c) {\n            stack.pop();\n        } else {\n            stack.push(c);\n        }\n    }\n    stack.iter().collect()\n}\n\nfn main() {\n    println!(\"{}\", remove_adjacent_duplicates(\"abbaca\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Use a stack",
+                                "explanation": "Push when different; pop when equal to remove pairs.",
+                                "code": "if stack.last() == Some(&c) { stack.pop(); } else { stack.push(c); }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-79",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Row Max",
+                    "description": "Write `row_max(matrix: &[Vec<i32>]) -> Vec<i32>` returning the max of each row. Example: [[1,3,2],[4,0,5]] -> [3,5].\n\nExpected output:\n[3, 5]",
+                    "starterCode": "fn row_max(matrix: &[Vec<i32>]) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    let m = vec![vec![1, 3, 2], vec![4, 0, 5]];\n    println!(\"{:?}\", row_max(&m));\n}\n",
+                    "hint": "For each row, use iter().max().",
+                    "solution": {
+                        "code": "fn row_max(matrix: &[Vec<i32>]) -> Vec<i32> {\n    matrix.iter()\n        .map(|row| *row.iter().max().unwrap())\n        .collect()\n}\n\nfn main() {\n    let m = vec![vec![1, 3, 2], vec![4, 0, 5]];\n    println!(\"{:?}\", row_max(&m));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Map each row",
+                                "explanation": "Find the max in each row and collect into a Vec.",
+                                "code": "row.iter().max().unwrap()"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-80",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Pairwise Sum",
+                    "description": "Write `pairwise_sum(nums: &[i32]) -> Vec<i32>` that sums each pair of adjacent values. Example: `[1,2,3,4]` -> `[3,7]`.\n\nExpected output:\n[3, 7]",
+                    "starterCode": "fn pairwise_sum(nums: &[i32]) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", pairwise_sum(&[1, 2, 3, 4]));\n}\n",
+                    "hint": "Use chunks of size 2 and sum each chunk.",
+                    "solution": {
+                        "code": "fn pairwise_sum(nums: &[i32]) -> Vec<i32> {\n    nums.chunks(2)\n        .filter(|c| c.len() == 2)\n        .map(|c| c[0] + c[1])\n        .collect()\n}\n\nfn main() {\n    println!(\"{:?}\", pairwise_sum(&[1, 2, 3, 4]));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Chunk and sum",
+                                "explanation": "Sum only full pairs of two elements.",
+                                "code": "nums.chunks(2).filter(|c| c.len() == 2).map(|c| c[0] + c[1])"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-81",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Index Multiply",
+                    "description": "Write `index_multiply(nums: &[i32]) -> Vec<i32>` multiplying each value by its index. Example: `[5,6,7]` -> `[0,6,14]`.\n\nExpected output:\n[0, 6, 14]",
+                    "starterCode": "fn index_multiply(nums: &[i32]) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", index_multiply(&[5, 6, 7]));\n}\n",
+                    "hint": "Use enumerate() to access index and value.",
+                    "solution": {
+                        "code": "fn index_multiply(nums: &[i32]) -> Vec<i32> {\n    nums.iter().enumerate().map(|(i, &n)| n * i as i32).collect()\n}\n\nfn main() {\n    println!(\"{:?}\", index_multiply(&[5, 6, 7]));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Enumerate indices",
+                                "explanation": "Multiply each element by its index.",
+                                "code": "nums.iter().enumerate().map(|(i, &n)| n * i as i32)"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-82",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Parse Ints",
+                    "description": "Write `parse_ints(s: &str) -> Vec<i32>` that parses space-separated integers. Example: \"10 -2 3\" -> [10, -2, 3].\n\nExpected output:\n[10, -2, 3]",
+                    "starterCode": "fn parse_ints(s: &str) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", parse_ints(\"10 -2 3\"));\n}\n",
+                    "hint": "Split by whitespace and parse each token.",
+                    "solution": {
+                        "code": "fn parse_ints(s: &str) -> Vec<i32> {\n    s.split_whitespace()\n        .filter_map(|t| t.parse::<i32>().ok())\n        .collect()\n}\n\nfn main() {\n    println!(\"{:?}\", parse_ints(\"10 -2 3\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Parse tokens",
+                                "explanation": "Use parse::<i32>() and filter_map to skip invalid tokens.",
+                                "code": "s.split_whitespace().filter_map(|t| t.parse::<i32>().ok()).collect()"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-83",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Word Lengths",
+                    "description": "Write `word_lengths(s: &str) -> Vec<usize>` returning the length of each word. Example: \"rust is fast\" -> [4,2,4].\n\nExpected output:\n[4, 2, 4]",
+                    "starterCode": "fn word_lengths(s: &str) -> Vec<usize> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", word_lengths(\"rust is fast\"));\n}\n",
+                    "hint": "Split by whitespace and map to len().",
+                    "solution": {
+                        "code": "fn word_lengths(s: &str) -> Vec<usize> {\n    s.split_whitespace().map(|w| w.len()).collect()\n}\n\nfn main() {\n    println!(\"{:?}\", word_lengths(\"rust is fast\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Map to lengths",
+                                "explanation": "Compute length for each word and collect into a Vec.",
+                                "code": "s.split_whitespace().map(|w| w.len()).collect()"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-84",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Stable Even Odd",
+                    "description": "Write `stable_even_odd(nums: &[i32]) -> Vec<i32>` that returns evens first then odds, preserving their relative order. Example: `[3,1,2,4,5]` -> `[2,4,3,1,5]`.\n\nExpected output:\n[2, 4, 3, 1, 5]",
+                    "starterCode": "fn stable_even_odd(nums: &[i32]) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", stable_even_odd(&[3, 1, 2, 4, 5]));\n}\n",
+                    "hint": "Collect evens and odds separately, then concatenate.",
+                    "solution": {
+                        "code": "fn stable_even_odd(nums: &[i32]) -> Vec<i32> {\n    let mut evens = Vec::new();\n    let mut odds = Vec::new();\n    for &n in nums {\n        if n % 2 == 0 {\n            evens.push(n);\n        } else {\n            odds.push(n);\n        }\n    }\n    evens.extend(odds);\n    evens\n}\n\nfn main() {\n    println!(\"{:?}\", stable_even_odd(&[3, 1, 2, 4, 5]));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Separate evens and odds",
+                                "explanation": "Push values into two vectors based on parity.",
+                                "code": "if n % 2 == 0 { evens.push(n); } else { odds.push(n); }"
+                            },
+                            {
+                                "title": "Concatenate",
+                                "explanation": "Append odds after evens to preserve relative order.",
+                                "code": "evens.extend(odds);"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-85",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Count Primes",
+                    "description": "Write `count_primes(n: usize) -> usize` that counts primes less than n. Example: 20 -> 8.\n\nExpected output:\n8",
+                    "starterCode": "fn count_primes(n: usize) -> usize {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", count_primes(20));\n}\n",
+                    "hint": "Use a simple sieve of Eratosthenes.",
+                    "solution": {
+                        "code": "fn count_primes(n: usize) -> usize {\n    if n < 2 {\n        return 0;\n    }\n    let mut is_prime = vec![true; n];\n    is_prime[0] = false;\n    if n > 1 {\n        is_prime[1] = false;\n    }\n    let mut p = 2;\n    while p * p < n {\n        if is_prime[p] {\n            let mut m = p * p;\n            while m < n {\n                is_prime[m] = false;\n                m += p;\n            }\n        }\n        p += 1;\n    }\n    is_prime.iter().filter(|&&x| x).count()\n}\n\nfn main() {\n    println!(\"{}\", count_primes(20));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Initialize sieve",
+                                "explanation": "Assume all numbers are prime, then mark composites.",
+                                "code": "let mut is_prime = vec![true; n];"
+                            },
+                            {
+                                "title": "Mark multiples",
+                                "explanation": "For each prime p, mark multiples starting at p*p.",
+                                "code": "let mut m = p * p;\nwhile m < n { is_prime[m] = false; m += p; }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-86",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Sum Digits",
+                    "description": "Write `sum_digits_in_string(s: &str) -> i32` that sums all digit characters. Example: \"a1b2c3\" -> 6.\n\nExpected output:\n6",
+                    "starterCode": "fn sum_digits_in_string(s: &str) -> i32 {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", sum_digits_in_string(\"a1b2c3\"));\n}\n",
+                    "hint": "Check is_ascii_digit and convert with to_digit(10).",
+                    "solution": {
+                        "code": "fn sum_digits_in_string(s: &str) -> i32 {\n    let mut sum = 0;\n    for c in s.chars() {\n        if c.is_ascii_digit() {\n            sum += c.to_digit(10).unwrap() as i32;\n        }\n    }\n    sum\n}\n\nfn main() {\n    println!(\"{}\", sum_digits_in_string(\"a1b2c3\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Filter digits",
+                                "explanation": "Only add characters that are digits.",
+                                "code": "if c.is_ascii_digit() { sum += c.to_digit(10).unwrap() as i32; }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-87",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Swap Case",
+                    "description": "Write `swap_case(s: &str) -> String` that swaps uppercase to lowercase and vice versa. Example: \"Rust123\" -> \"rUST123\".\n\nExpected output:\nrUST123",
+                    "starterCode": "fn swap_case(s: &str) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", swap_case(\"Rust123\"));\n}\n",
+                    "hint": "Use is_ascii_uppercase and to_ascii_lowercase.",
+                    "solution": {
+                        "code": "fn swap_case(s: &str) -> String {\n    s.chars()\n        .map(|c| {\n            if c.is_ascii_uppercase() {\n                c.to_ascii_lowercase()\n            } else if c.is_ascii_lowercase() {\n                c.to_ascii_uppercase()\n            } else {\n                c\n            }\n        })\n        .collect()\n}\n\nfn main() {\n    println!(\"{}\", swap_case(\"Rust123\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Transform each char",
+                                "explanation": "Swap case for letters, keep other chars unchanged.",
+                                "code": "if c.is_ascii_uppercase() { c.to_ascii_lowercase() } else if c.is_ascii_lowercase() { c.to_ascii_uppercase() } else { c }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-88",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Trim Consecutive",
+                    "description": "Write `trim_consecutive(nums: &[i32]) -> Vec<i32>` that removes consecutive duplicates. Example: `[1,1,2,2,2,3,1,1]` -> `[1,2,3,1]`.\n\nExpected output:\n[1, 2, 3, 1]",
+                    "starterCode": "fn trim_consecutive(nums: &[i32]) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", trim_consecutive(&[1, 1, 2, 2, 2, 3, 1, 1]));\n}\n",
+                    "hint": "Only push when the current value differs from the last pushed one.",
+                    "solution": {
+                        "code": "fn trim_consecutive(nums: &[i32]) -> Vec<i32> {\n    let mut out = Vec::new();\n    for &n in nums {\n        if out.last() != Some(&n) {\n            out.push(n);\n        }\n    }\n    out\n}\n\nfn main() {\n    println!(\"{:?}\", trim_consecutive(&[1, 1, 2, 2, 2, 3, 1, 1]));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Skip repeats",
+                                "explanation": "Avoid pushing values equal to the last output element.",
+                                "code": "if out.last() != Some(&n) { out.push(n); }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-89",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Matrix Trace",
+                    "description": "Write `trace(matrix: &[Vec<i32>]) -> i32` that returns the sum of the main diagonal. Example: 3x3 1..9 -> 15.\n\nExpected output:\n15",
+                    "starterCode": "fn trace(matrix: &[Vec<i32>]) -> i32 {\n    // Your code here\n    0\n}\n\nfn main() {\n    let m = vec![vec![1, 2, 3], vec![4, 5, 6], vec![7, 8, 9]];\n    println!(\"{}\", trace(&m));\n}\n",
+                    "hint": "Sum matrix[i][i] for i in 0..n.",
+                    "solution": {
+                        "code": "fn trace(matrix: &[Vec<i32>]) -> i32 {\n    let mut sum = 0;\n    for i in 0..matrix.len() {\n        sum += matrix[i][i];\n    }\n    sum\n}\n\nfn main() {\n    let m = vec![vec![1, 2, 3], vec![4, 5, 6], vec![7, 8, 9]];\n    println!(\"{}\", trace(&m));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Add diagonal",
+                                "explanation": "Use the same index for row and column.",
+                                "code": "sum += matrix[i][i];"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-90",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Count Case",
+                    "description": "Write `count_case(s: &str) -> (usize, usize)` returning (uppercase, lowercase) counts. Example: \"RustLang\" -> (2,6).\n\nExpected output:\n(2, 6)",
+                    "starterCode": "fn count_case(s: &str) -> (usize, usize) {\n    // Your code here\n    (0, 0)\n}\n\nfn main() {\n    println!(\"{:?}\", count_case(\"RustLang\"));\n}\n",
+                    "hint": "Use is_ascii_uppercase and is_ascii_lowercase.",
+                    "solution": {
+                        "code": "fn count_case(s: &str) -> (usize, usize) {\n    let mut upper = 0;\n    let mut lower = 0;\n    for c in s.chars() {\n        if c.is_ascii_uppercase() {\n            upper += 1;\n        } else if c.is_ascii_lowercase() {\n            lower += 1;\n        }\n    }\n    (upper, lower)\n}\n\nfn main() {\n    println!(\"{:?}\", count_case(\"RustLang\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Scan and count",
+                                "explanation": "Increment separate counters for upper and lower case.",
+                                "code": "if c.is_ascii_uppercase() { upper += 1; } else if c.is_ascii_lowercase() { lower += 1; }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-91",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "URL Slug",
+                    "description": "Write `slugify(s: &str) -> String` that lowercases, removes non-alphanumeric chars, and replaces spaces with hyphens. Example: \"Hello, Rust World!\" -> \"hello-rust-world\".\n\nExpected output:\nhello-rust-world",
+                    "starterCode": "fn slugify(s: &str) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", slugify(\"Hello, Rust World!\"));\n}\n",
+                    "hint": "Build a result string and insert '-' when encountering whitespace.",
+                    "solution": {
+                        "code": "fn slugify(s: &str) -> String {\n    let mut out = String::new();\n    let mut prev_dash = false;\n    for c in s.chars() {\n        if c.is_ascii_alphanumeric() {\n            out.push(c.to_ascii_lowercase());\n            prev_dash = false;\n        } else if c.is_whitespace() && !prev_dash && !out.is_empty() {\n            out.push('-');\n            prev_dash = true;\n        }\n    }\n    if out.ends_with('-') {\n        out.pop();\n    }\n    out\n}\n\nfn main() {\n    println!(\"{}\", slugify(\"Hello, Rust World!\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Keep only letters and digits",
+                                "explanation": "Lowercase alphanumeric chars and skip punctuation.",
+                                "code": "if c.is_ascii_alphanumeric() { out.push(c.to_ascii_lowercase()); }"
+                            },
+                            {
+                                "title": "Collapse spaces to hyphens",
+                                "explanation": "Insert a single '-' between words.",
+                                "code": "if c.is_whitespace() && !prev_dash { out.push('-'); prev_dash = true; }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-92",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Last Word",
+                    "description": "Write `last_word_length(s: &str) -> usize` returning the length of the last word. Example: \"Hello Rust  \" -> 4.\n\nExpected output:\n4",
+                    "starterCode": "fn last_word_length(s: &str) -> usize {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", last_word_length(\"Hello Rust  \"));\n}\n",
+                    "hint": "Split by whitespace and take the last word.",
+                    "solution": {
+                        "code": "fn last_word_length(s: &str) -> usize {\n    s.split_whitespace().last().map(|w| w.len()).unwrap_or(0)\n}\n\nfn main() {\n    println!(\"{}\", last_word_length(\"Hello Rust  \"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Find last word",
+                                "explanation": "Use split_whitespace().last() and take its length.",
+                                "code": "s.split_whitespace().last().map(|w| w.len()).unwrap_or(0)"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-93",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Prime List",
+                    "description": "Write `first_primes(n: usize) -> Vec<u32>` returning the first n prime numbers. Example: n=5 -> [2,3,5,7,11].\n\nExpected output:\n[2, 3, 5, 7, 11]",
+                    "starterCode": "fn first_primes(n: usize) -> Vec<u32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", first_primes(5));\n}\n",
+                    "hint": "Check each number with a simple is_prime function until you collect n primes.",
+                    "solution": {
+                        "code": "fn first_primes(n: usize) -> Vec<u32> {\n    fn is_prime(x: u32) -> bool {\n        if x < 2 {\n            return false;\n        }\n        let mut d = 2;\n        while d * d <= x {\n            if x % d == 0 {\n                return false;\n            }\n            d += 1;\n        }\n        true\n    }\n    let mut out = Vec::new();\n    let mut x = 2u32;\n    while out.len() < n {\n        if is_prime(x) {\n            out.push(x);\n        }\n        x += 1;\n    }\n    out\n}\n\nfn main() {\n    println!(\"{:?}\", first_primes(5));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Define is_prime",
+                                "explanation": "Check divisors up to sqrt(x).",
+                                "code": "while d * d <= x { if x % d == 0 { return false; } d += 1; }"
+                            },
+                            {
+                                "title": "Collect primes",
+                                "explanation": "Scan upward until you have n primes.",
+                                "code": "while out.len() < n { if is_prime(x) { out.push(x); } x += 1; }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-94",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Sort Chars",
+                    "description": "Write `sort_chars(s: &str) -> String` that returns the characters of s sorted ascending. Example: \"dcba\" -> \"abcd\".\n\nExpected output:\nabcd",
+                    "starterCode": "fn sort_chars(s: &str) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", sort_chars(\"dcba\"));\n}\n",
+                    "hint": "Collect chars into a Vec, sort, then collect back.",
+                    "solution": {
+                        "code": "fn sort_chars(s: &str) -> String {\n    let mut chars: Vec<char> = s.chars().collect();\n    chars.sort();\n    chars.into_iter().collect()\n}\n\nfn main() {\n    println!(\"{}\", sort_chars(\"dcba\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Sort a Vec<char>",
+                                "explanation": "Sorting chars lexicographically yields the desired string.",
+                                "code": "chars.sort();"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-95",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Array Diff",
+                    "description": "Write `array_diff(a: &[i32], b: &[i32]) -> Vec<i32>` returning values from a that are not in b (unique). Example: [1,2,2,3] and [2] -> [1,3].\n\nExpected output:\n[1, 3]",
+                    "starterCode": "use std::collections::HashSet;\n\nfn array_diff(a: &[i32], b: &[i32]) -> Vec<i32> {\n    // Your code here\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", array_diff(&[1, 2, 2, 3], &[2]));\n}\n",
+                    "hint": "Put b into a HashSet, then collect values from a not in it, while keeping uniqueness.",
+                    "solution": {
+                        "code": "use std::collections::HashSet;\n\nfn array_diff(a: &[i32], b: &[i32]) -> Vec<i32> {\n    let set_b: HashSet<i32> = b.iter().cloned().collect();\n    let mut seen = HashSet::new();\n    let mut out = Vec::new();\n    for &x in a {\n        if !set_b.contains(&x) && seen.insert(x) {\n            out.push(x);\n        }\n    }\n    out\n}\n\nfn main() {\n    println!(\"{:?}\", array_diff(&[1, 2, 2, 3], &[2]));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Filter by set",
+                                "explanation": "Exclude values that appear in b.",
+                                "code": "if !set_b.contains(&x) { ... }"
+                            },
+                            {
+                                "title": "Keep uniqueness",
+                                "explanation": "Use a second set to ensure the output has no duplicates.",
+                                "code": "if seen.insert(x) { out.push(x); }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-96",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Max Subarray",
+                    "description": "Write `max_subarray_sum(nums: &[i32]) -> i32` returning the maximum subarray sum. Example: `[-2,1,-3,4,-1,2,1,-5,4]` -> 6.\n\nExpected output:\n6",
+                    "starterCode": "fn max_subarray_sum(nums: &[i32]) -> i32 {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", max_subarray_sum(&[-2, 1, -3, 4, -1, 2, 1, -5, 4]));\n}\n",
+                    "hint": "Use Kadane's algorithm with a running best and current sum.",
+                    "solution": {
+                        "code": "fn max_subarray_sum(nums: &[i32]) -> i32 {\n    let mut best = nums[0];\n    let mut current = nums[0];\n    for &n in &nums[1..] {\n        current = current.max(0) + n;\n        if current > best {\n            best = current;\n        }\n    }\n    best\n}\n\nfn main() {\n    println!(\"{}\", max_subarray_sum(&[-2, 1, -3, 4, -1, 2, 1, -5, 4]));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Track current sum",
+                                "explanation": "Reset current sum to 0 if it becomes negative.",
+                                "code": "current = current.max(0) + n;"
+                            },
+                            {
+                                "title": "Update best",
+                                "explanation": "Keep the maximum sum seen so far.",
+                                "code": "if current > best { best = current; }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-97",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Count Occur",
+                    "description": "Write `count_occurrences(nums: &[i32], target: i32) -> usize` that counts occurrences of target. Example: `[1,2,2,3,2]`, target 2 -> 3.\n\nExpected output:\n3",
+                    "starterCode": "fn count_occurrences(nums: &[i32], target: i32) -> usize {\n    // Your code here\n    0\n}\n\nfn main() {\n    println!(\"{}\", count_occurrences(&[1, 2, 2, 3, 2], 2));\n}\n",
+                    "hint": "Use iter().filter() and count().",
+                    "solution": {
+                        "code": "fn count_occurrences(nums: &[i32], target: i32) -> usize {\n    nums.iter().filter(|&&n| n == target).count()\n}\n\nfn main() {\n    println!(\"{}\", count_occurrences(&[1, 2, 2, 3, 2], 2));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Filter matches",
+                                "explanation": "Count elements equal to target.",
+                                "code": "nums.iter().filter(|&&n| n == target).count()"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-98",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Number Pal",
+                    "description": "Write `is_palindrome_number(n: u64) -> bool` that checks if a number reads the same backward. Example: 12321 -> true, 123 -> false.\n\nExpected output:\ntrue\nfalse",
+                    "starterCode": "fn is_palindrome_number(n: u64) -> bool {\n    // Your code here\n    false\n}\n\nfn main() {\n    println!(\"{}\", is_palindrome_number(12321));\n    println!(\"{}\", is_palindrome_number(123));\n}\n",
+                    "hint": "Convert to string and compare with its reverse.",
+                    "solution": {
+                        "code": "fn is_palindrome_number(n: u64) -> bool {\n    let s = n.to_string();\n    s.chars().eq(s.chars().rev())\n}\n\nfn main() {\n    println!(\"{}\", is_palindrome_number(12321));\n    println!(\"{}\", is_palindrome_number(123));\n}\n",
+                        "steps": [
+                            {
+                                "title": "String compare",
+                                "explanation": "Compare the string to its reversed iterator.",
+                                "code": "s.chars().eq(s.chars().rev())"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-99",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Decode RLE",
+                    "description": "Write `decode_rle(s: &str) -> String` that decodes run-length encoding like \"a3b2\" -> \"aaabb\". Digits are single-digit counts.\n\nExpected output:\naaabb",
+                    "starterCode": "fn decode_rle(s: &str) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", decode_rle(\"a3b2\"));\n}\n",
+                    "hint": "Read a letter then the following digit and repeat.",
+                    "solution": {
+                        "code": "fn decode_rle(s: &str) -> String {\n    let mut out = String::new();\n    let mut chars = s.chars();\n    while let Some(c) = chars.next() {\n        if let Some(d) = chars.next() {\n            let count = d.to_digit(10).unwrap_or(0);\n            for _ in 0..count {\n                out.push(c);\n            }\n        }\n    }\n    out\n}\n\nfn main() {\n    println!(\"{}\", decode_rle(\"a3b2\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Consume pairs",
+                                "explanation": "Read a character and its single-digit count.",
+                                "code": "if let Some(d) = chars.next() { let count = d.to_digit(10).unwrap_or(0); }"
+                            },
+                            {
+                                "title": "Repeat",
+                                "explanation": "Append the character count times.",
+                                "code": "for _ in 0..count { out.push(c); }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "rs-intermediate-100",
+                    "language": "rust",
+                    "level": "intermediate",
+                    "title": "Interleave",
+                    "description": "Write `interleave(a: &str, b: &str) -> String` that alternates characters from a and b, appending leftovers at the end. Example: \"abc\" and \"123\" -> \"a1b2c3\"; \"ab\" and \"XYZW\" -> \"aXbYZW\".\n\nExpected output:\na1b2c3\naXbYZW",
+                    "starterCode": "fn interleave(a: &str, b: &str) -> String {\n    // Your code here\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", interleave(\"abc\", \"123\"));\n    println!(\"{}\", interleave(\"ab\", \"XYZW\"));\n}\n",
+                    "hint": "Use iterators for both strings and pull from each in turn.",
+                    "solution": {
+                        "code": "fn interleave(a: &str, b: &str) -> String {\n    let mut out = String::new();\n    let mut it_a = a.chars();\n    let mut it_b = b.chars();\n    loop {\n        let mut progressed = false;\n        if let Some(c) = it_a.next() {\n            out.push(c);\n            progressed = true;\n        }\n        if let Some(c) = it_b.next() {\n            out.push(c);\n            progressed = true;\n        }\n        if !progressed {\n            break;\n        }\n    }\n    out\n}\n\nfn main() {\n    println!(\"{}\", interleave(\"abc\", \"123\"));\n    println!(\"{}\", interleave(\"ab\", \"XYZW\"));\n}\n",
+                        "steps": [
+                            {
+                                "title": "Alternate pulls",
+                                "explanation": "Pull one char from each iterator and append if present.",
+                                "code": "if let Some(c) = it_a.next() { out.push(c); }\nif let Some(c) = it_b.next() { out.push(c); }"
+                            },
+                            {
+                                "title": "Stop when both are done",
+                                "explanation": "Break when neither iterator returns a value.",
+                                "code": "if !progressed { break; }"
+                            }
+                        ]
+                    }
                 }
             ]
         },
