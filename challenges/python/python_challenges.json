@@ -8366,6 +8366,1848 @@
               }
             ]
           }
+        },
+        {
+          "id": "py-advanced-21",
+          "language": "python",
+          "level": "advanced",
+          "title": "Dijkstra Dash",
+          "description": "Write `shortest_path_weighted(num_nodes, edges, start, end)` returning `(distance, path)` for a weighted directed graph. `edges` is a list of `[u, v, w]`. Example: `shortest_path_weighted(4, [[0,1,4],[0,2,1],[2,1,2],[1,3,1],[2,3,5]], 0, 3)` -> `(4, [0,2,1,3])`.",
+          "starterCode": "def shortest_path_weighted(num_nodes, edges, start, end):\n    # Your code here\n    pass\n",
+          "hint": "Use Dijkstra with a priority queue and track parents to rebuild the path.",
+          "solution": {
+            "code": "from heapq import heappush, heappop\n\ndef shortest_path_weighted(num_nodes, edges, start, end):\n    graph = [[] for _ in range(num_nodes)]\n    for u, v, w in edges:\n        graph[u].append((v, w))\n    dist = [float('inf')] * num_nodes\n    parent = [-1] * num_nodes\n    dist[start] = 0\n    heap = [(0, start)]\n    while heap:\n        d, node = heappop(heap)\n        if d != dist[node]:\n            continue\n        if node == end:\n            break\n        for nei, w in graph[node]:\n            nd = d + w\n            if nd < dist[nei]:\n                dist[nei] = nd\n                parent[nei] = node\n                heappush(heap, (nd, nei))\n    if dist[end] == float('inf'):\n        return (float('inf'), [])\n    path = []\n    cur = end\n    while cur != -1:\n        path.append(cur)\n        cur = parent[cur]\n    path.reverse()\n    return (dist[end], path)",
+            "steps": [
+              {
+                "title": "Run Dijkstra",
+                "explanation": "Use a min-heap to relax edges and compute shortest distances."
+              },
+              {
+                "title": "Rebuild path",
+                "explanation": "Track parents during relaxation and reconstruct the path from end.",
+                "code": "from heapq import heappush, heappop\n\ndef shortest_path_weighted(num_nodes, edges, start, end):\n    graph = [[] for _ in range(num_nodes)]\n    for u, v, w in edges:\n        graph[u].append((v, w))\n    dist = [float('inf')] * num_nodes\n    parent = [-1] * num_nodes\n    dist[start] = 0\n    heap = [(0, start)]\n    while heap:\n        d, node = heappop(heap)\n        if d != dist[node]:\n            continue\n        if node == end:\n            break\n        for nei, w in graph[node]:\n            nd = d + w\n            if nd < dist[nei]:\n                dist[nei] = nd\n                parent[nei] = node\n                heappush(heap, (nd, nei))\n    if dist[end] == float('inf'):\n        return (float('inf'), [])\n    path = []\n    cur = end\n    while cur != -1:\n        path.append(cur)\n        cur = parent[cur]\n    path.reverse()\n    return (dist[end], path)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-22",
+          "language": "python",
+          "level": "advanced",
+          "title": "Union Find",
+          "description": "Write `count_components(n, edges)` returning the number of connected components in an undirected graph with nodes 0..n-1. Example: `count_components(5, [[0,1],[1,2],[3,4]])` -> `2`.",
+          "starterCode": "def count_components(n, edges):\n    # Your code here\n    pass\n",
+          "hint": "Use a disjoint set union (union-find) to merge endpoints.",
+          "solution": {
+            "code": "def count_components(n, edges):\n    parent = list(range(n))\n    rank = [0] * n\n    def find(x):\n        while parent[x] != x:\n            parent[x] = parent[parent[x]]\n            x = parent[x]\n        return x\n    def union(a, b):\n        ra, rb = find(a), find(b)\n        if ra == rb:\n            return\n        if rank[ra] < rank[rb]:\n            parent[ra] = rb\n        elif rank[ra] > rank[rb]:\n            parent[rb] = ra\n        else:\n            parent[rb] = ra\n            rank[ra] += 1\n    for a, b in edges:\n        union(a, b)\n    roots = {find(i) for i in range(n)}\n    return len(roots)",
+            "steps": [
+              {
+                "title": "Union edges",
+                "explanation": "Merge endpoints in a union-find structure."
+              },
+              {
+                "title": "Count roots",
+                "explanation": "Distinct roots represent connected components.",
+                "code": "def count_components(n, edges):\n    parent = list(range(n))\n    rank = [0] * n\n    def find(x):\n        while parent[x] != x:\n            parent[x] = parent[parent[x]]\n            x = parent[x]\n        return x\n    def union(a, b):\n        ra, rb = find(a), find(b)\n        if ra == rb:\n            return\n        if rank[ra] < rank[rb]:\n            parent[ra] = rb\n        elif rank[ra] > rank[rb]:\n            parent[rb] = ra\n        else:\n            parent[rb] = ra\n            rank[ra] += 1\n    for a, b in edges:\n        union(a, b)\n    roots = {find(i) for i in range(n)}\n    return len(roots)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-23",
+          "language": "python",
+          "level": "advanced",
+          "title": "Kth Largest",
+          "description": "Write `kth_largest(nums, k)` returning the k-th largest value (1-indexed). Example: `kth_largest([3,2,1,5,6,4], 2)` -> `5`.",
+          "starterCode": "def kth_largest(nums, k):\n    # Your code here\n    pass\n",
+          "hint": "Use a min-heap of size k.",
+          "solution": {
+            "code": "import heapq\n\ndef kth_largest(nums, k):\n    heap = []\n    for n in nums:\n        heapq.heappush(heap, n)\n        if len(heap) > k:\n            heapq.heappop(heap)\n    return heap[0]",
+            "steps": [
+              {
+                "title": "Maintain size-k heap",
+                "explanation": "Keep the k largest elements in a min-heap."
+              },
+              {
+                "title": "Return top",
+                "explanation": "The smallest in the heap is the k-th largest overall.",
+                "code": "import heapq\n\ndef kth_largest(nums, k):\n    heap = []\n    for n in nums:\n        heapq.heappush(heap, n)\n        if len(heap) > k:\n            heapq.heappop(heap)\n    return heap[0]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-24",
+          "language": "python",
+          "level": "advanced",
+          "title": "Range Search",
+          "description": "Write `find_range(nums, target)` returning `[first, last]` indices of target in a sorted list, or `[-1,-1]` if missing. Example: `find_range([1,2,2,2,3], 2)` -> `[1,3]`.",
+          "starterCode": "def find_range(nums, target):\n    # Your code here\n    pass\n",
+          "hint": "Use two binary searches: one for leftmost, one for rightmost.",
+          "solution": {
+            "code": "def find_range(nums, target):\n    def left_bound():\n        lo, hi = 0, len(nums)\n        while lo < hi:\n            mid = (lo + hi) // 2\n            if nums[mid] < target:\n                lo = mid + 1\n            else:\n                hi = mid\n        return lo\n    def right_bound():\n        lo, hi = 0, len(nums)\n        while lo < hi:\n            mid = (lo + hi) // 2\n            if nums[mid] <= target:\n                lo = mid + 1\n            else:\n                hi = mid\n        return lo - 1\n    left = left_bound()\n    if left == len(nums) or nums[left] != target:\n        return [-1, -1]\n    right = right_bound()\n    return [left, right]",
+            "steps": [
+              {
+                "title": "Find leftmost",
+                "explanation": "Binary search for the first index where value >= target."
+              },
+              {
+                "title": "Find rightmost",
+                "explanation": "Binary search for the last index where value <= target.",
+                "code": "def find_range(nums, target):\n    def left_bound():\n        lo, hi = 0, len(nums)\n        while lo < hi:\n            mid = (lo + hi) // 2\n            if nums[mid] < target:\n                lo = mid + 1\n            else:\n                hi = mid\n        return lo\n    def right_bound():\n        lo, hi = 0, len(nums)\n        while lo < hi:\n            mid = (lo + hi) // 2\n            if nums[mid] <= target:\n                lo = mid + 1\n            else:\n                hi = mid\n        return lo - 1\n    left = left_bound()\n    if left == len(nums) or nums[left] != target:\n        return [-1, -1]\n    right = right_bound()\n    return [left, right]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-25",
+          "language": "python",
+          "level": "advanced",
+          "title": "Quickselect",
+          "description": "Write `kth_smallest(nums, k)` returning the k-th smallest value (1-indexed). Example: `kth_smallest([7,10,4,3,20,15], 3)` -> `7`.",
+          "starterCode": "def kth_smallest(nums, k):\n    # Your code here\n    pass\n",
+          "hint": "Use a partition-based selection (quickselect).",
+          "solution": {
+            "code": "def kth_smallest(nums, k):\n    k -= 1\n    left, right = 0, len(nums) - 1\n    while True:\n        pivot = nums[right]\n        i = left\n        for j in range(left, right):\n            if nums[j] <= pivot:\n                nums[i], nums[j] = nums[j], nums[i]\n                i += 1\n        nums[i], nums[right] = nums[right], nums[i]\n        if i == k:\n            return nums[i]\n        if i < k:\n            left = i + 1\n        else:\n            right = i - 1",
+            "steps": [
+              {
+                "title": "Partition",
+                "explanation": "Place a pivot in its sorted position."
+              },
+              {
+                "title": "Narrow search",
+                "explanation": "Keep only the side that contains the k-th element.",
+                "code": "def kth_smallest(nums, k):\n    k -= 1\n    left, right = 0, len(nums) - 1\n    while True:\n        pivot = nums[right]\n        i = left\n        for j in range(left, right):\n            if nums[j] <= pivot:\n                nums[i], nums[j] = nums[j], nums[i]\n                i += 1\n        nums[i], nums[right] = nums[right], nums[i]\n        if i == k:\n            return nums[i]\n        if i < k:\n            left = i + 1\n        else:\n            right = i - 1"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-26",
+          "language": "python",
+          "level": "advanced",
+          "title": "Rotated Search",
+          "description": "Write `search_rotated(nums, target)` returning the index of target in a rotated sorted list, or -1 if absent. Example: `search_rotated([4,5,6,7,0,1,2], 0)` -> `4`.",
+          "starterCode": "def search_rotated(nums, target):\n    # Your code here\n    pass\n",
+          "hint": "Use binary search and determine which half is sorted each step.",
+          "solution": {
+            "code": "def search_rotated(nums, target):\n    lo, hi = 0, len(nums) - 1\n    while lo <= hi:\n        mid = (lo + hi) // 2\n        if nums[mid] == target:\n            return mid\n        if nums[lo] <= nums[mid]:\n            if nums[lo] <= target < nums[mid]:\n                hi = mid - 1\n            else:\n                lo = mid + 1\n        else:\n            if nums[mid] < target <= nums[hi]:\n                lo = mid + 1\n            else:\n                hi = mid - 1\n    return -1",
+            "steps": [
+              {
+                "title": "Binary search",
+                "explanation": "Identify which side is sorted and move the bounds accordingly."
+              },
+              {
+                "title": "Return index",
+                "explanation": "If found, return mid; otherwise return -1 when exhausted.",
+                "code": "def search_rotated(nums, target):\n    lo, hi = 0, len(nums) - 1\n    while lo <= hi:\n        mid = (lo + hi) // 2\n        if nums[mid] == target:\n            return mid\n        if nums[lo] <= nums[mid]:\n            if nums[lo] <= target < nums[mid]:\n                hi = mid - 1\n            else:\n                lo = mid + 1\n        else:\n            if nums[mid] < target <= nums[hi]:\n                lo = mid + 1\n            else:\n                hi = mid - 1\n    return -1"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-27",
+          "language": "python",
+          "level": "advanced",
+          "title": "Min Rooms",
+          "description": "Write `min_meeting_rooms(intervals)` returning the minimum number of rooms needed. Example: `min_meeting_rooms([[0,30],[5,10],[15,20]])` -> `2`.",
+          "starterCode": "def min_meeting_rooms(intervals):\n    # Your code here\n    pass\n",
+          "hint": "Sort start/end times and sweep through them.",
+          "solution": {
+            "code": "def min_meeting_rooms(intervals):\n    if not intervals:\n        return 0\n    starts = sorted(i[0] for i in intervals)\n    ends = sorted(i[1] for i in intervals)\n    s = e = 0\n    rooms = 0\n    best = 0\n    while s < len(starts):\n        if starts[s] < ends[e]:\n            rooms += 1\n            best = max(best, rooms)\n            s += 1\n        else:\n            rooms -= 1\n            e += 1\n    return best",
+            "steps": [
+              {
+                "title": "Sort endpoints",
+                "explanation": "Process meetings in time order using separate start and end arrays."
+              },
+              {
+                "title": "Sweep and count",
+                "explanation": "Increase rooms on start, decrease on end, track max.",
+                "code": "def min_meeting_rooms(intervals):\n    if not intervals:\n        return 0\n    starts = sorted(i[0] for i in intervals)\n    ends = sorted(i[1] for i in intervals)\n    s = e = 0\n    rooms = 0\n    best = 0\n    while s < len(starts):\n        if starts[s] < ends[e]:\n            rooms += 1\n            best = max(best, rooms)\n            s += 1\n        else:\n            rooms -= 1\n            e += 1\n    return best"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-28",
+          "language": "python",
+          "level": "advanced",
+          "title": "Sliding Max",
+          "description": "Write `sliding_window_max(nums, k)` returning the maximum in each window of size k. Example: `sliding_window_max([1,3,-1,-3,5,3,6,7], 3)` -> `[3,3,5,5,6,7]`.",
+          "starterCode": "def sliding_window_max(nums, k):\n    # Your code here\n    pass\n",
+          "hint": "Use a deque of indices to keep a decreasing queue.",
+          "solution": {
+            "code": "from collections import deque\n\ndef sliding_window_max(nums, k):\n    dq = deque()\n    out = []\n    for i, n in enumerate(nums):\n        while dq and dq[0] <= i - k:\n            dq.popleft()\n        while dq and nums[dq[-1]] <= n:\n            dq.pop()\n        dq.append(i)\n        if i >= k - 1:\n            out.append(nums[dq[0]])\n    return out",
+            "steps": [
+              {
+                "title": "Maintain deque",
+                "explanation": "Keep indices of candidates in decreasing order."
+              },
+              {
+                "title": "Emit max",
+                "explanation": "Front of the deque is the max for the current window.",
+                "code": "from collections import deque\n\ndef sliding_window_max(nums, k):\n    dq = deque()\n    out = []\n    for i, n in enumerate(nums):\n        while dq and dq[0] <= i - k:\n            dq.popleft()\n        while dq and nums[dq[-1]] <= n:\n            dq.pop()\n        dq.append(i)\n        if i >= k - 1:\n            out.append(nums[dq[0]])\n    return out"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-29",
+          "language": "python",
+          "level": "advanced",
+          "title": "Coin Change",
+          "description": "Write `min_coins(coins, amount)` returning the fewest coins needed or -1 if impossible. Example: `min_coins([1,2,5], 11)` -> `3`.",
+          "starterCode": "def min_coins(coins, amount):\n    # Your code here\n    pass\n",
+          "hint": "Use DP where dp[x] is the minimum coins for amount x.",
+          "solution": {
+            "code": "def min_coins(coins, amount):\n    dp = [float('inf')] * (amount + 1)\n    dp[0] = 0\n    for x in range(1, amount + 1):\n        for c in coins:\n            if x - c >= 0:\n                dp[x] = min(dp[x], dp[x - c] + 1)\n    return -1 if dp[amount] == float('inf') else dp[amount]",
+            "steps": [
+              {
+                "title": "Build DP table",
+                "explanation": "Compute the minimum coins for each amount up to target."
+              },
+              {
+                "title": "Return result",
+                "explanation": "If target is unreachable, return -1.",
+                "code": "def min_coins(coins, amount):\n    dp = [float('inf')] * (amount + 1)\n    dp[0] = 0\n    for x in range(1, amount + 1):\n        for c in coins:\n            if x - c >= 0:\n                dp[x] = min(dp[x], dp[x - c] + 1)\n    return -1 if dp[amount] == float('inf') else dp[amount]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-30",
+          "language": "python",
+          "level": "advanced",
+          "title": "Edit Distance",
+          "description": "Write `edit_distance(a, b)` returning the minimum number of edits (insert, delete, replace) to convert a to b. Example: `edit_distance('kitten','sitting')` -> `3`.",
+          "starterCode": "def edit_distance(a, b):\n    # Your code here\n    pass\n",
+          "hint": "Use a DP table with transitions from left, top, and diagonal.",
+          "solution": {
+            "code": "def edit_distance(a, b):\n    m, n = len(a), len(b)\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n    for i in range(m + 1):\n        dp[i][0] = i\n    for j in range(n + 1):\n        dp[0][j] = j\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if a[i - 1] == b[j - 1]:\n                dp[i][j] = dp[i - 1][j - 1]\n            else:\n                dp[i][j] = 1 + min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1])\n    return dp[m][n]",
+            "steps": [
+              {
+                "title": "Initialize base cases",
+                "explanation": "Costs to convert to/from empty strings are lengths."
+              },
+              {
+                "title": "Fill DP",
+                "explanation": "Choose the cheapest of insert, delete, or replace.",
+                "code": "def edit_distance(a, b):\n    m, n = len(a), len(b)\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n    for i in range(m + 1):\n        dp[i][0] = i\n    for j in range(n + 1):\n        dp[0][j] = j\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if a[i - 1] == b[j - 1]:\n                dp[i][j] = dp[i - 1][j - 1]\n            else:\n                dp[i][j] = 1 + min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1])\n    return dp[m][n]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-31",
+          "language": "python",
+          "level": "advanced",
+          "title": "LIS Length",
+          "description": "Write `lis_length(nums)` returning the length of the longest increasing subsequence. Example: `lis_length([10,9,2,5,3,7,101,18])` -> `4`.",
+          "starterCode": "def lis_length(nums):\n    # Your code here\n    pass\n",
+          "hint": "Use a tails array with binary search.",
+          "solution": {
+            "code": "import bisect\n\ndef lis_length(nums):\n    tails = []\n    for n in nums:\n        i = bisect.bisect_left(tails, n)\n        if i == len(tails):\n            tails.append(n)\n        else:\n            tails[i] = n\n    return len(tails)",
+            "steps": [
+              {
+                "title": "Track tails",
+                "explanation": "tails[i] is the smallest tail of length i+1 subsequence."
+              },
+              {
+                "title": "Binary search update",
+                "explanation": "Replace the first tail >= n or append if larger.",
+                "code": "import bisect\n\ndef lis_length(nums):\n    tails = []\n    for n in nums:\n        i = bisect.bisect_left(tails, n)\n        if i == len(tails):\n            tails.append(n)\n        else:\n            tails[i] = n\n    return len(tails)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-32",
+          "language": "python",
+          "level": "advanced",
+          "title": "Word Break",
+          "description": "Write `word_break(s, words)` returning True if s can be segmented into words. Example: `word_break('leetcode', ['leet','code'])` -> `True`.",
+          "starterCode": "def word_break(s, words):\n    # Your code here\n    pass\n",
+          "hint": "DP over string positions, using a set for quick lookup.",
+          "solution": {
+            "code": "def word_break(s, words):\n    word_set = set(words)\n    dp = [False] * (len(s) + 1)\n    dp[0] = True\n    for i in range(1, len(s) + 1):\n        for j in range(i):\n            if dp[j] and s[j:i] in word_set:\n                dp[i] = True\n                break\n    return dp[-1]",
+            "steps": [
+              {
+                "title": "DP over prefixes",
+                "explanation": "dp[i] indicates whether s[:i] can be segmented."
+              },
+              {
+                "title": "Check splits",
+                "explanation": "Look for a j where dp[j] is True and s[j:i] is a word.",
+                "code": "def word_break(s, words):\n    word_set = set(words)\n    dp = [False] * (len(s) + 1)\n    dp[0] = True\n    for i in range(1, len(s) + 1):\n        for j in range(i):\n            if dp[j] and s[j:i] in word_set:\n                dp[i] = True\n                break\n    return dp[-1]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-33",
+          "language": "python",
+          "level": "advanced",
+          "title": "Decode Ways",
+          "description": "Write `decode_ways(s)` returning the number of ways to decode digits with A=1..Z=26. Example: `decode_ways('226')` -> `3`.",
+          "starterCode": "def decode_ways(s):\n    # Your code here\n    pass\n",
+          "hint": "DP where dp[i] counts ways for prefix length i.",
+          "solution": {
+            "code": "def decode_ways(s):\n    if not s or s[0] == '0':\n        return 0\n    dp = [0] * (len(s) + 1)\n    dp[0] = 1\n    dp[1] = 1\n    for i in range(2, len(s) + 1):\n        if s[i - 1] != '0':\n            dp[i] += dp[i - 1]\n        two = int(s[i - 2:i])\n        if 10 <= two <= 26:\n            dp[i] += dp[i - 2]\n    return dp[-1]",
+            "steps": [
+              {
+                "title": "Initialize DP",
+                "explanation": "Base cases handle empty prefix and first digit."
+              },
+              {
+                "title": "Add single and double digits",
+                "explanation": "Use valid 1-digit and 2-digit decodes.",
+                "code": "def decode_ways(s):\n    if not s or s[0] == '0':\n        return 0\n    dp = [0] * (len(s) + 1)\n    dp[0] = 1\n    dp[1] = 1\n    for i in range(2, len(s) + 1):\n        if s[i - 1] != '0':\n            dp[i] += dp[i - 1]\n        two = int(s[i - 2:i])\n        if 10 <= two <= 26:\n            dp[i] += dp[i - 2]\n    return dp[-1]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-34",
+          "language": "python",
+          "level": "advanced",
+          "title": "House Robber",
+          "description": "Write `max_loot(nums)` returning the max sum of non-adjacent values. Example: `max_loot([2,7,9,3,1])` -> `12`.",
+          "starterCode": "def max_loot(nums):\n    # Your code here\n    pass\n",
+          "hint": "Keep two variables: best up to previous, and best up to current.",
+          "solution": {
+            "code": "def max_loot(nums):\n    prev, curr = 0, 0\n    for n in nums:\n        prev, curr = curr, max(curr, prev + n)\n    return curr",
+            "steps": [
+              {
+                "title": "Track two states",
+                "explanation": "prev is best excluding current, curr is best including it."
+              },
+              {
+                "title": "Update in one pass",
+                "explanation": "Choose between skipping or taking each house.",
+                "code": "def max_loot(nums):\n    prev, curr = 0, 0\n    for n in nums:\n        prev, curr = curr, max(curr, prev + n)\n    return curr"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-35",
+          "language": "python",
+          "level": "advanced",
+          "title": "Equal Partition",
+          "description": "Write `can_partition(nums)` returning True if the list can be split into two subsets with equal sum. Example: `can_partition([1,5,11,5])` -> `True`.",
+          "starterCode": "def can_partition(nums):\n    # Your code here\n    pass\n",
+          "hint": "Use subset-sum DP up to total//2.",
+          "solution": {
+            "code": "def can_partition(nums):\n    total = sum(nums)\n    if total % 2 != 0:\n        return False\n    target = total // 2\n    dp = [False] * (target + 1)\n    dp[0] = True\n    for n in nums:\n        for s in range(target, n - 1, -1):\n            dp[s] = dp[s] or dp[s - n]\n    return dp[target]",
+            "steps": [
+              {
+                "title": "Check total",
+                "explanation": "If total sum is odd, equal partition is impossible."
+              },
+              {
+                "title": "Subset DP",
+                "explanation": "Find if any subset sums to half the total.",
+                "code": "def can_partition(nums):\n    total = sum(nums)\n    if total % 2 != 0:\n        return False\n    target = total // 2\n    dp = [False] * (target + 1)\n    dp[0] = True\n    for n in nums:\n        for s in range(target, n - 1, -1):\n            dp[s] = dp[s] or dp[s - n]\n    return dp[target]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-36",
+          "language": "python",
+          "level": "advanced",
+          "title": "Longest Consecutive",
+          "description": "Write `longest_consecutive(nums)` returning the length of the longest consecutive sequence. Example: `longest_consecutive([100,4,200,1,3,2])` -> `4`.",
+          "starterCode": "def longest_consecutive(nums):\n    # Your code here\n    pass\n",
+          "hint": "Use a set and start only at sequence beginnings.",
+          "solution": {
+            "code": "def longest_consecutive(nums):\n    num_set = set(nums)\n    best = 0\n    for n in num_set:\n        if n - 1 not in num_set:\n            length = 1\n            while n + length in num_set:\n                length += 1\n            best = max(best, length)\n    return best",
+            "steps": [
+              {
+                "title": "Find sequence starts",
+                "explanation": "Only grow sequences from numbers with no predecessor."
+              },
+              {
+                "title": "Extend forward",
+                "explanation": "Count how far the sequence continues.",
+                "code": "def longest_consecutive(nums):\n    num_set = set(nums)\n    best = 0\n    for n in num_set:\n        if n - 1 not in num_set:\n            length = 1\n            while n + length in num_set:\n                length += 1\n            best = max(best, length)\n    return best"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-37",
+          "language": "python",
+          "level": "advanced",
+          "title": "Subarray Sum K",
+          "description": "Write `count_subarrays_sum(nums, k)` returning the number of subarrays with sum k. Example: `count_subarrays_sum([1,1,1], 2)` -> `2`.",
+          "starterCode": "def count_subarrays_sum(nums, k):\n    # Your code here\n    pass\n",
+          "hint": "Use prefix sums and a frequency map.",
+          "solution": {
+            "code": "def count_subarrays_sum(nums, k):\n    counts = {0: 1}\n    total = 0\n    result = 0\n    for n in nums:\n        total += n\n        result += counts.get(total - k, 0)\n        counts[total] = counts.get(total, 0) + 1\n    return result",
+            "steps": [
+              {
+                "title": "Track prefix sums",
+                "explanation": "Each prefix sum can pair with a prior prefix to make k."
+              },
+              {
+                "title": "Count matches",
+                "explanation": "Add how many times total-k has appeared.",
+                "code": "def count_subarrays_sum(nums, k):\n    counts = {0: 1}\n    total = 0\n    result = 0\n    for n in nums:\n        total += n\n        result += counts.get(total - k, 0)\n        counts[total] = counts.get(total, 0) + 1\n    return result"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-38",
+          "language": "python",
+          "level": "advanced",
+          "title": "Max Product",
+          "description": "Write `max_product_subarray(nums)` returning the maximum product of any contiguous subarray. Example: `max_product_subarray([2,3,-2,4])` -> `6`.",
+          "starterCode": "def max_product_subarray(nums):\n    # Your code here\n    pass\n",
+          "hint": "Track both max and min products because of negatives.",
+          "solution": {
+            "code": "def max_product_subarray(nums):\n    best = nums[0]\n    cur_max = nums[0]\n    cur_min = nums[0]\n    for n in nums[1:]:\n        if n < 0:\n            cur_max, cur_min = cur_min, cur_max\n        cur_max = max(n, cur_max * n)\n        cur_min = min(n, cur_min * n)\n        best = max(best, cur_max)\n    return best",
+            "steps": [
+              {
+                "title": "Track extremes",
+                "explanation": "A negative flips max and min products."
+              },
+              {
+                "title": "Update best",
+                "explanation": "Keep the largest product seen so far.",
+                "code": "def max_product_subarray(nums):\n    best = nums[0]\n    cur_max = nums[0]\n    cur_min = nums[0]\n    for n in nums[1:]:\n        if n < 0:\n            cur_max, cur_min = cur_min, cur_max\n        cur_max = max(n, cur_max * n)\n        cur_min = min(n, cur_min * n)\n        best = max(best, cur_max)\n    return best"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-39",
+          "language": "python",
+          "level": "advanced",
+          "title": "Merge K Sorted",
+          "description": "Write `merge_k_sorted(lists)` returning a single sorted list from k sorted lists. Example: `merge_k_sorted([[1,4],[1,3,4],[2,6]])` -> `[1,1,2,3,4,4,6]`.",
+          "starterCode": "def merge_k_sorted(lists):\n    # Your code here\n    pass\n",
+          "hint": "Use a min-heap holding (value, list_index, element_index).",
+          "solution": {
+            "code": "import heapq\n\ndef merge_k_sorted(lists):\n    heap = []\n    for i, lst in enumerate(lists):\n        if lst:\n            heapq.heappush(heap, (lst[0], i, 0))\n    out = []\n    while heap:\n        val, li, ei = heapq.heappop(heap)\n        out.append(val)\n        if ei + 1 < len(lists[li]):\n            heapq.heappush(heap, (lists[li][ei + 1], li, ei + 1))\n    return out",
+            "steps": [
+              {
+                "title": "Seed the heap",
+                "explanation": "Push the first element of each list into a min-heap."
+              },
+              {
+                "title": "Extract and push",
+                "explanation": "Pop the smallest and push the next element from the same list.",
+                "code": "import heapq\n\ndef merge_k_sorted(lists):\n    heap = []\n    for i, lst in enumerate(lists):\n        if lst:\n            heapq.heappush(heap, (lst[0], i, 0))\n    out = []\n    while heap:\n        val, li, ei = heapq.heappop(heap)\n        out.append(val)\n        if ei + 1 < len(lists[li]):\n            heapq.heappush(heap, (lists[li][ei + 1], li, ei + 1))\n    return out"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-40",
+          "language": "python",
+          "level": "advanced",
+          "title": "Top K Elements",
+          "description": "Write `top_k_elements(nums, k)` returning the k most frequent elements, ordered by frequency desc then value asc. Example: `top_k_elements([1,1,1,2,2,3], 2)` -> `[1,2]`.",
+          "starterCode": "def top_k_elements(nums, k):\n    # Your code here\n    pass\n",
+          "hint": "Count frequencies and sort by (-count, value).",
+          "solution": {
+            "code": "def top_k_elements(nums, k):\n    counts = {}\n    for n in nums:\n        counts[n] = counts.get(n, 0) + 1\n    ranked = sorted(counts.items(), key=lambda item: (-item[1], item[0]))\n    return [val for val, _ in ranked[:k]]",
+            "steps": [
+              {
+                "title": "Count frequencies",
+                "explanation": "Build a map from value to count."
+              },
+              {
+                "title": "Sort and pick",
+                "explanation": "Sort by count desc then value asc and take k.",
+                "code": "def top_k_elements(nums, k):\n    counts = {}\n    for n in nums:\n        counts[n] = counts.get(n, 0) + 1\n    ranked = sorted(counts.items(), key=lambda item: (-item[1], item[0]))\n    return [val for val, _ in ranked[:k]]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-41",
+          "language": "python",
+          "level": "advanced",
+          "title": "Matrix Search",
+          "description": "Write `search_matrix(matrix, target)` for a matrix where each row is sorted and the first element of each row is greater than the last of the previous row. Example: `search_matrix([[1,3,5],[7,9,11]], 9)` -> `True`.",
+          "starterCode": "def search_matrix(matrix, target):\n    # Your code here\n    pass\n",
+          "hint": "Treat the matrix as a flattened sorted array and binary search.",
+          "solution": {
+            "code": "def search_matrix(matrix, target):\n    if not matrix or not matrix[0]:\n        return False\n    rows, cols = len(matrix), len(matrix[0])\n    lo, hi = 0, rows * cols - 1\n    while lo <= hi:\n        mid = (lo + hi) // 2\n        r, c = divmod(mid, cols)\n        val = matrix[r][c]\n        if val == target:\n            return True\n        if val < target:\n            lo = mid + 1\n        else:\n            hi = mid - 1\n    return False",
+            "steps": [
+              {
+                "title": "Flatten indices",
+                "explanation": "Use divmod to map a flat index to row/col."
+              },
+              {
+                "title": "Binary search",
+                "explanation": "Search over the virtual sorted array.",
+                "code": "def search_matrix(matrix, target):\n    if not matrix or not matrix[0]:\n        return False\n    rows, cols = len(matrix), len(matrix[0])\n    lo, hi = 0, rows * cols - 1\n    while lo <= hi:\n        mid = (lo + hi) // 2\n        r, c = divmod(mid, cols)\n        val = matrix[r][c]\n        if val == target:\n            return True\n        if val < target:\n            lo = mid + 1\n        else:\n            hi = mid - 1\n    return False"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-42",
+          "language": "python",
+          "level": "advanced",
+          "title": "Matrix Zeroes",
+          "description": "Write `set_zeroes(matrix)` returning a new matrix where any row or column containing a 0 is all 0. Example: `set_zeroes([[1,1,1],[1,0,1],[1,1,1]])` -> `[[1,0,1],[0,0,0],[1,0,1]]`.",
+          "starterCode": "def set_zeroes(matrix):\n    # Your code here\n    pass\n",
+          "hint": "Record zero rows and columns, then rebuild.",
+          "solution": {
+            "code": "def set_zeroes(matrix):\n    rows = len(matrix)\n    cols = len(matrix[0]) if rows else 0\n    zero_rows = set()\n    zero_cols = set()\n    for r in range(rows):\n        for c in range(cols):\n            if matrix[r][c] == 0:\n                zero_rows.add(r)\n                zero_cols.add(c)\n    out = []\n    for r in range(rows):\n        row = []\n        for c in range(cols):\n            row.append(0 if r in zero_rows or c in zero_cols else matrix[r][c])\n        out.append(row)\n    return out",
+            "steps": [
+              {
+                "title": "Find zero lines",
+                "explanation": "Collect all rows and columns that contain a zero."
+              },
+              {
+                "title": "Build result",
+                "explanation": "Set any cell in a zero row or column to 0.",
+                "code": "def set_zeroes(matrix):\n    rows = len(matrix)\n    cols = len(matrix[0]) if rows else 0\n    zero_rows = set()\n    zero_cols = set()\n    for r in range(rows):\n        for c in range(cols):\n            if matrix[r][c] == 0:\n                zero_rows.add(r)\n                zero_cols.add(c)\n    out = []\n    for r in range(rows):\n        row = []\n        for c in range(cols):\n            row.append(0 if r in zero_rows or c in zero_cols else matrix[r][c])\n        out.append(row)\n    return out"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-43",
+          "language": "python",
+          "level": "advanced",
+          "title": "Rotate Image",
+          "description": "Write `rotate_image(matrix)` rotating a square matrix 90 degrees clockwise. Example: `rotate_image([[1,2],[3,4]])` -> `[[3,1],[4,2]]`.",
+          "starterCode": "def rotate_image(matrix):\n    # Your code here\n    pass\n",
+          "hint": "Transpose, then reverse each row.",
+          "solution": {
+            "code": "def rotate_image(matrix):\n    rotated = [list(row) for row in zip(*matrix)]\n    for row in rotated:\n        row.reverse()\n    return rotated",
+            "steps": [
+              {
+                "title": "Transpose",
+                "explanation": "Swap rows and columns."
+              },
+              {
+                "title": "Reverse rows",
+                "explanation": "Reverse each row for clockwise rotation.",
+                "code": "def rotate_image(matrix):\n    rotated = [list(row) for row in zip(*matrix)]\n    for row in rotated:\n        row.reverse()\n    return rotated"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-44",
+          "language": "python",
+          "level": "advanced",
+          "title": "Min Path Sum",
+          "description": "Write `min_path_sum(grid)` returning the minimum path sum from top-left to bottom-right moving only right or down. Example: `min_path_sum([[1,3,1],[1,5,1],[4,2,1]])` -> `7`.",
+          "starterCode": "def min_path_sum(grid):\n    # Your code here\n    pass\n",
+          "hint": "Use DP accumulating the minimum sum at each cell.",
+          "solution": {
+            "code": "def min_path_sum(grid):\n    rows = len(grid)\n    cols = len(grid[0]) if rows else 0\n    dp = [[0] * cols for _ in range(rows)]\n    dp[0][0] = grid[0][0]\n    for c in range(1, cols):\n        dp[0][c] = dp[0][c - 1] + grid[0][c]\n    for r in range(1, rows):\n        dp[r][0] = dp[r - 1][0] + grid[r][0]\n        for c in range(1, cols):\n            dp[r][c] = min(dp[r - 1][c], dp[r][c - 1]) + grid[r][c]\n    return dp[rows - 1][cols - 1]",
+            "steps": [
+              {
+                "title": "Initialize edges",
+                "explanation": "First row and column have only one path each."
+              },
+              {
+                "title": "Fill DP",
+                "explanation": "Each cell takes min of top or left plus its value.",
+                "code": "def min_path_sum(grid):\n    rows = len(grid)\n    cols = len(grid[0]) if rows else 0\n    dp = [[0] * cols for _ in range(rows)]\n    dp[0][0] = grid[0][0]\n    for c in range(1, cols):\n        dp[0][c] = dp[0][c - 1] + grid[0][c]\n    for r in range(1, rows):\n        dp[r][0] = dp[r - 1][0] + grid[r][0]\n        for c in range(1, cols):\n            dp[r][c] = min(dp[r - 1][c], dp[r][c - 1]) + grid[r][c]\n    return dp[rows - 1][cols - 1]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-45",
+          "language": "python",
+          "level": "advanced",
+          "title": "Paths with Obstacles",
+          "description": "Write `unique_paths_obstacles(grid)` returning the number of paths from top-left to bottom-right, where 1 means blocked and 0 means free. Example: `unique_paths_obstacles([[0,0,0],[0,1,0],[0,0,0]])` -> `2`.",
+          "starterCode": "def unique_paths_obstacles(grid):\n    # Your code here\n    pass\n",
+          "hint": "Use DP; blocked cells contribute 0 paths.",
+          "solution": {
+            "code": "def unique_paths_obstacles(grid):\n    rows = len(grid)\n    cols = len(grid[0]) if rows else 0\n    dp = [[0] * cols for _ in range(rows)]\n    if rows == 0 or cols == 0 or grid[0][0] == 1:\n        return 0\n    dp[0][0] = 1\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == 1:\n                dp[r][c] = 0\n            else:\n                if r > 0:\n                    dp[r][c] += dp[r - 1][c]\n                if c > 0:\n                    dp[r][c] += dp[r][c - 1]\n    return dp[rows - 1][cols - 1]",
+            "steps": [
+              {
+                "title": "Initialize DP",
+                "explanation": "Start with dp[0][0]=1 unless blocked."
+              },
+              {
+                "title": "Propagate counts",
+                "explanation": "Each free cell sums paths from top and left.",
+                "code": "def unique_paths_obstacles(grid):\n    rows = len(grid)\n    cols = len(grid[0]) if rows else 0\n    dp = [[0] * cols for _ in range(rows)]\n    if rows == 0 or cols == 0 or grid[0][0] == 1:\n        return 0\n    dp[0][0] = 1\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == 1:\n                dp[r][c] = 0\n            else:\n                if r > 0:\n                    dp[r][c] += dp[r - 1][c]\n                if c > 0:\n                    dp[r][c] += dp[r][c - 1]\n    return dp[rows - 1][cols - 1]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-46",
+          "language": "python",
+          "level": "advanced",
+          "title": "Pal Subseq",
+          "description": "Write `longest_pal_subseq(s)` returning the length of the longest palindromic subsequence. Example: `longest_pal_subseq('bbbab')` -> `4`.",
+          "starterCode": "def longest_pal_subseq(s):\n    # Your code here\n    pass\n",
+          "hint": "DP over substring ranges; match ends or drop one end.",
+          "solution": {
+            "code": "def longest_pal_subseq(s):\n    n = len(s)\n    dp = [[0] * n for _ in range(n)]\n    for i in range(n):\n        dp[i][i] = 1\n    for length in range(2, n + 1):\n        for i in range(n - length + 1):\n            j = i + length - 1\n            if s[i] == s[j]:\n                dp[i][j] = 2 + (dp[i + 1][j - 1] if i + 1 <= j - 1 else 0)\n            else:\n                dp[i][j] = max(dp[i + 1][j], dp[i][j - 1])\n    return dp[0][n - 1] if n else 0",
+            "steps": [
+              {
+                "title": "Initialize length-1",
+                "explanation": "Single characters are palindromes of length 1."
+              },
+              {
+                "title": "Expand by length",
+                "explanation": "If ends match, add 2; otherwise take the best of dropping one end.",
+                "code": "def longest_pal_subseq(s):\n    n = len(s)\n    dp = [[0] * n for _ in range(n)]\n    for i in range(n):\n        dp[i][i] = 1\n    for length in range(2, n + 1):\n        for i in range(n - length + 1):\n            j = i + length - 1\n            if s[i] == s[j]:\n                dp[i][j] = 2 + (dp[i + 1][j - 1] if i + 1 <= j - 1 else 0)\n            else:\n                dp[i][j] = max(dp[i + 1][j], dp[i][j - 1])\n    return dp[0][n - 1] if n else 0"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-47",
+          "language": "python",
+          "level": "advanced",
+          "title": "Min Window",
+          "description": "Write `min_window(s, t)` returning the smallest substring of s containing all chars of t. Example: `min_window('ADOBECODEBANC','ABC')` -> `'BANC'`.",
+          "starterCode": "def min_window(s, t):\n    # Your code here\n    pass\n",
+          "hint": "Use a sliding window with a counts map and a match counter.",
+          "solution": {
+            "code": "def min_window(s, t):\n    if not t:\n        return ''\n    need = {}\n    for ch in t:\n        need[ch] = need.get(ch, 0) + 1\n    have = 0\n    required = len(need)\n    window = {}\n    left = 0\n    best = (float('inf'), 0, 0)\n    for right, ch in enumerate(s):\n        window[ch] = window.get(ch, 0) + 1\n        if ch in need and window[ch] == need[ch]:\n            have += 1\n        while have == required:\n            if right - left + 1 < best[0]:\n                best = (right - left + 1, left, right)\n            left_ch = s[left]\n            window[left_ch] -= 1\n            if left_ch in need and window[left_ch] < need[left_ch]:\n                have -= 1\n            left += 1\n    return '' if best[0] == float('inf') else s[best[1]:best[2] + 1]",
+            "steps": [
+              {
+                "title": "Expand window",
+                "explanation": "Grow right to satisfy all required counts."
+              },
+              {
+                "title": "Shrink to minimum",
+                "explanation": "Move left while the window remains valid to minimize length.",
+                "code": "def min_window(s, t):\n    if not t:\n        return ''\n    need = {}\n    for ch in t:\n        need[ch] = need.get(ch, 0) + 1\n    have = 0\n    required = len(need)\n    window = {}\n    left = 0\n    best = (float('inf'), 0, 0)\n    for right, ch in enumerate(s):\n        window[ch] = window.get(ch, 0) + 1\n        if ch in need and window[ch] == need[ch]:\n            have += 1\n        while have == required:\n            if right - left + 1 < best[0]:\n                best = (right - left + 1, left, right)\n            left_ch = s[left]\n            window[left_ch] -= 1\n            if left_ch in need and window[left_ch] < need[left_ch]:\n                have -= 1\n            left += 1\n    return '' if best[0] == float('inf') else s[best[1]:best[2] + 1]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-48",
+          "language": "python",
+          "level": "advanced",
+          "title": "Permutation Check",
+          "description": "Write `check_inclusion(s1, s2)` returning True if any permutation of s1 is a substring of s2. Example: `check_inclusion('ab', 'eidbaooo')` -> `True`.",
+          "starterCode": "def check_inclusion(s1, s2):\n    # Your code here\n    pass\n",
+          "hint": "Use a fixed-size sliding window with frequency counts.",
+          "solution": {
+            "code": "def check_inclusion(s1, s2):\n    if len(s1) > len(s2):\n        return False\n    need = [0] * 26\n    window = [0] * 26\n    for ch in s1:\n        need[ord(ch) - 97] += 1\n    for i in range(len(s2)):\n        window[ord(s2[i]) - 97] += 1\n        if i >= len(s1):\n            window[ord(s2[i - len(s1)]) - 97] -= 1\n        if window == need:\n            return True\n    return False",
+            "steps": [
+              {
+                "title": "Initialize counts",
+                "explanation": "Build frequency arrays for s1 and the current window."
+              },
+              {
+                "title": "Slide and compare",
+                "explanation": "Update the window counts and check for equality.",
+                "code": "def check_inclusion(s1, s2):\n    if len(s1) > len(s2):\n        return False\n    need = [0] * 26\n    window = [0] * 26\n    for ch in s1:\n        need[ord(ch) - 97] += 1\n    for i in range(len(s2)):\n        window[ord(s2[i]) - 97] += 1\n        if i >= len(s1):\n            window[ord(s2[i - len(s1)]) - 97] -= 1\n        if window == need:\n            return True\n    return False"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-49",
+          "language": "python",
+          "level": "advanced",
+          "title": "Char Replace",
+          "description": "Write `longest_repeating(s, k)` returning the length of the longest substring that can be made of one char after at most k replacements. Example: `longest_repeating('AABABBA', 1)` -> `4`.",
+          "starterCode": "def longest_repeating(s, k):\n    # Your code here\n    pass\n",
+          "hint": "Use a sliding window and track the most frequent char in it.",
+          "solution": {
+            "code": "def longest_repeating(s, k):\n    counts = {}\n    left = 0\n    best = 0\n    max_count = 0\n    for right, ch in enumerate(s):\n        counts[ch] = counts.get(ch, 0) + 1\n        max_count = max(max_count, counts[ch])\n        while (right - left + 1) - max_count > k:\n            counts[s[left]] -= 1\n            left += 1\n        best = max(best, right - left + 1)\n    return best",
+            "steps": [
+              {
+                "title": "Expand window",
+                "explanation": "Track counts and the most frequent char in the window."
+              },
+              {
+                "title": "Shrink when invalid",
+                "explanation": "If replacements needed exceed k, move left.",
+                "code": "def longest_repeating(s, k):\n    counts = {}\n    left = 0\n    best = 0\n    max_count = 0\n    for right, ch in enumerate(s):\n        counts[ch] = counts.get(ch, 0) + 1\n        max_count = max(max_count, counts[ch])\n        while (right - left + 1) - max_count > k:\n            counts[s[left]] -= 1\n            left += 1\n        best = max(best, right - left + 1)\n    return best"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-50",
+          "language": "python",
+          "level": "advanced",
+          "title": "K Distinct",
+          "description": "Write `longest_k_distinct(s, k)` returning the length of the longest substring with at most k distinct chars. Example: `longest_k_distinct('eceba', 2)` -> `3`.",
+          "starterCode": "def longest_k_distinct(s, k):\n    # Your code here\n    pass\n",
+          "hint": "Use a sliding window and a frequency map to limit distinct count.",
+          "solution": {
+            "code": "def longest_k_distinct(s, k):\n    counts = {}\n    left = 0\n    best = 0\n    for right, ch in enumerate(s):\n        counts[ch] = counts.get(ch, 0) + 1\n        while len(counts) > k:\n            left_ch = s[left]\n            counts[left_ch] -= 1\n            if counts[left_ch] == 0:\n                del counts[left_ch]\n            left += 1\n        best = max(best, right - left + 1)\n    return best",
+            "steps": [
+              {
+                "title": "Track distinct count",
+                "explanation": "Keep a frequency map for the current window."
+              },
+              {
+                "title": "Shrink when needed",
+                "explanation": "Move left until distinct chars are <= k.",
+                "code": "def longest_k_distinct(s, k):\n    counts = {}\n    left = 0\n    best = 0\n    for right, ch in enumerate(s):\n        counts[ch] = counts.get(ch, 0) + 1\n        while len(counts) > k:\n            left_ch = s[left]\n            counts[left_ch] -= 1\n            if counts[left_ch] == 0:\n                del counts[left_ch]\n            left += 1\n        best = max(best, right - left + 1)\n    return best"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-51",
+          "language": "python",
+          "level": "advanced",
+          "title": "Three Sum",
+          "description": "Write `three_sum(nums)` returning all unique triplets that sum to 0. Example: `three_sum([-1,0,1,2,-1,-4])` -> `[[-1,-1,2],[-1,0,1]]`.",
+          "starterCode": "def three_sum(nums):\n    # Your code here\n    pass\n",
+          "hint": "Sort and use two pointers for each fixed index.",
+          "solution": {
+            "code": "def three_sum(nums):\n    nums.sort()\n    out = []\n    for i in range(len(nums)):\n        if i > 0 and nums[i] == nums[i - 1]:\n            continue\n        left, right = i + 1, len(nums) - 1\n        while left < right:\n            total = nums[i] + nums[left] + nums[right]\n            if total == 0:\n                out.append([nums[i], nums[left], nums[right]])\n                left += 1\n                right -= 1\n                while left < right and nums[left] == nums[left - 1]:\n                    left += 1\n                while left < right and nums[right] == nums[right + 1]:\n                    right -= 1\n            elif total < 0:\n                left += 1\n            else:\n                right -= 1\n    return out",
+            "steps": [
+              {
+                "title": "Sort and fix",
+                "explanation": "Fix one number and find pairs using two pointers."
+              },
+              {
+                "title": "Skip duplicates",
+                "explanation": "Avoid repeated triplets by skipping equal values.",
+                "code": "def three_sum(nums):\n    nums.sort()\n    out = []\n    for i in range(len(nums)):\n        if i > 0 and nums[i] == nums[i - 1]:\n            continue\n        left, right = i + 1, len(nums) - 1\n        while left < right:\n            total = nums[i] + nums[left] + nums[right]\n            if total == 0:\n                out.append([nums[i], nums[left], nums[right]])\n                left += 1\n                right -= 1\n                while left < right and nums[left] == nums[left - 1]:\n                    left += 1\n                while left < right and nums[right] == nums[right + 1]:\n                    right -= 1\n            elif total < 0:\n                left += 1\n            else:\n                right -= 1\n    return out"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-52",
+          "language": "python",
+          "level": "advanced",
+          "title": "Four Sum",
+          "description": "Write `four_sum(nums, target)` returning unique quadruplets that sum to target. Example: `four_sum([1,0,-1,0,-2,2], 0)` -> `[[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]`.",
+          "starterCode": "def four_sum(nums, target):\n    # Your code here\n    pass\n",
+          "hint": "Sort, fix two indices, then use two pointers for the remaining two.",
+          "solution": {
+            "code": "def four_sum(nums, target):\n    nums.sort()\n    out = []\n    n = len(nums)\n    for i in range(n):\n        if i > 0 and nums[i] == nums[i - 1]:\n            continue\n        for j in range(i + 1, n):\n            if j > i + 1 and nums[j] == nums[j - 1]:\n                continue\n            left, right = j + 1, n - 1\n            while left < right:\n                total = nums[i] + nums[j] + nums[left] + nums[right]\n                if total == target:\n                    out.append([nums[i], nums[j], nums[left], nums[right]])\n                    left += 1\n                    right -= 1\n                    while left < right and nums[left] == nums[left - 1]:\n                        left += 1\n                    while left < right and nums[right] == nums[right + 1]:\n                        right -= 1\n                elif total < target:\n                    left += 1\n                else:\n                    right -= 1\n    return out",
+            "steps": [
+              {
+                "title": "Sort and fix",
+                "explanation": "Fix two indices, then use two pointers for the rest."
+              },
+              {
+                "title": "Skip duplicates",
+                "explanation": "Avoid duplicate quadruplets by skipping equal values.",
+                "code": "def four_sum(nums, target):\n    nums.sort()\n    out = []\n    n = len(nums)\n    for i in range(n):\n        if i > 0 and nums[i] == nums[i - 1]:\n            continue\n        for j in range(i + 1, n):\n            if j > i + 1 and nums[j] == nums[j - 1]:\n                continue\n            left, right = j + 1, n - 1\n            while left < right:\n                total = nums[i] + nums[j] + nums[left] + nums[right]\n                if total == target:\n                    out.append([nums[i], nums[j], nums[left], nums[right]])\n                    left += 1\n                    right -= 1\n                    while left < right and nums[left] == nums[left - 1]:\n                        left += 1\n                    while left < right and nums[right] == nums[right + 1]:\n                        right -= 1\n                elif total < target:\n                    left += 1\n                else:\n                    right -= 1\n    return out"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-53",
+          "language": "python",
+          "level": "advanced",
+          "title": "Two Sum Sorted",
+          "description": "Write `two_sum_sorted(nums, target)` for a sorted list, returning indices `[i, j]` (0-based) where nums[i]+nums[j]==target. Example: `two_sum_sorted([2,7,11,15], 9)` -> `[0,1]`.",
+          "starterCode": "def two_sum_sorted(nums, target):\n    # Your code here\n    pass\n",
+          "hint": "Use two pointers from both ends.",
+          "solution": {
+            "code": "def two_sum_sorted(nums, target):\n    left, right = 0, len(nums) - 1\n    while left < right:\n        total = nums[left] + nums[right]\n        if total == target:\n            return [left, right]\n        if total < target:\n            left += 1\n        else:\n            right -= 1\n    return [-1, -1]",
+            "steps": [
+              {
+                "title": "Move pointers",
+                "explanation": "Increase left if sum is small, decrease right if large."
+              },
+              {
+                "title": "Return indices",
+                "explanation": "Return the matching pair or [-1,-1].",
+                "code": "def two_sum_sorted(nums, target):\n    left, right = 0, len(nums) - 1\n    while left < right:\n        total = nums[left] + nums[right]\n        if total == target:\n            return [left, right]\n        if total < target:\n            left += 1\n        else:\n            right -= 1\n    return [-1, -1]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-54",
+          "language": "python",
+          "level": "advanced",
+          "title": "Kth Missing",
+          "description": "Write `kth_missing(arr, k)` for a sorted list of positive integers, returning the k-th missing positive. Example: `kth_missing([2,3,4,7,11], 5)` -> `9`.",
+          "starterCode": "def kth_missing(arr, k):\n    # Your code here\n    pass\n",
+          "hint": "Binary search the first index where missing count >= k.",
+          "solution": {
+            "code": "def kth_missing(arr, k):\n    def missing(i):\n        return arr[i] - (i + 1)\n    lo, hi = 0, len(arr) - 1\n    while lo <= hi:\n        mid = (lo + hi) // 2\n        if missing(mid) < k:\n            lo = mid + 1\n        else:\n            hi = mid - 1\n    return lo + k",
+            "steps": [
+              {
+                "title": "Count missing",
+                "explanation": "missing(i) is how many numbers are missing up to index i."
+              },
+              {
+                "title": "Binary search",
+                "explanation": "Find the first index where missing >= k and compute answer.",
+                "code": "def kth_missing(arr, k):\n    def missing(i):\n        return arr[i] - (i + 1)\n    lo, hi = 0, len(arr) - 1\n    while lo <= hi:\n        mid = (lo + hi) // 2\n        if missing(mid) < k:\n            lo = mid + 1\n        else:\n            hi = mid - 1\n    return lo + k"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-55",
+          "language": "python",
+          "level": "advanced",
+          "title": "Find Peak",
+          "description": "Write `find_peak(nums)` returning an index of a peak element (greater than neighbors). Example: `find_peak([1,2,3,1])` -> `2`.",
+          "starterCode": "def find_peak(nums):\n    # Your code here\n    pass\n",
+          "hint": "Use binary search comparing mid with mid+1.",
+          "solution": {
+            "code": "def find_peak(nums):\n    lo, hi = 0, len(nums) - 1\n    while lo < hi:\n        mid = (lo + hi) // 2\n        if nums[mid] < nums[mid + 1]:\n            lo = mid + 1\n        else:\n            hi = mid\n    return lo",
+            "steps": [
+              {
+                "title": "Binary search",
+                "explanation": "Move towards the rising side to find a peak."
+              },
+              {
+                "title": "Return index",
+                "explanation": "lo ends at a valid peak index.",
+                "code": "def find_peak(nums):\n    lo, hi = 0, len(nums) - 1\n    while lo < hi:\n        mid = (lo + hi) // 2\n        if nums[mid] < nums[mid + 1]:\n            lo = mid + 1\n        else:\n            hi = mid\n    return lo"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-56",
+          "language": "python",
+          "level": "advanced",
+          "title": "Jump Game",
+          "description": "Write `can_jump(nums)` returning True if you can reach the last index. Example: `can_jump([2,3,1,1,4])` -> `True`, `can_jump([3,2,1,0,4])` -> `False`.",
+          "starterCode": "def can_jump(nums):\n    # Your code here\n    pass\n",
+          "hint": "Track the farthest reachable index while scanning.",
+          "solution": {
+            "code": "def can_jump(nums):\n    farthest = 0\n    for i, n in enumerate(nums):\n        if i > farthest:\n            return False\n        farthest = max(farthest, i + n)\n    return True",
+            "steps": [
+              {
+                "title": "Track reach",
+                "explanation": "Update the farthest reachable index at each step."
+              },
+              {
+                "title": "Detect failure",
+                "explanation": "If you land beyond farthest, the end is unreachable.",
+                "code": "def can_jump(nums):\n    farthest = 0\n    for i, n in enumerate(nums):\n        if i > farthest:\n            return False\n        farthest = max(farthest, i + n)\n    return True"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-57",
+          "language": "python",
+          "level": "advanced",
+          "title": "Jump Game II",
+          "description": "Write `min_jumps(nums)` returning the minimum jumps to reach the last index. Example: `min_jumps([2,3,1,1,4])` -> `2`.",
+          "starterCode": "def min_jumps(nums):\n    # Your code here\n    pass\n",
+          "hint": "Greedy: track current range and next range.",
+          "solution": {
+            "code": "def min_jumps(nums):\n    jumps = 0\n    cur_end = 0\n    cur_farthest = 0\n    for i in range(len(nums) - 1):\n        cur_farthest = max(cur_farthest, i + nums[i])\n        if i == cur_end:\n            jumps += 1\n            cur_end = cur_farthest\n    return jumps",
+            "steps": [
+              {
+                "title": "Expand window",
+                "explanation": "Track the farthest reach in the current jump range."
+              },
+              {
+                "title": "Count jumps",
+                "explanation": "When reaching the end of the range, increment jumps.",
+                "code": "def min_jumps(nums):\n    jumps = 0\n    cur_end = 0\n    cur_farthest = 0\n    for i in range(len(nums) - 1):\n        cur_farthest = max(cur_farthest, i + nums[i])\n        if i == cur_end:\n            jumps += 1\n            cur_end = cur_farthest\n    return jumps"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-58",
+          "language": "python",
+          "level": "advanced",
+          "title": "Gas Circuit",
+          "description": "Write `can_complete(gas, cost)` returning the starting index to complete the circuit or -1. Example: `can_complete([1,2,3,4,5], [3,4,5,1,2])` -> `3`.",
+          "starterCode": "def can_complete(gas, cost):\n    # Your code here\n    pass\n",
+          "hint": "If total gas < total cost, impossible; otherwise greedy reset.",
+          "solution": {
+            "code": "def can_complete(gas, cost):\n    if sum(gas) < sum(cost):\n        return -1\n    start = 0\n    tank = 0\n    for i in range(len(gas)):\n        tank += gas[i] - cost[i]\n        if tank < 0:\n            start = i + 1\n            tank = 0\n    return start",
+            "steps": [
+              {
+                "title": "Check feasibility",
+                "explanation": "If total gas is less than total cost, return -1."
+              },
+              {
+                "title": "Greedy scan",
+                "explanation": "Reset the start when the tank goes negative.",
+                "code": "def can_complete(gas, cost):\n    if sum(gas) < sum(cost):\n        return -1\n    start = 0\n    tank = 0\n    for i in range(len(gas)):\n        tank += gas[i] - cost[i]\n        if tank < 0:\n            start = i + 1\n            tank = 0\n    return start"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-59",
+          "language": "python",
+          "level": "advanced",
+          "title": "Trap Water",
+          "description": "Write `trap_rain(heights)` returning total trapped rainwater. Example: `trap_rain([0,1,0,2,1,0,1,3,2,1,2,1])` -> `6`.",
+          "starterCode": "def trap_rain(heights):\n    # Your code here\n    pass\n",
+          "hint": "Two pointers with left/right max heights.",
+          "solution": {
+            "code": "def trap_rain(heights):\n    left, right = 0, len(heights) - 1\n    left_max = right_max = 0\n    total = 0\n    while left < right:\n        if heights[left] < heights[right]:\n            left_max = max(left_max, heights[left])\n            total += left_max - heights[left]\n            left += 1\n        else:\n            right_max = max(right_max, heights[right])\n            total += right_max - heights[right]\n            right -= 1\n    return total",
+            "steps": [
+              {
+                "title": "Use two pointers",
+                "explanation": "Move the smaller side and accumulate trapped water."
+              },
+              {
+                "title": "Track max walls",
+                "explanation": "Left and right maxima determine trapped water at each step.",
+                "code": "def trap_rain(heights):\n    left, right = 0, len(heights) - 1\n    left_max = right_max = 0\n    total = 0\n    while left < right:\n        if heights[left] < heights[right]:\n            left_max = max(left_max, heights[left])\n            total += left_max - heights[left]\n            left += 1\n        else:\n            right_max = max(right_max, heights[right])\n            total += right_max - heights[right]\n            right -= 1\n    return total"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-60",
+          "language": "python",
+          "level": "advanced",
+          "title": "Largest Histogram",
+          "description": "Write `largest_rectangle(heights)` returning the largest rectangle area in a histogram. Example: `largest_rectangle([2,1,5,6,2,3])` -> `10`.",
+          "starterCode": "def largest_rectangle(heights):\n    # Your code here\n    pass\n",
+          "hint": "Use a monotonic stack of indices.",
+          "solution": {
+            "code": "def largest_rectangle(heights):\n    stack = []\n    best = 0\n    for i, h in enumerate(heights + [0]):\n        while stack and heights[stack[-1]] > h:\n            height = heights[stack.pop()]\n            left = stack[-1] + 1 if stack else 0\n            width = i - left\n            best = max(best, height * width)\n        stack.append(i)\n    return best",
+            "steps": [
+              {
+                "title": "Maintain stack",
+                "explanation": "Keep indices of increasing bars."
+              },
+              {
+                "title": "Compute areas",
+                "explanation": "Pop when the sequence drops and compute rectangle areas.",
+                "code": "def largest_rectangle(heights):\n    stack = []\n    best = 0\n    for i, h in enumerate(heights + [0]):\n        while stack and heights[stack[-1]] > h:\n            height = heights[stack.pop()]\n            left = stack[-1] + 1 if stack else 0\n            width = i - left\n            best = max(best, height * width)\n        stack.append(i)\n    return best"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-61",
+          "language": "python",
+          "level": "advanced",
+          "title": "Max Rectangle",
+          "description": "Write `maximal_rectangle(matrix)` returning the largest rectangle of 1s in a binary matrix. Example: `maximal_rectangle([[\"1\",\"0\"],[\"1\",\"1\"]])` -> `2`.",
+          "starterCode": "def maximal_rectangle(matrix):\n    # Your code here\n    pass\n",
+          "hint": "Treat each row as a histogram and reuse largest-rectangle logic.",
+          "solution": {
+            "code": "def maximal_rectangle(matrix):\n    if not matrix:\n        return 0\n    cols = len(matrix[0])\n    heights = [0] * cols\n    best = 0\n    for row in matrix:\n        for c in range(cols):\n            heights[c] = heights[c] + 1 if row[c] == '1' else 0\n        stack = []\n        for i, h in enumerate(heights + [0]):\n            while stack and heights[stack[-1]] > h:\n                height = heights[stack.pop()]\n                left = stack[-1] + 1 if stack else 0\n                width = i - left\n                best = max(best, height * width)\n            stack.append(i)\n    return best",
+            "steps": [
+              {
+                "title": "Build heights",
+                "explanation": "Accumulate consecutive 1s per column."
+              },
+              {
+                "title": "Compute per row",
+                "explanation": "Run largest-rectangle on each histogram row.",
+                "code": "def maximal_rectangle(matrix):\n    if not matrix:\n        return 0\n    cols = len(matrix[0])\n    heights = [0] * cols\n    best = 0\n    for row in matrix:\n        for c in range(cols):\n            heights[c] = heights[c] + 1 if row[c] == '1' else 0\n        stack = []\n        for i, h in enumerate(heights + [0]):\n            while stack and heights[stack[-1]] > h:\n                height = heights[stack.pop()]\n                left = stack[-1] + 1 if stack else 0\n                width = i - left\n                best = max(best, height * width)\n            stack.append(i)\n    return best"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-62",
+          "language": "python",
+          "level": "advanced",
+          "title": "Level Order",
+          "description": "Write `level_order(root)` returning a list of levels for a binary tree. Example: for 1 with children 2 and 3, output `[[1],[2,3]]`.",
+          "starterCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\n\ndef level_order(root):\n    # Your code here\n    pass\n",
+          "hint": "Use a queue for BFS, collecting values per level.",
+          "solution": {
+            "code": "from collections import deque\n\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef level_order(root):\n    if not root:\n        return []\n    out = []\n    queue = deque([root])\n    while queue:\n        level = []\n        for _ in range(len(queue)):\n            node = queue.popleft()\n            level.append(node.val)\n            if node.left:\n                queue.append(node.left)\n            if node.right:\n                queue.append(node.right)\n        out.append(level)\n    return out",
+            "steps": [
+              {
+                "title": "BFS by level",
+                "explanation": "Process nodes layer by layer using a queue."
+              },
+              {
+                "title": "Collect values",
+                "explanation": "Store each level's values before moving on.",
+                "code": "from collections import deque\n\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef level_order(root):\n    if not root:\n        return []\n    out = []\n    queue = deque([root])\n    while queue:\n        level = []\n        for _ in range(len(queue)):\n            node = queue.popleft()\n            level.append(node.val)\n            if node.left:\n                queue.append(node.left)\n            if node.right:\n                queue.append(node.right)\n        out.append(level)\n    return out"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-63",
+          "language": "python",
+          "level": "advanced",
+          "title": "Tree Diameter",
+          "description": "Write `tree_diameter(root)` returning the number of edges in the longest path in a binary tree. Example: for a chain of 3 nodes, output `2`.",
+          "starterCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\n\ndef tree_diameter(root):\n    # Your code here\n    pass\n",
+          "hint": "Use DFS to compute heights and update a global diameter.",
+          "solution": {
+            "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef tree_diameter(root):\n    best = 0\n    def height(node):\n        nonlocal best\n        if not node:\n            return 0\n        left = height(node.left)\n        right = height(node.right)\n        best = max(best, left + right)\n        return 1 + max(left, right)\n    height(root)\n    return best",
+            "steps": [
+              {
+                "title": "Compute heights",
+                "explanation": "At each node, compute left and right heights."
+              },
+              {
+                "title": "Update diameter",
+                "explanation": "The best path can pass through any node.",
+                "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef tree_diameter(root):\n    best = 0\n    def height(node):\n        nonlocal best\n        if not node:\n            return 0\n        left = height(node.left)\n        right = height(node.right)\n        best = max(best, left + right)\n        return 1 + max(left, right)\n    height(root)\n    return best"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-64",
+          "language": "python",
+          "level": "advanced",
+          "title": "LCA BST",
+          "description": "Write `lca_bst(root, p, q)` returning the value of the lowest common ancestor in a BST. Example: in BST [6,2,8,0,4,7,9], `lca_bst(root, 2, 8)` -> `6`.",
+          "starterCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\n\ndef lca_bst(root, p, q):\n    # Your code here\n    pass\n",
+          "hint": "In a BST, move left/right based on p and q values.",
+          "solution": {
+            "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef lca_bst(root, p, q):\n    low, high = min(p, q), max(p, q)\n    node = root\n    while node:\n        if high < node.val:\n            node = node.left\n        elif low > node.val:\n            node = node.right\n        else:\n            return node.val\n    return None",
+            "steps": [
+              {
+                "title": "Use BST ordering",
+                "explanation": "The LCA is where the paths to p and q split."
+              },
+              {
+                "title": "Walk down",
+                "explanation": "Move left or right until node is between p and q.",
+                "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef lca_bst(root, p, q):\n    low, high = min(p, q), max(p, q)\n    node = root\n    while node:\n        if high < node.val:\n            node = node.left\n        elif low > node.val:\n            node = node.right\n        else:\n            return node.val\n    return None"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-65",
+          "language": "python",
+          "level": "advanced",
+          "title": "Validate BST",
+          "description": "Write `is_valid_bst(root)` returning True if a binary tree is a valid BST. Example: for root 2 with children 1 and 3, output `True`.",
+          "starterCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\n\ndef is_valid_bst(root):\n    # Your code here\n    pass\n",
+          "hint": "Use DFS with min/max bounds.",
+          "solution": {
+            "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef is_valid_bst(root):\n    def dfs(node, low, high):\n        if not node:\n            return True\n        if not (low < node.val < high):\n            return False\n        return dfs(node.left, low, node.val) and dfs(node.right, node.val, high)\n    return dfs(root, float('-inf'), float('inf'))",
+            "steps": [
+              {
+                "title": "Track bounds",
+                "explanation": "Each node must be within (low, high)."
+              },
+              {
+                "title": "Recurse",
+                "explanation": "Tighten bounds as you go left or right.",
+                "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef is_valid_bst(root):\n    def dfs(node, low, high):\n        if not node:\n            return True\n        if not (low < node.val < high):\n            return False\n        return dfs(node.left, low, node.val) and dfs(node.right, node.val, high)\n    return dfs(root, float('-inf'), float('inf'))"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-66",
+          "language": "python",
+          "level": "advanced",
+          "title": "Course Finish",
+          "description": "Write `can_finish(num_courses, prerequisites)` returning True if all courses can be finished. `prerequisites` is a list of `[a, b]` meaning b -> a. Example: `can_finish(2, [[1,0]])` -> `True`.",
+          "starterCode": "def can_finish(num_courses, prerequisites):\n    # Your code here\n    pass\n",
+          "hint": "Use Kahn's algorithm to detect cycles.",
+          "solution": {
+            "code": "from collections import deque\n\ndef can_finish(num_courses, prerequisites):\n    graph = [[] for _ in range(num_courses)]\n    indeg = [0] * num_courses\n    for a, b in prerequisites:\n        graph[b].append(a)\n        indeg[a] += 1\n    queue = deque([i for i in range(num_courses) if indeg[i] == 0])\n    taken = 0\n    while queue:\n        node = queue.popleft()\n        taken += 1\n        for nei in graph[node]:\n            indeg[nei] -= 1\n            if indeg[nei] == 0:\n                queue.append(nei)\n    return taken == num_courses",
+            "steps": [
+              {
+                "title": "Build indegrees",
+                "explanation": "Count prerequisites for each course."
+              },
+              {
+                "title": "Topological scan",
+                "explanation": "If all nodes are processed, no cycle exists.",
+                "code": "from collections import deque\n\ndef can_finish(num_courses, prerequisites):\n    graph = [[] for _ in range(num_courses)]\n    indeg = [0] * num_courses\n    for a, b in prerequisites:\n        graph[b].append(a)\n        indeg[a] += 1\n    queue = deque([i for i in range(num_courses) if indeg[i] == 0])\n    taken = 0\n    while queue:\n        node = queue.popleft()\n        taken += 1\n        for nei in graph[node]:\n            indeg[nei] -= 1\n            if indeg[nei] == 0:\n                queue.append(nei)\n    return taken == num_courses"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-67",
+          "language": "python",
+          "level": "advanced",
+          "title": "Course Order",
+          "description": "Write `find_order(num_courses, prerequisites)` returning a valid course order or [] if impossible. Example: `find_order(2, [[1,0]])` -> `[0,1]`.",
+          "starterCode": "def find_order(num_courses, prerequisites):\n    # Your code here\n    pass\n",
+          "hint": "Use topological sort with a queue of zero-indegree nodes.",
+          "solution": {
+            "code": "from collections import deque\n\ndef find_order(num_courses, prerequisites):\n    graph = [[] for _ in range(num_courses)]\n    indeg = [0] * num_courses\n    for a, b in prerequisites:\n        graph[b].append(a)\n        indeg[a] += 1\n    queue = deque([i for i in range(num_courses) if indeg[i] == 0])\n    order = []\n    while queue:\n        node = queue.popleft()\n        order.append(node)\n        for nei in graph[node]:\n            indeg[nei] -= 1\n            if indeg[nei] == 0:\n                queue.append(nei)\n    return order if len(order) == num_courses else []",
+            "steps": [
+              {
+                "title": "Build indegrees",
+                "explanation": "Construct the graph and in-degree array."
+              },
+              {
+                "title": "Extract order",
+                "explanation": "Collect nodes in topological order if possible.",
+                "code": "from collections import deque\n\ndef find_order(num_courses, prerequisites):\n    graph = [[] for _ in range(num_courses)]\n    indeg = [0] * num_courses\n    for a, b in prerequisites:\n        graph[b].append(a)\n        indeg[a] += 1\n    queue = deque([i for i in range(num_courses) if indeg[i] == 0])\n    order = []\n    while queue:\n        node = queue.popleft()\n        order.append(node)\n        for nei in graph[node]:\n            indeg[nei] -= 1\n            if indeg[nei] == 0:\n                queue.append(nei)\n    return order if len(order) == num_courses else []"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-68",
+          "language": "python",
+          "level": "advanced",
+          "title": "Word Ladder",
+          "description": "Write `ladder_length(begin, end, word_list)` returning the shortest transformation length, changing one letter at a time. Example: `ladder_length('hit','cog',['hot','dot','dog','lot','log','cog'])` -> `5`.",
+          "starterCode": "def ladder_length(begin, end, word_list):\n    # Your code here\n    pass\n",
+          "hint": "Use BFS with wildcard patterns to build neighbors.",
+          "solution": {
+            "code": "from collections import deque, defaultdict\n\ndef ladder_length(begin, end, word_list):\n    if end not in word_list:\n        return 0\n    word_list = set(word_list)\n    word_list.add(begin)\n    patterns = defaultdict(list)\n    for word in word_list:\n        for i in range(len(word)):\n            patterns[word[:i] + '*' + word[i+1:]].append(word)\n    queue = deque([(begin, 1)])\n    visited = {begin}\n    while queue:\n        word, dist = queue.popleft()\n        if word == end:\n            return dist\n        for i in range(len(word)):\n            key = word[:i] + '*' + word[i+1:]\n            for nei in patterns[key]:\n                if nei not in visited:\n                    visited.add(nei)\n                    queue.append((nei, dist + 1))\n    return 0",
+            "steps": [
+              {
+                "title": "Build patterns",
+                "explanation": "Group words by wildcard patterns for quick neighbor lookup."
+              },
+              {
+                "title": "BFS",
+                "explanation": "Explore transformations level by level to find the shortest path.",
+                "code": "from collections import deque, defaultdict\n\ndef ladder_length(begin, end, word_list):\n    if end not in word_list:\n        return 0\n    word_list = set(word_list)\n    word_list.add(begin)\n    patterns = defaultdict(list)\n    for word in word_list:\n        for i in range(len(word)):\n            patterns[word[:i] + '*' + word[i+1:]].append(word)\n    queue = deque([(begin, 1)])\n    visited = {begin}\n    while queue:\n        word, dist = queue.popleft()\n        if word == end:\n            return dist\n        for i in range(len(word)):\n            key = word[:i] + '*' + word[i+1:]\n            for nei in patterns[key]:\n                if nei not in visited:\n                    visited.add(nei)\n                    queue.append((nei, dist + 1))\n    return 0"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-69",
+          "language": "python",
+          "level": "advanced",
+          "title": "Decode String",
+          "description": "Write `decode_string(s)` decoding patterns like `3[a2[c]]` -> `accaccacc`. Example: `decode_string('2[ab]3[c]')` -> `'ababccc'`.",
+          "starterCode": "def decode_string(s):\n    # Your code here\n    pass\n",
+          "hint": "Use a stack to store counts and partial strings.",
+          "solution": {
+            "code": "def decode_string(s):\n    stack = []\n    current = ''\n    num = 0\n    for ch in s:\n        if ch.isdigit():\n            num = num * 10 + int(ch)\n        elif ch == '[':\n            stack.append((current, num))\n            current = ''\n            num = 0\n        elif ch == ']':\n            prev, count = stack.pop()\n            current = prev + current * count\n        else:\n            current += ch\n    return current",
+            "steps": [
+              {
+                "title": "Stack frames",
+                "explanation": "Push the current string and count when entering brackets."
+              },
+              {
+                "title": "Expand on close",
+                "explanation": "Pop and repeat the substring when encountering ']'.",
+                "code": "def decode_string(s):\n    stack = []\n    current = ''\n    num = 0\n    for ch in s:\n        if ch.isdigit():\n            num = num * 10 + int(ch)\n        elif ch == '[':\n            stack.append((current, num))\n            current = ''\n            num = 0\n        elif ch == ']':\n            prev, count = stack.pop()\n            current = prev + current * count\n        else:\n            current += ch\n    return current"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-70",
+          "language": "python",
+          "level": "advanced",
+          "title": "Basic Calc",
+          "description": "Write `eval_basic(expr)` evaluating an expression with +, -, *, / (no parentheses). Division truncates toward zero. Example: `eval_basic('3+2*2')` -> `7`.",
+          "starterCode": "def eval_basic(expr):\n    # Your code here\n    pass\n",
+          "hint": "Use a stack and apply * and / immediately.",
+          "solution": {
+            "code": "def eval_basic(expr):\n    stack = []\n    num = 0\n    sign = '+'\n    for ch in expr + '+':\n        if ch.isdigit():\n            num = num * 10 + int(ch)\n        if ch in '+-*/':\n            if sign == '+':\n                stack.append(num)\n            elif sign == '-':\n                stack.append(-num)\n            elif sign == '*':\n                stack.append(stack.pop() * num)\n            elif sign == '/':\n                stack.append(int(stack.pop() / num))\n            sign = ch\n            num = 0\n    return sum(stack)",
+            "steps": [
+              {
+                "title": "Parse numbers",
+                "explanation": "Accumulate digits into numbers."
+              },
+              {
+                "title": "Apply operators",
+                "explanation": "Use a stack, handling * and / immediately.",
+                "code": "def eval_basic(expr):\n    stack = []\n    num = 0\n    sign = '+'\n    for ch in expr + '+':\n        if ch.isdigit():\n            num = num * 10 + int(ch)\n        if ch in '+-*/':\n            if sign == '+':\n                stack.append(num)\n            elif sign == '-':\n                stack.append(-num)\n            elif sign == '*':\n                stack.append(stack.pop() * num)\n            elif sign == '/':\n                stack.append(int(stack.pop() / num))\n            sign = ch\n            num = 0\n    return sum(stack)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-71",
+          "language": "python",
+          "level": "advanced",
+          "title": "Multiply Strings",
+          "description": "Write `multiply_strings(a, b)` returning the product of two non-negative integers as a string. Example: `multiply_strings('123','45')` -> `'5535'`.",
+          "starterCode": "def multiply_strings(a, b):\n    # Your code here\n    pass\n",
+          "hint": "Simulate grade-school multiplication with an array of digits.",
+          "solution": {
+            "code": "def multiply_strings(a, b):\n    if a == '0' or b == '0':\n        return '0'\n    res = [0] * (len(a) + len(b))\n    for i in range(len(a) - 1, -1, -1):\n        for j in range(len(b) - 1, -1, -1):\n            mul = int(a[i]) * int(b[j])\n            p1, p2 = i + j, i + j + 1\n            total = mul + res[p2]\n            res[p2] = total % 10\n            res[p1] += total // 10\n    result = ''.join(str(d) for d in res).lstrip('0')\n    return result or '0'",
+            "steps": [
+              {
+                "title": "Multiply digits",
+                "explanation": "Accumulate digit products into a result array."
+              },
+              {
+                "title": "Build string",
+                "explanation": "Convert digits to a string and strip leading zeros.",
+                "code": "def multiply_strings(a, b):\n    if a == '0' or b == '0':\n        return '0'\n    res = [0] * (len(a) + len(b))\n    for i in range(len(a) - 1, -1, -1):\n        for j in range(len(b) - 1, -1, -1):\n            mul = int(a[i]) * int(b[j])\n            p1, p2 = i + j, i + j + 1\n            total = mul + res[p2]\n            res[p2] = total % 10\n            res[p1] += total // 10\n    result = ''.join(str(d) for d in res).lstrip('0')\n    return result or '0'"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-72",
+          "language": "python",
+          "level": "advanced",
+          "title": "Largest Number",
+          "description": "Write `largest_number(nums)` arranging numbers to form the largest possible concatenated number. Example: `largest_number([3,30,34,5,9])` -> `'9534330'`.",
+          "starterCode": "def largest_number(nums):\n    # Your code here\n    pass\n",
+          "hint": "Sort by custom comparator using x+y vs y+x.",
+          "solution": {
+            "code": "import functools\n\ndef largest_number(nums):\n    strs = list(map(str, nums))\n    def cmp(a, b):\n        if a + b > b + a:\n            return -1\n        if a + b < b + a:\n            return 1\n        return 0\n    strs.sort(key=functools.cmp_to_key(cmp))\n    result = ''.join(strs).lstrip('0')\n    return result or '0'",
+            "steps": [
+              {
+                "title": "Custom sort",
+                "explanation": "Order by which concatenation yields a larger number."
+              },
+              {
+                "title": "Join result",
+                "explanation": "Concatenate and handle all-zero case.",
+                "code": "import functools\n\ndef largest_number(nums):\n    strs = list(map(str, nums))\n    def cmp(a, b):\n        if a + b > b + a:\n            return -1\n        if a + b < b + a:\n            return 1\n        return 0\n    strs.sort(key=functools.cmp_to_key(cmp))\n    result = ''.join(strs).lstrip('0')\n    return result or '0'"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-73",
+          "language": "python",
+          "level": "advanced",
+          "title": "K Closest",
+          "description": "Write `k_closest(points, k)` returning the k closest points to the origin, ordered by distance asc. Example: `k_closest([[1,3],[-2,2],[2,-2]], 2)` -> `[[-2,2],[2,-2]]`.",
+          "starterCode": "def k_closest(points, k):\n    # Your code here\n    pass\n",
+          "hint": "Use a heap of (distance, point).",
+          "solution": {
+            "code": "import heapq\n\ndef k_closest(points, k):\n    heap = []\n    for x, y in points:\n        heapq.heappush(heap, (x * x + y * y, [x, y]))\n    out = [heapq.heappop(heap)[1] for _ in range(min(k, len(heap)))]\n    return out",
+            "steps": [
+              {
+                "title": "Compute distances",
+                "explanation": "Use squared distance to avoid sqrt."
+              },
+              {
+                "title": "Pop k",
+                "explanation": "Extract k smallest distance points from the heap.",
+                "code": "import heapq\n\ndef k_closest(points, k):\n    heap = []\n    for x, y in points:\n        heapq.heappush(heap, (x * x + y * y, [x, y]))\n    out = [heapq.heappop(heap)[1] for _ in range(min(k, len(heap)))]\n    return out"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-74",
+          "language": "python",
+          "level": "advanced",
+          "title": "Median Stream",
+          "description": "Write `median_stream(nums)` returning the running median after each insertion. Example: `median_stream([5,15,1,3])` -> `[5,10.0,5,4.0]`.",
+          "starterCode": "def median_stream(nums):\n    # Your code here\n    pass\n",
+          "hint": "Use two heaps: max-heap for lower, min-heap for upper.",
+          "solution": {
+            "code": "import heapq\n\ndef median_stream(nums):\n    lowers = []\n    uppers = []\n    out = []\n    for n in nums:\n        if not lowers or n <= -lowers[0]:\n            heapq.heappush(lowers, -n)\n        else:\n            heapq.heappush(uppers, n)\n        if len(lowers) > len(uppers) + 1:\n            heapq.heappush(uppers, -heapq.heappop(lowers))\n        if len(uppers) > len(lowers):\n            heapq.heappush(lowers, -heapq.heappop(uppers))\n        if len(lowers) == len(uppers):\n            out.append(((-lowers[0]) + uppers[0]) / 2)\n        else:\n            out.append(float(-lowers[0]))\n    return out",
+            "steps": [
+              {
+                "title": "Balance heaps",
+                "explanation": "Keep lower and upper halves within one element."
+              },
+              {
+                "title": "Compute median",
+                "explanation": "Use heap tops to get current median.",
+                "code": "import heapq\n\ndef median_stream(nums):\n    lowers = []\n    uppers = []\n    out = []\n    for n in nums:\n        if not lowers or n <= -lowers[0]:\n            heapq.heappush(lowers, -n)\n        else:\n            heapq.heappush(uppers, n)\n        if len(lowers) > len(uppers) + 1:\n            heapq.heappush(uppers, -heapq.heappop(lowers))\n        if len(uppers) > len(lowers):\n            heapq.heappush(lowers, -heapq.heappop(uppers))\n        if len(lowers) == len(uppers):\n            out.append(((-lowers[0]) + uppers[0]) / 2)\n        else:\n            out.append(float(-lowers[0]))\n    return out"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-75",
+          "language": "python",
+          "level": "advanced",
+          "title": "Rotated Search II",
+          "description": "Write `search_rotated_dupes(nums, target)` for a rotated sorted list with duplicates. Example: `search_rotated_dupes([2,5,6,0,0,1,2], 0)` -> `True`.",
+          "starterCode": "def search_rotated_dupes(nums, target):\n    # Your code here\n    pass\n",
+          "hint": "When nums[lo] == nums[mid] == nums[hi], shrink bounds.",
+          "solution": {
+            "code": "def search_rotated_dupes(nums, target):\n    lo, hi = 0, len(nums) - 1\n    while lo <= hi:\n        mid = (lo + hi) // 2\n        if nums[mid] == target:\n            return True\n        if nums[lo] == nums[mid] == nums[hi]:\n            lo += 1\n            hi -= 1\n        elif nums[lo] <= nums[mid]:\n            if nums[lo] <= target < nums[mid]:\n                hi = mid - 1\n            else:\n                lo = mid + 1\n        else:\n            if nums[mid] < target <= nums[hi]:\n                lo = mid + 1\n            else:\n                hi = mid - 1\n    return False",
+            "steps": [
+              {
+                "title": "Handle duplicates",
+                "explanation": "Shrink when both ends equal mid to avoid ambiguity."
+              },
+              {
+                "title": "Binary search",
+                "explanation": "Use sorted half checks to move bounds.",
+                "code": "def search_rotated_dupes(nums, target):\n    lo, hi = 0, len(nums) - 1\n    while lo <= hi:\n        mid = (lo + hi) // 2\n        if nums[mid] == target:\n            return True\n        if nums[lo] == nums[mid] == nums[hi]:\n            lo += 1\n            hi -= 1\n        elif nums[lo] <= nums[mid]:\n            if nums[lo] <= target < nums[mid]:\n                hi = mid - 1\n            else:\n                lo = mid + 1\n        else:\n            if nums[mid] < target <= nums[hi]:\n                lo = mid + 1\n            else:\n                hi = mid - 1\n    return False"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-76",
+          "language": "python",
+          "level": "advanced",
+          "title": "Duplicate Finder",
+          "description": "Write `find_duplicate(nums)` where nums has n+1 integers in [1,n] and exactly one duplicate. Example: `find_duplicate([1,3,4,2,2])` -> `2`.",
+          "starterCode": "def find_duplicate(nums):\n    # Your code here\n    pass\n",
+          "hint": "Use Floyd's cycle detection on index pointers.",
+          "solution": {
+            "code": "def find_duplicate(nums):\n    slow = nums[0]\n    fast = nums[0]\n    while True:\n        slow = nums[slow]\n        fast = nums[nums[fast]]\n        if slow == fast:\n            break\n    slow = nums[0]\n    while slow != fast:\n        slow = nums[slow]\n        fast = nums[fast]\n    return slow",
+            "steps": [
+              {
+                "title": "Find meeting",
+                "explanation": "Treat values as next pointers to find a cycle."
+              },
+              {
+                "title": "Find entry",
+                "explanation": "Reset one pointer to start; the meet point is duplicate.",
+                "code": "def find_duplicate(nums):\n    slow = nums[0]\n    fast = nums[0]\n    while True:\n        slow = nums[slow]\n        fast = nums[nums[fast]]\n        if slow == fast:\n            break\n    slow = nums[0]\n    while slow != fast:\n        slow = nums[slow]\n        fast = nums[fast]\n    return slow"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-77",
+          "language": "python",
+          "level": "advanced",
+          "title": "Rain Trapper",
+          "description": "Write `trap_rain(heights)` returning trapped rain water units. Example: `trap_rain([0,1,0,2,1,0,1,3,2,1,2,1])` -> `6`.",
+          "starterCode": "def trap_rain(heights):\n    # Your code here\n    pass\n",
+          "hint": "Use two pointers with left/right max.",
+          "solution": {
+            "code": "def trap_rain(heights):\n    if not heights:\n        return 0\n    left, right = 0, len(heights) - 1\n    left_max = right_max = 0\n    water = 0\n    while left <= right:\n        if heights[left] <= heights[right]:\n            left_max = max(left_max, heights[left])\n            water += left_max - heights[left]\n            left += 1\n        else:\n            right_max = max(right_max, heights[right])\n            water += right_max - heights[right]\n            right -= 1\n    return water",
+            "steps": [
+              {
+                "title": "Two pointers",
+                "explanation": "Move the shorter side inward while tracking max heights."
+              },
+              {
+                "title": "Accumulate water",
+                "explanation": "Add the difference between max and current height.",
+                "code": "def trap_rain(heights):\n    if not heights:\n        return 0\n    left, right = 0, len(heights) - 1\n    left_max = right_max = 0\n    water = 0\n    while left <= right:\n        if heights[left] <= heights[right]:\n            left_max = max(left_max, heights[left])\n            water += left_max - heights[left]\n            left += 1\n        else:\n            right_max = max(right_max, heights[right])\n            water += right_max - heights[right]\n            right -= 1\n    return water"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-78",
+          "language": "python",
+          "level": "advanced",
+          "title": "Candy Split",
+          "description": "Write `candy(ratings)` returning the minimum candies needed so each child has at least 1 and higher-rated gets more than neighbors. Example: `candy([1,0,2])` -> `5`.",
+          "starterCode": "def candy(ratings):\n    # Your code here\n    pass\n",
+          "hint": "Do two passes: left-to-right and right-to-left.",
+          "solution": {
+            "code": "def candy(ratings):\n    n = len(ratings)\n    candies = [1] * n\n    for i in range(1, n):\n        if ratings[i] > ratings[i - 1]:\n            candies[i] = candies[i - 1] + 1\n    for i in range(n - 2, -1, -1):\n        if ratings[i] > ratings[i + 1]:\n            candies[i] = max(candies[i], candies[i + 1] + 1)\n    return sum(candies)",
+            "steps": [
+              {
+                "title": "Forward pass",
+                "explanation": "Ensure increasing ratings get more candies."
+              },
+              {
+                "title": "Backward pass",
+                "explanation": "Fix descending slopes while keeping minima.",
+                "code": "def candy(ratings):\n    n = len(ratings)\n    candies = [1] * n\n    for i in range(1, n):\n        if ratings[i] > ratings[i - 1]:\n            candies[i] = candies[i - 1] + 1\n    for i in range(n - 2, -1, -1):\n        if ratings[i] > ratings[i + 1]:\n            candies[i] = max(candies[i], candies[i + 1] + 1)\n    return sum(candies)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-79",
+          "language": "python",
+          "level": "advanced",
+          "title": "Jump Game II",
+          "description": "Write `min_jumps(nums)` returning the minimum jumps to reach the last index. Example: `min_jumps([2,3,1,1,4])` -> `2`.",
+          "starterCode": "def min_jumps(nums):\n    # Your code here\n    pass\n",
+          "hint": "Greedy: track current range and next range.",
+          "solution": {
+            "code": "def min_jumps(nums):\n    if len(nums) <= 1:\n        return 0\n    jumps = 0\n    current_end = 0\n    farthest = 0\n    for i in range(len(nums) - 1):\n        farthest = max(farthest, i + nums[i])\n        if i == current_end:\n            jumps += 1\n            current_end = farthest\n    return jumps",
+            "steps": [
+              {
+                "title": "Expand range",
+                "explanation": "Track the farthest reach within the current jump."
+              },
+              {
+                "title": "Count jumps",
+                "explanation": "Increment when finishing a range.",
+                "code": "def min_jumps(nums):\n    if len(nums) <= 1:\n        return 0\n    jumps = 0\n    current_end = 0\n    farthest = 0\n    for i in range(len(nums) - 1):\n        farthest = max(farthest, i + nums[i])\n        if i == current_end:\n            jumps += 1\n            current_end = farthest\n    return jumps"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-80",
+          "language": "python",
+          "level": "advanced",
+          "title": "Max Points",
+          "description": "Write `max_points(points)` returning the maximum number of points on a line. Example: `max_points([[1,1],[2,2],[3,3],[3,4]])` -> `3`.",
+          "starterCode": "def max_points(points):\n    # Your code here\n    pass\n",
+          "hint": "Fix an anchor and count slopes using reduced fractions.",
+          "solution": {
+            "code": "from math import gcd\n\ndef max_points(points):\n    if len(points) < 2:\n        return len(points)\n    best = 0\n    for i in range(len(points)):\n        slopes = {}\n        same = 1\n        for j in range(i + 1, len(points)):\n            x1, y1 = points[i]\n            x2, y2 = points[j]\n            dx = x2 - x1\n            dy = y2 - y1\n            if dx == 0 and dy == 0:\n                same += 1\n                continue\n            g = gcd(dx, dy)\n            dx //= g\n            dy //= g\n            if dx < 0:\n                dx, dy = -dx, -dy\n            elif dx == 0:\n                dy = 1\n            slopes[(dx, dy)] = slopes.get((dx, dy), 0) + 1\n        current = same\n        for count in slopes.values():\n            current = max(current, count + same)\n        best = max(best, current)\n    return best",
+            "steps": [
+              {
+                "title": "Anchor point",
+                "explanation": "Count reduced slope pairs from each anchor."
+              },
+              {
+                "title": "Track maximum",
+                "explanation": "Include duplicates for the anchor point.",
+                "code": "from math import gcd\n\ndef max_points(points):\n    if len(points) < 2:\n        return len(points)\n    best = 0\n    for i in range(len(points)):\n        slopes = {}\n        same = 1\n        for j in range(i + 1, len(points)):\n            x1, y1 = points[i]\n            x2, y2 = points[j]\n            dx = x2 - x1\n            dy = y2 - y1\n            if dx == 0 and dy == 0:\n                same += 1\n                continue\n            g = gcd(dx, dy)\n            dx //= g\n            dy //= g\n            if dx < 0:\n                dx, dy = -dx, -dy\n            elif dx == 0:\n                dy = 1\n            slopes[(dx, dy)] = slopes.get((dx, dy), 0) + 1\n        current = same\n        for count in slopes.values():\n            current = max(current, count + same)\n        best = max(best, current)\n    return best"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-81",
+          "language": "python",
+          "level": "advanced",
+          "title": "String Interleave",
+          "description": "Write `is_interleave(s1, s2, s3)` returning True if s3 is an interleaving of s1 and s2. Example: `is_interleave('aab','axy','aaxaby')` -> `True`.",
+          "starterCode": "def is_interleave(s1, s2, s3):\n    # Your code here\n    pass\n",
+          "hint": "Use DP with lengths of s1 and s2.",
+          "solution": {
+            "code": "def is_interleave(s1, s2, s3):\n    if len(s1) + len(s2) != len(s3):\n        return False\n    dp = [False] * (len(s2) + 1)\n    dp[0] = True\n    for j in range(1, len(s2) + 1):\n        dp[j] = dp[j - 1] and s2[j - 1] == s3[j - 1]\n    for i in range(1, len(s1) + 1):\n        dp[0] = dp[0] and s1[i - 1] == s3[i - 1]\n        for j in range(1, len(s2) + 1):\n            dp[j] = (dp[j] and s1[i - 1] == s3[i + j - 1]) or (dp[j - 1] and s2[j - 1] == s3[i + j - 1])\n    return dp[-1]",
+            "steps": [
+              {
+                "title": "Length check",
+                "explanation": "If lengths don't add up, interleave is impossible."
+              },
+              {
+                "title": "DP scan",
+                "explanation": "Track reachable prefixes from s1 and s2.",
+                "code": "def is_interleave(s1, s2, s3):\n    if len(s1) + len(s2) != len(s3):\n        return False\n    dp = [False] * (len(s2) + 1)\n    dp[0] = True\n    for j in range(1, len(s2) + 1):\n        dp[j] = dp[j - 1] and s2[j - 1] == s3[j - 1]\n    for i in range(1, len(s1) + 1):\n        dp[0] = dp[0] and s1[i - 1] == s3[i - 1]\n        for j in range(1, len(s2) + 1):\n            dp[j] = (dp[j] and s1[i - 1] == s3[i + j - 1]) or (dp[j - 1] and s2[j - 1] == s3[i + j - 1])\n    return dp[-1]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-82",
+          "language": "python",
+          "level": "advanced",
+          "title": "Pattern Match",
+          "description": "Write `is_match(s, p)` supporting `.` and `*` where `*` means zero or more of the previous char. Example: `is_match('aab','c*a*b')` -> `True`.",
+          "starterCode": "def is_match(s, p):\n    # Your code here\n    pass\n",
+          "hint": "Use DP where dp[i][j] means s[:i] matches p[:j].",
+          "solution": {
+            "code": "def is_match(s, p):\n    m, n = len(s), len(p)\n    dp = [[False] * (n + 1) for _ in range(m + 1)]\n    dp[0][0] = True\n    for j in range(2, n + 1):\n        if p[j - 1] == '*':\n            dp[0][j] = dp[0][j - 2]\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if p[j - 1] == '*':\n                dp[i][j] = dp[i][j - 2] or ((p[j - 2] == '.' or p[j - 2] == s[i - 1]) and dp[i - 1][j])\n            else:\n                dp[i][j] = dp[i - 1][j - 1] and (p[j - 1] == '.' or p[j - 1] == s[i - 1])\n    return dp[m][n]",
+            "steps": [
+              {
+                "title": "Initialize",
+                "explanation": "Handle patterns that can match empty string."
+              },
+              {
+                "title": "DP transitions",
+                "explanation": "Handle '*' as zero or more occurrences.",
+                "code": "def is_match(s, p):\n    m, n = len(s), len(p)\n    dp = [[False] * (n + 1) for _ in range(m + 1)]\n    dp[0][0] = True\n    for j in range(2, n + 1):\n        if p[j - 1] == '*':\n            dp[0][j] = dp[0][j - 2]\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if p[j - 1] == '*':\n                dp[i][j] = dp[i][j - 2] or ((p[j - 2] == '.' or p[j - 2] == s[i - 1]) and dp[i - 1][j])\n            else:\n                dp[i][j] = dp[i - 1][j - 1] and (p[j - 1] == '.' or p[j - 1] == s[i - 1])\n    return dp[m][n]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-83",
+          "language": "python",
+          "level": "advanced",
+          "title": "Burst Balloons",
+          "description": "Write `max_coins(nums)` returning the max coins by bursting balloons optimally. Example: `max_coins([3,1,5,8])` -> `167`.",
+          "starterCode": "def max_coins(nums):\n    # Your code here\n    pass\n",
+          "hint": "Use interval DP with virtual 1s at both ends.",
+          "solution": {
+            "code": "def max_coins(nums):\n    nums = [1] + [n for n in nums if n > 0] + [1]\n    n = len(nums)\n    dp = [[0] * n for _ in range(n)]\n    for length in range(2, n):\n        for left in range(0, n - length):\n            right = left + length\n            for k in range(left + 1, right):\n                dp[left][right] = max(dp[left][right], nums[left] * nums[k] * nums[right] + dp[left][k] + dp[k][right])\n    return dp[0][n - 1]",
+            "steps": [
+              {
+                "title": "Add boundaries",
+                "explanation": "Use 1 at both ends to simplify edge cases."
+              },
+              {
+                "title": "Interval DP",
+                "explanation": "Pick the last balloon to burst in each interval.",
+                "code": "def max_coins(nums):\n    nums = [1] + [n for n in nums if n > 0] + [1]\n    n = len(nums)\n    dp = [[0] * n for _ in range(n)]\n    for length in range(2, n):\n        for left in range(0, n - length):\n            right = left + length\n            for k in range(left + 1, right):\n                dp[left][right] = max(dp[left][right], nums[left] * nums[k] * nums[right] + dp[left][k] + dp[k][right])\n    return dp[0][n - 1]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-84",
+          "language": "python",
+          "level": "advanced",
+          "title": "Stock with Fee",
+          "description": "Write `max_profit_fee(prices, fee)` for unlimited transactions with a fee per sale. Example: `max_profit_fee([1,3,2,8,4,9], 2)` -> `8`.",
+          "starterCode": "def max_profit_fee(prices, fee):\n    # Your code here\n    pass\n",
+          "hint": "Track hold and cash states.",
+          "solution": {
+            "code": "def max_profit_fee(prices, fee):\n    hold = float('-inf')\n    cash = 0\n    for price in prices:\n        hold = max(hold, cash - price)\n        cash = max(cash, hold + price - fee)\n    return cash",
+            "steps": [
+              {
+                "title": "State DP",
+                "explanation": "`hold` is best holding profit, `cash` is not holding."
+              },
+              {
+                "title": "Iterate",
+                "explanation": "Update states per price.",
+                "code": "def max_profit_fee(prices, fee):\n    hold = float('-inf')\n    cash = 0\n    for price in prices:\n        hold = max(hold, cash - price)\n        cash = max(cash, hold + price - fee)\n    return cash"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-85",
+          "language": "python",
+          "level": "advanced",
+          "title": "Frog Jump",
+          "description": "Write `can_cross(stones)` returning True if the frog can reach the last stone. Example: `can_cross([0,1,3,5,6,8,12,17])` -> `True`.",
+          "starterCode": "def can_cross(stones):\n    # Your code here\n    pass\n",
+          "hint": "Use a map from position to reachable jump sizes.",
+          "solution": {
+            "code": "def can_cross(stones):\n    stone_set = set(stones)\n    jumps = {s: set() for s in stones}\n    jumps[0].add(0)\n    for s in stones:\n        for k in jumps[s]:\n            for step in (k - 1, k, k + 1):\n                if step > 0 and s + step in stone_set:\n                    jumps[s + step].add(step)\n    return len(jumps[stones[-1]]) > 0",
+            "steps": [
+              {
+                "title": "Track jumps",
+                "explanation": "Store all jump sizes that can land on each stone."
+              },
+              {
+                "title": "Propagate",
+                "explanation": "Try k-1, k, k+1 from each reachable jump.",
+                "code": "def can_cross(stones):\n    stone_set = set(stones)\n    jumps = {s: set() for s in stones}\n    jumps[0].add(0)\n    for s in stones:\n        for k in jumps[s]:\n            for step in (k - 1, k, k + 1):\n                if step > 0 and s + step in stone_set:\n                    jumps[s + step].add(step)\n    return len(jumps[stones[-1]]) > 0"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-86",
+          "language": "python",
+          "level": "advanced",
+          "title": "N Queens",
+          "description": "Write `solve_n_queens(n)` returning all solutions as lists of strings with 'Q' and '.'. Example: `solve_n_queens(4)` returns 2 solutions.",
+          "starterCode": "def solve_n_queens(n):\n    # Your code here\n    pass\n",
+          "hint": "Backtrack with columns and diagonals sets.",
+          "solution": {
+            "code": "def solve_n_queens(n):\n    results = []\n    cols = set()\n    diag1 = set()\n    diag2 = set()\n    board = [['.'] * n for _ in range(n)]\n\n    def backtrack(r):\n        if r == n:\n            results.append([''.join(row) for row in board])\n            return\n        for c in range(n):\n            if c in cols or r - c in diag1 or r + c in diag2:\n                continue\n            cols.add(c)\n            diag1.add(r - c)\n            diag2.add(r + c)\n            board[r][c] = 'Q'\n            backtrack(r + 1)\n            board[r][c] = '.'\n            cols.remove(c)\n            diag1.remove(r - c)\n            diag2.remove(r + c)\n    backtrack(0)\n    return results",
+            "steps": [
+              {
+                "title": "Track attacks",
+                "explanation": "Use sets for columns and diagonals to test conflicts."
+              },
+              {
+                "title": "Backtrack",
+                "explanation": "Place one queen per row and explore.",
+                "code": "def solve_n_queens(n):\n    results = []\n    cols = set()\n    diag1 = set()\n    diag2 = set()\n    board = [['.'] * n for _ in range(n)]\n\n    def backtrack(r):\n        if r == n:\n            results.append([''.join(row) for row in board])\n            return\n        for c in range(n):\n            if c in cols or r - c in diag1 or r + c in diag2:\n                continue\n            cols.add(c)\n            diag1.add(r - c)\n            diag2.add(r + c)\n            board[r][c] = 'Q'\n            backtrack(r + 1)\n            board[r][c] = '.'\n            cols.remove(c)\n            diag1.remove(r - c)\n            diag2.remove(r + c)\n    backtrack(0)\n    return results"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-87",
+          "language": "python",
+          "level": "advanced",
+          "title": "Sudoku Solve",
+          "description": "Write `solve_sudoku(board)` that fills a 9x9 board in-place. Empty cells are '.'. Example: the function should solve any valid Sudoku.",
+          "starterCode": "def solve_sudoku(board):\n    # Your code here\n    pass\n",
+          "hint": "Backtrack with row/col/box sets of candidates.",
+          "solution": {
+            "code": "def solve_sudoku(board):\n    rows = [set() for _ in range(9)]\n    cols = [set() for _ in range(9)]\n    boxes = [set() for _ in range(9)]\n    empties = []\n    for r in range(9):\n        for c in range(9):\n            val = board[r][c]\n            if val == '.':\n                empties.append((r, c))\n            else:\n                rows[r].add(val)\n                cols[c].add(val)\n                boxes[(r // 3) * 3 + (c // 3)].add(val)\n\n    def backtrack(i):\n        if i == len(empties):\n            return True\n        r, c = empties[i]\n        b = (r // 3) * 3 + (c // 3)\n        for ch in map(str, range(1, 10)):\n            if ch in rows[r] or ch in cols[c] or ch in boxes[b]:\n                continue\n            board[r][c] = ch\n            rows[r].add(ch)\n            cols[c].add(ch)\n            boxes[b].add(ch)\n            if backtrack(i + 1):\n                return True\n            rows[r].remove(ch)\n            cols[c].remove(ch)\n            boxes[b].remove(ch)\n            board[r][c] = '.'\n        return False\n\n    backtrack(0)",
+            "steps": [
+              {
+                "title": "Collect constraints",
+                "explanation": "Track used digits per row, column, and box."
+              },
+              {
+                "title": "Backtrack",
+                "explanation": "Try digits for each empty cell and recurse.",
+                "code": "def solve_sudoku(board):\n    rows = [set() for _ in range(9)]\n    cols = [set() for _ in range(9)]\n    boxes = [set() for _ in range(9)]\n    empties = []\n    for r in range(9):\n        for c in range(9):\n            val = board[r][c]\n            if val == '.':\n                empties.append((r, c))\n            else:\n                rows[r].add(val)\n                cols[c].add(val)\n                boxes[(r // 3) * 3 + (c // 3)].add(val)\n\n    def backtrack(i):\n        if i == len(empties):\n            return True\n        r, c = empties[i]\n        b = (r // 3) * 3 + (c // 3)\n        for ch in map(str, range(1, 10)):\n            if ch in rows[r] or ch in cols[c] or ch in boxes[b]:\n                continue\n            board[r][c] = ch\n            rows[r].add(ch)\n            cols[c].add(ch)\n            boxes[b].add(ch)\n            if backtrack(i + 1):\n                return True\n            rows[r].remove(ch)\n            cols[c].remove(ch)\n            boxes[b].remove(ch)\n            board[r][c] = '.'\n        return False\n\n    backtrack(0)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-88",
+          "language": "python",
+          "level": "advanced",
+          "title": "Min Window",
+          "description": "Write `min_window(s, t)` returning the smallest substring of s containing all chars of t. Example: `min_window('ADOBECODEBANC','ABC')` -> `'BANC'`.",
+          "starterCode": "def min_window(s, t):\n    # Your code here\n    pass\n",
+          "hint": "Use sliding window with counts and a `formed` counter.",
+          "solution": {
+            "code": "from collections import Counter\n\ndef min_window(s, t):\n    if not t or not s:\n        return ''\n    need = Counter(t)\n    window = {}\n    required = len(need)\n    formed = 0\n    l = 0\n    best = (float('inf'), None, None)\n    for r, ch in enumerate(s):\n        window[ch] = window.get(ch, 0) + 1\n        if ch in need and window[ch] == need[ch]:\n            formed += 1\n        while l <= r and formed == required:\n            if r - l + 1 < best[0]:\n                best = (r - l + 1, l, r)\n            left_ch = s[l]\n            window[left_ch] -= 1\n            if left_ch in need and window[left_ch] < need[left_ch]:\n                formed -= 1\n            l += 1\n    if best[1] is None:\n        return ''\n    return s[best[1]:best[2] + 1]",
+            "steps": [
+              {
+                "title": "Expand window",
+                "explanation": "Grow right pointer until all required chars are included."
+              },
+              {
+                "title": "Shrink window",
+                "explanation": "Move left pointer to minimize while maintaining validity.",
+                "code": "from collections import Counter\n\ndef min_window(s, t):\n    if not t or not s:\n        return ''\n    need = Counter(t)\n    window = {}\n    required = len(need)\n    formed = 0\n    l = 0\n    best = (float('inf'), None, None)\n    for r, ch in enumerate(s):\n        window[ch] = window.get(ch, 0) + 1\n        if ch in need and window[ch] == need[ch]:\n            formed += 1\n        while l <= r and formed == required:\n            if r - l + 1 < best[0]:\n                best = (r - l + 1, l, r)\n            left_ch = s[l]\n            window[left_ch] -= 1\n            if left_ch in need and window[left_ch] < need[left_ch]:\n                formed -= 1\n            l += 1\n    if best[1] is None:\n        return ''\n    return s[best[1]:best[2] + 1]"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-89",
+          "language": "python",
+          "level": "advanced",
+          "title": "Substring Concats",
+          "description": "Write `find_substring(s, words)` returning starting indices where concatenation of all words appears. Example: `find_substring('barfoothefoobarman',['foo','bar'])` -> `[0,9]`.",
+          "starterCode": "def find_substring(s, words):\n    # Your code here\n    pass\n",
+          "hint": "Use sliding windows aligned to word length.",
+          "solution": {
+            "code": "from collections import Counter\n\ndef find_substring(s, words):\n    if not s or not words:\n        return []\n    wlen = len(words[0])\n    total = wlen * len(words)\n    target = Counter(words)\n    res = []\n    for offset in range(wlen):\n        left = offset\n        window = Counter()\n        count = 0\n        for right in range(offset, len(s) - wlen + 1, wlen):\n            word = s[right:right + wlen]\n            if word in target:\n                window[word] += 1\n                count += 1\n                while window[word] > target[word]:\n                    left_word = s[left:left + wlen]\n                    window[left_word] -= 1\n                    left += wlen\n                    count -= 1\n                if count == len(words):\n                    res.append(left)\n            else:\n                window.clear()\n                count = 0\n                left = right + wlen\n    return res",
+            "steps": [
+              {
+                "title": "Fixed length scan",
+                "explanation": "Use word-length windows and a frequency counter."
+              },
+              {
+                "title": "Validate counts",
+                "explanation": "Shrink when a word count exceeds the target.",
+                "code": "from collections import Counter\n\ndef find_substring(s, words):\n    if not s or not words:\n        return []\n    wlen = len(words[0])\n    total = wlen * len(words)\n    target = Counter(words)\n    res = []\n    for offset in range(wlen):\n        left = offset\n        window = Counter()\n        count = 0\n        for right in range(offset, len(s) - wlen + 1, wlen):\n            word = s[right:right + wlen]\n            if word in target:\n                window[word] += 1\n                count += 1\n                while window[word] > target[word]:\n                    left_word = s[left:left + wlen]\n                    window[left_word] -= 1\n                    left += wlen\n                    count -= 1\n                if count == len(words):\n                    res.append(left)\n            else:\n                window.clear()\n                count = 0\n                left = right + wlen\n    return res"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-90",
+          "language": "python",
+          "level": "advanced",
+          "title": "Alien Sort",
+          "description": "Write `is_alien_sorted(words, order)` returning True if words are sorted by a custom alphabet. Example: `is_alien_sorted(['hello','leetcode'],'hlabcdefgijkmnopqrstuvwxyz')` -> `True`.",
+          "starterCode": "def is_alien_sorted(words, order):\n    # Your code here\n    pass\n",
+          "hint": "Map letters to ranks and compare adjacent words.",
+          "solution": {
+            "code": "def is_alien_sorted(words, order):\n    rank = {ch: i for i, ch in enumerate(order)}\n    def in_order(a, b):\n        for x, y in zip(a, b):\n            if x != y:\n                return rank[x] < rank[y]\n        return len(a) <= len(b)\n    for i in range(len(words) - 1):\n        if not in_order(words[i], words[i + 1]):\n            return False\n    return True",
+            "steps": [
+              {
+                "title": "Rank mapping",
+                "explanation": "Assign each letter its order index."
+              },
+              {
+                "title": "Pairwise compare",
+                "explanation": "Check lexicographic order based on ranks.",
+                "code": "def is_alien_sorted(words, order):\n    rank = {ch: i for i, ch in enumerate(order)}\n    def in_order(a, b):\n        for x, y in zip(a, b):\n            if x != y:\n                return rank[x] < rank[y]\n        return len(a) <= len(b)\n    for i in range(len(words) - 1):\n        if not in_order(words[i], words[i + 1]):\n            return False\n    return True"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-91",
+          "language": "python",
+          "level": "advanced",
+          "title": "Remove K",
+          "description": "Write `remove_k_digits(num, k)` returning the smallest possible number after removing k digits. Example: `remove_k_digits('1432219', 3)` -> `'1219'`.",
+          "starterCode": "def remove_k_digits(num, k):\n    # Your code here\n    pass\n",
+          "hint": "Use a monotonic increasing stack and strip leading zeros.",
+          "solution": {
+            "code": "def remove_k_digits(num, k):\n    stack = []\n    for ch in num:\n        while k > 0 and stack and stack[-1] > ch:\n            stack.pop()\n            k -= 1\n        stack.append(ch)\n    while k > 0 and stack:\n        stack.pop()\n        k -= 1\n    result = ''.join(stack).lstrip('0')\n    return result if result else '0'",
+            "steps": [
+              {
+                "title": "Monotonic stack",
+                "explanation": "Remove larger digits when a smaller digit appears."
+              },
+              {
+                "title": "Finalize",
+                "explanation": "Trim remaining removals and leading zeros.",
+                "code": "def remove_k_digits(num, k):\n    stack = []\n    for ch in num:\n        while k > 0 and stack and stack[-1] > ch:\n            stack.pop()\n            k -= 1\n        stack.append(ch)\n    while k > 0 and stack:\n        stack.pop()\n        k -= 1\n    result = ''.join(stack).lstrip('0')\n    return result if result else '0'"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-92",
+          "language": "python",
+          "level": "advanced",
+          "title": "LIS Count",
+          "description": "Write `find_number_of_lis(nums)` returning the number of longest increasing subsequences. Example: `find_number_of_lis([1,3,5,4,7])` -> `2`.",
+          "starterCode": "def find_number_of_lis(nums):\n    # Your code here\n    pass\n",
+          "hint": "Track lengths and counts for each position.",
+          "solution": {
+            "code": "def find_number_of_lis(nums):\n    n = len(nums)\n    if n == 0:\n        return 0\n    lengths = [1] * n\n    counts = [1] * n\n    for i in range(n):\n        for j in range(i):\n            if nums[j] < nums[i]:\n                if lengths[j] + 1 > lengths[i]:\n                    lengths[i] = lengths[j] + 1\n                    counts[i] = counts[j]\n                elif lengths[j] + 1 == lengths[i]:\n                    counts[i] += counts[j]\n    longest = max(lengths)\n    return sum(c for l, c in zip(lengths, counts) if l == longest)",
+            "steps": [
+              {
+                "title": "DP arrays",
+                "explanation": "`lengths[i]` and `counts[i]` track LIS ending at i."
+              },
+              {
+                "title": "Aggregate",
+                "explanation": "Sum counts for indices with maximum length.",
+                "code": "def find_number_of_lis(nums):\n    n = len(nums)\n    if n == 0:\n        return 0\n    lengths = [1] * n\n    counts = [1] * n\n    for i in range(n):\n        for j in range(i):\n            if nums[j] < nums[i]:\n                if lengths[j] + 1 > lengths[i]:\n                    lengths[i] = lengths[j] + 1\n                    counts[i] = counts[j]\n                elif lengths[j] + 1 == lengths[i]:\n                    counts[i] += counts[j]\n    longest = max(lengths)\n    return sum(c for l, c in zip(lengths, counts) if l == longest)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-93",
+          "language": "python",
+          "level": "advanced",
+          "title": "Palindrome Pairs",
+          "description": "Write `palindrome_pairs(words)` returning index pairs (i,j) where words[i]+words[j] is a palindrome. Example: `palindrome_pairs(['bat','tab','cat'])` -> `[[0,1],[1,0]]`.",
+          "starterCode": "def palindrome_pairs(words):\n    # Your code here\n    pass\n",
+          "hint": "Use a word->index map and check all splits.",
+          "solution": {
+            "code": "def palindrome_pairs(words):\n    index = {w: i for i, w in enumerate(words)}\n    res = []\n    def is_pal(s):\n        return s == s[::-1]\n    for i, w in enumerate(words):\n        for split in range(len(w) + 1):\n            left = w[:split]\n            right = w[split:]\n            if is_pal(left):\n                rev = right[::-1]\n                if rev in index and index[rev] != i:\n                    res.append([index[rev], i])\n            if split != len(w) and is_pal(right):\n                rev = left[::-1]\n                if rev in index and index[rev] != i:\n                    res.append([i, index[rev]])\n    return res",
+            "steps": [
+              {
+                "title": "Split words",
+                "explanation": "Check palindromic prefixes and suffixes."
+              },
+              {
+                "title": "Lookup reversals",
+                "explanation": "Combine with reversed counterparts from the map.",
+                "code": "def palindrome_pairs(words):\n    index = {w: i for i, w in enumerate(words)}\n    res = []\n    def is_pal(s):\n        return s == s[::-1]\n    for i, w in enumerate(words):\n        for split in range(len(w) + 1):\n            left = w[:split]\n            right = w[split:]\n            if is_pal(left):\n                rev = right[::-1]\n                if rev in index and index[rev] != i:\n                    res.append([index[rev], i])\n            if split != len(w) and is_pal(right):\n                rev = left[::-1]\n                if rev in index and index[rev] != i:\n                    res.append([i, index[rev]])\n    return res"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-94",
+          "language": "python",
+          "level": "advanced",
+          "title": "Word Search",
+          "description": "Write `exist(board, word)` returning True if word exists in the grid by adjacent moves. Example: `exist([['A','B'],['C','D']], 'ABCD')` -> `False`.",
+          "starterCode": "def exist(board, word):\n    # Your code here\n    pass\n",
+          "hint": "Use DFS with visited marking and backtracking.",
+          "solution": {
+            "code": "def exist(board, word):\n    rows = len(board)\n    cols = len(board[0]) if rows else 0\n    def dfs(r, c, i):\n        if i == len(word):\n            return True\n        if r < 0 or c < 0 or r >= rows or c >= cols:\n            return False\n        if board[r][c] != word[i]:\n            return False\n        temp = board[r][c]\n        board[r][c] = '#'\n        found = dfs(r + 1, c, i + 1) or dfs(r - 1, c, i + 1) or dfs(r, c + 1, i + 1) or dfs(r, c - 1, i + 1)\n        board[r][c] = temp\n        return found\n    for r in range(rows):\n        for c in range(cols):\n            if dfs(r, c, 0):\n                return True\n    return False",
+            "steps": [
+              {
+                "title": "DFS search",
+                "explanation": "Try each cell as a starting position."
+              },
+              {
+                "title": "Backtrack",
+                "explanation": "Mark visited and restore after exploring neighbors.",
+                "code": "def exist(board, word):\n    rows = len(board)\n    cols = len(board[0]) if rows else 0\n    def dfs(r, c, i):\n        if i == len(word):\n            return True\n        if r < 0 or c < 0 or r >= rows or c >= cols:\n            return False\n        if board[r][c] != word[i]:\n            return False\n        temp = board[r][c]\n        board[r][c] = '#'\n        found = dfs(r + 1, c, i + 1) or dfs(r - 1, c, i + 1) or dfs(r, c + 1, i + 1) or dfs(r, c - 1, i + 1)\n        board[r][c] = temp\n        return found\n    for r in range(rows):\n        for c in range(cols):\n            if dfs(r, c, 0):\n                return True\n    return False"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-95",
+          "language": "python",
+          "level": "advanced",
+          "title": "Permute Unique",
+          "description": "Write `permute_unique(nums)` returning all unique permutations. Example: `permute_unique([1,1,2])` -> `[[1,1,2],[1,2,1],[2,1,1]]`.",
+          "starterCode": "def permute_unique(nums):\n    # Your code here\n    pass\n",
+          "hint": "Sort and skip duplicates when used in the same depth.",
+          "solution": {
+            "code": "def permute_unique(nums):\n    nums.sort()\n    used = [False] * len(nums)\n    res = []\n    def backtrack(path):\n        if len(path) == len(nums):\n            res.append(path[:])\n            return\n        for i in range(len(nums)):\n            if used[i]:\n                continue\n            if i > 0 and nums[i] == nums[i - 1] and not used[i - 1]:\n                continue\n            used[i] = True\n            path.append(nums[i])\n            backtrack(path)\n            path.pop()\n            used[i] = False\n    backtrack([])\n    return res",
+            "steps": [
+              {
+                "title": "Sort first",
+                "explanation": "Sorting lets us skip duplicate choices at each depth."
+              },
+              {
+                "title": "Backtrack",
+                "explanation": "Use a used array and skip repeated numbers."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-96",
+          "language": "python",
+          "level": "advanced",
+          "title": "Merge Intervals",
+          "description": "Write `merge_intervals(intervals)` merging all overlapping intervals. Example: `merge_intervals([[1,3],[2,6],[8,10],[15,18]])` -> `[[1,6],[8,10],[15,18]]`.",
+          "starterCode": "def merge_intervals(intervals):\n    # Your code here\n    pass\n",
+          "hint": "Sort by start and merge sequentially.",
+          "solution": {
+            "code": "def merge_intervals(intervals):\n    if not intervals:\n        return []\n    intervals.sort(key=lambda x: x[0])\n    merged = [intervals[0]]\n    for start, end in intervals[1:]:\n        last = merged[-1]\n        if start <= last[1]:\n            last[1] = max(last[1], end)\n        else:\n            merged.append([start, end])\n    return merged",
+            "steps": [
+              {
+                "title": "Sort intervals",
+                "explanation": "Sorting ensures overlaps are adjacent."
+              },
+              {
+                "title": "Merge",
+                "explanation": "Extend the last interval when overlapping.",
+                "code": "def merge_intervals(intervals):\n    if not intervals:\n        return []\n    intervals.sort(key=lambda x: x[0])\n    merged = [intervals[0]]\n    for start, end in intervals[1:]:\n        last = merged[-1]\n        if start <= last[1]:\n            last[1] = max(last[1], end)\n        else:\n            merged.append([start, end])\n    return merged"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-97",
+          "language": "python",
+          "level": "advanced",
+          "title": "Insert Interval",
+          "description": "Write `insert_interval(intervals, new_interval)` inserting and merging. Example: `insert_interval([[1,3],[6,9]],[2,5])` -> `[[1,5],[6,9]]`.",
+          "starterCode": "def insert_interval(intervals, new_interval):\n    # Your code here\n    pass\n",
+          "hint": "Add all intervals before, merge overlaps, then append rest.",
+          "solution": {
+            "code": "def insert_interval(intervals, new_interval):\n    res = []\n    i = 0\n    while i < len(intervals) and intervals[i][1] < new_interval[0]:\n        res.append(intervals[i])\n        i += 1\n    while i < len(intervals) and intervals[i][0] <= new_interval[1]:\n        new_interval[0] = min(new_interval[0], intervals[i][0])\n        new_interval[1] = max(new_interval[1], intervals[i][1])\n        i += 1\n    res.append(new_interval)\n    while i < len(intervals):\n        res.append(intervals[i])\n        i += 1\n    return res",
+            "steps": [
+              {
+                "title": "Add before",
+                "explanation": "Collect intervals ending before the new interval."
+              },
+              {
+                "title": "Merge overlaps",
+                "explanation": "Expand the new interval for all overlaps."
+              },
+              {
+                "title": "Append rest",
+                "explanation": "Add remaining intervals after merging."
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-98",
+          "language": "python",
+          "level": "advanced",
+          "title": "Interval Intersect",
+          "description": "Write `interval_intersection(a, b)` returning intersections of two interval lists. Example: `interval_intersection([[0,2],[5,10]], [[1,5],[8,12]])` -> `[[1,2],[5,5],[8,10]]`.",
+          "starterCode": "def interval_intersection(a, b):\n    # Your code here\n    pass\n",
+          "hint": "Two pointers; intersection is max(start) to min(end).",
+          "solution": {
+            "code": "def interval_intersection(a, b):\n    i = j = 0\n    res = []\n    while i < len(a) and j < len(b):\n        start = max(a[i][0], b[j][0])\n        end = min(a[i][1], b[j][1])\n        if start <= end:\n            res.append([start, end])\n        if a[i][1] < b[j][1]:\n            i += 1\n        else:\n            j += 1\n    return res",
+            "steps": [
+              {
+                "title": "Advance pointers",
+                "explanation": "Move the interval that ends first."
+              },
+              {
+                "title": "Collect intersections",
+                "explanation": "Append overlap when max start <= min end.",
+                "code": "def interval_intersection(a, b):\n    i = j = 0\n    res = []\n    while i < len(a) and j < len(b):\n        start = max(a[i][0], b[j][0])\n        end = min(a[i][1], b[j][1])\n        if start <= end:\n            res.append([start, end])\n        if a[i][1] < b[j][1]:\n            i += 1\n        else:\n            j += 1\n    return res"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-99",
+          "language": "python",
+          "level": "advanced",
+          "title": "Graph Clone",
+          "description": "Write `clone_graph(node)` to deep copy an undirected graph. Nodes have `val` and `neighbors`. Example: cloning a 2-node connected graph returns a new isomorphic graph.",
+          "starterCode": "def clone_graph(node):\n    # Your code here\n    pass\n",
+          "hint": "Use DFS with a map from original to cloned node.",
+          "solution": {
+            "code": "class Node:\n    def __init__(self, val=0, neighbors=None):\n        self.val = val\n        self.neighbors = neighbors or []\n\ndef clone_graph(node):\n    if not node:\n        return None\n    clones = {}\n    def dfs(n):\n        if n in clones:\n            return clones[n]\n        copy = Node(n.val)\n        clones[n] = copy\n        for nei in n.neighbors:\n            copy.neighbors.append(dfs(nei))\n        return copy\n    return dfs(node)",
+            "steps": [
+              {
+                "title": "Memoize clones",
+                "explanation": "Use a dictionary to avoid duplicating nodes."
+              },
+              {
+                "title": "DFS clone",
+                "explanation": "Create nodes and recursively clone neighbors.",
+                "code": "class Node:\n    def __init__(self, val=0, neighbors=None):\n        self.val = val\n        self.neighbors = neighbors or []\n\ndef clone_graph(node):\n    if not node:\n        return None\n    clones = {}\n    def dfs(n):\n        if n in clones:\n            return clones[n]\n        copy = Node(n.val)\n        clones[n] = copy\n        for nei in n.neighbors:\n            copy.neighbors.append(dfs(nei))\n        return copy\n    return dfs(node)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "py-advanced-100",
+          "language": "python",
+          "level": "advanced",
+          "title": "Topo Sort",
+          "description": "Write `topo_sort(n, edges)` returning a topological order for a DAG of n nodes labeled 0..n-1. Example: `topo_sort(3, [(0,1),(0,2)])` -> `[0,1,2]` or `[0,2,1]`.",
+          "starterCode": "def topo_sort(n, edges):\n    # Your code here\n    pass\n",
+          "hint": "Use Kahn's algorithm with indegrees.",
+          "solution": {
+            "code": "from collections import deque\n\ndef topo_sort(n, edges):\n    graph = [[] for _ in range(n)]\n    indeg = [0] * n\n    for u, v in edges:\n        graph[u].append(v)\n        indeg[v] += 1\n    queue = deque([i for i in range(n) if indeg[i] == 0])\n    order = []\n    while queue:\n        node = queue.popleft()\n        order.append(node)\n        for nei in graph[node]:\n            indeg[nei] -= 1\n            if indeg[nei] == 0:\n                queue.append(nei)\n    return order if len(order) == n else []",
+            "steps": [
+              {
+                "title": "Build indegrees",
+                "explanation": "Track incoming edges for each node."
+              },
+              {
+                "title": "Kahn's",
+                "explanation": "Process zero-indegree nodes and reduce neighbors.",
+                "code": "from collections import deque\n\ndef topo_sort(n, edges):\n    graph = [[] for _ in range(n)]\n    indeg = [0] * n\n    for u, v in edges:\n        graph[u].append(v)\n        indeg[v] += 1\n    queue = deque([i for i in range(n) if indeg[i] == 0])\n    order = []\n    while queue:\n        node = queue.popleft()\n        order.append(node)\n        for nei in graph[node]:\n            indeg[nei] -= 1\n            if indeg[nei] == 0:\n                queue.append(nei)\n    return order if len(order) == n else []"
+              }
+            ]
+          }
         }
       ]
     }
