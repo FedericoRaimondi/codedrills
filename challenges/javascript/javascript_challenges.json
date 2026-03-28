@@ -8078,6 +8078,2166 @@
                             }
                         ]
                     }
+                },
+                {
+                    "id": "js-advanced-21",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Memoize It",
+                    "description": "Implement `memoize(fn)` for a single-argument function. Test by calling the memoized function twice with the same input and print the call count. Expected output: `25`, `25`, `1`.",
+                    "starterCode": "function memoize(fn) {\n  // Your code here\n}\n",
+                    "hint": "Use a Map keyed by the argument to store computed results.",
+                    "solution": {
+                        "code": "function memoize(fn) {\n  const cache = new Map();\n  return function(arg) {\n    if (cache.has(arg)) return cache.get(arg);\n    const result = fn(arg);\n    cache.set(arg, result);\n    return result;\n  };\n}\nlet calls = 0;\nconst slow = (n) => {\n  calls += 1;\n  return n * n;\n};\nconst fast = memoize(slow);\nconsole.log(fast(5));\nconsole.log(fast(5));\nconsole.log(calls);",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to cache results so the function runs only once per input."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Store results in a Map keyed by the input argument, returning the cached value when present.",
+                                "code": "function memoize(fn) {\n  const cache = new Map();\n  return function(arg) {\n    if (cache.has(arg)) return cache.get(arg);\n    const result = fn(arg);\n    cache.set(arg, result);\n    return result;\n  };\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Both calls return 25 while the underlying function runs once, so call count is 1."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-22",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Curry Me",
+                    "description": "Implement `curry(fn)` that supports chaining single arguments until all parameters are provided. Test with a 3-argument sum. Expected output: `6`.",
+                    "starterCode": "function curry(fn) {\n  // Your code here\n}\n",
+                    "hint": "If you have enough args, call fn; otherwise return a function that collects more.",
+                    "solution": {
+                        "code": "function curry(fn) {\n  function curried(...args) {\n    if (args.length >= fn.length) return fn(...args);\n    return (...next) => curried(...args, ...next);\n  }\n  return curried;\n}\nconst add3 = (a, b, c) => a + b + c;\nconsole.log(curry(add3)(1)(2)(3));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need a wrapper that collects arguments across calls until the function can execute."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use a recursive curried function that either calls fn or returns another collector.",
+                                "code": "function curry(fn) {\n  function curried(...args) {\n    if (args.length >= fn.length) return fn(...args);\n    return (...next) => curried(...args, ...next);\n  }\n  return curried;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Chaining (1)(2)(3) yields 6 as expected."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-23",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Compose Chain",
+                    "description": "Implement `compose(fns)` that applies functions from right to left. Test with square, double, then add1 on 2. Expected output: `9`.",
+                    "starterCode": "function compose(fns) {\n  // Your code here\n}\n",
+                    "hint": "Use reduceRight to apply functions from the end to the start.",
+                    "solution": {
+                        "code": "function compose(fns) {\n  return (x) => fns.reduceRight((val, fn) => fn(val), x);\n}\nconst square = (x) => x * x;\nconst double = (x) => x * 2;\nconst add1 = (x) => x + 1;\nconst fn = compose([add1, double, square]);\nconsole.log(fn(2));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to combine multiple unary functions so they run right-to-left."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use reduceRight to pass the output of each function into the next.",
+                                "code": "function compose(fns) {\n  return (x) => fns.reduceRight((val, fn) => fn(val), x);\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "square(2)=4, double=8, add1=9."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-24",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Once Only",
+                    "description": "Implement `once(fn)` so the function runs only once and subsequent calls return the first result. Print two calls and the underlying call count. Expected output: `6`, `6`, `1`.",
+                    "starterCode": "function once(fn) {\n  // Your code here\n}\n",
+                    "hint": "Use a flag to track if the function was already called.",
+                    "solution": {
+                        "code": "function once(fn) {\n  let called = false;\n  let result;\n  return function(...args) {\n    if (!called) {\n      result = fn(...args);\n      called = true;\n    }\n    return result;\n  };\n}\nlet calls = 0;\nconst calc = (n) => {\n  calls += 1;\n  return n * 2;\n};\nconst onceCalc = once(calc);\nconsole.log(onceCalc(3));\nconsole.log(onceCalc(9));\nconsole.log(calls);",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to cache the first result and reuse it for all later calls."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use a boolean flag and a stored result to prevent re-execution.",
+                                "code": "function once(fn) {\n  let called = false;\n  let result;\n  return function(...args) {\n    if (!called) {\n      result = fn(...args);\n      called = true;\n    }\n    return result;\n  };\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Both calls return 6 and the underlying function runs once."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-25",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Deep Clone",
+                    "description": "Implement `deepClone(obj)` for plain objects and arrays. Mutate the clone and show the original stays unchanged. Expected output: `2` and `3,4`.",
+                    "starterCode": "function deepClone(value) {\n  // Your code here\n}\n",
+                    "hint": "Recursively clone arrays and objects; return primitives as-is.",
+                    "solution": {
+                        "code": "function deepClone(value) {\n  if (value === null || typeof value !== \"object\") return value;\n  if (Array.isArray(value)) return value.map(deepClone);\n  const result = {};\n  for (const key in value) result[key] = deepClone(value[key]);\n  return result;\n}\nconst original = { a: 1, b: { c: 2 }, d: [3, 4] };\nconst copy = deepClone(original);\ncopy.b.c = 99;\ncopy.d.push(5);\nconsole.log(original.b.c);\nconsole.log(original.d.join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need a clone where nested objects and arrays are copied, not shared."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Handle primitives directly and recursively clone arrays and plain objects.",
+                                "code": "function deepClone(value) {\n  if (value === null || typeof value !== \"object\") return value;\n  if (Array.isArray(value)) return value.map(deepClone);\n  const result = {};\n  for (const key in value) result[key] = deepClone(value[key]);\n  return result;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Changes to the clone do not affect the original, so we see 2 and 3,4."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-26",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Event Emitter",
+                    "description": "Implement a minimal `Emitter` with `on(event, fn)` and `emit(event, ...args)`. Emit one event and print collected output. Expected output: `a1,b1`.",
+                    "starterCode": "class Emitter {\n  constructor() {\n    // Your code here\n  }\n  on(event, fn) {\n    // Your code here\n  }\n  emit(event, ...args) {\n    // Your code here\n  }\n}\n",
+                    "hint": "Store handlers per event in an array and call them in order.",
+                    "solution": {
+                        "code": "class Emitter {\n  constructor() {\n    this.events = new Map();\n  }\n  on(event, fn) {\n    if (!this.events.has(event)) this.events.set(event, []);\n    this.events.get(event).push(fn);\n  }\n  emit(event, ...args) {\n    const handlers = this.events.get(event) || [];\n    for (const fn of handlers) fn(...args);\n  }\n}\nconst out = [];\nconst emitter = new Emitter();\nemitter.on(\"ping\", (n) => out.push(\"a\" + n));\nemitter.on(\"ping\", (n) => out.push(\"b\" + n));\nemitter.emit(\"ping\", 1);\nconsole.log(out.join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to register handlers and invoke them later with event data."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use a Map of event -> handlers array, then iterate handlers on emit.",
+                                "code": "class Emitter {\n  constructor() {\n    this.events = new Map();\n  }\n  on(event, fn) {\n    if (!this.events.has(event)) this.events.set(event, []);\n    this.events.get(event).push(fn);\n  }\n  emit(event, ...args) {\n    const handlers = this.events.get(event) || [];\n    for (const fn of handlers) fn(...args);\n  }\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Both handlers run in order, producing a1,b1."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-27",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Longest Unique",
+                    "description": "Write `longestUnique(s)` returning the length of the longest substring without repeating characters. Test with \"abcabcbb\". Expected output: `3`.",
+                    "starterCode": "function longestUnique(s) {\n  // Your code here\n}\n",
+                    "hint": "Use a sliding window with last-seen indices.",
+                    "solution": {
+                        "code": "function longestUnique(s) {\n  const last = new Map();\n  let start = 0;\n  let best = 0;\n  for (let i = 0; i < s.length; i++) {\n    if (last.has(s[i]) && last.get(s[i]) >= start) {\n      start = last.get(s[i]) + 1;\n    }\n    last.set(s[i], i);\n    best = Math.max(best, i - start + 1);\n  }\n  return best;\n}\nconsole.log(longestUnique(\"abcabcbb\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the maximum length of any substring with all distinct characters."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Move a sliding window start when a repeated character is found inside the window.",
+                                "code": "function longestUnique(s) {\n  const last = new Map();\n  let start = 0;\n  let best = 0;\n  for (let i = 0; i < s.length; i++) {\n    if (last.has(s[i]) && last.get(s[i]) >= start) {\n      start = last.get(s[i]) + 1;\n    }\n    last.set(s[i], i);\n    best = Math.max(best, i - start + 1);\n  }\n  return best;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The longest unique substring length in abcabcbb is 3."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-28",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Kth Largest",
+                    "description": "Implement `kthLargest(nums, k)` using quickselect. Test with [3,2,1,5,6,4] and k=2. Expected output: `5`.",
+                    "starterCode": "function kthLargest(nums, k) {\n  // Your code here\n}\n",
+                    "hint": "Partition around a pivot and recurse into the side containing the kth element.",
+                    "solution": {
+                        "code": "function kthLargest(nums, k) {\n  const arr = nums.slice();\n  const target = arr.length - k;\n  function partition(l, r, pivotIdx) {\n    const pivot = arr[pivotIdx];\n    [arr[pivotIdx], arr[r]] = [arr[r], arr[pivotIdx]];\n    let store = l;\n    for (let i = l; i < r; i++) {\n      if (arr[i] < pivot) {\n        [arr[store], arr[i]] = [arr[i], arr[store]];\n        store++;\n      }\n    }\n    [arr[store], arr[r]] = [arr[r], arr[store]];\n    return store;\n  }\n  function select(l, r) {\n    if (l === r) return arr[l];\n    const pivotIdx = Math.floor((l + r) / 2);\n    const idx = partition(l, r, pivotIdx);\n    if (idx === target) return arr[idx];\n    if (idx < target) return select(idx + 1, r);\n    return select(l, idx - 1);\n  }\n  return select(0, arr.length - 1);\n}\nconsole.log(kthLargest([3, 2, 1, 5, 6, 4], 2));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the 2nd largest element without fully sorting the array."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use quickselect to partition the array and search only the relevant side.",
+                                "code": "function kthLargest(nums, k) {\n  const arr = nums.slice();\n  const target = arr.length - k;\n  function partition(l, r, pivotIdx) {\n    const pivot = arr[pivotIdx];\n    [arr[pivotIdx], arr[r]] = [arr[r], arr[pivotIdx]];\n    let store = l;\n    for (let i = l; i < r; i++) {\n      if (arr[i] < pivot) {\n        [arr[store], arr[i]] = [arr[i], arr[store]];\n        store++;\n      }\n    }\n    [arr[store], arr[r]] = [arr[r], arr[store]];\n    return store;\n  }\n  function select(l, r) {\n    if (l === r) return arr[l];\n    const pivotIdx = Math.floor((l + r) / 2);\n    const idx = partition(l, r, pivotIdx);\n    if (idx === target) return arr[idx];\n    if (idx < target) return select(idx + 1, r);\n    return select(l, idx - 1);\n  }\n  return select(0, arr.length - 1);\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The 2nd largest in [3,2,1,5,6,4] is 5."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-29",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Min Heap",
+                    "description": "Implement a `MinHeap` with `push` and `pop`. Push 5,1,3 then pop all values and print them. Expected output: `1,3,5`.",
+                    "starterCode": "class MinHeap {\n  constructor() {\n    // Your code here\n  }\n  push(value) {\n    // Your code here\n  }\n  pop() {\n    // Your code here\n  }\n}\n",
+                    "hint": "Use an array and bubble values up or down based on parent/child indices.",
+                    "solution": {
+                        "code": "class MinHeap {\n  constructor() {\n    this.data = [];\n  }\n  push(value) {\n    this.data.push(value);\n    this.bubbleUp(this.data.length - 1);\n  }\n  pop() {\n    if (this.data.length === 0) return undefined;\n    const min = this.data[0];\n    const last = this.data.pop();\n    if (this.data.length > 0) {\n      this.data[0] = last;\n      this.bubbleDown(0);\n    }\n    return min;\n  }\n  bubbleUp(idx) {\n    while (idx > 0) {\n      const parent = Math.floor((idx - 1) / 2);\n      if (this.data[parent] <= this.data[idx]) break;\n      [this.data[parent], this.data[idx]] = [this.data[idx], this.data[parent]];\n      idx = parent;\n    }\n  }\n  bubbleDown(idx) {\n    const n = this.data.length;\n    while (true) {\n      let smallest = idx;\n      const left = idx * 2 + 1;\n      const right = idx * 2 + 2;\n      if (left < n && this.data[left] < this.data[smallest]) smallest = left;\n      if (right < n && this.data[right] < this.data[smallest]) smallest = right;\n      if (smallest === idx) break;\n      [this.data[smallest], this.data[idx]] = [this.data[idx], this.data[smallest]];\n      idx = smallest;\n    }\n  }\n}\nconst h = new MinHeap();\n[5, 1, 3].forEach((v) => h.push(v));\nconst out = [h.pop(), h.pop(), h.pop()];\nconsole.log(out.join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need a heap that always removes the smallest element first."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Store values in an array and maintain the heap property with bubble up/down.",
+                                "code": "class MinHeap {\n  constructor() {\n    this.data = [];\n  }\n  push(value) {\n    this.data.push(value);\n    this.bubbleUp(this.data.length - 1);\n  }\n  pop() {\n    if (this.data.length === 0) return undefined;\n    const min = this.data[0];\n    const last = this.data.pop();\n    if (this.data.length > 0) {\n      this.data[0] = last;\n      this.bubbleDown(0);\n    }\n    return min;\n  }\n  bubbleUp(idx) {\n    while (idx > 0) {\n      const parent = Math.floor((idx - 1) / 2);\n      if (this.data[parent] <= this.data[idx]) break;\n      [this.data[parent], this.data[idx]] = [this.data[idx], this.data[parent]];\n      idx = parent;\n    }\n  }\n  bubbleDown(idx) {\n    const n = this.data.length;\n    while (true) {\n      let smallest = idx;\n      const left = idx * 2 + 1;\n      const right = idx * 2 + 2;\n      if (left < n && this.data[left] < this.data[smallest]) smallest = left;\n      if (right < n && this.data[right] < this.data[smallest]) smallest = right;\n      if (smallest === idx) break;\n      [this.data[smallest], this.data[idx]] = [this.data[idx], this.data[smallest]];\n      idx = smallest;\n    }\n  }\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Popping returns 1, then 3, then 5, so the output is 1,3,5."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-30",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Dijkstra Lite",
+                    "description": "Write `dijkstra(graph, start)` returning shortest distances in a weighted graph. Test distance from A to D. Expected output: `4`.",
+                    "starterCode": "function dijkstra(graph, start) {\n  // Your code here\n}\n",
+                    "hint": "Pick the unvisited node with the smallest tentative distance each step.",
+                    "solution": {
+                        "code": "function dijkstra(graph, start) {\n  const dist = {};\n  const visited = new Set();\n  for (const node in graph) dist[node] = Infinity;\n  dist[start] = 0;\n\n  while (true) {\n    let curr = null;\n    let best = Infinity;\n    for (const node in dist) {\n      if (!visited.has(node) && dist[node] < best) {\n        best = dist[node];\n        curr = node;\n      }\n    }\n    if (curr === null) break;\n    visited.add(curr);\n    for (const [next, w] of graph[curr]) {\n      if (dist[curr] + w < dist[next]) dist[next] = dist[curr] + w;\n    }\n  }\n  return dist;\n}\nconst graph = {\n  A: [[\"B\", 1], [\"C\", 4]],\n  B: [[\"C\", 2], [\"D\", 5]],\n  C: [[\"D\", 1]],\n  D: []\n};\nconsole.log(dijkstra(graph, \"A\").D);",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need shortest path distances from a start node in a weighted graph."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Repeatedly select the closest unvisited node and relax its edges.",
+                                "code": "function dijkstra(graph, start) {\n  const dist = {};\n  const visited = new Set();\n  for (const node in graph) dist[node] = Infinity;\n  dist[start] = 0;\n\n  while (true) {\n    let curr = null;\n    let best = Infinity;\n    for (const node in dist) {\n      if (!visited.has(node) && dist[node] < best) {\n        best = dist[node];\n        curr = node;\n      }\n    }\n    if (curr === null) break;\n    visited.add(curr);\n    for (const [next, w] of graph[curr]) {\n      if (dist[curr] + w < dist[next]) dist[next] = dist[curr] + w;\n    }\n  }\n  return dist;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The shortest path A->B->C->D costs 4."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-31",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Top K Frequent",
+                    "description": "Implement `topKFrequent(nums, k)` returning the k most common values. Test with [1,1,1,2,2,3] and k=2. Expected output: `1,2`.",
+                    "starterCode": "function topKFrequent(nums, k) {\n  // Your code here\n}\n",
+                    "hint": "Count with a Map, then sort entries by frequency.",
+                    "solution": {
+                        "code": "function topKFrequent(nums, k) {\n  const freq = new Map();\n  for (const n of nums) freq.set(n, (freq.get(n) || 0) + 1);\n  return [...freq.entries()]\n    .sort((a, b) => b[1] - a[1])\n    .slice(0, k)\n    .map(([n]) => n);\n}\nconsole.log(topKFrequent([1, 1, 1, 2, 2, 3], 2).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the values that appear most often."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Count occurrences, sort by frequency, and take the top k values.",
+                                "code": "function topKFrequent(nums, k) {\n  const freq = new Map();\n  for (const n of nums) freq.set(n, (freq.get(n) || 0) + 1);\n  return [...freq.entries()]\n    .sort((a, b) => b[1] - a[1])\n    .slice(0, k)\n    .map(([n]) => n);\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "1 appears 3 times and 2 appears 2 times, so output is 1,2."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-32",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Group Anagrams",
+                    "description": "Write `groupAnagrams(words)` grouping anagrams together. Test with [\"eat\",\"tea\",\"tan\",\"ate\",\"nat\",\"bat\"]. Expected output: `ate-eat-tea|bat|nat-tan`.",
+                    "starterCode": "function groupAnagrams(words) {\n  // Your code here\n}\n",
+                    "hint": "Use a sorted word as the grouping key.",
+                    "solution": {
+                        "code": "function groupAnagrams(words) {\n  const map = new Map();\n  for (const w of words) {\n    const key = w.split(\"\").sort().join(\"\");\n    if (!map.has(key)) map.set(key, []);\n    map.get(key).push(w);\n  }\n  const keys = [...map.keys()].sort();\n  return keys.map((k) => map.get(k).sort());\n}\nconst groups = groupAnagrams([\"eat\", \"tea\", \"tan\", \"ate\", \"nat\", \"bat\"]);\nconst out = groups.map((g) => g.join(\"-\")).join(\"|\");\nconsole.log(out);",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to group words that are rearrangements of each other."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Sort each word to create a key, then collect groups by that key.",
+                                "code": "function groupAnagrams(words) {\n  const map = new Map();\n  for (const w of words) {\n    const key = w.split(\"\").sort().join(\"\");\n    if (!map.has(key)) map.set(key, []);\n    map.get(key).push(w);\n  }\n  const keys = [...map.keys()].sort();\n  return keys.map((k) => map.get(k).sort());\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The grouped output formats to ate-eat-tea|bat|nat-tan."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-33",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Rotate Matrix",
+                    "description": "Rotate a square matrix 90 degrees clockwise. Test with a 3x3 matrix. Expected output: `7,4,1;8,5,2;9,6,3`.",
+                    "starterCode": "function rotateMatrix(matrix) {\n  // Your code here\n}\n",
+                    "hint": "Transpose then reverse each row.",
+                    "solution": {
+                        "code": "function rotateMatrix(matrix) {\n  const n = matrix.length;\n  for (let i = 0; i < n; i++) {\n    for (let j = i + 1; j < n; j++) {\n      [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];\n    }\n  }\n  for (const row of matrix) row.reverse();\n  return matrix;\n}\nconst m = [\n  [1, 2, 3],\n  [4, 5, 6],\n  [7, 8, 9]\n];\nconst rotated = rotateMatrix(m);\nconsole.log(rotated.map((r) => r.join(\",\")).join(\";\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to rotate the matrix in-place by 90 degrees clockwise."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Transpose the matrix and then reverse each row.",
+                                "code": "function rotateMatrix(matrix) {\n  const n = matrix.length;\n  for (let i = 0; i < n; i++) {\n    for (let j = i + 1; j < n; j++) {\n      [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];\n    }\n  }\n  for (const row of matrix) row.reverse();\n  return matrix;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The rotated matrix rows print as 7,4,1;8,5,2;9,6,3."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-34",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Spiral Print",
+                    "description": "Return a matrix in spiral order. Test with a 3x3 matrix. Expected output: `1,2,3,6,9,8,7,4,5`.",
+                    "starterCode": "function spiralOrder(matrix) {\n  // Your code here\n}\n",
+                    "hint": "Use four boundaries (top, bottom, left, right) and move them inward.",
+                    "solution": {
+                        "code": "function spiralOrder(matrix) {\n  const res = [];\n  let top = 0, bottom = matrix.length - 1;\n  let left = 0, right = matrix[0].length - 1;\n  while (top <= bottom && left <= right) {\n    for (let i = left; i <= right; i++) res.push(matrix[top][i]);\n    top++;\n    for (let i = top; i <= bottom; i++) res.push(matrix[i][right]);\n    right--;\n    if (top <= bottom) {\n      for (let i = right; i >= left; i--) res.push(matrix[bottom][i]);\n      bottom--;\n    }\n    if (left <= right) {\n      for (let i = bottom; i >= top; i--) res.push(matrix[i][left]);\n      left++;\n    }\n  }\n  return res;\n}\nconst m = [\n  [1, 2, 3],\n  [4, 5, 6],\n  [7, 8, 9]\n];\nconsole.log(spiralOrder(m).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to traverse the matrix in a clockwise spiral."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Track the current boundaries and append rows/columns as you shrink them.",
+                                "code": "function spiralOrder(matrix) {\n  const res = [];\n  let top = 0, bottom = matrix.length - 1;\n  let left = 0, right = matrix[0].length - 1;\n  while (top <= bottom && left <= right) {\n    for (let i = left; i <= right; i++) res.push(matrix[top][i]);\n    top++;\n    for (let i = top; i <= bottom; i++) res.push(matrix[i][right]);\n    right--;\n    if (top <= bottom) {\n      for (let i = right; i >= left; i--) res.push(matrix[bottom][i]);\n      bottom--;\n    }\n    if (left <= right) {\n      for (let i = bottom; i >= top; i--) res.push(matrix[i][left]);\n      left++;\n    }\n  }\n  return res;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The 3x3 spiral order is 1,2,3,6,9,8,7,4,5."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-35",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Zigzag Tree",
+                    "description": "Write `zigzagLevelOrder(root)` for a binary tree. Test with root 1, children 2 and 3, and 2's children 4 and 5. Expected output: `1|3,2|4,5`.",
+                    "starterCode": "function zigzagLevelOrder(root) {\n  // Your code here\n}\n",
+                    "hint": "Use BFS and reverse every other level before collecting.",
+                    "solution": {
+                        "code": "function zigzagLevelOrder(root) {\n  if (!root) return [];\n  const result = [];\n  let queue = [root];\n  let leftToRight = true;\n  while (queue.length > 0) {\n    const level = [];\n    const size = queue.length;\n    for (let i = 0; i < size; i++) {\n      const node = queue.shift();\n      level.push(node.val);\n      if (node.left) queue.push(node.left);\n      if (node.right) queue.push(node.right);\n    }\n    if (!leftToRight) level.reverse();\n    result.push(level);\n    leftToRight = !leftToRight;\n  }\n  return result;\n}\nconst tree = {\n  val: 1,\n  left: { val: 2, left: { val: 4, left: null, right: null }, right: { val: 5, left: null, right: null } },\n  right: { val: 3, left: null, right: null }\n};\nconst out = zigzagLevelOrder(tree).map((l) => l.join(\",\")).join(\"|\");\nconsole.log(out);",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need a level-order traversal that alternates direction each level."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use BFS to collect each level, reversing alternate levels before pushing.",
+                                "code": "function zigzagLevelOrder(root) {\n  if (!root) return [];\n  const result = [];\n  let queue = [root];\n  let leftToRight = true;\n  while (queue.length > 0) {\n    const level = [];\n    const size = queue.length;\n    for (let i = 0; i < size; i++) {\n      const node = queue.shift();\n      level.push(node.val);\n      if (node.left) queue.push(node.left);\n      if (node.right) queue.push(node.right);\n    }\n    if (!leftToRight) level.reverse();\n    result.push(level);\n    leftToRight = !leftToRight;\n  }\n  return result;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Levels are 1, then 3,2, then 4,5, matching 1|3,2|4,5."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-36",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Level Serialize",
+                    "description": "Write `serializeLevel(root)` that outputs a level-order array including nulls (trim trailing nulls). Test with a small tree. Expected output: `1,2,3,null,4`.",
+                    "starterCode": "function serializeLevel(root) {\n  // Your code here\n}\n",
+                    "hint": "Use a queue and push null for missing children, then trim trailing nulls.",
+                    "solution": {
+                        "code": "function serializeLevel(root) {\n  if (!root) return [];\n  const res = [];\n  const queue = [root];\n  while (queue.length > 0) {\n    const node = queue.shift();\n    if (node) {\n      res.push(node.val);\n      queue.push(node.left);\n      queue.push(node.right);\n    } else {\n      res.push(null);\n    }\n  }\n  while (res.length > 0 && res[res.length - 1] === null) res.pop();\n  return res;\n}\nconst tree = {\n  val: 1,\n  left: { val: 2, left: null, right: { val: 4, left: null, right: null } },\n  right: { val: 3, left: null, right: null }\n};\nconsole.log(serializeLevel(tree).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need a level-order serialization that includes nulls for missing nodes."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "BFS through the tree, recording nulls, then trim trailing nulls.",
+                                "code": "function serializeLevel(root) {\n  if (!root) return [];\n  const res = [];\n  const queue = [root];\n  while (queue.length > 0) {\n    const node = queue.shift();\n    if (node) {\n      res.push(node.val);\n      queue.push(node.left);\n      queue.push(node.right);\n    } else {\n      res.push(null);\n    }\n  }\n  while (res.length > 0 && res[res.length - 1] === null) res.pop();\n  return res;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The tree serializes to 1,2,3,null,4."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-37",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Prefix Sum",
+                    "description": "Build prefix sums for an array. Test with [2,4,6,8]. Expected output: `2,6,12,20`.",
+                    "starterCode": "function prefixSums(nums) {\n  // Your code here\n}\n",
+                    "hint": "Accumulate a running total and store it at each index.",
+                    "solution": {
+                        "code": "function prefixSums(nums) {\n  const res = [];\n  let sum = 0;\n  for (const n of nums) {\n    sum += n;\n    res.push(sum);\n  }\n  return res;\n}\nconsole.log(prefixSums([2, 4, 6, 8]).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need each index to store the sum of all elements up to it."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Keep a running sum and append it for each element.",
+                                "code": "function prefixSums(nums) {\n  const res = [];\n  let sum = 0;\n  for (const n of nums) {\n    sum += n;\n    res.push(sum);\n  }\n  return res;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The cumulative sums are 2,6,12,20."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-38",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Longest Pal",
+                    "description": "Write `longestPalindrome(s)` returning the longest palindromic substring. Test with \"babad\". Expected output: `bab`.",
+                    "starterCode": "function longestPalindrome(s) {\n  // Your code here\n}\n",
+                    "hint": "Expand around each center (odd and even) and track the best span.",
+                    "solution": {
+                        "code": "function longestPalindrome(s) {\n  let bestStart = 0;\n  let bestLen = 1;\n  function expand(l, r) {\n    while (l >= 0 && r < s.length && s[l] === s[r]) {\n      l--;\n      r++;\n    }\n    return [l + 1, r - l - 1];\n  }\n  for (let i = 0; i < s.length; i++) {\n    const [s1, len1] = expand(i, i);\n    if (len1 > bestLen) {\n      bestStart = s1;\n      bestLen = len1;\n    }\n    const [s2, len2] = expand(i, i + 1);\n    if (len2 > bestLen) {\n      bestStart = s2;\n      bestLen = len2;\n    }\n  }\n  return s.slice(bestStart, bestStart + bestLen);\n}\nconsole.log(longestPalindrome(\"babad\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the longest contiguous substring that reads the same backward."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Expand from each center (odd and even) and keep the longest span.",
+                                "code": "function longestPalindrome(s) {\n  let bestStart = 0;\n  let bestLen = 1;\n  function expand(l, r) {\n    while (l >= 0 && r < s.length && s[l] === s[r]) {\n      l--;\n      r++;\n    }\n    return [l + 1, r - l - 1];\n  }\n  for (let i = 0; i < s.length; i++) {\n    const [s1, len1] = expand(i, i);\n    if (len1 > bestLen) {\n      bestStart = s1;\n      bestLen = len1;\n    }\n    const [s2, len2] = expand(i, i + 1);\n    if (len2 > bestLen) {\n      bestStart = s2;\n      bestLen = len2;\n    }\n  }\n  return s.slice(bestStart, bestStart + bestLen);\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "For babad, a longest palindrome is bab."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-39",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Edit Distance",
+                    "description": "Write `editDistance(a, b)` returning the minimum edits to turn a into b. Test with \"kitten\" and \"sitting\". Expected output: `3`.",
+                    "starterCode": "function editDistance(a, b) {\n  // Your code here\n}\n",
+                    "hint": "Use dynamic programming over prefixes of the two strings.",
+                    "solution": {
+                        "code": "function editDistance(a, b) {\n  const m = a.length, n = b.length;\n  const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));\n  for (let i = 0; i <= m; i++) dp[i][0] = i;\n  for (let j = 0; j <= n; j++) dp[0][j] = j;\n  for (let i = 1; i <= m; i++) {\n    for (let j = 1; j <= n; j++) {\n      if (a[i - 1] === b[j - 1]) dp[i][j] = dp[i - 1][j - 1];\n      else dp[i][j] = 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);\n    }\n  }\n  return dp[m][n];\n}\nconsole.log(editDistance(\"kitten\", \"sitting\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the minimum number of insertions, deletions, and substitutions."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use a DP table where dp[i][j] is the edit distance for prefixes a[0..i) and b[0..j).",
+                                "code": "function editDistance(a, b) {\n  const m = a.length, n = b.length;\n  const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));\n  for (let i = 0; i <= m; i++) dp[i][0] = i;\n  for (let j = 0; j <= n; j++) dp[0][j] = j;\n  for (let i = 1; i <= m; i++) {\n    for (let j = 1; j <= n; j++) {\n      if (a[i - 1] === b[j - 1]) dp[i][j] = dp[i - 1][j - 1];\n      else dp[i][j] = 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);\n    }\n  }\n  return dp[m][n];\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Transforming kitten to sitting takes 3 edits."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-40",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Word Break",
+                    "description": "Write `wordBreak(s, wordDict)` returning true if s can be segmented. Test with s=\"leetcode\" and dict [\"leet\",\"code\"]. Expected output: `true`.",
+                    "starterCode": "function wordBreak(s, wordDict) {\n  // Your code here\n}\n",
+                    "hint": "Use DP where dp[i] means s[0..i) can be segmented.",
+                    "solution": {
+                        "code": "function wordBreak(s, wordDict) {\n  const set = new Set(wordDict);\n  const dp = Array(s.length + 1).fill(false);\n  dp[0] = true;\n  for (let i = 1; i <= s.length; i++) {\n    for (let j = 0; j < i; j++) {\n      if (dp[j] && set.has(s.slice(j, i))) {\n        dp[i] = true;\n        break;\n      }\n    }\n  }\n  return dp[s.length];\n}\nconsole.log(wordBreak(\"leetcode\", [\"leet\", \"code\"]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to check if the string can be built from dictionary words."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use dp to check valid prefixes and extend them with dictionary words.",
+                                "code": "function wordBreak(s, wordDict) {\n  const set = new Set(wordDict);\n  const dp = Array(s.length + 1).fill(false);\n  dp[0] = true;\n  for (let i = 1; i <= s.length; i++) {\n    for (let j = 0; j < i; j++) {\n      if (dp[j] && set.has(s.slice(j, i))) {\n        dp[i] = true;\n        break;\n      }\n    }\n  }\n  return dp[s.length];\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "leetcode can be split into leet + code, so the result is true."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-41",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Knapsack Lite",
+                    "description": "Implement `knapsack(values, weights, cap)` for 0/1 knapsack. Test with values [6,10,12], weights [1,2,3], cap 5. Expected output: `22`.",
+                    "starterCode": "function knapsack(values, weights, cap) {\n  // Your code here\n}\n",
+                    "hint": "Use a 1D DP array and iterate capacity backwards for each item.",
+                    "solution": {
+                        "code": "function knapsack(values, weights, cap) {\n  const dp = Array(cap + 1).fill(0);\n  for (let i = 0; i < values.length; i++) {\n    for (let c = cap; c >= weights[i]; c--) {\n      dp[c] = Math.max(dp[c], dp[c - weights[i]] + values[i]);\n    }\n  }\n  return dp[cap];\n}\nconsole.log(knapsack([6, 10, 12], [1, 2, 3], 5));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the maximum value without exceeding the capacity."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use DP where dp[c] is the best value for capacity c, iterating capacity backwards per item.",
+                                "code": "function knapsack(values, weights, cap) {\n  const dp = Array(cap + 1).fill(0);\n  for (let i = 0; i < values.length; i++) {\n    for (let c = cap; c >= weights[i]; c--) {\n      dp[c] = Math.max(dp[c], dp[c - weights[i]] + values[i]);\n    }\n  }\n  return dp[cap];\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Taking items of weights 2 and 3 yields value 22."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-42",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Coin Change",
+                    "description": "Implement `coinChange(coins, amount)` returning the minimum number of coins. Test with coins [1,2,5], amount 11. Expected output: `3`.",
+                    "starterCode": "function coinChange(coins, amount) {\n  // Your code here\n}\n",
+                    "hint": "Use DP where dp[i] stores the fewest coins to make sum i.",
+                    "solution": {
+                        "code": "function coinChange(coins, amount) {\n  const dp = Array(amount + 1).fill(Infinity);\n  dp[0] = 0;\n  for (const coin of coins) {\n    for (let i = coin; i <= amount; i++) {\n      dp[i] = Math.min(dp[i], dp[i - coin] + 1);\n    }\n  }\n  return dp[amount] === Infinity ? -1 : dp[amount];\n}\nconsole.log(coinChange([1, 2, 5], 11));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the smallest number of coins that sum to the target."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Build dp bottom-up for all sums from 1..amount.",
+                                "code": "function coinChange(coins, amount) {\n  const dp = Array(amount + 1).fill(Infinity);\n  dp[0] = 0;\n  for (const coin of coins) {\n    for (let i = coin; i <= amount; i++) {\n      dp[i] = Math.min(dp[i], dp[i - coin] + 1);\n    }\n  }\n  return dp[amount] === Infinity ? -1 : dp[amount];\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "11 = 5 + 5 + 1, so the minimum coins is 3."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-43",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Unique Paths",
+                    "description": "Write `uniquePaths(m, n)` returning the number of grid paths moving only right or down. Test with m=3, n=7. Expected output: `28`.",
+                    "starterCode": "function uniquePaths(m, n) {\n  // Your code here\n}\n",
+                    "hint": "Use DP with a 1D array of size n.",
+                    "solution": {
+                        "code": "function uniquePaths(m, n) {\n  const dp = Array(n).fill(1);\n  for (let i = 1; i < m; i++) {\n    for (let j = 1; j < n; j++) {\n      dp[j] += dp[j - 1];\n    }\n  }\n  return dp[n - 1];\n}\nconsole.log(uniquePaths(3, 7));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the count of ways to reach the bottom-right by moving right or down."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Each cell is the sum of the top and left counts, which a 1D DP tracks.",
+                                "code": "function uniquePaths(m, n) {\n  const dp = Array(n).fill(1);\n  for (let i = 1; i < m; i++) {\n    for (let j = 1; j < n; j++) {\n      dp[j] += dp[j - 1];\n    }\n  }\n  return dp[n - 1];\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "For a 3x7 grid the number of paths is 28."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-44",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Min Path Sum",
+                    "description": "Write `minPathSum(grid)` returning the minimum sum path from top-left to bottom-right. Test with [[1,3,1],[1,5,1],[4,2,1]]. Expected output: `7`.",
+                    "starterCode": "function minPathSum(grid) {\n  // Your code here\n}\n",
+                    "hint": "DP each cell as its value plus the min of top/left.",
+                    "solution": {
+                        "code": "function minPathSum(grid) {\n  const m = grid.length, n = grid[0].length;\n  const dp = Array.from({ length: m }, () => Array(n).fill(0));\n  dp[0][0] = grid[0][0];\n  for (let i = 1; i < m; i++) dp[i][0] = dp[i - 1][0] + grid[i][0];\n  for (let j = 1; j < n; j++) dp[0][j] = dp[0][j - 1] + grid[0][j];\n  for (let i = 1; i < m; i++) {\n    for (let j = 1; j < n; j++) {\n      dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];\n    }\n  }\n  return dp[m - 1][n - 1];\n}\nconsole.log(minPathSum([[1, 3, 1], [1, 5, 1], [4, 2, 1]]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the smallest sum path moving only right or down."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "DP accumulates the min cost to reach each cell from top or left.",
+                                "code": "function minPathSum(grid) {\n  const m = grid.length, n = grid[0].length;\n  const dp = Array.from({ length: m }, () => Array(n).fill(0));\n  dp[0][0] = grid[0][0];\n  for (let i = 1; i < m; i++) dp[i][0] = dp[i - 1][0] + grid[i][0];\n  for (let j = 1; j < n; j++) dp[0][j] = dp[0][j - 1] + grid[0][j];\n  for (let i = 1; i < m; i++) {\n    for (let j = 1; j < n; j++) {\n      dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];\n    }\n  }\n  return dp[m - 1][n - 1];\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The path 1->3->1->1->1 sums to 7."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-45",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Detect Cycle",
+                    "description": "Write `hasCycle(graph)` for a directed graph. Test with A->B->C->A. Expected output: `true`.",
+                    "starterCode": "function hasCycle(graph) {\n  // Your code here\n}\n",
+                    "hint": "Use DFS with 3 states: unvisited, visiting, visited.",
+                    "solution": {
+                        "code": "function hasCycle(graph) {\n  const state = {};\n  function dfs(node) {\n    if (state[node] === 1) return true;\n    if (state[node] === 2) return false;\n    state[node] = 1;\n    for (const next of graph[node]) {\n      if (dfs(next)) return true;\n    }\n    state[node] = 2;\n    return false;\n  }\n  for (const node in graph) {\n    if (dfs(node)) return true;\n  }\n  return false;\n}\nconst graph = { A: [\"B\"], B: [\"C\"], C: [\"A\"] };\nconsole.log(hasCycle(graph));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to detect whether a directed graph contains a cycle."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Track DFS states to detect a back edge to a visiting node.",
+                                "code": "function hasCycle(graph) {\n  const state = {};\n  function dfs(node) {\n    if (state[node] === 1) return true;\n    if (state[node] === 2) return false;\n    state[node] = 1;\n    for (const next of graph[node]) {\n      if (dfs(next)) return true;\n    }\n    state[node] = 2;\n    return false;\n  }\n  for (const node in graph) {\n    if (dfs(node)) return true;\n  }\n  return false;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The cycle A->B->C->A makes the output true."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-46",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Union Find",
+                    "description": "Implement `DSU` with `find`, `union`, and `connected`. Test union(1,2), union(2,3). Expected output: `true,false`.",
+                    "starterCode": "class DSU {\n  constructor(n) {\n    // Your code here\n  }\n  find(x) {\n    // Your code here\n  }\n  union(a, b) {\n    // Your code here\n  }\n  connected(a, b) {\n    // Your code here\n  }\n}\n",
+                    "hint": "Use path compression and union by size or rank.",
+                    "solution": {
+                        "code": "class DSU {\n  constructor(n) {\n    this.parent = Array.from({ length: n + 1 }, (_, i) => i);\n    this.size = Array(n + 1).fill(1);\n  }\n  find(x) {\n    if (this.parent[x] !== x) this.parent[x] = this.find(this.parent[x]);\n    return this.parent[x];\n  }\n  union(a, b) {\n    let ra = this.find(a);\n    let rb = this.find(b);\n    if (ra === rb) return;\n    if (this.size[ra] < this.size[rb]) [ra, rb] = [rb, ra];\n    this.parent[rb] = ra;\n    this.size[ra] += this.size[rb];\n  }\n  connected(a, b) {\n    return this.find(a) === this.find(b);\n  }\n}\nconst dsu = new DSU(4);\ndsu.union(1, 2);\ndsu.union(2, 3);\nconsole.log(dsu.connected(1, 3));\nconsole.log(dsu.connected(1, 4));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to efficiently merge sets and check connectivity."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use parent pointers with path compression and union by size.",
+                                "code": "class DSU {\n  constructor(n) {\n    this.parent = Array.from({ length: n + 1 }, (_, i) => i);\n    this.size = Array(n + 1).fill(1);\n  }\n  find(x) {\n    if (this.parent[x] !== x) this.parent[x] = this.find(this.parent[x]);\n    return this.parent[x];\n  }\n  union(a, b) {\n    let ra = this.find(a);\n    let rb = this.find(b);\n    if (ra === rb) return;\n    if (this.size[ra] < this.size[rb]) [ra, rb] = [rb, ra];\n    this.parent[rb] = ra;\n    this.size[ra] += this.size[rb];\n  }\n  connected(a, b) {\n    return this.find(a) === this.find(b);\n  }\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "1 and 3 are connected, while 1 and 4 are not."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-47",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Queue Stacks",
+                    "description": "Implement a queue using two stacks. Enqueue 1,2,3 then dequeue twice. Expected output: `1,2`.",
+                    "starterCode": "class QueueViaStacks {\n  constructor() {\n    // Your code here\n  }\n  enqueue(value) {\n    // Your code here\n  }\n  dequeue() {\n    // Your code here\n  }\n}\n",
+                    "hint": "Use one stack for input and another for output; pour when output is empty.",
+                    "solution": {
+                        "code": "class QueueViaStacks {\n  constructor() {\n    this.inStack = [];\n    this.outStack = [];\n  }\n  enqueue(value) {\n    this.inStack.push(value);\n  }\n  dequeue() {\n    if (this.outStack.length === 0) {\n      while (this.inStack.length > 0) this.outStack.push(this.inStack.pop());\n    }\n    return this.outStack.pop();\n  }\n}\nconst q = new QueueViaStacks();\nq.enqueue(1);\nq.enqueue(2);\nq.enqueue(3);\nconst out = [q.dequeue(), q.dequeue()];\nconsole.log(out.join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need FIFO behavior using only stacks."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use two stacks: push into inStack, pop from outStack, refilling when needed.",
+                                "code": "class QueueViaStacks {\n  constructor() {\n    this.inStack = [];\n    this.outStack = [];\n  }\n  enqueue(value) {\n    this.inStack.push(value);\n  }\n  dequeue() {\n    if (this.outStack.length === 0) {\n      while (this.inStack.length > 0) this.outStack.push(this.inStack.pop());\n    }\n    return this.outStack.pop();\n  }\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Dequeuing returns 1 and 2 in order."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-48",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Min Stack",
+                    "description": "Implement `MinStack` with `push`, `pop`, and `getMin`. Push 3,1,2 then print min, pop, print min. Expected output: `1` then `1`.",
+                    "starterCode": "class MinStack {\n  constructor() {\n    // Your code here\n  }\n  push(value) {\n    // Your code here\n  }\n  pop() {\n    // Your code here\n  }\n  getMin() {\n    // Your code here\n  }\n}\n",
+                    "hint": "Track a parallel stack of minimum values.",
+                    "solution": {
+                        "code": "class MinStack {\n  constructor() {\n    this.stack = [];\n    this.mins = [];\n  }\n  push(value) {\n    this.stack.push(value);\n    const min = this.mins.length === 0 ? value : Math.min(value, this.mins[this.mins.length - 1]);\n    this.mins.push(min);\n  }\n  pop() {\n    this.mins.pop();\n    return this.stack.pop();\n  }\n  getMin() {\n    return this.mins[this.mins.length - 1];\n  }\n}\nconst ms = new MinStack();\nms.push(3);\nms.push(1);\nms.push(2);\nconsole.log(ms.getMin());\nms.pop();\nconsole.log(ms.getMin());",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need O(1) min retrieval alongside stack operations."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Maintain a second stack that tracks the minimum at each depth.",
+                                "code": "class MinStack {\n  constructor() {\n    this.stack = [];\n    this.mins = [];\n  }\n  push(value) {\n    this.stack.push(value);\n    const min = this.mins.length === 0 ? value : Math.min(value, this.mins[this.mins.length - 1]);\n    this.mins.push(min);\n  }\n  pop() {\n    this.mins.pop();\n    return this.stack.pop();\n  }\n  getMin() {\n    return this.mins[this.mins.length - 1];\n  }\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The minimum is 1 before and after popping 2."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-49",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Regex Escape",
+                    "description": "Implement `escapeRegExp(str)` to escape regex special chars. Test with \"a+b?c\". Expected output: `a\\+b\\?c`.",
+                    "starterCode": "function escapeRegExp(str) {\n  // Your code here\n}\n",
+                    "hint": "Replace special characters with a backslash-prefixed version using a regex.",
+                    "solution": {
+                        "code": "function escapeRegExp(str) {\n  return str.replace(/[.*+?^${}()|[\\]\\\\]/g, \"\\\\$&\");\n}\nconsole.log(escapeRegExp(\"a+b?c\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We must escape characters that have special meaning in regexes."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use a regex to find special chars and prefix each with a backslash.",
+                                "code": "function escapeRegExp(str) {\n  return str.replace(/[.*+?^${}()|[\\]\\\\]/g, \"\\\\$&\");\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The output is a\\+b\\?c, matching the expected escaped string."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-50",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Query Parse",
+                    "description": "Implement `parseQuery(qs)` for a simple query string. Test with \"a=1&b=2&c=hello\". Expected output: `{\"a\":\"1\",\"b\":\"2\",\"c\":\"hello\"}`.",
+                    "starterCode": "function parseQuery(qs) {\n  // Your code here\n}\n",
+                    "hint": "Split on '&' then on '=' and build an object.",
+                    "solution": {
+                        "code": "function parseQuery(qs) {\n  const obj = {};\n  if (!qs) return obj;\n  for (const part of qs.split(\"&\")) {\n    const [key, value] = part.split(\"=\");\n    obj[key] = value;\n  }\n  return obj;\n}\nconsole.log(JSON.stringify(parseQuery(\"a=1&b=2&c=hello\")));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to transform a query string into a key/value object."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Split pairs by '&', then split each pair by '=' and store in an object.",
+                                "code": "function parseQuery(qs) {\n  const obj = {};\n  if (!qs) return obj;\n  for (const part of qs.split(\"&\")) {\n    const [key, value] = part.split(\"=\");\n    obj[key] = value;\n  }\n  return obj;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The JSON string matches {\"a\":\"1\",\"b\":\"2\",\"c\":\"hello\"}."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-51",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Deep Equal",
+                    "description": "Implement `deepEqual(a, b)` for objects and arrays. Compare two equal objects and one different. Expected output: `true` then `false`.",
+                    "starterCode": "function deepEqual(a, b) {\n  // Your code here\n}\n",
+                    "hint": "Check types, handle arrays and objects recursively, and compare keys.",
+                    "solution": {
+                        "code": "function deepEqual(a, b) {\n  if (a === b) return true;\n  if (a === null || b === null) return false;\n  if (typeof a !== \"object\" || typeof b !== \"object\") return false;\n  const aKeys = Object.keys(a);\n  const bKeys = Object.keys(b);\n  if (aKeys.length !== bKeys.length) return false;\n  for (const key of aKeys) {\n    if (!bKeys.includes(key) || !deepEqual(a[key], b[key])) return false;\n  }\n  return true;\n}\nconst a = { x: 1, y: { z: 2 } };\nconst b = { x: 1, y: { z: 2 } };\nconst c = { x: 1, y: { z: 3 } };\nconsole.log(deepEqual(a, b));\nconsole.log(deepEqual(a, c));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need deep structural equality, not just reference equality."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Compare primitives directly and recurse for arrays and objects.",
+                                "code": "function deepEqual(a, b) {\n  if (a === b) return true;\n  if (a === null || b === null) return false;\n  if (typeof a !== \"object\" || typeof b !== \"object\") return false;\n  const aKeys = Object.keys(a);\n  const bKeys = Object.keys(b);\n  if (aKeys.length !== bKeys.length) return false;\n  for (const key of aKeys) {\n    if (!bKeys.includes(key) || !deepEqual(a[key], b[key])) return false;\n  }\n  return true;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The first pair matches, the second differs at y.z."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-52",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Flatten Depth",
+                    "description": "Implement `flattenDepth(arr, depth)` that flattens arrays up to depth. Test with [1,[2,[3,[4]]]] and depth 2. Expected output: `[1,2,3,[4]]`.",
+                    "starterCode": "function flattenDepth(arr, depth) {\n  // Your code here\n}\n",
+                    "hint": "If depth is 0, return a shallow copy; otherwise flatten one level and recurse.",
+                    "solution": {
+                        "code": "function flattenDepth(arr, depth) {\n  if (depth === 0) return arr.slice();\n  const res = [];\n  for (const item of arr) {\n    if (Array.isArray(item)) res.push(...flattenDepth(item, depth - 1));\n    else res.push(item);\n  }\n  return res;\n}\nconst result = flattenDepth([1, [2, [3, [4]]]], 2);\nconsole.log(JSON.stringify(result));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We must flatten only the specified number of nesting levels."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Recursively flatten one level at a time until depth reaches 0.",
+                                "code": "function flattenDepth(arr, depth) {\n  if (depth === 0) return arr.slice();\n  const res = [];\n  for (const item of arr) {\n    if (Array.isArray(item)) res.push(...flattenDepth(item, depth - 1));\n    else res.push(item);\n  }\n  return res;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Flattening two levels yields [1,2,3,[4]]."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-53",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Object Diff",
+                    "description": "Implement `diffKeys(a, b)` returning keys with different values. Test with a={a:1,b:2,c:3} and b={a:1,b:9,d:4}. Expected output: `b,c,d`.",
+                    "starterCode": "function diffKeys(a, b) {\n  // Your code here\n}\n",
+                    "hint": "Check the union of keys and compare values.",
+                    "solution": {
+                        "code": "function diffKeys(a, b) {\n  const keys = new Set([...Object.keys(a), ...Object.keys(b)]);\n  const diff = [];\n  for (const key of keys) {\n    if (a[key] !== b[key]) diff.push(key);\n  }\n  return diff.sort();\n}\nconsole.log(diffKeys({ a: 1, b: 2, c: 3 }, { a: 1, b: 9, d: 4 }).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need keys where values differ or exist in only one object."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Union the keys, compare values, and return the differing ones sorted.",
+                                "code": "function diffKeys(a, b) {\n  const keys = new Set([...Object.keys(a), ...Object.keys(b)]);\n  const diff = [];\n  for (const key of keys) {\n    if (a[key] !== b[key]) diff.push(key);\n  }\n  return diff.sort();\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "b differs, c is missing in b, and d is missing in a."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-54",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Stable Sort",
+                    "description": "Implement `stableSortBy(arr, key)` preserving relative order for equal keys. Test with scores [2,1,2]. Expected output: `b,a,c`.",
+                    "starterCode": "function stableSortBy(arr, key) {\n  // Your code here\n}\n",
+                    "hint": "Decorate with original index, sort, then undecorate.",
+                    "solution": {
+                        "code": "function stableSortBy(arr, key) {\n  return arr\n    .map((v, i) => ({ v, i }))\n    .sort((a, b) => {\n      const diff = a.v[key] - b.v[key];\n      return diff !== 0 ? diff : a.i - b.i;\n    })\n    .map((x) => x.v);\n}\nconst items = [\n  { name: \"a\", score: 2 },\n  { name: \"b\", score: 1 },\n  { name: \"c\", score: 2 }\n];\nconsole.log(stableSortBy(items, \"score\").map((x) => x.name).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need sorting without reordering equal-key items."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Include original indices and use them as tie-breakers.",
+                                "code": "function stableSortBy(arr, key) {\n  return arr\n    .map((v, i) => ({ v, i }))\n    .sort((a, b) => {\n      const diff = a.v[key] - b.v[key];\n      return diff !== 0 ? diff : a.i - b.i;\n    })\n    .map((x) => x.v);\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Scores 2 keep original order a then c, so output is b,a,c."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-55",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "LCA Finder",
+                    "description": "Write `lowestCommonAncestor(root, p, q)` for a binary tree. Test with nodes 4 and 5 in a tree rooted at 3. Expected output: `2`.",
+                    "starterCode": "function lowestCommonAncestor(root, p, q) {\n  // Your code here\n}\n",
+                    "hint": "If a node matches p or q, return it; if both sides return non-null, it's the LCA.",
+                    "solution": {
+                        "code": "function lowestCommonAncestor(root, p, q) {\n  if (!root || root === p || root === q) return root;\n  const left = lowestCommonAncestor(root.left, p, q);\n  const right = lowestCommonAncestor(root.right, p, q);\n  if (left && right) return root;\n  return left || right;\n}\nconst n4 = { val: 4, left: null, right: null };\nconst n5 = { val: 5, left: null, right: null };\nconst n2 = { val: 2, left: n4, right: n5 };\nconst n8 = { val: 8, left: null, right: null };\nconst n3 = { val: 3, left: n2, right: n8 };\nconsole.log(lowestCommonAncestor(n3, n4, n5).val);",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the lowest node that has both targets in its subtrees."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Return the node when it matches p or q; if both sides return a node, current is LCA.",
+                                "code": "function lowestCommonAncestor(root, p, q) {\n  if (!root || root === p || root === q) return root;\n  const left = lowestCommonAncestor(root.left, p, q);\n  const right = lowestCommonAncestor(root.right, p, q);\n  if (left && right) return root;\n  return left || right;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Nodes 4 and 5 share ancestor 2, so output is 2."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-56",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "BST Validate",
+                    "description": "Write `isValidBST(root)` to validate a BST. Test with root 5, left 1, right 4 with children 3 and 6. Expected output: `false`.",
+                    "starterCode": "function isValidBST(root) {\n  // Your code here\n}\n",
+                    "hint": "Track allowed min/max bounds as you traverse the tree.",
+                    "solution": {
+                        "code": "function isValidBST(root) {\n  function check(node, min, max) {\n    if (!node) return true;\n    if (node.val <= min || node.val >= max) return false;\n    return check(node.left, min, node.val) && check(node.right, node.val, max);\n  }\n  return check(root, -Infinity, Infinity);\n}\nconst tree = {\n  val: 5,\n  left: { val: 1, left: null, right: null },\n  right: { val: 4, left: { val: 3, left: null, right: null }, right: { val: 6, left: null, right: null } }\n};\nconsole.log(isValidBST(tree));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to ensure every node fits within valid BST bounds."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Pass min/max bounds through recursion and validate each node.",
+                                "code": "function isValidBST(root) {\n  function check(node, min, max) {\n    if (!node) return true;\n    if (node.val <= min || node.val >= max) return false;\n    return check(node.left, min, node.val) && check(node.right, node.val, max);\n  }\n  return check(root, -Infinity, Infinity);\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The right child 4 violates the BST rule for root 5, so output is false."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-57",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "BST Insert",
+                    "description": "Implement `insertBST(root, val)` and print the in-order traversal after inserting 4 into the tree 5,3,7. Expected output: `3,4,5,7`.",
+                    "starterCode": "function insertBST(root, val) {\n  // Your code here\n}\n",
+                    "hint": "Insert recursively into left or right subtree based on value.",
+                    "solution": {
+                        "code": "function insertBST(root, val) {\n  if (!root) return { val, left: null, right: null };\n  if (val < root.val) root.left = insertBST(root.left, val);\n  else root.right = insertBST(root.right, val);\n  return root;\n}\nfunction inOrder(root, out) {\n  if (!root) return;\n  inOrder(root.left, out);\n  out.push(root.val);\n  inOrder(root.right, out);\n}\nlet tree = { val: 5, left: { val: 3, left: null, right: null }, right: { val: 7, left: null, right: null } };\ntree = insertBST(tree, 4);\nconst out = [];\ninOrder(tree, out);\nconsole.log(out.join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to insert into a BST while preserving ordering."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Insert recursively left or right based on comparisons, then traverse in-order.",
+                                "code": "function insertBST(root, val) {\n  if (!root) return { val, left: null, right: null };\n  if (val < root.val) root.left = insertBST(root.left, val);\n  else root.right = insertBST(root.right, val);\n  return root;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The in-order traversal prints 3,4,5,7 after inserting 4."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-58",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Shortest Path",
+                    "description": "Write `shortestPath(graph, start, end)` returning the shortest path length in an unweighted graph. Test from A to E. Expected output: `3`.",
+                    "starterCode": "function shortestPath(graph, start, end) {\n  // Your code here\n}\n",
+                    "hint": "Use BFS and track distance from the start node.",
+                    "solution": {
+                        "code": "function shortestPath(graph, start, end) {\n  const queue = [[start, 0]];\n  const visited = new Set([start]);\n  while (queue.length > 0) {\n    const [node, dist] = queue.shift();\n    if (node === end) return dist;\n    for (const next of (graph[node] || [])) {\n      if (!visited.has(next)) {\n        visited.add(next);\n        queue.push([next, dist + 1]);\n      }\n    }\n  }\n  return -1;\n}\nconst graph = { A: [\"B\", \"C\"], B: [\"D\"], C: [\"D\"], D: [\"E\"], E: [] };\nconsole.log(shortestPath(graph, \"A\", \"E\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the shortest number of edges between two nodes."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "BFS visits nodes in increasing distance, so the first time we reach end is shortest.",
+                                "code": "function shortestPath(graph, start, end) {\n  const queue = [[start, 0]];\n  const visited = new Set([start]);\n  while (queue.length > 0) {\n    const [node, dist] = queue.shift();\n    if (node === end) return dist;\n    for (const next of (graph[node] || [])) {\n      if (!visited.has(next)) {\n        visited.add(next);\n        queue.push([next, dist + 1]);\n      }\n    }\n  }\n  return -1;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "A->B->D->E has length 3, matching the output."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-59",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Power Set",
+                    "description": "Implement `powerSet(nums)` returning all subsets. Test with [1,2,3] and print count. Expected output: `8`.",
+                    "starterCode": "function powerSet(nums) {\n  // Your code here\n}\n",
+                    "hint": "Start with [[]] and add each number to all existing subsets.",
+                    "solution": {
+                        "code": "function powerSet(nums) {\n  const res = [[]];\n  for (const n of nums) {\n    const size = res.length;\n    for (let i = 0; i < size; i++) {\n      res.push(res[i].concat(n));\n    }\n  }\n  return res;\n}\nconsole.log(powerSet([1, 2, 3]).length);",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to generate all subsets of the input set."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Iteratively duplicate existing subsets and add the new element.",
+                                "code": "function powerSet(nums) {\n  const res = [[]];\n  for (const n of nums) {\n    const size = res.length;\n    for (let i = 0; i < size; i++) {\n      res.push(res[i].concat(n));\n    }\n  }\n  return res;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "A 3-element set has 2^3 = 8 subsets."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-60",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Permute String",
+                    "description": "Write `permute(str)` returning all permutations. Test with \"abc\". Expected output: `abc,acb,bac,bca,cab,cba`.",
+                    "starterCode": "function permute(str) {\n  // Your code here\n}\n",
+                    "hint": "Use backtracking with a used array.",
+                    "solution": {
+                        "code": "function permute(str) {\n  const chars = str.split(\"\");\n  const used = Array(chars.length).fill(false);\n  const res = [];\n  function backtrack(path) {\n    if (path.length === chars.length) {\n      res.push(path.join(\"\"));\n      return;\n    }\n    for (let i = 0; i < chars.length; i++) {\n      if (used[i]) continue;\n      used[i] = true;\n      path.push(chars[i]);\n      backtrack(path);\n      path.pop();\n      used[i] = false;\n    }\n  }\n  backtrack([]);\n  return res.sort();\n}\nconsole.log(permute(\"abc\").join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need all orderings of the characters in the string."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Backtrack by picking an unused character at each position.",
+                                "code": "function permute(str) {\n  const chars = str.split(\"\");\n  const used = Array(chars.length).fill(false);\n  const res = [];\n  function backtrack(path) {\n    if (path.length === chars.length) {\n      res.push(path.join(\"\"));\n      return;\n    }\n    for (let i = 0; i < chars.length; i++) {\n      if (used[i]) continue;\n      used[i] = true;\n      path.push(chars[i]);\n      backtrack(path);\n      path.pop();\n      used[i] = false;\n    }\n  }\n  backtrack([]);\n  return res.sort();\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "All six permutations of abc are printed in order."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-61",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Combo Count",
+                    "description": "Implement `countCombinationSum(nums, target)` counting combinations where order does not matter. Test with nums [2,3,5], target 8. Expected output: `3`.",
+                    "starterCode": "function countCombinationSum(nums, target) {\n  // Your code here\n}\n",
+                    "hint": "Use DP with coins-first order to avoid counting permutations.",
+                    "solution": {
+                        "code": "function countCombinationSum(nums, target) {\n  const dp = Array(target + 1).fill(0);\n  dp[0] = 1;\n  for (const num of nums) {\n    for (let sum = num; sum <= target; sum++) {\n      dp[sum] += dp[sum - num];\n    }\n  }\n  return dp[target];\n}\nconsole.log(countCombinationSum([2, 3, 5], 8));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the number of combinations (order-independent) that sum to target."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Process each number once and build counts in a DP array.",
+                                "code": "function countCombinationSum(nums, target) {\n  const dp = Array(target + 1).fill(0);\n  dp[0] = 1;\n  for (const num of nums) {\n    for (let sum = num; sum <= target; sum++) {\n      dp[sum] += dp[sum - num];\n    }\n  }\n  return dp[target];\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The combinations are 3+5, 3+3+2, and 2+2+2+2, so output is 3."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-62",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Sliding Max",
+                    "description": "Implement `maxSlidingWindow(nums, k)` returning the max for each window. Test with [1,3,-1,-3,5,3,6,7] and k=3. Expected output: `3,3,5,5,6,7`.",
+                    "starterCode": "function maxSlidingWindow(nums, k) {\n  // Your code here\n}\n",
+                    "hint": "Use a deque of indices that keeps values in decreasing order.",
+                    "solution": {
+                        "code": "function maxSlidingWindow(nums, k) {\n  const deque = [];\n  const res = [];\n  for (let i = 0; i < nums.length; i++) {\n    while (deque.length > 0 && deque[0] <= i - k) deque.shift();\n    while (deque.length > 0 && nums[deque[deque.length - 1]] <= nums[i]) deque.pop();\n    deque.push(i);\n    if (i >= k - 1) res.push(nums[deque[0]]);\n  }\n  return res;\n}\nconsole.log(maxSlidingWindow([1, 3, -1, -3, 5, 3, 6, 7], 3).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the maximum element in each sliding window of size k."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Maintain a deque of indices in decreasing value order for O(n) time.",
+                                "code": "function maxSlidingWindow(nums, k) {\n  const deque = [];\n  const res = [];\n  for (let i = 0; i < nums.length; i++) {\n    while (deque.length > 0 && deque[0] <= i - k) deque.shift();\n    while (deque.length > 0 && nums[deque[deque.length - 1]] <= nums[i]) deque.pop();\n    deque.push(i);\n    if (i >= k - 1) res.push(nums[deque[0]]);\n  }\n  return res;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The window maxima are 3,3,5,5,6,7."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-63",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Next Greater",
+                    "description": "Write `nextGreater(nums)` returning the next greater element to the right for each index. Test with [2,1,2,4,3]. Expected output: `4,2,4,-1,-1`.",
+                    "starterCode": "function nextGreater(nums) {\n  // Your code here\n}\n",
+                    "hint": "Use a stack of indices with decreasing values.",
+                    "solution": {
+                        "code": "function nextGreater(nums) {\n  const res = Array(nums.length).fill(-1);\n  const stack = [];\n  for (let i = 0; i < nums.length; i++) {\n    while (stack.length > 0 && nums[i] > nums[stack[stack.length - 1]]) {\n      const idx = stack.pop();\n      res[idx] = nums[i];\n    }\n    stack.push(i);\n  }\n  return res;\n}\nconsole.log(nextGreater([2, 1, 2, 4, 3]).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the first greater value to the right for each element."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use a monotonic decreasing stack of indices to resolve next greater values.",
+                                "code": "function nextGreater(nums) {\n  const res = Array(nums.length).fill(-1);\n  const stack = [];\n  for (let i = 0; i < nums.length; i++) {\n    while (stack.length > 0 && nums[i] > nums[stack[stack.length - 1]]) {\n      const idx = stack.pop();\n      res[idx] = nums[i];\n    }\n    stack.push(i);\n  }\n  return res;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The output matches 4,2,4,-1,-1."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-64",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Daily Temps",
+                    "description": "Write `dailyTemperatures(temps)` returning days until a warmer temperature. Test with [73,74,75,71,69,72,76,73]. Expected output: `1,1,4,2,1,1,0,0`.",
+                    "starterCode": "function dailyTemperatures(temps) {\n  // Your code here\n}\n",
+                    "hint": "Use a stack of indices for decreasing temperatures.",
+                    "solution": {
+                        "code": "function dailyTemperatures(temps) {\n  const res = Array(temps.length).fill(0);\n  const stack = [];\n  for (let i = 0; i < temps.length; i++) {\n    while (stack.length > 0 && temps[i] > temps[stack[stack.length - 1]]) {\n      const idx = stack.pop();\n      res[idx] = i - idx;\n    }\n    stack.push(i);\n  }\n  return res;\n}\nconsole.log(dailyTemperatures([73, 74, 75, 71, 69, 72, 76, 73]).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to know how many days until a warmer temperature for each day."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use a monotonic stack to resolve the next warmer day distances.",
+                                "code": "function dailyTemperatures(temps) {\n  const res = Array(temps.length).fill(0);\n  const stack = [];\n  for (let i = 0; i < temps.length; i++) {\n    while (stack.length > 0 && temps[i] > temps[stack[stack.length - 1]]) {\n      const idx = stack.pop();\n      res[idx] = i - idx;\n    }\n    stack.push(i);\n  }\n  return res;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The distances are 1,1,4,2,1,1,0,0."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-65",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Binary Add",
+                    "description": "Write `addBinary(a, b)` returning the sum of two binary strings. Test with \"1010\" + \"1011\". Expected output: `10101`.",
+                    "starterCode": "function addBinary(a, b) {\n  // Your code here\n}\n",
+                    "hint": "Add from right to left with a carry.",
+                    "solution": {
+                        "code": "function addBinary(a, b) {\n  let i = a.length - 1;\n  let j = b.length - 1;\n  let carry = 0;\n  let res = \"\";\n  while (i >= 0 || j >= 0 || carry) {\n    const sum = (i >= 0 ? Number(a[i--]) : 0) + (j >= 0 ? Number(b[j--]) : 0) + carry;\n    res = (sum % 2) + res;\n    carry = Math.floor(sum / 2);\n  }\n  return res;\n}\nconsole.log(addBinary(\"1010\", \"1011\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to add two binary strings and return a binary string sum."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Process from right to left, tracking carry like grade-school addition.",
+                                "code": "function addBinary(a, b) {\n  let i = a.length - 1;\n  let j = b.length - 1;\n  let carry = 0;\n  let res = \"\";\n  while (i >= 0 || j >= 0 || carry) {\n    const sum = (i >= 0 ? Number(a[i--]) : 0) + (j >= 0 ? Number(b[j--]) : 0) + carry;\n    res = (sum % 2) + res;\n    carry = Math.floor(sum / 2);\n  }\n  return res;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "1010 + 1011 equals 10101."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-66",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "String Multiply",
+                    "description": "Implement `multiplyStrings(a, b)` for non-negative integers given as strings. Test with \"123\" * \"45\". Expected output: `5535`.",
+                    "starterCode": "function multiplyStrings(a, b) {\n  // Your code here\n}\n",
+                    "hint": "Use the grade-school multiplication with an array of digits.",
+                    "solution": {
+                        "code": "function multiplyStrings(a, b) {\n  if (a === \"0\" || b === \"0\") return \"0\";\n  const res = Array(a.length + b.length).fill(0);\n  for (let i = a.length - 1; i >= 0; i--) {\n    for (let j = b.length - 1; j >= 0; j--) {\n      const mul = Number(a[i]) * Number(b[j]) + res[i + j + 1];\n      res[i + j + 1] = mul % 10;\n      res[i + j] += Math.floor(mul / 10);\n    }\n  }\n  while (res[0] === 0) res.shift();\n  return res.join(\"\");\n}\nconsole.log(multiplyStrings(\"123\", \"45\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We must multiply numbers too large for direct integer conversion."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use an array to store partial products and manage carries.",
+                                "code": "function multiplyStrings(a, b) {\n  if (a === \"0\" || b === \"0\") return \"0\";\n  const res = Array(a.length + b.length).fill(0);\n  for (let i = a.length - 1; i >= 0; i--) {\n    for (let j = b.length - 1; j >= 0; j--) {\n      const mul = Number(a[i]) * Number(b[j]) + res[i + j + 1];\n      res[i + j + 1] = mul % 10;\n      res[i + j] += Math.floor(mul / 10);\n    }\n  }\n  while (res[0] === 0) res.shift();\n  return res.join(\"\");\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "123 * 45 equals 5535."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-67",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "URLify",
+                    "description": "Implement `urlify(str)` replacing spaces with %20. Test with \"Mr John Smith\". Expected output: `Mr%20John%20Smith`.",
+                    "starterCode": "function urlify(str) {\n  // Your code here\n}\n",
+                    "hint": "Split on spaces and join with %20, or use replace with a global regex.",
+                    "solution": {
+                        "code": "function urlify(str) {\n  return str.split(\" \").join(\"%20\");\n}\nconsole.log(urlify(\"Mr John Smith\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to replace all spaces with %20."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Split by spaces and re-join with %20.",
+                                "code": "function urlify(str) {\n  return str.split(\" \").join(\"%20\");\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The output is Mr%20John%20Smith."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-68",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Run Length",
+                    "description": "Implement `runLengthEncode(str)` using counts. Test with \"aaabbc\". Expected output: `a3b2c1`.",
+                    "starterCode": "function runLengthEncode(str) {\n  // Your code here\n}\n",
+                    "hint": "Track the current character and count, then append when it changes.",
+                    "solution": {
+                        "code": "function runLengthEncode(str) {\n  if (str.length === 0) return \"\";\n  let res = \"\";\n  let count = 1;\n  for (let i = 1; i <= str.length; i++) {\n    if (str[i] === str[i - 1]) count++;\n    else {\n      res += str[i - 1] + count;\n      count = 1;\n    }\n  }\n  return res;\n}\nconsole.log(runLengthEncode(\"aaabbc\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to compress consecutive runs into char+count form."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Walk the string, counting runs and appending when the character changes.",
+                                "code": "function runLengthEncode(str) {\n  if (str.length === 0) return \"\";\n  let res = \"\";\n  let count = 1;\n  for (let i = 1; i <= str.length; i++) {\n    if (str[i] === str[i - 1]) count++;\n    else {\n      res += str[i - 1] + count;\n      count = 1;\n    }\n  }\n  return res;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "aaabbc becomes a3b2c1."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-69",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Run Decode",
+                    "description": "Implement `runLengthDecode(str)` reversing run-length encoding. Test with \"a3b2c1\". Expected output: `aaabbc`.",
+                    "starterCode": "function runLengthDecode(str) {\n  // Your code here\n}\n",
+                    "hint": "Read a letter then parse its following count.",
+                    "solution": {
+                        "code": "function runLengthDecode(str) {\n  let res = \"\";\n  for (let i = 0; i < str.length; i += 2) {\n    const ch = str[i];\n    const count = Number(str[i + 1]);\n    res += ch.repeat(count);\n  }\n  return res;\n}\nconsole.log(runLengthDecode(\"a3b2c1\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to expand each char+count pair back into repeated characters."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Read the string in pairs and repeat each character by its count.",
+                                "code": "function runLengthDecode(str) {\n  let res = \"\";\n  for (let i = 0; i < str.length; i += 2) {\n    const ch = str[i];\n    const count = Number(str[i + 1]);\n    res += ch.repeat(count);\n  }\n  return res;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "a3b2c1 expands to aaabbc."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-70",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Anagram Indices",
+                    "description": "Implement `findAnagrams(s, p)` returning start indices of anagrams of p in s. Test with s=\"cbaebabacd\", p=\"abc\". Expected output: `0,6`.",
+                    "starterCode": "function findAnagrams(s, p) {\n  // Your code here\n}\n",
+                    "hint": "Use a sliding window with character counts.",
+                    "solution": {
+                        "code": "function findAnagrams(s, p) {\n  const need = Array(26).fill(0);\n  const win = Array(26).fill(0);\n  for (const ch of p) need[ch.charCodeAt(0) - 97]++;\n  const res = [];\n  for (let i = 0; i < s.length; i++) {\n    win[s.charCodeAt(i) - 97]++;\n    if (i >= p.length) win[s.charCodeAt(i - p.length) - 97]--;\n    if (i >= p.length - 1 && win.join(\"\") === need.join(\"\")) res.push(i - p.length + 1);\n  }\n  return res;\n}\nconsole.log(findAnagrams(\"cbaebabacd\", \"abc\").join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need all starting indices where the window is an anagram of p."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Maintain a fixed-size window with character counts and compare to the target counts.",
+                                "code": "function findAnagrams(s, p) {\n  const need = Array(26).fill(0);\n  const win = Array(26).fill(0);\n  for (const ch of p) need[ch.charCodeAt(0) - 97]++;\n  const res = [];\n  for (let i = 0; i < s.length; i++) {\n    win[s.charCodeAt(i) - 97]++;\n    if (i >= p.length) win[s.charCodeAt(i - p.length) - 97]--;\n    if (i >= p.length - 1 && win.join(\"\") === need.join(\"\")) res.push(i - p.length + 1);\n  }\n  return res;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The anagrams of abc start at indices 0 and 6."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-71",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Count Islands",
+                    "description": "Write `numIslands(grid)` counting connected islands of '1'. Test with the provided grid. Expected output: `3`.",
+                    "starterCode": "function numIslands(grid) {\n  // Your code here\n}\n",
+                    "hint": "Use DFS or BFS to flood-fill each unvisited land cell.",
+                    "solution": {
+                        "code": "function numIslands(grid) {\n  const rows = grid.length, cols = grid[0].length;\n  let count = 0;\n  function dfs(r, c) {\n    if (r < 0 || c < 0 || r >= rows || c >= cols || grid[r][c] !== \"1\") return;\n    grid[r][c] = \"0\";\n    dfs(r + 1, c);\n    dfs(r - 1, c);\n    dfs(r, c + 1);\n    dfs(r, c - 1);\n  }\n  for (let r = 0; r < rows; r++) {\n    for (let c = 0; c < cols; c++) {\n      if (grid[r][c] === \"1\") {\n        count++;\n        dfs(r, c);\n      }\n    }\n  }\n  return count;\n}\nconst grid = [\n  [\"1\", \"1\", \"0\", \"0\", \"0\"],\n  [\"1\", \"1\", \"0\", \"0\", \"0\"],\n  [\"0\", \"0\", \"1\", \"0\", \"0\"],\n  [\"0\", \"0\", \"0\", \"1\", \"1\"]\n];\nconsole.log(numIslands(grid));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to count connected components of land cells."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "When you find land, flood-fill it to mark the whole island as visited.",
+                                "code": "function numIslands(grid) {\n  const rows = grid.length, cols = grid[0].length;\n  let count = 0;\n  function dfs(r, c) {\n    if (r < 0 || c < 0 || r >= rows || c >= cols || grid[r][c] !== \"1\") return;\n    grid[r][c] = \"0\";\n    dfs(r + 1, c);\n    dfs(r - 1, c);\n    dfs(r, c + 1);\n    dfs(r, c - 1);\n  }\n  for (let r = 0; r < rows; r++) {\n    for (let c = 0; c < cols; c++) {\n      if (grid[r][c] === \"1\") {\n        count++;\n        dfs(r, c);\n      }\n    }\n  }\n  return count;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The grid has 3 separate islands."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-72",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Flood Fill",
+                    "description": "Implement `floodFill(image, sr, sc, color)` and print the result. Test with [[1,1,1],[1,1,0],[1,0,1]], sr=1, sc=1, color=2. Expected output: `2,2,2;2,2,0;2,0,1`.",
+                    "starterCode": "function floodFill(image, sr, sc, color) {\n  // Your code here\n}\n",
+                    "hint": "DFS from the start cell, repainting cells that match the original color.",
+                    "solution": {
+                        "code": "function floodFill(image, sr, sc, color) {\n  const rows = image.length, cols = image[0].length;\n  const original = image[sr][sc];\n  if (original === color) return image;\n  function dfs(r, c) {\n    if (r < 0 || c < 0 || r >= rows || c >= cols || image[r][c] !== original) return;\n    image[r][c] = color;\n    dfs(r + 1, c);\n    dfs(r - 1, c);\n    dfs(r, c + 1);\n    dfs(r, c - 1);\n  }\n  dfs(sr, sc);\n  return image;\n}\nconst img = [[1, 1, 1], [1, 1, 0], [1, 0, 1]];\nconst out = floodFill(img, 1, 1, 2);\nconsole.log(out.map((r) => r.join(\",\")).join(\";\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We must recolor a region connected to the start cell."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "DFS from the start, repainting all cells with the original color.",
+                                "code": "function floodFill(image, sr, sc, color) {\n  const rows = image.length, cols = image[0].length;\n  const original = image[sr][sc];\n  if (original === color) return image;\n  function dfs(r, c) {\n    if (r < 0 || c < 0 || r >= rows || c >= cols || image[r][c] !== original) return;\n    image[r][c] = color;\n    dfs(r + 1, c);\n    dfs(r - 1, c);\n    dfs(r, c + 1);\n    dfs(r, c - 1);\n  }\n  dfs(sr, sc);\n  return image;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The filled image prints as 2,2,2;2,2,0;2,0,1."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-73",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Matrix Transpose",
+                    "description": "Implement `transpose(matrix)` and print the result. Test with [[1,2,3],[4,5,6]]. Expected output: `1,4;2,5;3,6`.",
+                    "starterCode": "function transpose(matrix) {\n  // Your code here\n}\n",
+                    "hint": "Swap rows and columns by building a new matrix.",
+                    "solution": {
+                        "code": "function transpose(matrix) {\n  const rows = matrix.length, cols = matrix[0].length;\n  const res = Array.from({ length: cols }, () => Array(rows).fill(0));\n  for (let r = 0; r < rows; r++) {\n    for (let c = 0; c < cols; c++) {\n      res[c][r] = matrix[r][c];\n    }\n  }\n  return res;\n}\nconst out = transpose([[1, 2, 3], [4, 5, 6]]);\nconsole.log(out.map((r) => r.join(\",\")).join(\";\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to swap rows and columns."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Create a new matrix where res[c][r] = matrix[r][c].",
+                                "code": "function transpose(matrix) {\n  const rows = matrix.length, cols = matrix[0].length;\n  const res = Array.from({ length: cols }, () => Array(rows).fill(0));\n  for (let r = 0; r < rows; r++) {\n    for (let c = 0; c < cols; c++) {\n      res[c][r] = matrix[r][c];\n    }\n  }\n  return res;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The transposed matrix prints 1,4;2,5;3,6."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-74",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Rotate Array",
+                    "description": "Implement `rotateArray(nums, k)` rotating to the right by k. Test with [1,2,3,4,5,6,7], k=3. Expected output: `5,6,7,1,2,3,4`.",
+                    "starterCode": "function rotateArray(nums, k) {\n  // Your code here\n}\n",
+                    "hint": "Use reverse: reverse all, then reverse first k, then reverse rest.",
+                    "solution": {
+                        "code": "function rotateArray(nums, k) {\n  const n = nums.length;\n  k %= n;\n  function reverse(arr, l, r) {\n    while (l < r) {\n      [arr[l], arr[r]] = [arr[r], arr[l]];\n      l++;\n      r--;\n    }\n  }\n  reverse(nums, 0, n - 1);\n  reverse(nums, 0, k - 1);\n  reverse(nums, k, n - 1);\n  return nums;\n}\nconsole.log(rotateArray([1, 2, 3, 4, 5, 6, 7], 3).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to rotate the array without extra space."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Reverse the whole array, then reverse segments to restore order.",
+                                "code": "function rotateArray(nums, k) {\n  const n = nums.length;\n  k %= n;\n  function reverse(arr, l, r) {\n    while (l < r) {\n      [arr[l], arr[r]] = [arr[r], arr[l]];\n      l++;\n      r--;\n    }\n  }\n  reverse(nums, 0, n - 1);\n  reverse(nums, 0, k - 1);\n  reverse(nums, k, n - 1);\n  return nums;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "After rotating by 3, the array is 5,6,7,1,2,3,4."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-75",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Partition Equal",
+                    "description": "Write `canPartition(nums)` to decide if nums can split into two equal-sum subsets. Test with [1,5,11,5]. Expected output: `true`.",
+                    "starterCode": "function canPartition(nums) {\n  // Your code here\n}\n",
+                    "hint": "Use subset-sum DP to reach half of total sum.",
+                    "solution": {
+                        "code": "function canPartition(nums) {\n  const sum = nums.reduce((a, b) => a + b, 0);\n  if (sum % 2 !== 0) return false;\n  const target = sum / 2;\n  const dp = Array(target + 1).fill(false);\n  dp[0] = true;\n  for (const num of nums) {\n    for (let s = target; s >= num; s--) {\n      dp[s] = dp[s] || dp[s - num];\n    }\n  }\n  return dp[target];\n}\nconsole.log(canPartition([1, 5, 11, 5]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need a subset that sums to half of the total."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use a boolean DP for subset sums up to target.",
+                                "code": "function canPartition(nums) {\n  const sum = nums.reduce((a, b) => a + b, 0);\n  if (sum % 2 !== 0) return false;\n  const target = sum / 2;\n  const dp = Array(target + 1).fill(false);\n  dp[0] = true;\n  for (const num of nums) {\n    for (let s = target; s >= num; s--) {\n      dp[s] = dp[s] || dp[s - num];\n    }\n  }\n  return dp[target];\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "[1,5,11,5] splits into [11] and [1,5,5], so true."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-76",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Longest Prefix",
+                    "description": "Implement `longestCommonPrefix(strs)` and test with [\"flower\",\"flow\",\"flight\"]. Expected output: `fl`.",
+                    "starterCode": "function longestCommonPrefix(strs) {\n  // Your code here\n}\n",
+                    "hint": "Start with the first string as prefix and trim until all strings match.",
+                    "solution": {
+                        "code": "function longestCommonPrefix(strs) {\n  if (strs.length === 0) return \"\";\n  let prefix = strs[0];\n  for (let i = 1; i < strs.length; i++) {\n    while (!strs[i].startsWith(prefix)) {\n      prefix = prefix.slice(0, -1);\n      if (prefix === \"\") return \"\";\n    }\n  }\n  return prefix;\n}\nconsole.log(longestCommonPrefix([\"flower\", \"flow\", \"flight\"]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the longest prefix common to all strings."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Shrink the candidate prefix until every string starts with it.",
+                                "code": "function longestCommonPrefix(strs) {\n  if (strs.length === 0) return \"\";\n  let prefix = strs[0];\n  for (let i = 1; i < strs.length; i++) {\n    while (!strs[i].startsWith(prefix)) {\n      prefix = prefix.slice(0, -1);\n      if (prefix === \"\") return \"\";\n    }\n  }\n  return prefix;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The common prefix is fl."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-77",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "LCS Length",
+                    "description": "Write `lcsLength(a, b)` returning the length of the longest common subsequence. Test with \"abcde\" and \"ace\". Expected output: `3`.",
+                    "starterCode": "function lcsLength(a, b) {\n  // Your code here\n}\n",
+                    "hint": "Use DP where dp[i][j] is the LCS length of prefixes a[0..i) and b[0..j).",
+                    "solution": {
+                        "code": "function lcsLength(a, b) {\n  const m = a.length, n = b.length;\n  const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));\n  for (let i = 1; i <= m; i++) {\n    for (let j = 1; j <= n; j++) {\n      if (a[i - 1] === b[j - 1]) dp[i][j] = dp[i - 1][j - 1] + 1;\n      else dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);\n    }\n  }\n  return dp[m][n];\n}\nconsole.log(lcsLength(\"abcde\", \"ace\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the longest sequence that appears in both strings in order."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use DP for all prefix pairs and build up the LCS length.",
+                                "code": "function lcsLength(a, b) {\n  const m = a.length, n = b.length;\n  const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));\n  for (let i = 1; i <= m; i++) {\n    for (let j = 1; j <= n; j++) {\n      if (a[i - 1] === b[j - 1]) dp[i][j] = dp[i - 1][j - 1] + 1;\n      else dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);\n    }\n  }\n  return dp[m][n];\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The LCS of abcde and ace is ace, length 3."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-78",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "RPN Eval",
+                    "description": "Write `evalRPN(tokens)` to evaluate Reverse Polish Notation. Test with [\"2\",\"1\",\"+\",\"3\",\"*\"]. Expected output: `9`.",
+                    "starterCode": "function evalRPN(tokens) {\n  // Your code here\n}\n",
+                    "hint": "Use a stack and apply operators to the last two numbers.",
+                    "solution": {
+                        "code": "function evalRPN(tokens) {\n  const stack = [];\n  for (const t of tokens) {\n    if (t === \"+\" || t === \"-\" || t === \"*\" || t === \"/\") {\n      const b = stack.pop();\n      const a = stack.pop();\n      let val = 0;\n      if (t === \"+\") val = a + b;\n      if (t === \"-\") val = a - b;\n      if (t === \"*\") val = a * b;\n      if (t === \"/\") val = Math.trunc(a / b);\n      stack.push(val);\n    } else {\n      stack.push(Number(t));\n    }\n  }\n  return stack.pop();\n}\nconsole.log(evalRPN([\"2\", \"1\", \"+\", \"3\", \"*\"]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to evaluate postfix expressions using a stack."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Push numbers onto the stack; on operators, pop two values and apply the operator.",
+                                "code": "function evalRPN(tokens) {\n  const stack = [];\n  for (const t of tokens) {\n    if (t === \"+\" || t === \"-\" || t === \"*\" || t === \"/\") {\n      const b = stack.pop();\n      const a = stack.pop();\n      let val = 0;\n      if (t === \"+\") val = a + b;\n      if (t === \"-\") val = a - b;\n      if (t === \"*\") val = a * b;\n      if (t === \"/\") val = Math.trunc(a / b);\n      stack.push(val);\n    } else {\n      stack.push(Number(t));\n    }\n  }\n  return stack.pop();\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "(2 + 1) * 3 = 9."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-79",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Weighted Sum",
+                    "description": "Implement `nestedSum(arr)` where each nested array adds a depth multiplier. Test with [1,[4,[6]]]. Expected output: `27`.",
+                    "starterCode": "function nestedSum(arr) {\n  // Your code here\n}\n",
+                    "hint": "Use DFS and pass the current depth.",
+                    "solution": {
+                        "code": "function nestedSum(arr) {\n  function dfs(node, depth) {\n    let sum = 0;\n    for (const item of node) {\n      if (Array.isArray(item)) sum += dfs(item, depth + 1);\n      else sum += item * depth;\n    }\n    return sum;\n  }\n  return dfs(arr, 1);\n}\nconsole.log(nestedSum([1, [4, [6]]]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "Each nested level increases the weight of its numbers."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use DFS to accumulate values, multiplying by the current depth.",
+                                "code": "function nestedSum(arr) {\n  function dfs(node, depth) {\n    let sum = 0;\n    for (const item of node) {\n      if (Array.isArray(item)) sum += dfs(item, depth + 1);\n      else sum += item * depth;\n    }\n    return sum;\n  }\n  return dfs(arr, 1);\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "1*1 + 4*2 + 6*3 = 27."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-80",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Interval Insert",
+                    "description": "Implement `insertInterval(intervals, newInterval)` merging overlaps. Test with [[1,3],[6,9]] and [2,5]. Expected output: `1-5,6-9`.",
+                    "starterCode": "function insertInterval(intervals, newInterval) {\n  // Your code here\n}\n",
+                    "hint": "Add intervals before, merge overlaps, then append remaining intervals.",
+                    "solution": {
+                        "code": "function insertInterval(intervals, newInterval) {\n  const res = [];\n  let i = 0;\n  while (i < intervals.length && intervals[i][1] < newInterval[0]) {\n    res.push(intervals[i++]);\n  }\n  while (i < intervals.length && intervals[i][0] <= newInterval[1]) {\n    newInterval[0] = Math.min(newInterval[0], intervals[i][0]);\n    newInterval[1] = Math.max(newInterval[1], intervals[i][1]);\n    i++;\n  }\n  res.push(newInterval);\n  while (i < intervals.length) res.push(intervals[i++]);\n  return res;\n}\nconst out = insertInterval([[1, 3], [6, 9]], [2, 5]);\nconsole.log(out.map((x) => x[0] + \"-\" + x[1]).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to insert and merge a new interval into sorted intervals."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Skip non-overlapping intervals, merge overlaps, then append the rest.",
+                                "code": "function insertInterval(intervals, newInterval) {\n  const res = [];\n  let i = 0;\n  while (i < intervals.length && intervals[i][1] < newInterval[0]) {\n    res.push(intervals[i++]);\n  }\n  while (i < intervals.length && intervals[i][0] <= newInterval[1]) {\n    newInterval[0] = Math.min(newInterval[0], intervals[i][0]);\n    newInterval[1] = Math.max(newInterval[1], intervals[i][1]);\n    i++;\n  }\n  res.push(newInterval);\n  while (i < intervals.length) res.push(intervals[i++]);\n  return res;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Merging [2,5] into [[1,3],[6,9]] yields 1-5,6-9."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-81",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Merge K Arrays",
+                    "description": "Implement `mergeKSorted(arrays)` merging K sorted arrays. Test with [[1,4,5],[1,3,4],[2,6]]. Expected output: `1,1,2,3,4,4,5,6`.",
+                    "starterCode": "function mergeKSorted(arrays) {\n  // Your code here\n}\n",
+                    "hint": "Use a min-heap of the current head from each array.",
+                    "solution": {
+                        "code": "function mergeKSorted(arrays) {\n  const heap = [];\n  function push(node) {\n    heap.push(node);\n    let i = heap.length - 1;\n    while (i > 0) {\n      const p = Math.floor((i - 1) / 2);\n      if (heap[p].val <= heap[i].val) break;\n      [heap[p], heap[i]] = [heap[i], heap[p]];\n      i = p;\n    }\n  }\n  function pop() {\n    if (heap.length === 0) return null;\n    const min = heap[0];\n    const last = heap.pop();\n    if (heap.length > 0) {\n      heap[0] = last;\n      let i = 0;\n      while (true) {\n        let smallest = i;\n        const l = i * 2 + 1;\n        const r = i * 2 + 2;\n        if (l < heap.length && heap[l].val < heap[smallest].val) smallest = l;\n        if (r < heap.length && heap[r].val < heap[smallest].val) smallest = r;\n        if (smallest === i) break;\n        [heap[i], heap[smallest]] = [heap[smallest], heap[i]];\n        i = smallest;\n      }\n    }\n    return min;\n  }\n  for (let i = 0; i < arrays.length; i++) {\n    if (arrays[i].length > 0) push({ val: arrays[i][0], arr: i, idx: 0 });\n  }\n  const res = [];\n  while (heap.length > 0) {\n    const node = pop();\n    res.push(node.val);\n    const nextIdx = node.idx + 1;\n    if (nextIdx < arrays[node.arr].length) {\n      push({ val: arrays[node.arr][nextIdx], arr: node.arr, idx: nextIdx });\n    }\n  }\n  return res;\n}\nconsole.log(mergeKSorted([[1, 4, 5], [1, 3, 4], [2, 6]]).join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to merge multiple sorted arrays into one sorted list."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use a min-heap to always extract the smallest current head.",
+                                "code": "function mergeKSorted(arrays) {\n  const heap = [];\n  function push(node) {\n    heap.push(node);\n    let i = heap.length - 1;\n    while (i > 0) {\n      const p = Math.floor((i - 1) / 2);\n      if (heap[p].val <= heap[i].val) break;\n      [heap[p], heap[i]] = [heap[i], heap[p]];\n      i = p;\n    }\n  }\n  function pop() {\n    if (heap.length === 0) return null;\n    const min = heap[0];\n    const last = heap.pop();\n    if (heap.length > 0) {\n      heap[0] = last;\n      let i = 0;\n      while (true) {\n        let smallest = i;\n        const l = i * 2 + 1;\n        const r = i * 2 + 2;\n        if (l < heap.length && heap[l].val < heap[smallest].val) smallest = l;\n        if (r < heap.length && heap[r].val < heap[smallest].val) smallest = r;\n        if (smallest === i) break;\n        [heap[i], heap[smallest]] = [heap[smallest], heap[i]];\n        i = smallest;\n      }\n    }\n    return min;\n  }\n  for (let i = 0; i < arrays.length; i++) {\n    if (arrays[i].length > 0) push({ val: arrays[i][0], arr: i, idx: 0 });\n  }\n  const res = [];\n  while (heap.length > 0) {\n    const node = pop();\n    res.push(node.val);\n    const nextIdx = node.idx + 1;\n    if (nextIdx < arrays[node.arr].length) {\n      push({ val: arrays[node.arr][nextIdx], arr: node.arr, idx: nextIdx });\n    }\n  }\n  return res;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The merged output is 1,1,2,3,4,4,5,6."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-82",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "3Sum Zero",
+                    "description": "Implement `threeSum(nums)` returning unique triplets that sum to 0. Test with [-1,0,1,2,-1,-4]. Expected output: `-1,-1,2|-1,0,1`.",
+                    "starterCode": "function threeSum(nums) {\n  // Your code here\n}\n",
+                    "hint": "Sort the array and use two pointers for each fixed index.",
+                    "solution": {
+                        "code": "function threeSum(nums) {\n  nums.sort((a, b) => a - b);\n  const res = [];\n  for (let i = 0; i < nums.length - 2; i++) {\n    if (i > 0 && nums[i] === nums[i - 1]) continue;\n    let l = i + 1, r = nums.length - 1;\n    while (l < r) {\n      const sum = nums[i] + nums[l] + nums[r];\n      if (sum === 0) {\n        res.push([nums[i], nums[l], nums[r]]);\n        while (l < r && nums[l] === nums[l + 1]) l++;\n        while (l < r && nums[r] === nums[r - 1]) r--;\n        l++;\n        r--;\n      } else if (sum < 0) l++;\n      else r--;\n    }\n  }\n  return res;\n}\nconst out = threeSum([-1, 0, 1, 2, -1, -4]);\nconsole.log(out.map((t) => t.join(\",\")).join(\"|\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need all unique triplets whose sum is zero."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Sort the array and use two pointers to find pairs for each fixed element.",
+                                "code": "function threeSum(nums) {\n  nums.sort((a, b) => a - b);\n  const res = [];\n  for (let i = 0; i < nums.length - 2; i++) {\n    if (i > 0 && nums[i] === nums[i - 1]) continue;\n    let l = i + 1, r = nums.length - 1;\n    while (l < r) {\n      const sum = nums[i] + nums[l] + nums[r];\n      if (sum === 0) {\n        res.push([nums[i], nums[l], nums[r]]);\n        while (l < r && nums[l] === nums[l + 1]) l++;\n        while (l < r && nums[r] === nums[r - 1]) r--;\n        l++;\n        r--;\n      } else if (sum < 0) l++;\n      else r--;\n    }\n  }\n  return res;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The two triplets are -1,-1,2 and -1,0,1."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-83",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Majority Vote",
+                    "description": "Implement `majorityElement(nums)` using Boyer-Moore. Test with [2,2,1,1,1,2,2]. Expected output: `2`.",
+                    "starterCode": "function majorityElement(nums) {\n  // Your code here\n}\n",
+                    "hint": "Track a candidate and a counter that cancels out different elements.",
+                    "solution": {
+                        "code": "function majorityElement(nums) {\n  let candidate = null;\n  let count = 0;\n  for (const n of nums) {\n    if (count === 0) candidate = n;\n    count += n === candidate ? 1 : -1;\n  }\n  return candidate;\n}\nconsole.log(majorityElement([2, 2, 1, 1, 1, 2, 2]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the element that appears more than n/2 times."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Boyer-Moore cancels out different elements to find the majority candidate.",
+                                "code": "function majorityElement(nums) {\n  let candidate = null;\n  let count = 0;\n  for (const n of nums) {\n    if (count === 0) candidate = n;\n    count += n === candidate ? 1 : -1;\n  }\n  return candidate;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "2 is the majority element in the test array."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-84",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Subarray Sum",
+                    "description": "Implement `subarraySum(nums, k)` returning the count of subarrays that sum to k. Test with [1,1,1], k=2. Expected output: `2`.",
+                    "starterCode": "function subarraySum(nums, k) {\n  // Your code here\n}\n",
+                    "hint": "Use a prefix sum map: count of previous sums.",
+                    "solution": {
+                        "code": "function subarraySum(nums, k) {\n  const map = new Map();\n  map.set(0, 1);\n  let sum = 0;\n  let count = 0;\n  for (const n of nums) {\n    sum += n;\n    if (map.has(sum - k)) count += map.get(sum - k);\n    map.set(sum, (map.get(sum) || 0) + 1);\n  }\n  return count;\n}\nconsole.log(subarraySum([1, 1, 1], 2));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the number of contiguous subarrays that sum to k."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Track prefix sums and count how many prior sums allow current sum to reach k.",
+                                "code": "function subarraySum(nums, k) {\n  const map = new Map();\n  map.set(0, 1);\n  let sum = 0;\n  let count = 0;\n  for (const n of nums) {\n    sum += n;\n    if (map.has(sum - k)) count += map.get(sum - k);\n    map.set(sum, (map.get(sum) || 0) + 1);\n  }\n  return count;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "There are two subarrays [1,1] that sum to 2."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-85",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Stock Profit",
+                    "description": "Write `maxProfit(prices)` for unlimited transactions. Test with [7,1,5,3,6,4]. Expected output: `7`.",
+                    "starterCode": "function maxProfit(prices) {\n  // Your code here\n}\n",
+                    "hint": "Sum every positive price difference between consecutive days.",
+                    "solution": {
+                        "code": "function maxProfit(prices) {\n  let profit = 0;\n  for (let i = 1; i < prices.length; i++) {\n    if (prices[i] > prices[i - 1]) profit += prices[i] - prices[i - 1];\n  }\n  return profit;\n}\nconsole.log(maxProfit([7, 1, 5, 3, 6, 4]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We can make multiple buy/sell transactions to maximize total profit."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Add all upward price differences to accumulate the profit.",
+                                "code": "function maxProfit(prices) {\n  let profit = 0;\n  for (let i = 1; i < prices.length; i++) {\n    if (prices[i] > prices[i - 1]) profit += prices[i] - prices[i - 1];\n  }\n  return profit;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Buy at 1 sell at 5, buy at 3 sell at 6 gives profit 7."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-86",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Decode Ways",
+                    "description": "Implement `numDecodings(s)` for digit string decoding. Test with \"226\". Expected output: `3`.",
+                    "starterCode": "function numDecodings(s) {\n  // Your code here\n}\n",
+                    "hint": "DP: dp[i] is number of ways to decode s[0..i).",
+                    "solution": {
+                        "code": "function numDecodings(s) {\n  if (s[0] === \"0\") return 0;\n  const dp = Array(s.length + 1).fill(0);\n  dp[0] = 1;\n  dp[1] = 1;\n  for (let i = 2; i <= s.length; i++) {\n    const one = Number(s.slice(i - 1, i));\n    const two = Number(s.slice(i - 2, i));\n    if (one >= 1) dp[i] += dp[i - 1];\n    if (two >= 10 && two <= 26) dp[i] += dp[i - 2];\n  }\n  return dp[s.length];\n}\nconsole.log(numDecodings(\"226\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to count the number of valid decodings from digits to letters."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "DP transitions from 1-digit and 2-digit valid mappings.",
+                                "code": "function numDecodings(s) {\n  if (s[0] === \"0\") return 0;\n  const dp = Array(s.length + 1).fill(0);\n  dp[0] = 1;\n  dp[1] = 1;\n  for (let i = 2; i <= s.length; i++) {\n    const one = Number(s.slice(i - 1, i));\n    const two = Number(s.slice(i - 2, i));\n    if (one >= 1) dp[i] += dp[i - 1];\n    if (two >= 10 && two <= 26) dp[i] += dp[i - 2];\n  }\n  return dp[s.length];\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "226 decodes as BZ, VF, and BBF, totaling 3."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-87",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Find Duplicate",
+                    "description": "Write `findDuplicate(nums)` using Floyd's cycle detection. Test with [1,3,4,2,2]. Expected output: `2`.",
+                    "starterCode": "function findDuplicate(nums) {\n  // Your code here\n}\n",
+                    "hint": "Treat indices and values as a linked list and find the cycle entry.",
+                    "solution": {
+                        "code": "function findDuplicate(nums) {\n  let slow = nums[0];\n  let fast = nums[0];\n  do {\n    slow = nums[slow];\n    fast = nums[nums[fast]];\n  } while (slow !== fast);\n  slow = nums[0];\n  while (slow !== fast) {\n    slow = nums[slow];\n    fast = nums[fast];\n  }\n  return slow;\n}\nconsole.log(findDuplicate([1, 3, 4, 2, 2]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to find the repeated number without modifying the array."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use Floyd's cycle detection to locate the duplicate as a cycle entry.",
+                                "code": "function findDuplicate(nums) {\n  let slow = nums[0];\n  let fast = nums[0];\n  do {\n    slow = nums[slow];\n    fast = nums[nums[fast]];\n  } while (slow !== fast);\n  slow = nums[0];\n  while (slow !== fast) {\n    slow = nums[slow];\n    fast = nums[fast];\n  }\n  return slow;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The duplicate in [1,3,4,2,2] is 2."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-88",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Search Rotated",
+                    "description": "Implement `searchRotated(nums, target)` for a rotated sorted array. Test with [4,5,6,7,0,1,2] and target 0. Expected output: `4`.",
+                    "starterCode": "function searchRotated(nums, target) {\n  // Your code here\n}\n",
+                    "hint": "Binary search by identifying the sorted half each step.",
+                    "solution": {
+                        "code": "function searchRotated(nums, target) {\n  let lo = 0, hi = nums.length - 1;\n  while (lo <= hi) {\n    const mid = Math.floor((lo + hi) / 2);\n    if (nums[mid] === target) return mid;\n    if (nums[lo] <= nums[mid]) {\n      if (nums[lo] <= target && target < nums[mid]) hi = mid - 1;\n      else lo = mid + 1;\n    } else {\n      if (nums[mid] < target && target <= nums[hi]) lo = mid + 1;\n      else hi = mid - 1;\n    }\n  }\n  return -1;\n}\nconsole.log(searchRotated([4, 5, 6, 7, 0, 1, 2], 0));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to find a target in a rotated sorted array in O(log n)."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "At each step, pick the sorted half and decide where the target lies.",
+                                "code": "function searchRotated(nums, target) {\n  let lo = 0, hi = nums.length - 1;\n  while (lo <= hi) {\n    const mid = Math.floor((lo + hi) / 2);\n    if (nums[mid] === target) return mid;\n    if (nums[lo] <= nums[mid]) {\n      if (nums[lo] <= target && target < nums[mid]) hi = mid - 1;\n      else lo = mid + 1;\n    } else {\n      if (nums[mid] < target && target <= nums[hi]) lo = mid + 1;\n      else hi = mid - 1;\n    }\n  }\n  return -1;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Target 0 is at index 4."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-89",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Matrix Search",
+                    "description": "Implement `searchMatrix(matrix, target)` for a sorted matrix. Test with target 9 in [[1,3,5],[7,9,11],[13,15,17]]. Expected output: `true`.",
+                    "starterCode": "function searchMatrix(matrix, target) {\n  // Your code here\n}\n",
+                    "hint": "Binary search over the flattened index range.",
+                    "solution": {
+                        "code": "function searchMatrix(matrix, target) {\n  const rows = matrix.length;\n  const cols = matrix[0].length;\n  let lo = 0, hi = rows * cols - 1;\n  while (lo <= hi) {\n    const mid = Math.floor((lo + hi) / 2);\n    const val = matrix[Math.floor(mid / cols)][mid % cols];\n    if (val === target) return true;\n    if (val < target) lo = mid + 1;\n    else hi = mid - 1;\n  }\n  return false;\n}\nconsole.log(searchMatrix([[1, 3, 5], [7, 9, 11], [13, 15, 17]], 9));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to find a target in a row/column sorted matrix."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Treat the matrix as a flattened sorted array and binary search.",
+                                "code": "function searchMatrix(matrix, target) {\n  const rows = matrix.length;\n  const cols = matrix[0].length;\n  let lo = 0, hi = rows * cols - 1;\n  while (lo <= hi) {\n    const mid = Math.floor((lo + hi) / 2);\n    const val = matrix[Math.floor(mid / cols)][mid % cols];\n    if (val === target) return true;\n    if (val < target) lo = mid + 1;\n    else hi = mid - 1;\n  }\n  return false;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "9 exists in the matrix, so the output is true."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-90",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Longest Streak",
+                    "description": "Implement `longestConsecutive(nums)` returning the length of the longest consecutive sequence. Test with [100,4,200,1,3,2]. Expected output: `4`.",
+                    "starterCode": "function longestConsecutive(nums) {\n  // Your code here\n}\n",
+                    "hint": "Use a Set and only start counting at sequence starts (num-1 missing).",
+                    "solution": {
+                        "code": "function longestConsecutive(nums) {\n  const set = new Set(nums);\n  let best = 0;\n  for (const n of set) {\n    if (!set.has(n - 1)) {\n      let curr = n;\n      let len = 1;\n      while (set.has(curr + 1)) {\n        curr++;\n        len++;\n      }\n      best = Math.max(best, len);\n    }\n  }\n  return best;\n}\nconsole.log(longestConsecutive([100, 4, 200, 1, 3, 2]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the longest run of consecutive integers in the array."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Only start counting from numbers that have no predecessor in the set.",
+                                "code": "function longestConsecutive(nums) {\n  const set = new Set(nums);\n  let best = 0;\n  for (const n of set) {\n    if (!set.has(n - 1)) {\n      let curr = n;\n      let len = 1;\n      while (set.has(curr + 1)) {\n        curr++;\n        len++;\n      }\n      best = Math.max(best, len);\n    }\n  }\n  return best;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The longest consecutive sequence is 1,2,3,4 with length 4."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-91",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Task Scheduler",
+                    "description": "Implement `leastInterval(tasks, n)` to compute minimum intervals with cooldown. Test with tasks [A,A,A,B,B,B] and n=2. Expected output: `8`.",
+                    "starterCode": "function leastInterval(tasks, n) {\n  // Your code here\n}\n",
+                    "hint": "Use the max frequency and count how many tasks share it.",
+                    "solution": {
+                        "code": "function leastInterval(tasks, n) {\n  const freq = new Map();\n  for (const t of tasks) freq.set(t, (freq.get(t) || 0) + 1);\n  let max = 0;\n  let countMax = 0;\n  for (const val of freq.values()) {\n    if (val > max) {\n      max = val;\n      countMax = 1;\n    } else if (val === max) {\n      countMax++;\n    }\n  }\n  const slots = (max - 1) * (n + 1) + countMax;\n  return Math.max(slots, tasks.length);\n}\nconsole.log(leastInterval([\"A\", \"A\", \"A\", \"B\", \"B\", \"B\"], 2));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the minimal time to schedule tasks with cooldown between same letters."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Compute the frame size using the most frequent tasks and fill remaining slots.",
+                                "code": "function leastInterval(tasks, n) {\n  const freq = new Map();\n  for (const t of tasks) freq.set(t, (freq.get(t) || 0) + 1);\n  let max = 0;\n  let countMax = 0;\n  for (const val of freq.values()) {\n    if (val > max) {\n      max = val;\n      countMax = 1;\n    } else if (val === max) {\n      countMax++;\n    }\n  }\n  const slots = (max - 1) * (n + 1) + countMax;\n  return Math.max(slots, tasks.length);\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The minimal schedule length is 8."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-92",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Valid Sudoku",
+                    "description": "Implement `isValidSudoku(board)` for a 9x9 board. Test with the provided board. Expected output: `true`.",
+                    "starterCode": "function isValidSudoku(board) {\n  // Your code here\n}\n",
+                    "hint": "Track seen digits in rows, columns, and 3x3 boxes.",
+                    "solution": {
+                        "code": "function isValidSudoku(board) {\n  const rows = Array.from({ length: 9 }, () => new Set());\n  const cols = Array.from({ length: 9 }, () => new Set());\n  const boxes = Array.from({ length: 9 }, () => new Set());\n  for (let r = 0; r < 9; r++) {\n    for (let c = 0; c < 9; c++) {\n      const val = board[r][c];\n      if (val === \".\") continue;\n      const box = Math.floor(r / 3) * 3 + Math.floor(c / 3);\n      if (rows[r].has(val) || cols[c].has(val) || boxes[box].has(val)) return false;\n      rows[r].add(val);\n      cols[c].add(val);\n      boxes[box].add(val);\n    }\n  }\n  return true;\n}\nconst board = [\n  [\"5\",\"3\",\".\",\".\",\"7\",\".\",\".\",\".\",\".\"],\n  [\"6\",\".\",\".\",\"1\",\"9\",\"5\",\".\",\".\",\".\"],\n  [\".\",\"9\",\"8\",\".\",\".\",\".\",\".\",\"6\",\".\"],\n  [\"8\",\".\",\".\",\".\",\"6\",\".\",\".\",\".\",\"3\"],\n  [\"4\",\".\",\".\",\"8\",\".\",\"3\",\".\",\".\",\"1\"],\n  [\"7\",\".\",\".\",\".\",\"2\",\".\",\".\",\".\",\"6\"],\n  [\".\",\"6\",\".\",\".\",\".\",\".\",\"2\",\"8\",\".\"],\n  [\".\",\".\",\".\",\"4\",\"1\",\"9\",\".\",\".\",\"5\"],\n  [\".\",\".\",\".\",\".\",\"8\",\".\",\".\",\"7\",\"9\"]\n];\nconsole.log(isValidSudoku(board));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We must ensure no duplicate digits in any row, column, or 3x3 box."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Track sets for rows, columns, and boxes and validate each filled cell.",
+                                "code": "function isValidSudoku(board) {\n  const rows = Array.from({ length: 9 }, () => new Set());\n  const cols = Array.from({ length: 9 }, () => new Set());\n  const boxes = Array.from({ length: 9 }, () => new Set());\n  for (let r = 0; r < 9; r++) {\n    for (let c = 0; c < 9; c++) {\n      const val = board[r][c];\n      if (val === \".\") continue;\n      const box = Math.floor(r / 3) * 3 + Math.floor(c / 3);\n      if (rows[r].has(val) || cols[c].has(val) || boxes[box].has(val)) return false;\n      rows[r].add(val);\n      cols[c].add(val);\n      boxes[box].add(val);\n    }\n  }\n  return true;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The provided board is valid, so output is true."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-93",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Word Ladder",
+                    "description": "Implement `ladderLength(begin, end, wordList)` returning the shortest transformation length. Test with hit->cog and list [hot,dot,dog,lot,log,cog]. Expected output: `5`.",
+                    "starterCode": "function ladderLength(begin, end, wordList) {\n  // Your code here\n}\n",
+                    "hint": "Use BFS by changing one letter at a time and tracking visited words.",
+                    "solution": {
+                        "code": "function ladderLength(begin, end, wordList) {\n  const set = new Set(wordList);\n  if (!set.has(end)) return 0;\n  const queue = [[begin, 1]];\n  const visited = new Set([begin]);\n  while (queue.length > 0) {\n    const [word, dist] = queue.shift();\n    if (word === end) return dist;\n    const chars = word.split(\"\");\n    for (let i = 0; i < chars.length; i++) {\n      const original = chars[i];\n      for (let c = 97; c <= 122; c++) {\n        const ch = String.fromCharCode(c);\n        if (ch === original) continue;\n        chars[i] = ch;\n        const next = chars.join(\"\");\n        if (set.has(next) && !visited.has(next)) {\n          visited.add(next);\n          queue.push([next, dist + 1]);\n        }\n      }\n      chars[i] = original;\n    }\n  }\n  return 0;\n}\nconsole.log(ladderLength(\"hit\", \"cog\", [\"hot\", \"dot\", \"dog\", \"lot\", \"log\", \"cog\"]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the shortest sequence of one-letter transformations."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use BFS and generate all one-letter variations at each step.",
+                                "code": "function ladderLength(begin, end, wordList) {\n  const set = new Set(wordList);\n  if (!set.has(end)) return 0;\n  const queue = [[begin, 1]];\n  const visited = new Set([begin]);\n  while (queue.length > 0) {\n    const [word, dist] = queue.shift();\n    if (word === end) return dist;\n    const chars = word.split(\"\");\n    for (let i = 0; i < chars.length; i++) {\n      const original = chars[i];\n      for (let c = 97; c <= 122; c++) {\n        const ch = String.fromCharCode(c);\n        if (ch === original) continue;\n        chars[i] = ch;\n        const next = chars.join(\"\");\n        if (set.has(next) && !visited.has(next)) {\n          visited.add(next);\n          queue.push([next, dist + 1]);\n        }\n      }\n      chars[i] = original;\n    }\n  }\n  return 0;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The shortest ladder length from hit to cog is 5."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-94",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Rotting Oranges",
+                    "description": "Implement `orangesRotting(grid)` to compute minutes until all oranges rot. Test with [[2,1,1],[1,1,0],[0,1,1]]. Expected output: `4`.",
+                    "starterCode": "function orangesRotting(grid) {\n  // Your code here\n}\n",
+                    "hint": "Use BFS starting from all rotten oranges.",
+                    "solution": {
+                        "code": "function orangesRotting(grid) {\n  const rows = grid.length, cols = grid[0].length;\n  const queue = [];\n  let fresh = 0;\n  for (let r = 0; r < rows; r++) {\n    for (let c = 0; c < cols; c++) {\n      if (grid[r][c] === 2) queue.push([r, c, 0]);\n      if (grid[r][c] === 1) fresh++;\n    }\n  }\n  let minutes = 0;\n  const dirs = [[1,0],[-1,0],[0,1],[0,-1]];\n  while (queue.length > 0) {\n    const [r, c, t] = queue.shift();\n    minutes = Math.max(minutes, t);\n    for (const [dr, dc] of dirs) {\n      const nr = r + dr, nc = c + dc;\n      if (nr >= 0 && nc >= 0 && nr < rows && nc < cols && grid[nr][nc] === 1) {\n        grid[nr][nc] = 2;\n        fresh--;\n        queue.push([nr, nc, t + 1]);\n      }\n    }\n  }\n  return fresh === 0 ? minutes : -1;\n}\nconsole.log(orangesRotting([[2, 1, 1], [1, 1, 0], [0, 1, 1]]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the time until all fresh oranges become rotten."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Multi-source BFS spreads rotting in waves of minutes.",
+                                "code": "function orangesRotting(grid) {\n  const rows = grid.length, cols = grid[0].length;\n  const queue = [];\n  let fresh = 0;\n  for (let r = 0; r < rows; r++) {\n    for (let c = 0; c < cols; c++) {\n      if (grid[r][c] === 2) queue.push([r, c, 0]);\n      if (grid[r][c] === 1) fresh++;\n    }\n  }\n  let minutes = 0;\n  const dirs = [[1,0],[-1,0],[0,1],[0,-1]];\n  while (queue.length > 0) {\n    const [r, c, t] = queue.shift();\n    minutes = Math.max(minutes, t);\n    for (const [dr, dc] of dirs) {\n      const nr = r + dr, nc = c + dc;\n      if (nr >= 0 && nc >= 0 && nr < rows && nc < cols && grid[nr][nc] === 1) {\n        grid[nr][nc] = 2;\n        fresh--;\n        queue.push([nr, nc, t + 1]);\n      }\n    }\n  }\n  return fresh === 0 ? minutes : -1;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "All oranges rot in 4 minutes."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-95",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Course Finish",
+                    "description": "Implement `canFinish(numCourses, prereqs)` to check if all courses can be completed. Test with 2 courses and [[1,0]]. Expected output: `true`.",
+                    "starterCode": "function canFinish(numCourses, prereqs) {\n  // Your code here\n}\n",
+                    "hint": "Detect cycles with DFS or Kahn's algorithm.",
+                    "solution": {
+                        "code": "function canFinish(numCourses, prereqs) {\n  const graph = Array.from({ length: numCourses }, () => []);\n  const indeg = Array(numCourses).fill(0);\n  for (const [course, pre] of prereqs) {\n    graph[pre].push(course);\n    indeg[course]++;\n  }\n  const queue = [];\n  for (let i = 0; i < numCourses; i++) if (indeg[i] === 0) queue.push(i);\n  let taken = 0;\n  while (queue.length > 0) {\n    const node = queue.shift();\n    taken++;\n    for (const next of graph[node]) {\n      indeg[next]--;\n      if (indeg[next] === 0) queue.push(next);\n    }\n  }\n  return taken === numCourses;\n}\nconsole.log(canFinish(2, [[1, 0]]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to detect if the prerequisite graph has a cycle."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use Kahn's algorithm to count how many courses can be taken.",
+                                "code": "function canFinish(numCourses, prereqs) {\n  const graph = Array.from({ length: numCourses }, () => []);\n  const indeg = Array(numCourses).fill(0);\n  for (const [course, pre] of prereqs) {\n    graph[pre].push(course);\n    indeg[course]++;\n  }\n  const queue = [];\n  for (let i = 0; i < numCourses; i++) if (indeg[i] === 0) queue.push(i);\n  let taken = 0;\n  while (queue.length > 0) {\n    const node = queue.shift();\n    taken++;\n    for (const next of graph[node]) {\n      indeg[next]--;\n      if (indeg[next] === 0) queue.push(next);\n    }\n  }\n  return taken === numCourses;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "With prereq [1,0], both courses can be completed."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-96",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Interleave",
+                    "description": "Implement `isInterleave(s1, s2, s3)` to check if s3 is an interleaving. Test with s1=\"aab\", s2=\"axy\", s3=\"aaxaby\". Expected output: `true`.",
+                    "starterCode": "function isInterleave(s1, s2, s3) {\n  // Your code here\n}\n",
+                    "hint": "Use DP where dp[i][j] checks s1[0..i) and s2[0..j) form s3[0..i+j).",
+                    "solution": {
+                        "code": "function isInterleave(s1, s2, s3) {\n  if (s1.length + s2.length !== s3.length) return false;\n  const dp = Array.from({ length: s1.length + 1 }, () => Array(s2.length + 1).fill(false));\n  dp[0][0] = true;\n  for (let i = 0; i <= s1.length; i++) {\n    for (let j = 0; j <= s2.length; j++) {\n      const idx = i + j - 1;\n      if (i > 0 && s1[i - 1] === s3[idx]) dp[i][j] = dp[i][j] || dp[i - 1][j];\n      if (j > 0 && s2[j - 1] === s3[idx]) dp[i][j] = dp[i][j] || dp[i][j - 1];\n    }\n  }\n  return dp[s1.length][s2.length];\n}\nconsole.log(isInterleave(\"aab\", \"axy\", \"aaxaby\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to confirm s3 can be formed by interleaving s1 and s2 in order."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "DP tracks whether prefixes of s1 and s2 can build the prefix of s3.",
+                                "code": "function isInterleave(s1, s2, s3) {\n  if (s1.length + s2.length !== s3.length) return false;\n  const dp = Array.from({ length: s1.length + 1 }, () => Array(s2.length + 1).fill(false));\n  dp[0][0] = true;\n  for (let i = 0; i <= s1.length; i++) {\n    for (let j = 0; j <= s2.length; j++) {\n      const idx = i + j - 1;\n      if (i > 0 && s1[i - 1] === s3[idx]) dp[i][j] = dp[i][j] || dp[i - 1][j];\n      if (j > 0 && s2[j - 1] === s3[idx]) dp[i][j] = dp[i][j] || dp[i][j - 1];\n    }\n  }\n  return dp[s1.length][s2.length];\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "aaxaby can be interleaved from aab and axy, so output is true."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-97",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Min Window",
+                    "description": "Implement `minWindow(s, t)` returning the smallest substring of s containing all chars of t. Test with s=\"ADOBECODEBANC\", t=\"ABC\". Expected output: `BANC`.",
+                    "starterCode": "function minWindow(s, t) {\n  // Your code here\n}\n",
+                    "hint": "Use a sliding window with required counts and a formed counter.",
+                    "solution": {
+                        "code": "function minWindow(s, t) {\n  const need = new Map();\n  for (const ch of t) need.set(ch, (need.get(ch) || 0) + 1);\n  const have = new Map();\n  let formed = 0;\n  const required = need.size;\n  let l = 0;\n  let best = [0, Infinity];\n  for (let r = 0; r < s.length; r++) {\n    const ch = s[r];\n    have.set(ch, (have.get(ch) || 0) + 1);\n    if (need.has(ch) && have.get(ch) === need.get(ch)) formed++;\n    while (l <= r && formed === required) {\n      if (r - l + 1 < best[1]) best = [l, r - l + 1];\n      const leftCh = s[l++];\n      have.set(leftCh, have.get(leftCh) - 1);\n      if (need.has(leftCh) && have.get(leftCh) < need.get(leftCh)) formed--;\n    }\n  }\n  if (best[1] === Infinity) return \"\";\n  return s.slice(best[0], best[0] + best[1]);\n}\nconsole.log(minWindow(\"ADOBECODEBANC\", \"ABC\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need the smallest substring containing all characters of t."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Expand a window to satisfy requirements, then shrink it to minimum.",
+                                "code": "function minWindow(s, t) {\n  const need = new Map();\n  for (const ch of t) need.set(ch, (need.get(ch) || 0) + 1);\n  const have = new Map();\n  let formed = 0;\n  const required = need.size;\n  let l = 0;\n  let best = [0, Infinity];\n  for (let r = 0; r < s.length; r++) {\n    const ch = s[r];\n    have.set(ch, (have.get(ch) || 0) + 1);\n    if (need.has(ch) && have.get(ch) === need.get(ch)) formed++;\n    while (l <= r && formed === required) {\n      if (r - l + 1 < best[1]) best = [l, r - l + 1];\n      const leftCh = s[l++];\n      have.set(leftCh, have.get(leftCh) - 1);\n      if (need.has(leftCh) && have.get(leftCh) < need.get(leftCh)) formed--;\n    }\n  }\n  if (best[1] === Infinity) return \"\";\n  return s.slice(best[0], best[0] + best[1]);\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The smallest window containing A, B, C is BANC."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-98",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Decode String",
+                    "description": "Implement `decodeString(s)` for patterns like k[encoded]. Test with \"3[a]2[bc]\". Expected output: `aaabcbc`.",
+                    "starterCode": "function decodeString(s) {\n  // Your code here\n}\n",
+                    "hint": "Use stacks to track numbers and previous strings.",
+                    "solution": {
+                        "code": "function decodeString(s) {\n  const countStack = [];\n  const strStack = [];\n  let curr = \"\";\n  let num = 0;\n  for (const ch of s) {\n    if (ch >= \"0\" && ch <= \"9\") {\n      num = num * 10 + Number(ch);\n    } else if (ch === \"[\") {\n      countStack.push(num);\n      strStack.push(curr);\n      num = 0;\n      curr = \"\";\n    } else if (ch === \"]\") {\n      const times = countStack.pop();\n      const prev = strStack.pop();\n      curr = prev + curr.repeat(times);\n    } else {\n      curr += ch;\n    }\n  }\n  return curr;\n}\nconsole.log(decodeString(\"3[a]2[bc]\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to expand nested repetition patterns."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use stacks to store prior strings and repeat counts when closing brackets.",
+                                "code": "function decodeString(s) {\n  const countStack = [];\n  const strStack = [];\n  let curr = \"\";\n  let num = 0;\n  for (const ch of s) {\n    if (ch >= \"0\" && ch <= \"9\") {\n      num = num * 10 + Number(ch);\n    } else if (ch === \"[\") {\n      countStack.push(num);\n      strStack.push(curr);\n      num = 0;\n      curr = \"\";\n    } else if (ch === \"]\") {\n      const times = countStack.pop();\n      const prev = strStack.pop();\n      curr = prev + curr.repeat(times);\n    } else {\n      curr += ch;\n    }\n  }\n  return curr;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "3[a]2[bc] expands to aaabcbc."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-99",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Gas Station",
+                    "description": "Implement `canCompleteCircuit(gas, cost)` returning the start index or -1. Test with gas [1,2,3,4,5] and cost [3,4,5,1,2]. Expected output: `3`.",
+                    "starterCode": "function canCompleteCircuit(gas, cost) {\n  // Your code here\n}\n",
+                    "hint": "If total gas is less than total cost, return -1; otherwise track current tank and start.",
+                    "solution": {
+                        "code": "function canCompleteCircuit(gas, cost) {\n  let total = 0;\n  let tank = 0;\n  let start = 0;\n  for (let i = 0; i < gas.length; i++) {\n    const diff = gas[i] - cost[i];\n    total += diff;\n    tank += diff;\n    if (tank < 0) {\n      start = i + 1;\n      tank = 0;\n    }\n  }\n  return total >= 0 ? start : -1;\n}\nconsole.log(canCompleteCircuit([1, 2, 3, 4, 5], [3, 4, 5, 1, 2]));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need a start index that allows completing the circuit."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Track total gas and reset the start when the tank goes negative.",
+                                "code": "function canCompleteCircuit(gas, cost) {\n  let total = 0;\n  let tank = 0;\n  let start = 0;\n  for (let i = 0; i < gas.length; i++) {\n    const diff = gas[i] - cost[i];\n    total += diff;\n    tank += diff;\n    if (tank < 0) {\n      start = i + 1;\n      tank = 0;\n    }\n  }\n  return total >= 0 ? start : -1;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "Starting at index 3 completes the circuit."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "js-advanced-100",
+                    "language": "javascript",
+                    "level": "advanced",
+                    "title": "Partition Labels",
+                    "description": "Implement `partitionLabels(s)` returning sizes of partitions so each letter appears in at most one part. Test with \"ababcbacadefegdehijhklij\". Expected output: `9,7,8`.",
+                    "starterCode": "function partitionLabels(s) {\n  // Your code here\n}\n",
+                    "hint": "Track last occurrence of each char, then cut partitions when current index reaches the farthest last.",
+                    "solution": {
+                        "code": "function partitionLabels(s) {\n  const last = {};\n  for (let i = 0; i < s.length; i++) last[s[i]] = i;\n  const res = [];\n  let start = 0;\n  let end = 0;\n  for (let i = 0; i < s.length; i++) {\n    end = Math.max(end, last[s[i]]);\n    if (i === end) {\n      res.push(end - start + 1);\n      start = i + 1;\n    }\n  }\n  return res;\n}\nconsole.log(partitionLabels(\"ababcbacadefegdehijhklij\").join(\",\"));",
+                        "steps": [
+                            {
+                                "title": "Understand the goal",
+                                "explanation": "We need to split the string so no letter appears in more than one part."
+                            },
+                            {
+                                "title": "Implement the solution",
+                                "explanation": "Use last occurrence positions to determine partition boundaries.",
+                                "code": "function partitionLabels(s) {\n  const last = {};\n  for (let i = 0; i < s.length; i++) last[s[i]] = i;\n  const res = [];\n  let start = 0;\n  let end = 0;\n  for (let i = 0; i < s.length; i++) {\n    end = Math.max(end, last[s[i]]);\n    if (i === end) {\n      res.push(end - start + 1);\n      start = i + 1;\n    }\n  }\n  return res;\n}"
+                            },
+                            {
+                                "title": "Verify the result",
+                                "explanation": "The partitions have sizes 9,7,8."
+                            }
+                        ]
+                    }
                 }
             ]
         }
