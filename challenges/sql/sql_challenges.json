@@ -5502,9 +5502,9 @@
           "title": "Daily Revenue",
           "description": "Using `orders(created_at, amount)`, return `order_day` and `daily_total`, grouped by day and sorted ascending by day. Expected output: order_day, daily_total columns.",
           "starterCode": "-- Write your query below\n",
-          "hint": "Extract DATE(created_at), then SUM and GROUP BY.",
+          "hint": "Extract created_at::DATE, then SUM and GROUP BY.",
           "solution": {
-            "code": "SELECT DATE(created_at) AS order_day, SUM(amount) AS daily_total\nFROM orders\nGROUP BY DATE(created_at)\nORDER BY order_day ASC",
+            "code": "SELECT created_at::DATE AS order_day, SUM(amount) AS daily_total\nFROM orders\nGROUP BY created_at::DATE\nORDER BY order_day ASC",
             "steps": [
               {
                 "title": "Understand the goal",
@@ -5513,7 +5513,7 @@
               {
                 "title": "Implement the core logic",
                 "explanation": "Apply the language feature that directly solves the task.",
-                "code": "SELECT DATE(created_at) AS order_day, SUM(amount) AS daily_total\nFROM orders\nGROUP BY DATE(created_at)\nORDER BY order_day ASC"
+                "code": "SELECT created_at::DATE AS order_day, SUM(amount) AS daily_total\nFROM orders\nGROUP BY created_at::DATE\nORDER BY order_day ASC"
               },
               {
                 "title": "Verify expected result",
@@ -6809,19 +6809,19 @@
           "title": "Extract Year",
           "description": "Using `orders(order_date, amount)`, return total amount per year. Expected output: `order_year`, `total_amount`.",
           "starterCode": "-- Write your query below\n",
-          "hint": "Use STRFTIME('%Y', order_date) to extract the year.",
+          "hint": "Use TO_CHAR(order_date, 'YYYY') to extract the year.",
           "solution": {
-            "code": "SELECT STRFTIME('%Y', order_date) AS order_year, SUM(amount) AS total_amount\nFROM orders\nGROUP BY order_year",
+            "code": "SELECT TO_CHAR(order_date, 'YYYY') AS order_year, SUM(amount) AS total_amount\nFROM orders\nGROUP BY order_year",
             "steps": [
               {
                 "title": "Extract the year",
-                "explanation": "STRFTIME('%Y', date) extracts the four-digit year from a date.",
-                "code": "STRFTIME('%Y', order_date) AS order_year"
+                "explanation": "TO_CHAR(date, 'YYYY') extracts the four-digit year from a date as a string.",
+                "code": "TO_CHAR(order_date, 'YYYY') AS order_year"
               },
               {
                 "title": "Aggregate by year",
                 "explanation": "Group by the extracted year and sum the amounts.",
-                "code": "SELECT STRFTIME('%Y', order_date) AS order_year, SUM(amount) AS total_amount\nFROM orders\nGROUP BY order_year"
+                "code": "SELECT TO_CHAR(order_date, 'YYYY') AS order_year, SUM(amount) AS total_amount\nFROM orders\nGROUP BY order_year"
               },
               {
                 "title": "Verify",
@@ -6837,19 +6837,19 @@
           "title": "Month Group",
           "description": "Using `orders(order_date, amount)`, return total amount per month (YYYY-MM format). Expected output: `month`, `total_amount`. Order by month.",
           "starterCode": "-- Write your query below\n",
-          "hint": "Use STRFTIME('%Y-%m', order_date) for month grouping.",
+          "hint": "Use TO_CHAR(order_date, 'YYYY-MM') for month grouping.",
           "solution": {
-            "code": "SELECT STRFTIME('%Y-%m', order_date) AS month, SUM(amount) AS total_amount\nFROM orders\nGROUP BY month\nORDER BY month",
+            "code": "SELECT TO_CHAR(order_date, 'YYYY-MM') AS month, SUM(amount) AS total_amount\nFROM orders\nGROUP BY month\nORDER BY month",
             "steps": [
               {
                 "title": "Format month",
-                "explanation": "STRFTIME('%Y-%m', date) gives a YYYY-MM string suitable for grouping.",
-                "code": "STRFTIME('%Y-%m', order_date) AS month"
+                "explanation": "TO_CHAR(date, 'YYYY-MM') gives a YYYY-MM string suitable for grouping.",
+                "code": "TO_CHAR(order_date, 'YYYY-MM') AS month"
               },
               {
                 "title": "Build the query",
                 "explanation": "Group by month, sum amounts, and order chronologically.",
-                "code": "SELECT STRFTIME('%Y-%m', order_date) AS month, SUM(amount) AS total_amount\nFROM orders\nGROUP BY month\nORDER BY month"
+                "code": "SELECT TO_CHAR(order_date, 'YYYY-MM') AS month, SUM(amount) AS total_amount\nFROM orders\nGROUP BY month\nORDER BY month"
               },
               {
                 "title": "Verify",
@@ -6865,19 +6865,19 @@
           "title": "Weekday Name",
           "description": "Using `events(event_date, title)`, return each event with its day of week (0=Sunday to 6=Saturday). Expected output: `title`, `event_date`, `day_of_week`.",
           "starterCode": "-- Write your query below\n",
-          "hint": "Use STRFTIME('%w', event_date) for the day of week number.",
+          "hint": "Use EXTRACT(DOW FROM event_date) for the day of week number.",
           "solution": {
-            "code": "SELECT title, event_date, STRFTIME('%w', event_date) AS day_of_week\nFROM events",
+            "code": "SELECT title, event_date, EXTRACT(DOW FROM event_date)::INTEGER AS day_of_week\nFROM events",
             "steps": [
               {
                 "title": "Extract day of week",
-                "explanation": "STRFTIME('%w', date) returns 0 for Sunday through 6 for Saturday.",
-                "code": "STRFTIME('%w', event_date) AS day_of_week"
+                "explanation": "EXTRACT(DOW FROM date) returns 0 for Sunday through 6 for Saturday.",
+                "code": "EXTRACT(DOW FROM event_date)::INTEGER AS day_of_week"
               },
               {
                 "title": "Build the query",
                 "explanation": "Select title, event_date, and the day of week.",
-                "code": "SELECT title, event_date, STRFTIME('%w', event_date) AS day_of_week\nFROM events"
+                "code": "SELECT title, event_date, EXTRACT(DOW FROM event_date)::INTEGER AS day_of_week\nFROM events"
               },
               {
                 "title": "Verify",
@@ -6965,7 +6965,7 @@
               },
               {
                 "title": "Verify",
-                "explanation": "Row count should equal (number of colors) × (number of sizes)."
+                "explanation": "Row count should equal (number of colors) \u00d7 (number of sizes)."
               }
             ]
           }
@@ -7581,7 +7581,7 @@
               },
               {
                 "title": "Verify",
-                "explanation": "avg_amount × number of orders should approximately equal total_amount."
+                "explanation": "avg_amount \u00d7 number of orders should approximately equal total_amount."
               }
             ]
           }
@@ -8036,19 +8036,19 @@
           "title": "Age Calc",
           "description": "Using `users(name, birth_date)`, return each user with their age in years (as of '2024-01-01'). Expected output: `name`, `age`.",
           "starterCode": "-- Write your query below\n",
-          "hint": "Subtract birth year from 2024 using STRFTIME.",
+          "hint": "Subtract birth year from 2024 using EXTRACT(YEAR FROM date).",
           "solution": {
-            "code": "SELECT name,\n  CAST(STRFTIME('%Y', '2024-01-01') AS INTEGER) - CAST(STRFTIME('%Y', birth_date) AS INTEGER) AS age\nFROM users",
+            "code": "SELECT name,\n  EXTRACT(YEAR FROM '2024-01-01'::DATE)::INTEGER - EXTRACT(YEAR FROM birth_date)::INTEGER AS age\nFROM users",
             "steps": [
               {
                 "title": "Extract years",
-                "explanation": "STRFTIME('%Y', date) extracts the year as a string. CAST to integer for arithmetic.",
-                "code": "CAST(STRFTIME('%Y', '2024-01-01') AS INTEGER) - CAST(STRFTIME('%Y', birth_date) AS INTEGER)"
+                "explanation": "EXTRACT(YEAR FROM date) extracts the year as a number.",
+                "code": "EXTRACT(YEAR FROM '2024-01-01'::DATE)::INTEGER - EXTRACT(YEAR FROM birth_date)::INTEGER"
               },
               {
                 "title": "Build the query",
                 "explanation": "Select name and computed age.",
-                "code": "SELECT name,\n  CAST(STRFTIME('%Y', '2024-01-01') AS INTEGER) - CAST(STRFTIME('%Y', birth_date) AS INTEGER) AS age\nFROM users"
+                "code": "SELECT name,\n  EXTRACT(YEAR FROM '2024-01-01'::DATE)::INTEGER - EXTRACT(YEAR FROM birth_date)::INTEGER AS age\nFROM users"
               },
               {
                 "title": "Verify",
@@ -9399,7 +9399,7 @@
           "starterCode": "-- Write your query below\n",
           "hint": "Subtract a ROW_NUMBER from the date to create a grouping key for consecutive dates.",
           "solution": {
-            "code": "WITH numbered AS (\n  SELECT\n    employee_id,\n    work_date,\n    DATE(work_date, '-' || (ROW_NUMBER() OVER (PARTITION BY employee_id ORDER BY work_date) - 1) || ' days') AS grp\n  FROM attendance\n)\nSELECT\n  employee_id,\n  MIN(work_date) AS island_start,\n  MAX(work_date) AS island_end,\n  COUNT(*) AS streak_days\nFROM numbered\nGROUP BY employee_id, grp\nORDER BY employee_id, island_start",
+            "code": "WITH numbered AS (\n  SELECT\n    employee_id,\n    work_date,\n    work_date - (ROW_NUMBER() OVER (PARTITION BY employee_id ORDER BY work_date) - 1) * INTERVAL '1 day' AS grp\n  FROM attendance\n)\nSELECT\n  employee_id,\n  MIN(work_date) AS island_start,\n  MAX(work_date) AS island_end,\n  COUNT(*) AS streak_days\nFROM numbered\nGROUP BY employee_id, grp\nORDER BY employee_id, island_start",
             "steps": [
               {
                 "title": "Understand the goal",
@@ -9407,8 +9407,8 @@
               },
               {
                 "title": "Implement the core logic",
-                "explanation": "Subtracting a sequential number from each date creates a constant for consecutive dates, enabling grouping.",
-                "code": "WITH numbered AS (\n  SELECT\n    employee_id,\n    work_date,\n    DATE(work_date, '-' || (ROW_NUMBER() OVER (PARTITION BY employee_id ORDER BY work_date) - 1) || ' days') AS grp\n  FROM attendance\n)\nSELECT\n  employee_id,\n  MIN(work_date) AS island_start,\n  MAX(work_date) AS island_end,\n  COUNT(*) AS streak_days\nFROM numbered\nGROUP BY employee_id, grp\nORDER BY employee_id, island_start"
+                "explanation": "Subtracting a sequential number of days from each date creates a constant for consecutive dates, enabling grouping.",
+                "code": "WITH numbered AS (\n  SELECT\n    employee_id,\n    work_date,\n    work_date - (ROW_NUMBER() OVER (PARTITION BY employee_id ORDER BY work_date) - 1) * INTERVAL '1 day' AS grp\n  FROM attendance\n)\nSELECT\n  employee_id,\n  MIN(work_date) AS island_start,\n  MAX(work_date) AS island_end,\n  COUNT(*) AS streak_days\nFROM numbered\nGROUP BY employee_id, grp\nORDER BY employee_id, island_start"
               },
               {
                 "title": "Verify expected result",
@@ -9777,7 +9777,7 @@
           "starterCode": "-- Write your query below\n",
           "hint": "Start with the first date and add 1 day in each recursive step.",
           "solution": {
-            "code": "WITH RECURSIVE dates(dt) AS (\n  SELECT '2024-01-01'\n  UNION ALL\n  SELECT DATE(dt, '+1 day') FROM dates WHERE dt < '2024-01-10'\n)\nSELECT dt FROM dates",
+            "code": "WITH RECURSIVE dates(dt) AS (\n  SELECT '2024-01-01'::DATE\n  UNION ALL\n  SELECT dt + INTERVAL '1 day' FROM dates WHERE dt < '2024-01-10'::DATE\n)\nSELECT dt FROM dates",
             "steps": [
               {
                 "title": "Understand the goal",
@@ -9786,7 +9786,7 @@
               {
                 "title": "Implement the core logic",
                 "explanation": "A recursive CTE can generate date ranges by incrementing the date in each iteration until the end date.",
-                "code": "WITH RECURSIVE dates(dt) AS (\n  SELECT '2024-01-01'\n  UNION ALL\n  SELECT DATE(dt, '+1 day') FROM dates WHERE dt < '2024-01-10'\n)\nSELECT dt FROM dates"
+                "code": "WITH RECURSIVE dates(dt) AS (\n  SELECT '2024-01-01'::DATE\n  UNION ALL\n  SELECT dt + INTERVAL '1 day' FROM dates WHERE dt < '2024-01-10'::DATE\n)\nSELECT dt FROM dates"
               },
               {
                 "title": "Verify expected result",
@@ -9910,9 +9910,9 @@
           "title": "String Split",
           "description": "Using `data(id, csv_values)` where csv_values contains comma-separated numbers like '10,20,30', extract the first value as `first_val`. Return `id` and `first_val`. Order by `id`. Expected output: id, first_val columns.",
           "starterCode": "-- Write your query below\n",
-          "hint": "Use SUBSTR and INSTR to extract text before the first comma.",
+          "hint": "Use SUBSTRING and POSITION to extract text before the first comma.",
           "solution": {
-            "code": "SELECT\n  id,\n  SUBSTR(csv_values, 1, INSTR(csv_values, ',') - 1) AS first_val\nFROM data\nORDER BY id",
+            "code": "SELECT\n  id,\n  SUBSTRING(csv_values, 1, POSITION(',' IN csv_values) - 1) AS first_val\nFROM data\nORDER BY id",
             "steps": [
               {
                 "title": "Understand the goal",
@@ -9920,8 +9920,8 @@
               },
               {
                 "title": "Implement the core logic",
-                "explanation": "INSTR finds the comma position and SUBSTR extracts the text before it.",
-                "code": "SELECT\n  id,\n  SUBSTR(csv_values, 1, INSTR(csv_values, ',') - 1) AS first_val\nFROM data\nORDER BY id"
+                "explanation": "POSITION finds the comma position and SUBSTRING extracts the text before it.",
+                "code": "SELECT\n  id,\n  SUBSTRING(csv_values, 1, POSITION(',' IN csv_values) - 1) AS first_val\nFROM data\nORDER BY id"
               },
               {
                 "title": "Verify expected result",
