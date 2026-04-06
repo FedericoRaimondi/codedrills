@@ -1,6 +1,6 @@
 # CodeDrills
 
-<img src="icon.png" alt="icon" width="100" height="100" />
+<img src="new_logo.png" alt="icon" width="100" height="100" />
 
 > Replace mindless scrolling with something actually useful — practice and learn coding, one drill at a time.
 
