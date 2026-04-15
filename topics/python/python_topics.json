@@ -19,17 +19,20 @@
                         {
                             "title": "Integers and floats",
                             "body": "Integers (int) are whole numbers like 1, -5, 100. Floats have decimal points like 3.14, -0.5. Dividing two integers with / always gives a float in Python 3.",
-                            "code": "age = 25\npi = 3.14159\nprint(type(age))  # <class 'int'>\nprint(type(pi))   # <class 'float'>"
+                            "code": "age = 25\npi = 3.14159\nprint(type(age))  # <class 'int'>\nprint(type(pi))   # <class 'float'>",
+                            "runnable": true
                         },
                         {
                             "title": "Strings",
                             "body": "Strings store text. Use single or double quotes — both work. You can even use triple quotes for multi-line strings.",
-                            "code": "name = \"Alice\"\ngreeting = 'Hello'\nprint(name[0])  # 'A'"
+                            "code": "name = \"Alice\"\ngreeting = 'Hello'\nprint(name[0])  # 'A'",
+                            "runnable": true
                         },
                         {
                             "title": "Booleans",
                             "body": "Booleans are either True or False. They're the result of comparisons and logical operations.",
-                            "code": "is_raining = True\nprint(5 > 3)       # True\nprint(True + True) # 2"
+                            "code": "is_raining = True\nprint(5 > 3)       # True\nprint(True + True) # 2",
+                            "runnable": true
                         }
                     ]
                 },
@@ -44,22 +47,26 @@
                         {
                             "title": "The print() function",
                             "body": "print() is the simplest way to show output. You can pass any value or variable to it and Python will display it in the console.",
-                            "code": "print(\"Hello, world!\")\nprint(42)\nprint(3.14)"
+                            "code": "print(\"Hello, world!\")\nprint(42)\nprint(3.14)",
+                            "runnable": true
                         },
                         {
                             "title": "Printing multiple values",
                             "body": "You can pass several values separated by commas. By default, print() adds a space between them and a newline at the end.",
-                            "code": "name = \"Alice\"\nage = 30\nprint(\"Name:\", name, \"Age:\", age)\n# Name: Alice Age: 30"
+                            "code": "name = \"Alice\"\nage = 30\nprint(\"Name:\", name, \"Age:\", age)\n# Name: Alice Age: 30",
+                            "runnable": true
                         },
                         {
                             "title": "f-strings",
                             "body": "f-strings (formatted string literals) let you embed expressions directly inside a string. Prefix the string with f and place expressions in curly braces.",
-                            "code": "name = \"Bob\"\nscore = 95\nprint(f\"{name} scored {score} points.\")\n# Bob scored 95 points."
+                            "code": "name = \"Bob\"\nscore = 95\nprint(f\"{name} scored {score} points.\")\n# Bob scored 95 points.",
+                            "runnable": true
                         },
                         {
                             "title": "sep and end parameters",
                             "body": "Use sep to change the separator between values, and end to change what's printed after the last value (default is a newline).",
-                            "code": "print(\"a\", \"b\", \"c\", sep=\"-\")   # a-b-c\nprint(\"loading\", end=\"...\")\nprint(\"done\")                    # loading...done"
+                            "code": "print(\"a\", \"b\", \"c\", sep=\"-\")   # a-b-c\nprint(\"loading\", end=\"...\")\nprint(\"done\")                    # loading...done",
+                            "runnable": true
                         }
                     ]
                 },
@@ -78,12 +85,14 @@
                         {
                             "title": "Single-line comments",
                             "body": "Use the # character to start a comment. Everything after # on that line is ignored by Python.",
-                            "code": "# This is a comment\nx = 10  # This sets x to 10\nprint(x)"
+                            "code": "# This is a comment\nx = 10  # This sets x to 10\nprint(x)",
+                            "runnable": true
                         },
                         {
                             "title": "Multi-line comments",
                             "body": "Python doesn't have a special multi-line comment syntax, but you can use triple-quoted strings as an informal block comment when they aren't assigned to a variable.",
-                            "code": "\"\"\"\nThis block describes what the program does.\nIt spans multiple lines.\n\"\"\"\nprint(\"Program starts here\")"
+                            "code": "\"\"\"\nThis block describes what the program does.\nIt spans multiple lines.\n\"\"\"\nprint(\"Program starts here\")",
+                            "runnable": true
                         },
                         {
                             "title": "When to write comments",
@@ -102,17 +111,20 @@
                         {
                             "title": "The input() function",
                             "body": "input() pauses the program and waits for the user to type something and press Enter. It always returns a string.",
-                            "code": "name = input(\"What is your name? \")\nprint(\"Hello,\", name)"
+                            "code": "name = input(\"What is your name? \")\nprint(\"Hello,\", name)",
+                            "runnable": false
                         },
                         {
                             "title": "Converting input to a number",
                             "body": "Because input() returns a string, you must convert it before doing arithmetic. Use int() for whole numbers or float() for decimals.",
-                            "code": "age = int(input(\"Enter your age: \"))\nprint(\"In 10 years you will be\", age + 10)"
+                            "code": "age = int(input(\"Enter your age: \"))\nprint(\"In 10 years you will be\", age + 10)",
+                            "runnable": false
                         },
                         {
                             "title": "Handling invalid input",
                             "body": "If the user types something that can't be converted, Python raises a ValueError. You'll learn to handle errors properly later — for now, trust that the user enters valid data.",
-                            "code": "number = float(input(\"Enter a decimal: \"))\nprint(\"Doubled:\", number * 2)"
+                            "code": "number = float(input(\"Enter a decimal: \"))\nprint(\"Doubled:\", number * 2)",
+                            "runnable": false
                         }
                     ]
                 },
@@ -127,22 +139,26 @@
                         {
                             "title": "Basic operations",
                             "body": "Python supports the four classic operations: addition (+), subtraction (-), multiplication (*), and division (/). Division always produces a float.",
-                            "code": "print(10 + 3)   # 13\nprint(10 - 3)   # 7\nprint(10 * 3)   # 30\nprint(10 / 3)   # 3.3333..."
+                            "code": "print(10 + 3)   # 13\nprint(10 - 3)   # 7\nprint(10 * 3)   # 30\nprint(10 / 3)   # 3.3333...",
+                            "runnable": true
                         },
                         {
                             "title": "Floor division and modulo",
                             "body": "// performs floor division — it divides and rounds down to the nearest integer. % gives the remainder after division.",
-                            "code": "print(10 // 3)  # 3\nprint(10 % 3)   # 1"
+                            "code": "print(10 // 3)  # 3\nprint(10 % 3)   # 1",
+                            "runnable": true
                         },
                         {
                             "title": "Exponentiation",
                             "body": "Use ** to raise a number to a power. It works with integers and floats.",
-                            "code": "print(2 ** 10)   # 1024\nprint(9 ** 0.5)  # 3.0"
+                            "code": "print(2 ** 10)   # 1024\nprint(9 ** 0.5)  # 3.0",
+                            "runnable": true
                         },
                         {
                             "title": "Operator precedence",
                             "body": "Python follows standard math rules: exponentiation first, then multiplication/division/modulo, then addition/subtraction. Use parentheses to control evaluation order.",
-                            "code": "print(2 + 3 * 4)    # 14  (not 20)\nprint((2 + 3) * 4)  # 20"
+                            "code": "print(2 + 3 * 4)    # 14  (not 20)\nprint((2 + 3) * 4)  # 20",
+                            "runnable": true
                         }
                     ]
                 },
@@ -157,17 +173,20 @@
                         {
                             "title": "Comparison operators",
                             "body": "Comparison operators compare two values and return a boolean. The six operators are: == (equal), != (not equal), >, <, >=, <=.",
-                            "code": "print(5 == 5)   # True\nprint(5 != 3)   # True\nprint(10 > 7)   # True\nprint(4 >= 4)   # True"
+                            "code": "print(5 == 5)   # True\nprint(5 != 3)   # True\nprint(10 > 7)   # True\nprint(4 >= 4)   # True",
+                            "runnable": true
                         },
                         {
                             "title": "Logical and / or / not",
                             "body": "and returns True if both conditions are True. or returns True if at least one is True. not flips a boolean.",
-                            "code": "age = 20\nhas_id = True\nprint(age >= 18 and has_id)  # True\nprint(age < 18 or has_id)    # True\nprint(not has_id)             # False"
+                            "code": "age = 20\nhas_id = True\nprint(age >= 18 and has_id)  # True\nprint(age < 18 or has_id)    # True\nprint(not has_id)             # False",
+                            "runnable": true
                         },
                         {
                             "title": "Chained comparisons",
                             "body": "Python lets you chain comparisons naturally, like in mathematics. This is more readable than using and explicitly.",
-                            "code": "x = 5\nprint(1 < x < 10)   # True\nprint(0 <= x <= 5)  # True"
+                            "code": "x = 5\nprint(1 < x < 10)   # True\nprint(0 <= x <= 5)  # True",
+                            "runnable": true
                         }
                     ]
                 },
@@ -186,17 +205,20 @@
                         {
                             "title": "int(), float(), str()",
                             "body": "int() converts to an integer, float() to a floating-point number, and str() to a string. Conversion can fail if the value isn't compatible.",
-                            "code": "print(int(\"42\"))     # 42\nprint(float(\"3.14\")) # 3.14\nprint(str(100))      # '100'"
+                            "code": "print(int(\"42\"))     # 42\nprint(float(\"3.14\")) # 3.14\nprint(str(100))      # '100'",
+                            "runnable": true
                         },
                         {
                             "title": "bool() and truthiness",
                             "body": "bool() converts a value to True or False. Most values are truthy; exceptions include 0, 0.0, empty strings, and None.",
-                            "code": "print(bool(0))     # False\nprint(bool(\"\"))    # False\nprint(bool(42))    # True\nprint(bool(\"hi\"))  # True"
+                            "code": "print(bool(0))     # False\nprint(bool(\"\"))    # False\nprint(bool(42))    # True\nprint(bool(\"hi\"))  # True",
+                            "runnable": true
                         },
                         {
                             "title": "Implicit vs explicit conversion",
                             "body": "Python sometimes converts types automatically (implicit), such as promoting an int to float in mixed arithmetic. Explicit conversion is when you call int(), float(), etc. yourself — always prefer explicit to avoid surprises.",
-                            "code": "print(3 + 1.5)      # 4.5 (int promoted to float)\nprint(int(3 + 1.5)) # 4   (explicit truncation)"
+                            "code": "print(3 + 1.5)      # 4.5 (int promoted to float)\nprint(int(3 + 1.5)) # 4   (explicit truncation)",
+                            "runnable": true
                         }
                     ]
                 },
@@ -211,22 +233,26 @@
                         {
                             "title": "The if statement",
                             "body": "An if statement runs a block of code only when a condition is True. The block must be indented (4 spaces by convention).",
-                            "code": "temperature = 30\nif temperature > 25:\n    print(\"It's hot today!\")"
+                            "code": "temperature = 30\nif temperature > 25:\n    print(\"It's hot today!\")",
+                            "runnable": true
                         },
                         {
                             "title": "else and elif",
                             "body": "else runs when the if condition is False. elif (else-if) lets you check additional conditions in sequence. Only the first matching branch executes.",
-                            "code": "score = 72\nif score >= 90:\n    print(\"A\")\nelif score >= 70:\n    print(\"B\")\nelse:\n    print(\"C or below\")"
+                            "code": "score = 72\nif score >= 90:\n    print(\"A\")\nelif score >= 70:\n    print(\"B\")\nelse:\n    print(\"C or below\")",
+                            "runnable": true
                         },
                         {
                             "title": "Nested conditions",
                             "body": "You can place if statements inside other if statements to check multiple related conditions. Keep nesting shallow to maintain readability.",
-                            "code": "logged_in = True\nis_admin = False\nif logged_in:\n    if is_admin:\n        print(\"Welcome, admin!\")\n    else:\n        print(\"Welcome, user!\")"
+                            "code": "logged_in = True\nis_admin = False\nif logged_in:\n    if is_admin:\n        print(\"Welcome, admin!\")\n    else:\n        print(\"Welcome, user!\")",
+                            "runnable": true
                         },
                         {
                             "title": "One-line conditionals",
                             "body": "Python supports a ternary expression: value_if_true if condition else value_if_false. Use it for simple, short choices.",
-                            "code": "age = 20\nstatus = \"adult\" if age >= 18 else \"minor\"\nprint(status)  # adult"
+                            "code": "age = 20\nstatus = \"adult\" if age >= 18 else \"minor\"\nprint(status)  # adult",
+                            "runnable": true
                         }
                     ]
                 },
@@ -241,22 +267,26 @@
                         {
                             "title": "Iterating over a sequence",
                             "body": "A for loop goes through each item in a sequence (like a list or string) one at a time. The loop variable takes the value of each item in turn.",
-                            "code": "fruits = [\"apple\", \"banana\", \"cherry\"]\nfor fruit in fruits:\n    print(fruit)"
+                            "code": "fruits = [\"apple\", \"banana\", \"cherry\"]\nfor fruit in fruits:\n    print(fruit)",
+                            "runnable": true
                         },
                         {
                             "title": "Using range()",
                             "body": "range(n) produces integers from 0 up to (but not including) n. range(start, stop, step) gives you more control.",
-                            "code": "for i in range(5):\n    print(i)          # 0 1 2 3 4\n\nfor i in range(2, 10, 2):\n    print(i)          # 2 4 6 8"
+                            "code": "for i in range(5):\n    print(i)          # 0 1 2 3 4\n\nfor i in range(2, 10, 2):\n    print(i)          # 2 4 6 8",
+                            "runnable": true
                         },
                         {
                             "title": "Looping over strings",
                             "body": "Strings are sequences too. A for loop visits each character one by one.",
-                            "code": "word = \"Python\"\nfor ch in word:\n    print(ch)"
+                            "code": "word = \"Python\"\nfor ch in word:\n    print(ch)",
+                            "runnable": true
                         },
                         {
                             "title": "break and continue",
                             "body": "break exits the loop immediately. continue skips the rest of the current iteration and moves to the next one.",
-                            "code": "for i in range(10):\n    if i == 5:\n        break       # stop at 5\n    if i % 2 == 0:\n        continue    # skip even numbers\n    print(i)        # prints 1 3"
+                            "code": "for i in range(10):\n    if i == 5:\n        break       # stop at 5\n    if i % 2 == 0:\n        continue    # skip even numbers\n    print(i)        # prints 1 3",
+                            "runnable": true
                         }
                     ]
                 },
@@ -271,12 +301,14 @@
                         {
                             "title": "Basic while loop",
                             "body": "A while loop checks a condition before every iteration. If the condition is True, it runs the body; otherwise it stops.",
-                            "code": "count = 0\nwhile count < 5:\n    print(count)\n    count += 1"
+                            "code": "count = 0\nwhile count < 5:\n    print(count)\n    count += 1",
+                            "runnable": true
                         },
                         {
                             "title": "Infinite loops and break",
                             "body": "If the condition never becomes False, the loop runs forever (an infinite loop). Use break to exit when a certain event occurs.",
-                            "code": "while True:\n    answer = input(\"Type 'quit' to exit: \")\n    if answer == \"quit\":\n        break\n    print(\"You typed:\", answer)"
+                            "code": "while True:\n    answer = input(\"Type 'quit' to exit: \")\n    if answer == \"quit\":\n        break\n    print(\"You typed:\", answer)",
+                            "runnable": false
                         },
                         {
                             "title": "while vs for",
@@ -299,17 +331,20 @@
                         {
                             "title": "def, parameters, and return",
                             "body": "Use def to define a function. Parameters are the inputs; return sends a value back to the caller.",
-                            "code": "def add(a, b):\n    return a + b\n\nresult = add(3, 4)\nprint(result)  # 7"
+                            "code": "def add(a, b):\n    return a + b\n\nresult = add(3, 4)\nprint(result)  # 7",
+                            "runnable": true
                         },
                         {
                             "title": "Default parameter values",
                             "body": "You can give parameters default values. If the caller doesn't supply an argument, the default is used instead.",
-                            "code": "def greet(name, greeting=\"Hello\"):\n    return f\"{greeting}, {name}!\"\n\nprint(greet(\"Alice\"))          # Hello, Alice!\nprint(greet(\"Bob\", \"Hi\"))      # Hi, Bob!"
+                            "code": "def greet(name, greeting=\"Hello\"):\n    return f\"{greeting}, {name}!\"\n\nprint(greet(\"Alice\"))          # Hello, Alice!\nprint(greet(\"Bob\", \"Hi\"))      # Hi, Bob!",
+                            "runnable": true
                         },
                         {
                             "title": "Functions without a return value",
                             "body": "A function that doesn't explicitly return a value implicitly returns None. These functions are useful for side effects like printing.",
-                            "code": "def say_hello(name):\n    print(f\"Hello, {name}!\")\n\nresult = say_hello(\"Charlie\")\nprint(result)  # None"
+                            "code": "def say_hello(name):\n    print(f\"Hello, {name}!\")\n\nresult = say_hello(\"Charlie\")\nprint(result)  # None",
+                            "runnable": true
                         }
                     ]
                 },
@@ -324,22 +359,26 @@
                         {
                             "title": "Creating a list",
                             "body": "A list is an ordered collection of items enclosed in square brackets. Items can be of any type, and a list can mix types.",
-                            "code": "numbers = [1, 2, 3, 4, 5]\nnames = [\"Alice\", \"Bob\"]\nmixed = [1, \"hello\", True]\nprint(numbers)"
+                            "code": "numbers = [1, 2, 3, 4, 5]\nnames = [\"Alice\", \"Bob\"]\nmixed = [1, \"hello\", True]\nprint(numbers)",
+                            "runnable": true
                         },
                         {
                             "title": "Accessing items by index",
                             "body": "Each item has an index starting at 0. Negative indices count from the end: -1 is the last item.",
-                            "code": "colors = [\"red\", \"green\", \"blue\"]\nprint(colors[0])   # red\nprint(colors[-1])  # blue"
+                            "code": "colors = [\"red\", \"green\", \"blue\"]\nprint(colors[0])   # red\nprint(colors[-1])  # blue",
+                            "runnable": true
                         },
                         {
                             "title": "Adding and removing items",
                             "body": "append() adds an item to the end. remove() deletes the first occurrence of a value.",
-                            "code": "items = [\"a\", \"b\", \"c\"]\nitems.append(\"d\")\nprint(items)         # ['a', 'b', 'c', 'd']\nitems.remove(\"b\")\nprint(items)         # ['a', 'c', 'd']"
+                            "code": "items = [\"a\", \"b\", \"c\"]\nitems.append(\"d\")\nprint(items)         # ['a', 'b', 'c', 'd']\nitems.remove(\"b\")\nprint(items)         # ['a', 'c', 'd']",
+                            "runnable": true
                         },
                         {
                             "title": "Useful list functions",
                             "body": "len() returns the number of items. sorted() returns a new sorted list. sum() adds up numeric items.",
-                            "code": "nums = [3, 1, 4, 1, 5]\nprint(len(nums))       # 5\nprint(sorted(nums))    # [1, 1, 3, 4, 5]\nprint(sum(nums))       # 14"
+                            "code": "nums = [3, 1, 4, 1, 5]\nprint(len(nums))       # 5\nprint(sorted(nums))    # [1, 1, 3, 4, 5]\nprint(sum(nums))       # 14",
+                            "runnable": true
                         }
                     ]
                 },
@@ -354,17 +393,20 @@
                         {
                             "title": "Zero-based indexing",
                             "body": "Python counts positions from 0. The first element is at index 0, the second at 1, and so on. Negative indices count from the end.",
-                            "code": "word = \"Python\"\nprint(word[0])   # P\nprint(word[-1])  # n"
+                            "code": "word = \"Python\"\nprint(word[0])   # P\nprint(word[-1])  # n",
+                            "runnable": true
                         },
                         {
                             "title": "Slicing basics",
                             "body": "A slice [start:stop] returns a portion of a sequence. start is inclusive, stop is exclusive. Omitting either defaults to the beginning or end.",
-                            "code": "s = \"Hello, World!\"\nprint(s[0:5])   # Hello\nprint(s[7:])    # World!\nprint(s[:5])    # Hello"
+                            "code": "s = \"Hello, World!\"\nprint(s[0:5])   # Hello\nprint(s[7:])    # World!\nprint(s[:5])    # Hello",
+                            "runnable": true
                         },
                         {
                             "title": "Step in slices",
                             "body": "Adding a step [start:stop:step] skips elements. A step of -1 reverses the sequence.",
-                            "code": "nums = [0, 1, 2, 3, 4, 5]\nprint(nums[::2])    # [0, 2, 4]\nprint(nums[::-1])   # [5, 4, 3, 2, 1, 0]"
+                            "code": "nums = [0, 1, 2, 3, 4, 5]\nprint(nums[::2])    # [0, 2, 4]\nprint(nums[::-1])   # [5, 4, 3, 2, 1, 0]",
+                            "runnable": true
                         }
                     ]
                 },
@@ -379,22 +421,26 @@
                         {
                             "title": "Case methods",
                             "body": "upper() and lower() change the case of all characters. capitalize() uppercases only the first character.",
-                            "code": "s = \"hello WORLD\"\nprint(s.upper())      # HELLO WORLD\nprint(s.lower())      # hello world\nprint(s.capitalize()) # Hello world"
+                            "code": "s = \"hello WORLD\"\nprint(s.upper())      # HELLO WORLD\nprint(s.lower())      # hello world\nprint(s.capitalize()) # Hello world",
+                            "runnable": true
                         },
                         {
                             "title": "strip, split, join",
                             "body": "strip() removes leading and trailing whitespace. split() breaks a string into a list. join() does the reverse — it combines a list of strings into one.",
-                            "code": "text = \"  hello  \"\nprint(text.strip())              # 'hello'\nwords = \"a,b,c\".split(\",\")      # ['a', 'b', 'c']\nprint(\"-\".join(words))           # a-b-c"
+                            "code": "text = \"  hello  \"\nprint(text.strip())              # 'hello'\nwords = \"a,b,c\".split(\",\")      # ['a', 'b', 'c']\nprint(\"-\".join(words))           # a-b-c",
+                            "runnable": true
                         },
                         {
                             "title": "Searching inside strings",
                             "body": "find() returns the index of the first occurrence (-1 if not found). in is often simpler for a True/False check.",
-                            "code": "msg = \"Good morning!\"\nprint(msg.find(\"morning\"))  # 5\nprint(\"Good\" in msg)        # True"
+                            "code": "msg = \"Good morning!\"\nprint(msg.find(\"morning\"))  # 5\nprint(\"Good\" in msg)        # True",
+                            "runnable": true
                         },
                         {
                             "title": "replace()",
                             "body": "replace(old, new) returns a new string with all occurrences of old replaced by new. Strings are immutable — replace() doesn't change the original.",
-                            "code": "s = \"I like cats and cats like me\"\nprint(s.replace(\"cats\", \"dogs\"))\n# I like dogs and dogs like me"
+                            "code": "s = \"I like cats and cats like me\"\nprint(s.replace(\"cats\", \"dogs\"))\n# I like dogs and dogs like me",
+                            "runnable": true
                         }
                     ]
                 },
@@ -409,17 +455,20 @@
                         {
                             "title": "What is None?",
                             "body": "None is Python's way of representing 'nothing' or 'no value'. It is its own type (NoneType) and is the only value of that type.",
-                            "code": "x = None\nprint(x)          # None\nprint(type(x))    # <class 'NoneType'>"
+                            "code": "x = None\nprint(x)          # None\nprint(type(x))    # <class 'NoneType'>",
+                            "runnable": true
                         },
                         {
                             "title": "Functions that return None",
                             "body": "Functions that don't explicitly return a value return None automatically. Forgetting to return is a common source of bugs.",
-                            "code": "def double(n):\n    result = n * 2  # forgot return!\n\nval = double(5)\nprint(val)  # None"
+                            "code": "def double(n):\n    result = n * 2  # forgot return!\n\nval = double(5)\nprint(val)  # None",
+                            "runnable": true
                         },
                         {
                             "title": "Checking for None",
                             "body": "Always use is None or is not None to check for None, not == None. The is operator checks identity, which is the correct semantics for singleton objects like None.",
-                            "code": "value = None\nif value is None:\n    print(\"No value provided\")\nelse:\n    print(\"Value:\", value)"
+                            "code": "value = None\nif value is None:\n    print(\"No value provided\")\nelse:\n    print(\"Value:\", value)",
+                            "runnable": true
                         }
                     ]
                 }
@@ -439,22 +488,26 @@
                         {
                             "title": "Creating a list",
                             "body": "A list is an ordered, mutable collection. Create one with square brackets.",
-                            "code": "fruits = [\"apple\", \"banana\", \"cherry\"]\nprint(fruits[0])  # 'apple'"
+                            "code": "fruits = [\"apple\", \"banana\", \"cherry\"]\nprint(fruits[0])  # 'apple'",
+                            "runnable": true
                         },
                         {
                             "title": "Common methods",
                             "body": "append() adds to the end. remove() deletes the first matching value. pop() removes by index and returns the value.",
-                            "code": "fruits.append(\"date\")\nfruits.remove(\"banana\")\nlast = fruits.pop()"
+                            "code": "fruits.append(\"date\")\nfruits.remove(\"banana\")\nlast = fruits.pop()",
+                            "runnable": false
                         },
                         {
                             "title": "Slicing",
                             "body": "Use [start:stop:step] to get a sub-list. Negative indices count from the end.",
-                            "code": "numbers = [0, 1, 2, 3, 4, 5]\nprint(numbers[1:4])   # [1, 2, 3]\nprint(numbers[::-1])  # [5, 4, 3, 2, 1, 0]"
+                            "code": "numbers = [0, 1, 2, 3, 4, 5]\nprint(numbers[1:4])   # [1, 2, 3]\nprint(numbers[::-1])  # [5, 4, 3, 2, 1, 0]",
+                            "runnable": true
                         },
                         {
                             "title": "List comprehensions",
                             "body": "A concise way to create a new list by transforming or filtering another sequence.",
-                            "code": "squares = [x**2 for x in range(1, 6)]\n# [1, 4, 9, 16, 25]"
+                            "code": "squares = [x**2 for x in range(1, 6)]\n# [1, 4, 9, 16, 25]",
+                            "runnable": false
                         }
                     ]
                 },
@@ -469,22 +522,26 @@
                         {
                             "title": "Creating a tuple",
                             "body": "A tuple is like a list but immutable — you can't change its items after creation. Use parentheses or just commas.",
-                            "code": "point = (3, 7)\ncolors = \"red\", \"green\", \"blue\"\nprint(point[0])  # 3"
+                            "code": "point = (3, 7)\ncolors = \"red\", \"green\", \"blue\"\nprint(point[0])  # 3",
+                            "runnable": true
                         },
                         {
                             "title": "Tuple unpacking",
                             "body": "You can unpack a tuple into individual variables in one line. The number of variables must match the number of elements.",
-                            "code": "x, y = (10, 20)\nfirst, *rest = (1, 2, 3, 4)\nprint(first)  # 1\nprint(rest)   # [2, 3, 4]"
+                            "code": "x, y = (10, 20)\nfirst, *rest = (1, 2, 3, 4)\nprint(first)  # 1\nprint(rest)   # [2, 3, 4]",
+                            "runnable": true
                         },
                         {
                             "title": "When to use tuples",
                             "body": "Use tuples for data that should not change — coordinates, RGB values, function return values. They are also slightly faster than lists and can be used as dictionary keys.",
-                            "code": "location = (48.8566, 2.3522)  # Paris lat/lon\nrgb = (255, 165, 0)            # orange"
+                            "code": "location = (48.8566, 2.3522)  # Paris lat/lon\nrgb = (255, 165, 0)            # orange",
+                            "runnable": false
                         },
                         {
                             "title": "Tuple methods",
                             "body": "Tuples only have two methods: count() returns how many times a value appears, and index() returns the position of the first match.",
-                            "code": "t = (1, 2, 2, 3, 2)\nprint(t.count(2))   # 3\nprint(t.index(3))   # 3"
+                            "code": "t = (1, 2, 2, 3, 2)\nprint(t.count(2))   # 3\nprint(t.index(3))   # 3",
+                            "runnable": true
                         }
                     ]
                 },
@@ -499,22 +556,26 @@
                         {
                             "title": "Creating a dictionary",
                             "body": "A dictionary stores key–value pairs. Keys must be unique and immutable. Create one with curly braces.",
-                            "code": "person = {\"name\": \"Alice\", \"age\": 30}\nprint(person[\"name\"])  # Alice"
+                            "code": "person = {\"name\": \"Alice\", \"age\": 30}\nprint(person[\"name\"])  # Alice",
+                            "runnable": true
                         },
                         {
                             "title": "Adding and updating entries",
                             "body": "Assign to a key to add or overwrite it. Use del to remove an entry.",
-                            "code": "person[\"city\"] = \"Paris\"   # add\nperson[\"age\"] = 31         # update\ndel person[\"city\"]          # remove"
+                            "code": "person[\"city\"] = \"Paris\"   # add\nperson[\"age\"] = 31         # update\ndel person[\"city\"]          # remove",
+                            "runnable": false
                         },
                         {
                             "title": "Accessing safely with get()",
                             "body": "Accessing a missing key raises a KeyError. Use get() to return a default value instead.",
-                            "code": "score = {\"Alice\": 95}\nprint(score.get(\"Bob\", 0))  # 0 (not KeyError)"
+                            "code": "score = {\"Alice\": 95}\nprint(score.get(\"Bob\", 0))  # 0 (not KeyError)",
+                            "runnable": true
                         },
                         {
                             "title": "Iterating over a dictionary",
                             "body": "Use .keys(), .values(), or .items() to iterate. .items() gives you both at once.",
-                            "code": "d = {\"a\": 1, \"b\": 2}\nfor key, value in d.items():\n    print(key, \"→\", value)"
+                            "code": "d = {\"a\": 1, \"b\": 2}\nfor key, value in d.items():\n    print(key, \"→\", value)",
+                            "runnable": true
                         }
                     ]
                 },
@@ -529,22 +590,26 @@
                         {
                             "title": "Creating a set",
                             "body": "A set holds unique, unordered items. Use curly braces or set(). Duplicates are silently dropped.",
-                            "code": "colors = {\"red\", \"green\", \"blue\", \"red\"}\nprint(colors)       # {'red', 'green', 'blue'}\nprint(len(colors))  # 3"
+                            "code": "colors = {\"red\", \"green\", \"blue\", \"red\"}\nprint(colors)       # {'red', 'green', 'blue'}\nprint(len(colors))  # 3",
+                            "runnable": true
                         },
                         {
                             "title": "add, remove, discard",
                             "body": "add() inserts an element. remove() raises a KeyError if missing. discard() does nothing if the item isn't present.",
-                            "code": "s = {1, 2, 3}\ns.add(4)\ns.discard(10)  # safe — no error\ns.remove(2)"
+                            "code": "s = {1, 2, 3}\ns.add(4)\ns.discard(10)  # safe — no error\ns.remove(2)",
+                            "runnable": false
                         },
                         {
                             "title": "Set operations",
                             "body": "Sets support union (|), intersection (&), difference (-), and symmetric difference (^) — just like in mathematics.",
-                            "code": "a = {1, 2, 3}\nb = {2, 3, 4}\nprint(a | b)  # {1, 2, 3, 4}\nprint(a & b)  # {2, 3}\nprint(a - b)  # {1}"
+                            "code": "a = {1, 2, 3}\nb = {2, 3, 4}\nprint(a | b)  # {1, 2, 3, 4}\nprint(a & b)  # {2, 3}\nprint(a - b)  # {1}",
+                            "runnable": true
                         },
                         {
                             "title": "Membership testing",
                             "body": "Checking if an item is in a set is O(1) — much faster than scanning a list for large collections.",
-                            "code": "banned = {\"spam\", \"junk\", \"ad\"}\nword = \"spam\"\nif word in banned:\n    print(\"Blocked\")"
+                            "code": "banned = {\"spam\", \"junk\", \"ad\"}\nword = \"spam\"\nif word in banned:\n    print(\"Blocked\")",
+                            "runnable": true
                         }
                     ]
                 },
@@ -559,22 +624,26 @@
                         {
                             "title": "Positional vs keyword arguments",
                             "body": "Positional arguments are matched by order. Keyword arguments are passed by name and can appear in any order.",
-                            "code": "def greet(first, last):\n    print(f\"{first} {last}\")\n\ngreet(\"Alice\", \"Smith\")           # positional\ngreet(last=\"Jones\", first=\"Bob\")  # keyword"
+                            "code": "def greet(first, last):\n    print(f\"{first} {last}\")\n\ngreet(\"Alice\", \"Smith\")           # positional\ngreet(last=\"Jones\", first=\"Bob\")  # keyword",
+                            "runnable": true
                         },
                         {
                             "title": "*args — variable positional arguments",
                             "body": "*args collects any number of extra positional arguments into a tuple. The name args is a convention — the * is what matters.",
-                            "code": "def total(*numbers):\n    return sum(numbers)\n\nprint(total(1, 2, 3, 4))  # 10"
+                            "code": "def total(*numbers):\n    return sum(numbers)\n\nprint(total(1, 2, 3, 4))  # 10",
+                            "runnable": true
                         },
                         {
                             "title": "**kwargs — variable keyword arguments",
                             "body": "**kwargs collects any number of extra keyword arguments into a dictionary.",
-                            "code": "def profile(**info):\n    for k, v in info.items():\n        print(f\"{k}: {v}\")\n\nprofile(name=\"Alice\", age=30, city=\"Paris\")"
+                            "code": "def profile(**info):\n    for k, v in info.items():\n        print(f\"{k}: {v}\")\n\nprofile(name=\"Alice\", age=30, city=\"Paris\")",
+                            "runnable": true
                         },
                         {
                             "title": "Combining argument types",
                             "body": "You can combine regular, *args, and **kwargs. The order must be: regular → *args → keyword-only → **kwargs.",
-                            "code": "def fn(a, b, *args, key=0, **kwargs):\n    pass"
+                            "code": "def fn(a, b, *args, key=0, **kwargs):\n    pass",
+                            "runnable": false
                         }
                     ]
                 },
@@ -589,22 +658,26 @@
                         {
                             "title": "Local scope",
                             "body": "Variables created inside a function are local — they only exist for the duration of that function call and are invisible outside.",
-                            "code": "def fn():\n    x = 10\n    print(x)\n\nfn()       # 10\n# print(x) # NameError"
+                            "code": "def fn():\n    x = 10\n    print(x)\n\nfn()       # 10\n# print(x) # NameError",
+                            "runnable": true
                         },
                         {
                             "title": "Global scope",
                             "body": "Variables defined at the top level of a module are global. Functions can read them without any declaration.",
-                            "code": "greeting = \"Hello\"\n\ndef say():\n    print(greeting)  # reads global\n\nsay()"
+                            "code": "greeting = \"Hello\"\n\ndef say():\n    print(greeting)  # reads global\n\nsay()",
+                            "runnable": true
                         },
                         {
                             "title": "The global keyword",
                             "body": "If you need to assign to a global variable from inside a function, declare it with global first.",
-                            "code": "count = 0\n\ndef increment():\n    global count\n    count += 1\n\nincrement()\nprint(count)  # 1"
+                            "code": "count = 0\n\ndef increment():\n    global count\n    count += 1\n\nincrement()\nprint(count)  # 1",
+                            "runnable": true
                         },
                         {
                             "title": "LEGB rule",
                             "body": "Python looks up names in this order: Local → Enclosing (nested functions) → Global → Built-in. The first match wins.",
-                            "code": "x = \"global\"\n\ndef outer():\n    x = \"enclosing\"\n    def inner():\n        print(x)  # 'enclosing'\n    inner()\n\nouter()"
+                            "code": "x = \"global\"\n\ndef outer():\n    x = \"enclosing\"\n    def inner():\n        print(x)  # 'enclosing'\n    inner()\n\nouter()",
+                            "runnable": true
                         }
                     ]
                 },
@@ -619,22 +692,26 @@
                         {
                             "title": "f-strings (recommended)",
                             "body": "f-strings are the modern, readable way to embed variables in strings. Prefix with f and put expressions in {}.",
-                            "code": "name = \"Alice\"\nage = 30\nprint(f\"My name is {name} and I am {age} years old.\")"
+                            "code": "name = \"Alice\"\nage = 30\nprint(f\"My name is {name} and I am {age} years old.\")",
+                            "runnable": true
                         },
                         {
                             "title": "Format specifiers",
                             "body": "Inside the braces of an f-string you can add a format spec after a colon to control precision, width, alignment, and more.",
-                            "code": "pi = 3.14159\nprint(f\"{pi:.2f}\")     # 3.14\nprint(f\"{42:08d}\")    # 00000042\nprint(f\"{'hi':>10}\")  #         hi"
+                            "code": "pi = 3.14159\nprint(f\"{pi:.2f}\")     # 3.14\nprint(f\"{42:08d}\")    # 00000042\nprint(f\"{'hi':>10}\")  #         hi",
+                            "runnable": true
                         },
                         {
                             "title": "str.format()",
                             "body": "str.format() is an older approach still widely used. Positional or named placeholders are filled in by the arguments.",
-                            "code": "print(\"{} + {} = {}\".format(1, 2, 3))\nprint(\"{name} is {age}\".format(name=\"Bob\", age=25))"
+                            "code": "print(\"{} + {} = {}\".format(1, 2, 3))\nprint(\"{name} is {age}\".format(name=\"Bob\", age=25))",
+                            "runnable": true
                         },
                         {
                             "title": "% formatting (legacy)",
                             "body": "The oldest form uses % as a placeholder. You'll encounter it in older code. Prefer f-strings for new code.",
-                            "code": "print(\"Hello, %s! You are %d years old.\" % (\"Carol\", 28))"
+                            "code": "print(\"Hello, %s! You are %d years old.\" % (\"Carol\", 28))",
+                            "runnable": true
                         }
                     ]
                 },
@@ -653,17 +730,20 @@
                         {
                             "title": "try / except",
                             "body": "Wrap risky code in a try block. If an exception is raised, the matching except block runs instead of crashing.",
-                            "code": "try:\n    num = int(input(\"Enter a number: \"))\n    print(10 / num)\nexcept ZeroDivisionError:\n    print(\"Can't divide by zero!\")\nexcept ValueError:\n    print(\"That's not a number!\")"
+                            "code": "try:\n    num = int(input(\"Enter a number: \"))\n    print(10 / num)\nexcept ZeroDivisionError:\n    print(\"Can't divide by zero!\")\nexcept ValueError:\n    print(\"That's not a number!\")",
+                            "runnable": false
                         },
                         {
                             "title": "else and finally",
                             "body": "else runs only when no exception occurred. finally always runs — useful for cleanup like closing files.",
-                            "code": "try:\n    result = 10 / 2\nexcept ZeroDivisionError:\n    print(\"Error\")\nelse:\n    print(\"Result:\", result)\nfinally:\n    print(\"Done\")"
+                            "code": "try:\n    result = 10 / 2\nexcept ZeroDivisionError:\n    print(\"Error\")\nelse:\n    print(\"Result:\", result)\nfinally:\n    print(\"Done\")",
+                            "runnable": true
                         },
                         {
                             "title": "Raising exceptions",
                             "body": "Use raise to trigger an exception intentionally — for example, to enforce preconditions in your functions.",
-                            "code": "def set_age(age):\n    if age < 0:\n        raise ValueError(\"Age must be non-negative\")\n    return age"
+                            "code": "def set_age(age):\n    if age < 0:\n        raise ValueError(\"Age must be non-negative\")\n    return age",
+                            "runnable": false
                         }
                     ]
                 },
@@ -678,22 +758,26 @@
                         {
                             "title": "Opening and reading a file",
                             "body": "Use open() with mode 'r' to read. The with statement closes the file automatically even if an error occurs.",
-                            "code": "with open(\"data.txt\", \"r\") as f:\n    content = f.read()\nprint(content)"
+                            "code": "with open(\"data.txt\", \"r\") as f:\n    content = f.read()\nprint(content)",
+                            "runnable": false
                         },
                         {
                             "title": "Reading line by line",
                             "body": "Iterating over the file object yields lines one at a time — memory-efficient for large files.",
-                            "code": "with open(\"data.txt\") as f:\n    for line in f:\n        print(line.strip())"
+                            "code": "with open(\"data.txt\") as f:\n    for line in f:\n        print(line.strip())",
+                            "runnable": false
                         },
                         {
                             "title": "Writing to a file",
                             "body": "Use mode 'w' to write (overwrites existing content) or 'a' to append. write() does not add a newline automatically.",
-                            "code": "with open(\"output.txt\", \"w\") as f:\n    f.write(\"Hello\\n\")\n    f.write(\"World\\n\")"
+                            "code": "with open(\"output.txt\", \"w\") as f:\n    f.write(\"Hello\\n\")\n    f.write(\"World\\n\")",
+                            "runnable": false
                         },
                         {
                             "title": "File paths and encoding",
                             "body": "Always specify encoding='utf-8' to avoid platform-specific surprises. Use pathlib.Path for portable path manipulation.",
-                            "code": "from pathlib import Path\n\npath = Path(\"data\") / \"notes.txt\"\nwith open(path, encoding=\"utf-8\") as f:\n    print(f.read())"
+                            "code": "from pathlib import Path\n\npath = Path(\"data\") / \"notes.txt\"\nwith open(path, encoding=\"utf-8\") as f:\n    print(f.read())",
+                            "runnable": false
                         }
                     ]
                 },
@@ -708,22 +792,26 @@
                         {
                             "title": "List comprehensions",
                             "body": "A list comprehension creates a new list by applying an expression to each item in an iterable, with an optional filter.",
-                            "code": "evens = [x for x in range(20) if x % 2 == 0]\nprint(evens)  # [0, 2, 4, ..., 18]"
+                            "code": "evens = [x for x in range(20) if x % 2 == 0]\nprint(evens)  # [0, 2, 4, ..., 18]",
+                            "runnable": true
                         },
                         {
                             "title": "Dict comprehensions",
                             "body": "Dict comprehensions build a dictionary using {key: value for item in iterable} syntax.",
-                            "code": "words = [\"hi\", \"hello\", \"hey\"]\nlengths = {w: len(w) for w in words}\nprint(lengths)  # {'hi': 2, 'hello': 5, 'hey': 3}"
+                            "code": "words = [\"hi\", \"hello\", \"hey\"]\nlengths = {w: len(w) for w in words}\nprint(lengths)  # {'hi': 2, 'hello': 5, 'hey': 3}",
+                            "runnable": true
                         },
                         {
                             "title": "Set comprehensions",
                             "body": "Set comprehensions use curly braces like dict comprehensions but produce a set — duplicates are removed automatically.",
-                            "code": "nums = [1, 2, 2, 3, 3, 3]\nunique_squares = {x**2 for x in nums}\nprint(unique_squares)  # {1, 4, 9}"
+                            "code": "nums = [1, 2, 2, 3, 3, 3]\nunique_squares = {x**2 for x in nums}\nprint(unique_squares)  # {1, 4, 9}",
+                            "runnable": true
                         },
                         {
                             "title": "Nested comprehensions",
                             "body": "You can nest comprehensions to flatten or transform nested structures. Keep them short — if it's hard to read, use a loop.",
-                            "code": "matrix = [[1, 2], [3, 4], [5, 6]]\nflat = [n for row in matrix for n in row]\nprint(flat)  # [1, 2, 3, 4, 5, 6]"
+                            "code": "matrix = [[1, 2], [3, 4], [5, 6]]\nflat = [n for row in matrix for n in row]\nprint(flat)  # [1, 2, 3, 4, 5, 6]",
+                            "runnable": true
                         }
                     ]
                 },
@@ -738,22 +826,26 @@
                         {
                             "title": "Importing a module",
                             "body": "import loads a module and binds it to a name. Use dot notation to access its attributes.",
-                            "code": "import math\nprint(math.sqrt(16))   # 4.0\nprint(math.pi)         # 3.14159..."
+                            "code": "import math\nprint(math.sqrt(16))   # 4.0\nprint(math.pi)         # 3.14159...",
+                            "runnable": true
                         },
                         {
                             "title": "from … import",
                             "body": "Import specific names from a module so you can use them without the module prefix.",
-                            "code": "from math import sqrt, pi\nprint(sqrt(25))  # 5.0\nprint(pi)        # 3.14159..."
+                            "code": "from math import sqrt, pi\nprint(sqrt(25))  # 5.0\nprint(pi)        # 3.14159...",
+                            "runnable": true
                         },
                         {
                             "title": "Aliasing with as",
                             "body": "Use as to give a module or name a shorter alias — common for libraries like numpy (np) or datetime (dt).",
-                            "code": "import datetime as dt\nnow = dt.datetime.now()\nprint(now)"
+                            "code": "import datetime as dt\nnow = dt.datetime.now()\nprint(now)",
+                            "runnable": true
                         },
                         {
                             "title": "Creating your own module",
                             "body": "Any .py file is a module. Put reusable functions there and import them from other scripts. The __name__ == '__main__' guard prevents code from running on import.",
-                            "code": "# utils.py\ndef double(n):\n    return n * 2\n\nif __name__ == \"__main__\":\n    print(double(5))"
+                            "code": "# utils.py\ndef double(n):\n    return n * 2\n\nif __name__ == \"__main__\":\n    print(double(5))",
+                            "runnable": true
                         }
                     ]
                 },
@@ -772,17 +864,20 @@
                         {
                             "title": "__init__ and self",
                             "body": "__init__ is called automatically when an object is created. self refers to the instance being constructed.",
-                            "code": "class Dog:\n    def __init__(self, name, breed):\n        self.name = name\n        self.breed = breed\n\nfido = Dog(\"Fido\", \"Labrador\")\nprint(fido.name)  # Fido"
+                            "code": "class Dog:\n    def __init__(self, name, breed):\n        self.name = name\n        self.breed = breed\n\nfido = Dog(\"Fido\", \"Labrador\")\nprint(fido.name)  # Fido",
+                            "runnable": true
                         },
                         {
                             "title": "Instance methods",
                             "body": "Methods are functions defined inside a class. They always receive self as their first parameter.",
-                            "code": "class Dog:\n    def __init__(self, name):\n        self.name = name\n\n    def bark(self):\n        print(f\"{self.name} says: Woof!\")\n\nDog(\"Rex\").bark()  # Rex says: Woof!"
+                            "code": "class Dog:\n    def __init__(self, name):\n        self.name = name\n\n    def bark(self):\n        print(f\"{self.name} says: Woof!\")\n\nDog(\"Rex\").bark()  # Rex says: Woof!",
+                            "runnable": true
                         },
                         {
                             "title": "__str__ and __repr__",
                             "body": "__str__ defines the human-readable string representation (used by print). __repr__ is the unambiguous developer representation.",
-                            "code": "class Point:\n    def __init__(self, x, y):\n        self.x, self.y = x, y\n\n    def __str__(self):\n        return f\"({self.x}, {self.y})\"\n\nprint(Point(3, 4))  # (3, 4)"
+                            "code": "class Point:\n    def __init__(self, x, y):\n        self.x, self.y = x, y\n\n    def __str__(self):\n        return f\"({self.x}, {self.y})\"\n\nprint(Point(3, 4))  # (3, 4)",
+                            "runnable": true
                         }
                     ]
                 },
@@ -797,22 +892,26 @@
                         {
                             "title": "Subclassing",
                             "body": "Put the parent class in parentheses to create a subclass. The child inherits all methods and attributes of the parent.",
-                            "code": "class Animal:\n    def speak(self):\n        print(\"...\")\n\nclass Cat(Animal):\n    def speak(self):\n        print(\"Meow!\")\n\nCat().speak()  # Meow!"
+                            "code": "class Animal:\n    def speak(self):\n        print(\"...\")\n\nclass Cat(Animal):\n    def speak(self):\n        print(\"Meow!\")\n\nCat().speak()  # Meow!",
+                            "runnable": true
                         },
                         {
                             "title": "super()",
                             "body": "super() gives access to the parent class. Use it in __init__ to call the parent's initialiser before adding child-specific setup.",
-                            "code": "class Vehicle:\n    def __init__(self, speed):\n        self.speed = speed\n\nclass Car(Vehicle):\n    def __init__(self, speed, brand):\n        super().__init__(speed)\n        self.brand = brand"
+                            "code": "class Vehicle:\n    def __init__(self, speed):\n        self.speed = speed\n\nclass Car(Vehicle):\n    def __init__(self, speed, brand):\n        super().__init__(speed)\n        self.brand = brand",
+                            "runnable": false
                         },
                         {
                             "title": "isinstance() and issubclass()",
                             "body": "isinstance(obj, cls) returns True if obj is an instance of cls or any subclass. issubclass(A, B) checks the class hierarchy.",
-                            "code": "class A: pass\nclass B(A): pass\n\nb = B()\nprint(isinstance(b, A))  # True\nprint(issubclass(B, A))  # True"
+                            "code": "class A: pass\nclass B(A): pass\n\nb = B()\nprint(isinstance(b, A))  # True\nprint(issubclass(B, A))  # True",
+                            "runnable": true
                         },
                         {
                             "title": "Method resolution order (MRO)",
                             "body": "Python uses the C3 linearisation to determine which method gets called first in a multiple-inheritance hierarchy. Use ClassName.__mro__ to inspect it.",
-                            "code": "class X: pass\nclass Y(X): pass\nclass Z(X): pass\nclass W(Y, Z): pass\nprint(W.__mro__)"
+                            "code": "class X: pass\nclass Y(X): pass\nclass Z(X): pass\nclass W(Y, Z): pass\nprint(W.__mro__)",
+                            "runnable": true
                         }
                     ]
                 },
@@ -827,17 +926,20 @@
                         {
                             "title": "Iterables vs iterators",
                             "body": "An iterable is anything you can loop over (list, string, range). An iterator is the object that tracks the current position and provides the next value.",
-                            "code": "nums = [1, 2, 3]\nit = iter(nums)      # get iterator\nprint(next(it))      # 1\nprint(next(it))      # 2"
+                            "code": "nums = [1, 2, 3]\nit = iter(nums)      # get iterator\nprint(next(it))      # 1\nprint(next(it))      # 2",
+                            "runnable": true
                         },
                         {
                             "title": "How for uses __iter__ and __next__",
                             "body": "A for loop calls iter() on the iterable to get an iterator, then repeatedly calls next() until StopIteration is raised.",
-                            "code": "# equivalent to: for x in [1, 2, 3]\nit = iter([1, 2, 3])\nwhile True:\n    try:\n        x = next(it)\n        print(x)\n    except StopIteration:\n        break"
+                            "code": "# equivalent to: for x in [1, 2, 3]\nit = iter([1, 2, 3])\nwhile True:\n    try:\n        x = next(it)\n        print(x)\n    except StopIteration:\n        break",
+                            "runnable": true
                         },
                         {
                             "title": "enumerate() and zip()",
                             "body": "enumerate() pairs each item with its index. zip() combines multiple iterables element by element.",
-                            "code": "fruits = [\"apple\", \"banana\"]\nfor i, fruit in enumerate(fruits, start=1):\n    print(i, fruit)\n\nfor a, b in zip([1, 2], [\"x\", \"y\"]):\n    print(a, b)"
+                            "code": "fruits = [\"apple\", \"banana\"]\nfor i, fruit in enumerate(fruits, start=1):\n    print(i, fruit)\n\nfor a, b in zip([1, 2], [\"x\", \"y\"]):\n    print(a, b)",
+                            "runnable": true
                         }
                     ]
                 },
@@ -852,17 +954,20 @@
                         {
                             "title": "Lambda expressions",
                             "body": "lambda creates a small anonymous function inline. It can take any number of arguments but can only contain a single expression.",
-                            "code": "double = lambda x: x * 2\nprint(double(5))  # 10\n\nadd = lambda a, b: a + b\nprint(add(3, 4))  # 7"
+                            "code": "double = lambda x: x * 2\nprint(double(5))  # 10\n\nadd = lambda a, b: a + b\nprint(add(3, 4))  # 7",
+                            "runnable": true
                         },
                         {
                             "title": "map() and filter()",
                             "body": "map(fn, iterable) applies fn to every item. filter(fn, iterable) keeps only items where fn returns True. Both return lazy iterators — wrap in list() to see the results.",
-                            "code": "nums = [1, 2, 3, 4, 5]\nsquared = list(map(lambda x: x**2, nums))\nevens = list(filter(lambda x: x % 2 == 0, nums))\nprint(squared)  # [1, 4, 9, 16, 25]\nprint(evens)    # [2, 4]"
+                            "code": "nums = [1, 2, 3, 4, 5]\nsquared = list(map(lambda x: x**2, nums))\nevens = list(filter(lambda x: x % 2 == 0, nums))\nprint(squared)  # [1, 4, 9, 16, 25]\nprint(evens)    # [2, 4]",
+                            "runnable": true
                         },
                         {
                             "title": "sorted() with a key",
                             "body": "sorted() accepts an optional key function that determines the sort order. Lambda is perfect here.",
-                            "code": "words = [\"banana\", \"apple\", \"kiwi\"]\nprint(sorted(words, key=lambda w: len(w)))\n# ['kiwi', 'apple', 'banana']"
+                            "code": "words = [\"banana\", \"apple\", \"kiwi\"]\nprint(sorted(words, key=lambda w: len(w)))\n# ['kiwi', 'apple', 'banana']",
+                            "runnable": true
                         },
                         {
                             "title": "When to prefer def over lambda",
@@ -886,22 +991,26 @@
                         {
                             "title": "Functions as first-class objects",
                             "body": "In Python, functions are objects. You can pass them as arguments, return them, and assign them to variables.",
-                            "code": "def greet():\n    return \"Hello\"\n\nsay = greet\nprint(say())  # 'Hello'"
+                            "code": "def greet():\n    return \"Hello\"\n\nsay = greet\nprint(say())  # 'Hello'",
+                            "runnable": true
                         },
                         {
                             "title": "Writing a decorator",
                             "body": "A decorator is a function that takes another function and returns a new function with added behaviour.",
-                            "code": "def log(fn):\n    def wrapper(*args, **kwargs):\n        print(f\"Calling {fn.__name__}\")\n        return fn(*args, **kwargs)\n    return wrapper"
+                            "code": "def log(fn):\n    def wrapper(*args, **kwargs):\n        print(f\"Calling {fn.__name__}\")\n        return fn(*args, **kwargs)\n    return wrapper",
+                            "runnable": true
                         },
                         {
                             "title": "Applying with @",
                             "body": "The @ syntax is syntactic sugar for reassigning the function through the decorator.",
-                            "code": "@log\ndef add(a, b):\n    return a + b\n\nadd(1, 2)  # prints 'Calling add', returns 3"
+                            "code": "@log\ndef add(a, b):\n    return a + b\n\nadd(1, 2)  # prints 'Calling add', returns 3",
+                            "runnable": false
                         },
                         {
                             "title": "functools.wraps",
                             "body": "Use @functools.wraps(fn) inside your wrapper to preserve the original function's name and docstring.",
-                            "code": "import functools\n\ndef log(fn):\n    @functools.wraps(fn)\n    def wrapper(*args, **kwargs):\n        print(f\"Calling {fn.__name__}\")\n        return fn(*args, **kwargs)\n    return wrapper"
+                            "code": "import functools\n\ndef log(fn):\n    @functools.wraps(fn)\n    def wrapper(*args, **kwargs):\n        print(f\"Calling {fn.__name__}\")\n        return fn(*args, **kwargs)\n    return wrapper",
+                            "runnable": true
                         }
                     ]
                 },
@@ -916,22 +1025,26 @@
                         {
                             "title": "yield vs return",
                             "body": "A generator function uses yield to emit values one at a time, pausing execution between calls. It returns a generator object rather than a single value.",
-                            "code": "def count_up(n):\n    for i in range(n):\n        yield i\n\nfor x in count_up(3):\n    print(x)  # 0 1 2"
+                            "code": "def count_up(n):\n    for i in range(n):\n        yield i\n\nfor x in count_up(3):\n    print(x)  # 0 1 2",
+                            "runnable": true
                         },
                         {
                             "title": "Generator expressions",
                             "body": "Generator expressions look like list comprehensions but use parentheses. They are lazy — values are computed only when requested.",
-                            "code": "squares = (x**2 for x in range(1_000_000))\nprint(next(squares))  # 0\nprint(next(squares))  # 1"
+                            "code": "squares = (x**2 for x in range(1_000_000))\nprint(next(squares))  # 0\nprint(next(squares))  # 1",
+                            "runnable": true
                         },
                         {
                             "title": "Memory advantage",
                             "body": "Generators don't store all values in memory at once — ideal for processing large files or streams line by line.",
-                            "code": "def read_lines(path):\n    with open(path) as f:\n        for line in f:\n            yield line.strip()\n\nfor line in read_lines(\"big.txt\"):\n    print(line)  # process one line at a time"
+                            "code": "def read_lines(path):\n    with open(path) as f:\n        for line in f:\n            yield line.strip()\n\nfor line in read_lines(\"big.txt\"):\n    print(line)  # process one line at a time",
+                            "runnable": false
                         },
                         {
                             "title": "send() and two-way communication",
                             "body": "Generators can receive values back via send(). This turns them into coroutine-like objects useful for pipelines.",
-                            "code": "def accumulator():\n    total = 0\n    while True:\n        n = yield total\n        if n is None:\n            break\n        total += n\n\nacc = accumulator()\nnext(acc)         # prime\nprint(acc.send(10))  # 10\nprint(acc.send(5))   # 15"
+                            "code": "def accumulator():\n    total = 0\n    while True:\n        n = yield total\n        if n is None:\n            break\n        total += n\n\nacc = accumulator()\nnext(acc)         # prime\nprint(acc.send(10))  # 10\nprint(acc.send(5))   # 15",
+                            "runnable": true
                         }
                     ]
                 },
@@ -946,17 +1059,20 @@
                         {
                             "title": "The with statement",
                             "body": "with ensures setup and teardown code runs reliably — even if an exception occurs. Files, locks, and database connections are common use cases.",
-                            "code": "with open(\"data.txt\") as f:\n    data = f.read()\n# file is closed here automatically"
+                            "code": "with open(\"data.txt\") as f:\n    data = f.read()\n# file is closed here automatically",
+                            "runnable": false
                         },
                         {
                             "title": "__enter__ and __exit__",
                             "body": "Any class implementing __enter__ and __exit__ can be used with the with statement. __exit__ receives exception info if one was raised.",
-                            "code": "class Timer:\n    import time\n    def __enter__(self):\n        self.start = __import__(\"time\").time()\n        return self\n    def __exit__(self, *args):\n        print(f\"Elapsed: {__import__('time').time() - self.start:.3f}s\")\n\nwith Timer():\n    pass"
+                            "code": "class Timer:\n    import time\n    def __enter__(self):\n        self.start = __import__(\"time\").time()\n        return self\n    def __exit__(self, *args):\n        print(f\"Elapsed: {__import__('time').time() - self.start:.3f}s\")\n\nwith Timer():\n    pass",
+                            "runnable": true
                         },
                         {
                             "title": "contextlib.contextmanager",
                             "body": "The @contextmanager decorator lets you write a context manager as a generator function — much simpler than a full class.",
-                            "code": "from contextlib import contextmanager\n\n@contextmanager\ndef managed():\n    print(\"enter\")\n    yield\n    print(\"exit\")\n\nwith managed():\n    print(\"inside\")"
+                            "code": "from contextlib import contextmanager\n\n@contextmanager\ndef managed():\n    print(\"enter\")\n    yield\n    print(\"exit\")\n\nwith managed():\n    print(\"inside\")",
+                            "runnable": true
                         }
                     ]
                 },
@@ -971,17 +1087,20 @@
                         {
                             "title": "What is a closure?",
                             "body": "A closure is an inner function that captures (closes over) variables from its enclosing function. The captured variables persist even after the outer function has returned.",
-                            "code": "def make_adder(n):\n    def add(x):\n        return x + n  # n is captured\n    return add\n\nadd5 = make_adder(5)\nprint(add5(3))  # 8"
+                            "code": "def make_adder(n):\n    def add(x):\n        return x + n  # n is captured\n    return add\n\nadd5 = make_adder(5)\nprint(add5(3))  # 8",
+                            "runnable": true
                         },
                         {
                             "title": "The cell object",
                             "body": "Python stores captured variables in 'cell' objects accessible via __closure__. This is an implementation detail but useful for debugging.",
-                            "code": "def outer():\n    x = 10\n    def inner():\n        return x\n    return inner\n\nfn = outer()\nprint(fn.__closure__[0].cell_contents)  # 10"
+                            "code": "def outer():\n    x = 10\n    def inner():\n        return x\n    return inner\n\nfn = outer()\nprint(fn.__closure__[0].cell_contents)  # 10",
+                            "runnable": true
                         },
                         {
                             "title": "nonlocal keyword",
                             "body": "To assign to a captured variable (not just read it), declare it with nonlocal inside the inner function.",
-                            "code": "def make_counter():\n    count = 0\n    def increment():\n        nonlocal count\n        count += 1\n        return count\n    return increment\n\ncounter = make_counter()\nprint(counter())  # 1\nprint(counter())  # 2"
+                            "code": "def make_counter():\n    count = 0\n    def increment():\n        nonlocal count\n        count += 1\n        return count\n    return increment\n\ncounter = make_counter()\nprint(counter())  # 1\nprint(counter())  # 2",
+                            "runnable": true
                         },
                         {
                             "title": "Closures vs classes",
@@ -1000,22 +1119,26 @@
                         {
                             "title": "Basic annotations",
                             "body": "Python's type hints are optional and do not affect runtime behaviour. They serve as documentation and enable static analysis tools like mypy.",
-                            "code": "def greet(name: str) -> str:\n    return f\"Hello, {name}\"\n\nage: int = 30"
+                            "code": "def greet(name: str) -> str:\n    return f\"Hello, {name}\"\n\nage: int = 30",
+                            "runnable": false
                         },
                         {
                             "title": "Collections and generics",
                             "body": "Use list[int], dict[str, int], tuple[str, ...] etc. to annotate collection types (Python 3.9+). Use typing module for older versions.",
-                            "code": "def total(nums: list[int]) -> int:\n    return sum(nums)\n\nscores: dict[str, float] = {\"Alice\": 9.5}"
+                            "code": "def total(nums: list[int]) -> int:\n    return sum(nums)\n\nscores: dict[str, float] = {\"Alice\": 9.5}",
+                            "runnable": false
                         },
                         {
                             "title": "Optional and Union",
                             "body": "Optional[T] means the value can be T or None. Union[A, B] means it can be A or B. In Python 3.10+ you can write T | None and A | B.",
-                            "code": "from typing import Optional\n\ndef find(name: str) -> Optional[str]:\n    ...  # returns str or None"
+                            "code": "from typing import Optional\n\ndef find(name: str) -> Optional[str]:\n    ...  # returns str or None",
+                            "runnable": false
                         },
                         {
                             "title": "Callable and TypeVar",
                             "body": "Callable[[ArgTypes], ReturnType] annotates function parameters. TypeVar enables generic functions that work with many types while preserving type safety.",
-                            "code": "from typing import Callable, TypeVar\n\nT = TypeVar(\"T\")\n\ndef apply(fn: Callable[[T], T], value: T) -> T:\n    return fn(value)"
+                            "code": "from typing import Callable, TypeVar\n\nT = TypeVar(\"T\")\n\ndef apply(fn: Callable[[T], T], value: T) -> T:\n    return fn(value)",
+                            "runnable": false
                         }
                     ]
                 },
@@ -1030,22 +1153,26 @@
                         {
                             "title": "Basic @dataclass",
                             "body": "The @dataclass decorator auto-generates __init__, __repr__, and __eq__ from your field annotations.",
-                            "code": "from dataclasses import dataclass\n\n@dataclass\nclass Point:\n    x: float\n    y: float\n\np = Point(1.0, 2.5)\nprint(p)  # Point(x=1.0, y=2.5)"
+                            "code": "from dataclasses import dataclass\n\n@dataclass\nclass Point:\n    x: float\n    y: float\n\np = Point(1.0, 2.5)\nprint(p)  # Point(x=1.0, y=2.5)",
+                            "runnable": true
                         },
                         {
                             "title": "Default values and field()",
                             "body": "Simple defaults can be set inline. For mutable defaults like lists, use field(default_factory=...).",
-                            "code": "from dataclasses import dataclass, field\n\n@dataclass\nclass Config:\n    debug: bool = False\n    tags: list = field(default_factory=list)"
+                            "code": "from dataclasses import dataclass, field\n\n@dataclass\nclass Config:\n    debug: bool = False\n    tags: list = field(default_factory=list)",
+                            "runnable": false
                         },
                         {
                             "title": "frozen=True for immutability",
                             "body": "Use frozen=True to make instances immutable. This also makes them hashable so they can be used in sets or as dict keys.",
-                            "code": "@dataclass(frozen=True)\nclass Coordinate:\n    lat: float\n    lon: float\n\nloc = Coordinate(48.8, 2.3)\n# loc.lat = 0  # FrozenInstanceError"
+                            "code": "@dataclass(frozen=True)\nclass Coordinate:\n    lat: float\n    lon: float\n\nloc = Coordinate(48.8, 2.3)\n# loc.lat = 0  # FrozenInstanceError",
+                            "runnable": false
                         },
                         {
                             "title": "__post_init__ for validation",
                             "body": "__post_init__ runs after the generated __init__. Use it to validate fields or compute derived attributes.",
-                            "code": "@dataclass\nclass Circle:\n    radius: float\n\n    def __post_init__(self):\n        if self.radius <= 0:\n            raise ValueError(\"Radius must be positive\")"
+                            "code": "@dataclass\nclass Circle:\n    radius: float\n\n    def __post_init__(self):\n        if self.radius <= 0:\n            raise ValueError(\"Radius must be positive\")",
+                            "runnable": false
                         }
                     ]
                 },
@@ -1060,22 +1187,26 @@
                         {
                             "title": "chain and islice",
                             "body": "chain() concatenates iterables without creating a new list. islice() slices any iterator lazily.",
-                            "code": "from itertools import chain, islice\n\nresult = list(chain([1, 2], [3, 4], [5]))\nprint(result)  # [1, 2, 3, 4, 5]\n\nprint(list(islice(range(100), 5)))  # [0, 1, 2, 3, 4]"
+                            "code": "from itertools import chain, islice\n\nresult = list(chain([1, 2], [3, 4], [5]))\nprint(result)  # [1, 2, 3, 4, 5]\n\nprint(list(islice(range(100), 5)))  # [0, 1, 2, 3, 4]",
+                            "runnable": true
                         },
                         {
                             "title": "combinations and permutations",
                             "body": "combinations() produces all r-length subsets (order doesn't matter). permutations() produces all ordered arrangements.",
-                            "code": "from itertools import combinations, permutations\n\nprint(list(combinations(\"ABC\", 2)))\n# [('A','B'), ('A','C'), ('B','C')]\n\nprint(list(permutations(\"AB\")))\n# [('A','B'), ('B','A')]"
+                            "code": "from itertools import combinations, permutations\n\nprint(list(combinations(\"ABC\", 2)))\n# [('A','B'), ('A','C'), ('B','C')]\n\nprint(list(permutations(\"AB\")))\n# [('A','B'), ('B','A')]",
+                            "runnable": true
                         },
                         {
                             "title": "groupby",
                             "body": "groupby() groups consecutive elements that share the same key. Data must be sorted by the key first.",
-                            "code": "from itertools import groupby\n\ndata = [(\"fruit\", \"apple\"), (\"fruit\", \"banana\"), (\"veg\", \"carrot\")]\nfor key, group in groupby(data, key=lambda x: x[0]):\n    print(key, [item[1] for item in group])"
+                            "code": "from itertools import groupby\n\ndata = [(\"fruit\", \"apple\"), (\"fruit\", \"banana\"), (\"veg\", \"carrot\")]\nfor key, group in groupby(data, key=lambda x: x[0]):\n    print(key, [item[1] for item in group])",
+                            "runnable": true
                         },
                         {
                             "title": "cycle and repeat",
                             "body": "cycle() loops over an iterable forever. repeat() emits the same value n times (or forever). Both are lazy.",
-                            "code": "from itertools import cycle, repeat\n\ncolors = cycle([\"red\", \"green\", \"blue\"])\nfor _ in range(5):\n    print(next(colors))\n\nprint(list(repeat(0, 4)))  # [0, 0, 0, 0]"
+                            "code": "from itertools import cycle, repeat\n\ncolors = cycle([\"red\", \"green\", \"blue\"])\nfor _ in range(5):\n    print(next(colors))\n\nprint(list(repeat(0, 4)))  # [0, 0, 0, 0]",
+                            "runnable": true
                         }
                     ]
                 },
@@ -1090,17 +1221,20 @@
                         {
                             "title": "Creating custom exceptions",
                             "body": "Subclass Exception (or a more specific built-in) to create domain-specific exceptions. Add extra attributes for richer context.",
-                            "code": "class AppError(Exception):\n    \"\"\"Base class for application errors.\"\"\"\n\nclass ValidationError(AppError):\n    def __init__(self, field, msg):\n        super().__init__(f\"{field}: {msg}\")\n        self.field = field"
+                            "code": "class AppError(Exception):\n    \"\"\"Base class for application errors.\"\"\"\n\nclass ValidationError(AppError):\n    def __init__(self, field, msg):\n        super().__init__(f\"{field}: {msg}\")\n        self.field = field",
+                            "runnable": false
                         },
                         {
                             "title": "raise … from",
                             "body": "raise X from Y chains exceptions, preserving the original cause. The traceback shows both errors. raise X from None suppresses the chain.",
-                            "code": "try:\n    int(\"abc\")\nexcept ValueError as e:\n    raise AppError(\"Invalid config\") from e"
+                            "code": "try:\n    int(\"abc\")\nexcept ValueError as e:\n    raise AppError(\"Invalid config\") from e",
+                            "runnable": false
                         },
                         {
                             "title": "Exception groups (Python 3.11+)",
                             "body": "ExceptionGroup lets you raise and handle multiple unrelated exceptions at once — especially useful in concurrent code.",
-                            "code": "# Python 3.11+\ntry:\n    raise ExceptionGroup(\"two errors\", [ValueError(1), TypeError(2)])\nexcept* ValueError as eg:\n    print(\"ValueErrors:\", eg.exceptions)"
+                            "code": "# Python 3.11+\ntry:\n    raise ExceptionGroup(\"two errors\", [ValueError(1), TypeError(2)])\nexcept* ValueError as eg:\n    print(\"ValueErrors:\", eg.exceptions)",
+                            "runnable": true
                         }
                     ]
                 },
@@ -1115,22 +1249,26 @@
                         {
                             "title": "The abc module",
                             "body": "ABC (Abstract Base Class) lets you define methods that subclasses must implement. Attempting to instantiate an incomplete subclass raises TypeError.",
-                            "code": "from abc import ABC, abstractmethod\n\nclass Shape(ABC):\n    @abstractmethod\n    def area(self) -> float:\n        ..."
+                            "code": "from abc import ABC, abstractmethod\n\nclass Shape(ABC):\n    @abstractmethod\n    def area(self) -> float:\n        ...",
+                            "runnable": false
                         },
                         {
                             "title": "Implementing the interface",
                             "body": "A concrete subclass must implement every abstract method. Only then can it be instantiated.",
-                            "code": "class Circle(Shape):\n    def __init__(self, r):\n        self.r = r\n\n    def area(self) -> float:\n        import math\n        return math.pi * self.r ** 2\n\nprint(Circle(5).area())"
+                            "code": "class Circle(Shape):\n    def __init__(self, r):\n        self.r = r\n\n    def area(self) -> float:\n        import math\n        return math.pi * self.r ** 2\n\nprint(Circle(5).area())",
+                            "runnable": true
                         },
                         {
                             "title": "Abstract properties",
                             "body": "Use @property together with @abstractmethod to require subclasses to expose a specific property.",
-                            "code": "class Animal(ABC):\n    @property\n    @abstractmethod\n    def sound(self) -> str:\n        ...\n\nclass Dog(Animal):\n    @property\n    def sound(self) -> str:\n        return \"Woof\""
+                            "code": "class Animal(ABC):\n    @property\n    @abstractmethod\n    def sound(self) -> str:\n        ...\n\nclass Dog(Animal):\n    @property\n    def sound(self) -> str:\n        return \"Woof\"",
+                            "runnable": false
                         },
                         {
                             "title": "Virtual subclasses",
                             "body": "register() lets you declare that an existing class satisfies an ABC without modifying it — useful for third-party types.",
-                            "code": "from abc import ABC\n\nclass Drawable(ABC):\n    pass\n\nDrawable.register(tuple)\nprint(isinstance((1, 2), Drawable))  # True"
+                            "code": "from abc import ABC\n\nclass Drawable(ABC):\n    pass\n\nDrawable.register(tuple)\nprint(isinstance((1, 2), Drawable))  # True",
+                            "runnable": true
                         }
                     ]
                 },
@@ -1145,17 +1283,20 @@
                         {
                             "title": "@property",
                             "body": "Decorate a method with @property to access it like an attribute. This lets you add logic (e.g. validation) without breaking the public interface.",
-                            "code": "class Circle:\n    def __init__(self, radius):\n        self._radius = radius\n\n    @property\n    def radius(self):\n        return self._radius\n\nc = Circle(5)\nprint(c.radius)  # 5"
+                            "code": "class Circle:\n    def __init__(self, radius):\n        self._radius = radius\n\n    @property\n    def radius(self):\n        return self._radius\n\nc = Circle(5)\nprint(c.radius)  # 5",
+                            "runnable": true
                         },
                         {
                             "title": "Setter and deleter",
                             "body": "Add a @<name>.setter to allow assignment, and @<name>.deleter for deletion. Each receives the property name as the decorator.",
-                            "code": "@radius.setter\ndef radius(self, value):\n    if value < 0:\n        raise ValueError(\"Radius must be >= 0\")\n    self._radius = value\n\nc.radius = 10   # calls setter\n# c.radius = -1 # ValueError"
+                            "code": "@radius.setter\ndef radius(self, value):\n    if value < 0:\n        raise ValueError(\"Radius must be >= 0\")\n    self._radius = value\n\nc.radius = 10   # calls setter\n# c.radius = -1 # ValueError",
+                            "runnable": false
                         },
                         {
                             "title": "The descriptor protocol",
                             "body": "Any class implementing __get__, __set__, or __delete__ is a descriptor. When assigned to a class attribute, it intercepts all access from instances — this is how property works internally.",
-                            "code": "class Positive:\n    def __set_name__(self, owner, name):\n        self.name = name\n    def __get__(self, obj, objtype=None):\n        return getattr(obj, f\"_{self.name}\")\n    def __set__(self, obj, value):\n        if value <= 0:\n            raise ValueError()\n        setattr(obj, f\"_{self.name}\", value)"
+                            "code": "class Positive:\n    def __set_name__(self, owner, name):\n        self.name = name\n    def __get__(self, obj, objtype=None):\n        return getattr(obj, f\"_{self.name}\")\n    def __set__(self, obj, value):\n        if value <= 0:\n            raise ValueError()\n        setattr(obj, f\"_{self.name}\", value)",
+                            "runnable": false
                         }
                     ]
                 },
@@ -1170,22 +1311,26 @@
                         {
                             "title": "re.search vs re.match",
                             "body": "re.match() anchors at the start of the string. re.search() scans the entire string. Both return a Match object or None.",
-                            "code": "import re\n\nprint(re.match(r\"\\d+\", \"42abc\"))     # Match\nprint(re.search(r\"\\d+\", \"abc42xyz\"))  # Match"
+                            "code": "import re\n\nprint(re.match(r\"\\d+\", \"42abc\"))     # Match\nprint(re.search(r\"\\d+\", \"abc42xyz\"))  # Match",
+                            "runnable": true
                         },
                         {
                             "title": "Groups and capturing",
                             "body": "Wrap part of a pattern in () to create a capturing group. Retrieve matches with .group() or .groups().",
-                            "code": "m = re.search(r\"(\\w+)@(\\w+\\.\\w+)\", \"alice@example.com\")\nif m:\n    print(m.group(1))   # alice\n    print(m.group(2))   # example.com"
+                            "code": "m = re.search(r\"(\\w+)@(\\w+\\.\\w+)\", \"alice@example.com\")\nif m:\n    print(m.group(1))   # alice\n    print(m.group(2))   # example.com",
+                            "runnable": true
                         },
                         {
                             "title": "re.findall and re.sub",
                             "body": "findall() returns all non-overlapping matches as a list. sub() replaces matches with a string or function.",
-                            "code": "text = \"call 555-1234 or 555-5678\"\nnumbers = re.findall(r\"\\d{3}-\\d{4}\", text)\nprint(numbers)  # ['555-1234', '555-5678']\n\ncleaned = re.sub(r\"\\d\", \"#\", text)\nprint(cleaned)"
+                            "code": "text = \"call 555-1234 or 555-5678\"\nnumbers = re.findall(r\"\\d{3}-\\d{4}\", text)\nprint(numbers)  # ['555-1234', '555-5678']\n\ncleaned = re.sub(r\"\\d\", \"#\", text)\nprint(cleaned)",
+                            "runnable": true
                         },
                         {
                             "title": "Compiled patterns",
                             "body": "Compile a pattern with re.compile() when you'll reuse it many times. This is faster and lets you store named groups cleanly.",
-                            "code": "pattern = re.compile(r\"(?P<year>\\d{4})-(?P<month>\\d{2})-(?P<day>\\d{2})\")\nm = pattern.match(\"2024-07-15\")\nprint(m.group(\"year\"))   # 2024"
+                            "code": "pattern = re.compile(r\"(?P<year>\\d{4})-(?P<month>\\d{2})-(?P<day>\\d{2})\")\nm = pattern.match(\"2024-07-15\")\nprint(m.group(\"year\"))   # 2024",
+                            "runnable": true
                         }
                     ]
                 },
@@ -1200,22 +1345,26 @@
                         {
                             "title": "partial()",
                             "body": "functools.partial() creates a new callable with some arguments pre-filled. Useful for adapting functions to callback APIs.",
-                            "code": "from functools import partial\n\ndef power(base, exp):\n    return base ** exp\n\nsquare = partial(power, exp=2)\ncube   = partial(power, exp=3)\nprint(square(5))  # 25\nprint(cube(3))    # 27"
+                            "code": "from functools import partial\n\ndef power(base, exp):\n    return base ** exp\n\nsquare = partial(power, exp=2)\ncube   = partial(power, exp=3)\nprint(square(5))  # 25\nprint(cube(3))    # 27",
+                            "runnable": true
                         },
                         {
                             "title": "lru_cache()",
                             "body": "lru_cache() memoises the return values of a function. Repeated calls with the same arguments hit the cache instead of recomputing.",
-                            "code": "from functools import lru_cache\n\n@lru_cache(maxsize=None)\ndef fib(n):\n    if n < 2:\n        return n\n    return fib(n-1) + fib(n-2)\n\nprint(fib(50))  # fast"
+                            "code": "from functools import lru_cache\n\n@lru_cache(maxsize=None)\ndef fib(n):\n    if n < 2:\n        return n\n    return fib(n-1) + fib(n-2)\n\nprint(fib(50))  # fast",
+                            "runnable": true
                         },
                         {
                             "title": "reduce()",
                             "body": "reduce() applies a function cumulatively to a sequence, reducing it to a single value.",
-                            "code": "from functools import reduce\n\nproduct = reduce(lambda a, b: a * b, [1, 2, 3, 4, 5])\nprint(product)  # 120"
+                            "code": "from functools import reduce\n\nproduct = reduce(lambda a, b: a * b, [1, 2, 3, 4, 5])\nprint(product)  # 120",
+                            "runnable": true
                         },
                         {
                             "title": "total_ordering",
                             "body": "@total_ordering fills in the missing comparison methods (__lt__, __gt__, etc.) when you define __eq__ and one other comparison — less boilerplate in custom classes.",
-                            "code": "from functools import total_ordering\n\n@total_ordering\nclass Card:\n    def __init__(self, rank):\n        self.rank = rank\n    def __eq__(self, other):\n        return self.rank == other.rank\n    def __lt__(self, other):\n        return self.rank < other.rank"
+                            "code": "from functools import total_ordering\n\n@total_ordering\nclass Card:\n    def __init__(self, rank):\n        self.rank = rank\n    def __eq__(self, other):\n        return self.rank == other.rank\n    def __lt__(self, other):\n        return self.rank < other.rank",
+                            "runnable": false
                         }
                     ]
                 },
@@ -1230,22 +1379,26 @@
                         {
                             "title": "Creating and joining paths",
                             "body": "Path objects represent file system paths. Use / to join segments — more readable than os.path.join.",
-                            "code": "from pathlib import Path\n\nbase = Path(\"/home/user\")\nconfig = base / \".config\" / \"app.json\"\nprint(config)"
+                            "code": "from pathlib import Path\n\nbase = Path(\"/home/user\")\nconfig = base / \".config\" / \"app.json\"\nprint(config)",
+                            "runnable": true
                         },
                         {
                             "title": "Reading and writing",
                             "body": "read_text() and write_text() handle encoding automatically and don't require an explicit open().",
-                            "code": "p = Path(\"notes.txt\")\np.write_text(\"hello\\n\", encoding=\"utf-8\")\ncontent = p.read_text(encoding=\"utf-8\")\nprint(content)"
+                            "code": "p = Path(\"notes.txt\")\np.write_text(\"hello\\n\", encoding=\"utf-8\")\ncontent = p.read_text(encoding=\"utf-8\")\nprint(content)",
+                            "runnable": true
                         },
                         {
                             "title": "Querying path properties",
                             "body": "Path objects expose .name, .stem, .suffix, .parent and methods like .exists(), .is_file(), .is_dir().",
-                            "code": "p = Path(\"/data/report.csv\")\nprint(p.name)     # report.csv\nprint(p.stem)     # report\nprint(p.suffix)   # .csv\nprint(p.parent)   # /data"
+                            "code": "p = Path(\"/data/report.csv\")\nprint(p.name)     # report.csv\nprint(p.stem)     # report\nprint(p.suffix)   # .csv\nprint(p.parent)   # /data",
+                            "runnable": true
                         },
                         {
                             "title": "Globbing and iteration",
                             "body": "iterdir() lists a directory's contents. glob() and rglob() find files matching a pattern recursively.",
-                            "code": "from pathlib import Path\n\nfor py_file in Path(\"src\").rglob(\"*.py\"):\n    print(py_file)"
+                            "code": "from pathlib import Path\n\nfor py_file in Path(\"src\").rglob(\"*.py\"):\n    print(py_file)",
+                            "runnable": true
                         }
                     ]
                 },
@@ -1260,7 +1413,8 @@
                         {
                             "title": "Creating and starting a thread",
                             "body": "Thread(target=fn) creates a thread that will run fn. Call start() to launch it and join() to wait for it to finish.",
-                            "code": "import threading\n\ndef worker(n):\n    print(f\"Worker {n}\")\n\nt = threading.Thread(target=worker, args=(1,))\nt.start()\nt.join()"
+                            "code": "import threading\n\ndef worker(n):\n    print(f\"Worker {n}\")\n\nt = threading.Thread(target=worker, args=(1,))\nt.start()\nt.join()",
+                            "runnable": false
                         },
                         {
                             "title": "The Global Interpreter Lock (GIL)",
@@ -1269,12 +1423,14 @@
                         {
                             "title": "Locks and race conditions",
                             "body": "When multiple threads share mutable state, use a Lock to prevent data corruption. Acquire the lock before the critical section and release it after.",
-                            "code": "import threading\n\ncounter = 0\nlock = threading.Lock()\n\ndef increment():\n    global counter\n    with lock:\n        counter += 1"
+                            "code": "import threading\n\ncounter = 0\nlock = threading.Lock()\n\ndef increment():\n    global counter\n    with lock:\n        counter += 1",
+                            "runnable": false
                         },
                         {
                             "title": "ThreadPoolExecutor",
                             "body": "concurrent.futures.ThreadPoolExecutor manages a pool of threads. submit() schedules a call and returns a Future object.",
-                            "code": "from concurrent.futures import ThreadPoolExecutor\n\ndef fetch(url):\n    return f\"data from {url}\"\n\nwith ThreadPoolExecutor(max_workers=4) as ex:\n    futures = [ex.submit(fetch, u) for u in [\"a\", \"b\", \"c\"]]\n    results = [f.result() for f in futures]"
+                            "code": "from concurrent.futures import ThreadPoolExecutor\n\ndef fetch(url):\n    return f\"data from {url}\"\n\nwith ThreadPoolExecutor(max_workers=4) as ex:\n    futures = [ex.submit(fetch, u) for u in [\"a\", \"b\", \"c\"]]\n    results = [f.result() for f in futures]",
+                            "runnable": false
                         }
                     ]
                 },
@@ -1289,22 +1445,26 @@
                         {
                             "title": "Logging levels",
                             "body": "Python's logging module defines five severity levels: DEBUG, INFO, WARNING, ERROR, and CRITICAL. Only messages at or above the configured level are emitted.",
-                            "code": "import logging\n\nlogging.basicConfig(level=logging.DEBUG)\nlogging.debug(\"Verbose detail\")\nlogging.info(\"Normal operation\")\nlogging.warning(\"Something unexpected\")\nlogging.error(\"A failure occurred\")"
+                            "code": "import logging\n\nlogging.basicConfig(level=logging.DEBUG)\nlogging.debug(\"Verbose detail\")\nlogging.info(\"Normal operation\")\nlogging.warning(\"Something unexpected\")\nlogging.error(\"A failure occurred\")",
+                            "runnable": false
                         },
                         {
                             "title": "Named loggers",
                             "body": "Create a logger per module using getLogger(__name__). Loggers form a hierarchy: setting the root logger's level affects all children.",
-                            "code": "import logging\n\nlogger = logging.getLogger(__name__)\nlogger.info(\"Module-level message\")"
+                            "code": "import logging\n\nlogger = logging.getLogger(__name__)\nlogger.info(\"Module-level message\")",
+                            "runnable": false
                         },
                         {
                             "title": "Handlers and formatters",
                             "body": "Handlers route log records to destinations (console, file, HTTP). Formatters control the output structure.",
-                            "code": "import logging\n\nhandler = logging.FileHandler(\"app.log\")\nformatter = logging.Formatter(\"%(asctime)s %(levelname)s %(message)s\")\nhandler.setFormatter(formatter)\n\nlogger = logging.getLogger(\"myapp\")\nlogger.addHandler(handler)\nlogger.setLevel(logging.INFO)"
+                            "code": "import logging\n\nhandler = logging.FileHandler(\"app.log\")\nformatter = logging.Formatter(\"%(asctime)s %(levelname)s %(message)s\")\nhandler.setFormatter(formatter)\n\nlogger = logging.getLogger(\"myapp\")\nlogger.addHandler(handler)\nlogger.setLevel(logging.INFO)",
+                            "runnable": false
                         },
                         {
                             "title": "Structured logging",
                             "body": "Pass extra context as keyword arguments or use a JSON formatter for machine-readable logs. Avoid f-strings in log calls — pass args separately so filtering can skip string formatting entirely.",
-                            "code": "logger.info(\"User %s logged in from %s\", user_id, ip_address)"
+                            "code": "logger.info(\"User %s logged in from %s\", user_id, ip_address)",
+                            "runnable": false
                         }
                     ]
                 }
@@ -1328,17 +1488,20 @@
                         {
                             "title": "async def and await",
                             "body": "Coroutines are defined with async def. Use await to pause execution until an awaitable completes.",
-                            "code": "import asyncio\n\nasync def fetch(url: str) -> str:\n    await asyncio.sleep(1)  # simulates I/O\n    return f\"data from {url}\""
+                            "code": "import asyncio\n\nasync def fetch(url: str) -> str:\n    await asyncio.sleep(1)  # simulates I/O\n    return f\"data from {url}\"",
+                            "runnable": false
                         },
                         {
                             "title": "Running concurrently with gather",
                             "body": "asyncio.gather() runs multiple coroutines concurrently. They interleave during I/O waits.",
-                            "code": "async def main():\n    results = await asyncio.gather(\n        fetch(\"https://a.example\"),\n        fetch(\"https://b.example\"),\n    )\n    print(results)\n\nasyncio.run(main())"
+                            "code": "async def main():\n    results = await asyncio.gather(\n        fetch(\"https://a.example\"),\n        fetch(\"https://b.example\"),\n    )\n    print(results)\n\nasyncio.run(main())",
+                            "runnable": true
                         },
                         {
                             "title": "Tasks and cancellation",
                             "body": "asyncio.create_task() schedules a coroutine immediately. You can cancel a task at any time.",
-                            "code": "task = asyncio.create_task(fetch(\"https://c.example\"))\nawait asyncio.sleep(0.5)\ntask.cancel()"
+                            "code": "task = asyncio.create_task(fetch(\"https://c.example\"))\nawait asyncio.sleep(0.5)\ntask.cancel()",
+                            "runnable": false
                         }
                     ]
                 },
@@ -1353,17 +1516,20 @@
                         {
                             "title": "type is the default metaclass",
                             "body": "Every class in Python is an instance of type. type(name, bases, namespace) is the low-level API for creating classes dynamically.",
-                            "code": "MyClass = type(\"MyClass\", (object,), {\"x\": 42})\nprint(MyClass.x)           # 42\nprint(type(MyClass))       # <class 'type'>"
+                            "code": "MyClass = type(\"MyClass\", (object,), {\"x\": 42})\nprint(MyClass.x)           # 42\nprint(type(MyClass))       # <class 'type'>",
+                            "runnable": true
                         },
                         {
                             "title": "Writing a metaclass",
                             "body": "Subclass type and override __new__ or __init__ to intercept class creation. Pass it via metaclass= in the class definition.",
-                            "code": "class Meta(type):\n    def __new__(mcs, name, bases, ns):\n        ns[\"created_by\"] = \"Meta\"\n        return super().__new__(mcs, name, bases, ns)\n\nclass Foo(metaclass=Meta):\n    pass\n\nprint(Foo.created_by)  # Meta"
+                            "code": "class Meta(type):\n    def __new__(mcs, name, bases, ns):\n        ns[\"created_by\"] = \"Meta\"\n        return super().__new__(mcs, name, bases, ns)\n\nclass Foo(metaclass=Meta):\n    pass\n\nprint(Foo.created_by)  # Meta",
+                            "runnable": true
                         },
                         {
                             "title": "__init_subclass__",
                             "body": "__init_subclass__ is a simpler hook called whenever a subclass is created. It avoids the boilerplate of a full metaclass for many common patterns.",
-                            "code": "class Plugin:\n    registry = []\n    def __init_subclass__(cls, **kw):\n        super().__init_subclass__(**kw)\n        Plugin.registry.append(cls)\n\nclass AudioPlugin(Plugin): pass\nprint(Plugin.registry)  # [<class 'AudioPlugin'>]"
+                            "code": "class Plugin:\n    registry = []\n    def __init_subclass__(cls, **kw):\n        super().__init_subclass__(**kw)\n        Plugin.registry.append(cls)\n\nclass AudioPlugin(Plugin): pass\nprint(Plugin.registry)  # [<class 'AudioPlugin'>]",
+                            "runnable": true
                         },
                         {
                             "title": "class decorators vs metaclasses",
@@ -1382,22 +1548,26 @@
                         {
                             "title": "Data vs non-data descriptors",
                             "body": "A data descriptor defines both __get__ and __set__ (or __delete__). A non-data descriptor defines only __get__. Data descriptors take priority over instance __dict__.",
-                            "code": "class DataDesc:\n    def __get__(self, obj, objtype=None):\n        return obj.__dict__.get(\"_val\")\n    def __set__(self, obj, val):\n        obj.__dict__[\"_val\"] = val"
+                            "code": "class DataDesc:\n    def __get__(self, obj, objtype=None):\n        return obj.__dict__.get(\"_val\")\n    def __set__(self, obj, val):\n        obj.__dict__[\"_val\"] = val",
+                            "runnable": false
                         },
                         {
                             "title": "__set_name__",
                             "body": "__set_name__(owner, name) is called at class creation and tells the descriptor which attribute name it was assigned to — no need to pass the name manually.",
-                            "code": "class Typed:\n    def __set_name__(self, owner, name):\n        self.attr = name\n    def __set__(self, obj, value):\n        if not isinstance(value, int):\n            raise TypeError(f\"{self.attr} must be int\")\n        obj.__dict__[self.attr] = value"
+                            "code": "class Typed:\n    def __set_name__(self, owner, name):\n        self.attr = name\n    def __set__(self, obj, value):\n        if not isinstance(value, int):\n            raise TypeError(f\"{self.attr} must be int\")\n        obj.__dict__[self.attr] = value",
+                            "runnable": false
                         },
                         {
                             "title": "Building a validator descriptor",
                             "body": "Descriptors shine when the same validation logic is needed on multiple attributes across multiple classes.",
-                            "code": "class Positive(Typed):\n    def __set__(self, obj, value):\n        super().__set__(obj, value)\n        if value <= 0:\n            raise ValueError(\"Must be positive\")"
+                            "code": "class Positive(Typed):\n    def __set__(self, obj, value):\n        super().__set__(obj, value)\n        if value <= 0:\n            raise ValueError(\"Must be positive\")",
+                            "runnable": false
                         },
                         {
                             "title": "How functions become methods",
                             "body": "Functions are non-data descriptors. When accessed on an instance, __get__ returns a bound method that prepends self automatically.",
-                            "code": "class Foo:\n    def bar(self): pass\n\nprint(type(Foo.__dict__[\"bar\"]))  # function\nprint(type(Foo().bar))            # method"
+                            "code": "class Foo:\n    def bar(self): pass\n\nprint(type(Foo.__dict__[\"bar\"]))  # function\nprint(type(Foo().bar))            # method",
+                            "runnable": true
                         }
                     ]
                 },
@@ -1412,22 +1582,26 @@
                         {
                             "title": "Reference counting",
                             "body": "Python tracks how many references point to each object. When the count drops to zero, the memory is freed immediately — no GC pause needed for simple cases.",
-                            "code": "import sys\n\nx = [1, 2, 3]\nprint(sys.getrefcount(x))  # 2 (x + getrefcount arg)\ny = x\nprint(sys.getrefcount(x))  # 3"
+                            "code": "import sys\n\nx = [1, 2, 3]\nprint(sys.getrefcount(x))  # 2 (x + getrefcount arg)\ny = x\nprint(sys.getrefcount(x))  # 3",
+                            "runnable": true
                         },
                         {
                             "title": "Cyclic garbage collector",
                             "body": "Reference cycles (A → B → A) prevent counts from reaching zero. Python's cyclic GC detects and collects such cycles. You can trigger it or configure thresholds with the gc module.",
-                            "code": "import gc\n\nclass Node:\n    def __init__(self):\n        self.next = None\n\na = Node(); b = Node()\na.next = b; b.next = a\ndel a, b\ngc.collect()  # free the cycle"
+                            "code": "import gc\n\nclass Node:\n    def __init__(self):\n        self.next = None\n\na = Node(); b = Node()\na.next = b; b.next = a\ndel a, b\ngc.collect()  # free the cycle",
+                            "runnable": false
                         },
                         {
                             "title": "weakref",
                             "body": "A weak reference points to an object without incrementing its reference count. Useful for caches and observers that should not keep objects alive.",
-                            "code": "import weakref\n\nclass Heavy:\n    pass\n\nobj = Heavy()\nref = weakref.ref(obj)\nprint(ref())   # <Heavy ...>\ndel obj\nprint(ref())   # None"
+                            "code": "import weakref\n\nclass Heavy:\n    pass\n\nobj = Heavy()\nref = weakref.ref(obj)\nprint(ref())   # <Heavy ...>\ndel obj\nprint(ref())   # None",
+                            "runnable": true
                         },
                         {
                             "title": "__slots__ for memory savings",
                             "body": "By default, each instance has a __dict__ (a hash map). Declaring __slots__ removes it, saving memory when you create thousands of instances.",
-                            "code": "class Point:\n    __slots__ = (\"x\", \"y\")\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y"
+                            "code": "class Point:\n    __slots__ = (\"x\", \"y\")\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y",
+                            "runnable": false
                         }
                     ]
                 },
@@ -1442,17 +1616,20 @@
                         {
                             "title": "What is a Protocol?",
                             "body": "typing.Protocol defines a structural interface. Any class that has the right methods and attributes satisfies it — no explicit inheritance required (duck typing + static analysis).",
-                            "code": "from typing import Protocol\n\nclass Drawable(Protocol):\n    def draw(self) -> None: ..."
+                            "code": "from typing import Protocol\n\nclass Drawable(Protocol):\n    def draw(self) -> None: ...",
+                            "runnable": false
                         },
                         {
                             "title": "Implicit implementation",
                             "body": "A class satisfies a Protocol simply by having the required attributes — no inheritance or registration needed.",
-                            "code": "class Circle:\n    def draw(self) -> None:\n        print(\"O\")\n\ndef render(shape: Drawable) -> None:\n    shape.draw()\n\nrender(Circle())  # works, type-checker approves"
+                            "code": "class Circle:\n    def draw(self) -> None:\n        print(\"O\")\n\ndef render(shape: Drawable) -> None:\n    shape.draw()\n\nrender(Circle())  # works, type-checker approves",
+                            "runnable": true
                         },
                         {
                             "title": "Runtime checkable protocols",
                             "body": "Annotate a Protocol with @runtime_checkable to allow isinstance() checks at runtime.",
-                            "code": "from typing import Protocol, runtime_checkable\n\n@runtime_checkable\nclass Sized(Protocol):\n    def __len__(self) -> int: ...\n\nprint(isinstance([1, 2, 3], Sized))  # True"
+                            "code": "from typing import Protocol, runtime_checkable\n\n@runtime_checkable\nclass Sized(Protocol):\n    def __len__(self) -> int: ...\n\nprint(isinstance([1, 2, 3], Sized))  # True",
+                            "runnable": true
                         },
                         {
                             "title": "Protocols vs ABCs",
@@ -1475,17 +1652,20 @@
                         {
                             "title": "Pool.map()",
                             "body": "Pool distributes work across a pool of worker processes. map() applies a function to each item in a list and collects the results.",
-                            "code": "from multiprocessing import Pool\n\ndef square(n):\n    return n * n\n\nif __name__ == \"__main__\":\n    with Pool(4) as p:\n        print(p.map(square, range(8)))"
+                            "code": "from multiprocessing import Pool\n\ndef square(n):\n    return n * n\n\nif __name__ == \"__main__\":\n    with Pool(4) as p:\n        print(p.map(square, range(8)))",
+                            "runnable": true
                         },
                         {
                             "title": "Shared state with Manager",
                             "body": "Processes can't share regular Python objects. Use multiprocessing.Manager to create proxy objects (lists, dicts) that synchronise across processes.",
-                            "code": "from multiprocessing import Process, Manager\n\ndef append_one(lst):\n    lst.append(1)\n\nif __name__ == \"__main__\":\n    with Manager() as m:\n        shared = m.list()\n        p = Process(target=append_one, args=(shared,))\n        p.start(); p.join()\n        print(list(shared))  # [1]"
+                            "code": "from multiprocessing import Process, Manager\n\ndef append_one(lst):\n    lst.append(1)\n\nif __name__ == \"__main__\":\n    with Manager() as m:\n        shared = m.list()\n        p = Process(target=append_one, args=(shared,))\n        p.start(); p.join()\n        print(list(shared))  # [1]",
+                            "runnable": true
                         },
                         {
                             "title": "ProcessPoolExecutor",
                             "body": "concurrent.futures.ProcessPoolExecutor is the high-level API. Its interface mirrors ThreadPoolExecutor, making it easy to switch between threads and processes.",
-                            "code": "from concurrent.futures import ProcessPoolExecutor\n\ndef cube(n):\n    return n ** 3\n\nif __name__ == \"__main__\":\n    with ProcessPoolExecutor() as ex:\n        results = list(ex.map(cube, range(6)))\n        print(results)"
+                            "code": "from concurrent.futures import ProcessPoolExecutor\n\ndef cube(n):\n    return n ** 3\n\nif __name__ == \"__main__\":\n    with ProcessPoolExecutor() as ex:\n        results = list(ex.map(cube, range(6)))\n        print(results)",
+                            "runnable": true
                         }
                     ]
                 },
@@ -1500,17 +1680,20 @@
                         {
                             "title": "ctypes basics",
                             "body": "ctypes lets you call functions in shared libraries (.so / .dll) directly from Python without writing any C extension code.",
-                            "code": "import ctypes\n\nlibc = ctypes.CDLL(\"libc.so.6\")\nlibc.printf(b\"Hello from C!\\n\")"
+                            "code": "import ctypes\n\nlibc = ctypes.CDLL(\"libc.so.6\")\nlibc.printf(b\"Hello from C!\\n\")",
+                            "runnable": false
                         },
                         {
                             "title": "Defining argument and return types",
                             "body": "Set argtypes and restype on a ctypes function to prevent silent type errors and enable automatic marshalling.",
-                            "code": "import ctypes\nmath = ctypes.CDLL(\"libm.so.6\")\nmath.sqrt.argtypes = [ctypes.c_double]\nmath.sqrt.restype  = ctypes.c_double\nprint(math.sqrt(2.0))"
+                            "code": "import ctypes\nmath = ctypes.CDLL(\"libm.so.6\")\nmath.sqrt.argtypes = [ctypes.c_double]\nmath.sqrt.restype  = ctypes.c_double\nprint(math.sqrt(2.0))",
+                            "runnable": true
                         },
                         {
                             "title": "ctypes structures",
                             "body": "ctypes.Structure lets you define C-compatible structs. Define _fields_ as a list of (name, ctype) pairs.",
-                            "code": "import ctypes\n\nclass Point(ctypes.Structure):\n    _fields_ = [(\"x\", ctypes.c_float),\n                (\"y\", ctypes.c_float)]\n\np = Point(1.0, 2.0)\nprint(p.x, p.y)"
+                            "code": "import ctypes\n\nclass Point(ctypes.Structure):\n    _fields_ = [(\"x\", ctypes.c_float),\n                (\"y\", ctypes.c_float)]\n\np = Point(1.0, 2.0)\nprint(p.x, p.y)",
+                            "runnable": true
                         },
                         {
                             "title": "When to write a C extension",
@@ -1529,17 +1712,20 @@
                         {
                             "title": "Parsing source code",
                             "body": "ast.parse() converts Python source code into a tree of AST nodes. You can then walk, inspect, or modify the tree.",
-                            "code": "import ast\n\ntree = ast.parse(\"x = 1 + 2\")\nprint(ast.dump(tree, indent=2))"
+                            "code": "import ast\n\ntree = ast.parse(\"x = 1 + 2\")\nprint(ast.dump(tree, indent=2))",
+                            "runnable": true
                         },
                         {
                             "title": "Walking the tree",
                             "body": "ast.walk() yields every node in the tree in breadth-first order. Useful for collecting all names, calls, or literals.",
-                            "code": "import ast\n\ntree = ast.parse(\"print(1 + 2 * 3)\")\nfor node in ast.walk(tree):\n    if isinstance(node, ast.Num):\n        print(node.n)"
+                            "code": "import ast\n\ntree = ast.parse(\"print(1 + 2 * 3)\")\nfor node in ast.walk(tree):\n    if isinstance(node, ast.Num):\n        print(node.n)",
+                            "runnable": true
                         },
                         {
                             "title": "NodeTransformer",
                             "body": "Subclass ast.NodeTransformer and override visit_<NodeType> methods to return modified nodes. compile() then re-compiles the modified tree.",
-                            "code": "import ast\n\nclass DoubleNumbers(ast.NodeTransformer):\n    def visit_Constant(self, node):\n        if isinstance(node.value, int):\n            node.value *= 2\n        return node"
+                            "code": "import ast\n\nclass DoubleNumbers(ast.NodeTransformer):\n    def visit_Constant(self, node):\n        if isinstance(node.value, int):\n            node.value *= 2\n        return node",
+                            "runnable": false
                         },
                         {
                             "title": "Use cases",
@@ -1562,17 +1748,20 @@
                         {
                             "title": "importlib.import_module()",
                             "body": "import_module() loads a module by name at runtime — useful for plugin systems where module names are only known at runtime.",
-                            "code": "import importlib\n\nmod = importlib.import_module(\"json\")\nprint(mod.dumps({\"a\": 1}))"
+                            "code": "import importlib\n\nmod = importlib.import_module(\"json\")\nprint(mod.dumps({\"a\": 1}))",
+                            "runnable": true
                         },
                         {
                             "title": "Custom finders and loaders",
                             "body": "Implement importlib.abc.MetaPathFinder and Loader to intercept imports — e.g. to load modules from a database or a custom archive format.",
-                            "code": "import sys, importlib.abc, importlib.machinery\n\nclass MyFinder(importlib.abc.MetaPathFinder):\n    def find_spec(self, fullname, path, target=None):\n        if fullname == \"magic\":\n            return importlib.machinery.ModuleSpec(fullname, MyLoader())\n\nsys.meta_path.append(MyFinder())"
+                            "code": "import sys, importlib.abc, importlib.machinery\n\nclass MyFinder(importlib.abc.MetaPathFinder):\n    def find_spec(self, fullname, path, target=None):\n        if fullname == \"magic\":\n            return importlib.machinery.ModuleSpec(fullname, MyLoader())\n\nsys.meta_path.append(MyFinder())",
+                            "runnable": false
                         },
                         {
                             "title": "Reloading modules",
                             "body": "importlib.reload() re-executes a module's code in place. Useful during interactive development, but be aware that references held in other modules still point to the old objects.",
-                            "code": "import importlib\nimport mymodule\n\nimportlib.reload(mymodule)"
+                            "code": "import importlib\nimport mymodule\n\nimportlib.reload(mymodule)",
+                            "runnable": false
                         }
                     ]
                 },
@@ -1587,22 +1776,26 @@
                         {
                             "title": "functools.cache and lru_cache",
                             "body": "functools.cache (Python 3.9+) is an unbounded cache. lru_cache(maxsize=N) evicts least-recently-used entries when full.",
-                            "code": "from functools import cache\n\n@cache\ndef fib(n):\n    if n < 2:\n        return n\n    return fib(n-1) + fib(n-2)\n\nprint(fib(100))  # instant"
+                            "code": "from functools import cache\n\n@cache\ndef fib(n):\n    if n < 2:\n        return n\n    return fib(n-1) + fib(n-2)\n\nprint(fib(100))  # instant",
+                            "runnable": true
                         },
                         {
                             "title": "cached_property",
                             "body": "functools.cached_property evaluates a property once and caches the result in the instance __dict__. Subsequent accesses skip the method entirely.",
-                            "code": "from functools import cached_property\n\nclass Circle:\n    def __init__(self, r):\n        self.r = r\n\n    @cached_property\n    def area(self):\n        import math\n        return math.pi * self.r ** 2\n\nc = Circle(5)\nprint(c.area)  # computed once"
+                            "code": "from functools import cached_property\n\nclass Circle:\n    def __init__(self, r):\n        self.r = r\n\n    @cached_property\n    def area(self):\n        import math\n        return math.pi * self.r ** 2\n\nc = Circle(5)\nprint(c.area)  # computed once",
+                            "runnable": true
                         },
                         {
                             "title": "Manual TTL cache",
                             "body": "When you need time-based expiry, implement a small cache class or use a third-party library. Store the result alongside the timestamp and recompute when expired.",
-                            "code": "import time\n\n_cache = {}\n\ndef get_data(key, ttl=60):\n    if key in _cache:\n        value, ts = _cache[key]\n        if time.time() - ts < ttl:\n            return value\n    result = expensive_fetch(key)\n    _cache[key] = (result, time.time())\n    return result"
+                            "code": "import time\n\n_cache = {}\n\ndef get_data(key, ttl=60):\n    if key in _cache:\n        value, ts = _cache[key]\n        if time.time() - ts < ttl:\n            return value\n    result = expensive_fetch(key)\n    _cache[key] = (result, time.time())\n    return result",
+                            "runnable": false
                         },
                         {
                             "title": "Cache invalidation",
                             "body": "Caches can return stale data. Always consider when to invalidate. For lru_cache, call fn.cache_clear(). For cached_property, delete the attribute from the instance __dict__.",
-                            "code": "fib.cache_clear()\n\nc = Circle(5)\ndel c.__dict__[\"area\"]  # force recompute"
+                            "code": "fib.cache_clear()\n\nc = Circle(5)\ndel c.__dict__[\"area\"]  # force recompute",
+                            "runnable": false
                         }
                     ]
                 },
@@ -1617,12 +1810,14 @@
                         {
                             "title": "timeit for micro-benchmarks",
                             "body": "timeit measures the execution time of a small snippet. It runs it many times to reduce noise.",
-                            "code": "import timeit\n\nt = timeit.timeit(\"[x**2 for x in range(1000)]\", number=10_000)\nprint(f\"{t:.3f} s\")"
+                            "code": "import timeit\n\nt = timeit.timeit(\"[x**2 for x in range(1000)]\", number=10_000)\nprint(f\"{t:.3f} s\")",
+                            "runnable": true
                         },
                         {
                             "title": "cProfile for function-level profiling",
                             "body": "cProfile counts calls and measures cumulative time per function. Run it from the CLI or programmatically.",
-                            "code": "import cProfile\n\ndef slow():\n    total = 0\n    for i in range(10**6):\n        total += i\n    return total\n\ncProfile.run(\"slow()\")"
+                            "code": "import cProfile\n\ndef slow():\n    total = 0\n    for i in range(10**6):\n        total += i\n    return total\n\ncProfile.run(\"slow()\")",
+                            "runnable": false
                         },
                         {
                             "title": "line_profiler and memory_profiler",
@@ -1645,22 +1840,26 @@
                         {
                             "title": "Fixtures",
                             "body": "Fixtures provide reusable setup and teardown. pytest injects them by name into test functions. Use scope='session' to run a fixture once per test session.",
-                            "code": "import pytest\n\n@pytest.fixture\ndef db():\n    conn = connect_db()\n    yield conn\n    conn.close()\n\ndef test_query(db):\n    assert db.execute(\"SELECT 1\") == 1"
+                            "code": "import pytest\n\n@pytest.fixture\ndef db():\n    conn = connect_db()\n    yield conn\n    conn.close()\n\ndef test_query(db):\n    assert db.execute(\"SELECT 1\") == 1",
+                            "runnable": false
                         },
                         {
                             "title": "@pytest.mark.parametrize",
                             "body": "Run the same test with multiple inputs by parametrising it. Each (input, expected) pair becomes a separate test case.",
-                            "code": "import pytest\nimport math\n\n@pytest.mark.parametrize(\"n,expected\", [(0, 1), (1, 1), (5, 120)])\ndef test_factorial(n, expected):\n    assert math.factorial(n) == expected"
+                            "code": "import pytest\nimport math\n\n@pytest.mark.parametrize(\"n,expected\", [(0, 1), (1, 1), (5, 120)])\ndef test_factorial(n, expected):\n    assert math.factorial(n) == expected",
+                            "runnable": false
                         },
                         {
                             "title": "Mocking with unittest.mock",
                             "body": "Mock objects replace real dependencies in tests. patch() temporarily replaces an object in the module under test.",
-                            "code": "from unittest.mock import patch\n\ndef test_send_email():\n    with patch(\"myapp.smtp.send\") as mock_send:\n        send_welcome_email(\"alice@example.com\")\n        mock_send.assert_called_once()"
+                            "code": "from unittest.mock import patch\n\ndef test_send_email():\n    with patch(\"myapp.smtp.send\") as mock_send:\n        send_welcome_email(\"alice@example.com\")\n        mock_send.assert_called_once()",
+                            "runnable": false
                         },
                         {
                             "title": "Property-based testing with Hypothesis",
                             "body": "Hypothesis generates random test cases that satisfy given strategies. It finds edge cases you wouldn't think to write manually.",
-                            "code": "from hypothesis import given, strategies as st\n\n@given(st.lists(st.integers()))\ndef test_sorted_length(lst):\n    assert len(sorted(lst)) == len(lst)"
+                            "code": "from hypothesis import given, strategies as st\n\n@given(st.lists(st.integers()))\ndef test_sorted_length(lst):\n    assert len(sorted(lst)) == len(lst)",
+                            "runnable": false
                         }
                     ]
                 },
@@ -1679,12 +1878,14 @@
                         {
                             "title": "asyncio with semaphores",
                             "body": "asyncio.Semaphore limits the number of coroutines running concurrently — useful for rate-limiting outbound requests.",
-                            "code": "import asyncio\n\nsem = asyncio.Semaphore(5)\n\nasync def fetch(url):\n    async with sem:\n        await asyncio.sleep(0.1)  # simulate request\n        return url"
+                            "code": "import asyncio\n\nsem = asyncio.Semaphore(5)\n\nasync def fetch(url):\n    async with sem:\n        await asyncio.sleep(0.1)  # simulate request\n        return url",
+                            "runnable": false
                         },
                         {
                             "title": "Producer–consumer with asyncio.Queue",
                             "body": "asyncio.Queue decouples producers that generate work from consumers that process it, enabling back-pressure.",
-                            "code": "import asyncio\n\nasync def producer(q):\n    for i in range(5):\n        await q.put(i)\n\nasync def consumer(q):\n    while True:\n        item = await q.get()\n        print(\"got\", item)\n        q.task_done()\n\nasync def main():\n    q = asyncio.Queue()\n    await asyncio.gather(producer(q), consumer(q))"
+                            "code": "import asyncio\n\nasync def producer(q):\n    for i in range(5):\n        await q.put(i)\n\nasync def consumer(q):\n    while True:\n        item = await q.get()\n        print(\"got\", item)\n        q.task_done()\n\nasync def main():\n    q = asyncio.Queue()\n    await asyncio.gather(producer(q), consumer(q))",
+                            "runnable": true
                         },
                         {
                             "title": "Choosing the right tool",
@@ -1703,22 +1904,26 @@
                         {
                             "title": "Arithmetic operators",
                             "body": "Implement __add__, __sub__, __mul__, __truediv__ etc. to support arithmetic on custom objects. Return NotImplemented when the operation isn't supported to allow the other operand a chance.",
-                            "code": "class Vector:\n    def __init__(self, x, y):\n        self.x, self.y = x, y\n    def __add__(self, other):\n        return Vector(self.x + other.x, self.y + other.y)\n    def __repr__(self):\n        return f\"Vector({self.x}, {self.y})\""
+                            "code": "class Vector:\n    def __init__(self, x, y):\n        self.x, self.y = x, y\n    def __add__(self, other):\n        return Vector(self.x + other.x, self.y + other.y)\n    def __repr__(self):\n        return f\"Vector({self.x}, {self.y})\"",
+                            "runnable": false
                         },
                         {
                             "title": "Container protocol",
                             "body": "Implement __len__, __getitem__, __setitem__, __contains__, and __iter__ to make your objects behave like built-in containers.",
-                            "code": "class BoundedList:\n    def __init__(self, max_size):\n        self._data = []\n        self._max = max_size\n    def __len__(self):\n        return len(self._data)\n    def __getitem__(self, idx):\n        return self._data[idx]\n    def append(self, item):\n        if len(self) >= self._max:\n            raise OverflowError\n        self._data.append(item)"
+                            "code": "class BoundedList:\n    def __init__(self, max_size):\n        self._data = []\n        self._max = max_size\n    def __len__(self):\n        return len(self._data)\n    def __getitem__(self, idx):\n        return self._data[idx]\n    def append(self, item):\n        if len(self) >= self._max:\n            raise OverflowError\n        self._data.append(item)",
+                            "runnable": false
                         },
                         {
                             "title": "Callable objects",
                             "body": "Implement __call__ to make an instance callable like a function. Useful for stateful function-like objects.",
-                            "code": "class Multiplier:\n    def __init__(self, factor):\n        self.factor = factor\n    def __call__(self, x):\n        return x * self.factor\n\ndouble = Multiplier(2)\nprint(double(10))  # 20"
+                            "code": "class Multiplier:\n    def __init__(self, factor):\n        self.factor = factor\n    def __call__(self, x):\n        return x * self.factor\n\ndouble = Multiplier(2)\nprint(double(10))  # 20",
+                            "runnable": true
                         },
                         {
                             "title": "Context manager protocol",
                             "body": "Implement __enter__ and __exit__ to support the with statement. __exit__ receives exception info and can suppress it by returning True.",
-                            "code": "import threading\n\nclass Lock:\n    def __init__(self):\n        self._lock = threading.Lock()\n    def acquire(self):\n        self._lock.acquire()\n    def release(self):\n        self._lock.release()\n    def __enter__(self):\n        self.acquire()\n        return self\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        self.release()\n        return False  # don't suppress exceptions"
+                            "code": "import threading\n\nclass Lock:\n    def __init__(self):\n        self._lock = threading.Lock()\n    def acquire(self):\n        self._lock.acquire()\n    def release(self):\n        self._lock.release()\n    def __enter__(self):\n        self.acquire()\n        return self\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        self.release()\n        return False  # don't suppress exceptions",
+                            "runnable": false
                         }
                     ]
                 },
@@ -1733,22 +1938,26 @@
                         {
                             "title": "TypeVar and generic functions",
                             "body": "TypeVar creates a placeholder for a type that is determined at call time. Generic functions preserve the relationship between input and output types.",
-                            "code": "from typing import TypeVar\n\nT = TypeVar(\"T\")\n\ndef first(lst: list[T]) -> T:\n    return lst[0]\n\nx: int = first([1, 2, 3])   # T inferred as int\ns: str = first([\"a\", \"b\"])  # T inferred as str"
+                            "code": "from typing import TypeVar\n\nT = TypeVar(\"T\")\n\ndef first(lst: list[T]) -> T:\n    return lst[0]\n\nx: int = first([1, 2, 3])   # T inferred as int\ns: str = first([\"a\", \"b\"])  # T inferred as str",
+                            "runnable": false
                         },
                         {
                             "title": "Generic classes",
                             "body": "Subclass Generic[T] to create parameterisable classes, similar to list[int] or dict[str, int].",
-                            "code": "from typing import Generic, TypeVar\n\nT = TypeVar(\"T\")\n\nclass Stack(Generic[T]):\n    def __init__(self) -> None:\n        self._items: list[T] = []\n    def push(self, item: T) -> None:\n        self._items.append(item)\n    def pop(self) -> T:\n        return self._items.pop()"
+                            "code": "from typing import Generic, TypeVar\n\nT = TypeVar(\"T\")\n\nclass Stack(Generic[T]):\n    def __init__(self) -> None:\n        self._items: list[T] = []\n    def push(self, item: T) -> None:\n        self._items.append(item)\n    def pop(self) -> T:\n        return self._items.pop()",
+                            "runnable": false
                         },
                         {
                             "title": "Literal and overload",
                             "body": "Literal restricts a type to a fixed set of values. @overload lets you provide different signatures for the same function, enabling precise return-type inference based on argument values.",
-                            "code": "from typing import Literal, overload\n\n@overload\ndef process(mode: Literal[\"str\"]) -> str: ...\n@overload\ndef process(mode: Literal[\"int\"]) -> int: ...\ndef process(mode):\n    return \"hello\" if mode == \"str\" else 42"
+                            "code": "from typing import Literal, overload\n\n@overload\ndef process(mode: Literal[\"str\"]) -> str: ...\n@overload\ndef process(mode: Literal[\"int\"]) -> int: ...\ndef process(mode):\n    return \"hello\" if mode == \"str\" else 42",
+                            "runnable": false
                         },
                         {
                             "title": "ParamSpec and Concatenate",
                             "body": "ParamSpec captures the parameter specification of a callable, enabling type-safe decorators that preserve the wrapped function's signature.",
-                            "code": "from typing import ParamSpec, TypeVar, Callable\n\nP = ParamSpec(\"P\")\nR = TypeVar(\"R\")\n\ndef logged(fn: Callable[P, R]) -> Callable[P, R]:\n    def wrapper(*args: P.args, **kwargs: P.kwargs) -> R:\n        print(f\"Calling {fn.__name__}\")\n        return fn(*args, **kwargs)\n    return wrapper"
+                            "code": "from typing import ParamSpec, TypeVar, Callable\n\nP = ParamSpec(\"P\")\nR = TypeVar(\"R\")\n\ndef logged(fn: Callable[P, R]) -> Callable[P, R]:\n    def wrapper(*args: P.args, **kwargs: P.kwargs) -> R:\n        print(f\"Calling {fn.__name__}\")\n        return fn(*args, **kwargs)\n    return wrapper",
+                            "runnable": true
                         }
                     ]
                 }

@@ -19,17 +19,20 @@
                         {
                             "title": "Your first SELECT",
                             "body": "SELECT retrieves data from a table. * means 'all columns'. FROM specifies which table to read.",
-                            "code": "SELECT * FROM users"
+                            "code": "SELECT * FROM users",
+                            "runnable": true
                         },
                         {
                             "title": "Selecting specific columns",
                             "body": "List column names separated by commas to return only the data you need.",
-                            "code": "SELECT name, email FROM users"
+                            "code": "SELECT name, email FROM users",
+                            "runnable": true
                         },
                         {
                             "title": "Filtering with WHERE",
                             "body": "The WHERE clause filters rows. Only rows where the condition is TRUE are returned.",
-                            "code": "SELECT name FROM users WHERE age > 18"
+                            "code": "SELECT name FROM users WHERE age > 18",
+                            "runnable": true
                         }
                     ]
                 },
@@ -52,12 +55,14 @@
                         {
                             "title": "Creating a table",
                             "body": "CREATE TABLE defines a new table with its columns and their types. The column list goes inside parentheses.",
-                            "code": "CREATE TABLE students (\n    id INTEGER,\n    name TEXT,\n    grade REAL\n)"
+                            "code": "CREATE TABLE students (\n    id INTEGER,\n    name TEXT,\n    grade REAL\n)",
+                            "runnable": false
                         },
                         {
                             "title": "Viewing table contents",
                             "body": "After creating a table and inserting data, you can view all records with SELECT *.",
-                            "code": "SELECT * FROM students"
+                            "code": "SELECT * FROM students",
+                            "runnable": true
                         }
                     ]
                 },
@@ -72,17 +77,20 @@
                         {
                             "title": "Selecting all columns",
                             "body": "The asterisk (*) is a shortcut that returns every column in the table. It is handy for quick exploration but not recommended in production queries.",
-                            "code": "SELECT * FROM products"
+                            "code": "SELECT * FROM products",
+                            "runnable": true
                         },
                         {
                             "title": "Picking specific columns",
                             "body": "List the columns you want, separated by commas. This makes results easier to read and can improve performance.",
-                            "code": "SELECT name, price FROM products"
+                            "code": "SELECT name, price FROM products",
+                            "runnable": true
                         },
                         {
                             "title": "Expressions in SELECT",
                             "body": "You can include calculations directly in the SELECT list. The database evaluates the expression for every row.",
-                            "code": "SELECT name, price * 1.1 AS price_with_tax\nFROM products"
+                            "code": "SELECT name, price * 1.1 AS price_with_tax\nFROM products",
+                            "runnable": true
                         }
                     ]
                 },
@@ -97,22 +105,26 @@
                         {
                             "title": "Basic filtering",
                             "body": "WHERE appears after FROM and keeps only the rows that satisfy the condition. Rows that do not match are excluded from the result.",
-                            "code": "SELECT name FROM employees\nWHERE department = 'Sales'"
+                            "code": "SELECT name FROM employees\nWHERE department = 'Sales'",
+                            "runnable": true
                         },
                         {
                             "title": "Combining conditions with AND",
                             "body": "AND requires both conditions to be true. Only rows meeting every condition are returned.",
-                            "code": "SELECT name FROM employees\nWHERE department = 'Sales' AND salary > 50000"
+                            "code": "SELECT name FROM employees\nWHERE department = 'Sales' AND salary > 50000",
+                            "runnable": true
                         },
                         {
                             "title": "Combining conditions with OR",
                             "body": "OR returns rows that satisfy at least one of the conditions. You can mix AND and OR, but use parentheses to control evaluation order.",
-                            "code": "SELECT name FROM employees\nWHERE department = 'Sales' OR department = 'Marketing'"
+                            "code": "SELECT name FROM employees\nWHERE department = 'Sales' OR department = 'Marketing'",
+                            "runnable": true
                         },
                         {
                             "title": "Negation with NOT",
                             "body": "NOT inverts a condition. It is useful when you want everything except a particular set of rows.",
-                            "code": "SELECT name FROM employees\nWHERE NOT department = 'HR'"
+                            "code": "SELECT name FROM employees\nWHERE NOT department = 'HR'",
+                            "runnable": true
                         }
                     ]
                 },
@@ -127,17 +139,20 @@
                         {
                             "title": "Default sort order",
                             "body": "Without ORDER BY, the database returns rows in no guaranteed order. ORDER BY lets you sort by one or more columns. The default direction is ascending (ASC).",
-                            "code": "SELECT name, age FROM users\nORDER BY age"
+                            "code": "SELECT name, age FROM users\nORDER BY age",
+                            "runnable": true
                         },
                         {
                             "title": "Descending order",
                             "body": "Add DESC after the column name to sort from highest to lowest. ASC is the explicit keyword for ascending, though it is the default.",
-                            "code": "SELECT name, salary FROM employees\nORDER BY salary DESC"
+                            "code": "SELECT name, salary FROM employees\nORDER BY salary DESC",
+                            "runnable": true
                         },
                         {
                             "title": "Sorting by multiple columns",
                             "body": "Separate column names with commas. The database sorts by the first column, then uses subsequent columns to break ties.",
-                            "code": "SELECT name, department, salary\nFROM employees\nORDER BY department ASC, salary DESC"
+                            "code": "SELECT name, department, salary\nFROM employees\nORDER BY department ASC, salary DESC",
+                            "runnable": true
                         }
                     ]
                 },
@@ -152,12 +167,14 @@
                         {
                             "title": "Limiting results",
                             "body": "LIMIT restricts how many rows the query returns. It is commonly used when you only need the top few results or want to preview data.",
-                            "code": "SELECT * FROM products\nORDER BY price DESC\nLIMIT 5"
+                            "code": "SELECT * FROM products\nORDER BY price DESC\nLIMIT 5",
+                            "runnable": true
                         },
                         {
                             "title": "Skipping rows with OFFSET",
                             "body": "OFFSET tells the database to skip a number of rows before starting to return results. Combined with LIMIT, it enables simple pagination.",
-                            "code": "SELECT * FROM products\nORDER BY price DESC\nLIMIT 5 OFFSET 10"
+                            "code": "SELECT * FROM products\nORDER BY price DESC\nLIMIT 5 OFFSET 10",
+                            "runnable": true
                         },
                         {
                             "title": "Pagination pattern",
@@ -180,12 +197,14 @@
                         {
                             "title": "Testing for NULL",
                             "body": "You cannot use = to compare with NULL. Instead, use IS NULL to find missing values and IS NOT NULL to find rows that have data.",
-                            "code": "SELECT name FROM users\nWHERE email IS NULL"
+                            "code": "SELECT name FROM users\nWHERE email IS NULL",
+                            "runnable": true
                         },
                         {
                             "title": "NULL in conditions",
                             "body": "Any comparison with NULL returns NULL (not TRUE or FALSE). This means NULL values are excluded from most WHERE conditions unless explicitly checked.",
-                            "code": "SELECT name FROM users\nWHERE email IS NOT NULL"
+                            "code": "SELECT name FROM users\nWHERE email IS NOT NULL",
+                            "runnable": true
                         }
                     ]
                 },
@@ -200,17 +219,20 @@
                         {
                             "title": "Equality and inequality",
                             "body": "Use = to test equality and != or <> to test inequality. These work with numbers, strings, and dates.",
-                            "code": "SELECT * FROM orders\nWHERE status = 'shipped'"
+                            "code": "SELECT * FROM orders\nWHERE status = 'shipped'",
+                            "runnable": true
                         },
                         {
                             "title": "Greater and less than",
                             "body": "Use < and > for strict comparisons, and <= and >= to include the boundary value.",
-                            "code": "SELECT name, price FROM products\nWHERE price >= 10 AND price <= 100"
+                            "code": "SELECT name, price FROM products\nWHERE price >= 10 AND price <= 100",
+                            "runnable": true
                         },
                         {
                             "title": "Comparing strings",
                             "body": "String comparisons follow alphabetical (lexicographic) order. They are case-sensitive in most databases unless configured otherwise.",
-                            "code": "SELECT name FROM users\nWHERE name > 'M'"
+                            "code": "SELECT name FROM users\nWHERE name > 'M'",
+                            "runnable": true
                         }
                     ]
                 },
@@ -225,17 +247,20 @@
                         {
                             "title": "Inserting a single row",
                             "body": "INSERT INTO adds a new row. You list the target columns and then the VALUES to store in each one.",
-                            "code": "INSERT INTO users (name, email, age)\nVALUES ('Alice', 'alice@example.com', 30)"
+                            "code": "INSERT INTO users (name, email, age)\nVALUES ('Alice', 'alice@example.com', 30)",
+                            "runnable": false
                         },
                         {
                             "title": "Inserting without column list",
                             "body": "If you supply values for every column in table order, the column list is optional. However, listing columns explicitly is safer and more readable.",
-                            "code": "INSERT INTO users\nVALUES (1, 'Bob', 'bob@example.com', 25)"
+                            "code": "INSERT INTO users\nVALUES (1, 'Bob', 'bob@example.com', 25)",
+                            "runnable": false
                         },
                         {
                             "title": "Inserting multiple rows",
                             "body": "Some databases allow multiple value sets in one INSERT. Separate each set with a comma. This is faster than running many individual inserts.",
-                            "code": "INSERT INTO users (name, email, age)\nVALUES\n    ('Carol', 'carol@example.com', 28),\n    ('Dave', 'dave@example.com', 35)"
+                            "code": "INSERT INTO users (name, email, age)\nVALUES\n    ('Carol', 'carol@example.com', 28),\n    ('Dave', 'dave@example.com', 35)",
+                            "runnable": false
                         }
                     ]
                 },
@@ -250,12 +275,14 @@
                         {
                             "title": "Basic UPDATE",
                             "body": "UPDATE changes column values in existing rows. Always combine it with WHERE to target specific rows, or you will change every row in the table.",
-                            "code": "UPDATE users\nSET email = 'new@example.com'\nWHERE id = 1"
+                            "code": "UPDATE users\nSET email = 'new@example.com'\nWHERE id = 1",
+                            "runnable": false
                         },
                         {
                             "title": "Updating multiple columns",
                             "body": "Separate the column assignments with commas in the SET clause. All changes happen in a single operation.",
-                            "code": "UPDATE users\nSET name = 'Alice Smith', age = 31\nWHERE id = 1"
+                            "code": "UPDATE users\nSET name = 'Alice Smith', age = 31\nWHERE id = 1",
+                            "runnable": false
                         },
                         {
                             "title": "UPDATE without WHERE",
@@ -274,12 +301,14 @@
                         {
                             "title": "Deleting specific rows",
                             "body": "DELETE FROM removes rows that match the WHERE condition. Like UPDATE, always include a WHERE clause to avoid deleting everything.",
-                            "code": "DELETE FROM users\nWHERE id = 42"
+                            "code": "DELETE FROM users\nWHERE id = 42",
+                            "runnable": false
                         },
                         {
                             "title": "Deleting all rows",
                             "body": "Omitting WHERE removes every row in the table. The table itself still exists, but it will be empty. Use this with extreme caution.",
-                            "code": "DELETE FROM temp_logs"
+                            "code": "DELETE FROM temp_logs",
+                            "runnable": false
                         },
                         {
                             "title": "DELETE vs TRUNCATE",
@@ -302,12 +331,14 @@
                         {
                             "title": "Using DISTINCT",
                             "body": "Place DISTINCT right after SELECT. The database compares the entire selected row, not just one column, when deciding what is a duplicate.",
-                            "code": "SELECT DISTINCT department FROM employees"
+                            "code": "SELECT DISTINCT department FROM employees",
+                            "runnable": true
                         },
                         {
                             "title": "DISTINCT on multiple columns",
                             "body": "When you list multiple columns, DISTINCT removes rows where the combination of all listed columns is the same.",
-                            "code": "SELECT DISTINCT department, title FROM employees"
+                            "code": "SELECT DISTINCT department, title FROM employees",
+                            "runnable": true
                         }
                     ]
                 },
@@ -322,17 +353,20 @@
                         {
                             "title": "COUNT(*)",
                             "body": "COUNT(*) counts every row in the result, including rows with NULL values. It is the simplest way to find out how many records exist.",
-                            "code": "SELECT COUNT(*) FROM orders"
+                            "code": "SELECT COUNT(*) FROM orders",
+                            "runnable": true
                         },
                         {
                             "title": "COUNT(column)",
                             "body": "COUNT(column) counts only the rows where that column is not NULL. This is useful for checking data completeness.",
-                            "code": "SELECT COUNT(email) FROM users"
+                            "code": "SELECT COUNT(email) FROM users",
+                            "runnable": true
                         },
                         {
                             "title": "COUNT with WHERE",
                             "body": "Combine COUNT with WHERE to count rows that meet a condition. The filter runs first, then the count is computed on the filtered set.",
-                            "code": "SELECT COUNT(*) FROM orders\nWHERE status = 'completed'"
+                            "code": "SELECT COUNT(*) FROM orders\nWHERE status = 'completed'",
+                            "runnable": true
                         }
                     ]
                 },
@@ -347,17 +381,20 @@
                         {
                             "title": "The % wildcard",
                             "body": "% matches zero or more characters. Place it before, after, or around a pattern to match different positions within the string.",
-                            "code": "SELECT name FROM users\nWHERE name LIKE 'A%'"
+                            "code": "SELECT name FROM users\nWHERE name LIKE 'A%'",
+                            "runnable": true
                         },
                         {
                             "title": "The _ wildcard",
                             "body": "The underscore _ matches exactly one character. Use it when you know the length but not the exact value of part of the string.",
-                            "code": "SELECT code FROM products\nWHERE code LIKE 'P_00'"
+                            "code": "SELECT code FROM products\nWHERE code LIKE 'P_00'",
+                            "runnable": true
                         },
                         {
                             "title": "Combining wildcards",
                             "body": "You can mix % and _ in the same pattern. NOT LIKE inverts the match, returning rows that do not fit the pattern.",
-                            "code": "SELECT name FROM users\nWHERE email LIKE '%@gmail.com'"
+                            "code": "SELECT name FROM users\nWHERE email LIKE '%@gmail.com'",
+                            "runnable": true
                         }
                     ]
                 },
@@ -372,17 +409,20 @@
                         {
                             "title": "Renaming columns with AS",
                             "body": "AS lets you assign a temporary name to a column or expression in the result set. The alias appears as the column header in the output.",
-                            "code": "SELECT name AS full_name, email AS contact_email\nFROM users"
+                            "code": "SELECT name AS full_name, email AS contact_email\nFROM users",
+                            "runnable": true
                         },
                         {
                             "title": "Aliases for expressions",
                             "body": "Calculated columns have no natural name. An alias gives the result a readable label that you and others can reference.",
-                            "code": "SELECT price * quantity AS total_cost\nFROM order_items"
+                            "code": "SELECT price * quantity AS total_cost\nFROM order_items",
+                            "runnable": true
                         },
                         {
                             "title": "Aliases with spaces",
                             "body": "If your alias contains spaces or special characters, wrap it in double quotes. Single-word aliases do not need quotes.",
-                            "code": "SELECT name AS \"Full Name\", salary AS \"Annual Salary\"\nFROM employees"
+                            "code": "SELECT name AS \"Full Name\", salary AS \"Annual Salary\"\nFROM employees",
+                            "runnable": true
                         }
                     ]
                 }
@@ -406,17 +446,20 @@
                         {
                             "title": "INNER JOIN",
                             "body": "INNER JOIN returns only rows that have a match in both tables.",
-                            "code": "SELECT orders.id, customers.name\nFROM orders\nINNER JOIN customers ON orders.customer_id = customers.id"
+                            "code": "SELECT orders.id, customers.name\nFROM orders\nINNER JOIN customers ON orders.customer_id = customers.id",
+                            "runnable": true
                         },
                         {
                             "title": "LEFT JOIN",
                             "body": "LEFT JOIN returns all rows from the left table and the matching rows from the right. If there is no match, NULL is returned for the right table's columns.",
-                            "code": "SELECT customers.name, orders.id\nFROM customers\nLEFT JOIN orders ON customers.id = orders.customer_id"
+                            "code": "SELECT customers.name, orders.id\nFROM customers\nLEFT JOIN orders ON customers.id = orders.customer_id",
+                            "runnable": true
                         },
                         {
                             "title": "Aliases",
                             "body": "Use AS to give tables or columns shorter names, making queries easier to read.",
-                            "code": "SELECT c.name, o.amount\nFROM customers AS c\nINNER JOIN orders AS o ON c.id = o.customer_id"
+                            "code": "SELECT c.name, o.amount\nFROM customers AS c\nINNER JOIN orders AS o ON c.id = o.customer_id",
+                            "runnable": true
                         }
                     ]
                 },
@@ -431,12 +474,14 @@
                         {
                             "title": "RIGHT JOIN",
                             "body": "RIGHT JOIN returns all rows from the right table and matched rows from the left. It is the mirror of LEFT JOIN. If there is no match, NULLs fill the left side.",
-                            "code": "SELECT o.id, c.name\nFROM orders AS o\nRIGHT JOIN customers AS c ON o.customer_id = c.id"
+                            "code": "SELECT o.id, c.name\nFROM orders AS o\nRIGHT JOIN customers AS c ON o.customer_id = c.id",
+                            "runnable": true
                         },
                         {
                             "title": "FULL OUTER JOIN",
                             "body": "FULL OUTER JOIN returns all rows from both tables. Where there is no match, the missing side is filled with NULLs.",
-                            "code": "SELECT c.name, o.id\nFROM customers AS c\nFULL OUTER JOIN orders AS o ON c.id = o.customer_id"
+                            "code": "SELECT c.name, o.id\nFROM customers AS c\nFULL OUTER JOIN orders AS o ON c.id = o.customer_id",
+                            "runnable": true
                         },
                         {
                             "title": "When to use each",
@@ -459,12 +504,14 @@
                         {
                             "title": "Employee-manager example",
                             "body": "A common use case is an employees table where each row has a manager_id pointing to another row in the same table.",
-                            "code": "SELECT e.name AS employee, m.name AS manager\nFROM employees AS e\nINNER JOIN employees AS m ON e.manager_id = m.id"
+                            "code": "SELECT e.name AS employee, m.name AS manager\nFROM employees AS e\nINNER JOIN employees AS m ON e.manager_id = m.id",
+                            "runnable": true
                         },
                         {
                             "title": "Finding pairs",
                             "body": "Self joins can also find pairs of rows that share a property. Use a condition to avoid pairing a row with itself.",
-                            "code": "SELECT a.name, b.name\nFROM users AS a\nINNER JOIN users AS b ON a.city = b.city AND a.id < b.id"
+                            "code": "SELECT a.name, b.name\nFROM users AS a\nINNER JOIN users AS b ON a.city = b.city AND a.id < b.id",
+                            "runnable": true
                         }
                     ]
                 },
@@ -479,17 +526,20 @@
                         {
                             "title": "UNION",
                             "body": "UNION combines the results of two queries and removes duplicate rows. Both queries must return the same number of columns with compatible types.",
-                            "code": "SELECT name FROM customers\nUNION\nSELECT name FROM suppliers"
+                            "code": "SELECT name FROM customers\nUNION\nSELECT name FROM suppliers",
+                            "runnable": true
                         },
                         {
                             "title": "UNION ALL",
                             "body": "UNION ALL works like UNION but keeps all duplicates. It is faster because the database skips the deduplication step.",
-                            "code": "SELECT name FROM customers\nUNION ALL\nSELECT name FROM suppliers"
+                            "code": "SELECT name FROM customers\nUNION ALL\nSELECT name FROM suppliers",
+                            "runnable": true
                         },
                         {
                             "title": "Ordering combined results",
                             "body": "Place ORDER BY after the last SELECT to sort the entire combined result set. You cannot put ORDER BY inside the individual queries.",
-                            "code": "SELECT name, 'customer' AS source FROM customers\nUNION ALL\nSELECT name, 'supplier' AS source FROM suppliers\nORDER BY name"
+                            "code": "SELECT name, 'customer' AS source FROM customers\nUNION ALL\nSELECT name, 'supplier' AS source FROM suppliers\nORDER BY name",
+                            "runnable": true
                         }
                     ]
                 },
@@ -508,12 +558,14 @@
                         {
                             "title": "Scalar subquery",
                             "body": "A scalar subquery returns a single value. You can compare it with =, <, or > just like a constant.",
-                            "code": "SELECT name, salary\nFROM employees\nWHERE salary > (SELECT AVG(salary) FROM employees)"
+                            "code": "SELECT name, salary\nFROM employees\nWHERE salary > (SELECT AVG(salary) FROM employees)",
+                            "runnable": true
                         },
                         {
                             "title": "Subquery with IN",
                             "body": "When a subquery returns multiple rows, use IN to check if a value is in the returned set.",
-                            "code": "SELECT name FROM customers\nWHERE id IN (SELECT customer_id FROM orders WHERE total > 500)"
+                            "code": "SELECT name FROM customers\nWHERE id IN (SELECT customer_id FROM orders WHERE total > 500)",
+                            "runnable": true
                         }
                     ]
                 },
@@ -532,12 +584,14 @@
                         {
                             "title": "Example: top spenders",
                             "body": "First aggregate order totals per customer, then query that result to find the highest spenders.",
-                            "code": "SELECT sub.customer_id, sub.total_spent\nFROM (\n    SELECT customer_id, SUM(amount) AS total_spent\n    FROM orders\n    GROUP BY customer_id\n) AS sub\nWHERE sub.total_spent > 1000"
+                            "code": "SELECT sub.customer_id, sub.total_spent\nFROM (\n    SELECT customer_id, SUM(amount) AS total_spent\n    FROM orders\n    GROUP BY customer_id\n) AS sub\nWHERE sub.total_spent > 1000",
+                            "runnable": true
                         },
                         {
                             "title": "When to use derived tables",
                             "body": "Derived tables are useful when you need an intermediate aggregation or transformation before the outer query. They keep complex logic organized and readable.",
-                            "code": "SELECT dept, avg_salary\nFROM (\n    SELECT department AS dept, AVG(salary) AS avg_salary\n    FROM employees\n    GROUP BY department\n) AS dept_stats\nORDER BY avg_salary DESC"
+                            "code": "SELECT dept, avg_salary\nFROM (\n    SELECT department AS dept, AVG(salary) AS avg_salary\n    FROM employees\n    GROUP BY department\n) AS dept_stats\nORDER BY avg_salary DESC",
+                            "runnable": true
                         }
                     ]
                 },
@@ -556,12 +610,14 @@
                         {
                             "title": "Using EXISTS",
                             "body": "EXISTS is commonly used to filter rows that have related data in another table.",
-                            "code": "SELECT name FROM customers AS c\nWHERE EXISTS (\n    SELECT 1 FROM orders AS o\n    WHERE o.customer_id = c.id\n)"
+                            "code": "SELECT name FROM customers AS c\nWHERE EXISTS (\n    SELECT 1 FROM orders AS o\n    WHERE o.customer_id = c.id\n)",
+                            "runnable": true
                         },
                         {
                             "title": "NOT EXISTS",
                             "body": "NOT EXISTS returns TRUE when the subquery produces no rows. It is useful for finding orphaned or unmatched records.",
-                            "code": "SELECT name FROM customers AS c\nWHERE NOT EXISTS (\n    SELECT 1 FROM orders AS o\n    WHERE o.customer_id = c.id\n)"
+                            "code": "SELECT name FROM customers AS c\nWHERE NOT EXISTS (\n    SELECT 1 FROM orders AS o\n    WHERE o.customer_id = c.id\n)",
+                            "runnable": true
                         }
                     ]
                 },
@@ -576,17 +632,20 @@
                         {
                             "title": "Simple CASE",
                             "body": "CASE evaluates conditions in order and returns the value for the first TRUE condition. If none match, ELSE provides a default.",
-                            "code": "SELECT name,\n    CASE status\n        WHEN 'A' THEN 'Active'\n        WHEN 'I' THEN 'Inactive'\n        ELSE 'Unknown'\n    END AS status_label\nFROM users"
+                            "code": "SELECT name,\n    CASE status\n        WHEN 'A' THEN 'Active'\n        WHEN 'I' THEN 'Inactive'\n        ELSE 'Unknown'\n    END AS status_label\nFROM users",
+                            "runnable": true
                         },
                         {
                             "title": "Searched CASE",
                             "body": "A searched CASE uses boolean expressions instead of comparing a single value. Each WHEN can test a different column or condition.",
-                            "code": "SELECT name, salary,\n    CASE\n        WHEN salary > 100000 THEN 'High'\n        WHEN salary > 50000 THEN 'Medium'\n        ELSE 'Low'\n    END AS salary_band\nFROM employees"
+                            "code": "SELECT name, salary,\n    CASE\n        WHEN salary > 100000 THEN 'High'\n        WHEN salary > 50000 THEN 'Medium'\n        ELSE 'Low'\n    END AS salary_band\nFROM employees",
+                            "runnable": true
                         },
                         {
                             "title": "CASE in ORDER BY",
                             "body": "CASE can appear in ORDER BY to create custom sort orders that do not follow alphabetical or numeric rules.",
-                            "code": "SELECT name, priority\nFROM tickets\nORDER BY\n    CASE priority\n        WHEN 'critical' THEN 1\n        WHEN 'high' THEN 2\n        WHEN 'medium' THEN 3\n        ELSE 4\n    END"
+                            "code": "SELECT name, priority\nFROM tickets\nORDER BY\n    CASE priority\n        WHEN 'critical' THEN 1\n        WHEN 'high' THEN 2\n        WHEN 'medium' THEN 3\n        ELSE 4\n    END",
+                            "runnable": true
                         }
                     ]
                 },
@@ -601,22 +660,26 @@
                         {
                             "title": "Changing case",
                             "body": "UPPER converts text to uppercase and LOWER converts to lowercase. These are helpful for case-insensitive comparisons.",
-                            "code": "SELECT UPPER(name) AS upper_name,\n       LOWER(email) AS lower_email\nFROM users"
+                            "code": "SELECT UPPER(name) AS upper_name,\n       LOWER(email) AS lower_email\nFROM users",
+                            "runnable": true
                         },
                         {
                             "title": "String length and trimming",
                             "body": "LENGTH (or LEN in some databases) returns the number of characters. TRIM removes leading and trailing whitespace.",
-                            "code": "SELECT name, LENGTH(name) AS name_length\nFROM users"
+                            "code": "SELECT name, LENGTH(name) AS name_length\nFROM users",
+                            "runnable": true
                         },
                         {
                             "title": "Extracting parts of a string",
                             "body": "SUBSTRING extracts a portion of a string given a start position and length. Positions start at 1 in SQL.",
-                            "code": "SELECT SUBSTRING(phone, 1, 3) AS area_code\nFROM contacts"
+                            "code": "SELECT SUBSTRING(phone, 1, 3) AS area_code\nFROM contacts",
+                            "runnable": true
                         },
                         {
                             "title": "Concatenation",
                             "body": "CONCAT joins two or more strings together. Some databases also support the || operator for concatenation.",
-                            "code": "SELECT CONCAT(first_name, ' ', last_name) AS full_name\nFROM employees"
+                            "code": "SELECT CONCAT(first_name, ' ', last_name) AS full_name\nFROM employees",
+                            "runnable": true
                         }
                     ]
                 },
@@ -631,17 +694,20 @@
                         {
                             "title": "Current date and time",
                             "body": "CURRENT_DATE returns today's date and CURRENT_TIMESTAMP returns the date and time. These are standard SQL functions supported by most databases.",
-                            "code": "SELECT CURRENT_DATE AS today,\n       CURRENT_TIMESTAMP AS now"
+                            "code": "SELECT CURRENT_DATE AS today,\n       CURRENT_TIMESTAMP AS now",
+                            "runnable": true
                         },
                         {
                             "title": "Extracting date parts",
                             "body": "EXTRACT pulls a single component from a date or timestamp, such as the year, month, or day.",
-                            "code": "SELECT EXTRACT(YEAR FROM created_at) AS order_year,\n       EXTRACT(MONTH FROM created_at) AS order_month\nFROM orders"
+                            "code": "SELECT EXTRACT(YEAR FROM created_at) AS order_year,\n       EXTRACT(MONTH FROM created_at) AS order_month\nFROM orders",
+                            "runnable": true
                         },
                         {
                             "title": "Date arithmetic",
                             "body": "You can add or subtract intervals from dates. The syntax varies by database, but the INTERVAL keyword is widely supported.",
-                            "code": "SELECT name, created_at,\n       created_at + INTERVAL '30' DAY AS expiry_date\nFROM subscriptions"
+                            "code": "SELECT name, created_at,\n       created_at + INTERVAL '30' DAY AS expiry_date\nFROM subscriptions",
+                            "runnable": true
                         }
                     ]
                 },
@@ -656,17 +722,20 @@
                         {
                             "title": "ROUND",
                             "body": "ROUND rounds a number to a specified number of decimal places. If no precision is given, it rounds to the nearest integer.",
-                            "code": "SELECT ROUND(price, 2) AS rounded_price\nFROM products"
+                            "code": "SELECT ROUND(price, 2) AS rounded_price\nFROM products",
+                            "runnable": true
                         },
                         {
                             "title": "CEIL and FLOOR",
                             "body": "CEIL (or CEILING) rounds up to the nearest integer. FLOOR rounds down. These are useful for billing or inventory calculations.",
-                            "code": "SELECT CEIL(4.2) AS rounded_up,\n       FLOOR(4.8) AS rounded_down"
+                            "code": "SELECT CEIL(4.2) AS rounded_up,\n       FLOOR(4.8) AS rounded_down",
+                            "runnable": true
                         },
                         {
                             "title": "ABS and MOD",
                             "body": "ABS returns the absolute value of a number. MOD returns the remainder of a division. Both are useful for data validation and cyclic calculations.",
-                            "code": "SELECT ABS(-15) AS absolute_val,\n       MOD(17, 5) AS remainder"
+                            "code": "SELECT ABS(-15) AS absolute_val,\n       MOD(17, 5) AS remainder",
+                            "runnable": true
                         }
                     ]
                 },
@@ -681,17 +750,20 @@
                         {
                             "title": "The IN operator",
                             "body": "IN checks whether a value matches any item in a list. It replaces multiple OR conditions and is easier to read.",
-                            "code": "SELECT name FROM employees\nWHERE department IN ('Sales', 'Marketing', 'Support')"
+                            "code": "SELECT name FROM employees\nWHERE department IN ('Sales', 'Marketing', 'Support')",
+                            "runnable": true
                         },
                         {
                             "title": "The BETWEEN operator",
                             "body": "BETWEEN tests whether a value falls within a range, inclusive of both endpoints. It works with numbers, dates, and strings.",
-                            "code": "SELECT name, salary FROM employees\nWHERE salary BETWEEN 40000 AND 80000"
+                            "code": "SELECT name, salary FROM employees\nWHERE salary BETWEEN 40000 AND 80000",
+                            "runnable": true
                         },
                         {
                             "title": "NOT IN and NOT BETWEEN",
                             "body": "Prefix either operator with NOT to invert the condition. NOT IN excludes listed values and NOT BETWEEN excludes the range.",
-                            "code": "SELECT name FROM employees\nWHERE department NOT IN ('HR', 'Legal')"
+                            "code": "SELECT name FROM employees\nWHERE department NOT IN ('HR', 'Legal')",
+                            "runnable": true
                         }
                     ]
                 },
@@ -710,17 +782,20 @@
                         {
                             "title": "Counting per group",
                             "body": "Combine GROUP BY with COUNT to see how many rows belong to each group.",
-                            "code": "SELECT department, COUNT(*) AS employee_count\nFROM employees\nGROUP BY department"
+                            "code": "SELECT department, COUNT(*) AS employee_count\nFROM employees\nGROUP BY department",
+                            "runnable": true
                         },
                         {
                             "title": "SUM and AVG per group",
                             "body": "SUM totals numeric values per group and AVG computes the mean. Both ignore NULL values in the target column.",
-                            "code": "SELECT department, SUM(salary) AS total_salary,\n       AVG(salary) AS avg_salary\nFROM employees\nGROUP BY department"
+                            "code": "SELECT department, SUM(salary) AS total_salary,\n       AVG(salary) AS avg_salary\nFROM employees\nGROUP BY department",
+                            "runnable": true
                         },
                         {
                             "title": "Grouping by multiple columns",
                             "body": "You can group by more than one column to create finer categories. List the columns separated by commas.",
-                            "code": "SELECT department, title, COUNT(*) AS headcount\nFROM employees\nGROUP BY department, title"
+                            "code": "SELECT department, title, COUNT(*) AS headcount\nFROM employees\nGROUP BY department, title",
+                            "runnable": true
                         }
                     ]
                 },
@@ -739,12 +814,14 @@
                         {
                             "title": "Basic HAVING",
                             "body": "HAVING appears after GROUP BY and tests conditions on aggregate values like COUNT or SUM.",
-                            "code": "SELECT department, COUNT(*) AS headcount\nFROM employees\nGROUP BY department\nHAVING COUNT(*) > 5"
+                            "code": "SELECT department, COUNT(*) AS headcount\nFROM employees\nGROUP BY department\nHAVING COUNT(*) > 5",
+                            "runnable": true
                         },
                         {
                             "title": "Combining WHERE and HAVING",
                             "body": "Use WHERE to narrow rows before grouping and HAVING to narrow groups after. This two-stage approach gives you precise control over results.",
-                            "code": "SELECT department, AVG(salary) AS avg_salary\nFROM employees\nWHERE hire_date > '2020-01-01'\nGROUP BY department\nHAVING AVG(salary) > 60000"
+                            "code": "SELECT department, AVG(salary) AS avg_salary\nFROM employees\nWHERE hire_date > '2020-01-01'\nGROUP BY department\nHAVING AVG(salary) > 60000",
+                            "runnable": true
                         }
                     ]
                 },
@@ -759,17 +836,20 @@
                         {
                             "title": "Sorting by position",
                             "body": "Instead of column names, you can use the column's position number in the SELECT list. This is shorter but less readable.",
-                            "code": "SELECT name, department, salary\nFROM employees\nORDER BY 2, 3 DESC"
+                            "code": "SELECT name, department, salary\nFROM employees\nORDER BY 2, 3 DESC",
+                            "runnable": true
                         },
                         {
                             "title": "Sorting by expressions",
                             "body": "ORDER BY can use any expression, not just column names. This lets you sort by calculated values without including them in the SELECT list.",
-                            "code": "SELECT name, price, quantity\nFROM order_items\nORDER BY price * quantity DESC"
+                            "code": "SELECT name, price, quantity\nFROM order_items\nORDER BY price * quantity DESC",
+                            "runnable": true
                         },
                         {
                             "title": "NULL sort order",
                             "body": "Different databases sort NULLs differently. Some place them first, others last. Use NULLS FIRST or NULLS LAST to control placement explicitly.",
-                            "code": "SELECT name, bonus\nFROM employees\nORDER BY bonus DESC NULLS LAST"
+                            "code": "SELECT name, bonus\nFROM employees\nORDER BY bonus DESC NULLS LAST",
+                            "runnable": true
                         }
                     ]
                 }
@@ -789,22 +869,26 @@
                         {
                             "title": "Aggregate functions",
                             "body": "COUNT, SUM, AVG, MIN, and MAX compute a single value from a set of rows.",
-                            "code": "SELECT COUNT(*) FROM orders\nSELECT AVG(salary) FROM employees"
+                            "code": "SELECT COUNT(*) FROM orders\nSELECT AVG(salary) FROM employees",
+                            "runnable": false
                         },
                         {
                             "title": "GROUP BY",
                             "body": "GROUP BY collapses multiple rows with the same value into one group, so aggregates apply per group.",
-                            "code": "SELECT department, AVG(salary) AS avg_salary\nFROM employees\nGROUP BY department"
+                            "code": "SELECT department, AVG(salary) AS avg_salary\nFROM employees\nGROUP BY department",
+                            "runnable": true
                         },
                         {
                             "title": "HAVING",
                             "body": "WHERE filters rows before grouping. HAVING filters groups after aggregation.",
-                            "code": "SELECT department, COUNT(*) AS headcount\nFROM employees\nGROUP BY department\nHAVING COUNT(*) > 10"
+                            "code": "SELECT department, COUNT(*) AS headcount\nFROM employees\nGROUP BY department\nHAVING COUNT(*) > 10",
+                            "runnable": true
                         },
                         {
                             "title": "NULL handling",
                             "body": "Aggregate functions ignore NULL values. COUNT(*) counts all rows; COUNT(column) skips NULLs in that column.",
-                            "code": "SELECT COUNT(*) AS total_rows,\n       COUNT(email) AS rows_with_email\nFROM users"
+                            "code": "SELECT COUNT(*) AS total_rows,\n       COUNT(email) AS rows_with_email\nFROM users",
+                            "runnable": true
                         }
                     ]
                 },
@@ -823,12 +907,14 @@
                         {
                             "title": "Basic CTE syntax",
                             "body": "Define a CTE with WITH, give it a name and a SELECT body, then reference it in the main query.",
-                            "code": "WITH active_users AS (\n    SELECT id, name FROM users\n    WHERE status = 'active'\n)\nSELECT name FROM active_users"
+                            "code": "WITH active_users AS (\n    SELECT id, name FROM users\n    WHERE status = 'active'\n)\nSELECT name FROM active_users",
+                            "runnable": true
                         },
                         {
                             "title": "Multiple CTEs",
                             "body": "Separate multiple CTEs with commas after the WITH keyword. Later CTEs can reference earlier ones, building up complex logic step by step.",
-                            "code": "WITH dept_totals AS (\n    SELECT department, SUM(salary) AS total\n    FROM employees\n    GROUP BY department\n),\navg_total AS (\n    SELECT AVG(total) AS avg_dept_total\n    FROM dept_totals\n)\nSELECT d.department, d.total\nFROM dept_totals AS d, avg_total AS a\nWHERE d.total > a.avg_dept_total"
+                            "code": "WITH dept_totals AS (\n    SELECT department, SUM(salary) AS total\n    FROM employees\n    GROUP BY department\n),\navg_total AS (\n    SELECT AVG(total) AS avg_dept_total\n    FROM dept_totals\n)\nSELECT d.department, d.total\nFROM dept_totals AS d, avg_total AS a\nWHERE d.total > a.avg_dept_total",
+                            "runnable": true
                         },
                         {
                             "title": "CTE vs subquery",
@@ -851,17 +937,20 @@
                         {
                             "title": "Creating a view",
                             "body": "Use CREATE VIEW with a name and a SELECT statement. After creation, you can query the view just like a regular table.",
-                            "code": "CREATE VIEW active_customers AS\nSELECT id, name, email\nFROM customers\nWHERE status = 'active'"
+                            "code": "CREATE VIEW active_customers AS\nSELECT id, name, email\nFROM customers\nWHERE status = 'active'",
+                            "runnable": false
                         },
                         {
                             "title": "Querying a view",
                             "body": "Once created, a view can appear in FROM or JOIN clauses. You can also filter, sort, and aggregate its data.",
-                            "code": "SELECT name, email\nFROM active_customers\nORDER BY name"
+                            "code": "SELECT name, email\nFROM active_customers\nORDER BY name",
+                            "runnable": true
                         },
                         {
                             "title": "Dropping a view",
                             "body": "DROP VIEW removes a view definition from the database. The underlying table data is not affected.",
-                            "code": "DROP VIEW IF EXISTS active_customers"
+                            "code": "DROP VIEW IF EXISTS active_customers",
+                            "runnable": false
                         }
                     ]
                 },
@@ -880,12 +969,14 @@
                         {
                             "title": "Creating an index",
                             "body": "CREATE INDEX defines a new index on one or more columns. The database uses it automatically when it determines the index will speed up a query.",
-                            "code": "CREATE INDEX idx_users_email\nON users (email)"
+                            "code": "CREATE INDEX idx_users_email\nON users (email)",
+                            "runnable": false
                         },
                         {
                             "title": "Composite indexes",
                             "body": "An index on multiple columns is called a composite index. Column order matters — the index is most effective when the leading columns appear in the WHERE clause.",
-                            "code": "CREATE INDEX idx_orders_customer_date\nON orders (customer_id, created_at)"
+                            "code": "CREATE INDEX idx_orders_customer_date\nON orders (customer_id, created_at)",
+                            "runnable": false
                         },
                         {
                             "title": "Trade-offs",
@@ -904,17 +995,20 @@
                         {
                             "title": "PRIMARY KEY",
                             "body": "A PRIMARY KEY uniquely identifies each row in a table. It automatically enforces NOT NULL and UNIQUE. Most tables have a single-column integer primary key.",
-                            "code": "CREATE TABLE users (\n    id INTEGER PRIMARY KEY,\n    name TEXT NOT NULL\n)"
+                            "code": "CREATE TABLE users (\n    id INTEGER PRIMARY KEY,\n    name TEXT NOT NULL\n)",
+                            "runnable": false
                         },
                         {
                             "title": "FOREIGN KEY",
                             "body": "A FOREIGN KEY links a column to the primary key of another table, ensuring that references always point to existing rows.",
-                            "code": "CREATE TABLE orders (\n    id INTEGER PRIMARY KEY,\n    customer_id INTEGER,\n    FOREIGN KEY (customer_id) REFERENCES customers(id)\n)"
+                            "code": "CREATE TABLE orders (\n    id INTEGER PRIMARY KEY,\n    customer_id INTEGER,\n    FOREIGN KEY (customer_id) REFERENCES customers(id)\n)",
+                            "runnable": false
                         },
                         {
                             "title": "UNIQUE and CHECK",
                             "body": "UNIQUE ensures no duplicate values in a column. CHECK validates that values meet a custom condition.",
-                            "code": "CREATE TABLE products (\n    id INTEGER PRIMARY KEY,\n    sku TEXT UNIQUE,\n    price REAL CHECK (price > 0)\n)"
+                            "code": "CREATE TABLE products (\n    id INTEGER PRIMARY KEY,\n    sku TEXT UNIQUE,\n    price REAL CHECK (price > 0)\n)",
+                            "runnable": false
                         },
                         {
                             "title": "NOT NULL",
@@ -937,17 +1031,20 @@
                         {
                             "title": "First Normal Form (1NF)",
                             "body": "A table is in 1NF if every column holds a single atomic value (no lists or nested structures) and each row is unique.",
-                            "code": "CREATE TABLE contacts (\n    id INTEGER PRIMARY KEY,\n    name TEXT,\n    phone TEXT\n)"
+                            "code": "CREATE TABLE contacts (\n    id INTEGER PRIMARY KEY,\n    name TEXT,\n    phone TEXT\n)",
+                            "runnable": false
                         },
                         {
                             "title": "Second Normal Form (2NF)",
                             "body": "2NF requires 1NF plus every non-key column must depend on the entire primary key, not just part of it. This usually means splitting tables with composite keys.",
-                            "code": "-- Before 2NF: partial dependency on composite key\n-- (student_id, course_id) -> grade, student_name\n-- After 2NF: split into two tables\nCREATE TABLE students (\n    student_id INTEGER PRIMARY KEY,\n    student_name TEXT\n)\n\nCREATE TABLE enrollments (\n    student_id INTEGER,\n    course_id INTEGER,\n    grade TEXT,\n    PRIMARY KEY (student_id, course_id)\n)"
+                            "code": "-- Before 2NF: partial dependency on composite key\n-- (student_id, course_id) -> grade, student_name\n-- After 2NF: split into two tables\nCREATE TABLE students (\n    student_id INTEGER PRIMARY KEY,\n    student_name TEXT\n)\n\nCREATE TABLE enrollments (\n    student_id INTEGER,\n    course_id INTEGER,\n    grade TEXT,\n    PRIMARY KEY (student_id, course_id)\n)",
+                            "runnable": false
                         },
                         {
                             "title": "Third Normal Form (3NF)",
                             "body": "3NF requires 2NF plus no non-key column depends on another non-key column. If a column depends on something other than the primary key, move it to its own table.",
-                            "code": "-- Before 3NF: zip_code -> city (transitive dependency)\n-- After 3NF: move city to a zip_codes table\nCREATE TABLE customers (\n    id INTEGER PRIMARY KEY,\n    name TEXT,\n    zip_code TEXT\n)\n\nCREATE TABLE zip_codes (\n    zip_code TEXT PRIMARY KEY,\n    city TEXT\n)"
+                            "code": "-- Before 3NF: zip_code -> city (transitive dependency)\n-- After 3NF: move city to a zip_codes table\nCREATE TABLE customers (\n    id INTEGER PRIMARY KEY,\n    name TEXT,\n    zip_code TEXT\n)\n\nCREATE TABLE zip_codes (\n    zip_code TEXT PRIMARY KEY,\n    city TEXT\n)",
+                            "runnable": false
                         }
                     ]
                 },
@@ -966,12 +1063,14 @@
                         {
                             "title": "BEGIN and COMMIT",
                             "body": "BEGIN starts a transaction. COMMIT saves all changes made during the transaction permanently to the database.",
-                            "code": "BEGIN\nUPDATE accounts SET balance = balance - 100 WHERE id = 1\nUPDATE accounts SET balance = balance + 100 WHERE id = 2\nCOMMIT"
+                            "code": "BEGIN\nUPDATE accounts SET balance = balance - 100 WHERE id = 1\nUPDATE accounts SET balance = balance + 100 WHERE id = 2\nCOMMIT",
+                            "runnable": false
                         },
                         {
                             "title": "ROLLBACK",
                             "body": "ROLLBACK undoes all changes made since the last BEGIN. Use it when an error occurs and you need to revert to a clean state.",
-                            "code": "BEGIN\nUPDATE inventory SET quantity = quantity - 1 WHERE product_id = 5\nROLLBACK"
+                            "code": "BEGIN\nUPDATE inventory SET quantity = quantity - 1 WHERE product_id = 5\nROLLBACK",
+                            "runnable": false
                         },
                         {
                             "title": "ACID properties",
@@ -990,17 +1089,20 @@
                         {
                             "title": "COALESCE",
                             "body": "COALESCE returns the first non-NULL argument. It is commonly used to replace NULLs with default values in query output.",
-                            "code": "SELECT name,\n       COALESCE(phone, 'N/A') AS phone\nFROM contacts"
+                            "code": "SELECT name,\n       COALESCE(phone, 'N/A') AS phone\nFROM contacts",
+                            "runnable": true
                         },
                         {
                             "title": "COALESCE with multiple arguments",
                             "body": "You can pass many arguments to COALESCE. It walks left to right and returns the first value that is not NULL.",
-                            "code": "SELECT COALESCE(mobile, home_phone, work_phone, 'No phone') AS best_phone\nFROM contacts"
+                            "code": "SELECT COALESCE(mobile, home_phone, work_phone, 'No phone') AS best_phone\nFROM contacts",
+                            "runnable": true
                         },
                         {
                             "title": "NULLIF",
                             "body": "NULLIF returns NULL if its two arguments are equal, otherwise it returns the first argument. It is useful for avoiding division by zero.",
-                            "code": "SELECT revenue / NULLIF(cost, 0) AS margin_ratio\nFROM financials"
+                            "code": "SELECT revenue / NULLIF(cost, 0) AS margin_ratio\nFROM financials",
+                            "runnable": true
                         }
                     ]
                 },
@@ -1019,12 +1121,14 @@
                         {
                             "title": "Filtering with a correlated subquery",
                             "body": "Find employees whose salary is above their department average. The subquery filters by the outer row's department.",
-                            "code": "SELECT name, salary, department\nFROM employees AS e\nWHERE salary > (\n    SELECT AVG(salary)\n    FROM employees\n    WHERE department = e.department\n)"
+                            "code": "SELECT name, salary, department\nFROM employees AS e\nWHERE salary > (\n    SELECT AVG(salary)\n    FROM employees\n    WHERE department = e.department\n)",
+                            "runnable": true
                         },
                         {
                             "title": "Correlated subquery in SELECT",
                             "body": "A correlated subquery can also appear in the SELECT list, computing a value per row based on related data.",
-                            "code": "SELECT name,\n    (SELECT COUNT(*)\n     FROM orders AS o\n     WHERE o.customer_id = c.id) AS order_count\nFROM customers AS c"
+                            "code": "SELECT name,\n    (SELECT COUNT(*)\n     FROM orders AS o\n     WHERE o.customer_id = c.id) AS order_count\nFROM customers AS c",
+                            "runnable": true
                         }
                     ]
                 },
@@ -1039,12 +1143,14 @@
                         {
                             "title": "Explicit casting with CAST",
                             "body": "CAST converts a value from one data type to another. The syntax is CAST(value AS target_type). Use it when the database cannot infer the conversion automatically.",
-                            "code": "SELECT CAST(price AS INTEGER) AS rounded_price\nFROM products"
+                            "code": "SELECT CAST(price AS INTEGER) AS rounded_price\nFROM products",
+                            "runnable": true
                         },
                         {
                             "title": "Common conversions",
                             "body": "Typical casts include string to integer, integer to text, and string to date. Invalid conversions raise an error at runtime.",
-                            "code": "SELECT CAST('2024-01-15' AS DATE) AS order_date"
+                            "code": "SELECT CAST('2024-01-15' AS DATE) AS order_date",
+                            "runnable": true
                         },
                         {
                             "title": "Implicit conversion",
@@ -1067,12 +1173,14 @@
                         {
                             "title": "INTERSECT",
                             "body": "INTERSECT returns only rows that appear in both result sets. It is useful for finding common elements between two queries.",
-                            "code": "SELECT email FROM newsletter_subscribers\nINTERSECT\nSELECT email FROM active_customers"
+                            "code": "SELECT email FROM newsletter_subscribers\nINTERSECT\nSELECT email FROM active_customers",
+                            "runnable": true
                         },
                         {
                             "title": "EXCEPT",
                             "body": "EXCEPT returns rows from the first query that do not appear in the second. It is the set-difference operation.",
-                            "code": "SELECT email FROM newsletter_subscribers\nEXCEPT\nSELECT email FROM unsubscribed_users"
+                            "code": "SELECT email FROM newsletter_subscribers\nEXCEPT\nSELECT email FROM unsubscribed_users",
+                            "runnable": true
                         },
                         {
                             "title": "Order of operations",
@@ -1091,17 +1199,20 @@
                         {
                             "title": "Creating a temporary table",
                             "body": "Temporary tables live only for the current session and are automatically dropped when the session ends. They are useful for breaking complex logic into manageable steps.",
-                            "code": "CREATE TEMPORARY TABLE recent_orders AS\nSELECT * FROM orders\nWHERE created_at > '2024-01-01'"
+                            "code": "CREATE TEMPORARY TABLE recent_orders AS\nSELECT * FROM orders\nWHERE created_at > '2024-01-01'",
+                            "runnable": false
                         },
                         {
                             "title": "Using a temporary table",
                             "body": "Once created, a temporary table behaves exactly like a regular table. You can SELECT, INSERT, UPDATE, and DELETE from it.",
-                            "code": "SELECT customer_id, COUNT(*) AS order_count\nFROM recent_orders\nGROUP BY customer_id"
+                            "code": "SELECT customer_id, COUNT(*) AS order_count\nFROM recent_orders\nGROUP BY customer_id",
+                            "runnable": true
                         },
                         {
                             "title": "Dropping a temporary table",
                             "body": "Although temporary tables are automatically cleaned up, you can drop them explicitly if you need to free resources or reuse the name.",
-                            "code": "DROP TABLE IF EXISTS recent_orders"
+                            "code": "DROP TABLE IF EXISTS recent_orders",
+                            "runnable": false
                         }
                     ]
                 },
@@ -1116,17 +1227,20 @@
                         {
                             "title": "COUNT with CASE",
                             "body": "Place a CASE expression inside COUNT to count only rows that meet a condition. Return 1 for matches and NULL for non-matches.",
-                            "code": "SELECT\n    COUNT(CASE WHEN status = 'active' THEN 1 END) AS active_count,\n    COUNT(CASE WHEN status = 'inactive' THEN 1 END) AS inactive_count\nFROM users"
+                            "code": "SELECT\n    COUNT(CASE WHEN status = 'active' THEN 1 END) AS active_count,\n    COUNT(CASE WHEN status = 'inactive' THEN 1 END) AS inactive_count\nFROM users",
+                            "runnable": true
                         },
                         {
                             "title": "SUM with CASE",
                             "body": "SUM with CASE lets you compute conditional totals. This is useful for building pivot-like reports in a single pass.",
-                            "code": "SELECT department,\n    SUM(CASE WHEN gender = 'M' THEN salary ELSE 0 END) AS male_salary,\n    SUM(CASE WHEN gender = 'F' THEN salary ELSE 0 END) AS female_salary\nFROM employees\nGROUP BY department"
+                            "code": "SELECT department,\n    SUM(CASE WHEN gender = 'M' THEN salary ELSE 0 END) AS male_salary,\n    SUM(CASE WHEN gender = 'F' THEN salary ELSE 0 END) AS female_salary\nFROM employees\nGROUP BY department",
+                            "runnable": true
                         },
                         {
                             "title": "FILTER clause",
                             "body": "Some databases support the FILTER clause as a cleaner alternative to CASE inside aggregates. It reads more naturally and is easier to maintain.",
-                            "code": "SELECT\n    COUNT(*) FILTER (WHERE status = 'active') AS active_count,\n    COUNT(*) FILTER (WHERE status = 'inactive') AS inactive_count\nFROM users"
+                            "code": "SELECT\n    COUNT(*) FILTER (WHERE status = 'active') AS active_count,\n    COUNT(*) FILTER (WHERE status = 'inactive') AS inactive_count\nFROM users",
+                            "runnable": true
                         }
                     ]
                 },
@@ -1145,12 +1259,14 @@
                         {
                             "title": "ON DELETE CASCADE",
                             "body": "CASCADE automatically deletes child rows when the parent row is deleted. This keeps the database clean but can cause unintended mass deletions.",
-                            "code": "CREATE TABLE orders (\n    id INTEGER PRIMARY KEY,\n    customer_id INTEGER,\n    FOREIGN KEY (customer_id)\n        REFERENCES customers(id)\n        ON DELETE CASCADE\n)"
+                            "code": "CREATE TABLE orders (\n    id INTEGER PRIMARY KEY,\n    customer_id INTEGER,\n    FOREIGN KEY (customer_id)\n        REFERENCES customers(id)\n        ON DELETE CASCADE\n)",
+                            "runnable": false
                         },
                         {
                             "title": "ON DELETE SET NULL",
                             "body": "SET NULL replaces the foreign key value with NULL when the parent is deleted. The child row survives but loses its reference.",
-                            "code": "CREATE TABLE orders (\n    id INTEGER PRIMARY KEY,\n    customer_id INTEGER,\n    FOREIGN KEY (customer_id)\n        REFERENCES customers(id)\n        ON DELETE SET NULL\n)"
+                            "code": "CREATE TABLE orders (\n    id INTEGER PRIMARY KEY,\n    customer_id INTEGER,\n    FOREIGN KEY (customer_id)\n        REFERENCES customers(id)\n        ON DELETE SET NULL\n)",
+                            "runnable": false
                         },
                         {
                             "title": "RESTRICT and NO ACTION",
@@ -1173,7 +1289,8 @@
                         {
                             "title": "Using EXPLAIN",
                             "body": "Place EXPLAIN before your SELECT statement. The output shows operations like sequential scans, index scans, and joins along with their estimated costs.",
-                            "code": "EXPLAIN\nSELECT * FROM orders\nWHERE customer_id = 42"
+                            "code": "EXPLAIN\nSELECT * FROM orders\nWHERE customer_id = 42",
+                            "runnable": false
                         },
                         {
                             "title": "Reading the plan",
@@ -1182,7 +1299,8 @@
                         {
                             "title": "EXPLAIN ANALYZE",
                             "body": "EXPLAIN ANALYZE actually runs the query and reports real execution times alongside estimates. This helps you verify that changes like adding an index had the desired effect.",
-                            "code": "EXPLAIN ANALYZE\nSELECT * FROM orders\nWHERE customer_id = 42"
+                            "code": "EXPLAIN ANALYZE\nSELECT * FROM orders\nWHERE customer_id = 42",
+                            "runnable": false
                         }
                     ]
                 }
@@ -1206,17 +1324,20 @@
                         {
                             "title": "ROW_NUMBER, RANK, DENSE_RANK",
                             "body": "Ranking functions assign a position to each row within a partition. RANK() skips numbers after ties; DENSE_RANK() does not.",
-                            "code": "SELECT name, salary,\n       RANK() OVER (ORDER BY salary DESC) AS salary_rank\nFROM employees"
+                            "code": "SELECT name, salary,\n       RANK() OVER (ORDER BY salary DESC) AS salary_rank\nFROM employees",
+                            "runnable": true
                         },
                         {
                             "title": "PARTITION BY",
                             "body": "PARTITION BY divides rows into groups before the window function is applied, like GROUP BY but without collapsing rows.",
-                            "code": "SELECT department, name, salary,\n       RANK() OVER (PARTITION BY department ORDER BY salary DESC) AS dept_rank\nFROM employees"
+                            "code": "SELECT department, name, salary,\n       RANK() OVER (PARTITION BY department ORDER BY salary DESC) AS dept_rank\nFROM employees",
+                            "runnable": true
                         },
                         {
                             "title": "Running totals with SUM OVER",
                             "body": "SUM with ORDER BY inside OVER computes a cumulative total up to the current row.",
-                            "code": "SELECT created_at, amount,\n       SUM(amount) OVER (ORDER BY created_at) AS running_total\nFROM transactions"
+                            "code": "SELECT created_at, amount,\n       SUM(amount) OVER (ORDER BY created_at) AS running_total\nFROM transactions",
+                            "runnable": true
                         }
                     ]
                 },
@@ -1235,12 +1356,14 @@
                         {
                             "title": "ROWS BETWEEN",
                             "body": "ROWS BETWEEN lets you specify an exact number of rows before and after the current row. UNBOUNDED PRECEDING starts from the first row in the partition.",
-                            "code": "SELECT date, revenue,\n       AVG(revenue) OVER (\n           ORDER BY date\n           ROWS BETWEEN 2 PRECEDING AND CURRENT ROW\n       ) AS moving_avg_3day\nFROM daily_sales"
+                            "code": "SELECT date, revenue,\n       AVG(revenue) OVER (\n           ORDER BY date\n           ROWS BETWEEN 2 PRECEDING AND CURRENT ROW\n       ) AS moving_avg_3day\nFROM daily_sales",
+                            "runnable": true
                         },
                         {
                             "title": "RANGE BETWEEN",
                             "body": "RANGE BETWEEN uses the logical value of the ORDER BY column instead of physical row positions. It groups rows with equal values into the same frame boundary. With numeric ordering, you can specify a value offset directly.",
-                            "code": "SELECT month_number, revenue,\n       SUM(revenue) OVER (\n           ORDER BY month_number\n           RANGE BETWEEN 2 PRECEDING AND CURRENT ROW\n       ) AS rolling_3month_total\nFROM monthly_sales"
+                            "code": "SELECT month_number, revenue,\n       SUM(revenue) OVER (\n           ORDER BY month_number\n           RANGE BETWEEN 2 PRECEDING AND CURRENT ROW\n       ) AS rolling_3month_total\nFROM monthly_sales",
+                            "runnable": true
                         },
                         {
                             "title": "Common frame patterns",
@@ -1263,12 +1386,14 @@
                         {
                             "title": "Organizational hierarchy",
                             "body": "A classic use case is traversing an employee-manager tree. The anchor selects the root, and each iteration joins the CTE back to the table to find children.",
-                            "code": "WITH RECURSIVE org AS (\n    SELECT id, name, manager_id, 1 AS depth\n    FROM employees\n    WHERE manager_id IS NULL\n    UNION ALL\n    SELECT e.id, e.name, e.manager_id, o.depth + 1\n    FROM employees AS e\n    INNER JOIN org AS o ON e.manager_id = o.id\n)\nSELECT name, depth FROM org"
+                            "code": "WITH RECURSIVE org AS (\n    SELECT id, name, manager_id, 1 AS depth\n    FROM employees\n    WHERE manager_id IS NULL\n    UNION ALL\n    SELECT e.id, e.name, e.manager_id, o.depth + 1\n    FROM employees AS e\n    INNER JOIN org AS o ON e.manager_id = o.id\n)\nSELECT name, depth FROM org",
+                            "runnable": true
                         },
                         {
                             "title": "Generating a series",
                             "body": "Recursive CTEs can generate sequences without a dedicated function, which is helpful for filling gaps in date ranges.",
-                            "code": "WITH RECURSIVE dates AS (\n    SELECT CAST('2024-01-01' AS DATE) AS d\n    UNION ALL\n    SELECT d + INTERVAL '1' DAY\n    FROM dates\n    WHERE d < '2024-01-31'\n)\nSELECT d FROM dates"
+                            "code": "WITH RECURSIVE dates AS (\n    SELECT CAST('2024-01-01' AS DATE) AS d\n    UNION ALL\n    SELECT d + INTERVAL '1' DAY\n    FROM dates\n    WHERE d < '2024-01-31'\n)\nSELECT d FROM dates",
+                            "runnable": true
                         },
                         {
                             "title": "Preventing infinite loops",
@@ -1287,17 +1412,20 @@
                         {
                             "title": "Manual pivot with CASE",
                             "body": "The most portable way to pivot is conditional aggregation. Use CASE inside SUM or COUNT to spread row values across columns.",
-                            "code": "SELECT product,\n    SUM(CASE WHEN quarter = 'Q1' THEN revenue ELSE 0 END) AS q1,\n    SUM(CASE WHEN quarter = 'Q2' THEN revenue ELSE 0 END) AS q2,\n    SUM(CASE WHEN quarter = 'Q3' THEN revenue ELSE 0 END) AS q3,\n    SUM(CASE WHEN quarter = 'Q4' THEN revenue ELSE 0 END) AS q4\nFROM sales\nGROUP BY product"
+                            "code": "SELECT product,\n    SUM(CASE WHEN quarter = 'Q1' THEN revenue ELSE 0 END) AS q1,\n    SUM(CASE WHEN quarter = 'Q2' THEN revenue ELSE 0 END) AS q2,\n    SUM(CASE WHEN quarter = 'Q3' THEN revenue ELSE 0 END) AS q3,\n    SUM(CASE WHEN quarter = 'Q4' THEN revenue ELSE 0 END) AS q4\nFROM sales\nGROUP BY product",
+                            "runnable": true
                         },
                         {
                             "title": "PIVOT syntax",
                             "body": "Some databases (SQL Server, Oracle) have a native PIVOT operator that specifies the aggregate, the value column, and the list of pivot values. This syntax is not available in PostgreSQL, MySQL, or SQLite — use the CASE approach instead for portability.",
-                            "code": "SELECT product, Q1, Q2, Q3, Q4\nFROM sales\nPIVOT (\n    SUM(revenue)\n    FOR quarter IN ('Q1' AS Q1, 'Q2' AS Q2, 'Q3' AS Q3, 'Q4' AS Q4)\n)"
+                            "code": "SELECT product, Q1, Q2, Q3, Q4\nFROM sales\nPIVOT (\n    SUM(revenue)\n    FOR quarter IN ('Q1' AS Q1, 'Q2' AS Q2, 'Q3' AS Q3, 'Q4' AS Q4)\n)",
+                            "runnable": true
                         },
                         {
                             "title": "Unpivot",
                             "body": "Unpivoting converts columns back into rows. You can do this with UNION ALL or with a native UNPIVOT operator where available.",
-                            "code": "SELECT product, 'Q1' AS quarter, q1 AS revenue FROM sales_wide\nUNION ALL\nSELECT product, 'Q2', q2 FROM sales_wide\nUNION ALL\nSELECT product, 'Q3', q3 FROM sales_wide\nUNION ALL\nSELECT product, 'Q4', q4 FROM sales_wide"
+                            "code": "SELECT product, 'Q1' AS quarter, q1 AS revenue FROM sales_wide\nUNION ALL\nSELECT product, 'Q2', q2 FROM sales_wide\nUNION ALL\nSELECT product, 'Q3', q3 FROM sales_wide\nUNION ALL\nSELECT product, 'Q4', q4 FROM sales_wide",
+                            "runnable": true
                         }
                     ]
                 },
@@ -1312,12 +1440,14 @@
                         {
                             "title": "Sargable predicates",
                             "body": "A predicate is sargable (Search ARGument ABLE) if the database can use an index to evaluate it. Wrapping a column in a function or expression makes it non-sargable.",
-                            "code": "SELECT * FROM orders\nWHERE created_at >= '2024-01-01'\n  AND created_at < '2024-02-01'"
+                            "code": "SELECT * FROM orders\nWHERE created_at >= '2024-01-01'\n  AND created_at < '2024-02-01'",
+                            "runnable": true
                         },
                         {
                             "title": "Covering indexes",
                             "body": "A covering index includes all columns the query needs. The database can answer the query entirely from the index without reading the table, which is called an index-only scan.",
-                            "code": "CREATE INDEX idx_orders_cover\nON orders (customer_id, created_at, total)"
+                            "code": "CREATE INDEX idx_orders_cover\nON orders (customer_id, created_at, total)",
+                            "runnable": false
                         },
                         {
                             "title": "Avoiding SELECT *",
@@ -1344,12 +1474,14 @@
                         {
                             "title": "Creating a procedure",
                             "body": "Use CREATE PROCEDURE with a name, parameters, and a body. The exact syntax varies across databases, but the concept is universal.",
-                            "code": "CREATE PROCEDURE deactivate_user(IN user_id INTEGER)\nBEGIN\n    UPDATE users SET status = 'inactive' WHERE id = user_id\nEND"
+                            "code": "CREATE PROCEDURE deactivate_user(IN user_id INTEGER)\nBEGIN\n    UPDATE users SET status = 'inactive' WHERE id = user_id\nEND",
+                            "runnable": false
                         },
                         {
                             "title": "Calling a procedure",
                             "body": "Use CALL (or EXEC in SQL Server) followed by the procedure name and arguments to run it.",
-                            "code": "CALL deactivate_user(42)"
+                            "code": "CALL deactivate_user(42)",
+                            "runnable": false
                         },
                         {
                             "title": "When to use procedures",
@@ -1372,12 +1504,14 @@
                         {
                             "title": "BEFORE and AFTER triggers",
                             "body": "BEFORE triggers run before the data change is applied, allowing you to modify or reject the new values. AFTER triggers run after the change and are often used for auditing.",
-                            "code": "CREATE TRIGGER audit_update\nAFTER UPDATE ON employees\nFOR EACH ROW\nINSERT INTO audit_log (table_name, action, changed_at)\nVALUES ('employees', 'UPDATE', CURRENT_TIMESTAMP)"
+                            "code": "CREATE TRIGGER audit_update\nAFTER UPDATE ON employees\nFOR EACH ROW\nINSERT INTO audit_log (table_name, action, changed_at)\nVALUES ('employees', 'UPDATE', CURRENT_TIMESTAMP)",
+                            "runnable": false
                         },
                         {
                             "title": "Accessing OLD and NEW",
                             "body": "Inside a trigger, OLD refers to the row before the change and NEW refers to the row after. You can read and (in BEFORE triggers) modify these values.",
-                            "code": "CREATE TRIGGER set_updated_at\nBEFORE UPDATE ON orders\nFOR EACH ROW\nSET NEW.updated_at = CURRENT_TIMESTAMP"
+                            "code": "CREATE TRIGGER set_updated_at\nBEFORE UPDATE ON orders\nFOR EACH ROW\nSET NEW.updated_at = CURRENT_TIMESTAMP",
+                            "runnable": false
                         },
                         {
                             "title": "Trigger pitfalls",
@@ -1400,12 +1534,14 @@
                         {
                             "title": "EXECUTE IMMEDIATE",
                             "body": "Many databases use EXECUTE IMMEDIATE or a similar command to run a dynamically built string as SQL.",
-                            "code": "SET @sql = CONCAT('SELECT * FROM ', @table_name, ' WHERE id = ', @id)\nPREPARE stmt FROM @sql\nEXECUTE stmt\nDEALLOCATE PREPARE stmt"
+                            "code": "SET @sql = CONCAT('SELECT * FROM ', @table_name, ' WHERE id = ', @id)\nPREPARE stmt FROM @sql\nEXECUTE stmt\nDEALLOCATE PREPARE stmt",
+                            "runnable": false
                         },
                         {
                             "title": "Parameterized dynamic SQL",
                             "body": "Always use parameters instead of concatenating user input directly into the SQL string. This prevents SQL injection attacks.",
-                            "code": "PREPARE stmt FROM 'SELECT * FROM users WHERE email = ?'\nEXECUTE stmt USING @user_email\nDEALLOCATE PREPARE stmt"
+                            "code": "PREPARE stmt FROM 'SELECT * FROM users WHERE email = ?'\nEXECUTE stmt USING @user_email\nDEALLOCATE PREPARE stmt",
+                            "runnable": false
                         },
                         {
                             "title": "When to use dynamic SQL",
@@ -1428,12 +1564,14 @@
                         {
                             "title": "Range partitioning",
                             "body": "Range partitioning splits data by value ranges, often dates. Each partition holds a distinct range, and queries that filter on the partition key scan only the relevant segment.",
-                            "code": "CREATE TABLE orders (\n    id INTEGER,\n    created_at DATE,\n    total REAL\n) PARTITION BY RANGE (created_at)"
+                            "code": "CREATE TABLE orders (\n    id INTEGER,\n    created_at DATE,\n    total REAL\n) PARTITION BY RANGE (created_at)",
+                            "runnable": false
                         },
                         {
                             "title": "List partitioning",
                             "body": "List partitioning assigns rows to partitions based on discrete values, such as country codes or status values.",
-                            "code": "CREATE TABLE users (\n    id INTEGER,\n    country TEXT,\n    name TEXT\n) PARTITION BY LIST (country)"
+                            "code": "CREATE TABLE users (\n    id INTEGER,\n    country TEXT,\n    name TEXT\n) PARTITION BY LIST (country)",
+                            "runnable": false
                         },
                         {
                             "title": "Partition maintenance",
@@ -1456,17 +1594,20 @@
                         {
                             "title": "Extracting values",
                             "body": "Use JSON extraction functions to pull values out of a JSON column. The operator syntax varies by database but the concept is the same.",
-                            "code": "SELECT data->>'name' AS name,\n       data->>'email' AS email\nFROM profiles"
+                            "code": "SELECT data->>'name' AS name,\n       data->>'email' AS email\nFROM profiles",
+                            "runnable": true
                         },
                         {
                             "title": "Filtering on JSON fields",
                             "body": "You can use extracted JSON values in WHERE conditions. Some databases support indexing JSON paths for fast lookups.",
-                            "code": "SELECT * FROM profiles\nWHERE data->>'country' = 'US'"
+                            "code": "SELECT * FROM profiles\nWHERE data->>'country' = 'US'",
+                            "runnable": true
                         },
                         {
                             "title": "Building JSON",
                             "body": "Aggregate functions like JSON_AGG or JSON_OBJECT let you construct JSON output from relational data, useful for APIs that return JSON directly from the database.",
-                            "code": "SELECT JSON_AGG(\n    JSON_BUILD_OBJECT('id', id, 'name', name)\n) AS users_json\nFROM users"
+                            "code": "SELECT JSON_AGG(\n    JSON_BUILD_OBJECT('id', id, 'name', name)\n) AS users_json\nFROM users",
+                            "runnable": true
                         }
                     ]
                 },
@@ -1485,12 +1626,14 @@
                         {
                             "title": "Creating a full-text index",
                             "body": "In PostgreSQL, you create a GIN index on a tsvector column. In MySQL, you use a FULLTEXT index. The index stores word tokens for fast lookups.",
-                            "code": "CREATE INDEX idx_articles_fts\nON articles USING GIN (to_tsvector('english', body))"
+                            "code": "CREATE INDEX idx_articles_fts\nON articles USING GIN (to_tsvector('english', body))",
+                            "runnable": false
                         },
                         {
                             "title": "Searching with full-text",
                             "body": "Use the database's full-text search syntax to find rows matching keywords. Results can be ranked by relevance.",
-                            "code": "SELECT title, ts_rank(to_tsvector('english', body), q) AS rank\nFROM articles, to_tsquery('english', 'database & performance') AS q\nWHERE to_tsvector('english', body) @@ q\nORDER BY rank DESC"
+                            "code": "SELECT title, ts_rank(to_tsvector('english', body), q) AS rank\nFROM articles, to_tsquery('english', 'database & performance') AS q\nWHERE to_tsvector('english', body) @@ q\nORDER BY rank DESC",
+                            "runnable": true
                         },
                         {
                             "title": "Boolean operators",
@@ -1513,12 +1656,14 @@
                         {
                             "title": "Creating a materialized view",
                             "body": "Use CREATE MATERIALIZED VIEW with a SELECT statement. The result is stored on disk and can be indexed like a regular table.",
-                            "code": "CREATE MATERIALIZED VIEW monthly_revenue AS\nSELECT DATE_TRUNC('month', created_at) AS month,\n       SUM(total) AS revenue\nFROM orders\nGROUP BY month"
+                            "code": "CREATE MATERIALIZED VIEW monthly_revenue AS\nSELECT DATE_TRUNC('month', created_at) AS month,\n       SUM(total) AS revenue\nFROM orders\nGROUP BY month",
+                            "runnable": false
                         },
                         {
                             "title": "Refreshing the data",
                             "body": "Run REFRESH MATERIALIZED VIEW to update the stored data. CONCURRENTLY allows reads during the refresh but requires a unique index.",
-                            "code": "REFRESH MATERIALIZED VIEW CONCURRENTLY monthly_revenue"
+                            "code": "REFRESH MATERIALIZED VIEW CONCURRENTLY monthly_revenue",
+                            "runnable": false
                         },
                         {
                             "title": "When to use materialized views",
@@ -1541,12 +1686,14 @@
                         {
                             "title": "READ COMMITTED",
                             "body": "READ COMMITTED is the default in many databases. A transaction only sees data committed before each statement, preventing dirty reads but allowing non-repeatable reads.",
-                            "code": "SET TRANSACTION ISOLATION LEVEL READ COMMITTED"
+                            "code": "SET TRANSACTION ISOLATION LEVEL READ COMMITTED",
+                            "runnable": false
                         },
                         {
                             "title": "REPEATABLE READ and SERIALIZABLE",
                             "body": "REPEATABLE READ guarantees that if a row is read twice in the same transaction, it will not change. SERIALIZABLE provides the strictest isolation, behaving as if transactions ran one at a time.",
-                            "code": "SET TRANSACTION ISOLATION LEVEL SERIALIZABLE"
+                            "code": "SET TRANSACTION ISOLATION LEVEL SERIALIZABLE",
+                            "runnable": false
                         },
                         {
                             "title": "Choosing an isolation level",
@@ -1569,12 +1716,14 @@
                         {
                             "title": "Top-N per group",
                             "body": "A common use case is fetching the top N rows per group without window functions. The lateral subquery filters and limits based on each outer row.",
-                            "code": "SELECT c.name, recent.id, recent.total\nFROM customers AS c\nCROSS JOIN LATERAL (\n    SELECT id, total\n    FROM orders\n    WHERE customer_id = c.id\n    ORDER BY created_at DESC\n    LIMIT 3\n) AS recent"
+                            "code": "SELECT c.name, recent.id, recent.total\nFROM customers AS c\nCROSS JOIN LATERAL (\n    SELECT id, total\n    FROM orders\n    WHERE customer_id = c.id\n    ORDER BY created_at DESC\n    LIMIT 3\n) AS recent",
+                            "runnable": true
                         },
                         {
                             "title": "CROSS APPLY in SQL Server",
                             "body": "SQL Server uses CROSS APPLY instead of LATERAL. OUTER APPLY is the equivalent of LEFT JOIN LATERAL, returning NULLs when the subquery produces no rows.",
-                            "code": "SELECT c.name, recent.id, recent.total\nFROM customers AS c\nCROSS APPLY (\n    SELECT TOP 3 id, total\n    FROM orders\n    WHERE customer_id = c.id\n    ORDER BY created_at DESC\n) AS recent"
+                            "code": "SELECT c.name, recent.id, recent.total\nFROM customers AS c\nCROSS APPLY (\n    SELECT TOP 3 id, total\n    FROM orders\n    WHERE customer_id = c.id\n    ORDER BY created_at DESC\n) AS recent",
+                            "runnable": true
                         },
                         {
                             "title": "When to use lateral joins",
@@ -1593,22 +1742,26 @@
                         {
                             "title": "Gaps and islands",
                             "body": "The gaps-and-islands problem identifies consecutive sequences in data. Subtract ROW_NUMBER from the value column to create group identifiers for each island.",
-                            "code": "WITH numbered AS (\n    SELECT date, value,\n           date - ROW_NUMBER() OVER (ORDER BY date) * INTERVAL '1' DAY AS grp\n    FROM readings\n    WHERE value IS NOT NULL\n)\nSELECT MIN(date) AS island_start,\n       MAX(date) AS island_end,\n       COUNT(*) AS island_length\nFROM numbered\nGROUP BY grp"
+                            "code": "WITH numbered AS (\n    SELECT date, value,\n           date - ROW_NUMBER() OVER (ORDER BY date) * INTERVAL '1' DAY AS grp\n    FROM readings\n    WHERE value IS NOT NULL\n)\nSELECT MIN(date) AS island_start,\n       MAX(date) AS island_end,\n       COUNT(*) AS island_length\nFROM numbered\nGROUP BY grp",
+                            "runnable": true
                         },
                         {
                             "title": "Percentiles",
                             "body": "PERCENTILE_CONT computes a continuous percentile (interpolating between values), while PERCENTILE_DISC returns an actual value from the data set.",
-                            "code": "SELECT department,\n       PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY salary) AS median_salary\nFROM employees\nGROUP BY department"
+                            "code": "SELECT department,\n       PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY salary) AS median_salary\nFROM employees\nGROUP BY department",
+                            "runnable": true
                         },
                         {
                             "title": "Year-over-year comparison",
                             "body": "Use LAG with a PARTITION BY on month to compare the current year's value with the previous year's value in a single query.",
-                            "code": "SELECT month, year, revenue,\n       LAG(revenue) OVER (PARTITION BY month ORDER BY year) AS prev_year_revenue,\n       revenue - LAG(revenue) OVER (PARTITION BY month ORDER BY year) AS yoy_change\nFROM monthly_revenue"
+                            "code": "SELECT month, year, revenue,\n       LAG(revenue) OVER (PARTITION BY month ORDER BY year) AS prev_year_revenue,\n       revenue - LAG(revenue) OVER (PARTITION BY month ORDER BY year) AS yoy_change\nFROM monthly_revenue",
+                            "runnable": true
                         },
                         {
                             "title": "Cumulative distribution",
                             "body": "CUME_DIST returns the fraction of rows with a value less than or equal to the current row's value. NTILE divides rows into N equal buckets. Both are useful for statistical analysis and reporting.",
-                            "code": "SELECT name, salary,\n       CUME_DIST() OVER (ORDER BY salary) AS salary_percentile,\n       NTILE(4) OVER (ORDER BY salary) AS quartile\nFROM employees"
+                            "code": "SELECT name, salary,\n       CUME_DIST() OVER (ORDER BY salary) AS salary_percentile,\n       NTILE(4) OVER (ORDER BY salary) AS quartile\nFROM employees",
+                            "runnable": true
                         }
                     ]
                 }

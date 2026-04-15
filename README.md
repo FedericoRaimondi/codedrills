@@ -1,10 +1,18 @@
 # CodeDrills
 
-<img src="new_logo.png" alt="icon" width="100" height="100" />
+<img src="img/logo_catchphrase_background.png" alt="icon" width="200" height="200" />
 
 > Replace mindless scrolling with something actually useful — practice and learn coding, one drill at a time.
 
-CodeDrills is a mobile app that delivers bite-sized coding challenges and lessons so you can turn idle moments into real learning. Pick a language, pick a level, and drill.
+Code Drills is a mobile app that delivers bite-sized coding challenges and lessons so you can turn idle moments into real learning.
+
+Pick a language, pick a level, and drill.
+
+No subscriptions, no distractions, just pure coding practice on the go.
+
+This isn't meant to replace building projects - it's for those moments when you can't access your computer but want to keep your coding skills sharp.
+
+> your ai-agent is coding fast, better catch up...
 
 ---
 
@@ -97,7 +105,7 @@ See the [`examples/`](examples/) folder for annotated reference files:
           "description": "...",
           "estimatedMinutes": 8,
           "lessons": [
-            { "title": "...", "body": "...", "code": "..." }
+            { "title": "...", "body": "...", "code": "...", "runnable": true }
           ]
         }
       ]
