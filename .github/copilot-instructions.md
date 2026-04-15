@@ -53,12 +53,13 @@ Supported languages: `python`, `javascript`, `sql`, `rust`. Each JSON file cover
       "title": "...",
       "description": "...",
       "estimatedMinutes": 8,
-      "lessons": [{ "title": "...", "body": "...", "code": "..." }]
+      "lessons": [{ "title": "...", "body": "...", "code": "...", "runnable": true or false}]
     }]
   }]
 }
 ```
 `code` on a lesson is optional; all rest are required.
+`runnable` on a lesson is required if `code` is present; it indicates whether the code can executed based on topics/runnable-code-in-topics.md.
 
 ## ID Conventions
 
