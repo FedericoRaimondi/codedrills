@@ -52,7 +52,7 @@
                             "title": "The main function",
                             "body": "Every Rust executable starts at the main function. It takes no arguments and returns nothing by default. The fn keyword declares a function. Curly braces delimit the function body.",
                             "code": "fn main() {\n    println!(\"Hello, Rust!\");\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "println! is a macro",
@@ -79,26 +79,26 @@
                         {
                             "title": "Immutable by default",
                             "body": "In Rust variables are immutable by default. Once you bind a value with let you cannot change it. This design choice helps prevent bugs by making mutation an explicit decision rather than the default.",
-                            "code": "let x = 5;\n// x = 10;  // Error: cannot assign twice to immutable variable\nprintln!(\"x is {}\", x);",
-                            "runnable": false
+                            "code": "fn main() {\n    let x = 5;\n    // x = 10;  // Error: cannot assign twice to immutable variable\n    println!(\"x is {}\", x);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Making variables mutable",
                             "body": "Add the mut keyword after let to make a variable mutable. Now you can reassign it as many times as you like. Use mut only when you genuinely need to change a value.",
-                            "code": "let mut score = 0;\nprintln!(\"Score: {}\", score);\nscore = 10;\nprintln!(\"Score: {}\", score);\nscore += 5;\nprintln!(\"Score: {}\", score);",
-                            "runnable": false
+                            "code": "fn main() {\n    let mut score = 0;\n    println!(\"Score: {}\", score);\n    score = 10;\n    println!(\"Score: {}\", score);\n    score += 5;\n    println!(\"Score: {}\", score);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Shadowing",
                             "body": "You can declare a new variable with the same name using let again. This is called shadowing. The new binding shadows the old one. Unlike mut, shadowing lets you change the type of the value while reusing the name.",
-                            "code": "let spaces = \"   \";\nlet spaces = spaces.len();  // shadows the string with a number\nprintln!(\"Number of spaces: {}\", spaces);\n\nlet x = 5;\nlet x = x + 1;  // x is now 6\nlet x = x * 2;  // x is now 12\nprintln!(\"x is {}\", x);",
-                            "runnable": false
+                            "code": "fn main() {\n    let spaces = \"   \";\n    let spaces = spaces.len();  // shadows the string with a number\n    println!(\"Number of spaces: {}\", spaces);\n\n    let x = 5;\n    let x = x + 1;  // x is now 6\n    let x = x * 2;  // x is now 12\n    println!(\"x is {}\", x);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Constants",
                             "body": "Use const for values that never change and are known at compile time. Constants must have a type annotation and use SCREAMING_SNAKE_CASE by convention. Unlike let bindings, constants can be declared in any scope including the global scope. They cannot use mut and must be set to a constant expression. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on Variables and Mutability. Also explore the recommended books in the app for more insights.",
-                            "code": "const MAX_POINTS: u32 = 100_000;\nconst PI: f64 = 3.141592653589793;\nprintln!(\"Max points: {}\", MAX_POINTS);\nprintln!(\"Pi: {}\", PI);",
-                            "runnable": false
+                            "code": "const MAX_POINTS: u32 = 100_000;\nconst PI: f64 = 3.141592653589793;\n\nfn main() {\n    println!(\"Max points: {}\", MAX_POINTS);\n    println!(\"Pi: {}\", PI);\n}",
+                            "runnable": true
                         }
                     ]
                 },
@@ -113,26 +113,26 @@
                         {
                             "title": "Integer types",
                             "body": "Rust has signed and unsigned integers in various sizes. Signed types (i8, i16, i32, i64, i128) can hold negative values. Unsigned types (u8, u16, u32, u64, u128) hold only non-negative values. The default integer type is i32. You can use underscores in numeric literals for readability.",
-                            "code": "let age: u8 = 30;\nlet temperature: i32 = -5;\nlet big_number: u64 = 1_000_000;\nlet byte: u8 = 0xff;\nprintln!(\"{} {} {} {}\", age, temperature, big_number, byte);",
-                            "runnable": false
+                            "code": "fn main() {\n    let age: u8 = 30;\n    let temperature: i32 = -5;\n    let big_number: u64 = 1_000_000;\n    let byte: u8 = 0xff;\n    println!(\"{} {} {} {}\", age, temperature, big_number, byte);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Floating-point types",
                             "body": "Rust has two floating-point types: f32 (single precision) and f64 (double precision). The default is f64 because on modern CPUs it is roughly the same speed as f32 but has more precision. Use f32 only when you have a specific need such as GPU programming or memory constraints.",
-                            "code": "let pi: f64 = 3.14159;\nlet gravity: f32 = 9.81;\nlet result = 10.0 / 3.0;  // f64 by default\nprintln!(\"{} {} {:.4}\", pi, gravity, result);",
-                            "runnable": false
+                            "code": "fn main() {\n    let pi: f64 = 3.14159;\n    let gravity: f32 = 9.81;\n    let result = 10.0 / 3.0;  // f64 by default\n    println!(\"{} {} {:.4}\", pi, gravity, result);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Booleans",
                             "body": "The bool type has exactly two values: true and false. Booleans are one byte in size. They are the result of comparison operators and are used heavily in control flow such as if expressions and while loops.",
-                            "code": "let is_active: bool = true;\nlet is_greater = 10 > 5;  // true\nlet is_equal = 3 == 4;    // false\nprintln!(\"active: {}, greater: {}, equal: {}\", is_active, is_greater, is_equal);",
-                            "runnable": false
+                            "code": "fn main() {\n    let is_active: bool = true;\n    let is_greater = 10 > 5;  // true\n    let is_equal = 3 == 4;    // false\n    println!(\"active: {}, greater: {}, equal: {}\", is_active, is_greater, is_equal);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Characters",
                             "body": "The char type represents a single Unicode scalar value. It is four bytes in size, so it can represent much more than just ASCII. Use single quotes for char literals and double quotes for string literals. Chars can represent letters, digits, emoji, and many other Unicode symbols. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on Data Types. Also explore the recommended books in the app for more insights.",
-                            "code": "let letter: char = 'A';\nlet digit: char = '7';\nlet emoji: char = '\\u{1F600}';  // grinning face\nlet chinese: char = '\\u{4E16}'; // means world\nprintln!(\"{} {} {} {}\", letter, digit, emoji, chinese);",
-                            "runnable": false
+                            "code": "fn main() {\n    let letter: char = 'A';\n    let digit: char = '7';\n    let emoji: char = '\\u{1F600}';  // grinning face\n    let chinese: char = '\\u{4E16}'; // means world\n    println!(\"{} {} {} {}\", letter, digit, emoji, chinese);\n}",
+                            "runnable": true
                         }
                     ]
                 },
@@ -147,26 +147,26 @@
                         {
                             "title": "Tuples",
                             "body": "A tuple groups a fixed number of values with potentially different types into one compound value. Once declared a tuple cannot grow or shrink. You access elements by index using a dot followed by the position starting at zero.",
-                            "code": "let person: (&str, i32, bool) = (\"Alice\", 30, true);\nprintln!(\"Name: {}\", person.0);\nprintln!(\"Age: {}\", person.1);\nprintln!(\"Active: {}\", person.2);",
-                            "runnable": false
+                            "code": "fn main() {\n    let person: (&str, i32, bool) = (\"Alice\", 30, true);\n    println!(\"Name: {}\", person.0);\n    println!(\"Age: {}\", person.1);\n    println!(\"Active: {}\", person.2);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Destructuring tuples",
                             "body": "You can unpack a tuple into individual variables using pattern matching. This is called destructuring. It is a clean way to extract all values at once instead of accessing them by index.",
-                            "code": "let point = (3.0, 4.5);\nlet (x, y) = point;\nprintln!(\"x = {}, y = {}\", x, y);\n\nlet (name, age, _) = (\"Bob\", 25, true);\nprintln!(\"{} is {}\", name, age);",
-                            "runnable": false
+                            "code": "fn main() {\n    let point = (3.0, 4.5);\n    let (x, y) = point;\n    println!(\"x = {}, y = {}\", x, y);\n\n    let (name, age, _) = (\"Bob\", 25, true);\n    println!(\"{} is {}\", name, age);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Arrays",
                             "body": "An array is a fixed-length collection where every element has the same type. Arrays are stack-allocated and very fast. Use square brackets for the type annotation: [type; length]. Access elements with index notation. Rust checks array bounds at runtime and panics on out-of-bounds access.",
-                            "code": "let numbers: [i32; 5] = [1, 2, 3, 4, 5];\nprintln!(\"First: {}\", numbers[0]);\nprintln!(\"Last: {}\", numbers[4]);\n\nlet zeros = [0; 10];  // ten zeros\nprintln!(\"Length: {}\", zeros.len());",
-                            "runnable": false
+                            "code": "fn main() {\n    let numbers: [i32; 5] = [1, 2, 3, 4, 5];\n    println!(\"First: {}\", numbers[0]);\n    println!(\"Last: {}\", numbers[4]);\n\n    let zeros = [0; 10];  // ten zeros\n    println!(\"Length: {}\", zeros.len());\n}",
+                            "runnable": true
                         },
                         {
                             "title": "When to use each",
                             "body": "Use tuples when you need to group a small number of values of different types, such as returning multiple values from a function. Use arrays when you have a fixed number of values of the same type, like days of the week or a buffer. If you need a growable collection use Vec instead, which you will learn about later. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on Data Types. Also explore the recommended books in the app for more insights.",
-                            "code": "// Tuple: return multiple values from a function\nfn min_max(list: &[i32]) -> (i32, i32) {\n    let mut min = list[0];\n    let mut max = list[0];\n    for &val in list {\n        if val < min { min = val; }\n        if val > max { max = val; }\n    }\n    (min, max)\n}\n\nlet data = [3, 7, 1, 9, 4];\nlet (lo, hi) = min_max(&data);\nprintln!(\"min={}, max={}\", lo, hi);",
-                            "runnable": false
+                            "code": "// Tuple: return multiple values from a function\nfn min_max(list: &[i32]) -> (i32, i32) {\n    let mut min = list[0];\n    let mut max = list[0];\n    for &val in list {\n        if val < min { min = val; }\n        if val > max { max = val; }\n    }\n    (min, max)\n}\n\nfn main() {\n    let data = [3, 7, 1, 9, 4];\n    let (lo, hi) = min_max(&data);\n    println!(\"min={}, max={}\", lo, hi);\n}",
+                            "runnable": true
                         }
                     ]
                 },
@@ -182,25 +182,25 @@
                             "title": "Declaring functions",
                             "body": "Use the fn keyword to declare a function. Rust uses snake_case for function names by convention. You can define functions before or after main because Rust does not care about declaration order within a file.",
                             "code": "fn greet() {\n    println!(\"Hello from a function!\");\n}\n\nfn main() {\n    greet();\n    greet();\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Parameters",
                             "body": "Functions can accept parameters. Each parameter must have a type annotation. Separate multiple parameters with commas. When you call the function you pass arguments that match the declared types.",
                             "code": "fn add(a: i32, b: i32) {\n    println!(\"{} + {} = {}\", a, b, a + b);\n}\n\nfn describe(name: &str, age: u32) {\n    println!(\"{} is {} years old\", name, age);\n}\n\nfn main() {\n    add(3, 7);\n    describe(\"Alice\", 30);\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Return values",
                             "body": "Specify a return type with an arrow (->). In Rust the last expression in a function body is the return value automatically. You do not need a return keyword or a semicolon on the final expression. Adding a semicolon turns an expression into a statement, which returns the unit type () instead.",
                             "code": "fn square(n: i32) -> i32 {\n    n * n  // no semicolon = this is the return value\n}\n\nfn full_name(first: &str, last: &str) -> String {\n    format!(\"{} {}\", first, last)\n}\n\nfn main() {\n    let result = square(5);\n    println!(\"5 squared = {}\", result);\n    println!(\"{}\", full_name(\"Jane\", \"Doe\"));\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Early returns",
                             "body": "Use the return keyword to exit a function early. This is useful inside conditionals when you want to bail out before reaching the end. The return keyword requires a semicolon. For the final expression you can omit both return and the semicolon. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on Functions. Also explore the recommended books in the app for more insights.",
                             "code": "fn divide(a: f64, b: f64) -> Option<f64> {\n    if b == 0.0 {\n        return None;  // early return\n    }\n    Some(a / b)  // implicit return\n}\n\nfn main() {\n    println!(\"10 / 3 = {:?}\", divide(10.0, 3.0));\n    println!(\"10 / 0 = {:?}\", divide(10.0, 0.0));\n}",
-                            "runnable": false
+                            "runnable": true
                         }
                     ]
                 },
@@ -215,20 +215,20 @@
                         {
                             "title": "Line comments",
                             "body": "Use double slashes to write a line comment. Everything after // on that line is ignored by the compiler. Line comments are the most common comment style in Rust. Place them above or beside the code they describe.",
-                            "code": "// This is a line comment\nlet x = 5; // This is an inline comment\n\n// You can use multiple lines\n// to explain something longer\nlet result = x * 2;",
-                            "runnable": false
+                            "code": "fn main() {\n    // This is a line comment\n    let x = 5; // This is an inline comment\n\n    // You can use multiple lines\n    // to explain something longer\n    let result = x * 2;\n    println!(\"result = {}\", result);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Block comments",
                             "body": "Use /* and */ for block comments that span multiple lines. Block comments can be nested in Rust, which is unusual compared to most languages. However, Rust developers generally prefer line comments.",
-                            "code": "/* This is a block comment.\n   It can span multiple lines. */\n\n/* Block comments /* can be nested */ in Rust */\nlet x = 42;",
-                            "runnable": false
+                            "code": "fn main() {\n    /* This is a block comment.\n       It can span multiple lines. */\n\n    /* Block comments /* can be nested */ in Rust */\n    let x = 42;\n    println!(\"x = {}\", x);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Doc comments with ///",
                             "body": "Triple slashes create documentation comments. They support Markdown formatting and are placed directly above the item they document. Running cargo doc generates HTML documentation from these comments. This is how the Rust standard library is documented.",
-                            "code": "/// Calculates the area of a rectangle.\n///\n/// # Arguments\n/// * `width` - The width of the rectangle\n/// * `height` - The height of the rectangle\n///\n/// # Examples\n/// ```\n/// let area = rectangle_area(5.0, 3.0);\n/// assert_eq!(area, 15.0);\n/// ```\nfn rectangle_area(width: f64, height: f64) -> f64 {\n    width * height\n}",
-                            "runnable": false
+                            "code": "/// Calculates the area of a rectangle.\n///\n/// # Arguments\n/// * `width` - The width of the rectangle\n/// * `height` - The height of the rectangle\n///\n/// # Examples\n/// ```\n/// let area = rectangle_area(5.0, 3.0);\n/// assert_eq!(area, 15.0);\n/// ```\nfn rectangle_area(width: f64, height: f64) -> f64 {\n    width * height\n}\n\nfn main() {\n    let area = rectangle_area(5.0, 3.0);\n    println!(\"Area: {}\", area);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Module-level doc comments",
@@ -249,26 +249,26 @@
                         {
                             "title": "Basic if expressions",
                             "body": "The if keyword evaluates a condition and runs a block of code when the condition is true. Unlike many languages, Rust does not require parentheses around the condition. The condition must be a bool. Rust will not automatically convert numbers or other types to booleans.",
-                            "code": "let temperature = 35;\n\nif temperature > 30 {\n    println!(\"It is hot outside!\");\n}\n\nlet logged_in = true;\nif logged_in {\n    println!(\"Welcome back!\");\n}",
-                            "runnable": false
+                            "code": "fn main() {\n    let temperature = 35;\n\n    if temperature > 30 {\n        println!(\"It is hot outside!\");\n    }\n\n    let logged_in = true;\n    if logged_in {\n        println!(\"Welcome back!\");\n    }\n}",
+                            "runnable": true
                         },
                         {
                             "title": "else and else if",
                             "body": "Use else to run code when the condition is false. Chain multiple conditions with else if. Rust evaluates conditions from top to bottom and runs only the first matching branch.",
-                            "code": "let score = 75;\n\nif score >= 90 {\n    println!(\"Grade: A\");\n} else if score >= 80 {\n    println!(\"Grade: B\");\n} else if score >= 70 {\n    println!(\"Grade: C\");\n} else {\n    println!(\"Grade: F\");\n}",
-                            "runnable": false
+                            "code": "fn main() {\n    let score = 75;\n\n    if score >= 90 {\n        println!(\"Grade: A\");\n    } else if score >= 80 {\n        println!(\"Grade: B\");\n    } else if score >= 70 {\n        println!(\"Grade: C\");\n    } else {\n        println!(\"Grade: F\");\n    }\n}",
+                            "runnable": true
                         },
                         {
                             "title": "if as an expression",
                             "body": "In Rust if is an expression, meaning it returns a value. You can assign the result of an if expression to a variable. Both branches must return the same type. This replaces the ternary operator found in other languages.",
-                            "code": "let age = 20;\nlet status = if age >= 18 { \"adult\" } else { \"minor\" };\nprintln!(\"Status: {}\", status);\n\nlet number = 7;\nlet parity = if number % 2 == 0 { \"even\" } else { \"odd\" };\nprintln!(\"{} is {}\", number, parity);",
-                            "runnable": false
+                            "code": "fn main() {\n    let age = 20;\n    let status = if age >= 18 { \"adult\" } else { \"minor\" };\n    println!(\"Status: {}\", status);\n\n    let number = 7;\n    let parity = if number % 2 == 0 { \"even\" } else { \"odd\" };\n    println!(\"{} is {}\", number, parity);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Combining conditions",
                             "body": "Use logical operators to combine conditions. The && operator means and, the || operator means or, and the ! operator means not. You can group conditions with parentheses for clarity. Keep conditions readable and consider extracting complex logic into well-named variables. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on Control Flow. Also explore the recommended books in the app for more insights.",
-                            "code": "let age = 25;\nlet has_ticket = true;\n\nif age >= 18 && has_ticket {\n    println!(\"You may enter.\");\n}\n\nlet is_weekend = true;\nlet is_holiday = false;\n\nif is_weekend || is_holiday {\n    println!(\"No work today!\");\n}\n\nif !(age < 18) {\n    println!(\"Not a minor.\");\n}",
-                            "runnable": false
+                            "code": "fn main() {\n    let age = 25;\n    let has_ticket = true;\n\n    if age >= 18 && has_ticket {\n        println!(\"You may enter.\");\n    }\n\n    let is_weekend = true;\n    let is_holiday = false;\n\n    if is_weekend || is_holiday {\n        println!(\"No work today!\");\n    }\n\n    if !(age < 18) {\n        println!(\"Not a minor.\");\n    }\n}",
+                            "runnable": true
                         }
                     ]
                 },
@@ -283,26 +283,26 @@
                         {
                             "title": "The loop keyword",
                             "body": "The loop keyword creates an infinite loop. Use break to exit and continue to skip to the next iteration. You can return a value from a loop by placing it after break. This makes loop an expression, which is unique to Rust.",
-                            "code": "let mut counter = 0;\n\nlet result = loop {\n    counter += 1;\n    if counter == 10 {\n        break counter * 2;  // returns 20\n    }\n};\n\nprintln!(\"Result: {}\", result);",
-                            "runnable": false
+                            "code": "fn main() {\n    let mut counter = 0;\n\n    let result = loop {\n        counter += 1;\n        if counter == 10 {\n            break counter * 2;  // returns 20\n        }\n    };\n\n    println!(\"Result: {}\", result);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "while loops",
                             "body": "A while loop runs as long as its condition is true. The condition is checked before each iteration. Use while when you do not know how many times you need to loop but you have a clear stopping condition.",
-                            "code": "let mut countdown = 5;\n\nwhile countdown > 0 {\n    println!(\"{}...\", countdown);\n    countdown -= 1;\n}\n\nprintln!(\"Liftoff!\");",
-                            "runnable": false
+                            "code": "fn main() {\n    let mut countdown = 5;\n\n    while countdown > 0 {\n        println!(\"{}...\", countdown);\n        countdown -= 1;\n    }\n\n    println!(\"Liftoff!\");\n}",
+                            "runnable": true
                         },
                         {
                             "title": "for loops and ranges",
                             "body": "The for loop iterates over elements of a collection or a range. It is the most common loop in Rust because it is safe and concise. Ranges use the .. syntax where the end is exclusive, or ..= for inclusive ranges.",
-                            "code": "// Iterate over a range\nfor i in 1..=5 {\n    println!(\"{}\", i);  // prints 1 through 5\n}\n\n// Iterate over an array\nlet fruits = [\"apple\", \"banana\", \"cherry\"];\nfor fruit in fruits {\n    println!(\"I like {}\", fruit);\n}\n\n// Countdown with rev()\nfor i in (1..4).rev() {\n    println!(\"{}...\", i);\n}\nprintln!(\"Go!\");",
-                            "runnable": false
+                            "code": "fn main() {\n    // Iterate over a range\n    for i in 1..=5 {\n        println!(\"{}\", i);  // prints 1 through 5\n    }\n\n    // Iterate over an array\n    let fruits = [\"apple\", \"banana\", \"cherry\"];\n    for fruit in fruits {\n        println!(\"I like {}\", fruit);\n    }\n\n    // Countdown with rev()\n    for i in (1..4).rev() {\n        println!(\"{}...\", i);\n    }\n    println!(\"Go!\");\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Loop labels and nested loops",
                             "body": "When you have nested loops you can label them with a tick prefix like 'outer. Then use break 'outer or continue 'outer to control which loop is affected. This avoids the need for boolean flags to break out of nested loops. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on Repetition with Loops. Also explore the recommended books in the app for more insights.",
-                            "code": "let mut found = false;\n\n'outer: for x in 0..10 {\n    for y in 0..10 {\n        if x + y == 15 {\n            println!(\"Found: x={}, y={}\", x, y);\n            found = true;\n            break 'outer;\n        }\n    }\n}\n\nif found {\n    println!(\"Search complete.\");\n}",
-                            "runnable": false
+                            "code": "fn main() {\n    let mut found = false;\n\n    'outer: for x in 0..10 {\n        for y in 0..10 {\n            if x + y == 15 {\n                println!(\"Found: x={}, y={}\", x, y);\n                found = true;\n                break 'outer;\n            }\n        }\n    }\n\n    if found {\n        println!(\"Search complete.\");\n    }\n}",
+                            "runnable": true
                         }
                     ]
                 },
@@ -317,26 +317,26 @@
                         {
                             "title": "The three ownership rules",
                             "body": "Rust enforces three rules at compile time. First, each value has exactly one owner. Second, there can only be one owner at a time. Third, when the owner goes out of scope the value is dropped. These rules eliminate entire classes of bugs like use-after-free and double-free.",
-                            "code": "{\n    let s = String::from(\"hello\");  // s owns the String\n    println!(\"{}\", s);\n}  // s goes out of scope, String is dropped\n\n// println!(\"{}\", s);  // Error: s does not exist here",
-                            "runnable": false
+                            "code": "fn main() {\n    {\n        let s = String::from(\"hello\");  // s owns the String\n        println!(\"{}\", s);\n    }  // s goes out of scope, String is dropped\n\n    // println!(\"{}\", s);  // Error: s does not exist here\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Moves",
                             "body": "When you assign a heap-allocated value like a String to another variable ownership moves. The original variable becomes invalid and cannot be used. This prevents two variables from freeing the same memory.",
-                            "code": "let s1 = String::from(\"hello\");\nlet s2 = s1;  // ownership moves from s1 to s2\n\n// println!(\"{}\", s1);  // Error: value borrowed after move\nprintln!(\"{}\", s2);  // Works fine",
-                            "runnable": false
+                            "code": "fn main() {\n    let s1 = String::from(\"hello\");\n    let s2 = s1;  // ownership moves from s1 to s2\n\n    // println!(\"{}\", s1);  // Error: value borrowed after move\n    println!(\"{}\", s2);  // Works fine\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Clone for deep copies",
                             "body": "If you need two independent copies of a heap-allocated value use the clone method. This creates a full deep copy so both variables are valid. Cloning is explicit because it can be expensive for large data.",
-                            "code": "let s1 = String::from(\"hello\");\nlet s2 = s1.clone();  // deep copy\n\nprintln!(\"s1 = {}\", s1);  // both are valid\nprintln!(\"s2 = {}\", s2);",
-                            "runnable": false
+                            "code": "fn main() {\n    let s1 = String::from(\"hello\");\n    let s2 = s1.clone();  // deep copy\n\n    println!(\"s1 = {}\", s1);  // both are valid\n    println!(\"s2 = {}\", s2);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Copy types live on the stack",
                             "body": "Simple types like integers, floats, booleans, and chars implement the Copy trait. When you assign them the value is copied on the stack automatically. No move happens because copying stack data is cheap. Types that implement Copy include all integer types, bool, f32, f64, char, and tuples of Copy types. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on Understanding Ownership. Also explore the recommended books in the app for more insights.",
-                            "code": "let x = 42;\nlet y = x;  // x is copied, not moved\nprintln!(\"x = {}, y = {}\", x, y);  // both valid\n\nlet a = true;\nlet b = a;  // copied\nprintln!(\"a = {}, b = {}\", a, b);",
-                            "runnable": false
+                            "code": "fn main() {\n    let x = 42;\n    let y = x;  // x is copied, not moved\n    println!(\"x = {}, y = {}\", x, y);  // both valid\n\n    let a = true;\n    let b = a;  // copied\n    println!(\"a = {}, b = {}\", a, b);\n}",
+                            "runnable": true
                         }
                     ]
                 },
@@ -352,25 +352,25 @@
                             "title": "Immutable references with &",
                             "body": "A reference lets you refer to a value without taking ownership. Use the ampersand to create a reference. The original owner keeps the value and the reference can read it. This is called borrowing. You can have multiple immutable references at the same time.",
                             "code": "fn calculate_length(s: &String) -> usize {\n    s.len()\n}\n\nfn main() {\n    let s = String::from(\"hello\");\n    let len = calculate_length(&s);\n    println!(\"'{}' has {} characters\", s, len);  // s still valid\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Mutable references with &mut",
                             "body": "To modify a borrowed value you need a mutable reference. Use &mut to create one. The original variable must also be declared as mut. Rust allows only one mutable reference to a value at a time to prevent data races at compile time.",
                             "code": "fn add_world(s: &mut String) {\n    s.push_str(\", world!\");\n}\n\nfn main() {\n    let mut greeting = String::from(\"hello\");\n    add_world(&mut greeting);\n    println!(\"{}\", greeting);  // hello, world!\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "The borrowing rules",
                             "body": "Rust enforces two rules for references. First, you can have either one mutable reference or any number of immutable references at the same time but not both. Second, references must always be valid. The compiler prevents dangling references at compile time.",
-                            "code": "let mut s = String::from(\"hello\");\n\nlet r1 = &s;\nlet r2 = &s;\nprintln!(\"{} and {}\", r1, r2);  // OK: multiple immutable refs\n\n// r1 and r2 are no longer used after this point\nlet r3 = &mut s;  // OK: no immutable refs active\nr3.push_str(\" world\");\nprintln!(\"{}\", r3);",
-                            "runnable": false
+                            "code": "fn main() {\n    let mut s = String::from(\"hello\");\n\n    let r1 = &s;\n    let r2 = &s;\n    println!(\"{} and {}\", r1, r2);  // OK: multiple immutable refs\n\n    // r1 and r2 are no longer used after this point\n    let r3 = &mut s;  // OK: no immutable refs active\n    r3.push_str(\" world\");\n    println!(\"{}\", r3);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "References in practice",
                             "body": "Borrowing is the preferred way to pass data to functions when you do not need ownership. It avoids unnecessary cloning and makes your code efficient. Most functions should take references rather than owned values. Use &T for read-only access and &mut T only when the function needs to modify the data. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on References and Borrowing. Also explore the recommended books in the app for more insights.",
                             "code": "fn first_word(s: &str) -> &str {\n    let bytes = s.as_bytes();\n    for (i, &byte) in bytes.iter().enumerate() {\n        if byte == b' ' {\n            return &s[..i];\n        }\n    }\n    s\n}\n\nfn main() {\n    let sentence = String::from(\"hello world\");\n    let word = first_word(&sentence);\n    println!(\"First word: {}\", word);\n}",
-                            "runnable": false
+                            "runnable": true
                         }
                     ]
                 },
@@ -385,26 +385,26 @@
                         {
                             "title": "String vs &str",
                             "body": "Rust has two main string types. String is a growable, heap-allocated string that you own. The &str type is a string slice, an immutable reference to a sequence of UTF-8 bytes. String literals like \"hello\" are &str. Think of String as the owned version and &str as the borrowed view.",
-                            "code": "let s1: &str = \"hello\";           // string literal, stored in binary\nlet s2: String = String::from(\"hello\"); // heap-allocated, owned\nlet s3: String = \"hello\".to_string();   // another way to create String\n\nprintln!(\"{} {} {}\", s1, s2, s3);",
-                            "runnable": false
+                            "code": "fn main() {\n    let s1: &str = \"hello\";           // string literal, stored in binary\n    let s2: String = String::from(\"hello\"); // heap-allocated, owned\n    let s3: String = \"hello\".to_string();   // another way to create String\n\n    println!(\"{} {} {}\", s1, s2, s3);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Creating and growing strings",
                             "body": "Create an empty String with String::new() and add content with push for a single character or push_str for a string slice. You can also use format! to build strings from multiple values without taking ownership of any of them.",
-                            "code": "let mut s = String::new();\ns.push_str(\"Hello\");\ns.push(',');\ns.push_str(\" world!\");\nprintln!(\"{}\", s);\n\nlet first = \"Jane\";\nlet last = \"Doe\";\nlet full = format!(\"{} {}\", first, last);\nprintln!(\"{}\", full);",
-                            "runnable": false
+                            "code": "fn main() {\n    let mut s = String::new();\n    s.push_str(\"Hello\");\n    s.push(',');\n    s.push_str(\" world!\");\n    println!(\"{}\", s);\n\n    let first = \"Jane\";\n    let last = \"Doe\";\n    let full = format!(\"{} {}\", first, last);\n    println!(\"{}\", full);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "String concatenation",
                             "body": "You can concatenate strings using the + operator, but this takes ownership of the left operand. The right operand must be a &str. For joining multiple strings without ownership concerns use format! instead. You can also use the join method on a slice of strings.",
-                            "code": "let hello = String::from(\"Hello\");\nlet world = String::from(\" world\");\nlet greeting = hello + &world;\n// hello is moved and no longer valid\nprintln!(\"{}\", greeting);\n\nlet parts = vec![\"Rust\", \"is\", \"great\"];\nlet sentence = parts.join(\" \");\nprintln!(\"{}\", sentence);",
-                            "runnable": false
+                            "code": "fn main() {\n    let hello = String::from(\"Hello\");\n    let world = String::from(\" world\");\n    let greeting = hello + &world;\n    // hello is moved and no longer valid\n    println!(\"{}\", greeting);\n\n    let parts = vec![\"Rust\", \"is\", \"great\"];\n    let sentence = parts.join(\" \" );\n    println!(\"{}\", sentence);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Iterating over strings",
                             "body": "Rust strings are UTF-8 encoded so you cannot index them with s[0]. Instead use the chars method to iterate over Unicode characters or bytes for raw bytes. The len method returns the byte length, not the character count. Use chars().count() for the number of characters. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on Storing UTF-8 Encoded Text with Strings. Also explore the recommended books in the app for more insights.",
-                            "code": "let text = String::from(\"Hello\");\n\nfor ch in text.chars() {\n    print!(\"{} \", ch);\n}\nprintln!();\n\nprintln!(\"Byte length: {}\", text.len());\nprintln!(\"Char count: {}\", text.chars().count());\n\n// Slicing (be careful with multi-byte characters)\nlet slice = &text[0..5];\nprintln!(\"Slice: {}\", slice);",
-                            "runnable": false
+                            "code": "fn main() {\n    let text = String::from(\"Hello\");\n\n    for ch in text.chars() {\n        print!(\"{} \", ch);\n    }\n    println!();\n\n    println!(\"Byte length: {}\", text.len());\n    println!(\"Char count: {}\", text.chars().count());\n\n    // Slicing (be careful with multi-byte characters)\n    let slice = &text[0..5];\n    println!(\"Slice: {}\", slice);\n}",
+                            "runnable": true
                         }
                     ]
                 },
@@ -419,26 +419,26 @@
                         {
                             "title": "The as keyword",
                             "body": "Use the as keyword for primitive type casting. This works for numeric conversions such as integer to float, widening, and narrowing. Be aware that narrowing conversions (like i32 to u8) can silently truncate values. The as keyword only works with primitive types.",
-                            "code": "let x: i32 = 42;\nlet y: f64 = x as f64;\nlet z: u8 = x as u8;\nprintln!(\"i32: {}, f64: {}, u8: {}\", x, y, z);\n\nlet big: i32 = 300;\nlet truncated: u8 = big as u8;  // truncates to 44 (300 % 256)\nprintln!(\"300 as u8 = {}\", truncated);",
-                            "runnable": false
+                            "code": "fn main() {\n    let x: i32 = 42;\n    let y: f64 = x as f64;\n    let z: u8 = x as u8;\n    println!(\"i32: {}, f64: {}, u8: {}\", x, y, z);\n\n    let big: i32 = 300;\n    let truncated: u8 = big as u8;  // truncates to 44 (300 % 256)\n    println!(\"300 as u8 = {}\", truncated);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "From and Into traits",
                             "body": "The From trait provides a standard way to create a type from another type. When you implement From you get the Into trait for free. Use From::from or .into() for conversions. Unlike as, these conversions are type-safe and will not compile if the conversion is not defined.",
-                            "code": "let s = String::from(\"hello\");  // From<&str> for String\nprintln!(\"{}\", s);\n\nlet n: i64 = 42;\nlet big: i64 = i64::from(n);\nprintln!(\"{}\", big);\n\n// Using Into (inferred from context)\nlet x: i32 = 5;\nlet y: i64 = x.into();\nprintln!(\"{}\", y);",
-                            "runnable": false
+                            "code": "fn main() {\n    let s = String::from(\"hello\");  // From<&str> for String\n    println!(\"{}\", s);\n\n    let n: i64 = 42;\n    let big: i64 = i64::from(n);\n    println!(\"{}\", big);\n\n    // Using Into (inferred from context)\n    let x: i32 = 5;\n    let y: i64 = x.into();\n    println!(\"{}\", y);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "String conversions",
                             "body": "Convert numbers to strings with to_string() or format!(). Parse strings into numbers with the parse method, which returns a Result because the string might not be a valid number. Use the turbofish syntax to specify the target type.",
-                            "code": "let num = 42;\nlet text = num.to_string();\nprintln!(\"String: {}\", text);\n\nlet parsed: i32 = \"100\".parse().expect(\"Not a number\");\nprintln!(\"Parsed: {}\", parsed);\n\n// Turbofish syntax\nlet pi = \"3.14\".parse::<f64>().expect(\"Not a float\");\nprintln!(\"Pi: {}\", pi);",
-                            "runnable": false
+                            "code": "fn main() {\n    let num = 42;\n    let text = num.to_string();\n    println!(\"String: {}\", text);\n\n    let parsed: i32 = \"100\".parse().expect(\"Not a number\");\n    println!(\"Parsed: {}\", parsed);\n\n    // Turbofish syntax\n    let pi = \"3.14\".parse::<f64>().expect(\"Not a float\");\n    println!(\"Pi: {}\", pi);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "TryFrom for fallible conversions",
                             "body": "When a conversion might fail use TryFrom instead of From. It returns a Result so you can handle the error gracefully. For example converting a large i32 into a u8 can fail if the value does not fit. TryFrom makes these edge cases explicit and safe. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) appendix on Operators and the Rust by Example section on Conversion. Also explore the recommended books in the app for more insights.",
-                            "code": "use std::convert::TryFrom;\n\nlet big: i32 = 300;\nmatch u8::try_from(big) {\n    Ok(val) => println!(\"Converted: {}\", val),\n    Err(e) => println!(\"Conversion failed: {}\", e),\n}\n\nlet small: i32 = 42;\nlet result = u8::try_from(small);\nprintln!(\"42 as u8: {:?}\", result);  // Ok(42)",
-                            "runnable": false
+                            "code": "use std::convert::TryFrom;\n\nfn main() {\n    let big: i32 = 300;\n    match u8::try_from(big) {\n        Ok(val) => println!(\"Converted: {}\", val),\n        Err(e) => println!(\"Conversion failed: {}\", e),\n    }\n\n    let small: i32 = 42;\n    let result = u8::try_from(small);\n    println!(\"42 as u8: {:?}\", result);  // Ok(42)\n}",
+                            "runnable": true
                         }
                     ]
                 },
@@ -453,26 +453,26 @@
                         {
                             "title": "What is the stack?",
                             "body": "The stack is a region of memory that stores data in a last-in first-out order. It is very fast because the CPU just moves a pointer up and down. All data on the stack must have a known fixed size at compile time. Local variables, function parameters, and return addresses live on the stack.",
-                            "code": "fn calculate() {\n    let x: i32 = 10;     // 4 bytes on the stack\n    let y: f64 = 3.14;   // 8 bytes on the stack\n    let flag: bool = true; // 1 byte on the stack\n    println!(\"{} {} {}\", x, y, flag);\n}  // all three are popped off the stack here",
-                            "runnable": false
+                            "code": "fn calculate() {\n    let x: i32 = 10;     // 4 bytes on the stack\n    let y: f64 = 3.14;   // 8 bytes on the stack\n    let flag: bool = true; // 1 byte on the stack\n    println!(\"{} {} {}\", x, y, flag);\n}  // all three are popped off the stack here\n\nfn main() {\n    calculate();\n}",
+                            "runnable": true
                         },
                         {
                             "title": "What is the heap?",
                             "body": "The heap is a region of memory for data whose size is not known at compile time or that needs to live beyond the current scope. Allocating on the heap is slower because the allocator must find a big enough block. The result is a pointer that lives on the stack and points to the heap data.",
-                            "code": "let s = String::from(\"hello\");\n// On the stack: pointer, length (5), capacity (5)\n// On the heap: the actual bytes h-e-l-l-o\n\nlet v = vec![1, 2, 3];\n// On the stack: pointer, length (3), capacity (3)\n// On the heap: the integers 1, 2, 3\n\nprintln!(\"{} {:?}\", s, v);",
-                            "runnable": false
+                            "code": "fn main() {\n    let s = String::from(\"hello\");\n    // On the stack: pointer, length (5), capacity (5)\n    // On the heap: the actual bytes h-e-l-l-o\n\n    let v = vec![1, 2, 3];\n    // On the stack: pointer, length (3), capacity (3)\n    // On the heap: the integers 1, 2, 3\n\n    println!(\"{} {:?}\", s, v);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Why it matters",
                             "body": "Understanding stack vs heap explains why ownership works the way it does. Stack data is cheap to copy so types like i32 and bool implement Copy. Heap data is expensive to copy so String and Vec use move semantics. When a heap-allocated value goes out of scope Rust calls drop to free the heap memory.",
-                            "code": "// Stack types: Copy\nlet a = 5;\nlet b = a;  // cheap stack copy\nprintln!(\"{} {}\", a, b);  // both valid\n\n// Heap types: Move\nlet s1 = String::from(\"hello\");\nlet s2 = s1;  // ownership moves, heap data is NOT copied\n// println!(\"{}\", s1);  // Error!\nprintln!(\"{}\", s2);",
-                            "runnable": false
+                            "code": "fn main() {\n    // Stack types: Copy\n    let a = 5;\n    let b = a;  // cheap stack copy\n    println!(\"{} {}\", a, b);  // both valid\n\n    // Heap types: Move\n    let s1 = String::from(\"hello\");\n    let s2 = s1;  // ownership moves, heap data is NOT copied\n    // println!(\"{}\", s1);  // Error!\n    println!(\"{}\", s2);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Box for heap allocation",
                             "body": "Sometimes you want to explicitly put data on the heap. Use Box<T> for this. Box is a smart pointer that owns heap-allocated data and frees it when dropped. Box is useful for large data you do not want on the stack, recursive types, and trait objects. You will use it more as you advance. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on What Is Ownership and the section on Using Box. Also explore the recommended books in the app for more insights.",
-                            "code": "let boxed = Box::new(42);\nprintln!(\"Boxed value: {}\", boxed);\n\n// Box is useful for large arrays\nlet big_array = Box::new([0u8; 1_000_000]);\nprintln!(\"First element: {}\", big_array[0]);\n\n// When boxed goes out of scope, heap memory is freed",
-                            "runnable": false
+                            "code": "fn main() {\n    let boxed = Box::new(42);\n    println!(\"Boxed value: {}\", boxed);\n\n    // Box is useful for large arrays\n    let big_array = Box::new([0u8; 1_000_000]);\n    println!(\"First element: {}\", big_array[0]);\n\n    // When boxed goes out of scope, heap memory is freed\n}",
+                            "runnable": true
                         }
                     ]
                 },
@@ -526,26 +526,26 @@
                         {
                             "title": "Defining a Struct",
                             "body": "A struct groups related values under one name. Each field has a name and a type, separated by a colon. You create an instance by providing values for every field.",
-                            "code": "struct User {\n    name: String,\n    age: u32,\n    active: bool,\n}\n\nlet user = User {\n    name: String::from(\"Alice\"),\n    age: 30,\n    active: true,\n};",
-                            "runnable": false
+                            "code": "struct User {\n    name: String,\n    age: u32,\n    active: bool,\n}\n\nfn main() {\n    let user = User {\n        name: String::from(\"Alice\"),\n        age: 30,\n        active: true,\n    };\n    println!(\"{} {} {}\", user.name, user.age, user.active);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Accessing and Mutating Fields",
                             "body": "Use dot notation to read or write a field. The entire instance must be declared mut to change any field; Rust does not allow marking individual fields as mutable.",
-                            "code": "let mut user = User {\n    name: String::from(\"Bob\"),\n    age: 25,\n    active: false,\n};\nprintln!(\"{}\", user.name);\nuser.active = true;",
-                            "runnable": false
+                            "code": "struct User {\n    name: String,\n    age: u32,\n    active: bool,\n}\n\nfn main() {\n    let mut user = User {\n        name: String::from(\"Bob\"),\n        age: 25,\n        active: false,\n    };\n    println!(\"{}\", user.name);\n    user.active = true;\n    println!(\"Active: {}\", user.active);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Tuple Structs and Unit Structs",
                             "body": "Tuple structs have fields without names, accessed by index. They are useful for lightweight wrappers. Unit structs have no fields at all and are used as markers or for trait implementations.",
-                            "code": "struct Color(u8, u8, u8);\nlet red = Color(255, 0, 0);\nprintln!(\"R: {}\", red.0);\n\nstruct Marker;\nlet _m = Marker;",
-                            "runnable": false
+                            "code": "struct Color(u8, u8, u8);\nstruct Marker;\n\nfn main() {\n    let red = Color(255, 0, 0);\n    println!(\"R: {}\", red.0);\n\n    let _m = Marker;\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Struct Update Syntax",
                             "body": "The struct update syntax lets you create a new instance by copying most fields from an existing one and overriding specific fields. Use the .. operator followed by the source instance. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on structs. Also visit the recommended books in the app for more insights.",
-                            "code": "let user2 = User {\n    name: String::from(\"Carol\"),\n    ..user\n};",
-                            "runnable": false
+                            "code": "struct User {\n    name: String,\n    age: u32,\n    active: bool,\n}\n\nfn main() {\n    let user = User {\n        name: String::from(\"Alice\"),\n        age: 30,\n        active: true,\n    };\n    let user2 = User {\n        name: String::from(\"Carol\"),\n        ..user\n    };\n    println!(\"{} {} {}\", user2.name, user2.age, user2.active);\n}",
+                            "runnable": true
                         }
                     ]
                 },
@@ -560,20 +560,20 @@
                         {
                             "title": "Defining an Enum",
                             "body": "An enum lets you define a type by listing its possible variants. Each variant is a distinct value of that type. Enums are perfect for representing a fixed set of choices.",
-                            "code": "enum Direction {\n    North,\n    South,\n    East,\n    West,\n}",
-                            "runnable": false
+                            "code": "enum Direction {\n    North,\n    South,\n    East,\n    West,\n}\n\nfn main() {\n    let dir = Direction::North;\n    match dir {\n        Direction::North => println!(\"North\"),\n        Direction::South => println!(\"South\"),\n        Direction::East => println!(\"East\"),\n        Direction::West => println!(\"West\"),\n    }\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Variants with Data",
                             "body": "Variants can hold data of different types. A variant can carry unnamed fields like a tuple, named fields like a struct, or no data at all. This makes enums far more powerful than simple C-style enums.",
-                            "code": "enum Message {\n    Quit,\n    Echo(String),\n    Move { x: i32, y: i32 },\n    Color(u8, u8, u8),\n}",
-                            "runnable": false
+                            "code": "enum Message {\n    Quit,\n    Echo(String),\n    Move { x: i32, y: i32 },\n    Color(u8, u8, u8),\n}\n\nfn main() {\n    let msg = Message::Move { x: 3, y: 4 };\n    match msg {\n        Message::Quit => println!(\"Quit\"),\n        Message::Echo(text) => println!(\"Echo: {}\", text),\n        Message::Move { x, y } => println!(\"Move to ({}, {})\", x, y),\n        Message::Color(r, g, b) => println!(\"Color: {}, {}, {}\", r, g, b),\n    }\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Using Enums",
                             "body": "Create enum values by specifying the variant. You can define methods on enums with impl blocks, just like with structs.",
-                            "code": "let msg = Message::Echo(String::from(\"hello\"));\n\nimpl Message {\n    fn call(&self) {\n        println!(\"Message received\");\n    }\n}\nmsg.call();",
-                            "runnable": false
+                            "code": "enum Message {\n    Quit,\n    Echo(String),\n}\n\nimpl Message {\n    fn call(&self) {\n        println!(\"Message received\");\n    }\n}\n\nfn main() {\n    let msg = Message::Echo(String::from(\"hello\"));\n    msg.call();\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Why Enums Matter",
@@ -592,26 +592,26 @@
                         {
                             "title": "The match Expression",
                             "body": "A match expression compares a value against a series of patterns and runs the code for the first pattern that fits. Each arm uses => to separate the pattern from the code.",
-                            "code": "let x = 3;\nmatch x {\n    1 => println!(\"one\"),\n    2 => println!(\"two\"),\n    3 => println!(\"three\"),\n    _ => println!(\"other\"),\n}",
-                            "runnable": false
+                            "code": "fn main() {\n    let x = 3;\n    match x {\n        1 => println!(\"one\"),\n        2 => println!(\"two\"),\n        3 => println!(\"three\"),\n        _ => println!(\"other\"),\n    }\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Exhaustive Matching",
                             "body": "Rust requires that every match covers all possible values of the type. If you leave out a variant or value, the compiler will refuse to build. This prevents unhandled cases at compile time.",
-                            "code": "enum Coin {\n    Penny,\n    Nickel,\n    Dime,\n}\n\nfn value(c: Coin) -> u32 {\n    match c {\n        Coin::Penny => 1,\n        Coin::Nickel => 5,\n        Coin::Dime => 10,\n    }\n}",
-                            "runnable": false
+                            "code": "enum Coin {\n    Penny,\n    Nickel,\n    Dime,\n}\n\nfn value(c: Coin) -> u32 {\n    match c {\n        Coin::Penny => 1,\n        Coin::Nickel => 5,\n        Coin::Dime => 10,\n    }\n}\n\nfn main() {\n    println!(\"Dime value: {}\", value(Coin::Dime));\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Wildcards and Bindings",
                             "body": "The underscore _ acts as a catch-all that matches anything but ignores the value. You can also bind matched values to a variable to use them in the arm body.",
-                            "code": "let num = 7;\nmatch num {\n    1 => println!(\"one\"),\n    n @ 2..=9 => println!(\"small: {n}\"),\n    _ => println!(\"big\"),\n}",
-                            "runnable": false
+                            "code": "fn main() {\n    let num = 7;\n    match num {\n        1 => println!(\"one\"),\n        n @ 2..=9 => println!(\"small: {n}\"),\n        _ => println!(\"big\"),\n    }\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Destructuring in Patterns",
                             "body": "Patterns can pull apart structs, tuples, and enums to bind their inner values directly. This avoids manual field access and makes code concise. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on patterns and matching. Also visit the recommended books in the app for more insights.",
-                            "code": "let point = (3, 7);\nmatch point {\n    (0, 0) => println!(\"origin\"),\n    (x, 0) => println!(\"on x-axis at {x}\"),\n    (0, y) => println!(\"on y-axis at {y}\"),\n    (x, y) => println!(\"({x}, {y})\"),\n}",
-                            "runnable": false
+                            "code": "fn main() {\n    let point = (3, 7);\n    match point {\n        (0, 0) => println!(\"origin\"),\n        (x, 0) => println!(\"on x-axis at {x}\"),\n        (0, y) => println!(\"on y-axis at {y}\"),\n        (x, y) => println!(\"({x}, {y})\"),\n    }\n}",
+                            "runnable": true
                         }
                     ]
                 },
@@ -626,26 +626,26 @@
                         {
                             "title": "Some and None",
                             "body": "Option<T> is an enum with two variants: Some(T) holds a value, and None represents no value. Rust has no null, so Option forces you to handle the missing-value case explicitly.",
-                            "code": "let age: Option<u32> = Some(30);\nlet missing: Option<u32> = None;",
-                            "runnable": false
+                            "code": "fn main() {\n    let age: Option<u32> = Some(30);\n    let missing: Option<u32> = None;\n    println!(\"{:?} {:?}\", age, missing);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Unwrapping Safely",
                             "body": "Calling unwrap on an Option returns the inner value if it is Some, but panics if it is None. Use unwrap_or to provide a default value instead of risking a panic.",
-                            "code": "let val = Some(42);\nprintln!(\"{}\", val.unwrap());       // 42\n\nlet empty: Option<i32> = None;\nprintln!(\"{}\", empty.unwrap_or(0)); // 0",
-                            "runnable": false
+                            "code": "fn main() {\n    let val = Some(42);\n    println!(\"{}\", val.unwrap());       // 42\n\n    let empty: Option<i32> = None;\n    println!(\"{}\", empty.unwrap_or(0)); // 0\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Transforming with map",
                             "body": "The map method applies a function to the inner value of Some and returns a new Option. If the value is None, map returns None without calling the function.",
-                            "code": "let name = Some(\"alice\");\nlet upper = name.map(|s| s.to_uppercase());\nprintln!(\"{:?}\", upper); // Some(\"ALICE\")",
-                            "runnable": false
+                            "code": "fn main() {\n    let name = Some(\"alice\");\n    let upper = name.map(|s| s.to_uppercase());\n    println!(\"{:?}\", upper); // Some(\"ALICE\")\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Chaining with and_then",
                             "body": "The and_then method is like map but the function itself returns an Option, avoiding nested Options. It is useful when each step in a chain might fail. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on the Option type. Also visit the recommended books in the app for more insights.",
-                            "code": "fn parse_even(s: &str) -> Option<i32> {\n    let n: i32 = s.parse().ok()?;\n    if n % 2 == 0 { Some(n) } else { None }\n}\n\nlet result = Some(\"4\").and_then(parse_even);\nprintln!(\"{:?}\", result); // Some(4)",
-                            "runnable": false
+                            "code": "fn parse_even(s: &str) -> Option<i32> {\n    let n: i32 = s.parse().ok()?;\n    if n % 2 == 0 { Some(n) } else { None }\n}\n\nfn main() {\n    let result = Some(\"4\").and_then(parse_even);\n    println!(\"{:?}\", result); // Some(4)\n}",
+                            "runnable": true
                         }
                     ]
                 },
@@ -660,26 +660,26 @@
                         {
                             "title": "Ok and Err",
                             "body": "Result<T, E> is an enum with Ok(T) for success and Err(E) for failure. Functions that can fail return Result so callers must handle both outcomes explicitly.",
-                            "code": "fn divide(a: f64, b: f64) -> Result<f64, String> {\n    if b == 0.0 {\n        Err(String::from(\"division by zero\"))\n    } else {\n        Ok(a / b)\n    }\n}",
-                            "runnable": false
+                            "code": "fn divide(a: f64, b: f64) -> Result<f64, String> {\n    if b == 0.0 {\n        Err(String::from(\"division by zero\"))\n    } else {\n        Ok(a / b)\n    }\n}\n\nfn main() {\n    println!(\"{:?}\", divide(10.0, 2.0));\n    println!(\"{:?}\", divide(10.0, 0.0));\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Matching on Result",
                             "body": "You can use match to handle Ok and Err separately. This gives you full control over what happens on success and failure.",
-                            "code": "match divide(10.0, 3.0) {\n    Ok(val) => println!(\"Result: {val}\"),\n    Err(e) => println!(\"Error: {e}\"),\n}",
-                            "runnable": false
+                            "code": "fn divide(a: f64, b: f64) -> Result<f64, String> {\n    if b == 0.0 {\n        Err(String::from(\"division by zero\"))\n    } else {\n        Ok(a / b)\n    }\n}\n\nfn main() {\n    match divide(10.0, 3.0) {\n        Ok(val) => println!(\"Result: {val}\"),\n        Err(e) => println!(\"Error: {e}\"),\n    }\n}",
+                            "runnable": true
                         },
                         {
                             "title": "The ? Operator",
                             "body": "The ? operator placed after a Result expression returns the Ok value if successful, or immediately returns the Err from the current function. It drastically reduces boilerplate for chaining fallible operations.",
-                            "code": "use std::num::ParseIntError;\n\nfn double_parse(s: &str) -> Result<i32, ParseIntError> {\n    let n = s.parse::<i32>()?;\n    Ok(n * 2)\n}",
-                            "runnable": false
+                            "code": "use std::num::ParseIntError;\n\nfn double_parse(s: &str) -> Result<i32, ParseIntError> {\n    let n = s.parse::<i32>()?;\n    Ok(n * 2)\n}\n\nfn main() {\n    println!(\"{:?}\", double_parse(\"21\"));\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Practical Error Handling Tips",
                             "body": "For small programs, returning Result with a boxed error trait object keeps things simple. In libraries, define custom error types for clarity. Avoid unwrap in production code because it panics on errors. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on error handling. Also visit the recommended books in the app for more insights.",
-                            "code": "use std::error::Error;\n\nfn run() -> Result<(), Box<dyn Error>> {\n    let n: i32 = \"42\".parse()?;\n    println!(\"Parsed: {n}\");\n    Ok(())\n}",
-                            "runnable": false
+                            "code": "use std::error::Error;\n\nfn run() -> Result<(), Box<dyn Error>> {\n    let n: i32 = \"42\".parse()?;\n    println!(\"Parsed: {n}\");\n    Ok(())\n}\n\nfn main() {\n    if let Err(e) = run() {\n        println!(\"Error: {e}\");\n    }\n}",
+                            "runnable": true
                         }
                     ]
                 },
@@ -694,26 +694,26 @@
                         {
                             "title": "Creating Vectors",
                             "body": "Vec<T> is a growable array stored on the heap. You can create one with Vec::new or the vec! macro. The macro lets you provide initial values conveniently.",
-                            "code": "let mut nums: Vec<i32> = Vec::new();\nlet colors = vec![\"red\", \"green\", \"blue\"];",
-                            "runnable": false
+                            "code": "fn main() {\n    let mut nums: Vec<i32> = Vec::new();\n    nums.push(1);\n    let colors = vec![\"red\", \"green\", \"blue\"];\n    println!(\"{:?} {:?}\", nums, colors);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Push and Pop",
                             "body": "Use push to add an element to the end and pop to remove the last element. Pop returns an Option because the vector might be empty.",
-                            "code": "let mut stack = vec![1, 2, 3];\nstack.push(4);\nprintln!(\"{:?}\", stack);      // [1, 2, 3, 4]\n\nlet top = stack.pop();\nprintln!(\"{:?}\", top);        // Some(4)",
-                            "runnable": false
+                            "code": "fn main() {\n    let mut stack = vec![1, 2, 3];\n    stack.push(4);\n    println!(\"{:?}\", stack);      // [1, 2, 3, 4]\n\n    let top = stack.pop();\n    println!(\"{:?}\", top);        // Some(4)\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Indexing and get",
                             "body": "Access elements by index with brackets, which panics on out-of-bounds, or with get, which returns an Option. Prefer get when the index might be invalid.",
-                            "code": "let v = vec![10, 20, 30];\nprintln!(\"{}\", v[1]);          // 20\nprintln!(\"{:?}\", v.get(5));    // None",
-                            "runnable": false
+                            "code": "fn main() {\n    let v = vec![10, 20, 30];\n    println!(\"{}\", v[1]);          // 20\n    println!(\"{:?}\", v.get(5));    // None\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Iterating over Vectors",
                             "body": "Use a for loop to iterate over references to each element. You can also iterate mutably with iter_mut to modify elements in place. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on vectors. Also visit the recommended books in the app for more insights.",
-                            "code": "let mut scores = vec![80, 90, 70];\nfor s in &mut scores {\n    *s += 5;\n}\nprintln!(\"{:?}\", scores); // [85, 95, 75]",
-                            "runnable": false
+                            "code": "fn main() {\n    let mut scores = vec![80, 90, 70];\n    for s in &mut scores {\n        *s += 5;\n    }\n    println!(\"{:?}\", scores); // [85, 95, 75]\n}",
+                            "runnable": true
                         }
                     ]
                 },
@@ -728,26 +728,26 @@
                         {
                             "title": "Creating a HashMap",
                             "body": "A HashMap<K, V> stores associations between keys and values. Import it from std::collections. Create one with HashMap::new and add entries with insert.",
-                            "code": "use std::collections::HashMap;\n\nlet mut scores = HashMap::new();\nscores.insert(String::from(\"Alice\"), 95);\nscores.insert(String::from(\"Bob\"), 87);",
-                            "runnable": false
+                            "code": "use std::collections::HashMap;\n\nfn main() {\n    let mut scores = HashMap::new();\n    scores.insert(String::from(\"Alice\"), 95);\n    scores.insert(String::from(\"Bob\"), 87);\n    println!(\"{:?}\", scores);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Reading Values with get",
                             "body": "Use get with a key reference to look up a value. It returns Option<&V>, so you get None if the key is missing rather than a panic.",
-                            "code": "if let Some(score) = scores.get(\"Alice\") {\n    println!(\"Alice scored {score}\");\n}",
-                            "runnable": false
+                            "code": "use std::collections::HashMap;\n\nfn main() {\n    let mut scores = HashMap::new();\n    scores.insert(String::from(\"Alice\"), 95);\n\n    if let Some(score) = scores.get(\"Alice\") {\n        println!(\"Alice scored {score}\");\n    }\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Updating Entries",
                             "body": "Calling insert with an existing key overwrites the value. Use entry and or_insert to insert only if the key does not already exist. This pattern is common for building counters.",
-                            "code": "scores.entry(String::from(\"Carol\")).or_insert(0);\n\nlet text = \"hello world hello\";\nlet mut counts = HashMap::new();\nfor word in text.split_whitespace() {\n    let count = counts.entry(word).or_insert(0);\n    *count += 1;\n}",
-                            "runnable": false
+                            "code": "use std::collections::HashMap;\n\nfn main() {\n    let mut scores = HashMap::new();\n    scores.entry(String::from(\"Carol\")).or_insert(0);\n\n    let text = \"hello world hello\";\n    let mut counts = HashMap::new();\n    for word in text.split_whitespace() {\n        let count = counts.entry(word).or_insert(0);\n        *count += 1;\n    }\n    println!(\"{:?}\", counts);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Iterating over a HashMap",
                             "body": "Use a for loop to iterate over key-value pairs as references. The order of iteration is arbitrary because HashMap does not maintain insertion order. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on hash maps. Also visit the recommended books in the app for more insights.",
-                            "code": "for (name, score) in &scores {\n    println!(\"{name}: {score}\");\n}",
-                            "runnable": false
+                            "code": "use std::collections::HashMap;\n\nfn main() {\n    let mut scores = HashMap::new();\n    scores.insert(String::from(\"Alice\"), 95);\n    scores.insert(String::from(\"Bob\"), 87);\n\n    for (name, score) in &scores {\n        println!(\"{name}: {score}\");\n    }\n}",
+                            "runnable": true
                         }
                     ]
                 },
@@ -762,26 +762,26 @@
                         {
                             "title": "String vs &str",
                             "body": "String is an owned, heap-allocated, growable string. The type &str is a borrowed reference to a string slice, which is a view into string data. String literals are &str by default.",
-                            "code": "let owned: String = String::from(\"hello\");\nlet slice: &str = \"hello\";\nlet borrowed: &str = &owned;",
-                            "runnable": false
+                            "code": "fn main() {\n    let owned: String = String::from(\"hello\");\n    let slice: &str = \"hello\";\n    let borrowed: &str = &owned;\n    println!(\"{} {} {}\", owned, slice, borrowed);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Slicing Strings",
                             "body": "You can take a substring by indexing with a byte range. Be careful: the range must land on valid UTF-8 character boundaries or your program will panic at runtime.",
-                            "code": "let s = String::from(\"hello world\");\nlet hello: &str = &s[0..5];\nlet world: &str = &s[6..11];\nprintln!(\"{hello} {world}\");",
-                            "runnable": false
+                            "code": "fn main() {\n    let s = String::from(\"hello world\");\n    let hello: &str = &s[0..5];\n    let world: &str = &s[6..11];\n    println!(\"{hello} {world}\");\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Common String Methods",
                             "body": "Both String and &str offer useful methods like contains, starts_with, trim, and to_uppercase. Methods that need to allocate return a new String, while read-only checks work on &str directly.",
-                            "code": "let greeting = \"  Hello, Rust!  \";\nprintln!(\"{}\", greeting.trim());\nprintln!(\"{}\", greeting.contains(\"Rust\"));\nprintln!(\"{}\", greeting.to_lowercase());",
-                            "runnable": false
+                            "code": "fn main() {\n    let greeting = \"  Hello, Rust!  \";\n    println!(\"{}\", greeting.trim());\n    println!(\"{}\", greeting.contains(\"Rust\"));\n    println!(\"{}\", greeting.to_lowercase());\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Converting Between String and &str",
                             "body": "Convert &str to String with to_string, String::from, or to_owned. Go the other way by borrowing with & or calling as_str. Understanding when to own and when to borrow is key to writing efficient Rust. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on strings. Also visit the recommended books in the app for more insights.",
-                            "code": "let s: String = \"hello\".to_string();\nlet r: &str = s.as_str();\nlet s2: String = String::from(r);",
-                            "runnable": false
+                            "code": "fn main() {\n    let s: String = \"hello\".to_string();\n    let r: &str = s.as_str();\n    let s2: String = String::from(r);\n    println!(\"{} {}\", s, s2);\n}",
+                            "runnable": true
                         }
                     ]
                 },
@@ -796,20 +796,20 @@
                         {
                             "title": "Defining Modules",
                             "body": "Use the mod keyword to define a module inside a file. Modules create separate namespaces and can be nested. Items inside a module are private by default.",
-                            "code": "mod math {\n    pub fn add(a: i32, b: i32) -> i32 {\n        a + b\n    }\n\n    fn secret() -> i32 {\n        42\n    }\n}",
-                            "runnable": false
+                            "code": "mod math {\n    pub fn add(a: i32, b: i32) -> i32 {\n        a + b\n    }\n\n    fn secret() -> i32 {\n        42\n    }\n}\n\nfn main() {\n    println!(\"{}\", math::add(2, 3));\n}",
+                            "runnable": true
                         },
                         {
                             "title": "The pub Keyword",
                             "body": "Mark an item with pub to make it accessible outside its module. Without pub, functions, structs, and constants are only visible within the same module and its children.",
-                            "code": "mod greet {\n    pub fn hello() {\n        println!(\"Hello!\");\n    }\n}\n\ngreet::hello(); // works because hello is pub",
-                            "runnable": false
+                            "code": "mod greet {\n    pub fn hello() {\n        println!(\"Hello!\");\n    }\n}\n\nfn main() {\n    greet::hello(); // works because hello is pub\n}",
+                            "runnable": true
                         },
                         {
                             "title": "The use Keyword",
                             "body": "The use statement brings a path into scope so you can refer to items by their short name. You can also rename imports with as to avoid name conflicts.",
-                            "code": "use std::collections::HashMap;\nuse std::io::Result as IoResult;\n\nlet mut map = HashMap::new();\nmap.insert(\"key\", \"value\");",
-                            "runnable": false
+                            "code": "use std::collections::HashMap;\nuse std::io::Result as IoResult;\n\nfn main() {\n    let mut map = HashMap::new();\n    map.insert(\"key\", \"value\");\n    let _result: IoResult<()> = Ok(());\n    println!(\"{:?}\", map);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "File-Based Module Structure",
@@ -828,26 +828,26 @@
                         {
                             "title": "Implementing Methods",
                             "body": "Define methods for a type inside an impl block. Methods take self as the first parameter, which refers to the instance the method is called on.",
-                            "code": "struct Rect {\n    width: f64,\n    height: f64,\n}\n\nimpl Rect {\n    fn area(&self) -> f64 {\n        self.width * self.height\n    }\n}",
-                            "runnable": false
+                            "code": "struct Rect {\n    width: f64,\n    height: f64,\n}\n\nimpl Rect {\n    fn area(&self) -> f64 {\n        self.width * self.height\n    }\n}\n\nfn main() {\n    let r = Rect { width: 3.0, height: 4.0 };\n    println!(\"Area: {}\", r.area());\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Self Variants",
                             "body": "Use &self to borrow immutably, &mut self to borrow mutably, and self to take ownership. Most methods use &self because they only need to read the data.",
-                            "code": "impl Rect {\n    fn scale(&mut self, factor: f64) {\n        self.width *= factor;\n        self.height *= factor;\n    }\n}",
-                            "runnable": false
+                            "code": "struct Rect {\n    width: f64,\n    height: f64,\n}\n\nimpl Rect {\n    fn scale(&mut self, factor: f64) {\n        self.width *= factor;\n        self.height *= factor;\n    }\n}\n\nfn main() {\n    let mut r = Rect { width: 2.0, height: 3.0 };\n    r.scale(2.0);\n    println!(\"{} {}\", r.width, r.height);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Associated Functions",
                             "body": "Functions inside an impl block that do not take self are called associated functions. They are often used as constructors. Call them with the double-colon syntax.",
-                            "code": "impl Rect {\n    fn square(size: f64) -> Rect {\n        Rect { width: size, height: size }\n    }\n}\n\nlet sq = Rect::square(5.0);",
-                            "runnable": false
+                            "code": "struct Rect {\n    width: f64,\n    height: f64,\n}\n\nimpl Rect {\n    fn square(size: f64) -> Rect {\n        Rect { width: size, height: size }\n    }\n}\n\nfn main() {\n    let sq = Rect::square(5.0);\n    println!(\"{} {}\", sq.width, sq.height);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Multiple impl Blocks",
                             "body": "You can split methods across several impl blocks for the same type. This is especially handy when implementing traits separately from inherent methods. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on method syntax. Also visit the recommended books in the app for more insights.",
-                            "code": "impl Rect {\n    fn is_square(&self) -> bool {\n        (self.width - self.height).abs() < f64::EPSILON\n    }\n}",
-                            "runnable": false
+                            "code": "struct Rect {\n    width: f64,\n    height: f64,\n}\n\nimpl Rect {\n    fn is_square(&self) -> bool {\n        (self.width - self.height).abs() < f64::EPSILON\n    }\n}\n\nfn main() {\n    let r = Rect { width: 4.0, height: 4.0 };\n    println!(\"Is square: {}\", r.is_square());\n}",
+                            "runnable": true
                         }
                     ]
                 },
@@ -862,20 +862,20 @@
                         {
                             "title": "The if let Shorthand",
                             "body": "When you only care about one match arm, if let is cleaner than a full match. It binds the value if the pattern matches and skips the block otherwise.",
-                            "code": "let config_max = Some(3u8);\nif let Some(max) = config_max {\n    println!(\"Max is {max}\");\n}",
-                            "runnable": false
+                            "code": "fn main() {\n    let config_max = Some(3u8);\n    if let Some(max) = config_max {\n        println!(\"Max is {max}\");\n    }\n}",
+                            "runnable": true
                         },
                         {
                             "title": "if let with else",
                             "body": "Add an else branch to handle the non-matching case. This is equivalent to a match with a wildcard arm, but more concise when there are only two outcomes.",
-                            "code": "let val: Option<i32> = None;\nif let Some(v) = val {\n    println!(\"Got {v}\");\n} else {\n    println!(\"No value\");\n}",
-                            "runnable": false
+                            "code": "fn main() {\n    let val: Option<i32> = None;\n    if let Some(v) = val {\n        println!(\"Got {v}\");\n    } else {\n        println!(\"No value\");\n    }\n}",
+                            "runnable": true
                         },
                         {
                             "title": "The while let Loop",
                             "body": "while let repeatedly matches a pattern and runs the loop body as long as it succeeds. It is commonly used to drain a collection one element at a time.",
-                            "code": "let mut stack = vec![1, 2, 3];\nwhile let Some(top) = stack.pop() {\n    println!(\"{top}\");\n}\n// prints 3, 2, 1",
-                            "runnable": false
+                            "code": "fn main() {\n    let mut stack = vec![1, 2, 3];\n    while let Some(top) = stack.pop() {\n        println!(\"{top}\");\n    }\n    // prints 3, 2, 1\n}",
+                            "runnable": true
                         },
                         {
                             "title": "When to Choose if let vs match",
@@ -894,26 +894,26 @@
                         {
                             "title": "What is an Iterator?",
                             "body": "An iterator produces a sequence of values one at a time. In Rust, any type implementing the Iterator trait has a next method that returns Some(value) until exhausted, then None.",
-                            "code": "let nums = vec![10, 20, 30];\nlet mut it = nums.iter();\nprintln!(\"{:?}\", it.next()); // Some(10)\nprintln!(\"{:?}\", it.next()); // Some(20)",
-                            "runnable": false
+                            "code": "fn main() {\n    let nums = vec![10, 20, 30];\n    let mut it = nums.iter();\n    println!(\"{:?}\", it.next()); // Some(10)\n    println!(\"{:?}\", it.next()); // Some(20)\n}",
+                            "runnable": true
                         },
                         {
                             "title": "iter, into_iter, and iter_mut",
                             "body": "iter borrows each element immutably. iter_mut borrows each element mutably. into_iter takes ownership of the collection and yields owned values. Choose based on whether you need to keep the original collection.",
-                            "code": "let v = vec![1, 2, 3];\nfor val in v.iter() {\n    println!(\"{val}\"); // borrows\n}\nfor val in v.into_iter() {\n    println!(\"{val}\"); // owns, v is consumed\n}",
-                            "runnable": false
+                            "code": "fn main() {\n    let v = vec![1, 2, 3];\n    for val in v.iter() {\n        println!(\"{val}\"); // borrows\n    }\n    for val in v.into_iter() {\n        println!(\"{val}\"); // owns, v is consumed\n    }\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Common Adapters",
                             "body": "Adapters like map, filter, and take transform an iterator into a new iterator lazily. Nothing happens until you consume the iterator with a method like collect or for_each.",
-                            "code": "let nums = vec![1, 2, 3, 4, 5];\nlet evens: Vec<i32> = nums.iter()\n    .filter(|&&x| x % 2 == 0)\n    .copied()\n    .collect();\nprintln!(\"{:?}\", evens); // [2, 4]",
-                            "runnable": false
+                            "code": "fn main() {\n    let nums = vec![1, 2, 3, 4, 5];\n    let evens: Vec<i32> = nums.iter()\n        .filter(|&&x| x % 2 == 0)\n        .copied()\n        .collect();\n    println!(\"{:?}\", evens); // [2, 4]\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Consuming with collect and sum",
                             "body": "The collect method gathers iterator results into a collection. The sum and product methods reduce numeric iterators to a single value. Turbofish syntax tells Rust the desired output type. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on iterators. Also visit the recommended books in the app for more insights.",
-                            "code": "let total: i32 = (1..=5).sum();\nprintln!(\"Sum: {total}\"); // 15\n\nlet doubled: Vec<i32> = (1..=3).map(|x| x * 2).collect();\nprintln!(\"{:?}\", doubled); // [2, 4, 6]",
-                            "runnable": false
+                            "code": "fn main() {\n    let total: i32 = (1..=5).sum();\n    println!(\"Sum: {total}\"); // 15\n\n    let doubled: Vec<i32> = (1..=3).map(|x| x * 2).collect();\n    println!(\"{:?}\", doubled); // [2, 4, 6]\n}",
+                            "runnable": true
                         }
                     ]
                 },
@@ -928,26 +928,26 @@
                         {
                             "title": "Closure Syntax",
                             "body": "Closures are anonymous functions defined with pipes for parameters. The compiler infers parameter and return types in most cases. Braces are optional for single-expression bodies.",
-                            "code": "let add = |a: i32, b: i32| a + b;\nprintln!(\"{}\", add(2, 3)); // 5\n\nlet greet = |name| format!(\"Hi, {name}!\");\nprintln!(\"{}\", greet(\"Rust\"));",
-                            "runnable": false
+                            "code": "fn main() {\n    let add = |a: i32, b: i32| a + b;\n    println!(\"{}\", add(2, 3)); // 5\n\n    let greet = |name| format!(\"Hi, {name}!\");\n    println!(\"{}\", greet(\"Rust\"));\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Capturing Variables",
                             "body": "Closures can capture variables from the surrounding scope. By default, Rust decides whether to borrow immutably, borrow mutably, or take ownership based on how the variable is used inside the closure.",
-                            "code": "let greeting = String::from(\"Hello\");\nlet say_hi = || println!(\"{greeting}\");\nsay_hi();",
-                            "runnable": false
+                            "code": "fn main() {\n    let greeting = String::from(\"Hello\");\n    let say_hi = || println!(\"{greeting}\");\n    say_hi();\n}",
+                            "runnable": true
                         },
                         {
                             "title": "The move Keyword",
                             "body": "Use move before the parameter list to force the closure to take ownership of captured variables. This is essential when passing closures to new threads or returning them from functions.",
-                            "code": "let name = String::from(\"Alice\");\nlet greet = move || {\n    println!(\"Hi, {name}\");\n};\ngreet();\n// name is no longer usable here",
-                            "runnable": false
+                            "code": "fn main() {\n    let name = String::from(\"Alice\");\n    let greet = move || {\n        println!(\"Hi, {name}\");\n    };\n    greet();\n    // name is no longer usable here\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Fn, FnMut, and FnOnce Traits",
                             "body": "Every closure implements one or more of the Fn traits. Fn borrows immutably, FnMut borrows mutably, and FnOnce consumes captured values. Function signatures accepting closures use these traits as bounds. For a deeper dive, see The Rust Programming Language book (doc.rust-lang.org/book) chapter on closures. Also visit the recommended books in the app for more insights.",
-                            "code": "fn apply<F: Fn(i32) -> i32>(f: F, x: i32) -> i32 {\n    f(x)\n}\n\nlet double = |n| n * 2;\nprintln!(\"{}\", apply(double, 5)); // 10",
-                            "runnable": false
+                            "code": "fn apply<F: Fn(i32) -> i32>(f: F, x: i32) -> i32 {\n    f(x)\n}\n\nfn main() {\n    let double = |n| n * 2;\n    println!(\"{}\", apply(double, 5)); // 10\n}",
+                            "runnable": true
                         }
                     ]
                 },
@@ -1035,26 +1035,26 @@
                         {
                             "title": "Defining a Trait",
                             "body": "A trait defines a set of methods that a type must implement. Think of it as a contract: any type that implements the trait promises to provide those methods. Traits are Rust's primary tool for polymorphism.",
-                            "code": "trait Greet {\n    fn hello(&self) -> String;\n}\n\nstruct User {\n    name: String,\n}\n\nimpl Greet for User {\n    fn hello(&self) -> String {\n        format!(\"Hi, I'm {}!\", self.name)\n    }\n}",
-                            "runnable": false
+                            "code": "trait Greet {\n    fn hello(&self) -> String;\n}\n\nstruct User {\n    name: String,\n}\n\nimpl Greet for User {\n    fn hello(&self) -> String {\n        format!(\"Hi, I'm {}!\", self.name)\n    }\n}\n\nfn main() {\n    let user = User { name: String::from(\"Ada\") };\n    println!(\"{}\", user.hello());\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Default Method Implementations",
                             "body": "Traits can provide default method bodies. Types that implement the trait can use the default or override it. This reduces boilerplate when many types share the same logic.",
-                            "code": "trait Summary {\n    fn summarize_author(&self) -> String;\n\n    fn summarize(&self) -> String {\n        format!(\"(Read more from {}...)\", self.summarize_author())\n    }\n}\n\nstruct Article {\n    author: String,\n}\n\nimpl Summary for Article {\n    fn summarize_author(&self) -> String {\n        self.author.clone()\n    }\n}",
-                            "runnable": false
+                            "code": "trait Summary {\n    fn summarize_author(&self) -> String;\n\n    fn summarize(&self) -> String {\n        format!(\"(Read more from {}...)\", self.summarize_author())\n    }\n}\n\nstruct Article {\n    author: String,\n}\n\nimpl Summary for Article {\n    fn summarize_author(&self) -> String {\n        self.author.clone()\n    }\n}\n\nfn main() {\n    let article = Article { author: String::from(\"Lin\") };\n    println!(\"{}\", article.summarize());\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Trait Bounds on Functions",
                             "body": "You can require function parameters to implement specific traits using the impl Trait syntax or explicit bounds. This lets you write generic code that works with any type meeting the contract.",
-                            "code": "fn print_greeting(item: &impl Greet) {\n    println!(\"{}\", item.hello());\n}\n\n// Equivalent with explicit bound:\nfn print_greeting_v2<T: Greet>(item: &T) {\n    println!(\"{}\", item.hello());\n}",
-                            "runnable": false
+                            "code": "trait Greet {\n    fn hello(&self) -> String;\n}\n\nstruct User {\n    name: String,\n}\n\nimpl Greet for User {\n    fn hello(&self) -> String {\n        format!(\"Hi, I'm {}!\", self.name)\n    }\n}\n\nfn print_greeting(item: &impl Greet) {\n    println!(\"{}\", item.hello());\n}\n\n// Equivalent with explicit bound:\nfn print_greeting_v2<T: Greet>(item: &T) {\n    println!(\"{}\", item.hello());\n}\n\nfn main() {\n    let user = User { name: String::from(\"Grace\") };\n    print_greeting(&user);\n    print_greeting_v2(&user);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Implementing Multiple Traits",
                             "body": "A single type can implement many traits, and a single trait can be implemented by many types. This composability is what makes Rust's trait system powerful. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on traits. Also visit the recommended books in the app for more insights.",
-                            "code": "use std::fmt;\n\nstruct Point {\n    x: f64,\n    y: f64,\n}\n\nimpl fmt::Display for Point {\n    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n        write!(f, \"({}, {})\", self.x, self.y)\n    }\n}",
-                            "runnable": false
+                            "code": "use std::fmt;\n\nstruct Point {\n    x: f64,\n    y: f64,\n}\n\nimpl fmt::Display for Point {\n    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n        write!(f, \"({}, {})\", self.x, self.y)\n    }\n}\n\nfn main() {\n    let p = Point { x: 2.0, y: 3.5 };\n    println!(\"{}\", p);\n}",
+                            "runnable": true
                         }
                     ]
                 },
@@ -1070,19 +1070,19 @@
                             "title": "Generic Functions",
                             "body": "Generic functions work with any type by using a type parameter in angle brackets. The compiler generates specialized versions for each concrete type you use, so there is zero runtime cost.",
                             "code": "fn largest<T: PartialOrd>(list: &[T]) -> &T {\n    let mut max = &list[0];\n    for item in &list[1..] {\n        if item > max {\n            max = item;\n        }\n    }\n    max\n}\n\nfn main() {\n    let numbers = vec![34, 50, 25, 100, 65];\n    println!(\"Largest: {}\", largest(&numbers));\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Generic Structs",
                             "body": "Structs can also hold generic types. This lets you create data structures that work with any type while remaining type-safe. Each field can use the same or different type parameters.",
                             "code": "struct Pair<T, U> {\n    first: T,\n    second: U,\n}\n\nimpl<T, U> Pair<T, U> {\n    fn new(first: T, second: U) -> Self {\n        Pair { first, second }\n    }\n}\n\nfn main() {\n    let p = Pair::new(\"hello\", 42);\n    println!(\"{} - {}\", p.first, p.second);\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Generic Enums",
                             "body": "Rust's most famous enums are generic: Option<T> and Result<T, E>. You can define your own generic enums to model flexible data variants that work across types.",
-                            "code": "enum Response<T> {\n    Success(T),\n    Error(String),\n}\n\nfn fetch_data(valid: bool) -> Response<Vec<i32>> {\n    if valid {\n        Response::Success(vec![1, 2, 3])\n    } else {\n        Response::Error(\"fetch failed\".to_string())\n    }\n}",
-                            "runnable": false
+                            "code": "enum Response<T> {\n    Success(T),\n    Error(String),\n}\n\nfn fetch_data(valid: bool) -> Response<Vec<i32>> {\n    if valid {\n        Response::Success(vec![1, 2, 3])\n    } else {\n        Response::Error(\"fetch failed\".to_string())\n    }\n}\n\nfn main() {\n    match fetch_data(true) {\n        Response::Success(data) => println!(\"{:?}\", data),\n        Response::Error(msg) => println!(\"{msg}\"),\n    }\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Monomorphization",
@@ -1101,26 +1101,26 @@
                         {
                             "title": "Why Lifetimes Exist",
                             "body": "Lifetimes are Rust's way of tracking how long references are valid. The compiler uses them to guarantee that you never have a dangling reference. Most of the time lifetimes are inferred, but sometimes you must annotate them explicitly.",
-                            "code": "// This won't compile: r would dangle\n// fn bad() -> &i32 {\n//     let x = 5;\n//     &x  // x is dropped here\n// }\n\nfn good(x: &i32) -> &i32 {\n    x  // returned ref lives as long as input\n}",
-                            "runnable": false
+                            "code": "// This won't compile: r would dangle\n// fn bad() -> &i32 {\n//     let x = 5;\n//     &x  // x is dropped here\n// }\n\nfn good(x: &i32) -> &i32 {\n    x  // returned ref lives as long as input\n}\n\nfn main() {\n    let n = 5;\n    println!(\"{}\", good(&n));\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Lifetime Annotations",
                             "body": "Lifetime annotations use an apostrophe followed by a short name, like 'a. They tell the compiler how the lifetimes of multiple references relate to each other. Annotations don't change how long values live; they describe existing relationships.",
                             "code": "fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {\n    if x.len() > y.len() {\n        x\n    } else {\n        y\n    }\n}\n\nfn main() {\n    let s1 = String::from(\"long string\");\n    let result;\n    {\n        let s2 = String::from(\"hi\");\n        result = longest(s1.as_str(), s2.as_str());\n        println!(\"Longest: {}\", result);\n    }\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Lifetime Elision Rules",
                             "body": "Rust has three elision rules that let you skip lifetime annotations in common cases. If each parameter gets its own lifetime, if there is exactly one input lifetime it gets assigned to all outputs, and if one parameter is &self its lifetime is assigned to outputs. These rules cover most functions.",
-                            "code": "// All three are equivalent thanks to elision:\n// fn first(s: &str) -> &str\n// fn first<'a>(s: &'a str) -> &'a str\nfn first(s: &str) -> &str {\n    &s[..1]\n}",
-                            "runnable": false
+                            "code": "// All three are equivalent thanks to elision:\n// fn first(s: &str) -> &str\n// fn first<'a>(s: &'a str) -> &'a str\nfn first(s: &str) -> &str {\n    &s[..1]\n}\n\nfn main() {\n    println!(\"{}\", first(\"hello\"));\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Lifetimes in Structs",
                             "body": "When a struct holds a reference, it needs a lifetime annotation. This tells the compiler the struct cannot outlive the data it borrows. This pattern is common for lightweight views into larger data. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on lifetimes. Also visit the recommended books in the app for more insights.",
                             "code": "struct Excerpt<'a> {\n    text: &'a str,\n}\n\nimpl<'a> Excerpt<'a> {\n    fn level(&self) -> i32 {\n        3\n    }\n}\n\nfn main() {\n    let novel = String::from(\"Call me Ishmael. Some years ago...\");\n    let first_sentence = novel.split('.').next().unwrap();\n    let excerpt = Excerpt { text: first_sentence };\n    println!(\"Excerpt: {}\", excerpt.text);\n}",
-                            "runnable": false
+                            "runnable": true
                         }
                     ]
                 },
@@ -1136,25 +1136,25 @@
                             "title": "Basic Trait Bounds",
                             "body": "Trait bounds restrict which types a generic function accepts. You write them after a colon on the type parameter. Only types that implement the required trait can be passed to the function.",
                             "code": "use std::fmt::Display;\n\nfn print_item<T: Display>(item: T) {\n    println!(\"Value: {}\", item);\n}\n\nfn main() {\n    print_item(42);\n    print_item(\"hello\");\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Multiple Trait Bounds",
                             "body": "A type parameter can require multiple traits using the + syntax. The type must implement all listed traits. This is useful when you need a combination of capabilities from a single value.",
                             "code": "use std::fmt::{Display, Debug};\n\nfn inspect<T: Display + Debug>(item: T) {\n    println!(\"Display: {}\", item);\n    println!(\"Debug: {:?}\", item);\n}\n\nfn main() {\n    inspect(42);\n    inspect(\"rust\");\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Where Clauses",
                             "body": "When bounds get complex, move them to a where clause after the function signature. This keeps the function name and parameters readable. Where clauses are especially helpful when multiple type parameters each have several bounds.",
                             "code": "use std::fmt::{Display, Debug};\n\nfn compare_and_display<T, U>(t: &T, u: &U)\nwhere\n    T: Display + Clone,\n    U: Debug + PartialOrd,\n{\n    println!(\"t = {}\", t);\n    println!(\"u = {:?}\", u);\n}\n\nfn main() {\n    compare_and_display(&\"hello\", &42);\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Returning Bounded Types",
                             "body": "You can use impl Trait as a return type to say the function returns some type implementing a trait without naming it. This is handy for returning closures or iterators. The compiler still knows the concrete type so there is no dynamic dispatch cost. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on trait bounds. Also visit the recommended books in the app for more insights.",
                             "code": "fn make_adder(x: i32) -> impl Fn(i32) -> i32 {\n    move |y| x + y\n}\n\nfn main() {\n    let add_five = make_adder(5);\n    println!(\"{}\", add_five(3));  // 8\n}",
-                            "runnable": false
+                            "runnable": true
                         }
                     ]
                 },
@@ -1170,25 +1170,25 @@
                             "title": "What Is Box<T>",
                             "body": "Box<T> is the simplest smart pointer in Rust. It allocates data on the heap and stores a pointer on the stack. When the Box goes out of scope, both the pointer and the heap data are freed automatically.",
                             "code": "fn main() {\n    let b = Box::new(5);\n    println!(\"Boxed value: {}\", b);\n    // b is automatically freed here\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "When to Use the Heap",
                             "body": "Use Box when you have a large value you don't want to copy on the stack, when you need a value with a size unknown at compile time, or when you want to transfer ownership without copying data. Stack allocation is faster, so prefer it unless you have a reason to use the heap.",
                             "code": "fn main() {\n    // Large array on the heap to avoid stack overflow\n    let big_data = Box::new([0u8; 1_000_000]);\n    println!(\"Length: {}\", big_data.len());\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Recursive Types with Box",
                             "body": "Recursive types like linked lists need Box because the compiler must know the size of each type at compile time. Without Box, a recursive struct would be infinitely sized. Box provides the indirection that gives it a fixed size.",
-                            "code": "enum List {\n    Cons(i32, Box<List>),\n    Nil,\n}\n\nuse List::{Cons, Nil};\n\nfn main() {\n    let list = Cons(1, Box::new(Cons(2, Box::new(Cons(3, Box::new(Nil))))));\n    // A linked list: 1 -> 2 -> 3 -> Nil\n}",
-                            "runnable": false
+                            "code": "enum List {\n    Cons(i32, Box<List>),\n    Nil,\n}\n\nuse List::{Cons, Nil};\n\nfn main() {\n    let list = Cons(1, Box::new(Cons(2, Box::new(Cons(3, Box::new(Nil))))));\n    // A linked list: 1 -> 2 -> 3 -> Nil\n    let _ = list;\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Box and Deref",
                             "body": "Box implements the Deref trait, so you can treat a Box<T> just like a regular reference to T. The compiler automatically dereferences it when needed. This makes Box transparent in most code so you rarely need explicit dereferencing. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on smart pointers. Also visit the recommended books in the app for more insights.",
                             "code": "fn greet(name: &str) {\n    println!(\"Hello, {}!\", name);\n}\n\nfn main() {\n    let boxed_name = Box::new(String::from(\"Rust\"));\n    greet(&boxed_name);  // Deref coercion: Box -> String -> &str\n}",
-                            "runnable": false
+                            "runnable": true
                         }
                     ]
                 },
@@ -1203,20 +1203,20 @@
                         {
                             "title": "Why Shared Ownership",
                             "body": "Sometimes a value needs more than one owner. A node in a graph, for example, might be referenced by multiple edges. Rust's default single-ownership model doesn't allow this, so Rc<T> provides reference-counted shared ownership for single-threaded scenarios.",
-                            "code": "use std::rc::Rc;\n\nfn main() {\n    let data = Rc::new(vec![1, 2, 3]);\n    let a = Rc::clone(&data);\n    let b = Rc::clone(&data);\n    println!(\"References: {}\", Rc::strong_count(&data));  // 3\n}",
-                            "runnable": false
+                            "code": "use std::rc::Rc;\n\nfn main() {\n    let data = Rc::new(vec![1, 2, 3]);\n    let _a = Rc::clone(&data);\n    let _b = Rc::clone(&data);\n    println!(\"References: {}\", Rc::strong_count(&data));  // 3\n}",
+                            "runnable": true
                         },
                         {
                             "title": "How Rc Works",
                             "body": "Rc keeps a count of how many clones exist. Calling Rc::clone increments this count cheaply without copying the inner data. When each clone is dropped the count decrements, and the data is freed only when the count reaches zero.",
-                            "code": "use std::rc::Rc;\n\nfn main() {\n    let a = Rc::new(String::from(\"shared\"));\n    println!(\"Count after a: {}\", Rc::strong_count(&a));\n    {\n        let b = Rc::clone(&a);\n        println!(\"Count after b: {}\", Rc::strong_count(&a));\n    }\n    println!(\"Count after b dropped: {}\", Rc::strong_count(&a));\n}",
-                            "runnable": false
+                            "code": "use std::rc::Rc;\n\nfn main() {\n    let a = Rc::new(String::from(\"shared\"));\n    println!(\"Count after a: {}\", Rc::strong_count(&a));\n    {\n        let _b = Rc::clone(&a);\n        println!(\"Count after b: {}\", Rc::strong_count(&a));\n    }\n    println!(\"Count after b dropped: {}\", Rc::strong_count(&a));\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Shared Lists with Rc",
                             "body": "A classic use case is two lists sharing a common tail. Without Rc you would need to clone the tail data. With Rc both lists point to the same heap allocation and the data lives until both lists are dropped.",
-                            "code": "use std::rc::Rc;\n\nenum List {\n    Cons(i32, Rc<List>),\n    Nil,\n}\n\nuse List::{Cons, Nil};\n\nfn main() {\n    let shared_tail = Rc::new(Cons(10, Rc::new(Nil)));\n    let list_a = Cons(5, Rc::clone(&shared_tail));\n    let list_b = Cons(7, Rc::clone(&shared_tail));\n}",
-                            "runnable": false
+                            "code": "use std::rc::Rc;\n\nenum List {\n    Cons(i32, Rc<List>),\n    Nil,\n}\n\nuse List::{Cons, Nil};\n\nfn main() {\n    let shared_tail = Rc::new(Cons(10, Rc::new(Nil)));\n    let _list_a = Cons(5, Rc::clone(&shared_tail));\n    let _list_b = Cons(7, Rc::clone(&shared_tail));\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Rc Limitations",
@@ -1236,25 +1236,25 @@
                             "title": "The Interior Mutability Pattern",
                             "body": "Normally, Rust enforces borrowing rules at compile time. Interior mutability lets you mutate data even when there are immutable references to it by moving the borrow check to runtime. This is useful when you know your code is safe but the compiler cannot prove it.",
                             "code": "use std::cell::RefCell;\n\nfn main() {\n    let data = RefCell::new(vec![1, 2, 3]);\n    data.borrow_mut().push(4);\n    println!(\"{:?}\", data.borrow());  // [1, 2, 3, 4]\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "RefCell<T> in Detail",
                             "body": "RefCell tracks borrows at runtime. Calling borrow gives a shared reference, and borrow_mut gives a mutable one. If you violate borrowing rules at runtime, the program panics instead of producing undefined behavior. This trades compile-time safety for flexibility.",
                             "code": "use std::cell::RefCell;\n\nfn main() {\n    let value = RefCell::new(42);\n    let r1 = value.borrow();\n    let r2 = value.borrow();  // Multiple shared borrows: OK\n    println!(\"{} {}\", r1, r2);\n    drop(r1);\n    drop(r2);\n    *value.borrow_mut() = 99;  // Mutable borrow after dropping shared ones\n    println!(\"{}\", value.borrow());\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Combining Rc and RefCell",
                             "body": "A common pattern is Rc<RefCell<T>> which gives you multiple owners that can all mutate the inner value. This is the Rust equivalent of a shared mutable variable, with safety enforced at runtime.",
                             "code": "use std::cell::RefCell;\nuse std::rc::Rc;\n\nfn main() {\n    let shared = Rc::new(RefCell::new(0));\n    let a = Rc::clone(&shared);\n    let b = Rc::clone(&shared);\n\n    *a.borrow_mut() += 10;\n    *b.borrow_mut() += 20;\n\n    println!(\"Final: {}\", shared.borrow());  // 30\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Cell<T> for Copy Types",
                             "body": "Cell<T> is a simpler alternative for types that implement Copy. It lets you get and set values without borrowing. Since it copies the value in and out, there is no risk of aliased mutable references. Use Cell for simple counters or flags, and RefCell for complex types. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on interior mutability. Also visit the recommended books in the app for more insights.",
                             "code": "use std::cell::Cell;\n\nfn main() {\n    let counter = Cell::new(0);\n    counter.set(counter.get() + 1);\n    counter.set(counter.get() + 1);\n    println!(\"Counter: {}\", counter.get());  // 2\n}",
-                            "runnable": false
+                            "runnable": true
                         }
                     ]
                 },
@@ -1269,8 +1269,8 @@
                         {
                             "title": "Custom Error Types",
                             "body": "For libraries and larger programs, define your own error enum. Each variant represents a different failure mode. Implementing Display and the Error trait lets your error integrate with the standard error ecosystem.",
-                            "code": "use std::fmt;\n\n#[derive(Debug)]\nenum AppError {\n    NotFound(String),\n    ParseFailure(String),\n    Io(std::io::Error),\n}\n\nimpl fmt::Display for AppError {\n    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n        match self {\n            AppError::NotFound(name) => write!(f, \"{} not found\", name),\n            AppError::ParseFailure(msg) => write!(f, \"parse error: {}\", msg),\n            AppError::Io(e) => write!(f, \"IO error: {}\", e),\n        }\n    }\n}\n\nimpl std::error::Error for AppError {}",
-                            "runnable": false
+                            "code": "use std::fmt;\n\n#[derive(Debug)]\nenum AppError {\n    NotFound(String),\n    ParseFailure(String),\n    Io(std::io::Error),\n}\n\nimpl fmt::Display for AppError {\n    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n        match self {\n            AppError::NotFound(name) => write!(f, \"{} not found\", name),\n            AppError::ParseFailure(msg) => write!(f, \"parse error: {}\", msg),\n            AppError::Io(e) => write!(f, \"IO error: {}\", e),\n        }\n    }\n}\n\nimpl std::error::Error for AppError {}\n\nfn main() {\n    let err = AppError::NotFound(String::from(\"config\"));\n    println!(\"{}\", err);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "The From Trait for Conversion",
@@ -1281,8 +1281,8 @@
                         {
                             "title": "The ? Operator Chain",
                             "body": "You can chain multiple fallible operations using the ? operator. Each call either succeeds and unwraps the value, or returns early with the error converted via From. This replaces verbose match chains with clean, linear code.",
-                            "code": "use std::num::ParseIntError;\n\nimpl From<ParseIntError> for AppError {\n    fn from(e: ParseIntError) -> Self {\n        AppError::ParseFailure(e.to_string())\n    }\n}\n\nfn parse_port(input: &str) -> Result<u16, AppError> {\n    let trimmed = input.trim();\n    if trimmed.is_empty() {\n        return Err(AppError::NotFound(\"port value\".into()));\n    }\n    let port: u16 = trimmed.parse()?;\n    Ok(port)\n}",
-                            "runnable": false
+                            "code": "use std::num::ParseIntError;\n\nimpl From<ParseIntError> for AppError {\n    fn from(e: ParseIntError) -> Self {\n        AppError::ParseFailure(e.to_string())\n    }\n}\n\nfn parse_port(input: &str) -> Result<u16, AppError> {\n    let trimmed = input.trim();\n    if trimmed.is_empty() {\n        return Err(AppError::NotFound(\"port value\".into()));\n    }\n    let port: u16 = trimmed.parse()?;\n    Ok(port)\n}\n\nfn main() {\n    println!(\"{:?}\", parse_port(\"8080\"));\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Choosing an Error Strategy",
@@ -1302,25 +1302,25 @@
                             "title": "Iterator Basics",
                             "body": "The Iterator trait requires one method: next, which returns Some(item) or None. Most collections provide iter, iter_mut, and into_iter to create iterators. Iterators are lazy: they do nothing until consumed.",
                             "code": "fn main() {\n    let nums = vec![1, 2, 3, 4, 5];\n    let mut iter = nums.iter();\n    println!(\"{:?}\", iter.next());  // Some(1)\n    println!(\"{:?}\", iter.next());  // Some(2)\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Map and Filter",
                             "body": "Map transforms each element by applying a closure. Filter keeps only elements where the closure returns true. Both are adaptors that return new iterators, so you can chain them without allocating intermediate collections.",
                             "code": "fn main() {\n    let nums = vec![1, 2, 3, 4, 5, 6];\n    let result: Vec<i32> = nums.iter()\n        .filter(|&&x| x % 2 == 0)\n        .map(|&x| x * x)\n        .collect();\n    println!(\"{:?}\", result);  // [4, 16, 36]\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Fold and Reduce",
                             "body": "Fold accumulates all elements into a single value using an initial accumulator and a closure. It is the most general consumer: you can implement sum, product, and many other operations with fold.",
                             "code": "fn main() {\n    let nums = vec![1, 2, 3, 4, 5];\n    let sum = nums.iter().fold(0, |acc, &x| acc + x);\n    println!(\"Sum: {}\", sum);  // 15\n\n    let product = nums.iter().fold(1, |acc, &x| acc * x);\n    println!(\"Product: {}\", product);  // 120\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Chaining and Collecting",
                             "body": "Iterator chains compose naturally. You can chain multiple adaptors, then call collect to build any collection that implements FromIterator. Because adaptors are lazy, the entire chain runs in a single pass with no intermediate allocations. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on iterators. Also visit the recommended books in the app for more insights.",
                             "code": "use std::collections::HashMap;\n\nfn main() {\n    let words = vec![\"apple\", \"banana\", \"avocado\", \"blueberry\"];\n    let map: HashMap<char, Vec<&&str>> = words.iter()\n        .fold(HashMap::new(), |mut acc, word| {\n            let first = word.chars().next().unwrap();\n            acc.entry(first).or_default().push(word);\n            acc\n        });\n    println!(\"{:?}\", map);\n}",
-                            "runnable": false
+                            "runnable": true
                         }
                     ]
                 },
@@ -1336,25 +1336,25 @@
                             "title": "Closure Capture Modes",
                             "body": "Closures capture variables from their environment in three ways: by reference (Fn), by mutable reference (FnMut), or by value (FnOnce). Rust infers the most permissive mode that works, but you can force ownership with the move keyword.",
                             "code": "fn main() {\n    let name = String::from(\"Rust\");\n    let greet = || println!(\"Hello, {}!\", name);  // borrows name\n    greet();\n    greet();\n    println!(\"Still have: {}\", name);  // name is still valid\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "FnMut and FnOnce",
                             "body": "FnMut closures mutate captured variables, so they need mutable access. FnOnce closures consume a captured value, so they can only be called once. The compiler picks the right trait based on what the closure body does.",
                             "code": "fn main() {\n    let mut count = 0;\n    let mut increment = || {\n        count += 1;  // mutates count -> FnMut\n        println!(\"Count: {}\", count);\n    };\n    increment();\n    increment();\n\n    let name = String::from(\"owned\");\n    let consume = move || {\n        drop(name);  // consumes name -> FnOnce\n    };\n    consume();\n    // consume();  // Error: already consumed\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Closures as Parameters",
                             "body": "Functions can accept closures using generic bounds or impl Trait. Choose the most general trait that works: Fn if you only read, FnMut if you mutate, FnOnce if you consume. This gives callers maximum flexibility.",
                             "code": "fn apply_twice<F: Fn(i32) -> i32>(f: F, x: i32) -> i32 {\n    f(f(x))\n}\n\nfn main() {\n    let double = |x| x * 2;\n    println!(\"{}\", apply_twice(double, 3));  // 12\n\n    let add_ten = |x| x + 10;\n    println!(\"{}\", apply_twice(add_ten, 5));  // 25\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Returning Closures",
                             "body": "To return a closure from a function, use impl Fn or Box<dyn Fn>. Since closures have unique anonymous types, you cannot name them directly. The impl Trait syntax works when the function always returns the same closure type; use Box for dynamic cases. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on closures. Also visit the recommended books in the app for more insights.",
                             "code": "fn make_multiplier(factor: i32) -> impl Fn(i32) -> i32 {\n    move |x| x * factor\n}\n\nfn main() {\n    let triple = make_multiplier(3);\n    let double = make_multiplier(2);\n    println!(\"{}\", triple(10));  // 30\n    println!(\"{}\", double(10));  // 20\n}",
-                            "runnable": false
+                            "runnable": true
                         }
                     ]
                 },
@@ -1369,26 +1369,26 @@
                         {
                             "title": "Enum Variants with Data",
                             "body": "Rust enums can hold data in each variant, like tuples or structs. This makes them far more powerful than enums in most languages. Each variant can carry different types and amounts of data.",
-                            "code": "enum Message {\n    Quit,\n    Move { x: i32, y: i32 },\n    Write(String),\n    Color(u8, u8, u8),\n}\n\nfn main() {\n    let msg = Message::Move { x: 10, y: 20 };\n    let txt = Message::Write(\"hello\".to_string());\n}",
-                            "runnable": false
+                            "code": "enum Message {\n    Quit,\n    Move { x: i32, y: i32 },\n    Write(String),\n    Color(u8, u8, u8),\n}\n\nfn main() {\n    let _msg = Message::Move { x: 10, y: 20 };\n    let _txt = Message::Write(\"hello\".to_string());\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Methods on Enums",
                             "body": "You can implement methods on enums just like structs. Use match inside methods to handle each variant. This keeps behavior close to the data it operates on.",
                             "code": "impl Message {\n    fn process(&self) {\n        match self {\n            Message::Quit => println!(\"Quitting\"),\n            Message::Move { x, y } => println!(\"Moving to ({}, {})\", x, y),\n            Message::Write(text) => println!(\"Writing: {}\", text),\n            Message::Color(r, g, b) => println!(\"Color: #{:02x}{:02x}{:02x}\", r, g, b),\n        }\n    }\n}\n\nfn main() {\n    Message::Color(255, 128, 0).process();\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "State Machines with Enums",
                             "body": "Enums naturally model state machines. Each variant is a state, and transitions are functions that consume one state and return another. The compiler ensures you handle every state, making illegal states unrepresentable.",
-                            "code": "enum Connection {\n    Disconnected,\n    Connecting(String),\n    Connected { host: String, port: u16 },\n}\n\nimpl Connection {\n    fn connect(host: &str, port: u16) -> Connection {\n        println!(\"Connecting to {}:{}...\", host, port);\n        Connection::Connected {\n            host: host.to_string(),\n            port,\n        }\n    }\n\n    fn disconnect(self) -> Connection {\n        Connection::Disconnected\n    }\n}",
-                            "runnable": false
+                            "code": "enum Connection {\n    Disconnected,\n    Connecting(String),\n    Connected { host: String, port: u16 },\n}\n\nimpl Connection {\n    fn connect(host: &str, port: u16) -> Connection {\n        println!(\"Connecting to {}:{}...\", host, port);\n        Connection::Connected {\n            host: host.to_string(),\n            port,\n        }\n    }\n\n    fn disconnect(self) -> Connection {\n        Connection::Disconnected\n    }\n}\n\nfn main() {\n    let conn = Connection::connect(\"example.com\", 443);\n    let _ = conn.disconnect();\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Pattern Matching Power",
                             "body": "Rust's pattern matching with enums supports destructuring, guards, nested patterns, and binding. Combined with exhaustive checking, this makes it nearly impossible to forget a case. Enums with data and match form one of Rust's most distinctive and powerful features. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on enums and pattern matching. Also visit the recommended books in the app for more insights.",
-                            "code": "fn describe(conn: &Connection) -> String {\n    match conn {\n        Connection::Disconnected => \"offline\".to_string(),\n        Connection::Connecting(host) => format!(\"reaching {}\", host),\n        Connection::Connected { host, port } if *port == 443 => {\n            format!(\"secure connection to {}\", host)\n        }\n        Connection::Connected { host, port } => {\n            format!(\"connected to {}:{}\", host, port)\n        }\n    }\n}",
-                            "runnable": false
+                            "code": "fn describe(conn: &Connection) -> String {\n    match conn {\n        Connection::Disconnected => \"offline\".to_string(),\n        Connection::Connecting(host) => format!(\"reaching {}\", host),\n        Connection::Connected { host, port } if *port == 443 => {\n            format!(\"secure connection to {}\", host)\n        }\n        Connection::Connected { host, port } => {\n            format!(\"connected to {}:{}\", host, port)\n        }\n    }\n}\n\nfn main() {\n    let conn = Connection::Connected { host: \"example.com\".into(), port: 443 };\n    println!(\"{}\", describe(&conn));\n}",
+                            "runnable": true
                         }
                     ]
                 },
@@ -1403,20 +1403,20 @@
                         {
                             "title": "Type Aliases",
                             "body": "The type keyword creates an alias: a new name for an existing type. Aliases don't create new types; they just improve readability. They are especially useful for shortening long generic types like Result with a fixed error.",
-                            "code": "type Meters = f64;\ntype Seconds = f64;\ntype Velocity = f64;\n\nfn speed(distance: Meters, time: Seconds) -> Velocity {\n    distance / time\n}\n\n// Common pattern: shortening Result\ntype IoResult<T> = Result<T, std::io::Error>;",
-                            "runnable": false
+                            "code": "type Meters = f64;\ntype Seconds = f64;\ntype Velocity = f64;\n\nfn speed(distance: Meters, time: Seconds) -> Velocity {\n    distance / time\n}\n\n// Common pattern: shortening Result\ntype IoResult<T> = Result<T, std::io::Error>;\n\nfn main() {\n    let v = speed(100.0, 9.58);\n    let _ok: IoResult<()> = Ok(());\n    println!(\"{}\", v);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "The Newtype Pattern",
                             "body": "A newtype is a tuple struct with a single field. Unlike aliases, newtypes create distinct types that the compiler treats as different. This prevents mixing up values that have the same underlying type but different meanings.",
                             "code": "struct Meters(f64);\nstruct Seconds(f64);\n\nfn speed(distance: Meters, time: Seconds) -> f64 {\n    distance.0 / time.0\n}\n\nfn main() {\n    let d = Meters(100.0);\n    let t = Seconds(9.58);\n    println!(\"Speed: {:.2} m/s\", speed(d, t));\n    // speed(t, d);  // Compile error: wrong types!\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Implementing Traits on Newtypes",
                             "body": "Newtypes let you implement foreign traits on foreign types, bypassing the orphan rule. You wrap the foreign type in your newtype, then implement whatever traits you need on the wrapper.",
                             "code": "use std::fmt;\n\nstruct Wrapper(Vec<String>);\n\nimpl fmt::Display for Wrapper {\n    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n        write!(f, \"[{}]\", self.0.join(\", \"))\n    }\n}\n\nfn main() {\n    let w = Wrapper(vec![\"hello\".into(), \"world\".into()]);\n    println!(\"{}\", w);  // [hello, world]\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "When to Choose Each",
@@ -1470,19 +1470,19 @@
                             "title": "VecDeque for Double-Ended Access",
                             "body": "VecDeque is a double-ended queue built on a ring buffer. It offers O(1) push and pop from both front and back, unlike Vec which is O(n) for front operations. Use it when you need a queue or need to insert at both ends.",
                             "code": "use std::collections::VecDeque;\n\nfn main() {\n    let mut deque = VecDeque::new();\n    deque.push_back(1);\n    deque.push_back(2);\n    deque.push_front(0);\n    println!(\"{:?}\", deque);  // [0, 1, 2]\n    println!(\"Front: {:?}\", deque.pop_front());  // Some(0)\n    println!(\"Back: {:?}\", deque.pop_back());    // Some(2)\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "BTreeMap for Sorted Keys",
                             "body": "BTreeMap stores entries sorted by key using a B-tree. Lookups are O(log n) instead of HashMap's O(1), but you get sorted iteration and range queries. Use it when you need ordered keys or your key type doesn't implement Hash.",
                             "code": "use std::collections::BTreeMap;\n\nfn main() {\n    let mut scores = BTreeMap::new();\n    scores.insert(\"Charlie\", 85);\n    scores.insert(\"Alice\", 92);\n    scores.insert(\"Bob\", 78);\n\n    // Iterates in sorted key order\n    for (name, score) in &scores {\n        println!(\"{}: {}\", name, score);\n    }\n\n    // Range query\n    for (name, score) in scores.range(\"A\"..\"C\") {\n        println!(\"Range: {} = {}\", name, score);\n    }\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "HashSet for Unique Values",
                             "body": "HashSet stores unique values with O(1) lookup. It supports set operations like union, intersection, and difference. Use it when you need to check membership or eliminate duplicates efficiently.",
                             "code": "use std::collections::HashSet;\n\nfn main() {\n    let a: HashSet<i32> = [1, 2, 3, 4].iter().cloned().collect();\n    let b: HashSet<i32> = [3, 4, 5, 6].iter().cloned().collect();\n\n    let intersection: Vec<&i32> = a.intersection(&b).collect();\n    let union: Vec<&i32> = a.union(&b).collect();\n    let diff: Vec<&i32> = a.difference(&b).collect();\n\n    println!(\"Intersection: {:?}\", intersection);\n    println!(\"Union: {:?}\", union);\n    println!(\"Only in a: {:?}\", diff);\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Choosing the Right Collection",
@@ -1501,26 +1501,26 @@
                         {
                             "title": "What Are Trait Objects",
                             "body": "A trait object lets you store different concrete types behind a single interface. You create one by using dyn Trait behind a reference or smart pointer. The compiler uses a vtable for dynamic dispatch, resolving method calls at runtime instead of compile time.",
-                            "code": "trait Shape {\n    fn area(&self) -> f64;\n    fn name(&self) -> &str;\n}\n\nstruct Circle { radius: f64 }\nstruct Rect { w: f64, h: f64 }\n\nimpl Shape for Circle {\n    fn area(&self) -> f64 { std::f64::consts::PI * self.radius * self.radius }\n    fn name(&self) -> &str { \"circle\" }\n}\n\nimpl Shape for Rect {\n    fn area(&self) -> f64 { self.w * self.h }\n    fn name(&self) -> &str { \"rectangle\" }\n}",
-                            "runnable": false
+                            "code": "trait Shape {\n    fn area(&self) -> f64;\n    fn name(&self) -> &str;\n}\n\nstruct Circle { radius: f64 }\nstruct Rect { w: f64, h: f64 }\n\nimpl Shape for Circle {\n    fn area(&self) -> f64 { std::f64::consts::PI * self.radius * self.radius }\n    fn name(&self) -> &str { \"circle\" }\n}\n\nimpl Shape for Rect {\n    fn area(&self) -> f64 { self.w * self.h }\n    fn name(&self) -> &str { \"rectangle\" }\n}\n\nfn main() {\n    let c = Circle { radius: 2.0 };\n    let r = Rect { w: 3.0, h: 4.0 };\n    println!(\"{}: {:.2}\", c.name(), c.area());\n    println!(\"{}: {:.2}\", r.name(), r.area());\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Using dyn Trait",
                             "body": "You can collect different types in a Vec<Box<dyn Trait>> or accept them as function parameters with &dyn Trait. This is useful when the set of types isn't known at compile time, like plugin systems or heterogeneous collections.",
                             "code": "fn print_shapes(shapes: &[Box<dyn Shape>]) {\n    for shape in shapes {\n        println!(\"{}: area = {:.2}\", shape.name(), shape.area());\n    }\n}\n\nfn main() {\n    let shapes: Vec<Box<dyn Shape>> = vec![\n        Box::new(Circle { radius: 5.0 }),\n        Box::new(Rect { w: 4.0, h: 6.0 }),\n        Box::new(Circle { radius: 2.0 }),\n    ];\n    print_shapes(&shapes);\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Object Safety",
                             "body": "Not every trait can be used as a trait object. A trait is object-safe if its methods don't return Self and don't use generics. This is because the compiler needs a fixed vtable layout. If a trait isn't object-safe, use generics with trait bounds instead.",
-                            "code": "// Object-safe: all methods take &self, no generics\ntrait Drawable {\n    fn draw(&self);\n}\n\n// NOT object-safe: returns Self\ntrait Cloneable {\n    fn clone_self(&self) -> Self;\n}\n\n// Workaround: use a Box return\ntrait CloneBox {\n    fn clone_box(&self) -> Box<dyn CloneBox>;\n}",
-                            "runnable": false
+                            "code": "// Object-safe: all methods take &self, no generics\ntrait Drawable {\n    fn draw(&self);\n}\n\n// NOT object-safe: returns Self\ntrait Cloneable {\n    fn clone_self(&self) -> Self;\n}\n\n// Workaround: use a Box return\ntrait CloneBox {\n    fn clone_box(&self) -> Box<dyn CloneBox>;\n}\n\nstruct Dot;\n\nimpl Drawable for Dot {\n    fn draw(&self) {\n        println!(\"dot\");\n    }\n}\n\nfn main() {\n    let d = Dot;\n    d.draw();\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Generics vs Trait Objects",
                             "body": "Generics use static dispatch with monomorphization, producing fast specialized code but larger binaries. Trait objects use dynamic dispatch with a small runtime cost but keep binary size down. Choose generics when performance is critical and types are known at compile time; choose trait objects when you need runtime flexibility. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on trait objects and dynamic dispatch. Also visit the recommended books in the app for more insights.",
                             "code": "// Static dispatch: one copy per type, fast\nfn area_static(shape: &impl Shape) -> f64 {\n    shape.area()\n}\n\n// Dynamic dispatch: one copy, flexible\nfn area_dynamic(shape: &dyn Shape) -> f64 {\n    shape.area()\n}\n\nfn main() {\n    let c = Circle { radius: 3.0 };\n    println!(\"{}\", area_static(&c));\n    println!(\"{}\", area_dynamic(&c));\n}",
-                            "runnable": false
+                            "runnable": true
                         }
                     ]
                 }
@@ -1541,19 +1541,19 @@
                             "title": "Spawning Threads",
                             "body": "Rust provides native OS threads via std::thread::spawn. Each call to spawn creates a new thread that runs a closure concurrently with the main thread. The function returns a JoinHandle that lets you wait for the thread to finish.",
                             "code": "use std::thread;\n\nfn main() {\n    let handle = thread::spawn(|| {\n        for i in 0..5 {\n            println!(\"spawned thread: {i}\");\n        }\n    });\n\n    for i in 0..3 {\n        println!(\"main thread: {i}\");\n    }\n\n    handle.join().unwrap();\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Move Closures In Threads",
                             "body": "By default, closures borrow variables from the enclosing scope. When you pass a closure to thread::spawn, the compiler cannot guarantee the borrowed data will outlive the thread. Using the move keyword transfers ownership of captured variables into the closure so the new thread owns its data independently.",
                             "code": "use std::thread;\n\nfn main() {\n    let data = vec![1, 2, 3];\n\n    let handle = thread::spawn(move || {\n        println!(\"thread owns data: {:?}\", data);\n    });\n\n    // data is no longer accessible here\n    handle.join().unwrap();\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Joining Multiple Threads",
                             "body": "You can spawn many threads and collect their JoinHandles into a vector. Iterating over the handles and calling join on each ensures all threads complete before the program continues. This pattern is common when splitting a workload across threads.",
                             "code": "use std::thread;\n\nfn main() {\n    let mut handles = vec![];\n\n    for id in 0..4 {\n        handles.push(thread::spawn(move || {\n            println!(\"worker {id} done\");\n        }));\n    }\n\n    for h in handles {\n        h.join().unwrap();\n    }\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Thread Panics And Safety",
@@ -1573,19 +1573,19 @@
                             "title": "Creating A Channel",
                             "body": "The std::sync::mpsc module provides a multi-producer, single-consumer channel. Calling mpsc::channel returns a Sender and Receiver pair. Data sent through the Sender is received in FIFO order by the Receiver.",
                             "code": "use std::sync::mpsc;\n\nfn main() {\n    let (tx, rx) = mpsc::channel();\n\n    tx.send(42).unwrap();\n    let value = rx.recv().unwrap();\n    println!(\"received: {value}\");\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Channels Across Threads",
                             "body": "Channels shine when communicating between threads. Move the Sender into a spawned thread and receive on the main thread. The recv call blocks until a message arrives or all senders are dropped.",
                             "code": "use std::sync::mpsc;\nuse std::thread;\n\nfn main() {\n    let (tx, rx) = mpsc::channel();\n\n    thread::spawn(move || {\n        tx.send(String::from(\"hello from thread\")).unwrap();\n    });\n\n    let msg = rx.recv().unwrap();\n    println!(\"{msg}\");\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Multiple Producers",
                             "body": "Clone the Sender to give multiple threads their own handle to the same channel. Each clone is an independent producer. The single Receiver collects messages from all producers in arrival order.",
                             "code": "use std::sync::mpsc;\nuse std::thread;\n\nfn main() {\n    let (tx, rx) = mpsc::channel();\n\n    for i in 0..3 {\n        let tx_clone = tx.clone();\n        thread::spawn(move || {\n            tx_clone.send(format!(\"msg from {i}\")).unwrap();\n        });\n    }\n    drop(tx);\n\n    for received in rx {\n        println!(\"{received}\");\n    }\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Channel Patterns And Backpressure",
@@ -1605,19 +1605,19 @@
                             "title": "Mutex Basics",
                             "body": "A Mutex wraps data and enforces exclusive access through locking. You call lock to obtain a MutexGuard, which implements Deref so you can use it like a reference. The guard automatically releases the lock when it goes out of scope.",
                             "code": "use std::sync::Mutex;\n\nfn main() {\n    let m = Mutex::new(5);\n\n    {\n        let mut num = m.lock().unwrap();\n        *num = 10;\n    } // lock released here\n\n    println!(\"value: {:?}\", m.lock().unwrap());\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Sharing A Mutex With Arc",
                             "body": "Rc is not thread-safe, so Rust provides Arc (atomic reference counting) for shared ownership across threads. Wrap a Mutex in an Arc, clone the Arc for each thread, and each thread can lock the mutex independently.",
                             "code": "use std::sync::{Arc, Mutex};\nuse std::thread;\n\nfn main() {\n    let counter = Arc::new(Mutex::new(0));\n    let mut handles = vec![];\n\n    for _ in 0..5 {\n        let counter = Arc::clone(&counter);\n        handles.push(thread::spawn(move || {\n            let mut num = counter.lock().unwrap();\n            *num += 1;\n        }));\n    }\n\n    for h in handles {\n        h.join().unwrap();\n    }\n\n    println!(\"result: {}\", *counter.lock().unwrap());\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Deadlock Awareness",
                             "body": "A deadlock occurs when two or more threads each hold a lock and wait for the other to release theirs. Rust prevents data races at compile time but cannot prevent deadlocks. Always acquire locks in a consistent order and keep critical sections short to minimize risk.",
-                            "code": "// Potential deadlock: thread 1 locks A then B,\n// thread 2 locks B then A.\n// Fix: always lock A before B in every thread.\n\nuse std::sync::{Arc, Mutex};\n\nfn safe_order(a: &Mutex<i32>, b: &Mutex<i32>) {\n    let _ga = a.lock().unwrap();\n    let _gb = b.lock().unwrap();\n    // always same order avoids deadlock\n}",
-                            "runnable": false
+                            "code": "// Potential deadlock: thread 1 locks A then B,\n// thread 2 locks B then A.\n// Fix: always lock A before B in every thread.\n\nuse std::sync::{Arc, Mutex};\n\nfn safe_order(a: &Mutex<i32>, b: &Mutex<i32>) {\n    let _ga = a.lock().unwrap();\n    let _gb = b.lock().unwrap();\n    // always same order avoids deadlock\n}\n\nfn main() {\n    let a = Mutex::new(1);\n    let b = Mutex::new(2);\n    safe_order(&a, &b);\n    let _ = Arc::new(1);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "RwLock For Read-Heavy Workloads",
@@ -1669,19 +1669,19 @@
                             "title": "What Unsafe Unlocks",
                             "body": "The unsafe keyword lets you perform five operations the compiler cannot verify: dereference raw pointers, call unsafe functions, access mutable statics, implement unsafe traits, and access union fields. Unsafe does not disable the borrow checker; it only permits these specific actions.",
                             "code": "fn main() {\n    let mut num = 5;\n    let r1 = &num as *const i32;\n    let r2 = &mut num as *mut i32;\n\n    unsafe {\n        println!(\"r1: {}\", *r1);\n        *r2 = 10;\n        println!(\"r2: {}\", *r2);\n    }\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Unsafe Functions",
                             "body": "Mark a function as unsafe fn when its contract includes invariants the caller must uphold. The caller wraps the call in an unsafe block, signaling they have verified the preconditions. This pushes responsibility to the programmer, not the compiler.",
                             "code": "unsafe fn dangerous(ptr: *const i32) -> i32 {\n    *ptr // caller must ensure ptr is valid\n}\n\nfn main() {\n    let val = 42;\n    let ptr = &val as *const i32;\n\n    let result = unsafe { dangerous(ptr) };\n    println!(\"{result}\");\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Safe Abstractions Over Unsafe Code",
                             "body": "The best practice is to wrap unsafe operations inside safe public APIs. The standard library does this extensively. For example, Vec uses unsafe internally for memory management but exposes a fully safe interface. Keep unsafe blocks minimal and well-documented.",
-                            "code": "fn split_at_mut(slice: &mut [i32], mid: usize) -> (&mut [i32], &mut [i32]) {\n    let len = slice.len();\n    let ptr = slice.as_mut_ptr();\n    assert!(mid <= len);\n\n    unsafe {\n        (\n            std::slice::from_raw_parts_mut(ptr, mid),\n            std::slice::from_raw_parts_mut(ptr.add(mid), len - mid),\n        )\n    }\n}",
-                            "runnable": false
+                            "code": "fn split_at_mut(slice: &mut [i32], mid: usize) -> (&mut [i32], &mut [i32]) {\n    let len = slice.len();\n    let ptr = slice.as_mut_ptr();\n    assert!(mid <= len);\n\n    unsafe {\n        (\n            std::slice::from_raw_parts_mut(ptr, mid),\n            std::slice::from_raw_parts_mut(ptr.add(mid), len - mid),\n        )\n    }\n}\n\nfn main() {\n    let mut data = [1, 2, 3, 4];\n    let (a, b) = split_at_mut(&mut data, 2);\n    a[0] += 10;\n    b[0] += 20;\n    println!(\"{:?}\", data);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "When To Use Unsafe",
@@ -1701,19 +1701,19 @@
                             "title": "Your First Macro",
                             "body": "Declarative macros match against source code patterns and expand into new code at compile time. The macro_rules! construct defines a macro with one or more arms. Each arm has a matcher and a transcriber separated by =>.",
                             "code": "macro_rules! say_hello {\n    () => {\n        println!(\"Hello!\");\n    };\n}\n\nfn main() {\n    say_hello!();\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Capturing Fragments",
                             "body": "Matchers use designators like $name:expr, $t:ty, or $id:ident to capture fragments of Rust syntax. The captured fragment is substituted in the transcriber wherever $name appears. This lets macros work with arbitrary expressions and types.",
                             "code": "macro_rules! create_fn {\n    ($name:ident, $body:expr) => {\n        fn $name() {\n            println!(\"{}\", $body);\n        }\n    };\n}\n\ncreate_fn!(greet, \"hi there\");\n\nfn main() {\n    greet();\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Repetitions",
                             "body": "Use $(...),* for zero-or-more repetitions or $(...),+ for one-or-more. Repetitions let a single macro arm accept a variable number of arguments. This is how the standard vec! macro accepts any number of elements.",
                             "code": "macro_rules! my_vec {\n    ( $( $x:expr ),* ) => {\n        {\n            let mut v = Vec::new();\n            $( v.push($x); )*\n            v\n        }\n    };\n}\n\nfn main() {\n    let v = my_vec![1, 2, 3];\n    println!(\"{:?}\", v);\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Macro Hygiene And Limits",
@@ -1764,20 +1764,20 @@
                         {
                             "title": "Associated Types",
                             "body": "Associated types let a trait define a placeholder type that implementors choose. Unlike generics on the trait, each type can implement the trait only once, making the API cleaner. The Iterator trait uses this pattern with its Item associated type.",
-                            "code": "trait Graph {\n    type Node;\n    type Edge;\n\n    fn edges(&self, node: &Self::Node) -> Vec<Self::Edge>;\n}\n\nstruct MyGraph;\n\nimpl Graph for MyGraph {\n    type Node = u32;\n    type Edge = (u32, u32);\n\n    fn edges(&self, _node: &u32) -> Vec<(u32, u32)> {\n        vec![(1, 2)]\n    }\n}",
-                            "runnable": false
+                            "code": "trait Graph {\n    type Node;\n    type Edge;\n\n    fn edges(&self, node: &Self::Node) -> Vec<Self::Edge>;\n}\n\nstruct MyGraph;\n\nimpl Graph for MyGraph {\n    type Node = u32;\n    type Edge = (u32, u32);\n\n    fn edges(&self, _node: &u32) -> Vec<(u32, u32)> {\n        vec![(1, 2)]\n    }\n}\n\nfn main() {\n    let g = MyGraph;\n    println!(\"{:?}\", g.edges(&1));\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Operator Overloading",
                             "body": "Rust lets you overload operators by implementing traits from std::ops. For example, implementing Add lets you use the + operator on your type. The Output associated type determines the result type of the operation.",
-                            "code": "use std::ops::Add;\n\n#[derive(Debug, PartialEq)]\nstruct Point {\n    x: f64,\n    y: f64,\n}\n\nimpl Add for Point {\n    type Output = Point;\n\n    fn add(self, other: Point) -> Point {\n        Point {\n            x: self.x + other.x,\n            y: self.y + other.y,\n        }\n    }\n}",
-                            "runnable": false
+                            "code": "use std::ops::Add;\n\n#[derive(Debug, PartialEq)]\nstruct Point {\n    x: f64,\n    y: f64,\n}\n\nimpl Add for Point {\n    type Output = Point;\n\n    fn add(self, other: Point) -> Point {\n        Point {\n            x: self.x + other.x,\n            y: self.y + other.y,\n        }\n    }\n}\n\nfn main() {\n    let p = Point { x: 1.0, y: 2.0 } + Point { x: 3.0, y: 4.0 };\n    println!(\"{:?}\", p);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Supertraits",
                             "body": "A supertrait is a trait that requires another trait as a prerequisite. This lets you call methods from the parent trait inside your trait's default implementations or blanket impls. Use the syntax trait Child: Parent to declare the relationship.",
-                            "code": "use std::fmt;\n\ntrait Printable: fmt::Display {\n    fn print(&self) {\n        println!(\"{}\", self);\n    }\n}\n\nstruct Wrapper(i32);\n\nimpl fmt::Display for Wrapper {\n    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n        write!(f, \"Wrapper({})\", self.0)\n    }\n}\n\nimpl Printable for Wrapper {}",
-                            "runnable": false
+                            "code": "use std::fmt;\n\ntrait Printable: fmt::Display {\n    fn print(&self) {\n        println!(\"{}\", self);\n    }\n}\n\nstruct Wrapper(i32);\n\nimpl fmt::Display for Wrapper {\n    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n        write!(f, \"Wrapper({})\", self.0)\n    }\n}\n\nimpl Printable for Wrapper {}\n\nfn main() {\n    let w = Wrapper(7);\n    w.print();\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Fully Qualified Syntax",
@@ -1796,20 +1796,20 @@
                         {
                             "title": "Lifetime Subtyping",
                             "body": "Lifetime subtyping lets you express that one lifetime outlives another. The syntax 'a: 'b means 'a lives at least as long as 'b. This is needed when a struct holds references with different lifetimes and you must prove the relationship to the compiler.",
-                            "code": "struct Context<'s>(&'s str);\n\nstruct Parser<'c, 's: 'c> {\n    context: &'c Context<'s>,\n}\n\nimpl<'c, 's: 'c> Parser<'c, 's> {\n    fn parse(&self) -> &'s str {\n        self.context.0\n    }\n}",
-                            "runnable": false
+                            "code": "struct Context<'s>(&'s str);\n\nstruct Parser<'c, 's: 'c> {\n    context: &'c Context<'s>,\n}\n\nimpl<'c, 's: 'c> Parser<'c, 's> {\n    fn parse(&self) -> &'s str {\n        self.context.0\n    }\n}\n\nfn main() {\n    let ctx = Context(\"hello\");\n    let parser = Parser { context: &ctx };\n    println!(\"{}\", parser.parse());\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Higher-Ranked Trait Bounds",
                             "body": "Higher-ranked trait bounds (HRTBs) use the syntax for<'a> to say a trait must hold for all possible lifetimes. This is common with closures that accept references. The compiler infers HRTBs in many cases, but you sometimes need to write them explicitly.",
-                            "code": "fn apply<F>(f: F)\nwhere\n    F: for<'a> Fn(&'a str) -> &'a str,\n{\n    let owned = String::from(\"hello world\");\n    let result = f(&owned);\n    println!(\"{result}\");\n}",
-                            "runnable": false
+                            "code": "fn apply<F>(f: F)\nwhere\n    F: for<'a> Fn(&'a str) -> &'a str,\n{\n    let owned = String::from(\"hello world\");\n    let result = f(&owned);\n    println!(\"{result}\");\n}\n\nfn main() {\n    apply(|s| s);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "The 'static Lifetime",
                             "body": "The 'static lifetime means the reference can live for the entire program duration. String literals are 'static because they are baked into the binary. A bound T: 'static means T contains no non-static references, not that it lives forever. Owned types like String satisfy T: 'static.",
-                            "code": "fn make_static() -> &'static str {\n    \"I live forever in the binary\"\n}\n\n// T: 'static means T owns its data or\n// only contains 'static references\nfn spawn_task<T: Send + 'static>(val: T) {\n    std::thread::spawn(move || {\n        drop(val);\n    });\n}",
-                            "runnable": false
+                            "code": "fn make_static() -> &'static str {\n    \"I live forever in the binary\"\n}\n\n// T: 'static means T owns its data or\n// only contains 'static references\nfn spawn_task<T: Send + 'static>(val: T) {\n    std::thread::spawn(move || {\n        drop(val);\n    }).join().unwrap();\n}\n\nfn main() {\n    println!(\"{}\", make_static());\n    spawn_task(String::from(\"task\"));\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Lifetime Elision Revisited",
@@ -1828,20 +1828,20 @@
                         {
                             "title": "Box For Heap Allocation",
                             "body": "Box<T> allocates data on the heap with a single owner. It is the simplest smart pointer and costs nothing beyond the allocation. Use Box for recursive types, large data you want off the stack, or trait objects.",
-                            "code": "enum List {\n    Cons(i32, Box<List>),\n    Nil,\n}\n\nfn main() {\n    let list = List::Cons(1,\n        Box::new(List::Cons(2,\n            Box::new(List::Nil))));\n}",
-                            "runnable": false
+                            "code": "enum List {\n    Cons(i32, Box<List>),\n    Nil,\n}\n\nfn main() {\n    let list = List::Cons(1,\n        Box::new(List::Cons(2,\n            Box::new(List::Nil))));\n    let _ = list;\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Rc For Shared Ownership",
                             "body": "Rc<T> enables multiple owners of the same heap data in a single thread via reference counting. Cloning an Rc increments the count; dropping one decrements it. The data is freed when the count reaches zero. Rc does not allow mutation by default.",
                             "code": "use std::rc::Rc;\n\nfn main() {\n    let a = Rc::new(String::from(\"shared\"));\n    let b = Rc::clone(&a);\n    let c = Rc::clone(&a);\n\n    println!(\"count: {}\", Rc::strong_count(&a)); // 3\n    println!(\"{}, {}, {}\", a, b, c);\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Arc For Thread-Safe Sharing",
                             "body": "Arc<T> is the atomic version of Rc, safe to share across threads. It uses atomic operations for the reference count, which adds slight overhead. Pair Arc with Mutex or RwLock when you need shared mutable state across threads.",
                             "code": "use std::sync::Arc;\nuse std::thread;\n\nfn main() {\n    let data = Arc::new(vec![1, 2, 3]);\n\n    let handles: Vec<_> = (0..3).map(|_| {\n        let data = Arc::clone(&data);\n        thread::spawn(move || {\n            println!(\"{:?}\", data);\n        })\n    }).collect();\n\n    for h in handles {\n        h.join().unwrap();\n    }\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "RefCell For Interior Mutability",
@@ -1861,19 +1861,19 @@
                             "title": "Zero-Sized Types",
                             "body": "A zero-sized type (ZST) occupies no memory at runtime. Unit structs and empty enums are ZSTs. The compiler optimizes them away entirely. ZSTs are useful as marker types, map values you do not need, or type-level tags.",
                             "code": "struct Marker;\n\nfn main() {\n    println!(\"size: {}\", std::mem::size_of::<Marker>()); // 0\n\n    // Using a ZST as a HashMap value acts like a HashSet\n    use std::collections::HashMap;\n    let mut set: HashMap<String, ()> = HashMap::new();\n    set.insert(\"key\".into(), ());\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "PhantomData Basics",
                             "body": "PhantomData<T> is a ZST from std::marker that tells the compiler your type logically owns or references T even though no field actually stores it. This affects drop ordering, variance, and auto-trait implementations without adding runtime size.",
-                            "code": "use std::marker::PhantomData;\n\nstruct Slice<'a, T: 'a> {\n    start: *const T,\n    end: *const T,\n    _marker: PhantomData<&'a T>,\n}",
-                            "runnable": false
+                            "code": "use std::marker::PhantomData;\n\nstruct Slice<'a, T: 'a> {\n    start: *const T,\n    end: *const T,\n    _marker: PhantomData<&'a T>,\n}\n\nfn main() {\n    let data = [1, 2, 3];\n    let start = data.as_ptr();\n    let end = unsafe { data.as_ptr().add(data.len()) };\n    let slice = Slice { start, end, _marker: PhantomData };\n    println!(\"{:?} {:?}\", slice.start, slice.end);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Typestate With PhantomData",
                             "body": "PhantomData enables the typestate pattern where a struct's generic parameter represents its state. Transitions between states are methods that consume self and return a new type. The compiler enforces valid state transitions at zero runtime cost.",
-                            "code": "use std::marker::PhantomData;\n\nstruct Locked;\nstruct Unlocked;\n\nstruct Door<State> {\n    _state: PhantomData<State>,\n}\n\nimpl Door<Locked> {\n    fn unlock(self) -> Door<Unlocked> {\n        Door { _state: PhantomData }\n    }\n}\n\nimpl Door<Unlocked> {\n    fn lock(self) -> Door<Locked> {\n        Door { _state: PhantomData }\n    }\n    fn open(&self) {\n        println!(\"door is open\");\n    }\n}",
-                            "runnable": false
+                            "code": "use std::marker::PhantomData;\n\nstruct Locked;\nstruct Unlocked;\n\nstruct Door<State> {\n    _state: PhantomData<State>,\n}\n\nimpl Door<Locked> {\n    fn unlock(self) -> Door<Unlocked> {\n        Door { _state: PhantomData }\n    }\n}\n\nimpl Door<Unlocked> {\n    fn lock(self) -> Door<Locked> {\n        Door { _state: PhantomData }\n    }\n    fn open(&self) {\n        println!(\"door is open\");\n    }\n}\n\nfn main() {\n    let door = Door { _state: PhantomData::<Locked> };\n    let unlocked = door.unlock();\n    unlocked.open();\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Variance And Drop Check",
@@ -1892,20 +1892,20 @@
                         {
                             "title": "The Problem Pin Solves",
                             "body": "Some types contain internal pointers to their own fields, making them self-referential. If such a value is moved in memory, the internal pointers become dangling. Pin<P> is a wrapper that prevents the pointee from being moved, making self-referential types safe.",
-                            "code": "use std::pin::Pin;\n\n// A pinned reference guarantees the data\n// behind it will not be moved.\nfn process(data: Pin<&mut String>) {\n    println!(\"{}\", data);\n    // Cannot call mem::swap or take ownership\n}",
-                            "runnable": false
+                            "code": "use std::pin::Pin;\n\n// A pinned reference guarantees the data\n// behind it will not be moved.\nfn process(data: Pin<&mut String>) {\n    println!(\"{}\", data);\n    // Cannot call mem::swap or take ownership\n}\n\nfn main() {\n    let mut s = String::from(\"pinned\");\n    let p = Pin::new(&mut s);\n    process(p);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Pin And Unpin",
                             "body": "Most Rust types implement the auto trait Unpin, meaning they are safe to move even when pinned. Pin only restricts types that do NOT implement Unpin. Futures generated by async blocks are !Unpin because they may be self-referential across await points.",
                             "code": "use std::pin::Pin;\n\nfn takes_unpin<T: Unpin>(val: Pin<&mut T>) {\n    // T is Unpin, so we can safely get &mut T\n    let inner: &mut T = Pin::into_inner(val);\n    drop(inner);\n}\n\n// i32 is Unpin, so this works:\nfn main() {\n    let mut x = 42;\n    let pinned = Pin::new(&mut x);\n    takes_unpin(pinned);\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Pinning On The Heap",
                             "body": "Box::pin places a value on the heap and returns Pin<Box<T>>. Since the heap address is stable, the value is effectively immovable. This is the easiest way to pin a future or self-referential struct.",
                             "code": "use std::pin::Pin;\n\nasync fn example() -> i32 { 42 }\n\nfn main() {\n    let future: Pin<Box<dyn std::future::Future<Output = i32>>> =\n        Box::pin(example());\n    // future is pinned and safe to poll\n    drop(future);\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Pin In Async Runtimes",
@@ -1924,20 +1924,20 @@
                         {
                             "title": "Implementing Iterator",
                             "body": "To make a type iterable, implement the Iterator trait which requires a type Item and a next method. The next method returns Some(Item) while there are elements and None when exhausted. This enables your type to work with for loops and all iterator adapters.",
-                            "code": "struct Counter {\n    count: u32,\n    max: u32,\n}\n\nimpl Counter {\n    fn new(max: u32) -> Self {\n        Counter { count: 0, max }\n    }\n}\n\nimpl Iterator for Counter {\n    type Item = u32;\n\n    fn next(&mut self) -> Option<u32> {\n        if self.count < self.max {\n            self.count += 1;\n            Some(self.count)\n        } else {\n            None\n        }\n    }\n}",
-                            "runnable": false
+                            "code": "struct Counter {\n    count: u32,\n    max: u32,\n}\n\nimpl Counter {\n    fn new(max: u32) -> Self {\n        Counter { count: 0, max }\n    }\n}\n\nimpl Iterator for Counter {\n    type Item = u32;\n\n    fn next(&mut self) -> Option<u32> {\n        if self.count < self.max {\n            self.count += 1;\n            Some(self.count)\n        } else {\n            None\n        }\n    }\n}\n\nfn main() {\n    for n in Counter::new(3) {\n        println!(\"{n}\");\n    }\n}",
+                            "runnable": true
                         },
                         {
                             "title": "Using Your Iterator",
                             "body": "Once you implement Iterator, you get dozens of adapter methods for free: map, filter, take, zip, collect, and more. These adapters are lazy and compose without allocating intermediate collections. Only a terminal operation like collect or for_each drives evaluation.",
                             "code": "fn main() {\n    let sum: u32 = Counter::new(5)\n        .filter(|&x| x % 2 == 0)\n        .map(|x| x * x)\n        .sum();\n\n    println!(\"sum of squares of evens: {sum}\"); // 4 + 16 = 20\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "IntoIterator",
                             "body": "The IntoIterator trait converts a type into an iterator. Implementing it lets your type be used directly in for loops. Typically you implement IntoIterator for references to your collection and for the owned type, mirroring how Vec works.",
                             "code": "struct Team {\n    members: Vec<String>,\n}\n\nimpl IntoIterator for Team {\n    type Item = String;\n    type IntoIter = std::vec::IntoIter<String>;\n\n    fn into_iter(self) -> Self::IntoIter {\n        self.members.into_iter()\n    }\n}\n\nfn main() {\n    let team = Team {\n        members: vec![\"Alice\".into(), \"Bob\".into()],\n    };\n    for member in team {\n        println!(\"{member}\");\n    }\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Lazy Evaluation And Performance",
@@ -1957,7 +1957,7 @@
                             "title": "Calling C From Rust",
                             "body": "Use an extern block with the \"C\" ABI to declare foreign functions. Calling them is unsafe because the compiler cannot verify the foreign code's safety guarantees. Link to the C library via Cargo build scripts or system linker flags.",
                             "code": "extern \"C\" {\n    fn abs(input: i32) -> i32;\n}\n\nfn main() {\n    let x = -5;\n    let result = unsafe { abs(x) };\n    println!(\"abs({x}) = {result}\");\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "Exposing Rust To C",
@@ -1969,7 +1969,7 @@
                             "title": "Working With C Strings",
                             "body": "C strings are null-terminated byte arrays, while Rust strings are UTF-8 slices with a length. The std::ffi module provides CString for owned C strings and CStr for borrowed ones. Always handle the conversion carefully to avoid buffer overflows or invalid UTF-8.",
                             "code": "use std::ffi::{CStr, CString};\nuse std::os::raw::c_char;\n\nextern \"C\" {\n    fn strlen(s: *const c_char) -> usize;\n}\n\nfn main() {\n    let rust_str = CString::new(\"hello\").unwrap();\n    let len = unsafe { strlen(rust_str.as_ptr()) };\n    println!(\"length: {len}\");\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "FFI Safety Practices",
@@ -1988,26 +1988,26 @@
                         {
                             "title": "The Builder Pattern",
                             "body": "The builder pattern constructs complex objects step by step. In Rust, the builder owns partial state and each method returns self for chaining. A final build method validates and produces the target type. This avoids constructors with many parameters.",
-                            "code": "struct Server {\n    host: String,\n    port: u16,\n    max_conn: usize,\n}\n\nstruct ServerBuilder {\n    host: String,\n    port: u16,\n    max_conn: usize,\n}\n\nimpl ServerBuilder {\n    fn new(host: &str) -> Self {\n        ServerBuilder {\n            host: host.to_string(),\n            port: 8080,\n            max_conn: 100,\n        }\n    }\n    fn port(mut self, port: u16) -> Self {\n        self.port = port;\n        self\n    }\n    fn max_connections(mut self, n: usize) -> Self {\n        self.max_conn = n;\n        self\n    }\n    fn build(self) -> Server {\n        Server {\n            host: self.host,\n            port: self.port,\n            max_conn: self.max_conn,\n        }\n    }\n}",
-                            "runnable": false
+                            "code": "struct Server {\n    host: String,\n    port: u16,\n    max_conn: usize,\n}\n\nstruct ServerBuilder {\n    host: String,\n    port: u16,\n    max_conn: usize,\n}\n\nimpl ServerBuilder {\n    fn new(host: &str) -> Self {\n        ServerBuilder {\n            host: host.to_string(),\n            port: 8080,\n            max_conn: 100,\n        }\n    }\n    fn port(mut self, port: u16) -> Self {\n        self.port = port;\n        self\n    }\n    fn max_connections(mut self, n: usize) -> Self {\n        self.max_conn = n;\n        self\n    }\n    fn build(self) -> Server {\n        Server {\n            host: self.host,\n            port: self.port,\n            max_conn: self.max_conn,\n        }\n    }\n}\n\nfn main() {\n    let server = ServerBuilder::new(\"localhost\").port(9090).build();\n    println!(\"{}:{}\", server.host, server.port);\n}",
+                            "runnable": true
                         },
                         {
                             "title": "The Typestate Pattern",
                             "body": "The typestate pattern uses generics to encode an object's state in the type system. Methods are only available on the correct state, and transitions consume self and return a new state. This moves runtime checks to compile time.",
-                            "code": "struct Draft;\nstruct Published;\n\nstruct Post<S> {\n    content: String,\n    _state: std::marker::PhantomData<S>,\n}\n\nimpl Post<Draft> {\n    fn new(content: &str) -> Self {\n        Post {\n            content: content.to_string(),\n            _state: std::marker::PhantomData,\n        }\n    }\n    fn publish(self) -> Post<Published> {\n        Post {\n            content: self.content,\n            _state: std::marker::PhantomData,\n        }\n    }\n}\n\nimpl Post<Published> {\n    fn view(&self) -> &str {\n        &self.content\n    }\n}",
-                            "runnable": false
+                            "code": "struct Draft;\nstruct Published;\n\nstruct Post<S> {\n    content: String,\n    _state: std::marker::PhantomData<S>,\n}\n\nimpl Post<Draft> {\n    fn new(content: &str) -> Self {\n        Post {\n            content: content.to_string(),\n            _state: std::marker::PhantomData,\n        }\n    }\n    fn publish(self) -> Post<Published> {\n        Post {\n            content: self.content,\n            _state: std::marker::PhantomData,\n        }\n    }\n}\n\nimpl Post<Published> {\n    fn view(&self) -> &str {\n        &self.content\n    }\n}\n\nfn main() {\n    let post = Post::new(\"hello\").publish();\n    println!(\"{}\", post.view());\n}",
+                            "runnable": true
                         },
                         {
                             "title": "RAII And Drop",
                             "body": "Resource Acquisition Is Initialization ties resource management to object lifetime. When a value goes out of scope, its Drop implementation runs automatically, releasing files, locks, or memory. This eliminates resource leaks without manual cleanup calls.",
                             "code": "struct TempFile {\n    path: String,\n}\n\nimpl TempFile {\n    fn new(path: &str) -> Self {\n        println!(\"creating {path}\");\n        TempFile { path: path.to_string() }\n    }\n}\n\nimpl Drop for TempFile {\n    fn drop(&mut self) {\n        println!(\"cleaning up {}\", self.path);\n        // In real code: std::fs::remove_file\n    }\n}\n\nfn main() {\n    let _f = TempFile::new(\"data.tmp\");\n    // _f is dropped here automatically\n}",
-                            "runnable": false
+                            "runnable": true
                         },
                         {
                             "title": "The Newtype Pattern",
                             "body": "Wrapping a primitive in a single-field tuple struct creates a distinct type that prevents accidental misuse. For example, Meters(f64) and Seconds(f64) cannot be mixed even though both hold f64. The compiler optimizes away the wrapper so there is no runtime cost. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on patterns and idioms. Also visit the recommended books in the app for more insights.",
                             "code": "struct Meters(f64);\nstruct Seconds(f64);\n\nfn speed(distance: Meters, time: Seconds) -> f64 {\n    distance.0 / time.0\n}\n\nfn main() {\n    let d = Meters(100.0);\n    let t = Seconds(9.58);\n    println!(\"speed: {:.2} m/s\", speed(d, t));\n}",
-                            "runnable": false
+                            "runnable": true
                         }
                     ]
                 }
