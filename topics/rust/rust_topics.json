@@ -233,7 +233,7 @@
                         {
                             "title": "Module-level doc comments",
                             "body": "Use //! to write documentation for the enclosing module or crate. These comments typically go at the top of lib.rs or main.rs and describe the overall purpose of the package. You can generate and view documentation locally with cargo doc --open. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) chapter on Comments. Also explore the recommended books in the app for more insights.",
-                            "code": "//! # My Awesome Crate\n//!\n//! This crate provides utilities for\n//! working with geometric shapes.\n//!\n//! ## Quick Start\n//! ```\n//! let c = my_crate::circle_area(5.0);\n//! ```\n\n/// Returns the area of a circle.\nfn circle_area(radius: f64) -> f64 {\n    std::f64::consts::PI * radius * radius\n}",
+                            "code": "//! # My Awesome Crate\n//!\n//! This crate provides utilities for\n//! working with geometric shapes.\n//!\n//! ## Quick Start\n//! ```\n//! let area = my_crate::circle_area(5.0);\n//! assert!(area > 0.0);\n//! ```\n\n/// Returns the area of a circle.\nfn circle_area(radius: f64) -> f64 {\n    std::f64::consts::PI * radius * radius\n}",
                             "runnable": false
                         }
                     ]
@@ -437,7 +437,7 @@
                         {
                             "title": "TryFrom for fallible conversions",
                             "body": "When a conversion might fail use TryFrom instead of From. It returns a Result so you can handle the error gracefully. For example converting a large i32 into a u8 can fail if the value does not fit. TryFrom makes these edge cases explicit and safe. For a deeper dive, check the official Rust Book (doc.rust-lang.org/book) appendix on Operators and the Rust by Example section on Conversion. Also explore the recommended books in the app for more insights.",
-                            "code": "use std::convert::TryFrom;\n\nfn main() {\n    let big: i32 = 300;\n    match u8::try_from(big) {\n        Ok(val) => println!(\"Converted: {}\", val),\n        Err(e) => println!(\"Conversion failed: {}\", e),\n    }\n\n    let small: i32 = 42;\n    let result = u8::try_from(small);\n    println!(\"42 as u8: {:?}\", result);  // Ok(42)\n}",
+                            "code": "fn main() {\n    let big: i32 = 300;\n    match u8::try_from(big) {\n        Ok(val) => println!(\"Converted: {}\", val),\n        Err(e) => println!(\"Conversion failed: {}\", e),\n    }\n\n    let small: i32 = 42;\n    let result = u8::try_from(small);\n    println!(\"42 as u8: {:?}\", result);  // Ok(42)\n}",
                             "runnable": true
                         }
                     ]
@@ -532,7 +532,7 @@
                         {
                             "title": "Accessing and Mutating Fields",
                             "body": "Use dot notation to read or write a field. The entire instance must be declared mut to change any field; Rust does not allow marking individual fields as mutable.",
-                            "code": "struct User {\n    name: String,\n    age: u32,\n    active: bool,\n}\n\nfn main() {\n    let mut user = User {\n        name: String::from(\"Bob\"),\n        age: 25,\n        active: false,\n    };\n    println!(\"{}\", user.name);\n    user.active = true;\n    println!(\"Active: {}\", user.active);\n}",
+                            "code": "struct User {\n    name: String,\n    age: u32,\n    active: bool,\n}\n\nfn main() {\n    let mut user = User {\n        name: String::from(\"Bob\"),\n        age: 25,\n        active: false,\n    };\n    println!(\"{} is {}\", user.name, user.age);\n    user.active = true;\n    println!(\"Active: {}\", user.active);\n}",
                             "runnable": true
                         },
                         {
@@ -572,7 +572,7 @@
                         {
                             "title": "Using Enums",
                             "body": "Create enum values by specifying the variant. You can define methods on enums with impl blocks, just like with structs.",
-                            "code": "enum Message {\n    Quit,\n    Echo(String),\n}\n\nimpl Message {\n    fn call(&self) {\n        println!(\"Message received\");\n    }\n}\n\nfn main() {\n    let msg = Message::Echo(String::from(\"hello\"));\n    msg.call();\n}",
+                            "code": "enum Message {\n    Quit,\n    Echo(String),\n}\n\nimpl Message {\n    fn call(&self) {\n        println!(\"Message received\");\n    }\n}\n\nfn main() {\n    let msg = Message::Echo(String::from(\"hello\"));\n    msg.call();\n\n    let quit = Message::Quit;\n    quit.call();\n}",
                             "runnable": true
                         },
                         {
@@ -796,7 +796,7 @@
                         {
                             "title": "Defining Modules",
                             "body": "Use the mod keyword to define a module inside a file. Modules create separate namespaces and can be nested. Items inside a module are private by default.",
-                            "code": "mod math {\n    pub fn add(a: i32, b: i32) -> i32 {\n        a + b\n    }\n\n    fn secret() -> i32 {\n        42\n    }\n}\n\nfn main() {\n    println!(\"{}\", math::add(2, 3));\n}",
+                            "code": "mod math {\n    pub fn add(a: i32, b: i32) -> i32 {\n        let _ = secret();\n        a + b\n    }\n\n    fn secret() -> i32 {\n        42\n    }\n}\n\nfn main() {\n    println!(\"{}\", math::add(2, 3));\n}",
                             "runnable": true
                         },
                         {
@@ -1369,25 +1369,25 @@
                         {
                             "title": "Enum Variants with Data",
                             "body": "Rust enums can hold data in each variant, like tuples or structs. This makes them far more powerful than enums in most languages. Each variant can carry different types and amounts of data.",
-                            "code": "enum Message {\n    Quit,\n    Move { x: i32, y: i32 },\n    Write(String),\n    Color(u8, u8, u8),\n}\n\nfn main() {\n    let _msg = Message::Move { x: 10, y: 20 };\n    let _txt = Message::Write(\"hello\".to_string());\n}",
+                            "code": "enum Message {\n    Quit,\n    Move { x: i32, y: i32 },\n    Write(String),\n    Color(u8, u8, u8),\n}\n\nfn main() {\n    let _msg = Message::Move { x: 10, y: 20 };\n    let _txt = Message::Write(\"hello\".to_string());\n    let _quit = Message::Quit;\n    let _color = Message::Color(255, 128, 0);\n}",
                             "runnable": true
                         },
                         {
                             "title": "Methods on Enums",
                             "body": "You can implement methods on enums just like structs. Use match inside methods to handle each variant. This keeps behavior close to the data it operates on.",
-                            "code": "impl Message {\n    fn process(&self) {\n        match self {\n            Message::Quit => println!(\"Quitting\"),\n            Message::Move { x, y } => println!(\"Moving to ({}, {})\", x, y),\n            Message::Write(text) => println!(\"Writing: {}\", text),\n            Message::Color(r, g, b) => println!(\"Color: #{:02x}{:02x}{:02x}\", r, g, b),\n        }\n    }\n}\n\nfn main() {\n    Message::Color(255, 128, 0).process();\n}",
+                            "code": "enum Message {\n    Quit,\n    Move { x: i32, y: i32 },\n    Write(String),\n    Color(u8, u8, u8),\n}\n\nimpl Message {\n    fn process(&self) {\n        match self {\n            Message::Quit => println!(\"Quitting\"),\n            Message::Move { x, y } => println!(\"Moving to ({}, {})\", x, y),\n            Message::Write(text) => println!(\"Writing: {}\", text),\n            Message::Color(r, g, b) => println!(\"Color: #{:02x}{:02x}{:02x}\", r, g, b),\n        }\n    }\n}\n\nfn main() {\n    Message::Color(255, 128, 0).process();\n}",
                             "runnable": true
                         },
                         {
                             "title": "State Machines with Enums",
                             "body": "Enums naturally model state machines. Each variant is a state, and transitions are functions that consume one state and return another. The compiler ensures you handle every state, making illegal states unrepresentable.",
-                            "code": "enum Connection {\n    Disconnected,\n    Connecting(String),\n    Connected { host: String, port: u16 },\n}\n\nimpl Connection {\n    fn connect(host: &str, port: u16) -> Connection {\n        println!(\"Connecting to {}:{}...\", host, port);\n        Connection::Connected {\n            host: host.to_string(),\n            port,\n        }\n    }\n\n    fn disconnect(self) -> Connection {\n        Connection::Disconnected\n    }\n}\n\nfn main() {\n    let conn = Connection::connect(\"example.com\", 443);\n    let _ = conn.disconnect();\n}",
+                            "code": "enum Connection {\n    Disconnected,\n    Connecting(String),\n    Connected { host: String, port: u16 },\n}\n\nimpl Connection {\n    fn connect(host: &str, port: u16) -> Connection {\n        println!(\"Connecting to {}:{}...\", host, port);\n        Connection::Connected {\n            host: host.to_string(),\n            port,\n        }\n    }\n\n    fn disconnect(self) -> Connection {\n        Connection::Disconnected\n    }\n}\n\nfn main() {\n    let conn = Connection::connect(\"example.com\", 443);\n    let _ = conn.disconnect();\n\n    let _connecting = Connection::Connecting(\"example.com\".to_string());\n}",
                             "runnable": true
                         },
                         {
                             "title": "Pattern Matching Power",
                             "body": "Rust's pattern matching with enums supports destructuring, guards, nested patterns, and binding. Combined with exhaustive checking, this makes it nearly impossible to forget a case. Enums with data and match form one of Rust's most distinctive and powerful features. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on enums and pattern matching. Also visit the recommended books in the app for more insights.",
-                            "code": "fn describe(conn: &Connection) -> String {\n    match conn {\n        Connection::Disconnected => \"offline\".to_string(),\n        Connection::Connecting(host) => format!(\"reaching {}\", host),\n        Connection::Connected { host, port } if *port == 443 => {\n            format!(\"secure connection to {}\", host)\n        }\n        Connection::Connected { host, port } => {\n            format!(\"connected to {}:{}\", host, port)\n        }\n    }\n}\n\nfn main() {\n    let conn = Connection::Connected { host: \"example.com\".into(), port: 443 };\n    println!(\"{}\", describe(&conn));\n}",
+                            "code": "enum Connection {\n    Disconnected,\n    Connecting(String),\n    Connected { host: String, port: u16 },\n}\n\nfn describe(conn: &Connection) -> String {\n    match conn {\n        Connection::Disconnected => \"offline\".to_string(),\n        Connection::Connecting(host) => format!(\"reaching {}\", host),\n        Connection::Connected { host, port } if *port == 443 => {\n            format!(\"secure connection to {}\", host)\n        }\n        Connection::Connected { host, port } => {\n            format!(\"connected to {}:{}\", host, port)\n        }\n    }\n}\n\nfn main() {\n    let conn = Connection::Connected { host: \"example.com\".into(), port: 443 };\n    println!(\"{}\", describe(&conn));\n}",
                             "runnable": true
                         }
                     ]
@@ -1507,19 +1507,19 @@
                         {
                             "title": "Using dyn Trait",
                             "body": "You can collect different types in a Vec<Box<dyn Trait>> or accept them as function parameters with &dyn Trait. This is useful when the set of types isn't known at compile time, like plugin systems or heterogeneous collections.",
-                            "code": "fn print_shapes(shapes: &[Box<dyn Shape>]) {\n    for shape in shapes {\n        println!(\"{}: area = {:.2}\", shape.name(), shape.area());\n    }\n}\n\nfn main() {\n    let shapes: Vec<Box<dyn Shape>> = vec![\n        Box::new(Circle { radius: 5.0 }),\n        Box::new(Rect { w: 4.0, h: 6.0 }),\n        Box::new(Circle { radius: 2.0 }),\n    ];\n    print_shapes(&shapes);\n}",
+                            "code": "trait Shape {\n    fn area(&self) -> f64;\n    fn name(&self) -> &str;\n}\n\nstruct Circle { radius: f64 }\nstruct Rect { w: f64, h: f64 }\n\nimpl Shape for Circle {\n    fn area(&self) -> f64 { std::f64::consts::PI * self.radius * self.radius }\n    fn name(&self) -> &str { \"circle\" }\n}\n\nimpl Shape for Rect {\n    fn area(&self) -> f64 { self.w * self.h }\n    fn name(&self) -> &str { \"rectangle\" }\n}\n\nfn print_shapes(shapes: &[Box<dyn Shape>]) {\n    for shape in shapes {\n        println!(\"{}: area = {:.2}\", shape.name(), shape.area());\n    }\n}\n\nfn main() {\n    let shapes: Vec<Box<dyn Shape>> = vec![\n        Box::new(Circle { radius: 5.0 }),\n        Box::new(Rect { w: 4.0, h: 6.0 }),\n        Box::new(Circle { radius: 2.0 }),\n    ];\n    print_shapes(&shapes);\n}",
                             "runnable": true
                         },
                         {
                             "title": "Object Safety",
                             "body": "Not every trait can be used as a trait object. A trait is object-safe if its methods don't return Self and don't use generics. This is because the compiler needs a fixed vtable layout. If a trait isn't object-safe, use generics with trait bounds instead.",
-                            "code": "// Object-safe: all methods take &self, no generics\ntrait Drawable {\n    fn draw(&self);\n}\n\n// NOT object-safe: returns Self\ntrait Cloneable {\n    fn clone_self(&self) -> Self;\n}\n\n// Workaround: use a Box return\ntrait CloneBox {\n    fn clone_box(&self) -> Box<dyn CloneBox>;\n}\n\nstruct Dot;\n\nimpl Drawable for Dot {\n    fn draw(&self) {\n        println!(\"dot\");\n    }\n}\n\nfn main() {\n    let d = Dot;\n    d.draw();\n}",
+                            "code": "// Object-safe: all methods take &self, no generics\ntrait Drawable {\n    fn draw(&self);\n}\n\n// NOT object-safe: returns Self\ntrait Cloneable {\n    fn clone_self(&self) -> Self;\n}\n\n// Workaround: use a Box return\ntrait CloneBox {\n    fn clone_box(&self) -> Box<dyn CloneBox>;\n}\n\n#[derive(Clone)]\nstruct Dot;\n\nimpl Drawable for Dot {\n    fn draw(&self) {\n        println!(\"dot\");\n    }\n}\n\nimpl Cloneable for Dot {\n    fn clone_self(&self) -> Self {\n        Dot\n    }\n}\n\nimpl CloneBox for Dot {\n    fn clone_box(&self) -> Box<dyn CloneBox> {\n        Box::new(self.clone())\n    }\n}\n\nfn use_cloneable<T: Cloneable>(val: &T) {\n    let _cloned = val.clone_self();\n}\n\nfn main() {\n    let d = Dot;\n    d.draw();\n    use_cloneable(&d);\n\n    let boxed: Box<dyn CloneBox> = Box::new(d.clone());\n    let _boxed2 = boxed.clone_box();\n}",
                             "runnable": true
                         },
                         {
                             "title": "Generics vs Trait Objects",
                             "body": "Generics use static dispatch with monomorphization, producing fast specialized code but larger binaries. Trait objects use dynamic dispatch with a small runtime cost but keep binary size down. Choose generics when performance is critical and types are known at compile time; choose trait objects when you need runtime flexibility. For a deeper dive, consult The Rust Programming Language book (doc.rust-lang.org/book) on trait objects and dynamic dispatch. Also visit the recommended books in the app for more insights.",
-                            "code": "// Static dispatch: one copy per type, fast\nfn area_static(shape: &impl Shape) -> f64 {\n    shape.area()\n}\n\n// Dynamic dispatch: one copy, flexible\nfn area_dynamic(shape: &dyn Shape) -> f64 {\n    shape.area()\n}\n\nfn main() {\n    let c = Circle { radius: 3.0 };\n    println!(\"{}\", area_static(&c));\n    println!(\"{}\", area_dynamic(&c));\n}",
+                            "code": "trait Shape {\n    fn area(&self) -> f64;\n}\n\nstruct Circle { radius: f64 }\n\nimpl Shape for Circle {\n    fn area(&self) -> f64 { std::f64::consts::PI * self.radius * self.radius }\n}\n\n// Static dispatch: one copy per type, fast\nfn area_static(shape: &impl Shape) -> f64 {\n    shape.area()\n}\n\n// Dynamic dispatch: one copy, flexible\nfn area_dynamic(shape: &dyn Shape) -> f64 {\n    shape.area()\n}\n\nfn main() {\n    let c = Circle { radius: 3.0 };\n    println!(\"{}\", area_static(&c));\n    println!(\"{}\", area_dynamic(&c));\n}",
                             "runnable": true
                         }
                     ]
@@ -1930,7 +1930,7 @@
                         {
                             "title": "Using Your Iterator",
                             "body": "Once you implement Iterator, you get dozens of adapter methods for free: map, filter, take, zip, collect, and more. These adapters are lazy and compose without allocating intermediate collections. Only a terminal operation like collect or for_each drives evaluation.",
-                            "code": "fn main() {\n    let sum: u32 = Counter::new(5)\n        .filter(|&x| x % 2 == 0)\n        .map(|x| x * x)\n        .sum();\n\n    println!(\"sum of squares of evens: {sum}\"); // 4 + 16 = 20\n}",
+                            "code": "struct Counter {\n    count: u32,\n    max: u32,\n}\n\nimpl Counter {\n    fn new(max: u32) -> Self {\n        Counter { count: 0, max }\n    }\n}\n\nimpl Iterator for Counter {\n    type Item = u32;\n\n    fn next(&mut self) -> Option<u32> {\n        if self.count < self.max {\n            self.count += 1;\n            Some(self.count)\n        } else {\n            None\n        }\n    }\n}\n\nfn main() {\n    let sum: u32 = Counter::new(5)\n        .filter(|&x| x % 2 == 0)\n        .map(|x| x * x)\n        .sum();\n\n    println!(\"sum of squares of evens: {sum}\"); // 4 + 16 = 20\n}",
                             "runnable": true
                         },
                         {
@@ -1968,7 +1968,7 @@
                         {
                             "title": "Working With C Strings",
                             "body": "C strings are null-terminated byte arrays, while Rust strings are UTF-8 slices with a length. The std::ffi module provides CString for owned C strings and CStr for borrowed ones. Always handle the conversion carefully to avoid buffer overflows or invalid UTF-8.",
-                            "code": "use std::ffi::{CStr, CString};\nuse std::os::raw::c_char;\n\nextern \"C\" {\n    fn strlen(s: *const c_char) -> usize;\n}\n\nfn main() {\n    let rust_str = CString::new(\"hello\").unwrap();\n    let len = unsafe { strlen(rust_str.as_ptr()) };\n    println!(\"length: {len}\");\n}",
+                            "code": "use std::ffi::{CStr, CString};\nuse std::os::raw::c_char;\n\nextern \"C\" {\n    fn strlen(s: *const c_char) -> usize;\n}\n\nfn main() {\n    let rust_str = CString::new(\"hello\").unwrap();\n    let len = unsafe { strlen(rust_str.as_ptr()) };\n    println!(\"length: {len}\");\n\n    let c_str = unsafe { CStr::from_ptr(rust_str.as_ptr()) };\n    println!(\"as_str: {}\", c_str.to_str().unwrap());\n}",
                             "runnable": true
                         },
                         {
