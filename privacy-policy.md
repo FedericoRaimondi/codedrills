@@ -1,6 +1,6 @@
 # Privacy Policy
 
-Last updated: March 8, 2026
+Last updated: April 26, 2026
 
 This Privacy Policy describes how CodeDrills ("we", "us", or "our") collects, uses, and shares information when you use the CodeDrills mobile application (the "App").
 
@@ -9,7 +9,7 @@ This Privacy Policy describes how CodeDrills ("we", "us", or "our") collects, us
 - CodeDrills does not require an account.
 - Your learning progress is stored locally on your device.
 - We do not sell personal data.
-- We use Google AdMob to display ads, which may collect device identifiers and usage data.
+- We use Appodeal mediation (including Google AdMob) to display ads, which may collect device identifiers, IP address, and usage data.
 
 ## Information We Process
 
@@ -23,7 +23,9 @@ If you contact us by email, we will receive your email address and the contents 
 
 ## Third-Party Services
 
-We use Google AdMob to serve ads in the App. Ad providers may collect information such as device identifiers, IP address, and usage data to provide and measure ads. Their data practices are governed by their own privacy policies.
+We use Appodeal mediation (including Google AdMob) to serve ads in the App. Ad providers may collect information such as device identifiers, IP address, and usage data to provide and measure ads. Their data practices are governed by their own privacy policies.
+
+- Appodeal Privacy Policy: https://www.appodeal.com/privacy-policy
 
 ## Data Retention
 
