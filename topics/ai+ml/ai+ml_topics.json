@@ -1,0 +1,349 @@
+{
+  "language": "ai+ml",
+  "levels": [
+    {
+      "level": "new",
+      "topics": [
+        {
+          "id": "aiml-new-foundations",
+          "language": "ai+ml",
+          "level": "new",
+          "title": "AI + ML Foundations",
+          "description": "Build intuition around AI, ML data, and first prediction concepts.",
+          "estimatedMinutes": 30,
+          "lessons": [
+            {
+              "title": "AI basics: what is AI and ML",
+              "body": "Artificial intelligence is the broad goal of building systems that perform intelligent tasks, while machine learning is a subset that learns patterns from data instead of relying only on hand-written rules."
+            },
+            {
+              "title": "Data types: structured vs unstructured data",
+              "body": "Structured data follows a fixed schema such as rows and columns, while unstructured data (text, audio, images) needs additional processing before models can consume it effectively."
+            },
+            {
+              "title": "Intro to datasets",
+              "body": "A dataset is a collection of examples used for training and evaluation, typically with features (inputs) and labels (targets) when the task is supervised.",
+              "code": "dataset = [{'feature': 2, 'label': 1}, {'feature': 5, 'label': 0}]\nprint(dataset[0])",
+              "runnable": false
+            },
+            {
+              "title": "Basic math for AI",
+              "body": "Core AI math includes vectors, matrix operations, and basic algebra because model predictions are usually computed as weighted combinations of numeric features."
+            },
+            {
+              "title": "Intro to statistics",
+              "body": "Statistics helps quantify uncertainty through concepts like mean, variance, and distributions, which are essential for understanding noisy real-world data."
+            },
+            {
+              "title": "Visualization basics",
+              "body": "Visualizations like histograms, scatter plots, and box plots quickly reveal distribution shape, outliers, and variable relationships before modeling begins.",
+              "image": "img/languages/ai+ml/new-lesson-6.png"
+            },
+            {
+              "title": "Data inspection",
+              "body": "Initial data inspection checks missing values, duplicates, data types, and unrealistic ranges to prevent avoidable modeling errors."
+            },
+            {
+              "title": "Intro to predictions",
+              "body": "A prediction is a model output produced from input features, such as a class label, a probability, or a continuous numeric estimate.",
+              "code": "if temperature > 30:\n    prediction = 'high'\nelse:\n    prediction = 'normal'\nprint(prediction)",
+              "runnable": false
+            },
+            {
+              "title": "Supervised vs unsupervised",
+              "body": "Supervised learning trains with labeled targets, while unsupervised learning finds latent structure such as clusters or low-dimensional representations without labels."
+            },
+            {
+              "title": "Feature vs label",
+              "body": "Features are the inputs provided to a model, and the label is the ground-truth value the model is trained to predict."
+            },
+            {
+              "title": "Data cleaning basics",
+              "body": "Data cleaning standardizes formats, handles nulls, removes duplicates, and corrects inconsistencies so the model learns from reliable signals."
+            },
+            {
+              "title": "Simple classification idea",
+              "body": "Classification maps an input to one of several classes, for example spam vs not spam, often using probabilities and a decision threshold."
+            },
+            {
+              "title": "Simple regression idea",
+              "body": "Regression estimates a continuous value such as demand or price and is evaluated with error-based metrics like MAE or RMSE.",
+              "code": "predicted_price = 120000 + (size_sqft * 45)\nprint(predicted_price)",
+              "runnable": false
+            },
+            {
+              "title": "AI workflows",
+              "body": "A practical AI workflow moves from problem framing and data preparation to training, evaluation, deployment, and continuous monitoring."
+            },
+            {
+              "title": "AI use cases",
+              "body": "Common AI use cases include recommendation, fraud detection, forecasting, language understanding, and visual inspection in production systems."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": "beginner",
+      "topics": [
+        {
+          "id": "aiml-beginner-core-models",
+          "language": "ai+ml",
+          "level": "beginner",
+          "title": "Core Machine Learning Models",
+          "description": "Learn beginner ML algorithms, evaluation, and first project workflow.",
+          "estimatedMinutes": 30,
+          "lessons": [
+            {
+              "title": "Linear regression",
+              "body": "Linear regression models a continuous target as a weighted sum of features and is a strong baseline for interpretable numeric prediction tasks.",
+              "image": "img/languages/ai+ml/beginner-lesson-1.png"
+            },
+            {
+              "title": "Logistic regression",
+              "body": "Logistic regression transforms a linear score into a probability and is commonly used for binary classification with a clear decision boundary.",
+              "image": "img/languages/ai+ml/beginner-lesson-2.png"
+            },
+            {
+              "title": "Train/test split",
+              "body": "A train/test split keeps one partition unseen during training so final metrics reflect how the model behaves on new data.",
+              "code": "dataset = [{'feature': 2, 'label': 1}, {'feature': 5, 'label': 0}]\nprint(dataset[0])",
+              "runnable": false
+            },
+            {
+              "title": "Basic metrics",
+              "body": "Classification metrics such as precision, recall, and F1 complement accuracy, while regression uses MAE, MSE, or RMSE depending on error sensitivity."
+            },
+            {
+              "title": "k-NN algorithm",
+              "body": "k-NN predicts using the labels of nearby examples, so performance depends strongly on distance scaling and the choice of k."
+            },
+            {
+              "title": "Decision trees",
+              "body": "Decision trees recursively split features into rules, making predictions easy to explain but often requiring pruning or ensembles to avoid overfitting.",
+              "image": "img/languages/ai+ml/beginner-lesson-6.png"
+            },
+            {
+              "title": "Data preprocessing",
+              "body": "Preprocessing includes normalization, encoding categorical values, and handling missing data so model inputs are consistent and learnable."
+            },
+            {
+              "title": "Feature engineering",
+              "body": "Feature engineering creates informative inputs from raw data, such as ratios, time features, or domain-derived aggregates that improve model signal.",
+              "code": "if temperature > 30:\n    prediction = 'high'\nelse:\n    prediction = 'normal'\nprint(prediction)",
+              "runnable": false
+            },
+            {
+              "title": "Clustering basics",
+              "body": "Clustering groups similar samples without labels, helping with segmentation, anomaly exploration, and dataset understanding.",
+              "image": "img/languages/ai+ml/beginner-lesson-9.png"
+            },
+            {
+              "title": "PCA basics",
+              "body": "Principal Component Analysis projects data to lower dimensions while preserving maximum variance, useful for compression and denoising.",
+              "image": "img/languages/ai+ml/beginner-lesson-10.png"
+            },
+            {
+              "title": "Pipeline basics",
+              "body": "ML pipelines chain preprocessing and modeling steps into one reproducible workflow, reducing leakage and training-serving inconsistencies."
+            },
+            {
+              "title": "Overfitting concept",
+              "body": "Overfitting occurs when a model learns noise from training data, causing strong train performance but weak generalization to unseen examples.",
+              "image": "img/languages/ai+ml/beginner-lesson-12.png"
+            },
+            {
+              "title": "Cross-validation",
+              "body": "Cross-validation rotates validation folds to estimate performance more reliably and to compare models with less split-to-split variance.",
+              "code": "predicted_price = 120000 + (size_sqft * 45)\nprint(predicted_price)",
+              "runnable": false
+            },
+            {
+              "title": "Model evaluation workflow",
+              "body": "A good evaluation workflow defines metrics upfront, checks baseline comparisons, inspects error patterns, and validates assumptions before deployment."
+            },
+            {
+              "title": "First ML project",
+              "body": "A first ML project should prioritize clear problem scope, clean data, a simple baseline, and iterative improvements guided by measurable outcomes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": "intermediate",
+      "topics": [
+        {
+          "id": "aiml-intermediate-model-systems",
+          "language": "ai+ml",
+          "level": "intermediate",
+          "title": "Modeling and System Building",
+          "description": "Go deeper into model quality, neural methods, and deployment-minded workflows.",
+          "estimatedMinutes": 30,
+          "lessons": [
+            {
+              "title": "Ensemble methods",
+              "body": "Ensembles combine multiple models to improve robustness and accuracy by averaging or boosting complementary prediction behaviors."
+            },
+            {
+              "title": "Hyperparameter tuning",
+              "body": "Hyperparameter tuning explores settings like depth, learning rate, and regularization to maximize validation performance without overfitting."
+            },
+            {
+              "title": "Feature selection",
+              "body": "Feature selection removes redundant or noisy variables, improving interpretability, reducing training cost, and sometimes improving generalization.",
+              "code": "dataset = [{'feature': 2, 'label': 1}, {'feature': 5, 'label': 0}]\nprint(dataset[0])",
+              "runnable": false
+            },
+            {
+              "title": "Bias-variance tradeoff",
+              "body": "The bias-variance tradeoff balances underfitting and overfitting: simpler models have higher bias, complex models often have higher variance.",
+              "image": "img/languages/ai+ml/intermediate-lesson-4.png"
+            },
+            {
+              "title": "Advanced evaluation",
+              "body": "Advanced evaluation includes calibration, threshold analysis, subgroup metrics, and cost-aware decision rules for production-relevant model assessment."
+            },
+            {
+              "title": "Neural networks basics",
+              "body": "Neural networks stack differentiable layers that transform input features into richer representations learned from data."
+            },
+            {
+              "title": "Backpropagation",
+              "body": "Backpropagation computes gradients efficiently from output to input layers, enabling gradient-based optimization of neural network parameters.",
+              "image": "img/languages/ai+ml/intermediate-lesson-7.png"
+            },
+            {
+              "title": "Deep learning basics",
+              "body": "Deep learning uses multi-layer neural networks to automatically learn hierarchical features in text, vision, and speech tasks.",
+              "code": "if temperature > 30:\n    prediction = 'high'\nelse:\n    prediction = 'normal'\nprint(prediction)",
+              "runnable": false
+            },
+            {
+              "title": "NLP basics",
+              "body": "NLP converts human language into machine-readable representations for tasks such as classification, extraction, translation, and generation."
+            },
+            {
+              "title": "Computer vision basics",
+              "body": "Computer vision models process images with spatial filters to detect patterns such as edges, objects, and scene context.",
+              "image": "img/languages/ai+ml/intermediate-lesson-10.png"
+            },
+            {
+              "title": "Time series basics",
+              "body": "Time series modeling respects temporal order and often uses lags, trends, and seasonality features to forecast future values."
+            },
+            {
+              "title": "Recommendation systems",
+              "body": "Recommendation systems rank items by predicted relevance using collaborative signals, content features, or hybrid methods.",
+              "image": "img/languages/ai+ml/intermediate-lesson-12.png"
+            },
+            {
+              "title": "Model deployment basics",
+              "body": "Deployment packages a trained model behind an API or batch job with versioning, monitoring, and rollback safety.",
+              "code": "predicted_price = 120000 + (size_sqft * 45)\nprint(predicted_price)",
+              "runnable": false
+            },
+            {
+              "title": "Data pipelines",
+              "body": "Data pipelines automate ingestion, validation, transformation, and feature generation so training and inference use consistent data logic."
+            },
+            {
+              "title": "Model interpretability",
+              "body": "Interpretability techniques such as feature importance and SHAP explain model behavior for trust, debugging, and compliance."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": "advanced",
+      "topics": [
+        {
+          "id": "aiml-advanced-production-ai",
+          "language": "ai+ml",
+          "level": "advanced",
+          "title": "Production-Grade AI",
+          "description": "Master advanced architectures, scaling techniques, and responsible AI operations.",
+          "estimatedMinutes": 30,
+          "lessons": [
+            {
+              "title": "Deep learning architectures",
+              "body": "Different architectures specialize in different data modalities: CNNs for images, transformers for sequences, and recurrent variants for temporal patterns.",
+              "image": "img/languages/ai+ml/advanced-lesson-1.png"
+            },
+            {
+              "title": "Transfer learning",
+              "body": "Transfer learning adapts pretrained models to new tasks with less labeled data by reusing representations learned at scale."
+            },
+            {
+              "title": "NLP advanced",
+              "body": "Advanced NLP covers tokenization strategy, attention-based architectures, fine-tuning, and evaluation beyond simple accuracy metrics.",
+              "code": "dataset = [{'feature': 2, 'label': 1}, {'feature': 5, 'label': 0}]\nprint(dataset[0])",
+              "runnable": false
+            },
+            {
+              "title": "Computer vision advanced",
+              "body": "Advanced vision topics include object detection, segmentation, augmentation policy design, and domain shift handling.",
+              "image": "img/languages/ai+ml/advanced-lesson-4.png"
+            },
+            {
+              "title": "Reinforcement learning",
+              "body": "Reinforcement learning trains agents to maximize cumulative reward by learning policies from environment interaction.",
+              "image": "img/languages/ai+ml/advanced-lesson-5.png"
+            },
+            {
+              "title": "Generative AI",
+              "body": "Generative AI models learn data distributions to create new content such as text, images, or audio that follows observed patterns."
+            },
+            {
+              "title": "Large language models",
+              "body": "LLMs are transformer-based models trained on massive corpora to perform reasoning, retrieval-augmented tasks, and controlled generation.",
+              "image": "img/languages/ai+ml/advanced-lesson-7.png"
+            },
+            {
+              "title": "MLOps",
+              "body": "MLOps applies software engineering discipline to ML systems through CI/CD, reproducible training, monitoring, and governance.",
+              "image": "img/languages/ai+ml/advanced-lesson-8.png",
+              "code": "if temperature > 30:\n    prediction = 'high'\nelse:\n    prediction = 'normal'\nprint(prediction)",
+              "runnable": false
+            },
+            {
+              "title": "Distributed training",
+              "body": "Distributed training splits data and computation across multiple devices to reduce training time for large models.",
+              "image": "img/languages/ai+ml/advanced-lesson-9.png"
+            },
+            {
+              "title": "AutoML",
+              "body": "AutoML automates model search, feature processing, and tuning to speed up baseline creation while preserving reproducibility."
+            },
+            {
+              "title": "Graph neural networks",
+              "body": "Graph neural networks propagate information across node neighborhoods, making them effective for relational data like networks and molecules.",
+              "image": "img/languages/ai+ml/advanced-lesson-11.png"
+            },
+            {
+              "title": "Multimodal AI",
+              "body": "Multimodal models align and fuse modalities such as text and images to solve tasks requiring cross-modal understanding.",
+              "image": "img/languages/ai+ml/advanced-lesson-12.png"
+            },
+            {
+              "title": "Model optimization",
+              "body": "Model optimization techniques like quantization, pruning, and distillation reduce latency and memory while preserving acceptable accuracy.",
+              "code": "predicted_price = 120000 + (size_sqft * 45)\nprint(predicted_price)",
+              "runnable": false
+            },
+            {
+              "title": "AI ethics",
+              "body": "AI ethics addresses fairness, transparency, privacy, and accountability to reduce harm and align systems with human values."
+            },
+            {
+              "title": "End-to-end system",
+              "body": "An end-to-end AI system integrates data, training, deployment, monitoring, and feedback loops into one reliable production lifecycle.",
+              "image": "img/languages/ai+ml/advanced-lesson-15.png"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

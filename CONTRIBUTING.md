@@ -33,7 +33,7 @@ Be kind, constructive, and inclusive. Harassment or discrimination of any kind w
 
 Both types support four levels: `new`, `beginner`, `intermediate`, `advanced`.
 
-Supported languages: **Python**, **SQL**, **JavaScript**, **Rust**.
+Supported languages: **Python**, **SQL**, **JavaScript**, **Rust**, **AI + ML**.
 
 ---
 
@@ -57,6 +57,9 @@ challenges/
 topics/
   <language>/
     <language>_topics.json
+img/
+  languages/
+    <language>/
 ```
 
 Each file covers **all four levels** in one JSON document.
@@ -84,6 +87,17 @@ Each challenge object:
 
 Each solution step: `{ "title": "...", "explanation": "...", "code"?: "..." }`
 
+For `ai+ml` challenges, use `choices` instead of `starterCode`:
+
+```json
+"choices": [
+  { "text": "...", "correct": true },
+  { "text": "...", "correct": false },
+  { "text": "...", "correct": false },
+  { "text": "...", "correct": false }
+]
+```
+
 ---
 
 ## Topic format
@@ -104,7 +118,9 @@ Each topic object:
 | `estimatedMinutes` | integer | Reading/practice time in minutes |
 | `lessons`          | array   | Array of lesson objects |
 
-Each lesson: `{ "title": "...", "body": "...", "code"?: "..." }`
+Each lesson: `{ "title": "...", "body": "...", "code"?: "...", "image"?: "img/path.png" }`
+
+For `ai+ml` lessons, if `code` is present then `"runnable"` must be set to `false`.
 
 ---
 
@@ -112,7 +128,7 @@ Each lesson: `{ "title": "...", "body": "...", "code"?: "..." }`
 
 - **IDs** — `<lang-abbr>-<level>-<slug>`, e.g. `js-beginner-arrays`
 - **File IDs** are lowercase with hyphens; no spaces.
-- **Language abbreviations**: `py`, `sql`, `js`, `rs`
+- **Language abbreviations**: `py`, `sql`, `js`, `rs`, `aiml` (e.g., `aiml-new-foundations`)
 
 ---
 
