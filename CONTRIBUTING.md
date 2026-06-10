@@ -128,7 +128,7 @@ For `ai+ml` lessons, if `code` is present then `"runnable"` must be set to `fals
 
 - **IDs** — `<lang-abbr>-<level>-<slug>`, e.g. `js-beginner-arrays`
 - **File IDs** are lowercase with hyphens; no spaces.
-- **Language abbreviations**: `py`, `sql`, `js`, `rs`, `aiml`
+- **Language abbreviations**: `py`, `sql`, `js`, `rs`, `aiml` (e.g., `aiml-new-foundations`)
 
 ---
 

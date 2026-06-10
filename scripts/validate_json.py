@@ -69,7 +69,7 @@ def validate_challenge_file(path: str, data: dict) -> list[str]:
                     errors.append(err(path, f"{ch_prefix}: Missing required key '{key}'"))
 
             if top_language == "ai+ml" and "starterCode" in challenge:
-                errors.append(err(path, f"{ch_prefix}: 'starterCode' is not valid for ai+ml challenges; use 'choices'"))
+                errors.append(err(path, f"{ch_prefix}: 'starterCode' is not valid for ai+ml challenges; remove 'starterCode' and use 'choices' instead"))
 
             if "language" in challenge and top_language and challenge["language"] != top_language:
                 errors.append(err(path, f"{ch_prefix}: 'language' must match top-level language '{top_language}'"))
@@ -179,7 +179,7 @@ def validate_topic_file(path: str, data: dict) -> list[str]:
                         errors.append(err(path, f"{lesson_prefix}.image: Must be a string path"))
 
                     if top_language == "ai+ml" and "code" in lesson and lesson.get("runnable") is not False:
-                        errors.append(err(path, f"{lesson_prefix}: ai+ml lessons with 'code' must set 'runnable' to false"))
+                        errors.append(err(path, f"{lesson_prefix}: ai+ml lessons with 'code' must explicitly set 'runnable' to false"))
 
     return errors
 
