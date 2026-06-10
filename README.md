@@ -27,6 +27,9 @@ challenges/
 topics/
   <language>/
     <language>_topics.json
+img/
+  languages/
+    <language>/
 ```
 
 ### Supported Languages
@@ -37,6 +40,7 @@ topics/
 | SQL        | `sql/`            |
 | JavaScript | `javascript/`     |
 | Rust       | `rust/`           |
+| AI + ML    | `ai+ml/`          |
 
 ### Levels
 
@@ -57,6 +61,8 @@ See the [`examples/`](examples/) folder for annotated reference files:
 
 - [`examples/challenge_example.json`](examples/challenge_example.json) — challenge format
 - [`examples/lesson_example.json`](examples/lesson_example.json) — topic/lesson format
+- [`examples/ai+ml_challenge_example.json`](examples/ai+ml_challenge_example.json) — AI + ML challenge format (multiple choice)
+- [`examples/ai+ml_lesson_example.json`](examples/ai+ml_lesson_example.json) — AI + ML lesson format with image support
 
 ### Challenge keys
 
@@ -88,6 +94,17 @@ See the [`examples/`](examples/) folder for annotated reference files:
 }
 ```
 
+For `ai+ml` challenges, use `choices` instead of `starterCode`:
+
+```json
+"choices": [
+  { "text": "...", "correct": true },
+  { "text": "...", "correct": false },
+  { "text": "...", "correct": false },
+  { "text": "...", "correct": false }
+]
+```
+
 ### Topic keys
 
 ```json
@@ -113,6 +130,8 @@ See the [`examples/`](examples/) folder for annotated reference files:
   ]
 }
 ```
+
+For `ai+ml` lessons, `image` is supported on each lesson object and lessons with `code` must set `"runnable": false`.
 
 ---
 
