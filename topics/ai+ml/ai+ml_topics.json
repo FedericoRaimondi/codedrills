@@ -1,1365 +1,1365 @@
 {
-  "language": "ai+ml",
-  "levels": [
-    {
-      "level": "new",
-      "topics": [
+    "language": "ai+ml",
+    "levels": [
         {
-          "id": "aiml-new-ai-basics-what-is-ai-and-ml",
-          "language": "ai+ml",
-          "level": "new",
-          "title": "AI basics: what is AI and ML",
-          "description": "Artificial intelligence is the broad goal of building systems that perform intelligent tasks, while machine learning is a subset that learns patterns from data instead of relying only on hand-written rules.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Starting Point",
-              "body": "Artificial intelligence is the broad goal of building systems that perform intelligent tasks, while machine learning is the subset that learns patterns from data. This distinction helps you choose when to rely on rules versus data-driven models."
-            },
-            {
-              "title": "Real-world framing",
-              "body": "Use ai basics: what is ai and ml to translate a business question into a learning task. Write down the input available at prediction time and the exact output you need."
-            },
-            {
-              "title": "Common confusion to avoid",
-              "body": "A common pitfall is rushing to implement algorithms without first establishing the problem foundation. Before selecting any algorithm, clearly define your problem type (classification, regression, clustering, etc.), verify data availability and quality, and establish measurable success metrics to guide your model development."
-            }
-          ]
+            "level": "new",
+            "topics": [
+                {
+                    "id": "aiml-new-ai-basics-what-is-ai-and-ml",
+                    "language": "ai+ml",
+                    "level": "new",
+                    "title": "AI basics: what is AI and ML",
+                    "description": "Artificial intelligence is the broad goal of building systems that perform intelligent tasks, while machine learning is a subset that learns patterns from data instead of relying only on hand-written rules.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Starting Point",
+                            "body": "Artificial intelligence is the broad goal of building systems that perform intelligent tasks, while machine learning is the subset that learns patterns from data. This distinction helps you choose when to rely on rules versus data-driven models."
+                        },
+                        {
+                            "title": "Real-world framing",
+                            "body": "Use ai basics: what is ai and ml to translate a business question into a learning task. Write down the input available at prediction time and the exact output you need."
+                        },
+                        {
+                            "title": "Common confusion to avoid",
+                            "body": "A common pitfall is rushing to implement algorithms without first establishing the problem foundation. Before selecting any algorithm, clearly define your problem type (classification, regression, clustering, etc.), verify data availability and quality, and establish measurable success metrics to guide your model development."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-new-data-types-structured-vs-unstructured-data",
+                    "language": "ai+ml",
+                    "level": "new",
+                    "title": "Data types: structured vs unstructured data",
+                    "description": "Structured data follows a fixed schema such as rows and columns, while unstructured data (text, audio, images) needs additional processing before models can consume it effectively.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Data checklist",
+                            "body": "Structured data has fixed columns and types, while unstructured data (text, images, audio) needs representation steps before modeling. For each source, identify schema stability, storage format, and preprocessing needed to make inputs model-ready."
+                        },
+                        {
+                            "title": "Quality signals",
+                            "body": "Assess data quality across multiple dimensions: completeness (all required fields present), validity (values conform to expected ranges/formats), timeliness (data reflects current state), and leakage risk (no target information leaked into features). For structured data, validate schema consistency and missing values. For unstructured data, check for encoding issues, corruption, and diversity. Define specific metrics to quantify each signal."
+                        },
+                        {
+                            "title": "Mini practice",
+                            "body": "Mini practice for data types: structured vs unstructured data: list 5 example fields and mark each as structured, semi-structured, or unstructured, then try to think about the preprocessing each one needs. Another useful exercise is to navigate a website you commonly use and identify the structured and unstructured data it collects."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-new-intro-to-datasets",
+                    "language": "ai+ml",
+                    "level": "new",
+                    "title": "Intro to datasets",
+                    "description": "A dataset is a collection of examples used for training and evaluation, typically with features (inputs) and labels (targets) when the task is supervised.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "Definition",
+                            "body": "A dataset is a collection of examples used for training and evaluation, usually with features and labels in supervised tasks. Check label quality, class balance, and temporal leakage so the dataset reflects the decision problem you want to solve."
+                        },
+                        {
+                            "title": "Quality",
+                            "body": "Have you heard of the phrase 'garbage in, garbage out'? This is especially true in machine learning. The quality of your dataset directly impacts the performance of your model because the model learns patterns from the data it is given."
+                        },
+                        {
+                            "title": "Mini practice",
+                            "body": "Go on Kaggle (famous data science competition platform) and explore the dataset section."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-new-basic-math-for-ai",
+                    "language": "ai+ml",
+                    "level": "new",
+                    "title": "Basic math for AI",
+                    "description": "Core AI math includes vectors, matrix operations, and basic algebra because model predictions are usually computed as weighted combinations of numeric features.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Intuition first",
+                            "body": "Master the mathematical foundations of AI: vectors represent feature data, matrix operations enable efficient batch computations, and algebra governs how models combine features into predictions. Start by developing intuition—understand how scaling values affects distances, how noise impacts optimization convergence, and how feature correlation influences model learning before diving into formal equations."
+                        },
+                        {
+                            "title": "Why this matters for models",
+                            "body": "Vectors encode input features into a format ML algorithms can process. Dot products measure similarity and generate predictions through weighted feature combinations. Scaling normalizes data ranges to prevent certain features from dominating learning. Together, these operations determine how models compute distances between data points, how efficiently they optimize parameters, and the magnitude and accuracy of final predictions in supervised learning tasks."
+                        },
+                        {
+                            "title": "References",
+                            "body": "In these short lessons we can't cover the math in details, but here are some resources if you want to learn more:\n1) 3Blue1Brown Youtube channel has excellent visual explanations of linear algebra and calculus concepts relevant to AI.\n2) Andrew Ng's Machine Learning course on Coursera includes a refresher on the necessary math foundations for understanding ML algorithms.\n3) Stanford's Youtube channel has lectures from many of their AI courses"
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-new-intro-to-statistics",
+                    "language": "ai+ml",
+                    "level": "new",
+                    "title": "Intro to statistics",
+                    "description": "Statistics helps quantify uncertainty through concepts like mean, variance, and distributions, which are essential for understanding noisy real-world data.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Intuition first",
+                            "body": "Statistics helps quantify uncertainty through concepts like mean, variance, and distributions, which are essential for understanding noisy real-world data."
+                        },
+                        {
+                            "title": "Why this matters for models",
+                            "body": "Understanding statistics is crucial for AI practitioners because it allows you to quantify uncertainty, identify patterns, and make informed decisions based on data. Concepts like mean and variance help you summarize data distributions, while understanding probability distributions enables you to model real-world phenomena more accurately. Statistical inference techniques allow you to draw conclusions about populations from samples, which is essential when working with limited data. Additionally, statistical thinking helps you evaluate model performance, detect overfitting, and choose appropriate evaluation metrics that reflect the true impact of your models in production."
+                        },
+                        {
+                            "title": "Resources",
+                            "body": "In these short lessons we can't cover the statistics in detail, but here are some resources if you want to learn more:\n1) Free Book: Introduction to Statistical Learning.\n2) Coursera's Data Science Specialization includes modules on statistical inference and modeling.\n3) Stanford's Youtube channel has lectures from their statistics courses."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-new-visualization-basics",
+                    "language": "ai+ml",
+                    "level": "new",
+                    "title": "Visualization basics",
+                    "description": "Visualizations like histograms, scatter plots, and box plots quickly reveal distribution shape, outliers, and variable relationships before modeling begins.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Data checklist",
+                            "body": "Visualizations reveal distribution shape, outliers, and feature relationships before modeling. Choose chart types deliberately: histograms for spread, scatter plots for relationships, and box plots for extreme values.",
+                            "image": "img/languages/ai+ml/new-lesson-6.png"
+                        },
+                        {
+                            "title": "Data Visualization",
+                            "body": "Effective data visualization is crucial for AI practitioners because it allows you to quickly identify patterns, outliers, and relationships in your data that may not be apparent through summary statistics alone. Visualizations can help you understand the distribution of your features, detect skewness or kurtosis, and uncover correlations between variables. This insight is essential for making informed decisions about feature engineering, model selection, and potential data quality issues before you even start modeling."
+                        },
+                        {
+                            "title": "Art of visualization",
+                            "body": "Try to imagine how easier is to understand a concept when you have a good visualization of it. Give a look at this website: https://seeing-theory.brown.edu/ "
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-new-data-inspection",
+                    "language": "ai+ml",
+                    "level": "new",
+                    "title": "Data inspection",
+                    "description": "Initial data inspection checks missing values, duplicates, data types, and unrealistic ranges to prevent avoidable modeling errors.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "You are the detective",
+                            "body": "Initial data inspection checks missing values, duplicates, data types, and unrealistic ranges to prevent avoidable modeling errors. Approach this step with curiosity and skepticism—look for patterns that don't make sense, question assumptions about data collection, and be ready to dig deeper when something looks off."
+                        },
+                        {
+                            "title": "It will pay off",
+                            "body": "Thorough data inspection is an investment that pays off by catching issues early, improving model performance, and building trust in your results. By identifying and addressing data quality problems upfront, you can avoid wasted time on training models that learn from flawed data and ensure that your insights are based on reliable information."
+                        },
+                        {
+                            "title": "Consideration",
+                            "body": "Nowadays we mostly speak about AI, but imagine the best LLM (large language model, ChatGPT is an example of LLM) based on incorrect data. So as AI is becoming a commodity, the real value resides in the data. Unfortunately, it is less sexy to talk about data structure, quality and cleaning... but it is the most important part of the AI pipeline."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-new-intro-to-predictions",
+                    "language": "ai+ml",
+                    "level": "new",
+                    "title": "Intro to predictions",
+                    "description": "A prediction is a model output produced from input features, such as a class label, a probability, or a continuous numeric estimate.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "What is a prediction?",
+                            "body": "Crystal ball? Not quite. A prediction is an estimate produced by a model from input features (imagine them as columns in a spreadsheet). The output can be a class label, a probability, or a continuous numeric estimate. Predictions are used to inform decisions, automate processes, and provide insights into future events based on historical data."
+                        },
+                        {
+                            "title": "From input to output",
+                            "body": "The dataset with the features (and labels if supervised) is our model input. The model processes these features through its learned parameters to produce predictions. This process involves transforming the input data, applying the model's mathematical functions, and generating outputs that can be interpreted and used for decision-making."
+                        },
+                        {
+                            "title": "House Price Model",
+                            "body": "Take the case of a house price prediction model. The input features might include the number of bedrooms, square footage, location, and age of the property. The label would be the actual sale price of the house. The model learns from historical data to predict the price of a new house based on its features. So when a new house is listed, the model can provide an estimated price range."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-new-supervised-vs-unsupervised",
+                    "language": "ai+ml",
+                    "level": "new",
+                    "title": "Supervised vs unsupervised",
+                    "description": "Supervised learning trains with labeled targets, while unsupervised learning finds latent structure such as clusters or low-dimensional representations without labels.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Definition",
+                            "body": "Supervised learning trains with labeled targets (house prices, for example), while unsupervised learning finds latent structure such as clusters or low-dimensional representations without labels (e.g., customer segments)."
+                        },
+                        {
+                            "title": "Real-world framing",
+                            "body": "Start with the business question. If you have a clear target variable to predict, it's likely a supervised task. If you're exploring patterns or groupings in data without predefined labels, it's likely unsupervised. Clearly define your problem type before selecting algorithms."
+                        },
+                        {
+                            "title": "Hybrid approaches",
+                            "body": "They are less common, but hybrid approaches exist. Semi-supervised learning uses a small amount of labeled data with a large amount of unlabeled data to improve learning accuracy. Reinforcement learning, while not strictly supervised or unsupervised, involves learning optimal actions through trial and error interactions with an environment."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-new-feature-vs-label",
+                    "language": "ai+ml",
+                    "level": "new",
+                    "title": "Feature vs label",
+                    "description": "Features are the inputs provided to a model, and the label is the ground-truth value the model is trained to predict.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Task definition",
+                            "body": "Features are the inputs provided to a model, and the label is the ground-truth value the model is trained to predict. Start by writing the prediction target, the decision threshold (if any), and the cost of false positives vs false negatives."
+                        },
+                        {
+                            "title": "Features",
+                            "body": "Think of a table where each row is an example and each column is a feature. Features can be numeric, categorical, or derived from raw data through preprocessing and feature engineering. They should be relevant to the prediction task and available at prediction time."
+                        },
+                        {
+                            "title": "Label",
+                            "body": "Having complete and informative labels is crucial for supervised learning and somethimes is also the most expensive part of the AI pipeline. Labels should be accurate, consistent, and representative of the target variable you want to predict. In some cases, obtaining labels may require manual annotation, expert judgment, or integration with external data sources."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-new-data-cleaning-basics",
+                    "language": "ai+ml",
+                    "level": "new",
+                    "title": "Data cleaning basics",
+                    "description": "Data cleaning standardizes formats, handles nulls, removes duplicates, and corrects inconsistencies so the model learns from reliable signals.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Data checklist",
+                            "body": "Data cleaning standardizes formats, handles nulls, removes duplicates, and resolves inconsistent categories. Each cleaning rule should be deterministic and reproducible so training and inference receive the same transformations."
+                        },
+                        {
+                            "title": "Quality signals",
+                            "body": "For data cleaning basics, identify at least three quality signals (completeness, validity, timeliness, leakage risk) and decide how you will measure each one."
+                        },
+                        {
+                            "title": "Mini practice",
+                            "body": "Mini practice for data cleaning basics: document one cleaning rule per issue type (missing values, typos, duplicates) and explain how each rule changes model inputs."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-new-simple-classification-idea",
+                    "language": "ai+ml",
+                    "level": "new",
+                    "title": "Simple classification idea",
+                    "description": "Classification maps an input to one of several classes, for example spam vs not spam, often using probabilities and a decision threshold.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Spam or not spam?",
+                            "body": "Classification maps an input to one of several classes, for example spam vs not spam. Most email providers use classification models to filter out unwanted messages."
+                        },
+                        {
+                            "title": "Data",
+                            "body": "For simple classification idea, the data consists of email features (sender, subject, content) and a label indicating whether it's spam or not. The model learns patterns in the features that correlate with the spam label to make predictions on new emails."
+                        },
+                        {
+                            "title": "Model development",
+                            "body": "For simple classification idea, the model development process involves selecting an appropriate algorithm (e.g., logistic regression, decision tree), training it on the labeled dataset, and evaluating its performance using metrics like accuracy, precision, recall, and F1 score. The model can then be deployed and served to classify incoming emails in real-time."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-new-simple-regression-idea",
+                    "language": "ai+ml",
+                    "level": "new",
+                    "title": "Simple regression idea",
+                    "description": "Regression estimates a continuous value such as demand or price and is evaluated with error-based metrics like MAE or RMSE.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "Task definition",
+                            "body": "Regression estimates a continuous value such as demand or price. Define the target range, acceptable error tolerance, and whether MAE or RMSE best reflects the business cost of prediction mistakes."
+                        },
+                        {
+                            "title": "Stock price up or down?",
+                            "body": "For simple regression idea, a stock price prediction model estimates the future price of a stock based on historical data and relevant features. The model learns patterns in the data to make predictions that can inform investment decisions."
+                        },
+                        {
+                            "title": "Evaluation metrics",
+                            "body": "To understand if the model can be trusted, we evaluate it using error-based metrics like Mean Absolute Error (MAE). It is important to choose the right metric based on the business context and to have a separate validation dataset that the model has never seen during training to get an unbiased estimate of its performance on new data."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-new-ai-workflows",
+                    "language": "ai+ml",
+                    "level": "new",
+                    "title": "AI workflows",
+                    "description": "A practical AI workflow moves from problem framing and data preparation to training, evaluation, deployment, and continuous monitoring.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Pipeline view",
+                            "body": "A practical AI workflow moves from problem framing and data preparation to training, evaluation, deployment, and continuous monitoring. Break the work into stages: framing, data prep, baseline, iteration, deployment, and monitoring."
+                        },
+                        {
+                            "title": "Decision points",
+                            "body": "In ai workflows, every stage has a go/no-go decision. Define evidence required to move forward instead of relying on intuition alone. For example, before moving from data preparation to training, you might require that data quality metrics meet certain thresholds. Before deploying a model, you might require that offline evaluation metrics exceed a baseline and that error analysis shows no critical failure modes."
+                        },
+                        {
+                            "title": "Operational readiness",
+                            "body": "Operational readiness for ai workflows: Use stage gates so the team only advances when metrics and assumptions are documented. This prevents wasted effort on models that won't meet business needs or production requirements."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-new-ai-use-cases",
+                    "language": "ai+ml",
+                    "level": "new",
+                    "title": "AI use cases",
+                    "description": "Common AI use cases include recommendation, fraud detection, forecasting, language understanding, and visual inspection in production systems.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Common use cases",
+                            "body": "Common AI use cases include recommendation, fraud detection, forecasting, language understanding, and visual inspection in production systems. Break the work into stages: framing, data prep, baseline, iteration, deployment, and monitoring."
+                        },
+                        {
+                            "title": "Do you need a AI-based solution?",
+                            "body": "You'd be surprised how few people actually ask this question. AI is not the solution to every problem. Before jumping into an AI-based solution, it's crucial to evaluate whether it is the right fit for your specific use case. Consider factors such as the availability and quality of data, the complexity of the problem, the need for interpretability, and the potential return on investment. Sometimes, simpler rule-based systems or traditional statistical methods may be more effective and easier to maintain than complex AI models."
+                        },
+                        {
+                            "title": "What next?",
+                            "body": "If you think an AI-based solution is appropriate for your use case, the next step is to define the problem clearly, identify the success metrics, and gather the necessary data. Then, you can start with a simple baseline model to establish a performance benchmark before iterating on more complex algorithms."
+                        }
+                    ]
+                }
+            ]
         },
         {
-          "id": "aiml-new-data-types-structured-vs-unstructured-data",
-          "language": "ai+ml",
-          "level": "new",
-          "title": "Data types: structured vs unstructured data",
-          "description": "Structured data follows a fixed schema such as rows and columns, while unstructured data (text, audio, images) needs additional processing before models can consume it effectively.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Data checklist",
-              "body": "Structured data has fixed columns and types, while unstructured data (text, images, audio) needs representation steps before modeling. For each source, identify schema stability, storage format, and preprocessing needed to make inputs model-ready."
-            },
-            {
-              "title": "Quality signals",
-              "body": "Assess data quality across multiple dimensions: completeness (all required fields present), validity (values conform to expected ranges/formats), timeliness (data reflects current state), and leakage risk (no target information leaked into features). For structured data, validate schema consistency and missing values. For unstructured data, check for encoding issues, corruption, and diversity. Define specific metrics to quantify each signal."
-            },
-            {
-              "title": "Mini practice",
-              "body": "Mini practice for data types: structured vs unstructured data: list 5 example fields and mark each as structured, semi-structured, or unstructured, then try to think about the preprocessing each one needs. Another useful exercise is to navigate a website you commonly use and identify the structured and unstructured data it collects."
-            }
-          ]
+            "level": "beginner",
+            "topics": [
+                {
+                    "id": "aiml-beginner-linear-regression",
+                    "language": "ai+ml",
+                    "level": "beginner",
+                    "title": "Linear regression",
+                    "description": "Linear regression models a continuous target as a weighted sum of features and is a strong baseline for interpretable numeric prediction tasks.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Model behavior",
+                            "body": "Think of linear regression as fitting the best straight line through a cloud of points. Each feature gets a weight, and the prediction is a weighted sum plus an intercept. This makes it great for explaining what drives a number like price, demand, or delivery time.",
+                            "image": "img/languages/ai+ml/beginner-lesson-1.png"
+                        },
+                        {
+                            "title": "Strengths and limits",
+                            "body": "Linear regression shines when relationships are roughly linear and you need clear explanations for stakeholders. It struggles with strong nonlinear patterns or heavy outliers that pull the line off course. Practical fixes include feature transforms, robust scaling, and adding interaction terms."
+                        },
+                        {
+                            "title": "Tuning priorities",
+                            "body": "Start with feature scaling and a baseline model, then tune regularization to balance fit and simplicity. Compare L1 and L2 when you want sparsity vs stability. Keep one validation protocol fixed so each change is a fair apples-to-apples test."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-beginner-logistic-regression",
+                    "language": "ai+ml",
+                    "level": "beginner",
+                    "title": "Logistic regression",
+                    "description": "Logistic regression transforms a linear score into a probability and is commonly used for binary classification with a clear decision boundary.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Model behavior",
+                            "body": "Logistic regression predicts probability, then turns it into a class using a threshold. Under the hood, it learns a linear boundary in feature space and maps scores to values between 0 and 1. It is a reliable first model for spam detection, churn risk, or fraud screening.",
+                            "image": "img/languages/ai+ml/beginner-lesson-2.png"
+                        },
+                        {
+                            "title": "Strengths and limits",
+                            "body": "This model is fast, interpretable, and surprisingly strong on clean tabular data. It can underperform when classes are separated by complex nonlinear boundaries. You can improve results with feature engineering, calibrated thresholds, and class-weight adjustments for imbalance."
+                        },
+                        {
+                            "title": "Tuning priorities",
+                            "body": "Tune regularization first, then adjust class weights and the decision threshold to match business costs. For example, lower the threshold when missing positives is expensive. Evaluate with precision-recall tradeoffs, not accuracy alone."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-beginner-train-test-split",
+                    "language": "ai+ml",
+                    "level": "beginner",
+                    "title": "Train/test split",
+                    "description": "A train/test split keeps one partition unseen during training so final metrics reflect how the model behaves on new data.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "Metric strategy",
+                            "body": "A train/test split is your reality check: the model trains on one portion and proves itself on unseen data. If the test score drops sharply from training, your model is probably memorizing patterns instead of learning them. Keep the test set locked until major decisions are ready."
+                        },
+                        {
+                            "title": "Error analysis",
+                            "body": "After scoring, inspect wrong predictions by slices such as region, device type, season, or user segment. Hidden failure pockets often appear even when overall metrics look strong. This is where product risk usually hides."
+                        },
+                        {
+                            "title": "Decision policy",
+                            "body": "Define launch criteria before training starts: minimum metric targets, maximum acceptable false positives, and rollback triggers. Pre-committed rules prevent metric shopping. Teams move faster when the go/no-go bar is explicit."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-beginner-basic-metrics",
+                    "language": "ai+ml",
+                    "level": "beginner",
+                    "title": "Basic metrics",
+                    "description": "Classification metrics such as precision, recall, and F1 complement accuracy, while regression uses MAE, MSE, or RMSE depending on error sensitivity.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Metric strategy",
+                            "body": "Metrics answer different questions, so one number is never enough. Precision asks how many flagged cases were truly positive, recall asks how many true positives you caught, and F1 balances both. For regression, MAE is easy to explain while RMSE penalizes large misses more strongly."
+                        },
+                        {
+                            "title": "Error analysis",
+                            "body": "Turn every metric into a story by checking who the model fails on most often. A stable F1 can still hide poor recall for a minority class. Segment-level views prevent false confidence."
+                        },
+                        {
+                            "title": "Decision policy",
+                            "body": "Choose a primary metric based on business impact, then set guardrail metrics that cannot degrade. Example: improve recall, but do not let precision fall below a safe floor. This keeps optimization aligned with real outcomes."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-beginner-k-nn-algorithm",
+                    "language": "ai+ml",
+                    "level": "beginner",
+                    "title": "k-NN algorithm",
+                    "description": "k-NN predicts using the labels of nearby examples, so performance depends strongly on distance scaling and the choice of k.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Model behavior",
+                            "body": "k-NN predicts by asking nearby examples to vote, so distance is the whole game. If one feature has a huge numeric range, it can dominate neighbor selection unfairly. Normalizing features is often the difference between random and reliable performance."
+                        },
+                        {
+                            "title": "Strengths and limits",
+                            "body": "k-NN is intuitive and requires almost no training time, which makes it great for quick baselines. It becomes slow at prediction time on large datasets and can struggle in high-dimensional spaces. Approximate nearest-neighbor search and dimensionality reduction help at scale."
+                        },
+                        {
+                            "title": "Tuning priorities",
+                            "body": "Tune k, distance metric, and scaling together because they interact strongly. Small k captures local detail but can be noisy; larger k is smoother but may blur boundaries. Validate choices with the same split and track inference latency too."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-beginner-decision-trees",
+                    "language": "ai+ml",
+                    "level": "beginner",
+                    "title": "Decision trees",
+                    "description": "Decision trees recursively split features into rules, making predictions easy to explain but often requiring pruning or ensembles to avoid overfitting.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Model behavior",
+                            "body": "Decision trees split data into yes/no rules, which makes predictions easy to explain to non-technical teams. Each split reduces impurity, and leaves hold final predictions. You can literally follow the path from root to leaf like a flowchart.",
+                            "image": "img/languages/ai+ml/beginner-lesson-6.png"
+                        },
+                        {
+                            "title": "Strengths and limits",
+                            "body": "Trees handle mixed feature types and nonlinear patterns without much preprocessing. Unconstrained trees overfit quickly and can memorize noise. Depth limits, minimum samples per leaf, and pruning are your guardrails."
+                        },
+                        {
+                            "title": "Tuning priorities",
+                            "body": "Tune max depth first, then min samples per split and min samples per leaf to stabilize behavior. If performance swings across splits, constrain complexity before adding more features. Compare against a simple baseline to confirm real gains."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-beginner-data-preprocessing",
+                    "language": "ai+ml",
+                    "level": "beginner",
+                    "title": "Data preprocessing",
+                    "description": "Preprocessing includes normalization, encoding categorical values, and handling missing data so model inputs are consistent and learnable.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Data checklist",
+                            "body": "Preprocessing is where messy raw data becomes model-ready input. Standardize numeric scales, encode categories consistently, and decide explicit rules for missing values. If this step is sloppy, every downstream metric becomes hard to trust."
+                        },
+                        {
+                            "title": "Quality signals",
+                            "body": "Track concrete signals: missing-value rate by feature, invalid-category rate, and schema mismatch frequency between training and serving data. Add leakage checks so no future-only information sneaks into inputs. These signals turn data quality into something measurable."
+                        },
+                        {
+                            "title": "Mini practice",
+                            "body": "Pick one small dataset and run three steps: scale one numeric column, one-hot encode one categorical column, and impute one missing-value feature. Compare summary stats before and after. You will see why preprocessing changes model behavior immediately."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-beginner-feature-engineering",
+                    "language": "ai+ml",
+                    "level": "beginner",
+                    "title": "Feature engineering",
+                    "description": "Feature engineering creates informative inputs from raw data, such as ratios, time features, or domain-derived aggregates that improve model signal.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "Data checklist",
+                            "body": "Feature engineering is the art of making important patterns easier for a model to see. Ratios, time-of-day flags, rolling averages, and domain aggregates often beat raw columns. Good features can make simple models surprisingly strong."
+                        },
+                        {
+                            "title": "Quality signals",
+                            "body": "For each engineered feature, verify three things: it is available at prediction time, it has stable distribution over time, and it does not leak target information. Track null rate and outlier rate after transformations. A clever feature is only useful if it is reliable in production."
+                        },
+                        {
+                            "title": "Mini practice",
+                            "body": "Create two features from the same raw table, such as price-per-unit and days-since-last-event. Write one sentence on why each could add signal. Then test whether either improves validation metrics versus the baseline set."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-beginner-clustering-basics",
+                    "language": "ai+ml",
+                    "level": "beginner",
+                    "title": "Clustering basics",
+                    "description": "Clustering groups similar samples without labels, helping with segmentation, anomaly exploration, and dataset understanding.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Model behavior",
+                            "body": "Clustering groups similar examples without labels, so the model discovers structure instead of predicting a target. It is useful for customer segmentation, anomaly exploration, and data understanding. Think of it as organizing a messy room into meaningful piles.",
+                            "image": "img/languages/ai+ml/beginner-lesson-9.png"
+                        },
+                        {
+                            "title": "Strengths and limits",
+                            "body": "Clustering is powerful for exploration but sensitive to scale and distance assumptions. Two different settings can produce very different clusters on the same data. Use domain checks and cluster profiles to judge whether segments are actually meaningful."
+                        },
+                        {
+                            "title": "Tuning priorities",
+                            "body": "Tune number of clusters, initialization strategy, and scaling method together. Run multiple seeds to verify stability, not just one lucky run. Prefer settings that produce both good internal metrics and interpretable segments."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-beginner-pca-basics",
+                    "language": "ai+ml",
+                    "level": "beginner",
+                    "title": "PCA basics",
+                    "description": "Principal Component Analysis projects data to lower dimensions while preserving maximum variance, useful for compression and denoising.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Model behavior",
+                            "body": "PCA rotates data into new axes that capture the most variance first. This can compress many correlated features into a few components while keeping most information. It is useful for visualization, noise reduction, and faster downstream modeling.",
+                            "image": "img/languages/ai+ml/beginner-lesson-10.png"
+                        },
+                        {
+                            "title": "Strengths and limits",
+                            "body": "PCA is fast and often helps when features are highly correlated. The tradeoff is interpretability because principal components are mixtures of original features. It can also miss nonlinear structure that linear projections cannot capture."
+                        },
+                        {
+                            "title": "Tuning priorities",
+                            "body": "Choose component count using explained variance and downstream validation performance together. A common starting point is enough components to explain 90-95% variance, then adjust by task. Always scale features before PCA so large-value columns do not dominate."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-beginner-pipeline-basics",
+                    "language": "ai+ml",
+                    "level": "beginner",
+                    "title": "Pipeline basics",
+                    "description": "ML pipelines chain preprocessing and modeling steps into one reproducible workflow, reducing leakage and training-serving inconsistencies.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Pipeline view",
+                            "body": "A pipeline chains preprocessing and modeling into one reproducible workflow. That means the exact same transforms are applied during training and prediction, which prevents leakage and surprise behavior. Pipelines are your best defense against \"it worked offline\" problems."
+                        },
+                        {
+                            "title": "Decision points",
+                            "body": "Set clear stage gates: data checks pass, baseline beats a naive model, and error analysis has no critical blind spots. Each gate should have evidence, not opinion. This keeps iteration focused and faster over time."
+                        },
+                        {
+                            "title": "Operational readiness",
+                            "body": "Version every pipeline step, including encoders, scalers, and feature logic. Log input schema and model version with predictions. When incidents happen, these breadcrumbs make debugging and rollback much easier."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-beginner-overfitting-concept",
+                    "language": "ai+ml",
+                    "level": "beginner",
+                    "title": "Overfitting concept",
+                    "description": "Overfitting occurs when a model learns noise from training data, causing strong train performance but weak generalization to unseen examples.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Metric strategy",
+                            "body": "Overfitting happens when training metrics look amazing but test metrics disappoint. The model has learned noise and quirks instead of general patterns. Watch the train-test gap as a first warning signal.",
+                            "image": "img/languages/ai+ml/beginner-lesson-12.png"
+                        },
+                        {
+                            "title": "Error analysis",
+                            "body": "Inspect failures by segment to find where overfitting hurts most, such as rare classes or recent time windows. If mistakes cluster in specific slices, your model may be too tailored to historical artifacts. This is a cue to simplify or regularize."
+                        },
+                        {
+                            "title": "Decision policy",
+                            "body": "Adopt guardrails like maximum allowed train-test gap and minimum performance on key slices. If a candidate breaks guardrails, do not ship, even with a flashy headline metric. Strong policy prevents fragile launches."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-beginner-cross-validation",
+                    "language": "ai+ml",
+                    "level": "beginner",
+                    "title": "Cross-validation",
+                    "description": "Cross-validation rotates validation folds to estimate performance more reliably and to compare models with less split-to-split variance.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "Metric strategy",
+                            "body": "Cross-validation gives a more reliable estimate by rotating validation folds. Instead of one lucky split, you see performance consistency across multiple data subsets. This reduces the chance of overtrusting a brittle model."
+                        },
+                        {
+                            "title": "Error analysis",
+                            "body": "Compare fold-level metrics and error slices, not just the average score. Large spread across folds usually signals instability or hidden data drift. Use that signal to revisit features, sampling, or model complexity."
+                        },
+                        {
+                            "title": "Decision policy",
+                            "body": "Set promotion rules like \"mean score above baseline and fold variance below threshold.\" This rewards models that are both accurate and stable. Consistency is often more valuable than a single high score."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-beginner-model-evaluation-workflow",
+                    "language": "ai+ml",
+                    "level": "beginner",
+                    "title": "Model evaluation workflow",
+                    "description": "A good evaluation workflow defines metrics upfront, checks baseline comparisons, inspects error patterns, and validates assumptions before deployment.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Metric strategy",
+                            "body": "A solid evaluation workflow starts before model training: define success metrics, baselines, and acceptable risks up front. Then measure performance on held-out data and compare against simple alternatives. Clear framing prevents accidental metric chasing."
+                        },
+                        {
+                            "title": "Error analysis",
+                            "body": "Go beyond aggregate scores by reviewing confusion patterns, high-cost mistakes, and segment-level failures. Ask \"who is harmed if this prediction is wrong?\" This step translates model quality into product reality."
+                        },
+                        {
+                            "title": "Decision policy",
+                            "body": "Create a release checklist with thresholds, fairness checks, and rollback plans. Treat deployment as an evidence-based decision, not a milestone celebration. Good workflows turn evaluation into a repeatable habit."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-beginner-first-ml-project",
+                    "language": "ai+ml",
+                    "level": "beginner",
+                    "title": "First ML project",
+                    "description": "A first ML project should prioritize clear problem scope, clean data, a simple baseline, and iterative improvements guided by measurable outcomes.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Pipeline view",
+                            "body": "Your first ML project should be small enough to finish and realistic enough to teach end-to-end thinking. Pick one clear target, gather clean data, build a baseline, and iterate with focused improvements. Shipping a simple model beats designing a perfect one forever."
+                        },
+                        {
+                            "title": "Decision points",
+                            "body": "At each phase, ask one practical question: Do we have enough data quality to continue? Is the baseline useful yet? Are errors acceptable for the intended use? These checkpoints keep scope under control."
+                        },
+                        {
+                            "title": "Operational readiness",
+                            "body": "Before calling it done, document assumptions, data sources, and known failure modes. Add lightweight monitoring so you can detect drift after launch. This turns a classroom exercise into production-ready thinking."
+                        }
+                    ]
+                }
+            ]
         },
         {
-          "id": "aiml-new-intro-to-datasets",
-          "language": "ai+ml",
-          "level": "new",
-          "title": "Intro to datasets",
-          "description": "A dataset is a collection of examples used for training and evaluation, typically with features (inputs) and labels (targets) when the task is supervised.",
-          "estimatedMinutes": 11,
-          "lessons": [
-            {
-              "title": "Definition",
-              "body": "A dataset is a collection of examples used for training and evaluation, usually with features and labels in supervised tasks. Check label quality, class balance, and temporal leakage so the dataset reflects the decision problem you want to solve."
-            },
-            {
-              "title": "Quality",
-              "body": "Have you heard of the phrase 'garbage in, garbage out'? This is especially true in machine learning. The quality of your dataset directly impacts the performance of your model because the model learns patterns from the data it is given."
-            },
-            {
-              "title": "Mini practice",
-              "body": "Go on Kaggle (famous data science competition platform) and explore the dataset section."
-            }
-          ]
+            "level": "intermediate",
+            "topics": [
+                {
+                    "id": "aiml-intermediate-ensemble-methods",
+                    "language": "ai+ml",
+                    "level": "intermediate",
+                    "title": "Ensemble methods",
+                    "description": "Ensembles combine multiple models to improve robustness and accuracy by averaging or boosting complementary prediction behaviors.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Model behavior",
+                            "body": "Ensembles combine multiple models so their errors cancel out and robustness improves. Bagging reduces variance, while boosting reduces bias by focusing on hard examples. The result is often stronger than any single model family."
+                        },
+                        {
+                            "title": "Strengths and limits",
+                            "body": "Ensembles usually deliver top tabular performance and handle nonlinear patterns well. The tradeoff is higher compute cost and lower interpretability than a single simple model. Use feature importance and slice metrics to keep behavior understandable."
+                        },
+                        {
+                            "title": "Tuning priorities",
+                            "body": "Tune estimator count, learning rate, and subsampling in a budget-aware order. Start with conservative defaults, then widen search only where sensitivity is high. Track both quality and inference cost because both matter in production."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-intermediate-hyperparameter-tuning",
+                    "language": "ai+ml",
+                    "level": "intermediate",
+                    "title": "Hyperparameter tuning",
+                    "description": "Hyperparameter tuning explores settings like depth, learning rate, and regularization to maximize validation performance without overfitting.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Model behavior",
+                            "body": "Hyperparameter tuning is controlled experimentation, not random guessing. You are searching for settings that improve validation performance without overfitting to one split. Better search strategy often beats brute-force volume."
+                        },
+                        {
+                            "title": "Strengths and limits",
+                            "body": "Tuning can unlock major gains, especially for flexible models, but it can also burn time and compute quickly. Poor validation design leads to misleading \"improvements.\" Keep the protocol strict so wins are real."
+                        },
+                        {
+                            "title": "Tuning priorities",
+                            "body": "Define a search space that reflects domain knowledge, then allocate budget with random or Bayesian search. Reserve holdout data for final confirmation only. Log every trial so results are reproducible and auditable."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-intermediate-feature-selection",
+                    "language": "ai+ml",
+                    "level": "intermediate",
+                    "title": "Feature selection",
+                    "description": "Feature selection removes redundant or noisy variables, improving interpretability, reducing training cost, and sometimes improving generalization.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "Model behavior",
+                            "body": "Feature selection removes noisy or redundant inputs so models focus on signal. This can improve generalization, reduce training cost, and simplify explanations. In many projects, fewer high-quality features beat many weak ones."
+                        },
+                        {
+                            "title": "Strengths and limits",
+                            "body": "Selection helps when datasets are wide, noisy, or expensive to serve. It can hurt if important interactions are dropped by simplistic criteria. Combine statistical filters with model-based importance and domain review."
+                        },
+                        {
+                            "title": "Tuning priorities",
+                            "body": "Tune selection threshold, redundancy limits, and stability across folds. Prefer feature sets that perform consistently across resamples, not just one split. Stability is a strong sign the selected signals are real."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-intermediate-bias-variance-tradeoff",
+                    "language": "ai+ml",
+                    "level": "intermediate",
+                    "title": "Bias-variance tradeoff",
+                    "description": "The bias-variance tradeoff balances underfitting and overfitting: simpler models have higher bias, complex models often have higher variance.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Metric strategy",
+                            "body": "Bias-variance tradeoff explains why simple models can underfit while complex models can overfit. Your goal is not max complexity, but the right complexity for the data and task. Validation curves make this balance visible.",
+                            "image": "img/languages/ai+ml/intermediate-lesson-4.png"
+                        },
+                        {
+                            "title": "Error analysis",
+                            "body": "High bias usually shows broad systematic mistakes, while high variance appears as unstable performance across folds or segments. Diagnose which side you are on before changing architecture. Different problems require opposite fixes."
+                        },
+                        {
+                            "title": "Decision policy",
+                            "body": "Define what counts as acceptable bias and variance for the use case, then choose interventions accordingly. Add complexity only when justified by stable gains. Keep a baseline model to prevent unnecessary complexity creep."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-intermediate-advanced-evaluation",
+                    "language": "ai+ml",
+                    "level": "intermediate",
+                    "title": "Advanced evaluation",
+                    "description": "Advanced evaluation includes calibration, threshold analysis, subgroup metrics, and cost-aware decision rules for production-relevant model assessment.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Metric strategy",
+                            "body": "Advanced evaluation goes beyond one headline score. Include calibration, threshold curves, subgroup performance, and business-cost analysis. A model with lower accuracy can still be better if decision costs are lower."
+                        },
+                        {
+                            "title": "Error analysis",
+                            "body": "Inspect failure slices tied to user impact, such as high-value accounts, rare classes, or safety-critical scenarios. Calibration errors are especially important when outputs are used as probabilities. Good slicing reveals what aggregate metrics hide."
+                        },
+                        {
+                            "title": "Decision policy",
+                            "body": "Set decision rules that combine model metrics with cost and risk constraints. Require evidence that improvements hold across critical subgroups, not just global averages. This protects both users and product outcomes."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-intermediate-neural-networks-basics",
+                    "language": "ai+ml",
+                    "level": "intermediate",
+                    "title": "Neural networks basics",
+                    "description": "Neural networks stack differentiable layers that transform input features into richer representations learned from data.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Representation learning",
+                            "body": "Neural networks learn layered representations, where early layers capture simple patterns and deeper layers capture abstractions. This makes them powerful for complex signals such as images, text, and behavior sequences. Think of depth as progressive feature construction."
+                        },
+                        {
+                            "title": "Training stability",
+                            "body": "Watch learning curves, validation gap, and gradient health during training. A stable run usually shows steady loss reduction without wild oscillations. Early stopping and regularization are practical tools when instability appears."
+                        },
+                        {
+                            "title": "Practical trade-offs",
+                            "body": "More layers and parameters can improve accuracy, but they increase training cost and tuning complexity. Match architecture size to data volume and latency budget. A smaller, reliable model often wins in real products."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-intermediate-backpropagation",
+                    "language": "ai+ml",
+                    "level": "intermediate",
+                    "title": "Backpropagation",
+                    "description": "Backpropagation computes gradients efficiently from output to input layers, enabling gradient-based optimization of neural network parameters.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Representation learning",
+                            "body": "Backpropagation efficiently computes how each parameter contributed to prediction error. Gradients flow from output back through layers so the optimizer can update weights in the right direction. This is the engine that makes deep learning trainable.",
+                            "image": "img/languages/ai+ml/intermediate-lesson-7.png"
+                        },
+                        {
+                            "title": "Training stability",
+                            "body": "Monitor gradient norms and loss behavior to catch vanishing or exploding gradients early. If training stalls or diverges, try normalization, learning-rate adjustments, or gradient clipping. Stable gradients are a prerequisite for useful learning."
+                        },
+                        {
+                            "title": "Practical trade-offs",
+                            "body": "Faster optimization settings can reduce training time but may increase instability. Conservative learning schedules are slower yet often more reliable. Choose the balance that fits your deadline and risk tolerance."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-intermediate-deep-learning-basics",
+                    "language": "ai+ml",
+                    "level": "intermediate",
+                    "title": "Deep learning basics",
+                    "description": "Deep learning uses multi-layer neural networks to automatically learn hierarchical features in text, vision, and speech tasks.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "Representation learning",
+                            "body": "Deep learning stacks many layers to learn hierarchical patterns directly from data. In vision, layers move from edges to shapes to objects; in NLP, from tokens to context. This automatic feature learning is its biggest advantage."
+                        },
+                        {
+                            "title": "Training stability",
+                            "body": "Track overfitting gap, gradient behavior, and validation trends during every run. Instability usually comes from mismatched learning rate, weak regularization, or noisy labels. Quick diagnostics save long retraining cycles."
+                        },
+                        {
+                            "title": "Practical trade-offs",
+                            "body": "Higher model capacity can improve quality, but it raises compute, memory, and serving cost. Choose model size based on measurable gain per resource spent. Efficiency is part of model quality in production."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-intermediate-nlp-basics",
+                    "language": "ai+ml",
+                    "level": "intermediate",
+                    "title": "NLP basics",
+                    "description": "NLP converts human language into machine-readable representations for tasks such as classification, extraction, translation, and generation.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Domain-specific constraints",
+                            "body": "NLP starts with messy human language: ambiguity, slang, misspellings, and domain-specific jargon. The same word can mean different things by context, so preprocessing and tokenization matter. Good language models begin with good problem framing."
+                        },
+                        {
+                            "title": "Feature representation choices",
+                            "body": "Compare sparse approaches like TF-IDF with dense embeddings from pretrained models. Sparse vectors are simple and fast; dense vectors capture richer semantics but can cost more. Pick based on task complexity and latency budget."
+                        },
+                        {
+                            "title": "Failure-case review",
+                            "body": "Build targeted evaluation slices for negation, rare terms, and out-of-domain phrases. Many NLP systems fail silently on exactly these cases. Regular slice reviews keep quality aligned with real user language."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-intermediate-computer-vision-basics",
+                    "language": "ai+ml",
+                    "level": "intermediate",
+                    "title": "Computer vision basics",
+                    "description": "Computer vision models process images with spatial filters to detect patterns such as edges, objects, and scene context.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Domain-specific constraints",
+                            "body": "Vision models must handle lighting changes, camera angles, occlusion, and blur. Label quality is equally critical because noisy boxes or masks teach the wrong patterns. Data diversity often matters as much as architecture choice.",
+                            "image": "img/languages/ai+ml/intermediate-lesson-10.png"
+                        },
+                        {
+                            "title": "Feature representation choices",
+                            "body": "Compare handcrafted pipelines, transfer learning features, and end-to-end CNN representations. Simpler features can work for constrained tasks, while deep features excel on complex scenes. Evaluate both accuracy and inference cost."
+                        },
+                        {
+                            "title": "Failure-case review",
+                            "body": "Create error slices for low light, motion blur, partial occlusion, and uncommon viewpoints. These are common production failure modes. Monitoring slice drift helps catch degradation before users notice."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-intermediate-time-series-basics",
+                    "language": "ai+ml",
+                    "level": "intermediate",
+                    "title": "Time series basics",
+                    "description": "Time series modeling respects temporal order and often uses lags, trends, and seasonality features to forecast future values.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Domain-specific constraints",
+                            "body": "Time series modeling respects order: yesterday can influence today, but not the reverse. Trends, seasonality, and shocks all shape forecasts. Data leakage is a major risk if future information sneaks into features."
+                        },
+                        {
+                            "title": "Feature representation choices",
+                            "body": "Compare lag features, rolling statistics, and decomposition-based signals. Some tasks benefit from simple autoregressive features; others need richer seasonality structure. Use backtesting that mirrors real forecasting windows."
+                        },
+                        {
+                            "title": "Failure-case review",
+                            "body": "Track errors around trend breaks, holidays, promotions, and sudden external events. Forecast models often look good on normal periods and fail on regime changes. Slice-based monitoring exposes that gap early."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-intermediate-recommendation-systems",
+                    "language": "ai+ml",
+                    "level": "intermediate",
+                    "title": "Recommendation systems",
+                    "description": "Recommendation systems rank items by predicted relevance using collaborative signals, content features, or hybrid methods.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Domain-specific constraints",
+                            "body": "Recommendation systems optimize ranking, not just prediction. Feedback loops, cold start, and popularity bias make this domain tricky. User experience depends on diversity and novelty as much as raw relevance.",
+                            "image": "img/languages/ai+ml/intermediate-lesson-12.png"
+                        },
+                        {
+                            "title": "Feature representation choices",
+                            "body": "Compare collaborative filtering, content-based features, and hybrid embeddings. Collaborative methods excel with dense interactions, while content helps with new items. Hybrids usually provide the most practical balance."
+                        },
+                        {
+                            "title": "Failure-case review",
+                            "body": "Review failures for cold-start users, sparse-item catalogs, and long-tail content. High average metrics can still hide poor experiences for new or niche users. Slice-level audits keep recommendations fair and useful."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-intermediate-model-deployment-basics",
+                    "language": "ai+ml",
+                    "level": "intermediate",
+                    "title": "Model deployment basics",
+                    "description": "Deployment packages a trained model behind an API or batch job with versioning, monitoring, and rollback safety.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "System design view",
+                            "body": "Deployment turns a trained model into a dependable service or batch process. Success depends on contracts: input schema, model version, feature logic, and monitoring signals. Treat deployment as engineering, not a final checkbox."
+                        },
+                        {
+                            "title": "Reliability controls",
+                            "body": "Monitor latency, error rate, drift, and prediction distribution from day one. Each alert should map to a concrete playbook: rollback, retrain, or data-pipeline fix. Reliable systems fail gracefully, not silently."
+                        },
+                        {
+                            "title": "Lifecycle management",
+                            "body": "Define ownership for retraining cadence, validation gates, and incident response. Without clear responsibility, model quality decays in production. Lifecycle discipline keeps performance from slowly drifting off course."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-intermediate-data-pipelines",
+                    "language": "ai+ml",
+                    "level": "intermediate",
+                    "title": "Data pipelines",
+                    "description": "Data pipelines automate ingestion, validation, transformation, and feature generation so training and inference use consistent data logic.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "System design view",
+                            "body": "Data pipelines are the circulatory system of ML products. They ingest, validate, transform, and publish features used by both training and serving. Consistency across these paths is key to trustworthy predictions."
+                        },
+                        {
+                            "title": "Reliability controls",
+                            "body": "Add checks for schema drift, null spikes, freshness delays, and unexpected category values. Alerts should include impact scope and next actions so operators can respond quickly. Great pipelines are observable, not mysterious."
+                        },
+                        {
+                            "title": "Lifecycle management",
+                            "body": "Version transformations, track lineage, and document ownership at every stage. When a metric drops, lineage makes root cause analysis much faster. Mature pipelines optimize for maintainability as much as throughput."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-intermediate-model-interpretability",
+                    "language": "ai+ml",
+                    "level": "intermediate",
+                    "title": "Model interpretability",
+                    "description": "Interpretability techniques such as feature importance and SHAP explain model behavior for trust, debugging, and compliance.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Metric strategy",
+                            "body": "Interpretability helps answer the critical question: why did the model predict this? Global views like feature importance explain broad behavior, while local explanations clarify individual decisions. Both are useful for trust, debugging, and compliance."
+                        },
+                        {
+                            "title": "Error analysis",
+                            "body": "Use explanations on failure cases to see whether the model relied on spurious signals. Segment by user group or context to detect uneven reasoning patterns. Interpretability is most valuable when paired with error analysis."
+                        },
+                        {
+                            "title": "Decision policy",
+                            "body": "Set policy for when human review is required, especially for high-impact predictions. Require explanation artifacts in release reviews for sensitive use cases. Transparent processes reduce risk and improve accountability."
+                        }
+                    ]
+                }
+            ]
         },
         {
-          "id": "aiml-new-basic-math-for-ai",
-          "language": "ai+ml",
-          "level": "new",
-          "title": "Basic math for AI",
-          "description": "Core AI math includes vectors, matrix operations, and basic algebra because model predictions are usually computed as weighted combinations of numeric features.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Intuition first",
-              "body": "Master the mathematical foundations of AI: vectors represent feature data, matrix operations enable efficient batch computations, and algebra governs how models combine features into predictions. Start by developing intuition—understand how scaling values affects distances, how noise impacts optimization convergence, and how feature correlation influences model learning before diving into formal equations."
-            },
-            {
-              "title": "Why this matters for models",
-              "body": "Vectors encode input features into a format ML algorithms can process. Dot products measure similarity and generate predictions through weighted feature combinations. Scaling normalizes data ranges to prevent certain features from dominating learning. Together, these operations determine how models compute distances between data points, how efficiently they optimize parameters, and the magnitude and accuracy of final predictions in supervised learning tasks."
-            },
-            {
-              "title": "References",
-              "body": "In these short lessons we can't cover the math in details, but here are some resources if you want to learn more:\n1) 3Blue1Brown Youtube channel has excellent visual explanations of linear algebra and calculus concepts relevant to AI.\n2) Andrew Ng's Machine Learning course on Coursera includes a refresher on the necessary math foundations for understanding ML algorithms.\n3) Stanford's Youtube channel has lectures from many of their AI courses"
-            }
-          ]
-        },
-        {
-          "id": "aiml-new-intro-to-statistics",
-          "language": "ai+ml",
-          "level": "new",
-          "title": "Intro to statistics",
-          "description": "Statistics helps quantify uncertainty through concepts like mean, variance, and distributions, which are essential for understanding noisy real-world data.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Intuition first",
-              "body": "Statistics helps quantify uncertainty through concepts like mean, variance, and distributions, which are essential for understanding noisy real-world data."
-            },
-            {
-              "title": "Why this matters for models",
-              "body": "Understanding statistics is crucial for AI practitioners because it allows you to quantify uncertainty, identify patterns, and make informed decisions based on data. Concepts like mean and variance help you summarize data distributions, while understanding probability distributions enables you to model real-world phenomena more accurately. Statistical inference techniques allow you to draw conclusions about populations from samples, which is essential when working with limited data. Additionally, statistical thinking helps you evaluate model performance, detect overfitting, and choose appropriate evaluation metrics that reflect the true impact of your models in production."
-            },
-            {
-              "title": "Resources",
-              "body": "In these short lessons we can't cover the statistics in detail, but here are some resources if you want to learn more:\n1) Free Book: Introduction to Statistical Learning.\n2) Coursera's Data Science Specialization includes modules on statistical inference and modeling.\n3) Stanford's Youtube channel has lectures from their statistics courses."
-            }
-          ]
-        },
-        {
-          "id": "aiml-new-visualization-basics",
-          "language": "ai+ml",
-          "level": "new",
-          "title": "Visualization basics",
-          "description": "Visualizations like histograms, scatter plots, and box plots quickly reveal distribution shape, outliers, and variable relationships before modeling begins.",
-          "estimatedMinutes": 10,
-          "lessons": [
-            {
-              "title": "Data checklist",
-              "body": "Visualizations reveal distribution shape, outliers, and feature relationships before modeling. Choose chart types deliberately: histograms for spread, scatter plots for relationships, and box plots for extreme values.",
-              "image": "img/languages/ai+ml/new-lesson-6.png"
-            },
-            {
-              "title": "Data Visualization",
-              "body": "Effective data visualization is crucial for AI practitioners because it allows you to quickly identify patterns, outliers, and relationships in your data that may not be apparent through summary statistics alone. Visualizations can help you understand the distribution of your features, detect skewness or kurtosis, and uncover correlations between variables. This insight is essential for making informed decisions about feature engineering, model selection, and potential data quality issues before you even start modeling."
-            },
-            {
-              "title": "Art of visualization",
-              "body": "Try to imagine how easier is to understand a concept when you have a good visualization of it. Give a look at this website: https://seeing-theory.brown.edu/ "
-            }
-          ]
-        },
-        {
-          "id": "aiml-new-data-inspection",
-          "language": "ai+ml",
-          "level": "new",
-          "title": "Data inspection",
-          "description": "Initial data inspection checks missing values, duplicates, data types, and unrealistic ranges to prevent avoidable modeling errors.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "You are the detective",
-              "body": "Initial data inspection checks missing values, duplicates, data types, and unrealistic ranges to prevent avoidable modeling errors. Approach this step with curiosity and skepticism—look for patterns that don't make sense, question assumptions about data collection, and be ready to dig deeper when something looks off."
-            },
-            {
-              "title": "It will pay off",
-              "body": "Thorough data inspection is an investment that pays off by catching issues early, improving model performance, and building trust in your results. By identifying and addressing data quality problems upfront, you can avoid wasted time on training models that learn from flawed data and ensure that your insights are based on reliable information."
-            },
-            {
-              "title": "Consideration",
-              "body": "Nowadays we mostly speak about AI, but imagine the best LLM (large language model, ChatGPT is an example of LLM) based on incorrect data. So as AI is becoming a commodity, the real value resides in the data. Unfortunately, it is less sexy to talk about data structure, quality and cleaning... but it is the most important part of the AI pipeline."
-            }
-          ]
-        },
-        {
-          "id": "aiml-new-intro-to-predictions",
-          "language": "ai+ml",
-          "level": "new",
-          "title": "Intro to predictions",
-          "description": "A prediction is a model output produced from input features, such as a class label, a probability, or a continuous numeric estimate.",
-          "estimatedMinutes": 11,
-          "lessons": [
-            {
-              "title": "What is a prediction?",
-              "body": "Crystal ball? Not quite. A prediction is an estimate produced by a model from input features (imagine them as columns in a spreadsheet). The output can be a class label, a probability, or a continuous numeric estimate. Predictions are used to inform decisions, automate processes, and provide insights into future events based on historical data."
-            },
-            {
-              "title": "From input to output",
-              "body": "The dataset with the features (and labels if supervised) is our model input. The model processes these features through its learned parameters to produce predictions. This process involves transforming the input data, applying the model's mathematical functions, and generating outputs that can be interpreted and used for decision-making."
-            },
-            {
-              "title": "House Price Model",
-              "body": "Take the case of a house price prediction model. The input features might include the number of bedrooms, square footage, location, and age of the property. The label would be the actual sale price of the house. The model learns from historical data to predict the price of a new house based on its features. So when a new house is listed, the model can provide an estimated price range."
-            }
-          ]
-        },
-        {
-          "id": "aiml-new-supervised-vs-unsupervised",
-          "language": "ai+ml",
-          "level": "new",
-          "title": "Supervised vs unsupervised",
-          "description": "Supervised learning trains with labeled targets, while unsupervised learning finds latent structure such as clusters or low-dimensional representations without labels.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Definition",
-              "body": "Supervised learning trains with labeled targets (house prices, for example), while unsupervised learning finds latent structure such as clusters or low-dimensional representations without labels (e.g., customer segments)."
-            },
-            {
-              "title": "Real-world framing",
-              "body": "Start with the business question. If you have a clear target variable to predict, it's likely a supervised task. If you're exploring patterns or groupings in data without predefined labels, it's likely unsupervised. Clearly define your problem type before selecting algorithms."
-            },
-            {
-              "title": "Hybrid approaches",
-              "body": "They are less common, but hybrid approaches exist. Semi-supervised learning uses a small amount of labeled data with a large amount of unlabeled data to improve learning accuracy. Reinforcement learning, while not strictly supervised or unsupervised, involves learning optimal actions through trial and error interactions with an environment."
-            }
-          ]
-        },
-        {
-          "id": "aiml-new-feature-vs-label",
-          "language": "ai+ml",
-          "level": "new",
-          "title": "Feature vs label",
-          "description": "Features are the inputs provided to a model, and the label is the ground-truth value the model is trained to predict.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Task definition",
-              "body": "Features are the inputs provided to a model, and the label is the ground-truth value the model is trained to predict. Start by writing the prediction target, the decision threshold (if any), and the cost of false positives vs false negatives."
-            },
-            {
-              "title": "Features",
-              "body": "Think of a table where each row is an example and each column is a feature. Features can be numeric, categorical, or derived from raw data through preprocessing and feature engineering. They should be relevant to the prediction task and available at prediction time."
-            },
-            {
-              "title": "Label",
-              "body": "Having complete and informative labels is crucial for supervised learning and somethimes is also the most expensive part of the AI pipeline. Labels should be accurate, consistent, and representative of the target variable you want to predict. In some cases, obtaining labels may require manual annotation, expert judgment, or integration with external data sources."
-            }
-          ]
-        },
-        {
-          "id": "aiml-new-data-cleaning-basics",
-          "language": "ai+ml",
-          "level": "new",
-          "title": "Data cleaning basics",
-          "description": "Data cleaning standardizes formats, handles nulls, removes duplicates, and corrects inconsistencies so the model learns from reliable signals.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Data checklist",
-              "body": "Data cleaning standardizes formats, handles nulls, removes duplicates, and resolves inconsistent categories. Each cleaning rule should be deterministic and reproducible so training and inference receive the same transformations."
-            },
-            {
-              "title": "Quality signals",
-              "body": "For data cleaning basics, identify at least three quality signals (completeness, validity, timeliness, leakage risk) and decide how you will measure each one."
-            },
-            {
-              "title": "Mini practice",
-              "body": "Mini practice for data cleaning basics: document one cleaning rule per issue type (missing values, typos, duplicates) and explain how each rule changes model inputs."
-            }
-          ]
-        },
-        {
-          "id": "aiml-new-simple-classification-idea",
-          "language": "ai+ml",
-          "level": "new",
-          "title": "Simple classification idea",
-          "description": "Classification maps an input to one of several classes, for example spam vs not spam, often using probabilities and a decision threshold.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Spam or not spam?",
-              "body": "Classification maps an input to one of several classes, for example spam vs not spam. Most email providers use classification models to filter out unwanted messages."
-            },
-            {
-              "title": "Data",
-              "body": "For simple classification idea, the data consists of email features (sender, subject, content) and a label indicating whether it's spam or not. The model learns patterns in the features that correlate with the spam label to make predictions on new emails."
-            },
-            {
-              "title": "Model development",
-              "body": "For simple classification idea, the model development process involves selecting an appropriate algorithm (e.g., logistic regression, decision tree), training it on the labeled dataset, and evaluating its performance using metrics like accuracy, precision, recall, and F1 score. The model can then be deployed and served to classify incoming emails in real-time."
-            }
-          ]
-        },
-        {
-          "id": "aiml-new-simple-regression-idea",
-          "language": "ai+ml",
-          "level": "new",
-          "title": "Simple regression idea",
-          "description": "Regression estimates a continuous value such as demand or price and is evaluated with error-based metrics like MAE or RMSE.",
-          "estimatedMinutes": 11,
-          "lessons": [
-            {
-              "title": "Task definition",
-              "body": "Regression estimates a continuous value such as demand or price. Define the target range, acceptable error tolerance, and whether MAE or RMSE best reflects the business cost of prediction mistakes."
-            },
-            {
-              "title": "Stock price up or down?",
-              "body": "For simple regression idea, a stock price prediction model estimates the future price of a stock based on historical data and relevant features. The model learns patterns in the data to make predictions that can inform investment decisions."
-            },
-            {
-              "title": "Evaluation metrics",
-              "body": "To understand if the model can be trusted, we evaluate it using error-based metrics like Mean Absolute Error (MAE). It is important to choose the right metric based on the business context and to have a separate validation dataset that the model has never seen during training to get an unbiased estimate of its performance on new data."
-            }
-          ]
-        },
-        {
-          "id": "aiml-new-ai-workflows",
-          "language": "ai+ml",
-          "level": "new",
-          "title": "AI workflows",
-          "description": "A practical AI workflow moves from problem framing and data preparation to training, evaluation, deployment, and continuous monitoring.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Pipeline view",
-              "body": "A practical AI workflow moves from problem framing and data preparation to training, evaluation, deployment, and continuous monitoring. Break the work into stages: framing, data prep, baseline, iteration, deployment, and monitoring."
-            },
-            {
-              "title": "Decision points",
-              "body": "In ai workflows, every stage has a go/no-go decision. Define evidence required to move forward instead of relying on intuition alone. For example, before moving from data preparation to training, you might require that data quality metrics meet certain thresholds. Before deploying a model, you might require that offline evaluation metrics exceed a baseline and that error analysis shows no critical failure modes."
-            },
-            {
-              "title": "Operational readiness",
-              "body": "Operational readiness for ai workflows: Use stage gates so the team only advances when metrics and assumptions are documented. This prevents wasted effort on models that won't meet business needs or production requirements."
-            }
-          ]
-        },
-        {
-          "id": "aiml-new-ai-use-cases",
-          "language": "ai+ml",
-          "level": "new",
-          "title": "AI use cases",
-          "description": "Common AI use cases include recommendation, fraud detection, forecasting, language understanding, and visual inspection in production systems.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Common use cases",
-              "body": "Common AI use cases include recommendation, fraud detection, forecasting, language understanding, and visual inspection in production systems. Break the work into stages: framing, data prep, baseline, iteration, deployment, and monitoring."
-            },
-            {
-              "title": "Do you need a AI-based solution?",
-              "body": "You'd be surprised how few people actually ask this question. AI is not the solution to every problem. Before jumping into an AI-based solution, it's crucial to evaluate whether it is the right fit for your specific use case. Consider factors such as the availability and quality of data, the complexity of the problem, the need for interpretability, and the potential return on investment. Sometimes, simpler rule-based systems or traditional statistical methods may be more effective and easier to maintain than complex AI models."
-            },
-            {
-              "title": "What next?",
-              "body": "If you think an AI-based solution is appropriate for your use case, the next step is to define the problem clearly, identify the success metrics, and gather the necessary data. Then, you can start with a simple baseline model to establish a performance benchmark before iterating on more complex algorithms."
-            }
-          ]
+            "level": "advanced",
+            "topics": [
+                {
+                    "id": "aiml-advanced-deep-learning-architectures",
+                    "language": "ai+ml",
+                    "level": "advanced",
+                    "title": "Deep learning architectures",
+                    "description": "Different architectures specialize in different data modalities: CNNs for images, transformers for sequences, and recurrent variants for temporal patterns.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Representation learning",
+                            "body": "Architecture choice is an inductive bias decision: CNNs exploit locality, transformers model long-range dependencies, and recurrent variants capture temporal flow. Pick the bias that matches your modality and objective. Better alignment often beats larger parameter count.",
+                            "image": "img/languages/ai+ml/advanced-lesson-1.png"
+                        },
+                        {
+                            "title": "Training stability",
+                            "body": "Architecture depth and attention width can destabilize optimization if not paired with proper normalization and scheduling. Track gradient statistics and validation gap continuously during sweeps. Stability diagnostics should be first-class metrics, not afterthoughts."
+                        },
+                        {
+                            "title": "Practical trade-offs",
+                            "body": "Evaluate architectures on a Pareto front of quality, latency, memory, and maintainability. The best offline score is not always the best production choice. Favor designs that meet constraints with predictable behavior."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-advanced-transfer-learning",
+                    "language": "ai+ml",
+                    "level": "advanced",
+                    "title": "Transfer learning",
+                    "description": "Transfer learning adapts pretrained models to new tasks with less labeled data by reusing representations learned at scale.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Representation learning",
+                            "body": "Transfer learning reuses representations learned on large source tasks, then adapts them to your target domain. Early layers often capture general patterns, while later layers encode task-specific signals. Freezing strategy controls how much prior knowledge you keep versus rewrite."
+                        },
+                        {
+                            "title": "Training stability",
+                            "body": "Fine-tuning can collapse if learning rates are too aggressive or domain shift is severe. Monitor layer-wise gradients and validation drift after unfreezing stages. Gradual unfreezing plus discriminative learning rates often improves stability."
+                        },
+                        {
+                            "title": "Practical trade-offs",
+                            "body": "Frozen backbones are cheaper and safer with small datasets; full fine-tuning can win when target data is ample and mismatched. Choose based on data regime, compute budget, and deployment latency. Benchmark both paths before committing."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-advanced-nlp-advanced",
+                    "language": "ai+ml",
+                    "level": "advanced",
+                    "title": "NLP advanced",
+                    "description": "Advanced NLP covers tokenization strategy, attention-based architectures, fine-tuning, and evaluation beyond simple accuracy metrics.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "Core mechanism",
+                            "body": "Advanced NLP pipelines hinge on tokenization quality, context length strategy, and attention mechanisms that route information across long sequences. Small tokenizer or truncation decisions can materially change downstream behavior. Evaluation must include robustness beyond simple aggregate accuracy."
+                        },
+                        {
+                            "title": "Scaling considerations",
+                            "body": "Before scaling model size, quantify gains per token processed, memory cost, and inference latency under realistic traffic. Larger models can improve capability but increase operational and safety burden. Capacity planning should be tied to user-value metrics, not model hype."
+                        },
+                        {
+                            "title": "Responsible use",
+                            "body": "Audit across dialects, sociolects, and low-resource language variants to detect uneven performance. Add safeguards for toxicity, hallucination, and privacy leakage in generated outputs. Responsible NLP is an ongoing monitoring loop, not a one-time checklist."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-advanced-computer-vision-advanced",
+                    "language": "ai+ml",
+                    "level": "advanced",
+                    "title": "Computer vision advanced",
+                    "description": "Advanced vision topics include object detection, segmentation, augmentation policy design, and domain shift handling.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Core mechanism",
+                            "body": "Advanced vision systems combine detection, segmentation, and augmentation policies to learn robust spatial reasoning under real-world noise. Architecture and annotation strategy are tightly coupled because supervision quality shapes learned features. Domain shift handling must be built in from day one.",
+                            "image": "img/languages/ai+ml/advanced-lesson-4.png"
+                        },
+                        {
+                            "title": "Scaling considerations",
+                            "body": "Scale with care: higher-resolution inputs and larger backbones raise both compute cost and labeling burden. Evaluate whether incremental quality gains justify annotation, retraining, and serving expenses. Throughput constraints often determine feasible architecture choices."
+                        },
+                        {
+                            "title": "Responsible use",
+                            "body": "Test robustness across demographics, environments, and camera conditions to avoid uneven error rates. Include safety policies for high-risk misdetections and uncertain outputs. Production vision systems need explicit fallback behavior."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-advanced-reinforcement-learning",
+                    "language": "ai+ml",
+                    "level": "advanced",
+                    "title": "Reinforcement learning",
+                    "description": "Reinforcement learning trains agents to maximize cumulative reward by learning policies from environment interaction.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Core mechanism",
+                            "body": "Reinforcement learning optimizes policies through reward-driven interaction, balancing exploration against exploitation over long horizons. Credit assignment is hard because good or bad outcomes may appear many steps later. Reward design is therefore as important as algorithm choice.",
+                            "image": "img/languages/ai+ml/advanced-lesson-5.png"
+                        },
+                        {
+                            "title": "Scaling considerations",
+                            "body": "Simulators, off-policy data reuse, and parallel rollouts can speed training, but each adds complexity and potential bias. Evaluate sample efficiency, wall-clock cost, and sim-to-real transfer risk together. Fast training is meaningless if learned behavior does not transfer safely."
+                        },
+                        {
+                            "title": "Responsible use",
+                            "body": "Constrain unsafe exploration with action limits, safety critics, or human oversight in high-impact settings. Monitor for reward hacking, where the agent maximizes proxy reward while violating intent. Safety constraints should be treated as hard requirements."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-advanced-generative-ai",
+                    "language": "ai+ml",
+                    "level": "advanced",
+                    "title": "Generative AI",
+                    "description": "Generative AI models learn data distributions to create new content such as text, images, or audio that follows observed patterns.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Core mechanism",
+                            "body": "Generative models learn probability structure of data and sample from it to produce new text, images, or audio. Quality depends on both model capacity and the diversity/cleanliness of training data. Generation controls like temperature and decoding strategy strongly shape output behavior."
+                        },
+                        {
+                            "title": "Scaling considerations",
+                            "body": "Scaling improves fluency and coherence but multiplies compute, storage, and serving complexity. Measure gains with task-grounded evaluations, not only benchmark scores. Cost-aware scaling keeps generative systems sustainable."
+                        },
+                        {
+                            "title": "Responsible use",
+                            "body": "Implement provenance signals, policy filters, and abuse-reporting channels before broad release. Continuously monitor harmful output patterns and adversarial misuse attempts. Responsible deployment requires rapid feedback loops and clear escalation paths."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-advanced-large-language-models",
+                    "language": "ai+ml",
+                    "level": "advanced",
+                    "title": "Large language models",
+                    "description": "LLMs are transformer-based models trained on massive corpora to perform reasoning, retrieval-augmented tasks, and controlled generation.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Core mechanism",
+                            "body": "LLMs use transformer attention to model long-context dependencies and generate token-by-token completions. Their apparent reasoning emerges from scale, data diversity, and objective design rather than explicit symbolic rules. Retrieval augmentation can ground responses when parametric memory is insufficient.",
+                            "image": "img/languages/ai+ml/advanced-lesson-7.png"
+                        },
+                        {
+                            "title": "Scaling considerations",
+                            "body": "Assess context length, throughput, and memory footprint under realistic concurrency, not lab conditions. Parameter count alone is a poor planning metric without latency and cost targets. Evaluation should include quality-per-dollar, not just quality-per-token."
+                        },
+                        {
+                            "title": "Responsible use",
+                            "body": "Require citation paths or retrieval evidence for factual tasks and add hallucination checks in high-stakes flows. Defend against prompt injection and data exfiltration in tool-using systems. Governance for LLM apps must include both model and orchestration layers."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-advanced-mlops",
+                    "language": "ai+ml",
+                    "level": "advanced",
+                    "title": "MLOps",
+                    "description": "MLOps applies software engineering discipline to ML systems through CI/CD, reproducible training, monitoring, and governance.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "System design view",
+                            "body": "MLOps operationalizes ML with reproducible training, CI/CD, versioned artifacts, and observable serving systems. The goal is not only shipping models, but shipping models reliably and repeatedly. Strong interfaces between data, training, and serving reduce operational surprises.",
+                            "image": "img/languages/ai+ml/advanced-lesson-8.png"
+                        },
+                        {
+                            "title": "Reliability controls",
+                            "body": "Define SLOs for freshness, latency, drift, and prediction quality, then map each to actionable runbooks. Alerting without response playbooks creates noise, not reliability. Mature MLOps couples monitoring with fast incident resolution paths."
+                        },
+                        {
+                            "title": "Lifecycle management",
+                            "body": "Plan retraining, rollback, and governance as continuous processes with clear owners. Track lineage from raw data to deployed model version for auditability. Long-term success depends on disciplined operations, not one heroic launch."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-advanced-distributed-training",
+                    "language": "ai+ml",
+                    "level": "advanced",
+                    "title": "Distributed training",
+                    "description": "Distributed training splits data and computation across multiple devices to reduce training time for large models.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "System design view",
+                            "body": "Distributed training partitions computation across devices using data, model, or pipeline parallelism. Communication topology and synchronization strategy can dominate performance at scale. System design choices are as critical as model architecture.",
+                            "image": "img/languages/ai+ml/advanced-lesson-9.png"
+                        },
+                        {
+                            "title": "Reliability controls",
+                            "body": "Monitor stragglers, communication overhead, gradient synchronization health, and checkpoint integrity. Fault tolerance is mandatory because long runs will encounter node failures. Resumable training workflows save both cost and calendar time."
+                        },
+                        {
+                            "title": "Lifecycle management",
+                            "body": "Standardize experiment tracking, checkpoint versioning, and reproducible cluster configs. Without lifecycle discipline, distributed gains are hard to reproduce. Treat infra reproducibility as part of model reproducibility."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-advanced-automl",
+                    "language": "ai+ml",
+                    "level": "advanced",
+                    "title": "AutoML",
+                    "description": "AutoML automates model search, feature processing, and tuning to speed up baseline creation while preserving reproducibility.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Core mechanism",
+                            "body": "AutoML automates search across preprocessing, model families, and hyperparameters to produce strong baselines quickly. It is best viewed as accelerated experimentation, not fully autonomous decision-making. Human framing still determines objective quality."
+                        },
+                        {
+                            "title": "Scaling considerations",
+                            "body": "AutoML can consume large compute budgets if search spaces are unconstrained. Define resource caps, early stopping, and candidate-pruning rules before running large sweeps. Efficient search design is the difference between speedup and waste."
+                        },
+                        {
+                            "title": "Responsible use",
+                            "body": "Require transparent logs of candidate models, feature pipelines, and selection criteria for reviewability. Automated choice should still pass fairness, robustness, and domain-safety checks. Human oversight remains essential at decision boundaries."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-advanced-graph-neural-networks",
+                    "language": "ai+ml",
+                    "level": "advanced",
+                    "title": "Graph neural networks",
+                    "description": "Graph neural networks propagate information across node neighborhoods, making them effective for relational data like networks and molecules.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Core mechanism",
+                            "body": "Graph neural networks update node representations by aggregating neighborhood information across edges. This captures relational structure that flat tabular models miss, such as social links or molecular bonds. Message-passing depth controls how far information propagates.",
+                            "image": "img/languages/ai+ml/advanced-lesson-11.png"
+                        },
+                        {
+                            "title": "Scaling considerations",
+                            "body": "Large graphs introduce memory and sampling challenges, especially with high-degree nodes. Compare full-batch, mini-batch, and neighborhood-sampling approaches under your latency and hardware limits. Scalability strategy should be chosen with graph topology in mind."
+                        },
+                        {
+                            "title": "Responsible use",
+                            "body": "Relational data can amplify bias through homophily and expose sensitive connections. Evaluate fairness and privacy risks tied to graph structure, not only node attributes. Add safeguards for link-based leakage and unintended inference."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-advanced-multimodal-ai",
+                    "language": "ai+ml",
+                    "level": "advanced",
+                    "title": "Multimodal AI",
+                    "description": "Multimodal models align and fuse modalities such as text and images to solve tasks requiring cross-modal understanding.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Core mechanism",
+                            "body": "Multimodal systems learn aligned representations across text, image, audio, or other modalities. Fusion strategy determines whether the model reasons jointly or one modality dominates. Cross-modal grounding is central to reliable behavior.",
+                            "image": "img/languages/ai+ml/advanced-lesson-12.png"
+                        },
+                        {
+                            "title": "Scaling considerations",
+                            "body": "Scaling multimodal models increases data-engineering complexity because modalities differ in quality, cadence, and label availability. Measure gains from each additional modality against ingestion and serving cost. More modalities help only when alignment quality is high."
+                        },
+                        {
+                            "title": "Responsible use",
+                            "body": "Validate consistency across modalities and define policy for contradictory signals, such as safe text paired with unsafe imagery. Add safeguards against cross-modal jailbreak patterns. Monitoring should include modality-specific and fused-output risks."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-advanced-model-optimization",
+                    "language": "ai+ml",
+                    "level": "advanced",
+                    "title": "Model optimization",
+                    "description": "Model optimization techniques like quantization, pruning, and distillation reduce latency and memory while preserving acceptable accuracy.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "System design view",
+                            "body": "Model optimization methods like quantization, pruning, and distillation trade tiny accuracy losses for major speed and memory gains. The right approach depends on hardware targets and latency SLOs. Optimization is a system-level decision, not just a model tweak."
+                        },
+                        {
+                            "title": "Reliability controls",
+                            "body": "After optimization, monitor not only latency but also calibration and subgroup performance drift. Compression can affect classes unevenly, especially rare ones. Regression tests should include both quality and efficiency gates."
+                        },
+                        {
+                            "title": "Lifecycle management",
+                            "body": "Version optimized artifacts separately and document conversion settings for reproducibility. Re-run optimization whenever base models or hardware runtimes change materially. Treat optimization pipelines as maintainable production assets."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-advanced-ai-ethics",
+                    "language": "ai+ml",
+                    "level": "advanced",
+                    "title": "AI ethics",
+                    "description": "AI ethics addresses fairness, transparency, privacy, and accountability to reduce harm and align systems with human values.",
+                    "estimatedMinutes": 9,
+                    "lessons": [
+                        {
+                            "title": "Risk taxonomy",
+                            "body": "AI ethics becomes practical when risks are classified clearly: fairness harms, privacy violations, transparency gaps, and accountability failures. Each category should map to concrete controls and measurable indicators. Vague principles are not enough for high-impact systems."
+                        },
+                        {
+                            "title": "Assessment workflow",
+                            "body": "Run pre-launch impact assessments with affected-user mapping, harm scenarios, monitoring plans, and escalation owners. Include legal, policy, and domain stakeholders in the review loop. Shared ownership improves both safety and decision quality."
+                        },
+                        {
+                            "title": "Governance in practice",
+                            "body": "Operationalize ethics through model cards, dataset documentation, approval gates, and periodic audits. Tie policy exceptions to explicit risk acceptance, not informal sign-off. Governance works when it is routine, visible, and enforceable."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-advanced-end-to-end-system",
+                    "language": "ai+ml",
+                    "level": "advanced",
+                    "title": "End-to-end system",
+                    "description": "An end-to-end AI system integrates data, training, deployment, monitoring, and feedback loops into one reliable production lifecycle.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "System design view",
+                            "body": "An end-to-end AI system links data collection, feature logic, training, deployment, monitoring, and feedback into one lifecycle. Weakness in any stage can erase gains from strong modeling. Design for reliability across the full chain, not isolated components.",
+                            "image": "img/languages/ai+ml/advanced-lesson-15.png"
+                        },
+                        {
+                            "title": "Reliability controls",
+                            "body": "Instrument every stage with quality signals: data freshness, schema health, model drift, latency, and user-impact metrics. Connect alerts to clear incident workflows so teams can respond quickly. End-to-end observability is your early warning system."
+                        },
+                        {
+                            "title": "Lifecycle management",
+                            "body": "Assign ownership across data, modeling, platform, and product teams with explicit handoffs and SLAs. Schedule regular retraining and postmortem reviews to incorporate learning. Durable AI systems are built through disciplined iteration."
+                        }
+                    ]
+                }
+            ]
         }
-      ]
-    },
-    {
-      "level": "beginner",
-      "topics": [
-        {
-          "id": "aiml-beginner-linear-regression",
-          "language": "ai+ml",
-          "level": "beginner",
-          "title": "Linear regression",
-          "description": "Linear regression models a continuous target as a weighted sum of features and is a strong baseline for interpretable numeric prediction tasks.",
-          "estimatedMinutes": 10,
-          "lessons": [
-            {
-              "title": "Model behavior",
-              "body": "Linear regression models a continuous target as a weighted sum of features and is a strong baseline for interpretable numeric prediction tasks. Learn what the model assumes about data and how those assumptions affect bias, variance, and interpretability.",
-              "image": "img/languages/ai+ml/beginner-lesson-1.png"
-            },
-            {
-              "title": "Strengths and limits",
-              "body": "For linear regression, list where it performs well and where it fails. Pair each limitation with a mitigation step."
-            },
-            {
-              "title": "Tuning priorities",
-              "body": "For linear regression, prioritize tuning around regularization strength and feature scaling; change one factor at a time and validate with a fixed comparison protocol."
-            }
-          ]
-        },
-        {
-          "id": "aiml-beginner-logistic-regression",
-          "language": "ai+ml",
-          "level": "beginner",
-          "title": "Logistic regression",
-          "description": "Logistic regression transforms a linear score into a probability and is commonly used for binary classification with a clear decision boundary.",
-          "estimatedMinutes": 10,
-          "lessons": [
-            {
-              "title": "Model behavior",
-              "body": "Logistic regression transforms a linear score into a probability and is commonly used for binary classification with a clear decision boundary. Learn what the model assumes about data and how those assumptions affect bias, variance, and interpretability.",
-              "image": "img/languages/ai+ml/beginner-lesson-2.png"
-            },
-            {
-              "title": "Strengths and limits",
-              "body": "For logistic regression, list where it performs well and where it fails. Pair each limitation with a mitigation step."
-            },
-            {
-              "title": "Tuning priorities",
-              "body": "For logistic regression, prioritize tuning around regularization, class weighting, and decision threshold; change one factor at a time and validate with a fixed comparison protocol."
-            }
-          ]
-        },
-        {
-          "id": "aiml-beginner-train-test-split",
-          "language": "ai+ml",
-          "level": "beginner",
-          "title": "Train/test split",
-          "description": "A train/test split keeps one partition unseen during training so final metrics reflect how the model behaves on new data.",
-          "estimatedMinutes": 11,
-          "lessons": [
-            {
-              "title": "Metric strategy",
-              "body": "A train/test split keeps one partition unseen during training so final metrics reflect how the model behaves on new data. Separate offline model quality from online product impact, and avoid optimizing one metric in isolation."
-            },
-            {
-              "title": "Error analysis",
-              "body": "For train/test split, review mistakes by segment (time, geography, class balance, user type) to uncover hidden risk pockets."
-            },
-            {
-              "title": "Decision policy",
-              "body": "Decision policy for train/test split: define launch thresholds, rollback triggers, and evidence required before each release decision."
-            }
-          ]
-        },
-        {
-          "id": "aiml-beginner-basic-metrics",
-          "language": "ai+ml",
-          "level": "beginner",
-          "title": "Basic metrics",
-          "description": "Classification metrics such as precision, recall, and F1 complement accuracy, while regression uses MAE, MSE, or RMSE depending on error sensitivity.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Metric strategy",
-              "body": "Classification metrics such as precision, recall, and F1 complement accuracy, while regression uses MAE, MSE, or RMSE depending on error sensitivity. Separate offline model quality from online product impact, and avoid optimizing one metric in isolation."
-            },
-            {
-              "title": "Error analysis",
-              "body": "For basic metrics, review mistakes by segment (time, geography, class balance, user type) to uncover hidden risk pockets."
-            },
-            {
-              "title": "Decision policy",
-              "body": "Decision policy for basic metrics: define launch thresholds, rollback triggers, and evidence required before each release decision."
-            }
-          ]
-        },
-        {
-          "id": "aiml-beginner-k-nn-algorithm",
-          "language": "ai+ml",
-          "level": "beginner",
-          "title": "k-NN algorithm",
-          "description": "k-NN predicts using the labels of nearby examples, so performance depends strongly on distance scaling and the choice of k.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Model behavior",
-              "body": "k-NN predicts using the labels of nearby examples, so performance depends strongly on distance scaling and the choice of k. Learn what the model assumes about data and how those assumptions affect bias, variance, and interpretability."
-            },
-            {
-              "title": "Strengths and limits",
-              "body": "For k-nn algorithm, list where it performs well and where it fails. Pair each limitation with a mitigation step."
-            },
-            {
-              "title": "Tuning priorities",
-              "body": "For k-nn algorithm, prioritize tuning around k value, distance metric, and scaling strategy; change one factor at a time and validate with a fixed comparison protocol."
-            }
-          ]
-        },
-        {
-          "id": "aiml-beginner-decision-trees",
-          "language": "ai+ml",
-          "level": "beginner",
-          "title": "Decision trees",
-          "description": "Decision trees recursively split features into rules, making predictions easy to explain but often requiring pruning or ensembles to avoid overfitting.",
-          "estimatedMinutes": 10,
-          "lessons": [
-            {
-              "title": "Model behavior",
-              "body": "Decision trees recursively split features into rules, making predictions easy to explain but often requiring pruning or ensembles to avoid overfitting. Learn what the model assumes about data and how those assumptions affect bias, variance, and interpretability.",
-              "image": "img/languages/ai+ml/beginner-lesson-6.png"
-            },
-            {
-              "title": "Strengths and limits",
-              "body": "For decision trees, list where it performs well and where it fails. Pair each limitation with a mitigation step."
-            },
-            {
-              "title": "Tuning priorities",
-              "body": "For decision trees, prioritize tuning around max depth, minimum samples per split, and pruning; change one factor at a time and validate with a fixed comparison protocol."
-            }
-          ]
-        },
-        {
-          "id": "aiml-beginner-data-preprocessing",
-          "language": "ai+ml",
-          "level": "beginner",
-          "title": "Data preprocessing",
-          "description": "Preprocessing includes normalization, encoding categorical values, and handling missing data so model inputs are consistent and learnable.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Data checklist",
-              "body": "Preprocessing includes normalization, encoding categorical values, and handling missing data so model inputs are consistent and learnable. Before modeling, check schema consistency, missingness patterns, and whether the observed sample matches the production population."
-            },
-            {
-              "title": "Quality signals",
-              "body": "For data preprocessing, identify at least three quality signals (completeness, validity, timeliness, leakage risk) and decide how you will measure each one."
-            },
-            {
-              "title": "Mini practice",
-              "body": "Mini practice for data preprocessing: pick a sample dataset and perform three concrete steps—normalize one numeric feature, encode one categorical feature, and define a rule for missing values—then compare model input quality before vs after."
-            }
-          ]
-        },
-        {
-          "id": "aiml-beginner-feature-engineering",
-          "language": "ai+ml",
-          "level": "beginner",
-          "title": "Feature engineering",
-          "description": "Feature engineering creates informative inputs from raw data, such as ratios, time features, or domain-derived aggregates that improve model signal.",
-          "estimatedMinutes": 11,
-          "lessons": [
-            {
-              "title": "Data checklist",
-              "body": "Feature engineering creates informative inputs from raw data, such as ratios, time features, or domain-derived aggregates that improve model signal. Before modeling, check schema consistency, missingness patterns, and whether the observed sample matches the production population."
-            },
-            {
-              "title": "Quality signals",
-              "body": "For feature engineering, identify at least three quality signals (completeness, validity, timeliness, leakage risk) and decide how you will measure each one."
-            },
-            {
-              "title": "Mini practice",
-              "body": "Mini practice for feature engineering: create two candidate features and explain why each could add predictive signal beyond raw columns."
-            }
-          ]
-        },
-        {
-          "id": "aiml-beginner-clustering-basics",
-          "language": "ai+ml",
-          "level": "beginner",
-          "title": "Clustering basics",
-          "description": "Clustering groups similar samples without labels, helping with segmentation, anomaly exploration, and dataset understanding.",
-          "estimatedMinutes": 10,
-          "lessons": [
-            {
-              "title": "Model behavior",
-              "body": "Clustering groups similar samples without labels, helping with segmentation, anomaly exploration, and dataset understanding. Learn what the model assumes about data and how those assumptions affect bias, variance, and interpretability.",
-              "image": "img/languages/ai+ml/beginner-lesson-9.png"
-            },
-            {
-              "title": "Strengths and limits",
-              "body": "For clustering basics, list where it performs well and where it fails. Pair each limitation with a mitigation step."
-            },
-            {
-              "title": "Tuning priorities",
-              "body": "For clustering basics, prioritize tuning around number of clusters, initialization stability, and feature scaling; change one factor at a time and validate with a fixed comparison protocol."
-            }
-          ]
-        },
-        {
-          "id": "aiml-beginner-pca-basics",
-          "language": "ai+ml",
-          "level": "beginner",
-          "title": "PCA basics",
-          "description": "Principal Component Analysis projects data to lower dimensions while preserving maximum variance, useful for compression and denoising.",
-          "estimatedMinutes": 10,
-          "lessons": [
-            {
-              "title": "Model behavior",
-              "body": "Principal Component Analysis projects data to lower dimensions while preserving maximum variance, useful for compression and denoising. Learn what the model assumes about data and how those assumptions affect bias, variance, and interpretability.",
-              "image": "img/languages/ai+ml/beginner-lesson-10.png"
-            },
-            {
-              "title": "Strengths and limits",
-              "body": "For pca basics, list where it performs well and where it fails. Pair each limitation with a mitigation step."
-            },
-            {
-              "title": "Tuning priorities",
-              "body": "For pca basics, prioritize tuning around number of components and explained-variance cutoff; change one factor at a time and validate with a fixed comparison protocol."
-            }
-          ]
-        },
-        {
-          "id": "aiml-beginner-pipeline-basics",
-          "language": "ai+ml",
-          "level": "beginner",
-          "title": "Pipeline basics",
-          "description": "ML pipelines chain preprocessing and modeling steps into one reproducible workflow, reducing leakage and training-serving inconsistencies.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Pipeline view",
-              "body": "ML pipelines chain preprocessing and modeling steps into one reproducible workflow, reducing leakage and training-serving inconsistencies. Break the work into stages: framing, data prep, baseline, iteration, deployment, and monitoring."
-            },
-            {
-              "title": "Decision points",
-              "body": "In pipeline basics, every stage has a go/no-go decision. Define evidence required to move forward instead of relying on intuition alone."
-            },
-            {
-              "title": "Operational readiness",
-              "body": "Operational readiness for pipeline basics: Enforce fit/transform boundaries and version every preprocessing step to prevent leakage."
-            }
-          ]
-        },
-        {
-          "id": "aiml-beginner-overfitting-concept",
-          "language": "ai+ml",
-          "level": "beginner",
-          "title": "Overfitting concept",
-          "description": "Overfitting occurs when a model learns noise from training data, causing strong train performance but weak generalization to unseen examples.",
-          "estimatedMinutes": 10,
-          "lessons": [
-            {
-              "title": "Metric strategy",
-              "body": "Overfitting occurs when a model learns noise from training data, causing strong train performance but weak generalization to unseen examples. Separate offline model quality from online product impact, and avoid optimizing one metric in isolation.",
-              "image": "img/languages/ai+ml/beginner-lesson-12.png"
-            },
-            {
-              "title": "Error analysis",
-              "body": "For overfitting concept, review mistakes by segment (time, geography, class balance, user type) to uncover hidden risk pockets."
-            },
-            {
-              "title": "Decision policy",
-              "body": "Decision policy for overfitting concept: define launch thresholds, rollback triggers, and evidence required before each release decision."
-            }
-          ]
-        },
-        {
-          "id": "aiml-beginner-cross-validation",
-          "language": "ai+ml",
-          "level": "beginner",
-          "title": "Cross-validation",
-          "description": "Cross-validation rotates validation folds to estimate performance more reliably and to compare models with less split-to-split variance.",
-          "estimatedMinutes": 11,
-          "lessons": [
-            {
-              "title": "Metric strategy",
-              "body": "Cross-validation rotates validation folds to estimate performance more reliably and to compare models with less split-to-split variance. Separate offline model quality from online product impact, and avoid optimizing one metric in isolation."
-            },
-            {
-              "title": "Error analysis",
-              "body": "For cross-validation, review mistakes by segment (time, geography, class balance, user type) to uncover hidden risk pockets."
-            },
-            {
-              "title": "Decision policy",
-              "body": "Decision policy for cross-validation: define launch thresholds, rollback triggers, and evidence required before each release decision."
-            }
-          ]
-        },
-        {
-          "id": "aiml-beginner-model-evaluation-workflow",
-          "language": "ai+ml",
-          "level": "beginner",
-          "title": "Model evaluation workflow",
-          "description": "A good evaluation workflow defines metrics upfront, checks baseline comparisons, inspects error patterns, and validates assumptions before deployment.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Metric strategy",
-              "body": "A good evaluation workflow defines metrics upfront, checks baseline comparisons, inspects error patterns, and validates assumptions before deployment. Separate offline model quality from online product impact, and avoid optimizing one metric in isolation."
-            },
-            {
-              "title": "Error analysis",
-              "body": "For model evaluation workflow, review mistakes by segment (time, geography, class balance, user type) to uncover hidden risk pockets."
-            },
-            {
-              "title": "Decision policy",
-              "body": "Decision policy for model evaluation workflow: define launch thresholds, rollback triggers, and evidence required before each release decision."
-            }
-          ]
-        },
-        {
-          "id": "aiml-beginner-first-ml-project",
-          "language": "ai+ml",
-          "level": "beginner",
-          "title": "First ML project",
-          "description": "A first ML project should prioritize clear problem scope, clean data, a simple baseline, and iterative improvements guided by measurable outcomes.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Pipeline view",
-              "body": "A first ML project should prioritize clear problem scope, clean data, a simple baseline, and iterative improvements guided by measurable outcomes. Break the work into stages: framing, data prep, baseline, iteration, deployment, and monitoring."
-            },
-            {
-              "title": "Decision points",
-              "body": "In first ml project, every stage has a go/no-go decision. Define evidence required to move forward instead of relying on intuition alone."
-            },
-            {
-              "title": "Operational readiness",
-              "body": "Operational readiness for first ml project: Use stage gates so the team only advances when metrics and assumptions are documented."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "level": "intermediate",
-      "topics": [
-        {
-          "id": "aiml-intermediate-ensemble-methods",
-          "language": "ai+ml",
-          "level": "intermediate",
-          "title": "Ensemble methods",
-          "description": "Ensembles combine multiple models to improve robustness and accuracy by averaging or boosting complementary prediction behaviors.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Model behavior",
-              "body": "Ensembles combine multiple models to improve robustness and accuracy by averaging or boosting complementary prediction behaviors. Learn what the model assumes about data and how those assumptions affect bias, variance, and interpretability."
-            },
-            {
-              "title": "Strengths and limits",
-              "body": "For ensemble methods, list where it performs well and where it fails. Pair each limitation with a mitigation step."
-            },
-            {
-              "title": "Tuning priorities",
-              "body": "For ensemble methods, prioritize tuning around number of estimators, learning rate, and subsampling; change one factor at a time and validate with a fixed comparison protocol."
-            }
-          ]
-        },
-        {
-          "id": "aiml-intermediate-hyperparameter-tuning",
-          "language": "ai+ml",
-          "level": "intermediate",
-          "title": "Hyperparameter tuning",
-          "description": "Hyperparameter tuning explores settings like depth, learning rate, and regularization to maximize validation performance without overfitting.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Model behavior",
-              "body": "Hyperparameter tuning explores settings like depth, learning rate, and regularization to maximize validation performance without overfitting. Learn what the model assumes about data and how those assumptions affect bias, variance, and interpretability."
-            },
-            {
-              "title": "Strengths and limits",
-              "body": "For hyperparameter tuning, list where it performs well and where it fails. Pair each limitation with a mitigation step."
-            },
-            {
-              "title": "Tuning priorities",
-              "body": "For hyperparameter tuning, prioritize tuning around search space design, budget allocation, and validation protocol; change one factor at a time and validate with a fixed comparison protocol."
-            }
-          ]
-        },
-        {
-          "id": "aiml-intermediate-feature-selection",
-          "language": "ai+ml",
-          "level": "intermediate",
-          "title": "Feature selection",
-          "description": "Feature selection removes redundant or noisy variables, improving interpretability, reducing training cost, and sometimes improving generalization.",
-          "estimatedMinutes": 11,
-          "lessons": [
-            {
-              "title": "Model behavior",
-              "body": "Feature selection removes redundant or noisy variables, improving interpretability, reducing training cost, and sometimes improving generalization. Learn what the model assumes about data and how those assumptions affect bias, variance, and interpretability."
-            },
-            {
-              "title": "Strengths and limits",
-              "body": "For feature selection, list where it performs well and where it fails. Pair each limitation with a mitigation step."
-            },
-            {
-              "title": "Tuning priorities",
-              "body": "For feature selection, prioritize tuning around selection criterion, redundancy filtering, and stability across folds; change one factor at a time and validate with a fixed comparison protocol."
-            }
-          ]
-        },
-        {
-          "id": "aiml-intermediate-bias-variance-tradeoff",
-          "language": "ai+ml",
-          "level": "intermediate",
-          "title": "Bias-variance tradeoff",
-          "description": "The bias-variance tradeoff balances underfitting and overfitting: simpler models have higher bias, complex models often have higher variance.",
-          "estimatedMinutes": 10,
-          "lessons": [
-            {
-              "title": "Metric strategy",
-              "body": "The bias-variance tradeoff balances underfitting and overfitting: simpler models have higher bias, complex models often have higher variance. Separate offline model quality from online product impact, and avoid optimizing one metric in isolation.",
-              "image": "img/languages/ai+ml/intermediate-lesson-4.png"
-            },
-            {
-              "title": "Error analysis",
-              "body": "For bias-variance tradeoff, review mistakes by segment (time, geography, class balance, user type) to uncover hidden risk pockets."
-            },
-            {
-              "title": "Decision policy",
-              "body": "Decision policy for bias-variance tradeoff: define launch thresholds, rollback triggers, and evidence required before each release decision."
-            }
-          ]
-        },
-        {
-          "id": "aiml-intermediate-advanced-evaluation",
-          "language": "ai+ml",
-          "level": "intermediate",
-          "title": "Advanced evaluation",
-          "description": "Advanced evaluation includes calibration, threshold analysis, subgroup metrics, and cost-aware decision rules for production-relevant model assessment.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Metric strategy",
-              "body": "Advanced evaluation includes calibration, threshold analysis, subgroup metrics, and cost-aware decision rules for production-relevant model assessment. Separate offline model quality from online product impact, and avoid optimizing one metric in isolation."
-            },
-            {
-              "title": "Error analysis",
-              "body": "For advanced evaluation, review mistakes by segment (time, geography, class balance, user type) to uncover hidden risk pockets."
-            },
-            {
-              "title": "Decision policy",
-              "body": "Decision policy for advanced evaluation: define launch thresholds, rollback triggers, and evidence required before each release decision."
-            }
-          ]
-        },
-        {
-          "id": "aiml-intermediate-neural-networks-basics",
-          "language": "ai+ml",
-          "level": "intermediate",
-          "title": "Neural networks basics",
-          "description": "Neural networks stack differentiable layers that transform input features into richer representations learned from data.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Representation learning",
-              "body": "Neural networks stack differentiable layers that transform input features into richer representations learned from data. Focus on how deeper layers progressively transform raw inputs into task-relevant features."
-            },
-            {
-              "title": "Training stability",
-              "body": "In neural networks basics, monitor optimization signals (loss trends, gradient behavior, overfitting gap) instead of only final accuracy."
-            },
-            {
-              "title": "Practical trade-offs",
-              "body": "Trade model depth against data availability, regularization needs, and monitoring overhead; deeper networks can improve representation power but require more careful optimization and validation."
-            }
-          ]
-        },
-        {
-          "id": "aiml-intermediate-backpropagation",
-          "language": "ai+ml",
-          "level": "intermediate",
-          "title": "Backpropagation",
-          "description": "Backpropagation computes gradients efficiently from output to input layers, enabling gradient-based optimization of neural network parameters.",
-          "estimatedMinutes": 10,
-          "lessons": [
-            {
-              "title": "Representation learning",
-              "body": "Backpropagation computes gradients efficiently from output to input layers, enabling gradient-based optimization of neural network parameters. Focus on how deeper layers progressively transform raw inputs into task-relevant features.",
-              "image": "img/languages/ai+ml/intermediate-lesson-7.png"
-            },
-            {
-              "title": "Training stability",
-              "body": "In backpropagation, monitor optimization signals (loss trends, gradient behavior, overfitting gap) instead of only final accuracy."
-            },
-            {
-              "title": "Practical trade-offs",
-              "body": "Balance gradient stability with training speed; monitor exploding/vanishing gradients and use normalization or clipping when needed."
-            }
-          ]
-        },
-        {
-          "id": "aiml-intermediate-deep-learning-basics",
-          "language": "ai+ml",
-          "level": "intermediate",
-          "title": "Deep learning basics",
-          "description": "Deep learning uses multi-layer neural networks to automatically learn hierarchical features in text, vision, and speech tasks.",
-          "estimatedMinutes": 11,
-          "lessons": [
-            {
-              "title": "Representation learning",
-              "body": "Deep learning uses multi-layer neural networks to automatically learn hierarchical features in text, vision, and speech tasks. Focus on how deeper layers progressively transform raw inputs into task-relevant features."
-            },
-            {
-              "title": "Training stability",
-              "body": "In deep learning basics, monitor optimization signals (loss trends, gradient behavior, overfitting gap) instead of only final accuracy."
-            },
-            {
-              "title": "Practical trade-offs",
-              "body": "Trade model capacity against inference cost and explainability to fit real product constraints."
-            }
-          ]
-        },
-        {
-          "id": "aiml-intermediate-nlp-basics",
-          "language": "ai+ml",
-          "level": "intermediate",
-          "title": "NLP basics",
-          "description": "NLP converts human language into machine-readable representations for tasks such as classification, extraction, translation, and generation.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Domain-specific constraints",
-              "body": "NLP converts human language into machine-readable representations for tasks such as classification, extraction, translation, and generation. Identify what makes this domain unique: data format, annotation quality, temporal effects, or user behavior loops."
-            },
-            {
-              "title": "Feature representation choices",
-              "body": "For nlp basics, compare at least two representation choices and explain their impact on model quality and cost."
-            },
-            {
-              "title": "Failure-case review",
-              "body": "Failure-case review for nlp basics: Track failures on negation, rare terms, and domain-specific vocabulary. Build a targeted evaluation slice for each failure type and monitor drift over time."
-            }
-          ]
-        },
-        {
-          "id": "aiml-intermediate-computer-vision-basics",
-          "language": "ai+ml",
-          "level": "intermediate",
-          "title": "Computer vision basics",
-          "description": "Computer vision models process images with spatial filters to detect patterns such as edges, objects, and scene context.",
-          "estimatedMinutes": 10,
-          "lessons": [
-            {
-              "title": "Domain-specific constraints",
-              "body": "Computer vision models process images with spatial filters to detect patterns such as edges, objects, and scene context. Identify what makes this domain unique: data format, annotation quality, temporal effects, or user behavior loops.",
-              "image": "img/languages/ai+ml/intermediate-lesson-10.png"
-            },
-            {
-              "title": "Feature representation choices",
-              "body": "For computer vision basics, compare at least two representation choices and explain their impact on model quality and cost."
-            },
-            {
-              "title": "Failure-case review",
-              "body": "Failure-case review for computer vision basics: Track failures under lighting shifts, occlusion, blur, and camera-angle drift. Build a targeted evaluation slice for each failure type and monitor drift over time."
-            }
-          ]
-        },
-        {
-          "id": "aiml-intermediate-time-series-basics",
-          "language": "ai+ml",
-          "level": "intermediate",
-          "title": "Time series basics",
-          "description": "Time series modeling respects temporal order and often uses lags, trends, and seasonality features to forecast future values.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Domain-specific constraints",
-              "body": "Time series modeling respects temporal order and often uses lags, trends, and seasonality features to forecast future values. Identify what makes this domain unique: data format, annotation quality, temporal effects, or user behavior loops."
-            },
-            {
-              "title": "Feature representation choices",
-              "body": "For time series basics, compare at least two representation choices and explain their impact on model quality and cost."
-            },
-            {
-              "title": "Failure-case review",
-              "body": "Failure-case review for time series basics: Track failures during trend breaks, sudden shocks, and seasonality changes. Build a targeted evaluation slice for each failure type and monitor drift over time."
-            }
-          ]
-        },
-        {
-          "id": "aiml-intermediate-recommendation-systems",
-          "language": "ai+ml",
-          "level": "intermediate",
-          "title": "Recommendation systems",
-          "description": "Recommendation systems rank items by predicted relevance using collaborative signals, content features, or hybrid methods.",
-          "estimatedMinutes": 10,
-          "lessons": [
-            {
-              "title": "Domain-specific constraints",
-              "body": "Recommendation systems rank items by predicted relevance using collaborative signals, content features, or hybrid methods. Identify what makes this domain unique: data format, annotation quality, temporal effects, or user behavior loops.",
-              "image": "img/languages/ai+ml/intermediate-lesson-12.png"
-            },
-            {
-              "title": "Feature representation choices",
-              "body": "For recommendation systems, compare at least two representation choices and explain their impact on model quality and cost."
-            },
-            {
-              "title": "Failure-case review",
-              "body": "Failure-case review for recommendation systems: Track failures on rare but high-impact edge cases. Build a targeted evaluation slice for each failure type and monitor drift over time."
-            }
-          ]
-        },
-        {
-          "id": "aiml-intermediate-model-deployment-basics",
-          "language": "ai+ml",
-          "level": "intermediate",
-          "title": "Model deployment basics",
-          "description": "Deployment packages a trained model behind an API or batch job with versioning, monitoring, and rollback safety.",
-          "estimatedMinutes": 11,
-          "lessons": [
-            {
-              "title": "System design view",
-              "body": "Deployment packages a trained model behind an API or batch job with versioning, monitoring, and rollback safety. Treat the model as one component inside a broader system with data contracts, versioning, and observability."
-            },
-            {
-              "title": "Reliability controls",
-              "body": "In model deployment basics, define monitoring for data drift, prediction drift, and latency; attach concrete response playbooks."
-            },
-            {
-              "title": "Lifecycle management",
-              "body": "Lifecycle management for model deployment basics: set retraining cadence, audit trails, and ownership so improvements remain reliable over time."
-            }
-          ]
-        },
-        {
-          "id": "aiml-intermediate-data-pipelines",
-          "language": "ai+ml",
-          "level": "intermediate",
-          "title": "Data pipelines",
-          "description": "Data pipelines automate ingestion, validation, transformation, and feature generation so training and inference use consistent data logic.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "System design view",
-              "body": "Data pipelines automate ingestion, validation, transformation, and feature generation so training and inference use consistent data logic. Treat the model as one component inside a broader system with data contracts, versioning, and observability."
-            },
-            {
-              "title": "Reliability controls",
-              "body": "In data pipelines, define monitoring for data drift, prediction drift, and latency; attach concrete response playbooks."
-            },
-            {
-              "title": "Lifecycle management",
-              "body": "Lifecycle management for data pipelines: set retraining cadence, audit trails, and ownership so improvements remain reliable over time."
-            }
-          ]
-        },
-        {
-          "id": "aiml-intermediate-model-interpretability",
-          "language": "ai+ml",
-          "level": "intermediate",
-          "title": "Model interpretability",
-          "description": "Interpretability techniques such as feature importance and SHAP explain model behavior for trust, debugging, and compliance.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Metric strategy",
-              "body": "Interpretability techniques such as feature importance and SHAP explain model behavior for trust, debugging, and compliance. Separate offline model quality from online product impact, and avoid optimizing one metric in isolation."
-            },
-            {
-              "title": "Error analysis",
-              "body": "For model interpretability, review mistakes by segment (time, geography, class balance, user type) to uncover hidden risk pockets."
-            },
-            {
-              "title": "Decision policy",
-              "body": "Decision policy for model interpretability: define launch thresholds, rollback triggers, and evidence required before each release decision."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "level": "advanced",
-      "topics": [
-        {
-          "id": "aiml-advanced-deep-learning-architectures",
-          "language": "ai+ml",
-          "level": "advanced",
-          "title": "Deep learning architectures",
-          "description": "Different architectures specialize in different data modalities: CNNs for images, transformers for sequences, and recurrent variants for temporal patterns.",
-          "estimatedMinutes": 10,
-          "lessons": [
-            {
-              "title": "Representation learning",
-              "body": "Different architectures specialize in different data modalities: CNNs for images, transformers for sequences, and recurrent variants for temporal patterns. Focus on how deeper layers progressively transform raw inputs into task-relevant features.",
-              "image": "img/languages/ai+ml/advanced-lesson-1.png"
-            },
-            {
-              "title": "Training stability",
-              "body": "In deep learning architectures, monitor optimization signals (loss trends, gradient behavior, overfitting gap) instead of only final accuracy."
-            },
-            {
-              "title": "Practical trade-offs",
-              "body": "Match architecture complexity to data modality and latency limits instead of defaulting to larger models."
-            }
-          ]
-        },
-        {
-          "id": "aiml-advanced-transfer-learning",
-          "language": "ai+ml",
-          "level": "advanced",
-          "title": "Transfer learning",
-          "description": "Transfer learning adapts pretrained models to new tasks with less labeled data by reusing representations learned at scale.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Representation learning",
-              "body": "Transfer learning adapts pretrained models to new tasks with less labeled data by reusing representations learned at scale. Focus on how deeper layers progressively transform raw inputs into task-relevant features."
-            },
-            {
-              "title": "Training stability",
-              "body": "In transfer learning, monitor optimization signals (loss trends, gradient behavior, overfitting gap) instead of only final accuracy."
-            },
-            {
-              "title": "Practical trade-offs",
-              "body": "Choose between frozen features and full fine-tuning based on dataset size, domain mismatch, and compute budget."
-            }
-          ]
-        },
-        {
-          "id": "aiml-advanced-nlp-advanced",
-          "language": "ai+ml",
-          "level": "advanced",
-          "title": "NLP advanced",
-          "description": "Advanced NLP covers tokenization strategy, attention-based architectures, fine-tuning, and evaluation beyond simple accuracy metrics.",
-          "estimatedMinutes": 11,
-          "lessons": [
-            {
-              "title": "Core mechanism",
-              "body": "Advanced NLP covers tokenization strategy, attention-based architectures, fine-tuning, and evaluation beyond simple accuracy metrics. "
-            },
-            {
-              "title": "Scaling considerations",
-              "body": "For nlp advanced, evaluate compute, data, and safety constraints before deciding whether the approach is justified."
-            },
-            {
-              "title": "Responsible use",
-              "body": "Responsible use in nlp advanced: Audit bias across dialects and sensitive attributes in high-impact tasks."
-            }
-          ]
-        },
-        {
-          "id": "aiml-advanced-computer-vision-advanced",
-          "language": "ai+ml",
-          "level": "advanced",
-          "title": "Computer vision advanced",
-          "description": "Advanced vision topics include object detection, segmentation, augmentation policy design, and domain shift handling.",
-          "estimatedMinutes": 10,
-          "lessons": [
-            {
-              "title": "Core mechanism",
-              "body": "Advanced vision topics include object detection, segmentation, augmentation policy design, and domain shift handling. ",
-              "image": "img/languages/ai+ml/advanced-lesson-4.png"
-            },
-            {
-              "title": "Scaling considerations",
-              "body": "For computer vision advanced, evaluate compute, data, and safety constraints before deciding whether the approach is justified."
-            },
-            {
-              "title": "Responsible use",
-              "body": "Responsible use in computer vision advanced: Assess demographic and environmental robustness to reduce uneven performance."
-            }
-          ]
-        },
-        {
-          "id": "aiml-advanced-reinforcement-learning",
-          "language": "ai+ml",
-          "level": "advanced",
-          "title": "Reinforcement learning",
-          "description": "Reinforcement learning trains agents to maximize cumulative reward by learning policies from environment interaction.",
-          "estimatedMinutes": 10,
-          "lessons": [
-            {
-              "title": "Core mechanism",
-              "body": "Reinforcement learning trains agents to maximize cumulative reward by learning policies from environment interaction. ",
-              "image": "img/languages/ai+ml/advanced-lesson-5.png"
-            },
-            {
-              "title": "Scaling considerations",
-              "body": "For reinforcement learning, evaluate compute, data, and safety constraints before deciding whether the approach is justified."
-            },
-            {
-              "title": "Responsible use",
-              "body": "Responsible use in reinforcement learning: Constrain unsafe exploration and monitor reward hacking behaviors."
-            }
-          ]
-        },
-        {
-          "id": "aiml-advanced-generative-ai",
-          "language": "ai+ml",
-          "level": "advanced",
-          "title": "Generative AI",
-          "description": "Generative AI models learn data distributions to create new content such as text, images, or audio that follows observed patterns.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Core mechanism",
-              "body": "Generative AI models learn data distributions to create new content such as text, images, or audio that follows observed patterns. "
-            },
-            {
-              "title": "Scaling considerations",
-              "body": "For generative ai, evaluate compute, data, and safety constraints before deciding whether the approach is justified."
-            },
-            {
-              "title": "Responsible use",
-              "body": "Responsible use in generative ai: Include content provenance, misuse prevention, and abuse-reporting workflows."
-            }
-          ]
-        },
-        {
-          "id": "aiml-advanced-large-language-models",
-          "language": "ai+ml",
-          "level": "advanced",
-          "title": "Large language models",
-          "description": "LLMs are transformer-based models trained on massive corpora to perform reasoning, retrieval-augmented tasks, and controlled generation.",
-          "estimatedMinutes": 10,
-          "lessons": [
-            {
-              "title": "Core mechanism",
-              "body": "LLMs are transformer-based models trained on massive corpora to perform reasoning, retrieval-augmented tasks, and controlled generation. ",
-              "image": "img/languages/ai+ml/advanced-lesson-7.png"
-            },
-            {
-              "title": "Scaling considerations",
-              "body": "For large language models, evaluate compute, data, and safety constraints before deciding whether the approach is justified."
-            },
-            {
-              "title": "Responsible use",
-              "body": "Responsible use in large language models: Add hallucination checks, citation requirements, and prompt-injection defenses."
-            }
-          ]
-        },
-        {
-          "id": "aiml-advanced-mlops",
-          "language": "ai+ml",
-          "level": "advanced",
-          "title": "MLOps",
-          "description": "MLOps applies software engineering discipline to ML systems through CI/CD, reproducible training, monitoring, and governance.",
-          "estimatedMinutes": 11,
-          "lessons": [
-            {
-              "title": "System design view",
-              "body": "MLOps applies software engineering discipline to ML systems through CI/CD, reproducible training, monitoring, and governance. Treat the model as one component inside a broader system with data contracts, versioning, and observability.",
-              "image": "img/languages/ai+ml/advanced-lesson-8.png"
-            },
-            {
-              "title": "Reliability controls",
-              "body": "In mlops, define monitoring for data drift, prediction drift, and latency; attach concrete response playbooks."
-            },
-            {
-              "title": "Lifecycle management",
-              "body": "Lifecycle management for mlops: set retraining cadence, audit trails, and ownership so improvements remain reliable over time."
-            }
-          ]
-        },
-        {
-          "id": "aiml-advanced-distributed-training",
-          "language": "ai+ml",
-          "level": "advanced",
-          "title": "Distributed training",
-          "description": "Distributed training splits data and computation across multiple devices to reduce training time for large models.",
-          "estimatedMinutes": 10,
-          "lessons": [
-            {
-              "title": "System design view",
-              "body": "Distributed training splits data and computation across multiple devices to reduce training time for large models. Treat the model as one component inside a broader system with data contracts, versioning, and observability.",
-              "image": "img/languages/ai+ml/advanced-lesson-9.png"
-            },
-            {
-              "title": "Reliability controls",
-              "body": "In distributed training, define monitoring for data drift, prediction drift, and latency; attach concrete response playbooks."
-            },
-            {
-              "title": "Lifecycle management",
-              "body": "Lifecycle management for distributed training: set retraining cadence, audit trails, and ownership so improvements remain reliable over time."
-            }
-          ]
-        },
-        {
-          "id": "aiml-advanced-automl",
-          "language": "ai+ml",
-          "level": "advanced",
-          "title": "AutoML",
-          "description": "AutoML automates model search, feature processing, and tuning to speed up baseline creation while preserving reproducibility.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Core mechanism",
-              "body": "AutoML automates model search, feature processing, and tuning to speed up baseline creation while preserving reproducibility. "
-            },
-            {
-              "title": "Scaling considerations",
-              "body": "For automl, evaluate compute, data, and safety constraints before deciding whether the approach is justified."
-            },
-            {
-              "title": "Responsible use",
-              "body": "Responsible use in automl: Require transparent model selection logs and human review of final candidates."
-            }
-          ]
-        },
-        {
-          "id": "aiml-advanced-graph-neural-networks",
-          "language": "ai+ml",
-          "level": "advanced",
-          "title": "Graph neural networks",
-          "description": "Graph neural networks propagate information across node neighborhoods, making them effective for relational data like networks and molecules.",
-          "estimatedMinutes": 10,
-          "lessons": [
-            {
-              "title": "Core mechanism",
-              "body": "Graph neural networks propagate information across node neighborhoods, making them effective for relational data like networks and molecules. ",
-              "image": "img/languages/ai+ml/advanced-lesson-11.png"
-            },
-            {
-              "title": "Scaling considerations",
-              "body": "For graph neural networks, evaluate compute, data, and safety constraints before deciding whether the approach is justified."
-            },
-            {
-              "title": "Responsible use",
-              "body": "Responsible use in graph neural networks: Check for propagation of biased relational structure and privacy leakage through graph links."
-            }
-          ]
-        },
-        {
-          "id": "aiml-advanced-multimodal-ai",
-          "language": "ai+ml",
-          "level": "advanced",
-          "title": "Multimodal AI",
-          "description": "Multimodal models align and fuse modalities such as text and images to solve tasks requiring cross-modal understanding.",
-          "estimatedMinutes": 10,
-          "lessons": [
-            {
-              "title": "Core mechanism",
-              "body": "Multimodal models align and fuse modalities such as text and images to solve tasks requiring cross-modal understanding. ",
-              "image": "img/languages/ai+ml/advanced-lesson-12.png"
-            },
-            {
-              "title": "Scaling considerations",
-              "body": "For multimodal ai, evaluate compute, data, and safety constraints before deciding whether the approach is justified."
-            },
-            {
-              "title": "Responsible use",
-              "body": "Responsible use in multimodal ai: Validate cross-modal consistency and block unsafe outputs from modality conflicts."
-            }
-          ]
-        },
-        {
-          "id": "aiml-advanced-model-optimization",
-          "language": "ai+ml",
-          "level": "advanced",
-          "title": "Model optimization",
-          "description": "Model optimization techniques like quantization, pruning, and distillation reduce latency and memory while preserving acceptable accuracy.",
-          "estimatedMinutes": 11,
-          "lessons": [
-            {
-              "title": "System design view",
-              "body": "Model optimization techniques like quantization, pruning, and distillation reduce latency and memory while preserving acceptable accuracy. Treat the model as one component inside a broader system with data contracts, versioning, and observability."
-            },
-            {
-              "title": "Reliability controls",
-              "body": "In model optimization, define monitoring for data drift, prediction drift, and latency; attach concrete response playbooks."
-            },
-            {
-              "title": "Lifecycle management",
-              "body": "Lifecycle management for model optimization: set retraining cadence, audit trails, and ownership so improvements remain reliable over time."
-            }
-          ]
-        },
-        {
-          "id": "aiml-advanced-ai-ethics",
-          "language": "ai+ml",
-          "level": "advanced",
-          "title": "AI ethics",
-          "description": "AI ethics addresses fairness, transparency, privacy, and accountability to reduce harm and align systems with human values.",
-          "estimatedMinutes": 9,
-          "lessons": [
-            {
-              "title": "Risk taxonomy",
-              "body": "AI ethics addresses fairness, transparency, privacy, and accountability to reduce harm and align systems with human values. Break risks into fairness, privacy, transparency, and accountability so mitigation is concrete rather than abstract."
-            },
-            {
-              "title": "Assessment workflow",
-              "body": "Run an impact assessment before launch that identifies affected groups, potential harms, monitoring requirements, and clear escalation owners for incidents."
-            },
-            {
-              "title": "Governance in practice",
-              "body": "Tie ethical principles to enforceable controls such as dataset documentation, review gates, and post-launch audits."
-            }
-          ]
-        },
-        {
-          "id": "aiml-advanced-end-to-end-system",
-          "language": "ai+ml",
-          "level": "advanced",
-          "title": "End-to-end system",
-          "description": "An end-to-end AI system integrates data, training, deployment, monitoring, and feedback loops into one reliable production lifecycle.",
-          "estimatedMinutes": 10,
-          "lessons": [
-            {
-              "title": "System design view",
-              "body": "An end-to-end AI system integrates data, training, deployment, monitoring, and feedback loops into one reliable production lifecycle. Treat the model as one component inside a broader system with data contracts, versioning, and observability.",
-              "image": "img/languages/ai+ml/advanced-lesson-15.png"
-            },
-            {
-              "title": "Reliability controls",
-              "body": "In end-to-end system, define monitoring for data drift, prediction drift, and latency; attach concrete response playbooks."
-            },
-            {
-              "title": "Lifecycle management",
-              "body": "Lifecycle management for end-to-end system: set retraining cadence, audit trails, and ownership so improvements remain reliable over time."
-            }
-          ]
-        }
-      ]
-    }
-  ]
+    ]
 }
