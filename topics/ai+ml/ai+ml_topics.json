@@ -13,7 +13,7 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "What this topic clarifies",
+              "title": "Starting Point",
               "body": "Artificial intelligence is the broad goal of building systems that perform intelligent tasks, while machine learning is the subset that learns patterns from data. This distinction helps you choose when to rely on rules versus data-driven models."
             },
             {
@@ -22,7 +22,7 @@
             },
             {
               "title": "Common confusion to avoid",
-              "body": "Common confusion in ai basics: what is ai and ml: avoid jumping straight to algorithms before confirming problem type, data availability, and success metric."
+              "body": "A common pitfall is rushing to implement algorithms without first establishing the problem foundation. Before selecting any algorithm, clearly define your problem type (classification, regression, clustering, etc.), verify data availability and quality, and establish measurable success metrics to guide your model development."
             }
           ]
         },
@@ -40,11 +40,11 @@
             },
             {
               "title": "Quality signals",
-              "body": "For data types: structured vs unstructured data, identify at least three quality signals (completeness, validity, timeliness, leakage risk) and decide how you will measure each one."
+              "body": "Assess data quality across multiple dimensions: completeness (all required fields present), validity (values conform to expected ranges/formats), timeliness (data reflects current state), and leakage risk (no target information leaked into features). For structured data, validate schema consistency and missing values. For unstructured data, check for encoding issues, corruption, and diversity. Define specific metrics to quantify each signal."
             },
             {
               "title": "Mini practice",
-              "body": "Mini practice for data types: structured vs unstructured data: list 5 example fields and mark each as structured, semi-structured, or unstructured, then note the preprocessing each one needs."
+              "body": "Mini practice for data types: structured vs unstructured data: list 5 example fields and mark each as structured, semi-structured, or unstructured, then try to think about the preprocessing each one needs. Another useful exercise is to navigate a website you commonly use and identify the structured and unstructured data it collects."
             }
           ]
         },
@@ -57,16 +57,16 @@
           "estimatedMinutes": 11,
           "lessons": [
             {
-              "title": "Data checklist",
+              "title": "Definition",
               "body": "A dataset is a collection of examples used for training and evaluation, usually with features and labels in supervised tasks. Check label quality, class balance, and temporal leakage so the dataset reflects the decision problem you want to solve."
             },
             {
-              "title": "Quality signals",
-              "body": "For intro to datasets, identify at least three quality signals (completeness, validity, timeliness, leakage risk) and decide how you will measure each one."
+              "title": "Quality",
+              "body": "Have you heard of the phrase 'garbage in, garbage out'? This is especially true in machine learning. The quality of your dataset directly impacts the performance of your model because the model learns patterns from the data it is given."
             },
             {
               "title": "Mini practice",
-              "body": "Mini practice for intro to datasets: define one row-level example and identify feature columns, label column, and metadata that must not leak into training."
+              "body": "Go on Kaggle (famous data science competition platform) and explore the dataset section."
             }
           ]
         },
@@ -80,15 +80,15 @@
           "lessons": [
             {
               "title": "Intuition first",
-              "body": "Core AI math includes vectors, matrix operations, and basic algebra because model predictions are usually computed as weighted combinations of numeric features. Build intuition before formulas: describe what changes when values become larger, noisier, or more correlated."
+              "body": "Master the mathematical foundations of AI: vectors represent feature data, matrix operations enable efficient batch computations, and algebra governs how models combine features into predictions. Start by developing intuition—understand how scaling values affects distances, how noise impacts optimization convergence, and how feature correlation influences model learning before diving into formal equations."
             },
             {
               "title": "Why this matters for models",
-              "body": "In basic math for ai, vectors, dot products, and scaling directly affect distance, optimization, and prediction magnitude in common ML algorithms."
+              "body": "Vectors encode input features into a format ML algorithms can process. Dot products measure similarity and generate predictions through weighted feature combinations. Scaling normalizes data ranges to prevent certain features from dominating learning. Together, these operations determine how models compute distances between data points, how efficiently they optimize parameters, and the magnitude and accuracy of final predictions in supervised learning tasks."
             },
             {
-              "title": "Interpretation drill",
-              "body": "Interpretation drill for basic math for ai: solve a small numeric example in words, then explain which modeling choice would change if the statistic shifted."
+              "title": "References",
+              "body": "In these short lessons we can't cover the math in details, but here are some resources if you want to learn more:\n1) 3Blue1Brown Youtube channel has excellent visual explanations of linear algebra and calculus concepts relevant to AI.\n2) Andrew Ng's Machine Learning course on Coursera includes a refresher on the necessary math foundations for understanding ML algorithms.\n3) Stanford's Youtube channel has lectures from many of their AI courses"
             }
           ]
         },
@@ -102,15 +102,15 @@
           "lessons": [
             {
               "title": "Intuition first",
-              "body": "Statistics helps quantify uncertainty through concepts like mean, variance, and distributions, which are essential for understanding noisy real-world data. Build intuition before formulas: describe what changes when values become larger, noisier, or more correlated."
+              "body": "Statistics helps quantify uncertainty through concepts like mean, variance, and distributions, which are essential for understanding noisy real-world data."
             },
             {
               "title": "Why this matters for models",
-              "body": "In intro to statistics, variance and distribution shape determine confidence in model outputs and help you reason about uncertainty, sampling bias, and noisy labels."
+              "body": "Understanding statistics is crucial for AI practitioners because it allows you to quantify uncertainty, identify patterns, and make informed decisions based on data. Concepts like mean and variance help you summarize data distributions, while understanding probability distributions enables you to model real-world phenomena more accurately. Statistical inference techniques allow you to draw conclusions about populations from samples, which is essential when working with limited data. Additionally, statistical thinking helps you evaluate model performance, detect overfitting, and choose appropriate evaluation metrics that reflect the true impact of your models in production."
             },
             {
-              "title": "Interpretation drill",
-              "body": "Interpretation drill for intro to statistics: solve a small numeric example in words, then explain which modeling choice would change if the statistic shifted."
+              "title": "Resources",
+              "body": "In these short lessons we can't cover the statistics in detail, but here are some resources if you want to learn more:\n1) Free Book: Introduction to Statistical Learning.\n2) Coursera's Data Science Specialization includes modules on statistical inference and modeling.\n3) Stanford's Youtube channel has lectures from their statistics courses."
             }
           ]
         },
@@ -128,12 +128,12 @@
               "image": "img/languages/ai+ml/new-lesson-6.png"
             },
             {
-              "title": "Quality signals",
-              "body": "For visualization basics, identify at least three quality signals (completeness, validity, timeliness, leakage risk) and decide how you will measure each one."
+              "title": "Data Visualization",
+              "body": "Effective data visualization is crucial for AI practitioners because it allows you to quickly identify patterns, outliers, and relationships in your data that may not be apparent through summary statistics alone. Visualizations can help you understand the distribution of your features, detect skewness or kurtosis, and uncover correlations between variables. This insight is essential for making informed decisions about feature engineering, model selection, and potential data quality issues before you even start modeling."
             },
             {
-              "title": "Mini practice",
-              "body": "Mini practice for visualization basics: pick one numeric column and choose a plot (histogram, boxplot, or scatter) that reveals outliers or skew before modeling."
+              "title": "Art of visualization",
+              "body": "Try to imagine how easier is to understand a concept when you have a good visualization of it. Give a look at this website: https://seeing-theory.brown.edu/ "
             }
           ]
         },
@@ -146,16 +146,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Data checklist",
-              "body": "Data inspection should surface issues early: missing values, duplicates, wrong types, and impossible ranges. Prioritize fixes by impact on model reliability rather than cleaning everything equally."
+              "title": "You are the detective",
+              "body": "Initial data inspection checks missing values, duplicates, data types, and unrealistic ranges to prevent avoidable modeling errors. Approach this step with curiosity and skepticism—look for patterns that don't make sense, question assumptions about data collection, and be ready to dig deeper when something looks off."
             },
             {
-              "title": "Quality signals",
-              "body": "For data inspection, identify at least three quality signals (completeness, validity, timeliness, leakage risk) and decide how you will measure each one."
+              "title": "It will pay off",
+              "body": "Thorough data inspection is an investment that pays off by catching issues early, improving model performance, and building trust in your results. By identifying and addressing data quality problems upfront, you can avoid wasted time on training models that learn from flawed data and ensure that your insights are based on reliable information."
             },
             {
-              "title": "Mini practice",
-              "body": "Mini practice for data inspection: run a checklist for nulls, duplicates, impossible values, and inconsistent units, then prioritize fixes by modeling risk."
+              "title": "Consideration",
+              "body": "Nowadays we mostly speak about AI, but imagine the best LLM (large language model, ChatGPT is an example of LLM) based on incorrect data. So as AI is becoming a commodity, the real value resides in the data. Unfortunately, it is less sexy to talk about data structure, quality and cleaning... but it is the most important part of the AI pipeline."
             }
           ]
         },
@@ -168,16 +168,16 @@
           "estimatedMinutes": 11,
           "lessons": [
             {
-              "title": "Task definition",
-              "body": "A prediction is a model output produced from input features, such as a class label, a probability, or a continuous numeric estimate. Start by writing the prediction target, the decision threshold (if any), and the cost of false positives vs false negatives."
+              "title": "What is a prediction?",
+              "body": "Crystal ball? Not quite. A prediction is an estimate produced by a model from input features (imagine them as columns in a spreadsheet). The output can be a class label, a probability, or a continuous numeric estimate. Predictions are used to inform decisions, automate processes, and provide insights into future events based on historical data."
             },
             {
               "title": "From input to output",
-              "body": "For intro to predictions, map one sample end to end: feature extraction, model scoring, and final decision rule."
+              "body": "The dataset with the features (and labels if supervised) is our model input. The model processes these features through its learned parameters to produce predictions. This process involves transforming the input data, applying the model's mathematical functions, and generating outputs that can be interpreted and used for decision-making."
             },
             {
-              "title": "Evaluation lens",
-              "body": "For intro to predictions, evaluate with precision/recall trade-offs and threshold calibration so model quality aligns with decision impact rather than a single headline score."
+              "title": "House Price Model",
+              "body": "Take the case of a house price prediction model. The input features might include the number of bedrooms, square footage, location, and age of the property. The label would be the actual sale price of the house. The model learns from historical data to predict the price of a new house based on its features. So when a new house is listed, the model can provide an estimated price range."
             }
           ]
         },
@@ -190,16 +190,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "What this topic clarifies",
-              "body": "Supervised learning trains with labeled targets, while unsupervised learning finds latent structure such as clusters or low-dimensional representations without labels. Focus on the boundary of this concept: what it includes, what it does not, and why that distinction matters when reading ML material."
+              "title": "Definition",
+              "body": "Supervised learning trains with labeled targets (house prices, for example), while unsupervised learning finds latent structure such as clusters or low-dimensional representations without labels (e.g., customer segments)."
             },
             {
               "title": "Real-world framing",
-              "body": "Use supervised vs unsupervised to translate a business question into a learning task. Write down the input available at prediction time and the exact output you need."
+              "body": "Start with the business question. If you have a clear target variable to predict, it's likely a supervised task. If you're exploring patterns or groupings in data without predefined labels, it's likely unsupervised. Clearly define your problem type before selecting algorithms."
             },
             {
-              "title": "Common confusion to avoid",
-              "body": "Common confusion in supervised vs unsupervised: avoid jumping straight to algorithms before confirming problem type, data availability, and success metric."
+              "title": "Hybrid approaches",
+              "body": "They are less common, but hybrid approaches exist. Semi-supervised learning uses a small amount of labeled data with a large amount of unlabeled data to improve learning accuracy. Reinforcement learning, while not strictly supervised or unsupervised, involves learning optimal actions through trial and error interactions with an environment."
             }
           ]
         },
@@ -216,12 +216,12 @@
               "body": "Features are the inputs provided to a model, and the label is the ground-truth value the model is trained to predict. Start by writing the prediction target, the decision threshold (if any), and the cost of false positives vs false negatives."
             },
             {
-              "title": "From input to output",
-              "body": "For feature vs label, map one sample end to end: feature extraction, model scoring, and final decision rule."
+              "title": "Features",
+              "body": "Think of a table where each row is an example and each column is a feature. Features can be numeric, categorical, or derived from raw data through preprocessing and feature engineering. They should be relevant to the prediction task and available at prediction time."
             },
             {
-              "title": "Evaluation lens",
-              "body": "For feature vs label, evaluate data quality by checking that features are available at prediction time and do not leak target information from the future or from post-outcome fields."
+              "title": "Label",
+              "body": "Having complete and informative labels is crucial for supervised learning and somethimes is also the most expensive part of the AI pipeline. Labels should be accurate, consistent, and representative of the target variable you want to predict. In some cases, obtaining labels may require manual annotation, expert judgment, or integration with external data sources."
             }
           ]
         },
@@ -256,16 +256,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Task definition",
-              "body": "Classification maps an input to one of several classes, for example spam vs not spam, often using probabilities and a decision threshold. Start by writing the prediction target, the decision threshold (if any), and the cost of false positives vs false negatives."
+              "title": "Spam or not spam?",
+              "body": "Classification maps an input to one of several classes, for example spam vs not spam. Most email providers use classification models to filter out unwanted messages."
             },
             {
-              "title": "From input to output",
-              "body": "For simple classification idea, map one sample end to end: feature extraction, model scoring, and final decision rule."
+              "title": "Data",
+              "body": "For simple classification idea, the data consists of email features (sender, subject, content) and a label indicating whether it's spam or not. The model learns patterns in the features that correlate with the spam label to make predictions on new emails."
             },
             {
-              "title": "Evaluation lens",
-              "body": "For simple classification idea, evaluate with precision/recall trade-offs and threshold calibration so model quality aligns with decision impact rather than a single headline score."
+              "title": "Model development",
+              "body": "For simple classification idea, the model development process involves selecting an appropriate algorithm (e.g., logistic regression, decision tree), training it on the labeled dataset, and evaluating its performance using metrics like accuracy, precision, recall, and F1 score. The model can then be deployed and served to classify incoming emails in real-time."
             }
           ]
         },
@@ -282,12 +282,12 @@
               "body": "Regression estimates a continuous value such as demand or price. Define the target range, acceptable error tolerance, and whether MAE or RMSE best reflects the business cost of prediction mistakes."
             },
             {
-              "title": "From input to output",
-              "body": "For simple regression idea, map one sample end to end: feature extraction, model scoring, and final decision rule."
+              "title": "Stock price up or down?",
+              "body": "For simple regression idea, a stock price prediction model estimates the future price of a stock based on historical data and relevant features. The model learns patterns in the data to make predictions that can inform investment decisions."
             },
             {
-              "title": "Evaluation lens",
-              "body": "For simple regression idea, compare MAE and RMSE explicitly: MAE is more robust to outliers, while RMSE penalizes large errors more strongly when big misses are costly."
+              "title": "Evaluation metrics",
+              "body": "To understand if the model can be trusted, we evaluate it using error-based metrics like Mean Absolute Error (MAE). It is important to choose the right metric based on the business context and to have a separate validation dataset that the model has never seen during training to get an unbiased estimate of its performance on new data."
             }
           ]
         },
@@ -305,11 +305,11 @@
             },
             {
               "title": "Decision points",
-              "body": "In ai workflows, every stage has a go/no-go decision. Define evidence required to move forward instead of relying on intuition alone."
+              "body": "In ai workflows, every stage has a go/no-go decision. Define evidence required to move forward instead of relying on intuition alone. For example, before moving from data preparation to training, you might require that data quality metrics meet certain thresholds. Before deploying a model, you might require that offline evaluation metrics exceed a baseline and that error analysis shows no critical failure modes."
             },
             {
               "title": "Operational readiness",
-              "body": "Operational readiness for ai workflows: Use stage gates so the team only advances when metrics and assumptions are documented."
+              "body": "Operational readiness for ai workflows: Use stage gates so the team only advances when metrics and assumptions are documented. This prevents wasted effort on models that won't meet business needs or production requirements."
             }
           ]
         },
@@ -322,16 +322,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Pipeline view",
+              "title": "Common use cases",
               "body": "Common AI use cases include recommendation, fraud detection, forecasting, language understanding, and visual inspection in production systems. Break the work into stages: framing, data prep, baseline, iteration, deployment, and monitoring."
             },
             {
-              "title": "Decision points",
-              "body": "In ai use cases, every stage has a go/no-go decision. Define evidence required to move forward instead of relying on intuition alone."
+              "title": "Do you need a AI-based solution?",
+              "body": "You'd be surprised how few people actually ask this question. AI is not the solution to every problem. Before jumping into an AI-based solution, it's crucial to evaluate whether it is the right fit for your specific use case. Consider factors such as the availability and quality of data, the complexity of the problem, the need for interpretability, and the potential return on investment. Sometimes, simpler rule-based systems or traditional statistical methods may be more effective and easier to maintain than complex AI models."
             },
             {
-              "title": "Operational readiness",
-              "body": "Operational readiness for ai use cases: Prioritize by measurable ROI and data readiness before committing engineering effort."
+              "title": "What next?",
+              "body": "If you think an AI-based solution is appropriate for your use case, the next step is to define the problem clearly, identify the success metrics, and gather the necessary data. Then, you can start with a simple baseline model to establish a performance benchmark before iterating on more complex algorithms."
             }
           ]
         }
