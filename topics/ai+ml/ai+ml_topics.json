@@ -221,7 +221,7 @@
             },
             {
               "title": "Evaluation lens",
-              "body": "For feature vs label, evaluate with primary task metric plus a guardrail metric so model quality aligns with decision impact rather than a single headline score."
+              "body": "For feature vs label, match evaluation to the task: for classification use precision/recall and threshold calibration; for regression use MAE/RMSE plus a guardrail metric."
             }
           ]
         },
@@ -279,7 +279,7 @@
           "lessons": [
             {
               "title": "Task definition",
-              "body": "Regression predicts a continuous numeric value. Start by defining the target range, acceptable error tolerance, and how prediction mistakes translate into business cost."
+              "body": "Regression predicts a continuous numeric value. Start by defining the target range, acceptable error tolerance, and whether MAE or RMSE better matches the business cost of mistakes."
             },
             {
               "title": "From input to output",
