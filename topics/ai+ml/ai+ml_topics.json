@@ -221,7 +221,7 @@
             },
             {
               "title": "Evaluation lens",
-              "body": "For feature vs label, match evaluation to the task: for classification use precision/recall and threshold calibration; for regression use MAE/RMSE plus a guardrail metric."
+              "body": "For feature vs label, evaluate data quality by checking that features are available at prediction time and do not leak target information from the future or from post-outcome fields."
             }
           ]
         },
@@ -279,7 +279,7 @@
           "lessons": [
             {
               "title": "Task definition",
-              "body": "Regression predicts a continuous numeric value. Start by defining the target range, acceptable error tolerance, and whether MAE or RMSE better matches the business cost of mistakes."
+              "body": "Regression estimates a continuous numeric value. Start by defining the target range, acceptable error tolerance, and whether MAE or RMSE better matches the business cost of mistakes."
             },
             {
               "title": "From input to output",
@@ -287,7 +287,7 @@
             },
             {
               "title": "Evaluation lens",
-              "body": "For simple regression idea, evaluate with MAE/RMSE behavior under outliers so model quality aligns with decision impact rather than a single headline score."
+              "body": "For simple regression idea, compare MAE and RMSE explicitly: MAE is more robust to outliers, while RMSE penalizes large errors more strongly when big misses are costly."
             }
           ]
         },
