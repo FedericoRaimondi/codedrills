@@ -13,16 +13,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Artificial intelligence is the broad goal of building systems that perform intelligent tasks, while machine learning is a subset that learns patterns from data instead of relying only on hand-written rules."
+              "title": "What this topic clarifies",
+              "body": "Artificial intelligence is the broad goal of building systems that perform intelligent tasks, while machine learning is the subset that learns patterns from data. This distinction helps you choose when to rely on rules versus data-driven models."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind ai basics: what is ai and ml by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Real-world framing",
+              "body": "Use ai basics: what is ai and ml to translate a business question into a learning task. Write down the input available at prediction time and the exact output you need."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply ai basics: what is ai and ml on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Common confusion to avoid",
+              "body": "Common confusion in ai basics: what is ai and ml: avoid jumping straight to algorithms before confirming problem type, data availability, and success metric."
             }
           ]
         },
@@ -35,16 +35,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Structured data follows a fixed schema such as rows and columns, while unstructured data (text, audio, images) needs additional processing before models can consume it effectively."
+              "title": "Data checklist",
+              "body": "Structured data has fixed columns and types, while unstructured data (text, images, audio) needs representation steps before modeling. For each source, identify schema stability, storage format, and preprocessing needed to make inputs model-ready."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind data types: structured vs unstructured data by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Quality signals",
+              "body": "For data types: structured vs unstructured data, identify at least three quality signals (completeness, validity, timeliness, leakage risk) and decide how you will measure each one."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply data types: structured vs unstructured data on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Mini practice",
+              "body": "Mini practice for data types: structured vs unstructured data: list 5 example fields and mark each as structured, semi-structured, or unstructured, then note the preprocessing each one needs."
             }
           ]
         },
@@ -57,18 +57,16 @@
           "estimatedMinutes": 11,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "A dataset is a collection of examples used for training and evaluation, typically with features (inputs) and labels (targets) when the task is supervised."
+              "title": "Data checklist",
+              "body": "A dataset is a collection of examples used for training and evaluation, usually with features and labels in supervised tasks. Check label quality, class balance, and temporal leakage so the dataset reflects the decision problem you want to solve."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind intro to datasets by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Quality signals",
+              "body": "For intro to datasets, identify at least three quality signals (completeness, validity, timeliness, leakage risk) and decide how you will measure each one."
             },
             {
-              "title": "Practice focus",
-              "body": "Use the example to practice intro to datasets end to end: inspect the inputs, run the logic, and confirm the output matches the expected behavior.",
-              "code": "dataset = [{'feature': 2, 'label': 1}, {'feature': 5, 'label': 0}]\nprint(dataset[0])",
-              "runnable": false
+              "title": "Mini practice",
+              "body": "Mini practice for intro to datasets: define one row-level example and identify feature columns, label column, and metadata that must not leak into training."
             }
           ]
         },
@@ -81,16 +79,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Core AI math includes vectors, matrix operations, and basic algebra because model predictions are usually computed as weighted combinations of numeric features."
+              "title": "Intuition first",
+              "body": "Core AI math includes vectors, matrix operations, and basic algebra because model predictions are usually computed as weighted combinations of numeric features. Build intuition before formulas: describe what changes when values become larger, noisier, or more correlated."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind basic math for ai by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Why this matters for models",
+              "body": "In basic math for ai, vectors, dot products, and scaling directly affect distance, optimization, and prediction magnitude in common ML algorithms."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply basic math for ai on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Interpretation drill",
+              "body": "Interpretation drill for basic math for ai: solve a small numeric example in words, then explain which modeling choice would change if the statistic shifted."
             }
           ]
         },
@@ -103,16 +101,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Statistics helps quantify uncertainty through concepts like mean, variance, and distributions, which are essential for understanding noisy real-world data."
+              "title": "Intuition first",
+              "body": "Statistics helps quantify uncertainty through concepts like mean, variance, and distributions, which are essential for understanding noisy real-world data. Build intuition before formulas: describe what changes when values become larger, noisier, or more correlated."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind intro to statistics by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Why this matters for models",
+              "body": "In intro to statistics, variance and distribution shape determine confidence in model outputs and help you reason about uncertainty, sampling bias, and noisy labels."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply intro to statistics on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Interpretation drill",
+              "body": "Interpretation drill for intro to statistics: solve a small numeric example in words, then explain which modeling choice would change if the statistic shifted."
             }
           ]
         },
@@ -125,17 +123,17 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Visualizations like histograms, scatter plots, and box plots quickly reveal distribution shape, outliers, and variable relationships before modeling begins.",
+              "title": "Data checklist",
+              "body": "Visualizations reveal distribution shape, outliers, and feature relationships before modeling. Choose chart types deliberately: histograms for spread, scatter plots for relationships, and box plots for extreme values.",
               "image": "img/languages/ai+ml/new-lesson-6.png"
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind visualization basics by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Quality signals",
+              "body": "For visualization basics, identify at least three quality signals (completeness, validity, timeliness, leakage risk) and decide how you will measure each one."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply visualization basics on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Mini practice",
+              "body": "Mini practice for visualization basics: pick one numeric column and choose a plot (histogram, boxplot, or scatter) that reveals outliers or skew before modeling."
             }
           ]
         },
@@ -148,16 +146,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Initial data inspection checks missing values, duplicates, data types, and unrealistic ranges to prevent avoidable modeling errors."
+              "title": "Data checklist",
+              "body": "Data inspection should surface issues early: missing values, duplicates, wrong types, and impossible ranges. Prioritize fixes by impact on model reliability rather than cleaning everything equally."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind data inspection by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Quality signals",
+              "body": "For data inspection, identify at least three quality signals (completeness, validity, timeliness, leakage risk) and decide how you will measure each one."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply data inspection on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Mini practice",
+              "body": "Mini practice for data inspection: run a checklist for nulls, duplicates, impossible values, and inconsistent units, then prioritize fixes by modeling risk."
             }
           ]
         },
@@ -170,18 +168,16 @@
           "estimatedMinutes": 11,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "A prediction is a model output produced from input features, such as a class label, a probability, or a continuous numeric estimate."
+              "title": "Task definition",
+              "body": "A prediction is a model output produced from input features, such as a class label, a probability, or a continuous numeric estimate. Start by writing the prediction target, the decision threshold (if any), and the cost of false positives vs false negatives."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind intro to predictions by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "From input to output",
+              "body": "For intro to predictions, map one sample end to end: feature extraction, model scoring, and final decision rule."
             },
             {
-              "title": "Practice focus",
-              "body": "Use the example to practice intro to predictions end to end: inspect the inputs, run the logic, and confirm the output matches the expected behavior.",
-              "code": "if temperature > 30:\n    prediction = 'high'\nelse:\n    prediction = 'normal'\nprint(prediction)",
-              "runnable": false
+              "title": "Evaluation lens",
+              "body": "For intro to predictions, evaluate with precision/recall trade-offs and threshold calibration so model quality aligns with decision impact rather than a single headline score."
             }
           ]
         },
@@ -194,16 +190,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Supervised learning trains with labeled targets, while unsupervised learning finds latent structure such as clusters or low-dimensional representations without labels."
+              "title": "What this topic clarifies",
+              "body": "Supervised learning trains with labeled targets, while unsupervised learning finds latent structure such as clusters or low-dimensional representations without labels. Focus on the boundary of this concept: what it includes, what it does not, and why that distinction matters when reading ML material."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind supervised vs unsupervised by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Real-world framing",
+              "body": "Use supervised vs unsupervised to translate a business question into a learning task. Write down the input available at prediction time and the exact output you need."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply supervised vs unsupervised on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Common confusion to avoid",
+              "body": "Common confusion in supervised vs unsupervised: avoid jumping straight to algorithms before confirming problem type, data availability, and success metric."
             }
           ]
         },
@@ -216,16 +212,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Features are the inputs provided to a model, and the label is the ground-truth value the model is trained to predict."
+              "title": "Task definition",
+              "body": "Features are the inputs provided to a model, and the label is the ground-truth value the model is trained to predict. Start by writing the prediction target, the decision threshold (if any), and the cost of false positives vs false negatives."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind feature vs label by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "From input to output",
+              "body": "For feature vs label, map one sample end to end: feature extraction, model scoring, and final decision rule."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply feature vs label on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Evaluation lens",
+              "body": "For feature vs label, evaluate data quality by checking that features are available at prediction time and do not leak target information from the future or from post-outcome fields."
             }
           ]
         },
@@ -238,16 +234,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Data cleaning standardizes formats, handles nulls, removes duplicates, and corrects inconsistencies so the model learns from reliable signals."
+              "title": "Data checklist",
+              "body": "Data cleaning standardizes formats, handles nulls, removes duplicates, and resolves inconsistent categories. Each cleaning rule should be deterministic and reproducible so training and inference receive the same transformations."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind data cleaning basics by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Quality signals",
+              "body": "For data cleaning basics, identify at least three quality signals (completeness, validity, timeliness, leakage risk) and decide how you will measure each one."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply data cleaning basics on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Mini practice",
+              "body": "Mini practice for data cleaning basics: document one cleaning rule per issue type (missing values, typos, duplicates) and explain how each rule changes model inputs."
             }
           ]
         },
@@ -260,16 +256,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Classification maps an input to one of several classes, for example spam vs not spam, often using probabilities and a decision threshold."
+              "title": "Task definition",
+              "body": "Classification maps an input to one of several classes, for example spam vs not spam, often using probabilities and a decision threshold. Start by writing the prediction target, the decision threshold (if any), and the cost of false positives vs false negatives."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind simple classification idea by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "From input to output",
+              "body": "For simple classification idea, map one sample end to end: feature extraction, model scoring, and final decision rule."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply simple classification idea on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Evaluation lens",
+              "body": "For simple classification idea, evaluate with precision/recall trade-offs and threshold calibration so model quality aligns with decision impact rather than a single headline score."
             }
           ]
         },
@@ -282,18 +278,16 @@
           "estimatedMinutes": 11,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Regression estimates a continuous value such as demand or price and is evaluated with error-based metrics like MAE or RMSE."
+              "title": "Task definition",
+              "body": "Regression estimates a continuous value such as demand or price. Define the target range, acceptable error tolerance, and whether MAE or RMSE best reflects the business cost of prediction mistakes."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind simple regression idea by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "From input to output",
+              "body": "For simple regression idea, map one sample end to end: feature extraction, model scoring, and final decision rule."
             },
             {
-              "title": "Practice focus",
-              "body": "Use the example to practice simple regression idea end to end: inspect the inputs, run the logic, and confirm the output matches the expected behavior.",
-              "code": "predicted_price = 120000 + (size_sqft * 45)\nprint(predicted_price)",
-              "runnable": false
+              "title": "Evaluation lens",
+              "body": "For simple regression idea, compare MAE and RMSE explicitly: MAE is more robust to outliers, while RMSE penalizes large errors more strongly when big misses are costly."
             }
           ]
         },
@@ -306,16 +300,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "A practical AI workflow moves from problem framing and data preparation to training, evaluation, deployment, and continuous monitoring."
+              "title": "Pipeline view",
+              "body": "A practical AI workflow moves from problem framing and data preparation to training, evaluation, deployment, and continuous monitoring. Break the work into stages: framing, data prep, baseline, iteration, deployment, and monitoring."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind ai workflows by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Decision points",
+              "body": "In ai workflows, every stage has a go/no-go decision. Define evidence required to move forward instead of relying on intuition alone."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply ai workflows on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Operational readiness",
+              "body": "Operational readiness for ai workflows: Use stage gates so the team only advances when metrics and assumptions are documented."
             }
           ]
         },
@@ -328,16 +322,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Common AI use cases include recommendation, fraud detection, forecasting, language understanding, and visual inspection in production systems."
+              "title": "Pipeline view",
+              "body": "Common AI use cases include recommendation, fraud detection, forecasting, language understanding, and visual inspection in production systems. Break the work into stages: framing, data prep, baseline, iteration, deployment, and monitoring."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind ai use cases by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Decision points",
+              "body": "In ai use cases, every stage has a go/no-go decision. Define evidence required to move forward instead of relying on intuition alone."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply ai use cases on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Operational readiness",
+              "body": "Operational readiness for ai use cases: Prioritize by measurable ROI and data readiness before committing engineering effort."
             }
           ]
         }
@@ -355,17 +349,17 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Linear regression models a continuous target as a weighted sum of features and is a strong baseline for interpretable numeric prediction tasks.",
+              "title": "Model behavior",
+              "body": "Linear regression models a continuous target as a weighted sum of features and is a strong baseline for interpretable numeric prediction tasks. Learn what the model assumes about data and how those assumptions affect bias, variance, and interpretability.",
               "image": "img/languages/ai+ml/beginner-lesson-1.png"
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind linear regression by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Strengths and limits",
+              "body": "For linear regression, list where it performs well and where it fails. Pair each limitation with a mitigation step."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply linear regression on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Tuning priorities",
+              "body": "For linear regression, prioritize tuning around regularization strength and feature scaling; change one factor at a time and validate with a fixed comparison protocol."
             }
           ]
         },
@@ -378,17 +372,17 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Logistic regression transforms a linear score into a probability and is commonly used for binary classification with a clear decision boundary.",
+              "title": "Model behavior",
+              "body": "Logistic regression transforms a linear score into a probability and is commonly used for binary classification with a clear decision boundary. Learn what the model assumes about data and how those assumptions affect bias, variance, and interpretability.",
               "image": "img/languages/ai+ml/beginner-lesson-2.png"
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind logistic regression by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Strengths and limits",
+              "body": "For logistic regression, list where it performs well and where it fails. Pair each limitation with a mitigation step."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply logistic regression on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Tuning priorities",
+              "body": "For logistic regression, prioritize tuning around regularization, class weighting, and decision threshold; change one factor at a time and validate with a fixed comparison protocol."
             }
           ]
         },
@@ -401,18 +395,16 @@
           "estimatedMinutes": 11,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "A train/test split keeps one partition unseen during training so final metrics reflect how the model behaves on new data."
+              "title": "Metric strategy",
+              "body": "A train/test split keeps one partition unseen during training so final metrics reflect how the model behaves on new data. Separate offline model quality from online product impact, and avoid optimizing one metric in isolation."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind train/test split by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Error analysis",
+              "body": "For train/test split, review mistakes by segment (time, geography, class balance, user type) to uncover hidden risk pockets."
             },
             {
-              "title": "Practice focus",
-              "body": "Use the example to practice train/test split end to end: inspect the inputs, run the logic, and confirm the output matches the expected behavior.",
-              "code": "dataset = [{'feature': 2, 'label': 1}, {'feature': 5, 'label': 0}]\nprint(dataset[0])",
-              "runnable": false
+              "title": "Decision policy",
+              "body": "Decision policy for train/test split: define launch thresholds, rollback triggers, and evidence required before each release decision."
             }
           ]
         },
@@ -425,16 +417,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Classification metrics such as precision, recall, and F1 complement accuracy, while regression uses MAE, MSE, or RMSE depending on error sensitivity."
+              "title": "Metric strategy",
+              "body": "Classification metrics such as precision, recall, and F1 complement accuracy, while regression uses MAE, MSE, or RMSE depending on error sensitivity. Separate offline model quality from online product impact, and avoid optimizing one metric in isolation."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind basic metrics by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Error analysis",
+              "body": "For basic metrics, review mistakes by segment (time, geography, class balance, user type) to uncover hidden risk pockets."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply basic metrics on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Decision policy",
+              "body": "Decision policy for basic metrics: define launch thresholds, rollback triggers, and evidence required before each release decision."
             }
           ]
         },
@@ -447,16 +439,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "k-NN predicts using the labels of nearby examples, so performance depends strongly on distance scaling and the choice of k."
+              "title": "Model behavior",
+              "body": "k-NN predicts using the labels of nearby examples, so performance depends strongly on distance scaling and the choice of k. Learn what the model assumes about data and how those assumptions affect bias, variance, and interpretability."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind k-nn algorithm by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Strengths and limits",
+              "body": "For k-nn algorithm, list where it performs well and where it fails. Pair each limitation with a mitigation step."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply k-nn algorithm on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Tuning priorities",
+              "body": "For k-nn algorithm, prioritize tuning around k value, distance metric, and scaling strategy; change one factor at a time and validate with a fixed comparison protocol."
             }
           ]
         },
@@ -469,17 +461,17 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Decision trees recursively split features into rules, making predictions easy to explain but often requiring pruning or ensembles to avoid overfitting.",
+              "title": "Model behavior",
+              "body": "Decision trees recursively split features into rules, making predictions easy to explain but often requiring pruning or ensembles to avoid overfitting. Learn what the model assumes about data and how those assumptions affect bias, variance, and interpretability.",
               "image": "img/languages/ai+ml/beginner-lesson-6.png"
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind decision trees by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Strengths and limits",
+              "body": "For decision trees, list where it performs well and where it fails. Pair each limitation with a mitigation step."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply decision trees on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Tuning priorities",
+              "body": "For decision trees, prioritize tuning around max depth, minimum samples per split, and pruning; change one factor at a time and validate with a fixed comparison protocol."
             }
           ]
         },
@@ -492,16 +484,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Preprocessing includes normalization, encoding categorical values, and handling missing data so model inputs are consistent and learnable."
+              "title": "Data checklist",
+              "body": "Preprocessing includes normalization, encoding categorical values, and handling missing data so model inputs are consistent and learnable. Before modeling, check schema consistency, missingness patterns, and whether the observed sample matches the production population."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind data preprocessing by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Quality signals",
+              "body": "For data preprocessing, identify at least three quality signals (completeness, validity, timeliness, leakage risk) and decide how you will measure each one."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply data preprocessing on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Mini practice",
+              "body": "Mini practice for data preprocessing: pick a sample dataset and perform three concrete steps—normalize one numeric feature, encode one categorical feature, and define a rule for missing values—then compare model input quality before vs after."
             }
           ]
         },
@@ -514,18 +506,16 @@
           "estimatedMinutes": 11,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Feature engineering creates informative inputs from raw data, such as ratios, time features, or domain-derived aggregates that improve model signal."
+              "title": "Data checklist",
+              "body": "Feature engineering creates informative inputs from raw data, such as ratios, time features, or domain-derived aggregates that improve model signal. Before modeling, check schema consistency, missingness patterns, and whether the observed sample matches the production population."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind feature engineering by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Quality signals",
+              "body": "For feature engineering, identify at least three quality signals (completeness, validity, timeliness, leakage risk) and decide how you will measure each one."
             },
             {
-              "title": "Practice focus",
-              "body": "Use the example to practice feature engineering end to end: inspect the inputs, run the logic, and confirm the output matches the expected behavior.",
-              "code": "if temperature > 30:\n    prediction = 'high'\nelse:\n    prediction = 'normal'\nprint(prediction)",
-              "runnable": false
+              "title": "Mini practice",
+              "body": "Mini practice for feature engineering: create two candidate features and explain why each could add predictive signal beyond raw columns."
             }
           ]
         },
@@ -538,17 +528,17 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Clustering groups similar samples without labels, helping with segmentation, anomaly exploration, and dataset understanding.",
+              "title": "Model behavior",
+              "body": "Clustering groups similar samples without labels, helping with segmentation, anomaly exploration, and dataset understanding. Learn what the model assumes about data and how those assumptions affect bias, variance, and interpretability.",
               "image": "img/languages/ai+ml/beginner-lesson-9.png"
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind clustering basics by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Strengths and limits",
+              "body": "For clustering basics, list where it performs well and where it fails. Pair each limitation with a mitigation step."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply clustering basics on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Tuning priorities",
+              "body": "For clustering basics, prioritize tuning around number of clusters, initialization stability, and feature scaling; change one factor at a time and validate with a fixed comparison protocol."
             }
           ]
         },
@@ -561,17 +551,17 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Principal Component Analysis projects data to lower dimensions while preserving maximum variance, useful for compression and denoising.",
+              "title": "Model behavior",
+              "body": "Principal Component Analysis projects data to lower dimensions while preserving maximum variance, useful for compression and denoising. Learn what the model assumes about data and how those assumptions affect bias, variance, and interpretability.",
               "image": "img/languages/ai+ml/beginner-lesson-10.png"
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind pca basics by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Strengths and limits",
+              "body": "For pca basics, list where it performs well and where it fails. Pair each limitation with a mitigation step."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply pca basics on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Tuning priorities",
+              "body": "For pca basics, prioritize tuning around number of components and explained-variance cutoff; change one factor at a time and validate with a fixed comparison protocol."
             }
           ]
         },
@@ -584,16 +574,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "ML pipelines chain preprocessing and modeling steps into one reproducible workflow, reducing leakage and training-serving inconsistencies."
+              "title": "Pipeline view",
+              "body": "ML pipelines chain preprocessing and modeling steps into one reproducible workflow, reducing leakage and training-serving inconsistencies. Break the work into stages: framing, data prep, baseline, iteration, deployment, and monitoring."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind pipeline basics by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Decision points",
+              "body": "In pipeline basics, every stage has a go/no-go decision. Define evidence required to move forward instead of relying on intuition alone."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply pipeline basics on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Operational readiness",
+              "body": "Operational readiness for pipeline basics: Enforce fit/transform boundaries and version every preprocessing step to prevent leakage."
             }
           ]
         },
@@ -606,17 +596,17 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Overfitting occurs when a model learns noise from training data, causing strong train performance but weak generalization to unseen examples.",
+              "title": "Metric strategy",
+              "body": "Overfitting occurs when a model learns noise from training data, causing strong train performance but weak generalization to unseen examples. Separate offline model quality from online product impact, and avoid optimizing one metric in isolation.",
               "image": "img/languages/ai+ml/beginner-lesson-12.png"
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind overfitting concept by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Error analysis",
+              "body": "For overfitting concept, review mistakes by segment (time, geography, class balance, user type) to uncover hidden risk pockets."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply overfitting concept on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Decision policy",
+              "body": "Decision policy for overfitting concept: define launch thresholds, rollback triggers, and evidence required before each release decision."
             }
           ]
         },
@@ -629,18 +619,16 @@
           "estimatedMinutes": 11,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Cross-validation rotates validation folds to estimate performance more reliably and to compare models with less split-to-split variance."
+              "title": "Metric strategy",
+              "body": "Cross-validation rotates validation folds to estimate performance more reliably and to compare models with less split-to-split variance. Separate offline model quality from online product impact, and avoid optimizing one metric in isolation."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind cross-validation by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Error analysis",
+              "body": "For cross-validation, review mistakes by segment (time, geography, class balance, user type) to uncover hidden risk pockets."
             },
             {
-              "title": "Practice focus",
-              "body": "Use the example to practice cross-validation end to end: inspect the inputs, run the logic, and confirm the output matches the expected behavior.",
-              "code": "predicted_price = 120000 + (size_sqft * 45)\nprint(predicted_price)",
-              "runnable": false
+              "title": "Decision policy",
+              "body": "Decision policy for cross-validation: define launch thresholds, rollback triggers, and evidence required before each release decision."
             }
           ]
         },
@@ -653,16 +641,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "A good evaluation workflow defines metrics upfront, checks baseline comparisons, inspects error patterns, and validates assumptions before deployment."
+              "title": "Metric strategy",
+              "body": "A good evaluation workflow defines metrics upfront, checks baseline comparisons, inspects error patterns, and validates assumptions before deployment. Separate offline model quality from online product impact, and avoid optimizing one metric in isolation."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind model evaluation workflow by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Error analysis",
+              "body": "For model evaluation workflow, review mistakes by segment (time, geography, class balance, user type) to uncover hidden risk pockets."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply model evaluation workflow on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Decision policy",
+              "body": "Decision policy for model evaluation workflow: define launch thresholds, rollback triggers, and evidence required before each release decision."
             }
           ]
         },
@@ -675,16 +663,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "A first ML project should prioritize clear problem scope, clean data, a simple baseline, and iterative improvements guided by measurable outcomes."
+              "title": "Pipeline view",
+              "body": "A first ML project should prioritize clear problem scope, clean data, a simple baseline, and iterative improvements guided by measurable outcomes. Break the work into stages: framing, data prep, baseline, iteration, deployment, and monitoring."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind first ml project by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Decision points",
+              "body": "In first ml project, every stage has a go/no-go decision. Define evidence required to move forward instead of relying on intuition alone."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply first ml project on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Operational readiness",
+              "body": "Operational readiness for first ml project: Use stage gates so the team only advances when metrics and assumptions are documented."
             }
           ]
         }
@@ -702,16 +690,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Ensembles combine multiple models to improve robustness and accuracy by averaging or boosting complementary prediction behaviors."
+              "title": "Model behavior",
+              "body": "Ensembles combine multiple models to improve robustness and accuracy by averaging or boosting complementary prediction behaviors. Learn what the model assumes about data and how those assumptions affect bias, variance, and interpretability."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind ensemble methods by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Strengths and limits",
+              "body": "For ensemble methods, list where it performs well and where it fails. Pair each limitation with a mitigation step."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply ensemble methods on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Tuning priorities",
+              "body": "For ensemble methods, prioritize tuning around number of estimators, learning rate, and subsampling; change one factor at a time and validate with a fixed comparison protocol."
             }
           ]
         },
@@ -724,16 +712,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Hyperparameter tuning explores settings like depth, learning rate, and regularization to maximize validation performance without overfitting."
+              "title": "Model behavior",
+              "body": "Hyperparameter tuning explores settings like depth, learning rate, and regularization to maximize validation performance without overfitting. Learn what the model assumes about data and how those assumptions affect bias, variance, and interpretability."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind hyperparameter tuning by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Strengths and limits",
+              "body": "For hyperparameter tuning, list where it performs well and where it fails. Pair each limitation with a mitigation step."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply hyperparameter tuning on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Tuning priorities",
+              "body": "For hyperparameter tuning, prioritize tuning around search space design, budget allocation, and validation protocol; change one factor at a time and validate with a fixed comparison protocol."
             }
           ]
         },
@@ -746,18 +734,16 @@
           "estimatedMinutes": 11,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Feature selection removes redundant or noisy variables, improving interpretability, reducing training cost, and sometimes improving generalization."
+              "title": "Model behavior",
+              "body": "Feature selection removes redundant or noisy variables, improving interpretability, reducing training cost, and sometimes improving generalization. Learn what the model assumes about data and how those assumptions affect bias, variance, and interpretability."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind feature selection by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Strengths and limits",
+              "body": "For feature selection, list where it performs well and where it fails. Pair each limitation with a mitigation step."
             },
             {
-              "title": "Practice focus",
-              "body": "Use the example to practice feature selection end to end: inspect the inputs, run the logic, and confirm the output matches the expected behavior.",
-              "code": "dataset = [{'feature': 2, 'label': 1}, {'feature': 5, 'label': 0}]\nprint(dataset[0])",
-              "runnable": false
+              "title": "Tuning priorities",
+              "body": "For feature selection, prioritize tuning around selection criterion, redundancy filtering, and stability across folds; change one factor at a time and validate with a fixed comparison protocol."
             }
           ]
         },
@@ -770,17 +756,17 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "The bias-variance tradeoff balances underfitting and overfitting: simpler models have higher bias, complex models often have higher variance.",
+              "title": "Metric strategy",
+              "body": "The bias-variance tradeoff balances underfitting and overfitting: simpler models have higher bias, complex models often have higher variance. Separate offline model quality from online product impact, and avoid optimizing one metric in isolation.",
               "image": "img/languages/ai+ml/intermediate-lesson-4.png"
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind bias-variance tradeoff by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Error analysis",
+              "body": "For bias-variance tradeoff, review mistakes by segment (time, geography, class balance, user type) to uncover hidden risk pockets."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply bias-variance tradeoff on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Decision policy",
+              "body": "Decision policy for bias-variance tradeoff: define launch thresholds, rollback triggers, and evidence required before each release decision."
             }
           ]
         },
@@ -793,16 +779,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Advanced evaluation includes calibration, threshold analysis, subgroup metrics, and cost-aware decision rules for production-relevant model assessment."
+              "title": "Metric strategy",
+              "body": "Advanced evaluation includes calibration, threshold analysis, subgroup metrics, and cost-aware decision rules for production-relevant model assessment. Separate offline model quality from online product impact, and avoid optimizing one metric in isolation."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind advanced evaluation by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Error analysis",
+              "body": "For advanced evaluation, review mistakes by segment (time, geography, class balance, user type) to uncover hidden risk pockets."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply advanced evaluation on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Decision policy",
+              "body": "Decision policy for advanced evaluation: define launch thresholds, rollback triggers, and evidence required before each release decision."
             }
           ]
         },
@@ -815,16 +801,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Neural networks stack differentiable layers that transform input features into richer representations learned from data."
+              "title": "Representation learning",
+              "body": "Neural networks stack differentiable layers that transform input features into richer representations learned from data. Focus on how deeper layers progressively transform raw inputs into task-relevant features."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind neural networks basics by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Training stability",
+              "body": "In neural networks basics, monitor optimization signals (loss trends, gradient behavior, overfitting gap) instead of only final accuracy."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply neural networks basics on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Practical trade-offs",
+              "body": "Trade model depth against data availability, regularization needs, and monitoring overhead; deeper networks can improve representation power but require more careful optimization and validation."
             }
           ]
         },
@@ -837,17 +823,17 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Backpropagation computes gradients efficiently from output to input layers, enabling gradient-based optimization of neural network parameters.",
+              "title": "Representation learning",
+              "body": "Backpropagation computes gradients efficiently from output to input layers, enabling gradient-based optimization of neural network parameters. Focus on how deeper layers progressively transform raw inputs into task-relevant features.",
               "image": "img/languages/ai+ml/intermediate-lesson-7.png"
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind backpropagation by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Training stability",
+              "body": "In backpropagation, monitor optimization signals (loss trends, gradient behavior, overfitting gap) instead of only final accuracy."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply backpropagation on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Practical trade-offs",
+              "body": "Balance gradient stability with training speed; monitor exploding/vanishing gradients and use normalization or clipping when needed."
             }
           ]
         },
@@ -860,18 +846,16 @@
           "estimatedMinutes": 11,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Deep learning uses multi-layer neural networks to automatically learn hierarchical features in text, vision, and speech tasks."
+              "title": "Representation learning",
+              "body": "Deep learning uses multi-layer neural networks to automatically learn hierarchical features in text, vision, and speech tasks. Focus on how deeper layers progressively transform raw inputs into task-relevant features."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind deep learning basics by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Training stability",
+              "body": "In deep learning basics, monitor optimization signals (loss trends, gradient behavior, overfitting gap) instead of only final accuracy."
             },
             {
-              "title": "Practice focus",
-              "body": "Use the example to practice deep learning basics end to end: inspect the inputs, run the logic, and confirm the output matches the expected behavior.",
-              "code": "if temperature > 30:\n    prediction = 'high'\nelse:\n    prediction = 'normal'\nprint(prediction)",
-              "runnable": false
+              "title": "Practical trade-offs",
+              "body": "Trade model capacity against inference cost and explainability to fit real product constraints."
             }
           ]
         },
@@ -884,16 +868,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "NLP converts human language into machine-readable representations for tasks such as classification, extraction, translation, and generation."
+              "title": "Domain-specific constraints",
+              "body": "NLP converts human language into machine-readable representations for tasks such as classification, extraction, translation, and generation. Identify what makes this domain unique: data format, annotation quality, temporal effects, or user behavior loops."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind nlp basics by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Feature representation choices",
+              "body": "For nlp basics, compare at least two representation choices and explain their impact on model quality and cost."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply nlp basics on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Failure-case review",
+              "body": "Failure-case review for nlp basics: Track failures on negation, rare terms, and domain-specific vocabulary. Build a targeted evaluation slice for each failure type and monitor drift over time."
             }
           ]
         },
@@ -906,17 +890,17 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Computer vision models process images with spatial filters to detect patterns such as edges, objects, and scene context.",
+              "title": "Domain-specific constraints",
+              "body": "Computer vision models process images with spatial filters to detect patterns such as edges, objects, and scene context. Identify what makes this domain unique: data format, annotation quality, temporal effects, or user behavior loops.",
               "image": "img/languages/ai+ml/intermediate-lesson-10.png"
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind computer vision basics by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Feature representation choices",
+              "body": "For computer vision basics, compare at least two representation choices and explain their impact on model quality and cost."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply computer vision basics on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Failure-case review",
+              "body": "Failure-case review for computer vision basics: Track failures under lighting shifts, occlusion, blur, and camera-angle drift. Build a targeted evaluation slice for each failure type and monitor drift over time."
             }
           ]
         },
@@ -929,16 +913,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Time series modeling respects temporal order and often uses lags, trends, and seasonality features to forecast future values."
+              "title": "Domain-specific constraints",
+              "body": "Time series modeling respects temporal order and often uses lags, trends, and seasonality features to forecast future values. Identify what makes this domain unique: data format, annotation quality, temporal effects, or user behavior loops."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind time series basics by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Feature representation choices",
+              "body": "For time series basics, compare at least two representation choices and explain their impact on model quality and cost."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply time series basics on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Failure-case review",
+              "body": "Failure-case review for time series basics: Track failures during trend breaks, sudden shocks, and seasonality changes. Build a targeted evaluation slice for each failure type and monitor drift over time."
             }
           ]
         },
@@ -951,17 +935,17 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Recommendation systems rank items by predicted relevance using collaborative signals, content features, or hybrid methods.",
+              "title": "Domain-specific constraints",
+              "body": "Recommendation systems rank items by predicted relevance using collaborative signals, content features, or hybrid methods. Identify what makes this domain unique: data format, annotation quality, temporal effects, or user behavior loops.",
               "image": "img/languages/ai+ml/intermediate-lesson-12.png"
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind recommendation systems by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Feature representation choices",
+              "body": "For recommendation systems, compare at least two representation choices and explain their impact on model quality and cost."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply recommendation systems on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Failure-case review",
+              "body": "Failure-case review for recommendation systems: Track failures on rare but high-impact edge cases. Build a targeted evaluation slice for each failure type and monitor drift over time."
             }
           ]
         },
@@ -974,18 +958,16 @@
           "estimatedMinutes": 11,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Deployment packages a trained model behind an API or batch job with versioning, monitoring, and rollback safety."
+              "title": "System design view",
+              "body": "Deployment packages a trained model behind an API or batch job with versioning, monitoring, and rollback safety. Treat the model as one component inside a broader system with data contracts, versioning, and observability."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind model deployment basics by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Reliability controls",
+              "body": "In model deployment basics, define monitoring for data drift, prediction drift, and latency; attach concrete response playbooks."
             },
             {
-              "title": "Practice focus",
-              "body": "Use the example to practice model deployment basics end to end: inspect the inputs, run the logic, and confirm the output matches the expected behavior.",
-              "code": "predicted_price = 120000 + (size_sqft * 45)\nprint(predicted_price)",
-              "runnable": false
+              "title": "Lifecycle management",
+              "body": "Lifecycle management for model deployment basics: set retraining cadence, audit trails, and ownership so improvements remain reliable over time."
             }
           ]
         },
@@ -998,16 +980,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Data pipelines automate ingestion, validation, transformation, and feature generation so training and inference use consistent data logic."
+              "title": "System design view",
+              "body": "Data pipelines automate ingestion, validation, transformation, and feature generation so training and inference use consistent data logic. Treat the model as one component inside a broader system with data contracts, versioning, and observability."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind data pipelines by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Reliability controls",
+              "body": "In data pipelines, define monitoring for data drift, prediction drift, and latency; attach concrete response playbooks."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply data pipelines on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Lifecycle management",
+              "body": "Lifecycle management for data pipelines: set retraining cadence, audit trails, and ownership so improvements remain reliable over time."
             }
           ]
         },
@@ -1020,16 +1002,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Interpretability techniques such as feature importance and SHAP explain model behavior for trust, debugging, and compliance."
+              "title": "Metric strategy",
+              "body": "Interpretability techniques such as feature importance and SHAP explain model behavior for trust, debugging, and compliance. Separate offline model quality from online product impact, and avoid optimizing one metric in isolation."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind model interpretability by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Error analysis",
+              "body": "For model interpretability, review mistakes by segment (time, geography, class balance, user type) to uncover hidden risk pockets."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply model interpretability on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Decision policy",
+              "body": "Decision policy for model interpretability: define launch thresholds, rollback triggers, and evidence required before each release decision."
             }
           ]
         }
@@ -1047,17 +1029,17 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Different architectures specialize in different data modalities: CNNs for images, transformers for sequences, and recurrent variants for temporal patterns.",
+              "title": "Representation learning",
+              "body": "Different architectures specialize in different data modalities: CNNs for images, transformers for sequences, and recurrent variants for temporal patterns. Focus on how deeper layers progressively transform raw inputs into task-relevant features.",
               "image": "img/languages/ai+ml/advanced-lesson-1.png"
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind deep learning architectures by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Training stability",
+              "body": "In deep learning architectures, monitor optimization signals (loss trends, gradient behavior, overfitting gap) instead of only final accuracy."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply deep learning architectures on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Practical trade-offs",
+              "body": "Match architecture complexity to data modality and latency limits instead of defaulting to larger models."
             }
           ]
         },
@@ -1070,16 +1052,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Transfer learning adapts pretrained models to new tasks with less labeled data by reusing representations learned at scale."
+              "title": "Representation learning",
+              "body": "Transfer learning adapts pretrained models to new tasks with less labeled data by reusing representations learned at scale. Focus on how deeper layers progressively transform raw inputs into task-relevant features."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind transfer learning by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Training stability",
+              "body": "In transfer learning, monitor optimization signals (loss trends, gradient behavior, overfitting gap) instead of only final accuracy."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply transfer learning on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Practical trade-offs",
+              "body": "Choose between frozen features and full fine-tuning based on dataset size, domain mismatch, and compute budget."
             }
           ]
         },
@@ -1092,18 +1074,16 @@
           "estimatedMinutes": 11,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Advanced NLP covers tokenization strategy, attention-based architectures, fine-tuning, and evaluation beyond simple accuracy metrics."
+              "title": "Core mechanism",
+              "body": "Advanced NLP covers tokenization strategy, attention-based architectures, fine-tuning, and evaluation beyond simple accuracy metrics. Distill the central mechanism in one paragraph and connect it to the class of problems it solves best."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind nlp advanced by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Scaling considerations",
+              "body": "For nlp advanced, evaluate compute, data, and safety constraints before deciding whether the approach is justified."
             },
             {
-              "title": "Practice focus",
-              "body": "Use the example to practice nlp advanced end to end: inspect the inputs, run the logic, and confirm the output matches the expected behavior.",
-              "code": "dataset = [{'feature': 2, 'label': 1}, {'feature': 5, 'label': 0}]\nprint(dataset[0])",
-              "runnable": false
+              "title": "Responsible use",
+              "body": "Responsible use in nlp advanced: Audit bias across dialects and sensitive attributes in high-impact tasks."
             }
           ]
         },
@@ -1116,17 +1096,17 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Advanced vision topics include object detection, segmentation, augmentation policy design, and domain shift handling.",
+              "title": "Core mechanism",
+              "body": "Advanced vision topics include object detection, segmentation, augmentation policy design, and domain shift handling. Distill the central mechanism in one paragraph and connect it to the class of problems it solves best.",
               "image": "img/languages/ai+ml/advanced-lesson-4.png"
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind computer vision advanced by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Scaling considerations",
+              "body": "For computer vision advanced, evaluate compute, data, and safety constraints before deciding whether the approach is justified."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply computer vision advanced on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Responsible use",
+              "body": "Responsible use in computer vision advanced: Assess demographic and environmental robustness to reduce uneven performance."
             }
           ]
         },
@@ -1139,17 +1119,17 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Reinforcement learning trains agents to maximize cumulative reward by learning policies from environment interaction.",
+              "title": "Core mechanism",
+              "body": "Reinforcement learning trains agents to maximize cumulative reward by learning policies from environment interaction. Distill the central mechanism in one paragraph and connect it to the class of problems it solves best.",
               "image": "img/languages/ai+ml/advanced-lesson-5.png"
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind reinforcement learning by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Scaling considerations",
+              "body": "For reinforcement learning, evaluate compute, data, and safety constraints before deciding whether the approach is justified."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply reinforcement learning on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Responsible use",
+              "body": "Responsible use in reinforcement learning: Constrain unsafe exploration and monitor reward hacking behaviors."
             }
           ]
         },
@@ -1162,16 +1142,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Generative AI models learn data distributions to create new content such as text, images, or audio that follows observed patterns."
+              "title": "Core mechanism",
+              "body": "Generative AI models learn data distributions to create new content such as text, images, or audio that follows observed patterns. Distill the central mechanism in one paragraph and connect it to the class of problems it solves best."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind generative ai by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Scaling considerations",
+              "body": "For generative ai, evaluate compute, data, and safety constraints before deciding whether the approach is justified."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply generative ai on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Responsible use",
+              "body": "Responsible use in generative ai: Include content provenance, misuse prevention, and abuse-reporting workflows."
             }
           ]
         },
@@ -1184,17 +1164,17 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "LLMs are transformer-based models trained on massive corpora to perform reasoning, retrieval-augmented tasks, and controlled generation.",
+              "title": "Core mechanism",
+              "body": "LLMs are transformer-based models trained on massive corpora to perform reasoning, retrieval-augmented tasks, and controlled generation. Distill the central mechanism in one paragraph and connect it to the class of problems it solves best.",
               "image": "img/languages/ai+ml/advanced-lesson-7.png"
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind large language models by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Scaling considerations",
+              "body": "For large language models, evaluate compute, data, and safety constraints before deciding whether the approach is justified."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply large language models on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Responsible use",
+              "body": "Responsible use in large language models: Add hallucination checks, citation requirements, and prompt-injection defenses."
             }
           ]
         },
@@ -1207,19 +1187,17 @@
           "estimatedMinutes": 11,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "MLOps applies software engineering discipline to ML systems through CI/CD, reproducible training, monitoring, and governance.",
+              "title": "System design view",
+              "body": "MLOps applies software engineering discipline to ML systems through CI/CD, reproducible training, monitoring, and governance. Treat the model as one component inside a broader system with data contracts, versioning, and observability.",
               "image": "img/languages/ai+ml/advanced-lesson-8.png"
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind mlops by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Reliability controls",
+              "body": "In mlops, define monitoring for data drift, prediction drift, and latency; attach concrete response playbooks."
             },
             {
-              "title": "Practice focus",
-              "body": "Use the example to practice mlops end to end: inspect the inputs, run the logic, and confirm the output matches the expected behavior.",
-              "code": "if temperature > 30:\n    prediction = 'high'\nelse:\n    prediction = 'normal'\nprint(prediction)",
-              "runnable": false
+              "title": "Lifecycle management",
+              "body": "Lifecycle management for mlops: set retraining cadence, audit trails, and ownership so improvements remain reliable over time."
             }
           ]
         },
@@ -1232,17 +1210,17 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Distributed training splits data and computation across multiple devices to reduce training time for large models.",
+              "title": "System design view",
+              "body": "Distributed training splits data and computation across multiple devices to reduce training time for large models. Treat the model as one component inside a broader system with data contracts, versioning, and observability.",
               "image": "img/languages/ai+ml/advanced-lesson-9.png"
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind distributed training by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Reliability controls",
+              "body": "In distributed training, define monitoring for data drift, prediction drift, and latency; attach concrete response playbooks."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply distributed training on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Lifecycle management",
+              "body": "Lifecycle management for distributed training: set retraining cadence, audit trails, and ownership so improvements remain reliable over time."
             }
           ]
         },
@@ -1255,16 +1233,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "AutoML automates model search, feature processing, and tuning to speed up baseline creation while preserving reproducibility."
+              "title": "Core mechanism",
+              "body": "AutoML automates model search, feature processing, and tuning to speed up baseline creation while preserving reproducibility. Distill the central mechanism in one paragraph and connect it to the class of problems it solves best."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind automl by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Scaling considerations",
+              "body": "For automl, evaluate compute, data, and safety constraints before deciding whether the approach is justified."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply automl on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Responsible use",
+              "body": "Responsible use in automl: Require transparent model selection logs and human review of final candidates."
             }
           ]
         },
@@ -1277,17 +1255,17 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Graph neural networks propagate information across node neighborhoods, making them effective for relational data like networks and molecules.",
+              "title": "Core mechanism",
+              "body": "Graph neural networks propagate information across node neighborhoods, making them effective for relational data like networks and molecules. Distill the central mechanism in one paragraph and connect it to the class of problems it solves best.",
               "image": "img/languages/ai+ml/advanced-lesson-11.png"
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind graph neural networks by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Scaling considerations",
+              "body": "For graph neural networks, evaluate compute, data, and safety constraints before deciding whether the approach is justified."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply graph neural networks on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Responsible use",
+              "body": "Responsible use in graph neural networks: Check for propagation of biased relational structure and privacy leakage through graph links."
             }
           ]
         },
@@ -1300,17 +1278,17 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Multimodal models align and fuse modalities such as text and images to solve tasks requiring cross-modal understanding.",
+              "title": "Core mechanism",
+              "body": "Multimodal models align and fuse modalities such as text and images to solve tasks requiring cross-modal understanding. Distill the central mechanism in one paragraph and connect it to the class of problems it solves best.",
               "image": "img/languages/ai+ml/advanced-lesson-12.png"
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind multimodal ai by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Scaling considerations",
+              "body": "For multimodal ai, evaluate compute, data, and safety constraints before deciding whether the approach is justified."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply multimodal ai on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Responsible use",
+              "body": "Responsible use in multimodal ai: Validate cross-modal consistency and block unsafe outputs from modality conflicts."
             }
           ]
         },
@@ -1323,18 +1301,16 @@
           "estimatedMinutes": 11,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "Model optimization techniques like quantization, pruning, and distillation reduce latency and memory while preserving acceptable accuracy."
+              "title": "System design view",
+              "body": "Model optimization techniques like quantization, pruning, and distillation reduce latency and memory while preserving acceptable accuracy. Treat the model as one component inside a broader system with data contracts, versioning, and observability."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind model optimization by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Reliability controls",
+              "body": "In model optimization, define monitoring for data drift, prediction drift, and latency; attach concrete response playbooks."
             },
             {
-              "title": "Practice focus",
-              "body": "Use the example to practice model optimization end to end: inspect the inputs, run the logic, and confirm the output matches the expected behavior.",
-              "code": "predicted_price = 120000 + (size_sqft * 45)\nprint(predicted_price)",
-              "runnable": false
+              "title": "Lifecycle management",
+              "body": "Lifecycle management for model optimization: set retraining cadence, audit trails, and ownership so improvements remain reliable over time."
             }
           ]
         },
@@ -1347,16 +1323,16 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "AI ethics addresses fairness, transparency, privacy, and accountability to reduce harm and align systems with human values."
+              "title": "Risk taxonomy",
+              "body": "AI ethics addresses fairness, transparency, privacy, and accountability to reduce harm and align systems with human values. Break risks into fairness, privacy, transparency, and accountability so mitigation is concrete rather than abstract."
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind ai ethics by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Assessment workflow",
+              "body": "Run an impact assessment before launch that identifies affected groups, potential harms, monitoring requirements, and clear escalation owners for incidents."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply ai ethics on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Governance in practice",
+              "body": "Tie ethical principles to enforceable controls such as dataset documentation, review gates, and post-launch audits."
             }
           ]
         },
@@ -1369,17 +1345,17 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Core concept",
-              "body": "An end-to-end AI system integrates data, training, deployment, monitoring, and feedback loops into one reliable production lifecycle.",
+              "title": "System design view",
+              "body": "An end-to-end AI system integrates data, training, deployment, monitoring, and feedback loops into one reliable production lifecycle. Treat the model as one component inside a broader system with data contracts, versioning, and observability.",
               "image": "img/languages/ai+ml/advanced-lesson-15.png"
             },
             {
-              "title": "How it works",
-              "body": "Understand the mechanics behind end-to-end system by identifying the key inputs, the transformation or learning step, and the resulting output used for decisions."
+              "title": "Reliability controls",
+              "body": "In end-to-end system, define monitoring for data drift, prediction drift, and latency; attach concrete response playbooks."
             },
             {
-              "title": "Practice focus",
-              "body": "Apply end-to-end system on a small scenario, define a success metric, and review mistakes to decide what to improve next."
+              "title": "Lifecycle management",
+              "body": "Lifecycle management for end-to-end system: set retraining cadence, audit trails, and ownership so improvements remain reliable over time."
             }
           ]
         }
