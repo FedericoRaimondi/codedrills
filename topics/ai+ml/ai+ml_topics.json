@@ -14,7 +14,7 @@
           "lessons": [
             {
               "title": "What this topic clarifies",
-              "body": "Artificial intelligence is the broad goal of building systems that perform intelligent tasks, while machine learning is a subset that learns patterns from data instead of relying only on hand-written rules. Focus on the boundary of this concept: what it includes, what it does not, and why that distinction matters when reading ML material."
+              "body": "Artificial intelligence is the broad goal of building systems that perform intelligent tasks, while machine learning is the subset that learns patterns from data. This distinction helps you choose when to rely on rules versus data-driven models."
             },
             {
               "title": "Real-world framing",
@@ -36,7 +36,7 @@
           "lessons": [
             {
               "title": "Data checklist",
-              "body": "Structured data follows a fixed schema such as rows and columns, while unstructured data (text, audio, images) needs additional processing before models can consume it effectively. Before modeling, check schema consistency, missingness patterns, and whether the observed sample matches the production population."
+              "body": "Structured data has fixed columns and types, while unstructured data (text, images, audio) needs representation steps before modeling. For each source, identify schema stability, storage format, and preprocessing needed to make inputs model-ready."
             },
             {
               "title": "Quality signals",
@@ -58,7 +58,7 @@
           "lessons": [
             {
               "title": "Data checklist",
-              "body": "A dataset is a collection of examples used for training and evaluation, typically with features (inputs) and labels (targets) when the task is supervised. Before modeling, check schema consistency, missingness patterns, and whether the observed sample matches the production population."
+              "body": "A dataset is a collection of examples used for training and evaluation, usually with features and labels in supervised tasks. Check label quality, class balance, and temporal leakage so the dataset reflects the decision problem you want to solve."
             },
             {
               "title": "Quality signals",
@@ -124,7 +124,7 @@
           "lessons": [
             {
               "title": "Data checklist",
-              "body": "Visualizations like histograms, scatter plots, and box plots quickly reveal distribution shape, outliers, and variable relationships before modeling begins. Before modeling, check schema consistency, missingness patterns, and whether the observed sample matches the production population.",
+              "body": "Visualizations reveal distribution shape, outliers, and feature relationships before modeling. Choose chart types deliberately: histograms for spread, scatter plots for relationships, and box plots for extreme values.",
               "image": "img/languages/ai+ml/new-lesson-6.png"
             },
             {
@@ -147,7 +147,7 @@
           "lessons": [
             {
               "title": "Data checklist",
-              "body": "Initial data inspection checks missing values, duplicates, data types, and unrealistic ranges to prevent avoidable modeling errors. Before modeling, check schema consistency, missingness patterns, and whether the observed sample matches the production population."
+              "body": "Data inspection should surface issues early: missing values, duplicates, wrong types, and impossible ranges. Prioritize fixes by impact on model reliability rather than cleaning everything equally."
             },
             {
               "title": "Quality signals",
@@ -235,7 +235,7 @@
           "lessons": [
             {
               "title": "Data checklist",
-              "body": "Data cleaning standardizes formats, handles nulls, removes duplicates, and corrects inconsistencies so the model learns from reliable signals. Before modeling, check schema consistency, missingness patterns, and whether the observed sample matches the production population."
+              "body": "Data cleaning standardizes formats, handles nulls, removes duplicates, and resolves inconsistent categories. Each cleaning rule should be deterministic and reproducible so training and inference receive the same transformations."
             },
             {
               "title": "Quality signals",
@@ -279,7 +279,7 @@
           "lessons": [
             {
               "title": "Task definition",
-              "body": "Regression estimates a continuous numeric value. Start by defining the target range, acceptable error tolerance, and whether MAE or RMSE better matches the business cost of mistakes."
+              "body": "Regression estimates a continuous value such as demand or price. Define the target range, acceptable error tolerance, and whether MAE or RMSE best reflects the business cost of prediction mistakes."
             },
             {
               "title": "From input to output",
@@ -810,7 +810,7 @@
             },
             {
               "title": "Practical trade-offs",
-              "body": "Increase depth only when you can support it with sufficient data, regularization, and monitoring."
+              "body": "Trade model depth against data availability, regularization needs, and monitoring overhead; deeper networks can improve representation power but require more careful optimization and validation."
             }
           ]
         },
@@ -1328,7 +1328,7 @@
             },
             {
               "title": "Assessment workflow",
-              "body": "Run impact assessment before launch: affected groups, potential harms, monitoring plan, and escalation path for incidents."
+              "body": "Run an impact assessment before launch that identifies affected groups, potential harms, monitoring requirements, and clear escalation owners for incidents."
             },
             {
               "title": "Governance in practice",
