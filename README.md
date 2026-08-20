@@ -137,6 +137,31 @@ For `ai+ml` lessons, `image` is supported on each lesson object and lessons with
 
 ## 🛠️ Scripts
 
+### Local content review UI
+
+The local review UI lets contributors review and update lesson and challenge JSON without editing the raw files by hand.
+
+#### Launch
+
+Install [uv](https://docs.astral.sh/uv/) if it is not already available, then run the following from the repository root:
+
+```bash
+uv run streamlit run content_review.py
+```
+
+Open the local URL printed by Streamlit, normally `http://localhost:8501`.
+
+#### What it supports
+
+- Filter lessons and challenges by language, level, topic, and review queue.
+- Review source content, edit every existing text field, and save changes directly to its source JSON file.
+- Inspect copyable JSON and language-aware code snippets, including each snippet's runnable status.
+- Preview lesson images, inspect their paths, and update an image path when needed.
+- Mark an item reviewed with or without source changes. Reviewed items are omitted from the default queue and remain available in the `Reviewed` queue.
+- Validate all content JSON after a save.
+
+Review status is stored only in `.content-review-state.json`, which is ignored by Git and does not alter app content.
+
 ### `scripts/merge_content.py` — Build combined output files
 
 This script reads all language-specific challenge and topic JSON files,
