@@ -33,7 +33,7 @@ Be kind, constructive, and inclusive. Harassment or discrimination of any kind w
 
 Both types support four levels: `new`, `beginner`, `intermediate`, `advanced`.
 
-Supported languages: **Python**, **SQL**, **JavaScript**, **Rust**, **AI + ML**.
+Supported languages: **Python**, **SQL**, **JavaScript**, **Rust**, and the AI/ML areas **AI + ML**, **Traditional ML**, **Deep Neural Nets**, **LLM & Agents**, **AI Engineering**, and **MLOps**.
 
 ---
 
@@ -87,7 +87,7 @@ Each challenge object:
 
 Each solution step: `{ "title": "...", "explanation": "...", "code"?: "..." }`
 
-For `ai+ml` challenges, use `choices` instead of `starterCode`:
+For AI/ML area challenges, use `choices` instead of `starterCode`:
 
 ```json
 "choices": [
@@ -120,7 +120,7 @@ Each topic object:
 
 Each lesson: `{ "title": "...", "body": "...", "code"?: "...", "image"?: "img/path.png" }`
 
-For `ai+ml` lessons, if `code` is present then `"runnable"` must be set to `false`.
+For AI/ML area lessons, if `code` is present then `"runnable"` must be set to `false`.
 
 ---
 
@@ -128,7 +128,7 @@ For `ai+ml` lessons, if `code` is present then `"runnable"` must be set to `fals
 
 - **IDs** — `<lang-abbr>-<level>-<slug>`, e.g. `js-beginner-arrays`
 - **File IDs** are lowercase with hyphens; no spaces.
-- **Language abbreviations**: `py`, `sql`, `js`, `rs`, `aiml` (e.g., `aiml-new-foundations`)
+- **Language/area abbreviations**: `py`, `sql`, `js`, `rs`, `aiml`, `tml`, `dnn`, `llm`, `aie`, `mlops` (e.g., `aiml-new-foundations`, `tml-beginner-linear-regression`)
 
 ---
 
