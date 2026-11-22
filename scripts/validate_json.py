@@ -18,6 +18,14 @@ VALID_LEVELS = {"new", "beginner", "intermediate", "advanced"}
 
 CHALLENGE_KEYS = {"id", "language", "level", "title", "description", "starterCode", "hint", "solution"}
 AI_ML_CHALLENGE_KEYS = {"id", "language", "level", "title", "description", "choices", "hint", "solution"}
+CONCEPT_AREA_LANGUAGES = {
+    "ai+ml",
+    "traditional-ml",
+    "deep-neural-nets",
+    "llm-agents",
+    "ai-engineering",
+    "mlops",
+}
 SOLUTION_KEYS = {"code", "steps"}
 STEP_KEYS = {"title", "explanation"}
 CHOICE_KEYS = {"text", "correct"}
@@ -62,14 +70,15 @@ def validate_challenge_file(path: str, data: dict) -> list[str]:
 
         for ch_idx, challenge in enumerate(level_obj["challenges"]):
             ch_prefix = f"{level_prefix}.challenges[{ch_idx}]"
-            required_keys = AI_ML_CHALLENGE_KEYS if top_language == "ai+ml" else CHALLENGE_KEYS
+            is_concept_area = top_language in CONCEPT_AREA_LANGUAGES
+            required_keys = AI_ML_CHALLENGE_KEYS if is_concept_area else CHALLENGE_KEYS
 
             for key in required_keys:
                 if key not in challenge:
                     errors.append(err(path, f"{ch_prefix}: Missing required key '{key}'"))
 
-            if top_language == "ai+ml" and "starterCode" in challenge:
-                errors.append(err(path, f"{ch_prefix}: 'starterCode' is not valid for ai+ml challenges; remove 'starterCode' and use 'choices' instead"))
+            if is_concept_area and "starterCode" in challenge:
+                errors.append(err(path, f"{ch_prefix}: 'starterCode' is not valid for {top_language} challenges; remove 'starterCode' and use 'choices' instead"))
 
             if "language" in challenge and top_language and challenge["language"] != top_language:
                 errors.append(err(path, f"{ch_prefix}: 'language' must match top-level language '{top_language}'"))
@@ -84,7 +93,7 @@ def validate_challenge_file(path: str, data: dict) -> list[str]:
                 else:
                     seen_ids.add(cid)
 
-            if top_language == "ai+ml" and "choices" in challenge:
+            if is_concept_area and "choices" in challenge:
                 choices = challenge["choices"]
                 if not isinstance(choices, list):
                     errors.append(err(path, f"{ch_prefix}.choices: Must be an array"))
@@ -178,8 +187,8 @@ def validate_topic_file(path: str, data: dict) -> list[str]:
                     if "image" in lesson and not isinstance(lesson["image"], str):
                         errors.append(err(path, f"{lesson_prefix}.image: Must be a string path"))
 
-                    if top_language == "ai+ml" and "code" in lesson and lesson.get("runnable") is not False:
-                        errors.append(err(path, f"{lesson_prefix}: ai+ml lessons with 'code' must explicitly set 'runnable' to false"))
+                    if top_language in CONCEPT_AREA_LANGUAGES and "code" in lesson and lesson.get("runnable") is not False:
+                        errors.append(err(path, f"{lesson_prefix}: {top_language} lessons with 'code' must explicitly set 'runnable' to false"))
 
     return errors
 

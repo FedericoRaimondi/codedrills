@@ -1,0 +1,865 @@
+{
+  "language": "traditional-ml",
+  "levels": [
+    {
+      "level": "new",
+      "topics": [
+        {
+          "id": "tml-new-01-prediction-vs-inference",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Prediction vs inference",
+          "description": "Prediction estimates an unseen outcome, while inference asks what relationships the data support; the goal determines the method and evaluation.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Prediction estimates an unseen outcome, while inference asks what relationships the data support; the goal determines the method and evaluation. Separate a sales forecast from a causal claim about a promotion. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-new-02-features-and-targets",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Features and targets",
+          "description": "Features are available inputs and the target is the outcome to predict; exclude information that would not exist at decision time.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Features are available inputs and the target is the outcome to predict; exclude information that would not exist at decision time. For a loan model, use application-time facts rather than later repayment status. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-new-03-labeled-examples",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Labeled examples",
+          "description": "A labeled example pairs input data with the outcome the learner should predict; label definitions must be consistent.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "A labeled example pairs input data with the outcome the learner should predict; label definitions must be consistent. Document whether a churn label means cancellation or a period of inactivity. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-new-04-supervised-learning",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Supervised learning",
+          "description": "Supervised methods learn a mapping from labeled examples to outputs, commonly for classification or regression.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Supervised methods learn a mapping from labeled examples to outputs, commonly for classification or regression. Predict a delivery delay category from historical labeled shipments. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-new-05-unsupervised-learning",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Unsupervised learning",
+          "description": "Unsupervised methods find structure without a supplied target and need human interpretation to establish usefulness.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Unsupervised methods find structure without a supplied target and need human interpretation to establish usefulness. Cluster support tickets, then inspect representative examples in each group. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-new-06-classification",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Classification",
+          "description": "Classification predicts a discrete class; threshold choice and class-specific errors matter beyond accuracy.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Classification predicts a discrete class; threshold choice and class-specific errors matter beyond accuracy. A screening model should report missed-positive and false-alarm rates. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-new-07-regression",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Regression",
+          "description": "Regression predicts a numeric quantity; error metrics should reflect the scale and cost of mistakes.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Regression predicts a numeric quantity; error metrics should reflect the scale and cost of mistakes. Forecast units sold and compare MAE with a seasonal baseline. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-new-08-train-validation-and-test",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Train, validation, and test",
+          "description": "Training fits model parameters, validation supports choices, and a final test estimates performance after choices are fixed.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Training fits model parameters, validation supports choices, and a final test estimates performance after choices are fixed. Keep test records untouched until model selection is complete. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-new-09-generalization",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Generalization",
+          "description": "Generalization is performance on relevant unseen examples, not memorization of training records.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Generalization is performance on relevant unseen examples, not memorization of training records. Compare train and held-out scores using a representative split. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-new-10-baseline-models",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Baseline models",
+          "description": "A simple baseline establishes a meaningful reference before adding model complexity.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "A simple baseline establishes a meaningful reference before adding model complexity. Compare a demand model with last-week and seasonal-naive predictions. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-new-11-data-leakage",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Data leakage",
+          "description": "Leakage gives training or evaluation information that would not be available at prediction time, inflating results.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Leakage gives training or evaluation information that would not be available at prediction time, inflating results. Compute a time split before fitting imputers or selecting features. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-new-12-class-imbalance",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Class imbalance",
+          "description": "Rare classes can be hidden by high overall accuracy, so inspect per-class and prevalence-aware metrics.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Rare classes can be hidden by high overall accuracy, so inspect per-class and prevalence-aware metrics. A fraud detector that labels every transaction legitimate may still score highly. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-new-13-model-assumptions",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Model assumptions",
+          "description": "Every model encodes assumptions about relationships, noise, and useful structure; check whether they fit the task.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Every model encodes assumptions about relationships, noise, and useful structure; check whether they fit the task. Inspect residual patterns before trusting a linear fit. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-new-14-correlation-is-not-causation",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Correlation is not causation",
+          "description": "Observed association alone does not establish that changing one variable causes an outcome.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Observed association alone does not establish that changing one variable causes an outcome. Do not infer that a discount caused higher sales from a simple correlation. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-new-15-when-not-to-use-ml",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "When not to use ML",
+          "description": "Rules, measurement, or process changes may be better when the task is stable, data is weak, or errors are costly.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Rules, measurement, or process changes may be better when the task is stable, data is weak, or errors are costly. Compare a deterministic eligibility rule with a learned model. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": "beginner",
+      "topics": [
+        {
+          "id": "tml-beginner-01-linear-regression",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Linear regression",
+          "description": "Linear regression estimates a numeric target as a weighted sum of inputs; residual patterns reveal where the model misses structure.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Linear regression estimates a numeric target as a weighted sum of inputs; residual patterns reveal where the model misses structure. Predict rent from floor area, then inspect residuals by neighborhood. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-beginner-02-logistic-regression",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Logistic regression",
+          "description": "Logistic regression models class probabilities through a logistic link and supports threshold-based decisions.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Logistic regression models class probabilities through a logistic link and supports threshold-based decisions. Choose a recall-oriented threshold for a screening workflow. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-beginner-03-decision-trees",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Decision trees",
+          "description": "A decision tree partitions feature space with sequential tests and can express nonlinear rules, but deep trees overfit.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "A decision tree partitions feature space with sequential tests and can express nonlinear rules, but deep trees overfit. Limit depth and compare validation performance with a simple baseline. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-beginner-04-k-nearest-neighbors",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "k-nearest neighbors",
+          "description": "k-NN predicts from nearby training examples, so scaling and the neighborhood size strongly affect results.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "k-NN predicts from nearby training examples, so scaling and the neighborhood size strongly affect results. Scale mixed-unit measurements before distance-based classification. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-beginner-05-naive-bayes",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Naive Bayes",
+          "description": "Naive Bayes combines class-conditional feature evidence under a conditional-independence assumption.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Naive Bayes combines class-conditional feature evidence under a conditional-independence assumption. Use token counts for a fast text baseline and check correlated-word limitations. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-beginner-06-feature-scaling",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Feature scaling",
+          "description": "Scaling aligns feature magnitudes for distance- and gradient-sensitive algorithms but is usually fitted only on training data.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Scaling aligns feature magnitudes for distance- and gradient-sensitive algorithms but is usually fitted only on training data. Fit a standardizer on the training fold, then transform validation data. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-beginner-07-missing-value-handling",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Missing-value handling",
+          "description": "Imputation estimates missing entries using training data and may need a missingness indicator when absence is informative.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Imputation estimates missing entries using training data and may need a missingness indicator when absence is informative. Compare median imputation with an explicit missing flag. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-beginner-08-categorical-encoding",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Categorical encoding",
+          "description": "Encoding converts categories into model inputs while avoiding arbitrary numeric order for nominal categories.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Encoding converts categories into model inputs while avoiding arbitrary numeric order for nominal categories. Use one-hot encoding for colors rather than mapping them to 1, 2, 3. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-beginner-09-train-test-split-strategy",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Train/test split strategy",
+          "description": "Random splitting suits independent examples; grouped or temporal splitting prevents related records crossing partitions.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Random splitting suits independent examples; grouped or temporal splitting prevents related records crossing partitions. Keep a patient's visits together when evaluating generalization to new patients. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-beginner-10-confusion-matrix",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Confusion matrix",
+          "description": "A confusion matrix counts true and false positives and negatives, exposing error types hidden by accuracy.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "A confusion matrix counts true and false positives and negatives, exposing error types hidden by accuracy. Inspect false negatives separately when missing a defect is expensive. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-beginner-11-precision-and-recall",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Precision and recall",
+          "description": "Precision measures the fraction of predicted positives that are correct; recall measures the fraction of actual positives found.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Precision measures the fraction of predicted positives that are correct; recall measures the fraction of actual positives found. Prioritize recall for initial safety screening and review flagged cases. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-beginner-12-f1-score",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "F1 score",
+          "description": "F1 is the harmonic mean of precision and recall and is useful when both matter, but hides their individual values.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "F1 is the harmonic mean of precision and recall and is useful when both matter, but hides their individual values. Report precision and recall alongside F1 for a spam filter. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-beginner-13-cross-validation",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Cross-validation",
+          "description": "Cross-validation repeats fitting and evaluation across folds to reduce dependence on one split.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Cross-validation repeats fitting and evaluation across folds to reduce dependence on one split. Use stratified folds for a modest imbalanced classification dataset. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-beginner-14-regularization",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Regularization",
+          "description": "Regularization penalizes model complexity to reduce overfitting, trading fit against coefficient size.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Regularization penalizes model complexity to reduce overfitting, trading fit against coefficient size. Tune the penalty using validation folds, not the held-out test set. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-beginner-15-pipeline-design",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Pipeline design",
+          "description": "A pipeline applies preprocessing and estimation together so each training fold learns transformations without leakage.",
+          "estimatedMinutes": 7,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "A pipeline applies preprocessing and estimation together so each training fold learns transformations without leakage. Put imputation, encoding, and the classifier inside one cross-validation pipeline. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": "intermediate",
+      "topics": [
+        {
+          "id": "tml-intermediate-01-bias-variance-trade-off",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Bias-variance trade-off",
+          "description": "High bias misses real structure while high variance follows sample noise; validation curves help locate a useful complexity range.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "High bias misses real structure while high variance follows sample noise; validation curves help locate a useful complexity range. Compare shallow and deep trees across repeated folds. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-intermediate-02-ensemble-learning",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Ensemble learning",
+          "description": "Ensembles combine predictors to improve stability or reduce error; the benefit depends on member diversity and calibration.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Ensembles combine predictors to improve stability or reduce error; the benefit depends on member diversity and calibration. Use bagging to stabilize high-variance trees and verify held-out gains. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-intermediate-03-random-forests",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Random forests",
+          "description": "Random forests average decorrelated trees built from resampled data and feature subsets, often reducing variance.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Random forests average decorrelated trees built from resampled data and feature subsets, often reducing variance. Check out-of-bag and held-out scores while tracking model size. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-intermediate-04-gradient-boosting",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Gradient boosting",
+          "description": "Boosting adds learners sequentially to correct residual errors and can fit complex patterns, but requires careful regularization.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Boosting adds learners sequentially to correct residual errors and can fit complex patterns, but requires careful regularization. Tune learning rate and tree depth using validation data. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-intermediate-05-hyperparameter-search",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Hyperparameter search",
+          "description": "Search methods allocate evaluation effort across model settings; the final test set must not guide the search.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Search methods allocate evaluation effort across model settings; the final test set must not guide the search. Use nested validation when estimating the performance of a tuned workflow. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-intermediate-06-feature-selection",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Feature selection",
+          "description": "Feature selection can improve efficiency and interpretability, but selecting on all data leaks validation information.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Feature selection can improve efficiency and interpretability, but selecting on all data leaks validation information. Perform selection independently inside each training fold. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-intermediate-07-probability-calibration",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Probability calibration",
+          "description": "Calibration aligns predicted probabilities with empirical frequencies and is distinct from ranking quality.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Calibration aligns predicted probabilities with empirical frequencies and is distinct from ranking quality. Check reliability curves before using a probability as a risk estimate. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-intermediate-08-roc-and-precision-recall-curves",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "ROC and precision-recall curves",
+          "description": "ROC summarizes ranking over thresholds; precision-recall plots are often more revealing when positives are rare.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "ROC summarizes ranking over thresholds; precision-recall plots are often more revealing when positives are rare. Compare average precision at the operational class prevalence. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-intermediate-09-threshold-selection",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Threshold selection",
+          "description": "A classifier threshold maps scores to actions and should reflect error costs and capacity constraints.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "A classifier threshold maps scores to actions and should reflect error costs and capacity constraints. Choose a threshold using validation costs, then freeze it before testing. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-intermediate-10-uncertainty-and-intervals",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Uncertainty and intervals",
+          "description": "Prediction intervals express outcome uncertainty under assumptions and can widen under sparse data or distribution shift.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Prediction intervals express outcome uncertainty under assumptions and can widen under sparse data or distribution shift. Communicate a range for demand forecasts instead of only a point estimate. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-intermediate-11-unsupervised-clustering-validation",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Unsupervised clustering validation",
+          "description": "Cluster scores summarize geometric structure but do not prove that groups are useful or stable.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Cluster scores summarize geometric structure but do not prove that groups are useful or stable. Review cluster examples and downstream utility in addition to silhouette score. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-intermediate-12-principal-component-analysis",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Principal component analysis",
+          "description": "PCA creates orthogonal directions of maximal variance after scaling, but high variance is not necessarily predictive signal.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "PCA creates orthogonal directions of maximal variance after scaling, but high variance is not necessarily predictive signal. Fit PCA inside the training pipeline and examine explained variance. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-intermediate-13-imbalanced-learning",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Imbalanced learning",
+          "description": "Resampling, class weights, and thresholding address imbalance differently and must be applied without contaminating validation.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Resampling, class weights, and thresholding address imbalance differently and must be applied without contaminating validation. Resample only within training folds and report minority-class recall. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-intermediate-14-fairness-evaluation",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Fairness evaluation",
+          "description": "Group metrics can reveal disparities but depend on target quality, group definitions, and the harms under review.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Group metrics can reveal disparities but depend on target quality, group definitions, and the harms under review. Compare false-negative rates across relevant populations and investigate causes. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-intermediate-15-error-analysis",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Error analysis",
+          "description": "Segmented error review turns aggregate scores into actionable hypotheses about model failures.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Segmented error review turns aggregate scores into actionable hypotheses about model failures. Review false positives by source system before changing features. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": "advanced",
+      "topics": [
+        {
+          "id": "tml-advanced-01-causal-inference-vs-prediction",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Causal inference vs prediction",
+          "description": "Causal estimates require identification assumptions and design, not just predictive accuracy or feature importance.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Causal estimates require identification assumptions and design, not just predictive accuracy or feature importance. Use a randomized or defensible quasi-experimental design to assess a policy change. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-advanced-02-distribution-shift",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Distribution shift",
+          "description": "Covariate, label, and concept shift describe different changes and call for different diagnostics and responses.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Covariate, label, and concept shift describe different changes and call for different diagnostics and responses. Track input drift separately from delayed outcome performance. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-advanced-03-conformal-prediction",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Conformal prediction",
+          "description": "Conformal methods can provide finite-sample marginal coverage under exchangeability, but coverage can fail under shift.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Conformal methods can provide finite-sample marginal coverage under exchangeability, but coverage can fail under shift. Validate coverage on exchangeable held-out data and monitor deployment changes. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-advanced-04-survival-analysis",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Survival analysis",
+          "description": "Survival models account for event timing and right-censoring rather than treating unobserved events as negatives.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Survival models account for event timing and right-censoring rather than treating unobserved events as negatives. Model time to equipment failure when some units remain operational at study end. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-advanced-05-count-models",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Count models",
+          "description": "Poisson and negative-binomial models represent counts with different dispersion assumptions.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Poisson and negative-binomial models represent counts with different dispersion assumptions. Check overdispersion before choosing a Poisson model for incident counts. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-advanced-06-quantile-regression",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Quantile regression",
+          "description": "Quantile regression estimates conditional quantiles, supporting asymmetric risk and service-level planning.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Quantile regression estimates conditional quantiles, supporting asymmetric risk and service-level planning. Forecast the 90th percentile of delivery time for capacity buffers. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-advanced-07-monotonic-constraints",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Monotonic constraints",
+          "description": "Monotonic constraints encode trusted directional relationships and can improve plausibility without proving causality.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Monotonic constraints encode trusted directional relationships and can improve plausibility without proving causality. Constrain risk score to not decrease as a known risk factor increases. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-advanced-08-model-explainability-limits",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Model explainability limits",
+          "description": "Feature importance and local explanations describe model behavior under chosen definitions; they are not causal explanations.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Feature importance and local explanations describe model behavior under chosen definitions; they are not causal explanations. Use explanations to generate audit questions, then verify with independent analysis. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-advanced-09-out-of-time-validation",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Out-of-time validation",
+          "description": "Temporal validation estimates future-facing performance when data and relationships evolve over time.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Temporal validation estimates future-facing performance when data and relationships evolve over time. Train on earlier periods and test on a later period with a gap for delayed labels. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-advanced-10-online-experimentation",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Online experimentation",
+          "description": "Randomized experiments estimate intervention effects when assignment and exposure are controlled.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Randomized experiments estimate intervention effects when assignment and exposure are controlled. Pre-register a primary outcome and guardrail before an A/B test. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-advanced-11-selective-prediction",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Selective prediction",
+          "description": "A model can abstain on uncertain cases, trading coverage for improved accuracy on accepted predictions.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "A model can abstain on uncertain cases, trading coverage for improved accuracy on accepted predictions. Route low-confidence medical coding cases to a human reviewer. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-advanced-12-privacy-aware-learning",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Privacy-aware learning",
+          "description": "Privacy mechanisms limit information disclosed about training examples, with a measurable utility and privacy trade-off.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Privacy mechanisms limit information disclosed about training examples, with a measurable utility and privacy trade-off. Track a differential-privacy budget across repeated training releases. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-advanced-13-fairness-constraints",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Fairness constraints",
+          "description": "Fairness criteria can conflict and may be mathematically incompatible under unequal base rates.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Fairness criteria can conflict and may be mathematically incompatible under unequal base rates. Choose a criterion based on the harms and document the trade-off. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-advanced-14-model-cards-and-datasheets",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Model cards and datasheets",
+          "description": "Structured documentation records intended use, evaluation scope, data provenance, and known limitations.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Structured documentation records intended use, evaluation scope, data provenance, and known limitations. Publish subgroup results and deployment exclusions with the model artifact. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        },
+        {
+          "id": "tml-advanced-15-decommissioning-models",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Decommissioning models",
+          "description": "Retirement requires replacing downstream dependencies, preserving audit records, and stopping stale predictions.",
+          "estimatedMinutes": 9,
+          "lessons": [
+            {
+              "title": "Core idea and practice",
+              "body": "Retirement requires replacing downstream dependencies, preserving audit records, and stopping stale predictions. Define a rollback and consumer-notification plan before removing a model. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

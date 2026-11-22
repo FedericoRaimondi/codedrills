@@ -41,6 +41,11 @@ img/
 | JavaScript | `javascript/`     |
 | Rust       | `rust/`           |
 | AI + ML    | `ai+ml/`          |
+| Traditional ML | `traditional-ml/` |
+| Deep Neural Nets | `deep-neural-nets/` |
+| LLM & Agents | `llm-agents/` |
+| AI Engineering | `ai-engineering/` |
+| MLOps | `mlops/` |
 
 ### Levels
 
@@ -94,7 +99,7 @@ See the [`examples/`](examples/) folder for annotated reference files:
 }
 ```
 
-For `ai+ml` challenges, use `choices` instead of `starterCode`:
+For AI/ML concept areas (`ai+ml`, `traditional-ml`, `deep-neural-nets`, `llm-agents`, `ai-engineering`, and `mlops`), use `choices` instead of `starterCode`:
 
 ```json
 "choices": [
@@ -131,7 +136,7 @@ For `ai+ml` challenges, use `choices` instead of `starterCode`:
 }
 ```
 
-For `ai+ml` lessons, `image` is supported on each lesson object and lessons with `code` must set `"runnable": false`.
+For AI/ML concept-area lessons, `image` is supported on each lesson object and lessons with `code` must set `"runnable": false`.
 
 ---
 
