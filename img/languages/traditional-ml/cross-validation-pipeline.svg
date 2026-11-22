@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title description">
+  <title id="title">Preprocessing inside cross-validation</title>
+  <desc id="description">For each fold, fit preprocessing on the training partition, transform training and validation rows with those fitted values, and score predictions. Repeat with a new fold.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0L12 6L0 12Z" fill="#506377"/></marker>
+    <style>text{font-family:Arial,Helvetica,sans-serif;fill:#172b3a}.title{font-size:34px;font-weight:700}.sub{font-size:19px;fill:#526477}.head{font-size:21px;font-weight:700}.body{font-size:17px}</style>
+  </defs>
+  <rect width="1200" height="700" rx="28" fill="#f3f7fb"/>
+  <text x="64" y="76" class="title">Cross-validation without leakage</text>
+  <text x="64" y="111" class="sub">The preprocessing step is learned again inside each fold.</text>
+  <rect x="64" y="166" width="1072" height="74" rx="16" fill="#e2eaf2"/>
+  <text x="92" y="212" class="head">Fold 1: split the available rows</text>
+  <rect x="90" y="285" width="515" height="104" rx="18" fill="#d9f3e7" stroke="#23835b" stroke-width="3"/>
+  <text x="120" y="326" class="head">TRAINING FOLDS</text><text x="120" y="360" class="body">Fit imputer + scaler using these rows only</text>
+  <rect x="660" y="285" width="450" height="104" rx="18" fill="#fff0c7" stroke="#bb8212" stroke-width="3"/>
+  <text x="690" y="326" class="head">HELD-OUT FOLD</text><text x="690" y="360" class="body">Do not use it to fit preprocessing</text>
+  <path d="M345 389V437H535" fill="none" stroke="#506377" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M885 389V437H725" fill="none" stroke="#506377" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="390" y="438" width="420" height="94" rx="18" fill="#dce8ff" stroke="#4168b3" stroke-width="3"/>
+  <text x="445" y="477" class="head">TRANSFORM + FIT MODEL</text><text x="445" y="507" class="body">Apply the training-fitted steps to both</text>
+  <path d="M810 485H930" fill="none" stroke="#506377" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="934" y="446" width="176" height="78" rx="16" fill="#eee5fa"/>
+  <text x="970" y="478" class="head">Score</text><text x="955" y="506" class="body">held-out fold</text>
+  <rect x="64" y="575" width="1072" height="74" rx="16" fill="#e8eef5"/>
+  <text x="92" y="607" class="head">Repeat for each fold</text>
+  <text x="92" y="633" class="body">A pipeline keeps fit and transform steps together, so no held-out fold influences its own score.</text>
+</svg>

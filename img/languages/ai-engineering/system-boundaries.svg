@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title description">
+  <title id="title">Boundaries in an AI-backed product</title>
+  <desc id="description">User input passes through validation into an orchestrator that calls retrieval and a model. Output checks and human review precede a response. Dashed boundaries mark untrusted input and protected actions.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0L12 6L0 12Z" fill="#526477"/></marker>
+    <style>text{font-family:Arial,Helvetica,sans-serif;fill:#172b3a}.title{font-size:34px;font-weight:700}.sub{font-size:19px;fill:#526477}.head{font-size:18px;font-weight:700}.body{font-size:16px}</style>
+  </defs>
+  <rect width="1200" height="700" rx="28" fill="#f4f8f6"/>
+  <text x="64" y="76" class="title">Design the whole AI feature</text>
+  <text x="64" y="111" class="sub">Trust boundaries belong in application code, not just in prompts.</text>
+  <rect x="58" y="191" width="150" height="108" rx="18" fill="#e5e0f6"/><text x="91" y="232" class="head">USER</text><text x="82" y="264" class="body">request</text>
+  <rect x="247" y="191" width="188" height="108" rx="18" fill="#fff0c7"/><text x="273" y="232" class="head">VALIDATE</text><text x="266" y="264" class="body">schema + access</text>
+  <rect x="478" y="191" width="196" height="108" rx="18" fill="#dcedf6"/><text x="515" y="232" class="head">ORCHESTRATE</text><text x="519" y="264" class="body">trusted control</text>
+  <rect x="720" y="150" width="170" height="88" rx="16" fill="#d9f3e7"/><text x="757" y="187" class="head">RETRIEVE</text><text x="754" y="214" class="body">authorized data</text>
+  <rect x="720" y="252" width="170" height="88" rx="16" fill="#e6e1fa"/><text x="773" y="289" class="head">MODEL</text><text x="751" y="316" class="body">draft response</text>
+  <rect x="935" y="191" width="202" height="108" rx="18" fill="#fff0c7"/><text x="962" y="232" class="head">CHECK OUTPUT</text><text x="963" y="264" class="body">policy + format</text>
+  <path d="M208 245H239M435 245H470M674 245H712M890 194H927M890 296H927" fill="none" stroke="#526477" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M799 150V133H575V183" fill="none" stroke="#526477" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="450" y="420" width="330" height="102" rx="18" fill="#fce2df" stroke="#c35a43" stroke-width="2"/>
+  <text x="491" y="462" class="head">HUMAN REVIEW</text><text x="483" y="492" class="body">when risk or uncertainty requires it</text>
+  <path d="M1036 299V370H616V412" fill="none" stroke="#c35a43" stroke-width="3" stroke-dasharray="8 7" marker-end="url(#arrow)"/>
+  <rect x="830" y="420" width="307" height="102" rx="18" fill="#d9f3e7"/>
+  <text x="867" y="462" class="head">RESPONSE / ACTION</text><text x="873" y="492" class="body">authorized, observable, reversible</text>
+  <path d="M1036 299V412" fill="none" stroke="#23835b" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="58" y="575" width="1079" height="73" rx="16" fill="#e8eef5"/>
+  <text x="88" y="607" class="head">Boundary checks</text><text x="88" y="634" class="body">Validate data at entry · authorize tools independently · minimize logs · define fallback and owner.</text>
+</svg>
