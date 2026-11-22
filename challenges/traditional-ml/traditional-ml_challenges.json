@@ -1,0 +1,3925 @@
+{
+  "language": "traditional-ml",
+  "levels": [
+    {
+      "level": "new",
+      "challenges": [
+        {
+          "id": "tml-new-01",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Prediction vs inference: Core idea",
+          "description": "Which statement best describes prediction vs inference?",
+          "choices": [
+            {
+              "text": "Prediction estimates an unseen outcome, while inference asks what relationships the data support; the goal determines the method and evaluation.",
+              "correct": true
+            },
+            {
+              "text": "Features are available inputs and the target is the outcome to predict; exclude information that would not exist at decision time.",
+              "correct": false
+            },
+            {
+              "text": "A labeled example pairs input data with the outcome the learner should predict; label definitions must be consistent.",
+              "correct": false
+            },
+            {
+              "text": "Supervised methods learn a mapping from labeled examples to outputs, commonly for classification or regression.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of prediction vs inference.",
+          "solution": {
+            "code": "Prediction estimates an unseen outcome, while inference asks what relationships the data support; the goal determines the method and evaluation.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Prediction estimates an unseen outcome, while inference asks what relationships the data support; the goal determines the method and evaluation."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Separate a sales forecast from a causal claim about a promotion. The other options describe related ideas, but they do not answer the question about prediction vs inference."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-02",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Features and targets: Core idea",
+          "description": "Which statement best describes features and targets?",
+          "choices": [
+            {
+              "text": "A labeled example pairs input data with the outcome the learner should predict; label definitions must be consistent.",
+              "correct": false
+            },
+            {
+              "text": "Features are available inputs and the target is the outcome to predict; exclude information that would not exist at decision time.",
+              "correct": true
+            },
+            {
+              "text": "Supervised methods learn a mapping from labeled examples to outputs, commonly for classification or regression.",
+              "correct": false
+            },
+            {
+              "text": "Unsupervised methods find structure without a supplied target and need human interpretation to establish usefulness.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of features and targets.",
+          "solution": {
+            "code": "Features are available inputs and the target is the outcome to predict; exclude information that would not exist at decision time.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Features are available inputs and the target is the outcome to predict; exclude information that would not exist at decision time."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "For a loan model, use application-time facts rather than later repayment status. The other options describe related ideas, but they do not answer the question about features and targets."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-03",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Labeled examples: Core idea",
+          "description": "Which statement best describes labeled examples?",
+          "choices": [
+            {
+              "text": "Supervised methods learn a mapping from labeled examples to outputs, commonly for classification or regression.",
+              "correct": false
+            },
+            {
+              "text": "Unsupervised methods find structure without a supplied target and need human interpretation to establish usefulness.",
+              "correct": false
+            },
+            {
+              "text": "A labeled example pairs input data with the outcome the learner should predict; label definitions must be consistent.",
+              "correct": true
+            },
+            {
+              "text": "Classification predicts a discrete class; threshold choice and class-specific errors matter beyond accuracy.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of labeled examples.",
+          "solution": {
+            "code": "A labeled example pairs input data with the outcome the learner should predict; label definitions must be consistent.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "A labeled example pairs input data with the outcome the learner should predict; label definitions must be consistent."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Document whether a churn label means cancellation or a period of inactivity. The other options describe related ideas, but they do not answer the question about labeled examples."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-04",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Supervised learning: Core idea",
+          "description": "Which statement best describes supervised learning?",
+          "choices": [
+            {
+              "text": "Unsupervised methods find structure without a supplied target and need human interpretation to establish usefulness.",
+              "correct": false
+            },
+            {
+              "text": "Classification predicts a discrete class; threshold choice and class-specific errors matter beyond accuracy.",
+              "correct": false
+            },
+            {
+              "text": "Regression predicts a numeric quantity; error metrics should reflect the scale and cost of mistakes.",
+              "correct": false
+            },
+            {
+              "text": "Supervised methods learn a mapping from labeled examples to outputs, commonly for classification or regression.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of supervised learning.",
+          "solution": {
+            "code": "Supervised methods learn a mapping from labeled examples to outputs, commonly for classification or regression.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Supervised methods learn a mapping from labeled examples to outputs, commonly for classification or regression."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Predict a delivery delay category from historical labeled shipments. The other options describe related ideas, but they do not answer the question about supervised learning."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-05",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Unsupervised learning: Core idea",
+          "description": "Which statement best describes unsupervised learning?",
+          "choices": [
+            {
+              "text": "Unsupervised methods find structure without a supplied target and need human interpretation to establish usefulness.",
+              "correct": true
+            },
+            {
+              "text": "Classification predicts a discrete class; threshold choice and class-specific errors matter beyond accuracy.",
+              "correct": false
+            },
+            {
+              "text": "Regression predicts a numeric quantity; error metrics should reflect the scale and cost of mistakes.",
+              "correct": false
+            },
+            {
+              "text": "Training fits model parameters, validation supports choices, and a final test estimates performance after choices are fixed.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of unsupervised learning.",
+          "solution": {
+            "code": "Unsupervised methods find structure without a supplied target and need human interpretation to establish usefulness.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Unsupervised methods find structure without a supplied target and need human interpretation to establish usefulness."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Cluster support tickets, then inspect representative examples in each group. The other options describe related ideas, but they do not answer the question about unsupervised learning."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-06",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Classification: Core idea",
+          "description": "Which statement best describes classification?",
+          "choices": [
+            {
+              "text": "Regression predicts a numeric quantity; error metrics should reflect the scale and cost of mistakes.",
+              "correct": false
+            },
+            {
+              "text": "Classification predicts a discrete class; threshold choice and class-specific errors matter beyond accuracy.",
+              "correct": true
+            },
+            {
+              "text": "Training fits model parameters, validation supports choices, and a final test estimates performance after choices are fixed.",
+              "correct": false
+            },
+            {
+              "text": "Generalization is performance on relevant unseen examples, not memorization of training records.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of classification.",
+          "solution": {
+            "code": "Classification predicts a discrete class; threshold choice and class-specific errors matter beyond accuracy.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Classification predicts a discrete class; threshold choice and class-specific errors matter beyond accuracy."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "A screening model should report missed-positive and false-alarm rates. The other options describe related ideas, but they do not answer the question about classification."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-07",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Regression: Core idea",
+          "description": "Which statement best describes regression?",
+          "choices": [
+            {
+              "text": "Training fits model parameters, validation supports choices, and a final test estimates performance after choices are fixed.",
+              "correct": false
+            },
+            {
+              "text": "Generalization is performance on relevant unseen examples, not memorization of training records.",
+              "correct": false
+            },
+            {
+              "text": "Regression predicts a numeric quantity; error metrics should reflect the scale and cost of mistakes.",
+              "correct": true
+            },
+            {
+              "text": "A simple baseline establishes a meaningful reference before adding model complexity.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of regression.",
+          "solution": {
+            "code": "Regression predicts a numeric quantity; error metrics should reflect the scale and cost of mistakes.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Regression predicts a numeric quantity; error metrics should reflect the scale and cost of mistakes."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Forecast units sold and compare MAE with a seasonal baseline. The other options describe related ideas, but they do not answer the question about regression."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-08",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Train, validation, and test: Core idea",
+          "description": "Which statement best describes train, validation, and test?",
+          "choices": [
+            {
+              "text": "Generalization is performance on relevant unseen examples, not memorization of training records.",
+              "correct": false
+            },
+            {
+              "text": "A simple baseline establishes a meaningful reference before adding model complexity.",
+              "correct": false
+            },
+            {
+              "text": "Leakage gives training or evaluation information that would not be available at prediction time, inflating results.",
+              "correct": false
+            },
+            {
+              "text": "Training fits model parameters, validation supports choices, and a final test estimates performance after choices are fixed.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of train, validation, and test.",
+          "solution": {
+            "code": "Training fits model parameters, validation supports choices, and a final test estimates performance after choices are fixed.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Training fits model parameters, validation supports choices, and a final test estimates performance after choices are fixed."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Keep test records untouched until model selection is complete. The other options describe related ideas, but they do not answer the question about train, validation, and test."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-09",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Generalization: Core idea",
+          "description": "Which statement best describes generalization?",
+          "choices": [
+            {
+              "text": "Generalization is performance on relevant unseen examples, not memorization of training records.",
+              "correct": true
+            },
+            {
+              "text": "A simple baseline establishes a meaningful reference before adding model complexity.",
+              "correct": false
+            },
+            {
+              "text": "Leakage gives training or evaluation information that would not be available at prediction time, inflating results.",
+              "correct": false
+            },
+            {
+              "text": "Rare classes can be hidden by high overall accuracy, so inspect per-class and prevalence-aware metrics.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of generalization.",
+          "solution": {
+            "code": "Generalization is performance on relevant unseen examples, not memorization of training records.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Generalization is performance on relevant unseen examples, not memorization of training records."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Compare train and held-out scores using a representative split. The other options describe related ideas, but they do not answer the question about generalization."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-10",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Baseline models: Core idea",
+          "description": "Which statement best describes baseline models?",
+          "choices": [
+            {
+              "text": "Leakage gives training or evaluation information that would not be available at prediction time, inflating results.",
+              "correct": false
+            },
+            {
+              "text": "A simple baseline establishes a meaningful reference before adding model complexity.",
+              "correct": true
+            },
+            {
+              "text": "Rare classes can be hidden by high overall accuracy, so inspect per-class and prevalence-aware metrics.",
+              "correct": false
+            },
+            {
+              "text": "Every model encodes assumptions about relationships, noise, and useful structure; check whether they fit the task.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of baseline models.",
+          "solution": {
+            "code": "A simple baseline establishes a meaningful reference before adding model complexity.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "A simple baseline establishes a meaningful reference before adding model complexity."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Compare a demand model with last-week and seasonal-naive predictions. The other options describe related ideas, but they do not answer the question about baseline models."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-11",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Data leakage: Core idea",
+          "description": "Which statement best describes data leakage?",
+          "choices": [
+            {
+              "text": "Rare classes can be hidden by high overall accuracy, so inspect per-class and prevalence-aware metrics.",
+              "correct": false
+            },
+            {
+              "text": "Every model encodes assumptions about relationships, noise, and useful structure; check whether they fit the task.",
+              "correct": false
+            },
+            {
+              "text": "Leakage gives training or evaluation information that would not be available at prediction time, inflating results.",
+              "correct": true
+            },
+            {
+              "text": "Observed association alone does not establish that changing one variable causes an outcome.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of data leakage.",
+          "solution": {
+            "code": "Leakage gives training or evaluation information that would not be available at prediction time, inflating results.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Leakage gives training or evaluation information that would not be available at prediction time, inflating results."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Compute a time split before fitting imputers or selecting features. The other options describe related ideas, but they do not answer the question about data leakage."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-12",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Class imbalance: Core idea",
+          "description": "Which statement best describes class imbalance?",
+          "choices": [
+            {
+              "text": "Every model encodes assumptions about relationships, noise, and useful structure; check whether they fit the task.",
+              "correct": false
+            },
+            {
+              "text": "Observed association alone does not establish that changing one variable causes an outcome.",
+              "correct": false
+            },
+            {
+              "text": "Rules, measurement, or process changes may be better when the task is stable, data is weak, or errors are costly.",
+              "correct": false
+            },
+            {
+              "text": "Rare classes can be hidden by high overall accuracy, so inspect per-class and prevalence-aware metrics.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of class imbalance.",
+          "solution": {
+            "code": "Rare classes can be hidden by high overall accuracy, so inspect per-class and prevalence-aware metrics.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Rare classes can be hidden by high overall accuracy, so inspect per-class and prevalence-aware metrics."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "A fraud detector that labels every transaction legitimate may still score highly. The other options describe related ideas, but they do not answer the question about class imbalance."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-13",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Model assumptions: Core idea",
+          "description": "Which statement best describes model assumptions?",
+          "choices": [
+            {
+              "text": "Every model encodes assumptions about relationships, noise, and useful structure; check whether they fit the task.",
+              "correct": true
+            },
+            {
+              "text": "Observed association alone does not establish that changing one variable causes an outcome.",
+              "correct": false
+            },
+            {
+              "text": "Rules, measurement, or process changes may be better when the task is stable, data is weak, or errors are costly.",
+              "correct": false
+            },
+            {
+              "text": "Prediction estimates an unseen outcome, while inference asks what relationships the data support; the goal determines the method and evaluation.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of model assumptions.",
+          "solution": {
+            "code": "Every model encodes assumptions about relationships, noise, and useful structure; check whether they fit the task.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Every model encodes assumptions about relationships, noise, and useful structure; check whether they fit the task."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Inspect residual patterns before trusting a linear fit. The other options describe related ideas, but they do not answer the question about model assumptions."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-14",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Correlation is not causation: Core idea",
+          "description": "Which statement best describes correlation is not causation?",
+          "choices": [
+            {
+              "text": "Rules, measurement, or process changes may be better when the task is stable, data is weak, or errors are costly.",
+              "correct": false
+            },
+            {
+              "text": "Observed association alone does not establish that changing one variable causes an outcome.",
+              "correct": true
+            },
+            {
+              "text": "Prediction estimates an unseen outcome, while inference asks what relationships the data support; the goal determines the method and evaluation.",
+              "correct": false
+            },
+            {
+              "text": "Features are available inputs and the target is the outcome to predict; exclude information that would not exist at decision time.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of correlation is not causation.",
+          "solution": {
+            "code": "Observed association alone does not establish that changing one variable causes an outcome.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Observed association alone does not establish that changing one variable causes an outcome."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Do not infer that a discount caused higher sales from a simple correlation. The other options describe related ideas, but they do not answer the question about correlation is not causation."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-15",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "When not to use ML: Core idea",
+          "description": "Which statement best describes when not to use ml?",
+          "choices": [
+            {
+              "text": "Prediction estimates an unseen outcome, while inference asks what relationships the data support; the goal determines the method and evaluation.",
+              "correct": false
+            },
+            {
+              "text": "Features are available inputs and the target is the outcome to predict; exclude information that would not exist at decision time.",
+              "correct": false
+            },
+            {
+              "text": "Rules, measurement, or process changes may be better when the task is stable, data is weak, or errors are costly.",
+              "correct": true
+            },
+            {
+              "text": "A labeled example pairs input data with the outcome the learner should predict; label definitions must be consistent.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of when not to use ml.",
+          "solution": {
+            "code": "Rules, measurement, or process changes may be better when the task is stable, data is weak, or errors are costly.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Rules, measurement, or process changes may be better when the task is stable, data is weak, or errors are costly."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Compare a deterministic eligibility rule with a learned model. The other options describe related ideas, but they do not answer the question about when not to use ml."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-16",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Prediction vs inference: Applied decision 1",
+          "description": "Separate a sales forecast from a causal claim about a promotion. Which principle about prediction vs inference should guide the decision?",
+          "choices": [
+            {
+              "text": "Features are available inputs and the target is the outcome to predict; exclude information that would not exist at decision time.",
+              "correct": false
+            },
+            {
+              "text": "A labeled example pairs input data with the outcome the learner should predict; label definitions must be consistent.",
+              "correct": false
+            },
+            {
+              "text": "Supervised methods learn a mapping from labeled examples to outputs, commonly for classification or regression.",
+              "correct": false
+            },
+            {
+              "text": "Prediction estimates an unseen outcome, while inference asks what relationships the data support; the goal determines the method and evaluation.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of prediction vs inference.",
+          "solution": {
+            "code": "Prediction estimates an unseen outcome, while inference asks what relationships the data support; the goal determines the method and evaluation.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Prediction estimates an unseen outcome, while inference asks what relationships the data support; the goal determines the method and evaluation."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Separate a sales forecast from a causal claim about a promotion. The other options describe related ideas, but they do not answer the question about prediction vs inference."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-17",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Features and targets: Applied decision 2",
+          "description": "For a loan model, use application-time facts rather than later repayment status. Which principle about features and targets should guide the decision?",
+          "choices": [
+            {
+              "text": "Features are available inputs and the target is the outcome to predict; exclude information that would not exist at decision time.",
+              "correct": true
+            },
+            {
+              "text": "A labeled example pairs input data with the outcome the learner should predict; label definitions must be consistent.",
+              "correct": false
+            },
+            {
+              "text": "Supervised methods learn a mapping from labeled examples to outputs, commonly for classification or regression.",
+              "correct": false
+            },
+            {
+              "text": "Unsupervised methods find structure without a supplied target and need human interpretation to establish usefulness.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of features and targets.",
+          "solution": {
+            "code": "Features are available inputs and the target is the outcome to predict; exclude information that would not exist at decision time.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Features are available inputs and the target is the outcome to predict; exclude information that would not exist at decision time."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "For a loan model, use application-time facts rather than later repayment status. The other options describe related ideas, but they do not answer the question about features and targets."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-18",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Labeled examples: Applied decision 3",
+          "description": "Document whether a churn label means cancellation or a period of inactivity. Which principle about labeled examples should guide the decision?",
+          "choices": [
+            {
+              "text": "Supervised methods learn a mapping from labeled examples to outputs, commonly for classification or regression.",
+              "correct": false
+            },
+            {
+              "text": "A labeled example pairs input data with the outcome the learner should predict; label definitions must be consistent.",
+              "correct": true
+            },
+            {
+              "text": "Unsupervised methods find structure without a supplied target and need human interpretation to establish usefulness.",
+              "correct": false
+            },
+            {
+              "text": "Classification predicts a discrete class; threshold choice and class-specific errors matter beyond accuracy.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of labeled examples.",
+          "solution": {
+            "code": "A labeled example pairs input data with the outcome the learner should predict; label definitions must be consistent.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "A labeled example pairs input data with the outcome the learner should predict; label definitions must be consistent."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Document whether a churn label means cancellation or a period of inactivity. The other options describe related ideas, but they do not answer the question about labeled examples."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-19",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Supervised learning: Applied decision 4",
+          "description": "Predict a delivery delay category from historical labeled shipments. Which principle about supervised learning should guide the decision?",
+          "choices": [
+            {
+              "text": "Unsupervised methods find structure without a supplied target and need human interpretation to establish usefulness.",
+              "correct": false
+            },
+            {
+              "text": "Classification predicts a discrete class; threshold choice and class-specific errors matter beyond accuracy.",
+              "correct": false
+            },
+            {
+              "text": "Supervised methods learn a mapping from labeled examples to outputs, commonly for classification or regression.",
+              "correct": true
+            },
+            {
+              "text": "Regression predicts a numeric quantity; error metrics should reflect the scale and cost of mistakes.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of supervised learning.",
+          "solution": {
+            "code": "Supervised methods learn a mapping from labeled examples to outputs, commonly for classification or regression.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Supervised methods learn a mapping from labeled examples to outputs, commonly for classification or regression."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Predict a delivery delay category from historical labeled shipments. The other options describe related ideas, but they do not answer the question about supervised learning."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-20",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Unsupervised learning: Applied decision 5",
+          "description": "Cluster support tickets, then inspect representative examples in each group. Which principle about unsupervised learning should guide the decision?",
+          "choices": [
+            {
+              "text": "Classification predicts a discrete class; threshold choice and class-specific errors matter beyond accuracy.",
+              "correct": false
+            },
+            {
+              "text": "Regression predicts a numeric quantity; error metrics should reflect the scale and cost of mistakes.",
+              "correct": false
+            },
+            {
+              "text": "Training fits model parameters, validation supports choices, and a final test estimates performance after choices are fixed.",
+              "correct": false
+            },
+            {
+              "text": "Unsupervised methods find structure without a supplied target and need human interpretation to establish usefulness.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of unsupervised learning.",
+          "solution": {
+            "code": "Unsupervised methods find structure without a supplied target and need human interpretation to establish usefulness.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Unsupervised methods find structure without a supplied target and need human interpretation to establish usefulness."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Cluster support tickets, then inspect representative examples in each group. The other options describe related ideas, but they do not answer the question about unsupervised learning."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-21",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Classification: Applied decision 6",
+          "description": "A screening model should report missed-positive and false-alarm rates. Which principle about classification should guide the decision?",
+          "choices": [
+            {
+              "text": "Classification predicts a discrete class; threshold choice and class-specific errors matter beyond accuracy.",
+              "correct": true
+            },
+            {
+              "text": "Regression predicts a numeric quantity; error metrics should reflect the scale and cost of mistakes.",
+              "correct": false
+            },
+            {
+              "text": "Training fits model parameters, validation supports choices, and a final test estimates performance after choices are fixed.",
+              "correct": false
+            },
+            {
+              "text": "Generalization is performance on relevant unseen examples, not memorization of training records.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of classification.",
+          "solution": {
+            "code": "Classification predicts a discrete class; threshold choice and class-specific errors matter beyond accuracy.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Classification predicts a discrete class; threshold choice and class-specific errors matter beyond accuracy."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "A screening model should report missed-positive and false-alarm rates. The other options describe related ideas, but they do not answer the question about classification."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-22",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Regression: Applied decision 7",
+          "description": "Forecast units sold and compare MAE with a seasonal baseline. Which principle about regression should guide the decision?",
+          "choices": [
+            {
+              "text": "Training fits model parameters, validation supports choices, and a final test estimates performance after choices are fixed.",
+              "correct": false
+            },
+            {
+              "text": "Regression predicts a numeric quantity; error metrics should reflect the scale and cost of mistakes.",
+              "correct": true
+            },
+            {
+              "text": "Generalization is performance on relevant unseen examples, not memorization of training records.",
+              "correct": false
+            },
+            {
+              "text": "A simple baseline establishes a meaningful reference before adding model complexity.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of regression.",
+          "solution": {
+            "code": "Regression predicts a numeric quantity; error metrics should reflect the scale and cost of mistakes.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Regression predicts a numeric quantity; error metrics should reflect the scale and cost of mistakes."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Forecast units sold and compare MAE with a seasonal baseline. The other options describe related ideas, but they do not answer the question about regression."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-23",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Train, validation, and test: Applied decision 8",
+          "description": "Keep test records untouched until model selection is complete. Which principle about train, validation, and test should guide the decision?",
+          "choices": [
+            {
+              "text": "Generalization is performance on relevant unseen examples, not memorization of training records.",
+              "correct": false
+            },
+            {
+              "text": "A simple baseline establishes a meaningful reference before adding model complexity.",
+              "correct": false
+            },
+            {
+              "text": "Training fits model parameters, validation supports choices, and a final test estimates performance after choices are fixed.",
+              "correct": true
+            },
+            {
+              "text": "Leakage gives training or evaluation information that would not be available at prediction time, inflating results.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of train, validation, and test.",
+          "solution": {
+            "code": "Training fits model parameters, validation supports choices, and a final test estimates performance after choices are fixed.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Training fits model parameters, validation supports choices, and a final test estimates performance after choices are fixed."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Keep test records untouched until model selection is complete. The other options describe related ideas, but they do not answer the question about train, validation, and test."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-24",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Generalization: Applied decision 9",
+          "description": "Compare train and held-out scores using a representative split. Which principle about generalization should guide the decision?",
+          "choices": [
+            {
+              "text": "A simple baseline establishes a meaningful reference before adding model complexity.",
+              "correct": false
+            },
+            {
+              "text": "Leakage gives training or evaluation information that would not be available at prediction time, inflating results.",
+              "correct": false
+            },
+            {
+              "text": "Rare classes can be hidden by high overall accuracy, so inspect per-class and prevalence-aware metrics.",
+              "correct": false
+            },
+            {
+              "text": "Generalization is performance on relevant unseen examples, not memorization of training records.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of generalization.",
+          "solution": {
+            "code": "Generalization is performance on relevant unseen examples, not memorization of training records.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Generalization is performance on relevant unseen examples, not memorization of training records."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Compare train and held-out scores using a representative split. The other options describe related ideas, but they do not answer the question about generalization."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-25",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Baseline models: Applied decision 10",
+          "description": "Compare a demand model with last-week and seasonal-naive predictions. Which principle about baseline models should guide the decision?",
+          "choices": [
+            {
+              "text": "A simple baseline establishes a meaningful reference before adding model complexity.",
+              "correct": true
+            },
+            {
+              "text": "Leakage gives training or evaluation information that would not be available at prediction time, inflating results.",
+              "correct": false
+            },
+            {
+              "text": "Rare classes can be hidden by high overall accuracy, so inspect per-class and prevalence-aware metrics.",
+              "correct": false
+            },
+            {
+              "text": "Every model encodes assumptions about relationships, noise, and useful structure; check whether they fit the task.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of baseline models.",
+          "solution": {
+            "code": "A simple baseline establishes a meaningful reference before adding model complexity.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "A simple baseline establishes a meaningful reference before adding model complexity."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Compare a demand model with last-week and seasonal-naive predictions. The other options describe related ideas, but they do not answer the question about baseline models."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "level": "beginner",
+      "challenges": [
+        {
+          "id": "tml-beginner-01",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Linear regression: Core idea",
+          "description": "Which statement best describes linear regression?",
+          "choices": [
+            {
+              "text": "Linear regression estimates a numeric target as a weighted sum of inputs; residual patterns reveal where the model misses structure.",
+              "correct": true
+            },
+            {
+              "text": "Logistic regression models class probabilities through a logistic link and supports threshold-based decisions.",
+              "correct": false
+            },
+            {
+              "text": "A decision tree partitions feature space with sequential tests and can express nonlinear rules, but deep trees overfit.",
+              "correct": false
+            },
+            {
+              "text": "k-NN predicts from nearby training examples, so scaling and the neighborhood size strongly affect results.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of linear regression.",
+          "solution": {
+            "code": "Linear regression estimates a numeric target as a weighted sum of inputs; residual patterns reveal where the model misses structure.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Linear regression estimates a numeric target as a weighted sum of inputs; residual patterns reveal where the model misses structure."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Predict rent from floor area, then inspect residuals by neighborhood. The other options describe related ideas, but they do not answer the question about linear regression."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-02",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Logistic regression: Core idea",
+          "description": "Which statement best describes logistic regression?",
+          "choices": [
+            {
+              "text": "A decision tree partitions feature space with sequential tests and can express nonlinear rules, but deep trees overfit.",
+              "correct": false
+            },
+            {
+              "text": "Logistic regression models class probabilities through a logistic link and supports threshold-based decisions.",
+              "correct": true
+            },
+            {
+              "text": "k-NN predicts from nearby training examples, so scaling and the neighborhood size strongly affect results.",
+              "correct": false
+            },
+            {
+              "text": "Naive Bayes combines class-conditional feature evidence under a conditional-independence assumption.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of logistic regression.",
+          "solution": {
+            "code": "Logistic regression models class probabilities through a logistic link and supports threshold-based decisions.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Logistic regression models class probabilities through a logistic link and supports threshold-based decisions."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Choose a recall-oriented threshold for a screening workflow. The other options describe related ideas, but they do not answer the question about logistic regression."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-03",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Decision trees: Core idea",
+          "description": "Which statement best describes decision trees?",
+          "choices": [
+            {
+              "text": "k-NN predicts from nearby training examples, so scaling and the neighborhood size strongly affect results.",
+              "correct": false
+            },
+            {
+              "text": "Naive Bayes combines class-conditional feature evidence under a conditional-independence assumption.",
+              "correct": false
+            },
+            {
+              "text": "A decision tree partitions feature space with sequential tests and can express nonlinear rules, but deep trees overfit.",
+              "correct": true
+            },
+            {
+              "text": "Scaling aligns feature magnitudes for distance- and gradient-sensitive algorithms but is usually fitted only on training data.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of decision trees.",
+          "solution": {
+            "code": "A decision tree partitions feature space with sequential tests and can express nonlinear rules, but deep trees overfit.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "A decision tree partitions feature space with sequential tests and can express nonlinear rules, but deep trees overfit."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Limit depth and compare validation performance with a simple baseline. The other options describe related ideas, but they do not answer the question about decision trees."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-04",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "k-nearest neighbors: Core idea",
+          "description": "Which statement best describes k-nearest neighbors?",
+          "choices": [
+            {
+              "text": "Naive Bayes combines class-conditional feature evidence under a conditional-independence assumption.",
+              "correct": false
+            },
+            {
+              "text": "Scaling aligns feature magnitudes for distance- and gradient-sensitive algorithms but is usually fitted only on training data.",
+              "correct": false
+            },
+            {
+              "text": "Imputation estimates missing entries using training data and may need a missingness indicator when absence is informative.",
+              "correct": false
+            },
+            {
+              "text": "k-NN predicts from nearby training examples, so scaling and the neighborhood size strongly affect results.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of k-nearest neighbors.",
+          "solution": {
+            "code": "k-NN predicts from nearby training examples, so scaling and the neighborhood size strongly affect results.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "k-NN predicts from nearby training examples, so scaling and the neighborhood size strongly affect results."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Scale mixed-unit measurements before distance-based classification. The other options describe related ideas, but they do not answer the question about k-nearest neighbors."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-05",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Naive Bayes: Core idea",
+          "description": "Which statement best describes naive bayes?",
+          "choices": [
+            {
+              "text": "Naive Bayes combines class-conditional feature evidence under a conditional-independence assumption.",
+              "correct": true
+            },
+            {
+              "text": "Scaling aligns feature magnitudes for distance- and gradient-sensitive algorithms but is usually fitted only on training data.",
+              "correct": false
+            },
+            {
+              "text": "Imputation estimates missing entries using training data and may need a missingness indicator when absence is informative.",
+              "correct": false
+            },
+            {
+              "text": "Encoding converts categories into model inputs while avoiding arbitrary numeric order for nominal categories.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of naive bayes.",
+          "solution": {
+            "code": "Naive Bayes combines class-conditional feature evidence under a conditional-independence assumption.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Naive Bayes combines class-conditional feature evidence under a conditional-independence assumption."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Use token counts for a fast text baseline and check correlated-word limitations. The other options describe related ideas, but they do not answer the question about naive bayes."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-06",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Feature scaling: Core idea",
+          "description": "Which statement best describes feature scaling?",
+          "choices": [
+            {
+              "text": "Imputation estimates missing entries using training data and may need a missingness indicator when absence is informative.",
+              "correct": false
+            },
+            {
+              "text": "Scaling aligns feature magnitudes for distance- and gradient-sensitive algorithms but is usually fitted only on training data.",
+              "correct": true
+            },
+            {
+              "text": "Encoding converts categories into model inputs while avoiding arbitrary numeric order for nominal categories.",
+              "correct": false
+            },
+            {
+              "text": "Random splitting suits independent examples; grouped or temporal splitting prevents related records crossing partitions.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of feature scaling.",
+          "solution": {
+            "code": "Scaling aligns feature magnitudes for distance- and gradient-sensitive algorithms but is usually fitted only on training data.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Scaling aligns feature magnitudes for distance- and gradient-sensitive algorithms but is usually fitted only on training data."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Fit a standardizer on the training fold, then transform validation data. The other options describe related ideas, but they do not answer the question about feature scaling."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-07",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Missing-value handling: Core idea",
+          "description": "Which statement best describes missing-value handling?",
+          "choices": [
+            {
+              "text": "Encoding converts categories into model inputs while avoiding arbitrary numeric order for nominal categories.",
+              "correct": false
+            },
+            {
+              "text": "Random splitting suits independent examples; grouped or temporal splitting prevents related records crossing partitions.",
+              "correct": false
+            },
+            {
+              "text": "Imputation estimates missing entries using training data and may need a missingness indicator when absence is informative.",
+              "correct": true
+            },
+            {
+              "text": "A confusion matrix counts true and false positives and negatives, exposing error types hidden by accuracy.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of missing-value handling.",
+          "solution": {
+            "code": "Imputation estimates missing entries using training data and may need a missingness indicator when absence is informative.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Imputation estimates missing entries using training data and may need a missingness indicator when absence is informative."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Compare median imputation with an explicit missing flag. The other options describe related ideas, but they do not answer the question about missing-value handling."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-08",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Categorical encoding: Core idea",
+          "description": "Which statement best describes categorical encoding?",
+          "choices": [
+            {
+              "text": "Random splitting suits independent examples; grouped or temporal splitting prevents related records crossing partitions.",
+              "correct": false
+            },
+            {
+              "text": "A confusion matrix counts true and false positives and negatives, exposing error types hidden by accuracy.",
+              "correct": false
+            },
+            {
+              "text": "Precision measures the fraction of predicted positives that are correct; recall measures the fraction of actual positives found.",
+              "correct": false
+            },
+            {
+              "text": "Encoding converts categories into model inputs while avoiding arbitrary numeric order for nominal categories.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of categorical encoding.",
+          "solution": {
+            "code": "Encoding converts categories into model inputs while avoiding arbitrary numeric order for nominal categories.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Encoding converts categories into model inputs while avoiding arbitrary numeric order for nominal categories."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Use one-hot encoding for colors rather than mapping them to 1, 2, 3. The other options describe related ideas, but they do not answer the question about categorical encoding."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-09",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Train/test split strategy: Core idea",
+          "description": "Which statement best describes train/test split strategy?",
+          "choices": [
+            {
+              "text": "Random splitting suits independent examples; grouped or temporal splitting prevents related records crossing partitions.",
+              "correct": true
+            },
+            {
+              "text": "A confusion matrix counts true and false positives and negatives, exposing error types hidden by accuracy.",
+              "correct": false
+            },
+            {
+              "text": "Precision measures the fraction of predicted positives that are correct; recall measures the fraction of actual positives found.",
+              "correct": false
+            },
+            {
+              "text": "F1 is the harmonic mean of precision and recall and is useful when both matter, but hides their individual values.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of train/test split strategy.",
+          "solution": {
+            "code": "Random splitting suits independent examples; grouped or temporal splitting prevents related records crossing partitions.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Random splitting suits independent examples; grouped or temporal splitting prevents related records crossing partitions."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Keep a patient's visits together when evaluating generalization to new patients. The other options describe related ideas, but they do not answer the question about train/test split strategy."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-10",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Confusion matrix: Core idea",
+          "description": "Which statement best describes confusion matrix?",
+          "choices": [
+            {
+              "text": "Precision measures the fraction of predicted positives that are correct; recall measures the fraction of actual positives found.",
+              "correct": false
+            },
+            {
+              "text": "A confusion matrix counts true and false positives and negatives, exposing error types hidden by accuracy.",
+              "correct": true
+            },
+            {
+              "text": "F1 is the harmonic mean of precision and recall and is useful when both matter, but hides their individual values.",
+              "correct": false
+            },
+            {
+              "text": "Cross-validation repeats fitting and evaluation across folds to reduce dependence on one split.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of confusion matrix.",
+          "solution": {
+            "code": "A confusion matrix counts true and false positives and negatives, exposing error types hidden by accuracy.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "A confusion matrix counts true and false positives and negatives, exposing error types hidden by accuracy."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Inspect false negatives separately when missing a defect is expensive. The other options describe related ideas, but they do not answer the question about confusion matrix."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-11",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Precision and recall: Core idea",
+          "description": "Which statement best describes precision and recall?",
+          "choices": [
+            {
+              "text": "F1 is the harmonic mean of precision and recall and is useful when both matter, but hides their individual values.",
+              "correct": false
+            },
+            {
+              "text": "Cross-validation repeats fitting and evaluation across folds to reduce dependence on one split.",
+              "correct": false
+            },
+            {
+              "text": "Precision measures the fraction of predicted positives that are correct; recall measures the fraction of actual positives found.",
+              "correct": true
+            },
+            {
+              "text": "Regularization penalizes model complexity to reduce overfitting, trading fit against coefficient size.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of precision and recall.",
+          "solution": {
+            "code": "Precision measures the fraction of predicted positives that are correct; recall measures the fraction of actual positives found.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Precision measures the fraction of predicted positives that are correct; recall measures the fraction of actual positives found."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Prioritize recall for initial safety screening and review flagged cases. The other options describe related ideas, but they do not answer the question about precision and recall."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-12",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "F1 score: Core idea",
+          "description": "Which statement best describes f1 score?",
+          "choices": [
+            {
+              "text": "Cross-validation repeats fitting and evaluation across folds to reduce dependence on one split.",
+              "correct": false
+            },
+            {
+              "text": "Regularization penalizes model complexity to reduce overfitting, trading fit against coefficient size.",
+              "correct": false
+            },
+            {
+              "text": "A pipeline applies preprocessing and estimation together so each training fold learns transformations without leakage.",
+              "correct": false
+            },
+            {
+              "text": "F1 is the harmonic mean of precision and recall and is useful when both matter, but hides their individual values.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of f1 score.",
+          "solution": {
+            "code": "F1 is the harmonic mean of precision and recall and is useful when both matter, but hides their individual values.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "F1 is the harmonic mean of precision and recall and is useful when both matter, but hides their individual values."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Report precision and recall alongside F1 for a spam filter. The other options describe related ideas, but they do not answer the question about f1 score."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-13",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Cross-validation: Core idea",
+          "description": "Which statement best describes cross-validation?",
+          "choices": [
+            {
+              "text": "Cross-validation repeats fitting and evaluation across folds to reduce dependence on one split.",
+              "correct": true
+            },
+            {
+              "text": "Regularization penalizes model complexity to reduce overfitting, trading fit against coefficient size.",
+              "correct": false
+            },
+            {
+              "text": "A pipeline applies preprocessing and estimation together so each training fold learns transformations without leakage.",
+              "correct": false
+            },
+            {
+              "text": "Linear regression estimates a numeric target as a weighted sum of inputs; residual patterns reveal where the model misses structure.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of cross-validation.",
+          "solution": {
+            "code": "Cross-validation repeats fitting and evaluation across folds to reduce dependence on one split.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Cross-validation repeats fitting and evaluation across folds to reduce dependence on one split."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Use stratified folds for a modest imbalanced classification dataset. The other options describe related ideas, but they do not answer the question about cross-validation."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-14",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Regularization: Core idea",
+          "description": "Which statement best describes regularization?",
+          "choices": [
+            {
+              "text": "A pipeline applies preprocessing and estimation together so each training fold learns transformations without leakage.",
+              "correct": false
+            },
+            {
+              "text": "Regularization penalizes model complexity to reduce overfitting, trading fit against coefficient size.",
+              "correct": true
+            },
+            {
+              "text": "Linear regression estimates a numeric target as a weighted sum of inputs; residual patterns reveal where the model misses structure.",
+              "correct": false
+            },
+            {
+              "text": "Logistic regression models class probabilities through a logistic link and supports threshold-based decisions.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of regularization.",
+          "solution": {
+            "code": "Regularization penalizes model complexity to reduce overfitting, trading fit against coefficient size.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Regularization penalizes model complexity to reduce overfitting, trading fit against coefficient size."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Tune the penalty using validation folds, not the held-out test set. The other options describe related ideas, but they do not answer the question about regularization."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-15",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Pipeline design: Core idea",
+          "description": "Which statement best describes pipeline design?",
+          "choices": [
+            {
+              "text": "Linear regression estimates a numeric target as a weighted sum of inputs; residual patterns reveal where the model misses structure.",
+              "correct": false
+            },
+            {
+              "text": "Logistic regression models class probabilities through a logistic link and supports threshold-based decisions.",
+              "correct": false
+            },
+            {
+              "text": "A pipeline applies preprocessing and estimation together so each training fold learns transformations without leakage.",
+              "correct": true
+            },
+            {
+              "text": "A decision tree partitions feature space with sequential tests and can express nonlinear rules, but deep trees overfit.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of pipeline design.",
+          "solution": {
+            "code": "A pipeline applies preprocessing and estimation together so each training fold learns transformations without leakage.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "A pipeline applies preprocessing and estimation together so each training fold learns transformations without leakage."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Put imputation, encoding, and the classifier inside one cross-validation pipeline. The other options describe related ideas, but they do not answer the question about pipeline design."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-16",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Linear regression: Applied decision 1",
+          "description": "Predict rent from floor area, then inspect residuals by neighborhood. Which principle about linear regression should guide the decision?",
+          "choices": [
+            {
+              "text": "Logistic regression models class probabilities through a logistic link and supports threshold-based decisions.",
+              "correct": false
+            },
+            {
+              "text": "A decision tree partitions feature space with sequential tests and can express nonlinear rules, but deep trees overfit.",
+              "correct": false
+            },
+            {
+              "text": "k-NN predicts from nearby training examples, so scaling and the neighborhood size strongly affect results.",
+              "correct": false
+            },
+            {
+              "text": "Linear regression estimates a numeric target as a weighted sum of inputs; residual patterns reveal where the model misses structure.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of linear regression.",
+          "solution": {
+            "code": "Linear regression estimates a numeric target as a weighted sum of inputs; residual patterns reveal where the model misses structure.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Linear regression estimates a numeric target as a weighted sum of inputs; residual patterns reveal where the model misses structure."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Predict rent from floor area, then inspect residuals by neighborhood. The other options describe related ideas, but they do not answer the question about linear regression."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-17",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Logistic regression: Applied decision 2",
+          "description": "Choose a recall-oriented threshold for a screening workflow. Which principle about logistic regression should guide the decision?",
+          "choices": [
+            {
+              "text": "Logistic regression models class probabilities through a logistic link and supports threshold-based decisions.",
+              "correct": true
+            },
+            {
+              "text": "A decision tree partitions feature space with sequential tests and can express nonlinear rules, but deep trees overfit.",
+              "correct": false
+            },
+            {
+              "text": "k-NN predicts from nearby training examples, so scaling and the neighborhood size strongly affect results.",
+              "correct": false
+            },
+            {
+              "text": "Naive Bayes combines class-conditional feature evidence under a conditional-independence assumption.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of logistic regression.",
+          "solution": {
+            "code": "Logistic regression models class probabilities through a logistic link and supports threshold-based decisions.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Logistic regression models class probabilities through a logistic link and supports threshold-based decisions."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Choose a recall-oriented threshold for a screening workflow. The other options describe related ideas, but they do not answer the question about logistic regression."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-18",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Decision trees: Applied decision 3",
+          "description": "Limit depth and compare validation performance with a simple baseline. Which principle about decision trees should guide the decision?",
+          "choices": [
+            {
+              "text": "k-NN predicts from nearby training examples, so scaling and the neighborhood size strongly affect results.",
+              "correct": false
+            },
+            {
+              "text": "A decision tree partitions feature space with sequential tests and can express nonlinear rules, but deep trees overfit.",
+              "correct": true
+            },
+            {
+              "text": "Naive Bayes combines class-conditional feature evidence under a conditional-independence assumption.",
+              "correct": false
+            },
+            {
+              "text": "Scaling aligns feature magnitudes for distance- and gradient-sensitive algorithms but is usually fitted only on training data.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of decision trees.",
+          "solution": {
+            "code": "A decision tree partitions feature space with sequential tests and can express nonlinear rules, but deep trees overfit.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "A decision tree partitions feature space with sequential tests and can express nonlinear rules, but deep trees overfit."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Limit depth and compare validation performance with a simple baseline. The other options describe related ideas, but they do not answer the question about decision trees."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-19",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "k-nearest neighbors: Applied decision 4",
+          "description": "Scale mixed-unit measurements before distance-based classification. Which principle about k-nearest neighbors should guide the decision?",
+          "choices": [
+            {
+              "text": "Naive Bayes combines class-conditional feature evidence under a conditional-independence assumption.",
+              "correct": false
+            },
+            {
+              "text": "Scaling aligns feature magnitudes for distance- and gradient-sensitive algorithms but is usually fitted only on training data.",
+              "correct": false
+            },
+            {
+              "text": "k-NN predicts from nearby training examples, so scaling and the neighborhood size strongly affect results.",
+              "correct": true
+            },
+            {
+              "text": "Imputation estimates missing entries using training data and may need a missingness indicator when absence is informative.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of k-nearest neighbors.",
+          "solution": {
+            "code": "k-NN predicts from nearby training examples, so scaling and the neighborhood size strongly affect results.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "k-NN predicts from nearby training examples, so scaling and the neighborhood size strongly affect results."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Scale mixed-unit measurements before distance-based classification. The other options describe related ideas, but they do not answer the question about k-nearest neighbors."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-20",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Naive Bayes: Applied decision 5",
+          "description": "Use token counts for a fast text baseline and check correlated-word limitations. Which principle about naive bayes should guide the decision?",
+          "choices": [
+            {
+              "text": "Scaling aligns feature magnitudes for distance- and gradient-sensitive algorithms but is usually fitted only on training data.",
+              "correct": false
+            },
+            {
+              "text": "Imputation estimates missing entries using training data and may need a missingness indicator when absence is informative.",
+              "correct": false
+            },
+            {
+              "text": "Encoding converts categories into model inputs while avoiding arbitrary numeric order for nominal categories.",
+              "correct": false
+            },
+            {
+              "text": "Naive Bayes combines class-conditional feature evidence under a conditional-independence assumption.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of naive bayes.",
+          "solution": {
+            "code": "Naive Bayes combines class-conditional feature evidence under a conditional-independence assumption.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Naive Bayes combines class-conditional feature evidence under a conditional-independence assumption."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Use token counts for a fast text baseline and check correlated-word limitations. The other options describe related ideas, but they do not answer the question about naive bayes."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-21",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Feature scaling: Applied decision 6",
+          "description": "Fit a standardizer on the training fold, then transform validation data. Which principle about feature scaling should guide the decision?",
+          "choices": [
+            {
+              "text": "Scaling aligns feature magnitudes for distance- and gradient-sensitive algorithms but is usually fitted only on training data.",
+              "correct": true
+            },
+            {
+              "text": "Imputation estimates missing entries using training data and may need a missingness indicator when absence is informative.",
+              "correct": false
+            },
+            {
+              "text": "Encoding converts categories into model inputs while avoiding arbitrary numeric order for nominal categories.",
+              "correct": false
+            },
+            {
+              "text": "Random splitting suits independent examples; grouped or temporal splitting prevents related records crossing partitions.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of feature scaling.",
+          "solution": {
+            "code": "Scaling aligns feature magnitudes for distance- and gradient-sensitive algorithms but is usually fitted only on training data.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Scaling aligns feature magnitudes for distance- and gradient-sensitive algorithms but is usually fitted only on training data."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Fit a standardizer on the training fold, then transform validation data. The other options describe related ideas, but they do not answer the question about feature scaling."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-22",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Missing-value handling: Applied decision 7",
+          "description": "Compare median imputation with an explicit missing flag. Which principle about missing-value handling should guide the decision?",
+          "choices": [
+            {
+              "text": "Encoding converts categories into model inputs while avoiding arbitrary numeric order for nominal categories.",
+              "correct": false
+            },
+            {
+              "text": "Imputation estimates missing entries using training data and may need a missingness indicator when absence is informative.",
+              "correct": true
+            },
+            {
+              "text": "Random splitting suits independent examples; grouped or temporal splitting prevents related records crossing partitions.",
+              "correct": false
+            },
+            {
+              "text": "A confusion matrix counts true and false positives and negatives, exposing error types hidden by accuracy.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of missing-value handling.",
+          "solution": {
+            "code": "Imputation estimates missing entries using training data and may need a missingness indicator when absence is informative.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Imputation estimates missing entries using training data and may need a missingness indicator when absence is informative."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Compare median imputation with an explicit missing flag. The other options describe related ideas, but they do not answer the question about missing-value handling."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-23",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Categorical encoding: Applied decision 8",
+          "description": "Use one-hot encoding for colors rather than mapping them to 1, 2, 3. Which principle about categorical encoding should guide the decision?",
+          "choices": [
+            {
+              "text": "Random splitting suits independent examples; grouped or temporal splitting prevents related records crossing partitions.",
+              "correct": false
+            },
+            {
+              "text": "A confusion matrix counts true and false positives and negatives, exposing error types hidden by accuracy.",
+              "correct": false
+            },
+            {
+              "text": "Encoding converts categories into model inputs while avoiding arbitrary numeric order for nominal categories.",
+              "correct": true
+            },
+            {
+              "text": "Precision measures the fraction of predicted positives that are correct; recall measures the fraction of actual positives found.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of categorical encoding.",
+          "solution": {
+            "code": "Encoding converts categories into model inputs while avoiding arbitrary numeric order for nominal categories.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Encoding converts categories into model inputs while avoiding arbitrary numeric order for nominal categories."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Use one-hot encoding for colors rather than mapping them to 1, 2, 3. The other options describe related ideas, but they do not answer the question about categorical encoding."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-24",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Train/test split strategy: Applied decision 9",
+          "description": "Keep a patient's visits together when evaluating generalization to new patients. Which principle about train/test split strategy should guide the decision?",
+          "choices": [
+            {
+              "text": "A confusion matrix counts true and false positives and negatives, exposing error types hidden by accuracy.",
+              "correct": false
+            },
+            {
+              "text": "Precision measures the fraction of predicted positives that are correct; recall measures the fraction of actual positives found.",
+              "correct": false
+            },
+            {
+              "text": "F1 is the harmonic mean of precision and recall and is useful when both matter, but hides their individual values.",
+              "correct": false
+            },
+            {
+              "text": "Random splitting suits independent examples; grouped or temporal splitting prevents related records crossing partitions.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of train/test split strategy.",
+          "solution": {
+            "code": "Random splitting suits independent examples; grouped or temporal splitting prevents related records crossing partitions.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Random splitting suits independent examples; grouped or temporal splitting prevents related records crossing partitions."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Keep a patient's visits together when evaluating generalization to new patients. The other options describe related ideas, but they do not answer the question about train/test split strategy."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-25",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Confusion matrix: Applied decision 10",
+          "description": "Inspect false negatives separately when missing a defect is expensive. Which principle about confusion matrix should guide the decision?",
+          "choices": [
+            {
+              "text": "A confusion matrix counts true and false positives and negatives, exposing error types hidden by accuracy.",
+              "correct": true
+            },
+            {
+              "text": "Precision measures the fraction of predicted positives that are correct; recall measures the fraction of actual positives found.",
+              "correct": false
+            },
+            {
+              "text": "F1 is the harmonic mean of precision and recall and is useful when both matter, but hides their individual values.",
+              "correct": false
+            },
+            {
+              "text": "Cross-validation repeats fitting and evaluation across folds to reduce dependence on one split.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of confusion matrix.",
+          "solution": {
+            "code": "A confusion matrix counts true and false positives and negatives, exposing error types hidden by accuracy.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "A confusion matrix counts true and false positives and negatives, exposing error types hidden by accuracy."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Inspect false negatives separately when missing a defect is expensive. The other options describe related ideas, but they do not answer the question about confusion matrix."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "level": "intermediate",
+      "challenges": [
+        {
+          "id": "tml-intermediate-01",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Bias-variance trade-off: Core idea",
+          "description": "Which statement best describes bias-variance trade-off?",
+          "choices": [
+            {
+              "text": "High bias misses real structure while high variance follows sample noise; validation curves help locate a useful complexity range.",
+              "correct": true
+            },
+            {
+              "text": "Ensembles combine predictors to improve stability or reduce error; the benefit depends on member diversity and calibration.",
+              "correct": false
+            },
+            {
+              "text": "Random forests average decorrelated trees built from resampled data and feature subsets, often reducing variance.",
+              "correct": false
+            },
+            {
+              "text": "Boosting adds learners sequentially to correct residual errors and can fit complex patterns, but requires careful regularization.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of bias-variance trade-off.",
+          "solution": {
+            "code": "High bias misses real structure while high variance follows sample noise; validation curves help locate a useful complexity range.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "High bias misses real structure while high variance follows sample noise; validation curves help locate a useful complexity range."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Compare shallow and deep trees across repeated folds. The other options describe related ideas, but they do not answer the question about bias-variance trade-off."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-02",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Ensemble learning: Core idea",
+          "description": "Which statement best describes ensemble learning?",
+          "choices": [
+            {
+              "text": "Random forests average decorrelated trees built from resampled data and feature subsets, often reducing variance.",
+              "correct": false
+            },
+            {
+              "text": "Ensembles combine predictors to improve stability or reduce error; the benefit depends on member diversity and calibration.",
+              "correct": true
+            },
+            {
+              "text": "Boosting adds learners sequentially to correct residual errors and can fit complex patterns, but requires careful regularization.",
+              "correct": false
+            },
+            {
+              "text": "Search methods allocate evaluation effort across model settings; the final test set must not guide the search.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of ensemble learning.",
+          "solution": {
+            "code": "Ensembles combine predictors to improve stability or reduce error; the benefit depends on member diversity and calibration.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Ensembles combine predictors to improve stability or reduce error; the benefit depends on member diversity and calibration."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Use bagging to stabilize high-variance trees and verify held-out gains. The other options describe related ideas, but they do not answer the question about ensemble learning."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-03",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Random forests: Core idea",
+          "description": "Which statement best describes random forests?",
+          "choices": [
+            {
+              "text": "Boosting adds learners sequentially to correct residual errors and can fit complex patterns, but requires careful regularization.",
+              "correct": false
+            },
+            {
+              "text": "Search methods allocate evaluation effort across model settings; the final test set must not guide the search.",
+              "correct": false
+            },
+            {
+              "text": "Random forests average decorrelated trees built from resampled data and feature subsets, often reducing variance.",
+              "correct": true
+            },
+            {
+              "text": "Feature selection can improve efficiency and interpretability, but selecting on all data leaks validation information.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of random forests.",
+          "solution": {
+            "code": "Random forests average decorrelated trees built from resampled data and feature subsets, often reducing variance.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Random forests average decorrelated trees built from resampled data and feature subsets, often reducing variance."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Check out-of-bag and held-out scores while tracking model size. The other options describe related ideas, but they do not answer the question about random forests."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-04",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Gradient boosting: Core idea",
+          "description": "Which statement best describes gradient boosting?",
+          "choices": [
+            {
+              "text": "Search methods allocate evaluation effort across model settings; the final test set must not guide the search.",
+              "correct": false
+            },
+            {
+              "text": "Feature selection can improve efficiency and interpretability, but selecting on all data leaks validation information.",
+              "correct": false
+            },
+            {
+              "text": "Calibration aligns predicted probabilities with empirical frequencies and is distinct from ranking quality.",
+              "correct": false
+            },
+            {
+              "text": "Boosting adds learners sequentially to correct residual errors and can fit complex patterns, but requires careful regularization.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of gradient boosting.",
+          "solution": {
+            "code": "Boosting adds learners sequentially to correct residual errors and can fit complex patterns, but requires careful regularization.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Boosting adds learners sequentially to correct residual errors and can fit complex patterns, but requires careful regularization."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Tune learning rate and tree depth using validation data. The other options describe related ideas, but they do not answer the question about gradient boosting."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-05",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Hyperparameter search: Core idea",
+          "description": "Which statement best describes hyperparameter search?",
+          "choices": [
+            {
+              "text": "Search methods allocate evaluation effort across model settings; the final test set must not guide the search.",
+              "correct": true
+            },
+            {
+              "text": "Feature selection can improve efficiency and interpretability, but selecting on all data leaks validation information.",
+              "correct": false
+            },
+            {
+              "text": "Calibration aligns predicted probabilities with empirical frequencies and is distinct from ranking quality.",
+              "correct": false
+            },
+            {
+              "text": "ROC summarizes ranking over thresholds; precision-recall plots are often more revealing when positives are rare.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of hyperparameter search.",
+          "solution": {
+            "code": "Search methods allocate evaluation effort across model settings; the final test set must not guide the search.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Search methods allocate evaluation effort across model settings; the final test set must not guide the search."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Use nested validation when estimating the performance of a tuned workflow. The other options describe related ideas, but they do not answer the question about hyperparameter search."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-06",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Feature selection: Core idea",
+          "description": "Which statement best describes feature selection?",
+          "choices": [
+            {
+              "text": "Calibration aligns predicted probabilities with empirical frequencies and is distinct from ranking quality.",
+              "correct": false
+            },
+            {
+              "text": "Feature selection can improve efficiency and interpretability, but selecting on all data leaks validation information.",
+              "correct": true
+            },
+            {
+              "text": "ROC summarizes ranking over thresholds; precision-recall plots are often more revealing when positives are rare.",
+              "correct": false
+            },
+            {
+              "text": "A classifier threshold maps scores to actions and should reflect error costs and capacity constraints.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of feature selection.",
+          "solution": {
+            "code": "Feature selection can improve efficiency and interpretability, but selecting on all data leaks validation information.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Feature selection can improve efficiency and interpretability, but selecting on all data leaks validation information."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Perform selection independently inside each training fold. The other options describe related ideas, but they do not answer the question about feature selection."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-07",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Probability calibration: Core idea",
+          "description": "Which statement best describes probability calibration?",
+          "choices": [
+            {
+              "text": "ROC summarizes ranking over thresholds; precision-recall plots are often more revealing when positives are rare.",
+              "correct": false
+            },
+            {
+              "text": "A classifier threshold maps scores to actions and should reflect error costs and capacity constraints.",
+              "correct": false
+            },
+            {
+              "text": "Calibration aligns predicted probabilities with empirical frequencies and is distinct from ranking quality.",
+              "correct": true
+            },
+            {
+              "text": "Prediction intervals express outcome uncertainty under assumptions and can widen under sparse data or distribution shift.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of probability calibration.",
+          "solution": {
+            "code": "Calibration aligns predicted probabilities with empirical frequencies and is distinct from ranking quality.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Calibration aligns predicted probabilities with empirical frequencies and is distinct from ranking quality."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Check reliability curves before using a probability as a risk estimate. The other options describe related ideas, but they do not answer the question about probability calibration."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-08",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "ROC and precision-recall curves: Core idea",
+          "description": "Which statement best describes roc and precision-recall curves?",
+          "choices": [
+            {
+              "text": "A classifier threshold maps scores to actions and should reflect error costs and capacity constraints.",
+              "correct": false
+            },
+            {
+              "text": "Prediction intervals express outcome uncertainty under assumptions and can widen under sparse data or distribution shift.",
+              "correct": false
+            },
+            {
+              "text": "Cluster scores summarize geometric structure but do not prove that groups are useful or stable.",
+              "correct": false
+            },
+            {
+              "text": "ROC summarizes ranking over thresholds; precision-recall plots are often more revealing when positives are rare.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of roc and precision-recall curves.",
+          "solution": {
+            "code": "ROC summarizes ranking over thresholds; precision-recall plots are often more revealing when positives are rare.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "ROC summarizes ranking over thresholds; precision-recall plots are often more revealing when positives are rare."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Compare average precision at the operational class prevalence. The other options describe related ideas, but they do not answer the question about roc and precision-recall curves."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-09",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Threshold selection: Core idea",
+          "description": "Which statement best describes threshold selection?",
+          "choices": [
+            {
+              "text": "A classifier threshold maps scores to actions and should reflect error costs and capacity constraints.",
+              "correct": true
+            },
+            {
+              "text": "Prediction intervals express outcome uncertainty under assumptions and can widen under sparse data or distribution shift.",
+              "correct": false
+            },
+            {
+              "text": "Cluster scores summarize geometric structure but do not prove that groups are useful or stable.",
+              "correct": false
+            },
+            {
+              "text": "PCA creates orthogonal directions of maximal variance after scaling, but high variance is not necessarily predictive signal.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of threshold selection.",
+          "solution": {
+            "code": "A classifier threshold maps scores to actions and should reflect error costs and capacity constraints.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "A classifier threshold maps scores to actions and should reflect error costs and capacity constraints."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Choose a threshold using validation costs, then freeze it before testing. The other options describe related ideas, but they do not answer the question about threshold selection."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-10",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Uncertainty and intervals: Core idea",
+          "description": "Which statement best describes uncertainty and intervals?",
+          "choices": [
+            {
+              "text": "Cluster scores summarize geometric structure but do not prove that groups are useful or stable.",
+              "correct": false
+            },
+            {
+              "text": "Prediction intervals express outcome uncertainty under assumptions and can widen under sparse data or distribution shift.",
+              "correct": true
+            },
+            {
+              "text": "PCA creates orthogonal directions of maximal variance after scaling, but high variance is not necessarily predictive signal.",
+              "correct": false
+            },
+            {
+              "text": "Resampling, class weights, and thresholding address imbalance differently and must be applied without contaminating validation.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of uncertainty and intervals.",
+          "solution": {
+            "code": "Prediction intervals express outcome uncertainty under assumptions and can widen under sparse data or distribution shift.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Prediction intervals express outcome uncertainty under assumptions and can widen under sparse data or distribution shift."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Communicate a range for demand forecasts instead of only a point estimate. The other options describe related ideas, but they do not answer the question about uncertainty and intervals."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-11",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Unsupervised clustering validation: Core idea",
+          "description": "Which statement best describes unsupervised clustering validation?",
+          "choices": [
+            {
+              "text": "PCA creates orthogonal directions of maximal variance after scaling, but high variance is not necessarily predictive signal.",
+              "correct": false
+            },
+            {
+              "text": "Resampling, class weights, and thresholding address imbalance differently and must be applied without contaminating validation.",
+              "correct": false
+            },
+            {
+              "text": "Cluster scores summarize geometric structure but do not prove that groups are useful or stable.",
+              "correct": true
+            },
+            {
+              "text": "Group metrics can reveal disparities but depend on target quality, group definitions, and the harms under review.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of unsupervised clustering validation.",
+          "solution": {
+            "code": "Cluster scores summarize geometric structure but do not prove that groups are useful or stable.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Cluster scores summarize geometric structure but do not prove that groups are useful or stable."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Review cluster examples and downstream utility in addition to silhouette score. The other options describe related ideas, but they do not answer the question about unsupervised clustering validation."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-12",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Principal component analysis: Core idea",
+          "description": "Which statement best describes principal component analysis?",
+          "choices": [
+            {
+              "text": "Resampling, class weights, and thresholding address imbalance differently and must be applied without contaminating validation.",
+              "correct": false
+            },
+            {
+              "text": "Group metrics can reveal disparities but depend on target quality, group definitions, and the harms under review.",
+              "correct": false
+            },
+            {
+              "text": "Segmented error review turns aggregate scores into actionable hypotheses about model failures.",
+              "correct": false
+            },
+            {
+              "text": "PCA creates orthogonal directions of maximal variance after scaling, but high variance is not necessarily predictive signal.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of principal component analysis.",
+          "solution": {
+            "code": "PCA creates orthogonal directions of maximal variance after scaling, but high variance is not necessarily predictive signal.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "PCA creates orthogonal directions of maximal variance after scaling, but high variance is not necessarily predictive signal."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Fit PCA inside the training pipeline and examine explained variance. The other options describe related ideas, but they do not answer the question about principal component analysis."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-13",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Imbalanced learning: Core idea",
+          "description": "Which statement best describes imbalanced learning?",
+          "choices": [
+            {
+              "text": "Resampling, class weights, and thresholding address imbalance differently and must be applied without contaminating validation.",
+              "correct": true
+            },
+            {
+              "text": "Group metrics can reveal disparities but depend on target quality, group definitions, and the harms under review.",
+              "correct": false
+            },
+            {
+              "text": "Segmented error review turns aggregate scores into actionable hypotheses about model failures.",
+              "correct": false
+            },
+            {
+              "text": "High bias misses real structure while high variance follows sample noise; validation curves help locate a useful complexity range.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of imbalanced learning.",
+          "solution": {
+            "code": "Resampling, class weights, and thresholding address imbalance differently and must be applied without contaminating validation.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Resampling, class weights, and thresholding address imbalance differently and must be applied without contaminating validation."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Resample only within training folds and report minority-class recall. The other options describe related ideas, but they do not answer the question about imbalanced learning."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-14",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Fairness evaluation: Core idea",
+          "description": "Which statement best describes fairness evaluation?",
+          "choices": [
+            {
+              "text": "Segmented error review turns aggregate scores into actionable hypotheses about model failures.",
+              "correct": false
+            },
+            {
+              "text": "Group metrics can reveal disparities but depend on target quality, group definitions, and the harms under review.",
+              "correct": true
+            },
+            {
+              "text": "High bias misses real structure while high variance follows sample noise; validation curves help locate a useful complexity range.",
+              "correct": false
+            },
+            {
+              "text": "Ensembles combine predictors to improve stability or reduce error; the benefit depends on member diversity and calibration.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of fairness evaluation.",
+          "solution": {
+            "code": "Group metrics can reveal disparities but depend on target quality, group definitions, and the harms under review.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Group metrics can reveal disparities but depend on target quality, group definitions, and the harms under review."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Compare false-negative rates across relevant populations and investigate causes. The other options describe related ideas, but they do not answer the question about fairness evaluation."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-15",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Error analysis: Core idea",
+          "description": "Which statement best describes error analysis?",
+          "choices": [
+            {
+              "text": "High bias misses real structure while high variance follows sample noise; validation curves help locate a useful complexity range.",
+              "correct": false
+            },
+            {
+              "text": "Ensembles combine predictors to improve stability or reduce error; the benefit depends on member diversity and calibration.",
+              "correct": false
+            },
+            {
+              "text": "Segmented error review turns aggregate scores into actionable hypotheses about model failures.",
+              "correct": true
+            },
+            {
+              "text": "Random forests average decorrelated trees built from resampled data and feature subsets, often reducing variance.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of error analysis.",
+          "solution": {
+            "code": "Segmented error review turns aggregate scores into actionable hypotheses about model failures.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Segmented error review turns aggregate scores into actionable hypotheses about model failures."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Review false positives by source system before changing features. The other options describe related ideas, but they do not answer the question about error analysis."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-16",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Bias-variance trade-off: Applied decision 1",
+          "description": "Compare shallow and deep trees across repeated folds. Which principle about bias-variance trade-off should guide the decision?",
+          "choices": [
+            {
+              "text": "Ensembles combine predictors to improve stability or reduce error; the benefit depends on member diversity and calibration.",
+              "correct": false
+            },
+            {
+              "text": "Random forests average decorrelated trees built from resampled data and feature subsets, often reducing variance.",
+              "correct": false
+            },
+            {
+              "text": "Boosting adds learners sequentially to correct residual errors and can fit complex patterns, but requires careful regularization.",
+              "correct": false
+            },
+            {
+              "text": "High bias misses real structure while high variance follows sample noise; validation curves help locate a useful complexity range.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of bias-variance trade-off.",
+          "solution": {
+            "code": "High bias misses real structure while high variance follows sample noise; validation curves help locate a useful complexity range.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "High bias misses real structure while high variance follows sample noise; validation curves help locate a useful complexity range."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Compare shallow and deep trees across repeated folds. The other options describe related ideas, but they do not answer the question about bias-variance trade-off."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-17",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Ensemble learning: Applied decision 2",
+          "description": "Use bagging to stabilize high-variance trees and verify held-out gains. Which principle about ensemble learning should guide the decision?",
+          "choices": [
+            {
+              "text": "Ensembles combine predictors to improve stability or reduce error; the benefit depends on member diversity and calibration.",
+              "correct": true
+            },
+            {
+              "text": "Random forests average decorrelated trees built from resampled data and feature subsets, often reducing variance.",
+              "correct": false
+            },
+            {
+              "text": "Boosting adds learners sequentially to correct residual errors and can fit complex patterns, but requires careful regularization.",
+              "correct": false
+            },
+            {
+              "text": "Search methods allocate evaluation effort across model settings; the final test set must not guide the search.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of ensemble learning.",
+          "solution": {
+            "code": "Ensembles combine predictors to improve stability or reduce error; the benefit depends on member diversity and calibration.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Ensembles combine predictors to improve stability or reduce error; the benefit depends on member diversity and calibration."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Use bagging to stabilize high-variance trees and verify held-out gains. The other options describe related ideas, but they do not answer the question about ensemble learning."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-18",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Random forests: Applied decision 3",
+          "description": "Check out-of-bag and held-out scores while tracking model size. Which principle about random forests should guide the decision?",
+          "choices": [
+            {
+              "text": "Boosting adds learners sequentially to correct residual errors and can fit complex patterns, but requires careful regularization.",
+              "correct": false
+            },
+            {
+              "text": "Random forests average decorrelated trees built from resampled data and feature subsets, often reducing variance.",
+              "correct": true
+            },
+            {
+              "text": "Search methods allocate evaluation effort across model settings; the final test set must not guide the search.",
+              "correct": false
+            },
+            {
+              "text": "Feature selection can improve efficiency and interpretability, but selecting on all data leaks validation information.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of random forests.",
+          "solution": {
+            "code": "Random forests average decorrelated trees built from resampled data and feature subsets, often reducing variance.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Random forests average decorrelated trees built from resampled data and feature subsets, often reducing variance."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Check out-of-bag and held-out scores while tracking model size. The other options describe related ideas, but they do not answer the question about random forests."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-19",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Gradient boosting: Applied decision 4",
+          "description": "Tune learning rate and tree depth using validation data. Which principle about gradient boosting should guide the decision?",
+          "choices": [
+            {
+              "text": "Search methods allocate evaluation effort across model settings; the final test set must not guide the search.",
+              "correct": false
+            },
+            {
+              "text": "Feature selection can improve efficiency and interpretability, but selecting on all data leaks validation information.",
+              "correct": false
+            },
+            {
+              "text": "Boosting adds learners sequentially to correct residual errors and can fit complex patterns, but requires careful regularization.",
+              "correct": true
+            },
+            {
+              "text": "Calibration aligns predicted probabilities with empirical frequencies and is distinct from ranking quality.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of gradient boosting.",
+          "solution": {
+            "code": "Boosting adds learners sequentially to correct residual errors and can fit complex patterns, but requires careful regularization.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Boosting adds learners sequentially to correct residual errors and can fit complex patterns, but requires careful regularization."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Tune learning rate and tree depth using validation data. The other options describe related ideas, but they do not answer the question about gradient boosting."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-20",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Hyperparameter search: Applied decision 5",
+          "description": "Use nested validation when estimating the performance of a tuned workflow. Which principle about hyperparameter search should guide the decision?",
+          "choices": [
+            {
+              "text": "Feature selection can improve efficiency and interpretability, but selecting on all data leaks validation information.",
+              "correct": false
+            },
+            {
+              "text": "Calibration aligns predicted probabilities with empirical frequencies and is distinct from ranking quality.",
+              "correct": false
+            },
+            {
+              "text": "ROC summarizes ranking over thresholds; precision-recall plots are often more revealing when positives are rare.",
+              "correct": false
+            },
+            {
+              "text": "Search methods allocate evaluation effort across model settings; the final test set must not guide the search.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of hyperparameter search.",
+          "solution": {
+            "code": "Search methods allocate evaluation effort across model settings; the final test set must not guide the search.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Search methods allocate evaluation effort across model settings; the final test set must not guide the search."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Use nested validation when estimating the performance of a tuned workflow. The other options describe related ideas, but they do not answer the question about hyperparameter search."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-21",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Feature selection: Applied decision 6",
+          "description": "Perform selection independently inside each training fold. Which principle about feature selection should guide the decision?",
+          "choices": [
+            {
+              "text": "Feature selection can improve efficiency and interpretability, but selecting on all data leaks validation information.",
+              "correct": true
+            },
+            {
+              "text": "Calibration aligns predicted probabilities with empirical frequencies and is distinct from ranking quality.",
+              "correct": false
+            },
+            {
+              "text": "ROC summarizes ranking over thresholds; precision-recall plots are often more revealing when positives are rare.",
+              "correct": false
+            },
+            {
+              "text": "A classifier threshold maps scores to actions and should reflect error costs and capacity constraints.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of feature selection.",
+          "solution": {
+            "code": "Feature selection can improve efficiency and interpretability, but selecting on all data leaks validation information.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Feature selection can improve efficiency and interpretability, but selecting on all data leaks validation information."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Perform selection independently inside each training fold. The other options describe related ideas, but they do not answer the question about feature selection."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-22",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Probability calibration: Applied decision 7",
+          "description": "Check reliability curves before using a probability as a risk estimate. Which principle about probability calibration should guide the decision?",
+          "choices": [
+            {
+              "text": "ROC summarizes ranking over thresholds; precision-recall plots are often more revealing when positives are rare.",
+              "correct": false
+            },
+            {
+              "text": "Calibration aligns predicted probabilities with empirical frequencies and is distinct from ranking quality.",
+              "correct": true
+            },
+            {
+              "text": "A classifier threshold maps scores to actions and should reflect error costs and capacity constraints.",
+              "correct": false
+            },
+            {
+              "text": "Prediction intervals express outcome uncertainty under assumptions and can widen under sparse data or distribution shift.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of probability calibration.",
+          "solution": {
+            "code": "Calibration aligns predicted probabilities with empirical frequencies and is distinct from ranking quality.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Calibration aligns predicted probabilities with empirical frequencies and is distinct from ranking quality."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Check reliability curves before using a probability as a risk estimate. The other options describe related ideas, but they do not answer the question about probability calibration."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-23",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "ROC and precision-recall curves: Applied decision 8",
+          "description": "Compare average precision at the operational class prevalence. Which principle about roc and precision-recall curves should guide the decision?",
+          "choices": [
+            {
+              "text": "A classifier threshold maps scores to actions and should reflect error costs and capacity constraints.",
+              "correct": false
+            },
+            {
+              "text": "Prediction intervals express outcome uncertainty under assumptions and can widen under sparse data or distribution shift.",
+              "correct": false
+            },
+            {
+              "text": "ROC summarizes ranking over thresholds; precision-recall plots are often more revealing when positives are rare.",
+              "correct": true
+            },
+            {
+              "text": "Cluster scores summarize geometric structure but do not prove that groups are useful or stable.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of roc and precision-recall curves.",
+          "solution": {
+            "code": "ROC summarizes ranking over thresholds; precision-recall plots are often more revealing when positives are rare.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "ROC summarizes ranking over thresholds; precision-recall plots are often more revealing when positives are rare."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Compare average precision at the operational class prevalence. The other options describe related ideas, but they do not answer the question about roc and precision-recall curves."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-24",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Threshold selection: Applied decision 9",
+          "description": "Choose a threshold using validation costs, then freeze it before testing. Which principle about threshold selection should guide the decision?",
+          "choices": [
+            {
+              "text": "Prediction intervals express outcome uncertainty under assumptions and can widen under sparse data or distribution shift.",
+              "correct": false
+            },
+            {
+              "text": "Cluster scores summarize geometric structure but do not prove that groups are useful or stable.",
+              "correct": false
+            },
+            {
+              "text": "PCA creates orthogonal directions of maximal variance after scaling, but high variance is not necessarily predictive signal.",
+              "correct": false
+            },
+            {
+              "text": "A classifier threshold maps scores to actions and should reflect error costs and capacity constraints.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of threshold selection.",
+          "solution": {
+            "code": "A classifier threshold maps scores to actions and should reflect error costs and capacity constraints.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "A classifier threshold maps scores to actions and should reflect error costs and capacity constraints."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Choose a threshold using validation costs, then freeze it before testing. The other options describe related ideas, but they do not answer the question about threshold selection."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-25",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Uncertainty and intervals: Applied decision 10",
+          "description": "Communicate a range for demand forecasts instead of only a point estimate. Which principle about uncertainty and intervals should guide the decision?",
+          "choices": [
+            {
+              "text": "Prediction intervals express outcome uncertainty under assumptions and can widen under sparse data or distribution shift.",
+              "correct": true
+            },
+            {
+              "text": "Cluster scores summarize geometric structure but do not prove that groups are useful or stable.",
+              "correct": false
+            },
+            {
+              "text": "PCA creates orthogonal directions of maximal variance after scaling, but high variance is not necessarily predictive signal.",
+              "correct": false
+            },
+            {
+              "text": "Resampling, class weights, and thresholding address imbalance differently and must be applied without contaminating validation.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of uncertainty and intervals.",
+          "solution": {
+            "code": "Prediction intervals express outcome uncertainty under assumptions and can widen under sparse data or distribution shift.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Prediction intervals express outcome uncertainty under assumptions and can widen under sparse data or distribution shift."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Communicate a range for demand forecasts instead of only a point estimate. The other options describe related ideas, but they do not answer the question about uncertainty and intervals."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "level": "advanced",
+      "challenges": [
+        {
+          "id": "tml-advanced-01",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Causal inference vs prediction: Core idea",
+          "description": "Which statement best describes causal inference vs prediction?",
+          "choices": [
+            {
+              "text": "Causal estimates require identification assumptions and design, not just predictive accuracy or feature importance.",
+              "correct": true
+            },
+            {
+              "text": "Covariate, label, and concept shift describe different changes and call for different diagnostics and responses.",
+              "correct": false
+            },
+            {
+              "text": "Conformal methods can provide finite-sample marginal coverage under exchangeability, but coverage can fail under shift.",
+              "correct": false
+            },
+            {
+              "text": "Survival models account for event timing and right-censoring rather than treating unobserved events as negatives.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of causal inference vs prediction.",
+          "solution": {
+            "code": "Causal estimates require identification assumptions and design, not just predictive accuracy or feature importance.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Causal estimates require identification assumptions and design, not just predictive accuracy or feature importance."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Use a randomized or defensible quasi-experimental design to assess a policy change. The other options describe related ideas, but they do not answer the question about causal inference vs prediction."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-02",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Distribution shift: Core idea",
+          "description": "Which statement best describes distribution shift?",
+          "choices": [
+            {
+              "text": "Conformal methods can provide finite-sample marginal coverage under exchangeability, but coverage can fail under shift.",
+              "correct": false
+            },
+            {
+              "text": "Covariate, label, and concept shift describe different changes and call for different diagnostics and responses.",
+              "correct": true
+            },
+            {
+              "text": "Survival models account for event timing and right-censoring rather than treating unobserved events as negatives.",
+              "correct": false
+            },
+            {
+              "text": "Poisson and negative-binomial models represent counts with different dispersion assumptions.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of distribution shift.",
+          "solution": {
+            "code": "Covariate, label, and concept shift describe different changes and call for different diagnostics and responses.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Covariate, label, and concept shift describe different changes and call for different diagnostics and responses."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Track input drift separately from delayed outcome performance. The other options describe related ideas, but they do not answer the question about distribution shift."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-03",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Conformal prediction: Core idea",
+          "description": "Which statement best describes conformal prediction?",
+          "choices": [
+            {
+              "text": "Survival models account for event timing and right-censoring rather than treating unobserved events as negatives.",
+              "correct": false
+            },
+            {
+              "text": "Poisson and negative-binomial models represent counts with different dispersion assumptions.",
+              "correct": false
+            },
+            {
+              "text": "Conformal methods can provide finite-sample marginal coverage under exchangeability, but coverage can fail under shift.",
+              "correct": true
+            },
+            {
+              "text": "Quantile regression estimates conditional quantiles, supporting asymmetric risk and service-level planning.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of conformal prediction.",
+          "solution": {
+            "code": "Conformal methods can provide finite-sample marginal coverage under exchangeability, but coverage can fail under shift.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Conformal methods can provide finite-sample marginal coverage under exchangeability, but coverage can fail under shift."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Validate coverage on exchangeable held-out data and monitor deployment changes. The other options describe related ideas, but they do not answer the question about conformal prediction."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-04",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Survival analysis: Core idea",
+          "description": "Which statement best describes survival analysis?",
+          "choices": [
+            {
+              "text": "Poisson and negative-binomial models represent counts with different dispersion assumptions.",
+              "correct": false
+            },
+            {
+              "text": "Quantile regression estimates conditional quantiles, supporting asymmetric risk and service-level planning.",
+              "correct": false
+            },
+            {
+              "text": "Monotonic constraints encode trusted directional relationships and can improve plausibility without proving causality.",
+              "correct": false
+            },
+            {
+              "text": "Survival models account for event timing and right-censoring rather than treating unobserved events as negatives.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of survival analysis.",
+          "solution": {
+            "code": "Survival models account for event timing and right-censoring rather than treating unobserved events as negatives.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Survival models account for event timing and right-censoring rather than treating unobserved events as negatives."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Model time to equipment failure when some units remain operational at study end. The other options describe related ideas, but they do not answer the question about survival analysis."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-05",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Count models: Core idea",
+          "description": "Which statement best describes count models?",
+          "choices": [
+            {
+              "text": "Poisson and negative-binomial models represent counts with different dispersion assumptions.",
+              "correct": true
+            },
+            {
+              "text": "Quantile regression estimates conditional quantiles, supporting asymmetric risk and service-level planning.",
+              "correct": false
+            },
+            {
+              "text": "Monotonic constraints encode trusted directional relationships and can improve plausibility without proving causality.",
+              "correct": false
+            },
+            {
+              "text": "Feature importance and local explanations describe model behavior under chosen definitions; they are not causal explanations.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of count models.",
+          "solution": {
+            "code": "Poisson and negative-binomial models represent counts with different dispersion assumptions.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Poisson and negative-binomial models represent counts with different dispersion assumptions."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Check overdispersion before choosing a Poisson model for incident counts. The other options describe related ideas, but they do not answer the question about count models."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-06",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Quantile regression: Core idea",
+          "description": "Which statement best describes quantile regression?",
+          "choices": [
+            {
+              "text": "Monotonic constraints encode trusted directional relationships and can improve plausibility without proving causality.",
+              "correct": false
+            },
+            {
+              "text": "Quantile regression estimates conditional quantiles, supporting asymmetric risk and service-level planning.",
+              "correct": true
+            },
+            {
+              "text": "Feature importance and local explanations describe model behavior under chosen definitions; they are not causal explanations.",
+              "correct": false
+            },
+            {
+              "text": "Temporal validation estimates future-facing performance when data and relationships evolve over time.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of quantile regression.",
+          "solution": {
+            "code": "Quantile regression estimates conditional quantiles, supporting asymmetric risk and service-level planning.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Quantile regression estimates conditional quantiles, supporting asymmetric risk and service-level planning."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Forecast the 90th percentile of delivery time for capacity buffers. The other options describe related ideas, but they do not answer the question about quantile regression."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-07",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Monotonic constraints: Core idea",
+          "description": "Which statement best describes monotonic constraints?",
+          "choices": [
+            {
+              "text": "Feature importance and local explanations describe model behavior under chosen definitions; they are not causal explanations.",
+              "correct": false
+            },
+            {
+              "text": "Temporal validation estimates future-facing performance when data and relationships evolve over time.",
+              "correct": false
+            },
+            {
+              "text": "Monotonic constraints encode trusted directional relationships and can improve plausibility without proving causality.",
+              "correct": true
+            },
+            {
+              "text": "Randomized experiments estimate intervention effects when assignment and exposure are controlled.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of monotonic constraints.",
+          "solution": {
+            "code": "Monotonic constraints encode trusted directional relationships and can improve plausibility without proving causality.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Monotonic constraints encode trusted directional relationships and can improve plausibility without proving causality."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Constrain risk score to not decrease as a known risk factor increases. The other options describe related ideas, but they do not answer the question about monotonic constraints."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-08",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Model explainability limits: Core idea",
+          "description": "Which statement best describes model explainability limits?",
+          "choices": [
+            {
+              "text": "Temporal validation estimates future-facing performance when data and relationships evolve over time.",
+              "correct": false
+            },
+            {
+              "text": "Randomized experiments estimate intervention effects when assignment and exposure are controlled.",
+              "correct": false
+            },
+            {
+              "text": "A model can abstain on uncertain cases, trading coverage for improved accuracy on accepted predictions.",
+              "correct": false
+            },
+            {
+              "text": "Feature importance and local explanations describe model behavior under chosen definitions; they are not causal explanations.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of model explainability limits.",
+          "solution": {
+            "code": "Feature importance and local explanations describe model behavior under chosen definitions; they are not causal explanations.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Feature importance and local explanations describe model behavior under chosen definitions; they are not causal explanations."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Use explanations to generate audit questions, then verify with independent analysis. The other options describe related ideas, but they do not answer the question about model explainability limits."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-09",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Out-of-time validation: Core idea",
+          "description": "Which statement best describes out-of-time validation?",
+          "choices": [
+            {
+              "text": "Temporal validation estimates future-facing performance when data and relationships evolve over time.",
+              "correct": true
+            },
+            {
+              "text": "Randomized experiments estimate intervention effects when assignment and exposure are controlled.",
+              "correct": false
+            },
+            {
+              "text": "A model can abstain on uncertain cases, trading coverage for improved accuracy on accepted predictions.",
+              "correct": false
+            },
+            {
+              "text": "Privacy mechanisms limit information disclosed about training examples, with a measurable utility and privacy trade-off.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of out-of-time validation.",
+          "solution": {
+            "code": "Temporal validation estimates future-facing performance when data and relationships evolve over time.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Temporal validation estimates future-facing performance when data and relationships evolve over time."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Train on earlier periods and test on a later period with a gap for delayed labels. The other options describe related ideas, but they do not answer the question about out-of-time validation."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-10",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Online experimentation: Core idea",
+          "description": "Which statement best describes online experimentation?",
+          "choices": [
+            {
+              "text": "A model can abstain on uncertain cases, trading coverage for improved accuracy on accepted predictions.",
+              "correct": false
+            },
+            {
+              "text": "Randomized experiments estimate intervention effects when assignment and exposure are controlled.",
+              "correct": true
+            },
+            {
+              "text": "Privacy mechanisms limit information disclosed about training examples, with a measurable utility and privacy trade-off.",
+              "correct": false
+            },
+            {
+              "text": "Fairness criteria can conflict and may be mathematically incompatible under unequal base rates.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of online experimentation.",
+          "solution": {
+            "code": "Randomized experiments estimate intervention effects when assignment and exposure are controlled.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Randomized experiments estimate intervention effects when assignment and exposure are controlled."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Pre-register a primary outcome and guardrail before an A/B test. The other options describe related ideas, but they do not answer the question about online experimentation."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-11",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Selective prediction: Core idea",
+          "description": "Which statement best describes selective prediction?",
+          "choices": [
+            {
+              "text": "Privacy mechanisms limit information disclosed about training examples, with a measurable utility and privacy trade-off.",
+              "correct": false
+            },
+            {
+              "text": "Fairness criteria can conflict and may be mathematically incompatible under unequal base rates.",
+              "correct": false
+            },
+            {
+              "text": "A model can abstain on uncertain cases, trading coverage for improved accuracy on accepted predictions.",
+              "correct": true
+            },
+            {
+              "text": "Structured documentation records intended use, evaluation scope, data provenance, and known limitations.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of selective prediction.",
+          "solution": {
+            "code": "A model can abstain on uncertain cases, trading coverage for improved accuracy on accepted predictions.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "A model can abstain on uncertain cases, trading coverage for improved accuracy on accepted predictions."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Route low-confidence medical coding cases to a human reviewer. The other options describe related ideas, but they do not answer the question about selective prediction."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-12",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Privacy-aware learning: Core idea",
+          "description": "Which statement best describes privacy-aware learning?",
+          "choices": [
+            {
+              "text": "Fairness criteria can conflict and may be mathematically incompatible under unequal base rates.",
+              "correct": false
+            },
+            {
+              "text": "Structured documentation records intended use, evaluation scope, data provenance, and known limitations.",
+              "correct": false
+            },
+            {
+              "text": "Retirement requires replacing downstream dependencies, preserving audit records, and stopping stale predictions.",
+              "correct": false
+            },
+            {
+              "text": "Privacy mechanisms limit information disclosed about training examples, with a measurable utility and privacy trade-off.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of privacy-aware learning.",
+          "solution": {
+            "code": "Privacy mechanisms limit information disclosed about training examples, with a measurable utility and privacy trade-off.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Privacy mechanisms limit information disclosed about training examples, with a measurable utility and privacy trade-off."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Track a differential-privacy budget across repeated training releases. The other options describe related ideas, but they do not answer the question about privacy-aware learning."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-13",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Fairness constraints: Core idea",
+          "description": "Which statement best describes fairness constraints?",
+          "choices": [
+            {
+              "text": "Fairness criteria can conflict and may be mathematically incompatible under unequal base rates.",
+              "correct": true
+            },
+            {
+              "text": "Structured documentation records intended use, evaluation scope, data provenance, and known limitations.",
+              "correct": false
+            },
+            {
+              "text": "Retirement requires replacing downstream dependencies, preserving audit records, and stopping stale predictions.",
+              "correct": false
+            },
+            {
+              "text": "Causal estimates require identification assumptions and design, not just predictive accuracy or feature importance.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of fairness constraints.",
+          "solution": {
+            "code": "Fairness criteria can conflict and may be mathematically incompatible under unequal base rates.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Fairness criteria can conflict and may be mathematically incompatible under unequal base rates."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Choose a criterion based on the harms and document the trade-off. The other options describe related ideas, but they do not answer the question about fairness constraints."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-14",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Model cards and datasheets: Core idea",
+          "description": "Which statement best describes model cards and datasheets?",
+          "choices": [
+            {
+              "text": "Retirement requires replacing downstream dependencies, preserving audit records, and stopping stale predictions.",
+              "correct": false
+            },
+            {
+              "text": "Structured documentation records intended use, evaluation scope, data provenance, and known limitations.",
+              "correct": true
+            },
+            {
+              "text": "Causal estimates require identification assumptions and design, not just predictive accuracy or feature importance.",
+              "correct": false
+            },
+            {
+              "text": "Covariate, label, and concept shift describe different changes and call for different diagnostics and responses.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of model cards and datasheets.",
+          "solution": {
+            "code": "Structured documentation records intended use, evaluation scope, data provenance, and known limitations.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Structured documentation records intended use, evaluation scope, data provenance, and known limitations."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Publish subgroup results and deployment exclusions with the model artifact. The other options describe related ideas, but they do not answer the question about model cards and datasheets."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-15",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Decommissioning models: Core idea",
+          "description": "Which statement best describes decommissioning models?",
+          "choices": [
+            {
+              "text": "Causal estimates require identification assumptions and design, not just predictive accuracy or feature importance.",
+              "correct": false
+            },
+            {
+              "text": "Covariate, label, and concept shift describe different changes and call for different diagnostics and responses.",
+              "correct": false
+            },
+            {
+              "text": "Retirement requires replacing downstream dependencies, preserving audit records, and stopping stale predictions.",
+              "correct": true
+            },
+            {
+              "text": "Conformal methods can provide finite-sample marginal coverage under exchangeability, but coverage can fail under shift.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of decommissioning models.",
+          "solution": {
+            "code": "Retirement requires replacing downstream dependencies, preserving audit records, and stopping stale predictions.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Retirement requires replacing downstream dependencies, preserving audit records, and stopping stale predictions."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Define a rollback and consumer-notification plan before removing a model. The other options describe related ideas, but they do not answer the question about decommissioning models."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-16",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Causal inference vs prediction: Applied decision 1",
+          "description": "Use a randomized or defensible quasi-experimental design to assess a policy change. Which principle about causal inference vs prediction should guide the decision?",
+          "choices": [
+            {
+              "text": "Covariate, label, and concept shift describe different changes and call for different diagnostics and responses.",
+              "correct": false
+            },
+            {
+              "text": "Conformal methods can provide finite-sample marginal coverage under exchangeability, but coverage can fail under shift.",
+              "correct": false
+            },
+            {
+              "text": "Survival models account for event timing and right-censoring rather than treating unobserved events as negatives.",
+              "correct": false
+            },
+            {
+              "text": "Causal estimates require identification assumptions and design, not just predictive accuracy or feature importance.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of causal inference vs prediction.",
+          "solution": {
+            "code": "Causal estimates require identification assumptions and design, not just predictive accuracy or feature importance.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Causal estimates require identification assumptions and design, not just predictive accuracy or feature importance."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Use a randomized or defensible quasi-experimental design to assess a policy change. The other options describe related ideas, but they do not answer the question about causal inference vs prediction."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-17",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Distribution shift: Applied decision 2",
+          "description": "Track input drift separately from delayed outcome performance. Which principle about distribution shift should guide the decision?",
+          "choices": [
+            {
+              "text": "Covariate, label, and concept shift describe different changes and call for different diagnostics and responses.",
+              "correct": true
+            },
+            {
+              "text": "Conformal methods can provide finite-sample marginal coverage under exchangeability, but coverage can fail under shift.",
+              "correct": false
+            },
+            {
+              "text": "Survival models account for event timing and right-censoring rather than treating unobserved events as negatives.",
+              "correct": false
+            },
+            {
+              "text": "Poisson and negative-binomial models represent counts with different dispersion assumptions.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of distribution shift.",
+          "solution": {
+            "code": "Covariate, label, and concept shift describe different changes and call for different diagnostics and responses.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Covariate, label, and concept shift describe different changes and call for different diagnostics and responses."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Track input drift separately from delayed outcome performance. The other options describe related ideas, but they do not answer the question about distribution shift."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-18",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Conformal prediction: Applied decision 3",
+          "description": "Validate coverage on exchangeable held-out data and monitor deployment changes. Which principle about conformal prediction should guide the decision?",
+          "choices": [
+            {
+              "text": "Survival models account for event timing and right-censoring rather than treating unobserved events as negatives.",
+              "correct": false
+            },
+            {
+              "text": "Conformal methods can provide finite-sample marginal coverage under exchangeability, but coverage can fail under shift.",
+              "correct": true
+            },
+            {
+              "text": "Poisson and negative-binomial models represent counts with different dispersion assumptions.",
+              "correct": false
+            },
+            {
+              "text": "Quantile regression estimates conditional quantiles, supporting asymmetric risk and service-level planning.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of conformal prediction.",
+          "solution": {
+            "code": "Conformal methods can provide finite-sample marginal coverage under exchangeability, but coverage can fail under shift.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Conformal methods can provide finite-sample marginal coverage under exchangeability, but coverage can fail under shift."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Validate coverage on exchangeable held-out data and monitor deployment changes. The other options describe related ideas, but they do not answer the question about conformal prediction."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-19",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Survival analysis: Applied decision 4",
+          "description": "Model time to equipment failure when some units remain operational at study end. Which principle about survival analysis should guide the decision?",
+          "choices": [
+            {
+              "text": "Poisson and negative-binomial models represent counts with different dispersion assumptions.",
+              "correct": false
+            },
+            {
+              "text": "Quantile regression estimates conditional quantiles, supporting asymmetric risk and service-level planning.",
+              "correct": false
+            },
+            {
+              "text": "Survival models account for event timing and right-censoring rather than treating unobserved events as negatives.",
+              "correct": true
+            },
+            {
+              "text": "Monotonic constraints encode trusted directional relationships and can improve plausibility without proving causality.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of survival analysis.",
+          "solution": {
+            "code": "Survival models account for event timing and right-censoring rather than treating unobserved events as negatives.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Survival models account for event timing and right-censoring rather than treating unobserved events as negatives."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Model time to equipment failure when some units remain operational at study end. The other options describe related ideas, but they do not answer the question about survival analysis."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-20",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Count models: Applied decision 5",
+          "description": "Check overdispersion before choosing a Poisson model for incident counts. Which principle about count models should guide the decision?",
+          "choices": [
+            {
+              "text": "Quantile regression estimates conditional quantiles, supporting asymmetric risk and service-level planning.",
+              "correct": false
+            },
+            {
+              "text": "Monotonic constraints encode trusted directional relationships and can improve plausibility without proving causality.",
+              "correct": false
+            },
+            {
+              "text": "Feature importance and local explanations describe model behavior under chosen definitions; they are not causal explanations.",
+              "correct": false
+            },
+            {
+              "text": "Poisson and negative-binomial models represent counts with different dispersion assumptions.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of count models.",
+          "solution": {
+            "code": "Poisson and negative-binomial models represent counts with different dispersion assumptions.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Poisson and negative-binomial models represent counts with different dispersion assumptions."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Check overdispersion before choosing a Poisson model for incident counts. The other options describe related ideas, but they do not answer the question about count models."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-21",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Quantile regression: Applied decision 6",
+          "description": "Forecast the 90th percentile of delivery time for capacity buffers. Which principle about quantile regression should guide the decision?",
+          "choices": [
+            {
+              "text": "Quantile regression estimates conditional quantiles, supporting asymmetric risk and service-level planning.",
+              "correct": true
+            },
+            {
+              "text": "Monotonic constraints encode trusted directional relationships and can improve plausibility without proving causality.",
+              "correct": false
+            },
+            {
+              "text": "Feature importance and local explanations describe model behavior under chosen definitions; they are not causal explanations.",
+              "correct": false
+            },
+            {
+              "text": "Temporal validation estimates future-facing performance when data and relationships evolve over time.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of quantile regression.",
+          "solution": {
+            "code": "Quantile regression estimates conditional quantiles, supporting asymmetric risk and service-level planning.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Quantile regression estimates conditional quantiles, supporting asymmetric risk and service-level planning."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Forecast the 90th percentile of delivery time for capacity buffers. The other options describe related ideas, but they do not answer the question about quantile regression."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-22",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Monotonic constraints: Applied decision 7",
+          "description": "Constrain risk score to not decrease as a known risk factor increases. Which principle about monotonic constraints should guide the decision?",
+          "choices": [
+            {
+              "text": "Feature importance and local explanations describe model behavior under chosen definitions; they are not causal explanations.",
+              "correct": false
+            },
+            {
+              "text": "Monotonic constraints encode trusted directional relationships and can improve plausibility without proving causality.",
+              "correct": true
+            },
+            {
+              "text": "Temporal validation estimates future-facing performance when data and relationships evolve over time.",
+              "correct": false
+            },
+            {
+              "text": "Randomized experiments estimate intervention effects when assignment and exposure are controlled.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of monotonic constraints.",
+          "solution": {
+            "code": "Monotonic constraints encode trusted directional relationships and can improve plausibility without proving causality.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Monotonic constraints encode trusted directional relationships and can improve plausibility without proving causality."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Constrain risk score to not decrease as a known risk factor increases. The other options describe related ideas, but they do not answer the question about monotonic constraints."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-23",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Model explainability limits: Applied decision 8",
+          "description": "Use explanations to generate audit questions, then verify with independent analysis. Which principle about model explainability limits should guide the decision?",
+          "choices": [
+            {
+              "text": "Temporal validation estimates future-facing performance when data and relationships evolve over time.",
+              "correct": false
+            },
+            {
+              "text": "Randomized experiments estimate intervention effects when assignment and exposure are controlled.",
+              "correct": false
+            },
+            {
+              "text": "Feature importance and local explanations describe model behavior under chosen definitions; they are not causal explanations.",
+              "correct": true
+            },
+            {
+              "text": "A model can abstain on uncertain cases, trading coverage for improved accuracy on accepted predictions.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of model explainability limits.",
+          "solution": {
+            "code": "Feature importance and local explanations describe model behavior under chosen definitions; they are not causal explanations.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Feature importance and local explanations describe model behavior under chosen definitions; they are not causal explanations."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Use explanations to generate audit questions, then verify with independent analysis. The other options describe related ideas, but they do not answer the question about model explainability limits."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-24",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Out-of-time validation: Applied decision 9",
+          "description": "Train on earlier periods and test on a later period with a gap for delayed labels. Which principle about out-of-time validation should guide the decision?",
+          "choices": [
+            {
+              "text": "Randomized experiments estimate intervention effects when assignment and exposure are controlled.",
+              "correct": false
+            },
+            {
+              "text": "A model can abstain on uncertain cases, trading coverage for improved accuracy on accepted predictions.",
+              "correct": false
+            },
+            {
+              "text": "Privacy mechanisms limit information disclosed about training examples, with a measurable utility and privacy trade-off.",
+              "correct": false
+            },
+            {
+              "text": "Temporal validation estimates future-facing performance when data and relationships evolve over time.",
+              "correct": true
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of out-of-time validation.",
+          "solution": {
+            "code": "Temporal validation estimates future-facing performance when data and relationships evolve over time.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Temporal validation estimates future-facing performance when data and relationships evolve over time."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Train on earlier periods and test on a later period with a gap for delayed labels. The other options describe related ideas, but they do not answer the question about out-of-time validation."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-25",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Online experimentation: Applied decision 10",
+          "description": "Pre-register a primary outcome and guardrail before an A/B test. Which principle about online experimentation should guide the decision?",
+          "choices": [
+            {
+              "text": "Randomized experiments estimate intervention effects when assignment and exposure are controlled.",
+              "correct": true
+            },
+            {
+              "text": "A model can abstain on uncertain cases, trading coverage for improved accuracy on accepted predictions.",
+              "correct": false
+            },
+            {
+              "text": "Privacy mechanisms limit information disclosed about training examples, with a measurable utility and privacy trade-off.",
+              "correct": false
+            },
+            {
+              "text": "Fairness criteria can conflict and may be mathematically incompatible under unequal base rates.",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the specific goal and limitation of online experimentation.",
+          "solution": {
+            "code": "Randomized experiments estimate intervention effects when assignment and exposure are controlled.",
+            "steps": [
+              {
+                "title": "Identify the concept",
+                "explanation": "Randomized experiments estimate intervention effects when assignment and exposure are controlled."
+              },
+              {
+                "title": "Apply it carefully",
+                "explanation": "Pre-register a primary outcome and guardrail before an A/B test. The other options describe related ideas, but they do not answer the question about online experimentation."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3925 @@
+{
+  "language": "llm-agents",
+  "levels": [
+    {
+      "level": "new",
+      "challenges": [
+        {
+          "id": "llm-new-01",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "What an LLM predicts: Core idea",
+          "description": "Which statement best describes what an llm predicts?",
+          "choices": [
+            {
+              "text": "An autoregressive LLM predicts a distribution over the next token given prior context; fluent output does not establish truth.",
+              "correct": true
+            },
+            {
+              "text": "Tokenizers split text into model-specific units, so character length and context-window usage are different quantities.",
+              "correct": false
+            },
+            {
+              "text": "A context window bounds available tokens for instructions, history, retrieved text, and generated output.",
+              "correct": false
+            },
+            {
+              "text": "A prompt describes a task and desired format but cannot replace application-side validation or authorization.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of what an llm predicts to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "An autoregressive LLM predicts a distribution over the next token given prior context; fluent output does not establish truth.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "An autoregressive LLM predicts a distribution over the next token given prior context; fluent output does not establish truth."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-02",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Tokens and tokenization: Core idea",
+          "description": "Which statement best describes tokens and tokenization?",
+          "choices": [
+            {
+              "text": "A context window bounds available tokens for instructions, history, retrieved text, and generated output.",
+              "correct": false
+            },
+            {
+              "text": "Tokenizers split text into model-specific units, so character length and context-window usage are different quantities.",
+              "correct": true
+            },
+            {
+              "text": "A prompt describes a task and desired format but cannot replace application-side validation or authorization.",
+              "correct": false
+            },
+            {
+              "text": "Conversation roles organize instructions and input, but user and retrieved content remain untrusted data.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of tokens and tokenization to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Tokenizers split text into model-specific units, so character length and context-window usage are different quantities.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Tokenizers split text into model-specific units, so character length and context-window usage are different quantities."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-03",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Context window: Core idea",
+          "description": "Which statement best describes context window?",
+          "choices": [
+            {
+              "text": "A prompt describes a task and desired format but cannot replace application-side validation or authorization.",
+              "correct": false
+            },
+            {
+              "text": "Conversation roles organize instructions and input, but user and retrieved content remain untrusted data.",
+              "correct": false
+            },
+            {
+              "text": "A context window bounds available tokens for instructions, history, retrieved text, and generated output.",
+              "correct": true
+            },
+            {
+              "text": "Sampling settings influence output variability and do not provide a measure of factual confidence.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of context window to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A context window bounds available tokens for instructions, history, retrieved text, and generated output.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A context window bounds available tokens for instructions, history, retrieved text, and generated output."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-04",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Prompt instructions: Core idea",
+          "description": "Which statement best describes prompt instructions?",
+          "choices": [
+            {
+              "text": "Conversation roles organize instructions and input, but user and retrieved content remain untrusted data.",
+              "correct": false
+            },
+            {
+              "text": "Sampling settings influence output variability and do not provide a measure of factual confidence.",
+              "correct": false
+            },
+            {
+              "text": "Hallucinations are unsupported or incorrect generated claims and can appear confidently phrased.",
+              "correct": false
+            },
+            {
+              "text": "A prompt describes a task and desired format but cannot replace application-side validation or authorization.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of prompt instructions to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A prompt describes a task and desired format but cannot replace application-side validation or authorization.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A prompt describes a task and desired format but cannot replace application-side validation or authorization."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-05",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Message roles: Core idea",
+          "description": "Which statement best describes message roles?",
+          "choices": [
+            {
+              "text": "Conversation roles organize instructions and input, but user and retrieved content remain untrusted data.",
+              "correct": true
+            },
+            {
+              "text": "Sampling settings influence output variability and do not provide a measure of factual confidence.",
+              "correct": false
+            },
+            {
+              "text": "Hallucinations are unsupported or incorrect generated claims and can appear confidently phrased.",
+              "correct": false
+            },
+            {
+              "text": "RAG supplies retrieved passages to generation; missing or irrelevant retrieval limits grounding.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of message roles to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Conversation roles organize instructions and input, but user and retrieved content remain untrusted data.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Conversation roles organize instructions and input, but user and retrieved content remain untrusted data."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-06",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Sampling and temperature: Core idea",
+          "description": "Which statement best describes sampling and temperature?",
+          "choices": [
+            {
+              "text": "Hallucinations are unsupported or incorrect generated claims and can appear confidently phrased.",
+              "correct": false
+            },
+            {
+              "text": "Sampling settings influence output variability and do not provide a measure of factual confidence.",
+              "correct": true
+            },
+            {
+              "text": "RAG supplies retrieved passages to generation; missing or irrelevant retrieval limits grounding.",
+              "correct": false
+            },
+            {
+              "text": "Embeddings support similarity search, but semantic similarity is not the same as factual relevance.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of sampling and temperature to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Sampling settings influence output variability and do not provide a measure of factual confidence.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Sampling settings influence output variability and do not provide a measure of factual confidence."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-07",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Hallucinations: Core idea",
+          "description": "Which statement best describes hallucinations?",
+          "choices": [
+            {
+              "text": "RAG supplies retrieved passages to generation; missing or irrelevant retrieval limits grounding.",
+              "correct": false
+            },
+            {
+              "text": "Embeddings support similarity search, but semantic similarity is not the same as factual relevance.",
+              "correct": false
+            },
+            {
+              "text": "Hallucinations are unsupported or incorrect generated claims and can appear confidently phrased.",
+              "correct": true
+            },
+            {
+              "text": "Prompt injection uses untrusted content to manipulate model behavior, including through retrieved documents.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of hallucinations to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Hallucinations are unsupported or incorrect generated claims and can appear confidently phrased.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Hallucinations are unsupported or incorrect generated claims and can appear confidently phrased."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-08",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Retrieval-augmented generation: Core idea",
+          "description": "Which statement best describes retrieval-augmented generation?",
+          "choices": [
+            {
+              "text": "Embeddings support similarity search, but semantic similarity is not the same as factual relevance.",
+              "correct": false
+            },
+            {
+              "text": "Prompt injection uses untrusted content to manipulate model behavior, including through retrieved documents.",
+              "correct": false
+            },
+            {
+              "text": "A schema can constrain output shape, but the application must still validate values and business rules.",
+              "correct": false
+            },
+            {
+              "text": "RAG supplies retrieved passages to generation; missing or irrelevant retrieval limits grounding.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of retrieval-augmented generation to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "RAG supplies retrieved passages to generation; missing or irrelevant retrieval limits grounding.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "RAG supplies retrieved passages to generation; missing or irrelevant retrieval limits grounding."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-09",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Embeddings and search: Core idea",
+          "description": "Which statement best describes embeddings and search?",
+          "choices": [
+            {
+              "text": "Embeddings support similarity search, but semantic similarity is not the same as factual relevance.",
+              "correct": true
+            },
+            {
+              "text": "Prompt injection uses untrusted content to manipulate model behavior, including through retrieved documents.",
+              "correct": false
+            },
+            {
+              "text": "A schema can constrain output shape, but the application must still validate values and business rules.",
+              "correct": false
+            },
+            {
+              "text": "A model may propose a tool and arguments; trusted application code decides whether execution is authorized.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of embeddings and search to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Embeddings support similarity search, but semantic similarity is not the same as factual relevance.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Embeddings support similarity search, but semantic similarity is not the same as factual relevance."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-10",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Prompt injection: Core idea",
+          "description": "Which statement best describes prompt injection?",
+          "choices": [
+            {
+              "text": "A schema can constrain output shape, but the application must still validate values and business rules.",
+              "correct": false
+            },
+            {
+              "text": "Prompt injection uses untrusted content to manipulate model behavior, including through retrieved documents.",
+              "correct": true
+            },
+            {
+              "text": "A model may propose a tool and arguments; trusted application code decides whether execution is authorized.",
+              "correct": false
+            },
+            {
+              "text": "An agent cycles through model decisions and tool results, so it needs explicit limits and stop conditions.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of prompt injection to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Prompt injection uses untrusted content to manipulate model behavior, including through retrieved documents.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Prompt injection uses untrusted content to manipulate model behavior, including through retrieved documents."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-11",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Structured output: Core idea",
+          "description": "Which statement best describes structured output?",
+          "choices": [
+            {
+              "text": "A model may propose a tool and arguments; trusted application code decides whether execution is authorized.",
+              "correct": false
+            },
+            {
+              "text": "An agent cycles through model decisions and tool results, so it needs explicit limits and stop conditions.",
+              "correct": false
+            },
+            {
+              "text": "A schema can constrain output shape, but the application must still validate values and business rules.",
+              "correct": true
+            },
+            {
+              "text": "Human review is valuable when impact, uncertainty, or policy exceeds what automated checks can safely resolve.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of structured output to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A schema can constrain output shape, but the application must still validate values and business rules.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A schema can constrain output shape, but the application must still validate values and business rules."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-12",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Tool calling: Core idea",
+          "description": "Which statement best describes tool calling?",
+          "choices": [
+            {
+              "text": "An agent cycles through model decisions and tool results, so it needs explicit limits and stop conditions.",
+              "correct": false
+            },
+            {
+              "text": "Human review is valuable when impact, uncertainty, or policy exceeds what automated checks can safely resolve.",
+              "correct": false
+            },
+            {
+              "text": "Task-specific examples and rubrics measure product behavior better than a single broad benchmark.",
+              "correct": false
+            },
+            {
+              "text": "A model may propose a tool and arguments; trusted application code decides whether execution is authorized.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of tool calling to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A model may propose a tool and arguments; trusted application code decides whether execution is authorized.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A model may propose a tool and arguments; trusted application code decides whether execution is authorized."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-13",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Agent loop: Core idea",
+          "description": "Which statement best describes agent loop?",
+          "choices": [
+            {
+              "text": "An agent cycles through model decisions and tool results, so it needs explicit limits and stop conditions.",
+              "correct": true
+            },
+            {
+              "text": "Human review is valuable when impact, uncertainty, or policy exceeds what automated checks can safely resolve.",
+              "correct": false
+            },
+            {
+              "text": "Task-specific examples and rubrics measure product behavior better than a single broad benchmark.",
+              "correct": false
+            },
+            {
+              "text": "An autoregressive LLM predicts a distribution over the next token given prior context; fluent output does not establish truth.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of agent loop to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "An agent cycles through model decisions and tool results, so it needs explicit limits and stop conditions.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "An agent cycles through model decisions and tool results, so it needs explicit limits and stop conditions."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-14",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Human review: Core idea",
+          "description": "Which statement best describes human review?",
+          "choices": [
+            {
+              "text": "Task-specific examples and rubrics measure product behavior better than a single broad benchmark.",
+              "correct": false
+            },
+            {
+              "text": "Human review is valuable when impact, uncertainty, or policy exceeds what automated checks can safely resolve.",
+              "correct": true
+            },
+            {
+              "text": "An autoregressive LLM predicts a distribution over the next token given prior context; fluent output does not establish truth.",
+              "correct": false
+            },
+            {
+              "text": "Tokenizers split text into model-specific units, so character length and context-window usage are different quantities.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of human review to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Human review is valuable when impact, uncertainty, or policy exceeds what automated checks can safely resolve.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Human review is valuable when impact, uncertainty, or policy exceeds what automated checks can safely resolve."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-15",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "LLM evaluation: Core idea",
+          "description": "Which statement best describes llm evaluation?",
+          "choices": [
+            {
+              "text": "An autoregressive LLM predicts a distribution over the next token given prior context; fluent output does not establish truth.",
+              "correct": false
+            },
+            {
+              "text": "Tokenizers split text into model-specific units, so character length and context-window usage are different quantities.",
+              "correct": false
+            },
+            {
+              "text": "Task-specific examples and rubrics measure product behavior better than a single broad benchmark.",
+              "correct": true
+            },
+            {
+              "text": "A context window bounds available tokens for instructions, history, retrieved text, and generated output.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of llm evaluation to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Task-specific examples and rubrics measure product behavior better than a single broad benchmark.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Task-specific examples and rubrics measure product behavior better than a single broad benchmark."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-16",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "What an LLM predicts: Applied decision 1",
+          "description": "A team is reviewing what an llm predicts in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Tokenizers split text into model-specific units, so character length and context-window usage are different quantities.",
+              "correct": false
+            },
+            {
+              "text": "A context window bounds available tokens for instructions, history, retrieved text, and generated output.",
+              "correct": false
+            },
+            {
+              "text": "A prompt describes a task and desired format but cannot replace application-side validation or authorization.",
+              "correct": false
+            },
+            {
+              "text": "An autoregressive LLM predicts a distribution over the next token given prior context; fluent output does not establish truth.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of what an llm predicts to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "An autoregressive LLM predicts a distribution over the next token given prior context; fluent output does not establish truth.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "An autoregressive LLM predicts a distribution over the next token given prior context; fluent output does not establish truth."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-17",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Tokens and tokenization: Applied decision 2",
+          "description": "A team is reviewing tokens and tokenization in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Tokenizers split text into model-specific units, so character length and context-window usage are different quantities.",
+              "correct": true
+            },
+            {
+              "text": "A context window bounds available tokens for instructions, history, retrieved text, and generated output.",
+              "correct": false
+            },
+            {
+              "text": "A prompt describes a task and desired format but cannot replace application-side validation or authorization.",
+              "correct": false
+            },
+            {
+              "text": "Conversation roles organize instructions and input, but user and retrieved content remain untrusted data.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of tokens and tokenization to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Tokenizers split text into model-specific units, so character length and context-window usage are different quantities.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Tokenizers split text into model-specific units, so character length and context-window usage are different quantities."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-18",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Context window: Applied decision 3",
+          "description": "A team is reviewing context window in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "A prompt describes a task and desired format but cannot replace application-side validation or authorization.",
+              "correct": false
+            },
+            {
+              "text": "A context window bounds available tokens for instructions, history, retrieved text, and generated output.",
+              "correct": true
+            },
+            {
+              "text": "Conversation roles organize instructions and input, but user and retrieved content remain untrusted data.",
+              "correct": false
+            },
+            {
+              "text": "Sampling settings influence output variability and do not provide a measure of factual confidence.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of context window to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A context window bounds available tokens for instructions, history, retrieved text, and generated output.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A context window bounds available tokens for instructions, history, retrieved text, and generated output."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-19",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Prompt instructions: Applied decision 4",
+          "description": "A team is reviewing prompt instructions in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Conversation roles organize instructions and input, but user and retrieved content remain untrusted data.",
+              "correct": false
+            },
+            {
+              "text": "Sampling settings influence output variability and do not provide a measure of factual confidence.",
+              "correct": false
+            },
+            {
+              "text": "A prompt describes a task and desired format but cannot replace application-side validation or authorization.",
+              "correct": true
+            },
+            {
+              "text": "Hallucinations are unsupported or incorrect generated claims and can appear confidently phrased.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of prompt instructions to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A prompt describes a task and desired format but cannot replace application-side validation or authorization.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A prompt describes a task and desired format but cannot replace application-side validation or authorization."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-20",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Message roles: Applied decision 5",
+          "description": "A team is reviewing message roles in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Sampling settings influence output variability and do not provide a measure of factual confidence.",
+              "correct": false
+            },
+            {
+              "text": "Hallucinations are unsupported or incorrect generated claims and can appear confidently phrased.",
+              "correct": false
+            },
+            {
+              "text": "RAG supplies retrieved passages to generation; missing or irrelevant retrieval limits grounding.",
+              "correct": false
+            },
+            {
+              "text": "Conversation roles organize instructions and input, but user and retrieved content remain untrusted data.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of message roles to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Conversation roles organize instructions and input, but user and retrieved content remain untrusted data.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Conversation roles organize instructions and input, but user and retrieved content remain untrusted data."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-21",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Sampling and temperature: Applied decision 6",
+          "description": "A team is reviewing sampling and temperature in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Sampling settings influence output variability and do not provide a measure of factual confidence.",
+              "correct": true
+            },
+            {
+              "text": "Hallucinations are unsupported or incorrect generated claims and can appear confidently phrased.",
+              "correct": false
+            },
+            {
+              "text": "RAG supplies retrieved passages to generation; missing or irrelevant retrieval limits grounding.",
+              "correct": false
+            },
+            {
+              "text": "Embeddings support similarity search, but semantic similarity is not the same as factual relevance.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of sampling and temperature to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Sampling settings influence output variability and do not provide a measure of factual confidence.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Sampling settings influence output variability and do not provide a measure of factual confidence."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-22",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Hallucinations: Applied decision 7",
+          "description": "A team is reviewing hallucinations in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "RAG supplies retrieved passages to generation; missing or irrelevant retrieval limits grounding.",
+              "correct": false
+            },
+            {
+              "text": "Hallucinations are unsupported or incorrect generated claims and can appear confidently phrased.",
+              "correct": true
+            },
+            {
+              "text": "Embeddings support similarity search, but semantic similarity is not the same as factual relevance.",
+              "correct": false
+            },
+            {
+              "text": "Prompt injection uses untrusted content to manipulate model behavior, including through retrieved documents.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of hallucinations to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Hallucinations are unsupported or incorrect generated claims and can appear confidently phrased.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Hallucinations are unsupported or incorrect generated claims and can appear confidently phrased."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-23",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Retrieval-augmented generation: Applied decision 8",
+          "description": "A team is reviewing retrieval-augmented generation in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Embeddings support similarity search, but semantic similarity is not the same as factual relevance.",
+              "correct": false
+            },
+            {
+              "text": "Prompt injection uses untrusted content to manipulate model behavior, including through retrieved documents.",
+              "correct": false
+            },
+            {
+              "text": "RAG supplies retrieved passages to generation; missing or irrelevant retrieval limits grounding.",
+              "correct": true
+            },
+            {
+              "text": "A schema can constrain output shape, but the application must still validate values and business rules.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of retrieval-augmented generation to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "RAG supplies retrieved passages to generation; missing or irrelevant retrieval limits grounding.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "RAG supplies retrieved passages to generation; missing or irrelevant retrieval limits grounding."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-24",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Embeddings and search: Applied decision 9",
+          "description": "A team is reviewing embeddings and search in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Prompt injection uses untrusted content to manipulate model behavior, including through retrieved documents.",
+              "correct": false
+            },
+            {
+              "text": "A schema can constrain output shape, but the application must still validate values and business rules.",
+              "correct": false
+            },
+            {
+              "text": "A model may propose a tool and arguments; trusted application code decides whether execution is authorized.",
+              "correct": false
+            },
+            {
+              "text": "Embeddings support similarity search, but semantic similarity is not the same as factual relevance.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of embeddings and search to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Embeddings support similarity search, but semantic similarity is not the same as factual relevance.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Embeddings support similarity search, but semantic similarity is not the same as factual relevance."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-25",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Prompt injection: Applied decision 10",
+          "description": "A team is reviewing prompt injection in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Prompt injection uses untrusted content to manipulate model behavior, including through retrieved documents.",
+              "correct": true
+            },
+            {
+              "text": "A schema can constrain output shape, but the application must still validate values and business rules.",
+              "correct": false
+            },
+            {
+              "text": "A model may propose a tool and arguments; trusted application code decides whether execution is authorized.",
+              "correct": false
+            },
+            {
+              "text": "An agent cycles through model decisions and tool results, so it needs explicit limits and stop conditions.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of prompt injection to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Prompt injection uses untrusted content to manipulate model behavior, including through retrieved documents.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Prompt injection uses untrusted content to manipulate model behavior, including through retrieved documents."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "level": "beginner",
+      "challenges": [
+        {
+          "id": "llm-beginner-01",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Prompt templates: Core idea",
+          "description": "Which statement best describes prompt templates?",
+          "choices": [
+            {
+              "text": "Templates separate stable instructions from variable inputs and make changes traceable and testable.",
+              "correct": true
+            },
+            {
+              "text": "Examples illustrate a desired pattern but consume context and can bias behavior toward narrow cases.",
+              "correct": false
+            },
+            {
+              "text": "Chunk boundaries affect evidence completeness and irrelevant context; evaluate them against answerable questions.",
+              "correct": false
+            },
+            {
+              "text": "Filters constrain retrieval by source, date, tenant, or permissions and should enforce access rules before ranking.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of prompt templates to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Templates separate stable instructions from variable inputs and make changes traceable and testable.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Templates separate stable instructions from variable inputs and make changes traceable and testable."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-02",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Few-shot examples: Core idea",
+          "description": "Which statement best describes few-shot examples?",
+          "choices": [
+            {
+              "text": "Chunk boundaries affect evidence completeness and irrelevant context; evaluate them against answerable questions.",
+              "correct": false
+            },
+            {
+              "text": "Examples illustrate a desired pattern but consume context and can bias behavior toward narrow cases.",
+              "correct": true
+            },
+            {
+              "text": "Filters constrain retrieval by source, date, tenant, or permissions and should enforce access rules before ranking.",
+              "correct": false
+            },
+            {
+              "text": "A reranker reorders retrieved candidates with a focused relevance model, adding latency and compute cost.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of few-shot examples to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Examples illustrate a desired pattern but consume context and can bias behavior toward narrow cases.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Examples illustrate a desired pattern but consume context and can bias behavior toward narrow cases."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-03",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Retrieval chunking: Core idea",
+          "description": "Which statement best describes retrieval chunking?",
+          "choices": [
+            {
+              "text": "Filters constrain retrieval by source, date, tenant, or permissions and should enforce access rules before ranking.",
+              "correct": false
+            },
+            {
+              "text": "A reranker reorders retrieved candidates with a focused relevance model, adding latency and compute cost.",
+              "correct": false
+            },
+            {
+              "text": "Chunk boundaries affect evidence completeness and irrelevant context; evaluate them against answerable questions.",
+              "correct": true
+            },
+            {
+              "text": "Citations should support their associated claims with evidence, not merely point to a related document.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of retrieval chunking to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Chunk boundaries affect evidence completeness and irrelevant context; evaluate them against answerable questions.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Chunk boundaries affect evidence completeness and irrelevant context; evaluate them against answerable questions."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-04",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Metadata filters: Core idea",
+          "description": "Which statement best describes metadata filters?",
+          "choices": [
+            {
+              "text": "A reranker reorders retrieved candidates with a focused relevance model, adding latency and compute cost.",
+              "correct": false
+            },
+            {
+              "text": "Citations should support their associated claims with evidence, not merely point to a related document.",
+              "correct": false
+            },
+            {
+              "text": "A system should abstain when evidence, authorization, or confidence is inadequate rather than inventing an answer.",
+              "correct": false
+            },
+            {
+              "text": "Filters constrain retrieval by source, date, tenant, or permissions and should enforce access rules before ranking.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of metadata filters to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Filters constrain retrieval by source, date, tenant, or permissions and should enforce access rules before ranking.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Filters constrain retrieval by source, date, tenant, or permissions and should enforce access rules before ranking."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-05",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Reranking: Core idea",
+          "description": "Which statement best describes reranking?",
+          "choices": [
+            {
+              "text": "A reranker reorders retrieved candidates with a focused relevance model, adding latency and compute cost.",
+              "correct": true
+            },
+            {
+              "text": "Citations should support their associated claims with evidence, not merely point to a related document.",
+              "correct": false
+            },
+            {
+              "text": "A system should abstain when evidence, authorization, or confidence is inadequate rather than inventing an answer.",
+              "correct": false
+            },
+            {
+              "text": "Schemas constrain tool argument shape but do not establish that the caller may perform the requested action.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of reranking to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A reranker reorders retrieved candidates with a focused relevance model, adding latency and compute cost.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A reranker reorders retrieved candidates with a focused relevance model, adding latency and compute cost."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-06",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Citation grounding: Core idea",
+          "description": "Which statement best describes citation grounding?",
+          "choices": [
+            {
+              "text": "A system should abstain when evidence, authorization, or confidence is inadequate rather than inventing an answer.",
+              "correct": false
+            },
+            {
+              "text": "Citations should support their associated claims with evidence, not merely point to a related document.",
+              "correct": true
+            },
+            {
+              "text": "Schemas constrain tool argument shape but do not establish that the caller may perform the requested action.",
+              "correct": false
+            },
+            {
+              "text": "Idempotency prevents retried tool calls from duplicating side effects.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of citation grounding to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Citations should support their associated claims with evidence, not merely point to a related document.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Citations should support their associated claims with evidence, not merely point to a related document."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-07",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Refusal and abstention: Core idea",
+          "description": "Which statement best describes refusal and abstention?",
+          "choices": [
+            {
+              "text": "Schemas constrain tool argument shape but do not establish that the caller may perform the requested action.",
+              "correct": false
+            },
+            {
+              "text": "Idempotency prevents retried tool calls from duplicating side effects.",
+              "correct": false
+            },
+            {
+              "text": "A system should abstain when evidence, authorization, or confidence is inadequate rather than inventing an answer.",
+              "correct": true
+            },
+            {
+              "text": "Explicit task state separates validated progress from potentially stale or contradictory conversation history.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of refusal and abstention to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A system should abstain when evidence, authorization, or confidence is inadequate rather than inventing an answer.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A system should abstain when evidence, authorization, or confidence is inadequate rather than inventing an answer."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-08",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Function schemas: Core idea",
+          "description": "Which statement best describes function schemas?",
+          "choices": [
+            {
+              "text": "Idempotency prevents retried tool calls from duplicating side effects.",
+              "correct": false
+            },
+            {
+              "text": "Explicit task state separates validated progress from potentially stale or contradictory conversation history.",
+              "correct": false
+            },
+            {
+              "text": "Useful memory is scoped, correctable, and deletable rather than treating every interaction as durable truth.",
+              "correct": false
+            },
+            {
+              "text": "Schemas constrain tool argument shape but do not establish that the caller may perform the requested action.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of function schemas to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Schemas constrain tool argument shape but do not establish that the caller may perform the requested action.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Schemas constrain tool argument shape but do not establish that the caller may perform the requested action."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-09",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Idempotent actions: Core idea",
+          "description": "Which statement best describes idempotent actions?",
+          "choices": [
+            {
+              "text": "Idempotency prevents retried tool calls from duplicating side effects.",
+              "correct": true
+            },
+            {
+              "text": "Explicit task state separates validated progress from potentially stale or contradictory conversation history.",
+              "correct": false
+            },
+            {
+              "text": "Useful memory is scoped, correctable, and deletable rather than treating every interaction as durable truth.",
+              "correct": false
+            },
+            {
+              "text": "Step, time, and token budgets limit runaway cost and repeated unproductive actions.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of idempotent actions to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Idempotency prevents retried tool calls from duplicating side effects.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Idempotency prevents retried tool calls from duplicating side effects."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-10",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Agent state: Core idea",
+          "description": "Which statement best describes agent state?",
+          "choices": [
+            {
+              "text": "Useful memory is scoped, correctable, and deletable rather than treating every interaction as durable truth.",
+              "correct": false
+            },
+            {
+              "text": "Explicit task state separates validated progress from potentially stale or contradictory conversation history.",
+              "correct": true
+            },
+            {
+              "text": "Step, time, and token budgets limit runaway cost and repeated unproductive actions.",
+              "correct": false
+            },
+            {
+              "text": "Typed errors let an agent distinguish timeouts and failures from a successful empty result.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of agent state to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Explicit task state separates validated progress from potentially stale or contradictory conversation history.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Explicit task state separates validated progress from potentially stale or contradictory conversation history."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-11",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Memory design: Core idea",
+          "description": "Which statement best describes memory design?",
+          "choices": [
+            {
+              "text": "Step, time, and token budgets limit runaway cost and repeated unproductive actions.",
+              "correct": false
+            },
+            {
+              "text": "Typed errors let an agent distinguish timeouts and failures from a successful empty result.",
+              "correct": false
+            },
+            {
+              "text": "Useful memory is scoped, correctable, and deletable rather than treating every interaction as durable truth.",
+              "correct": true
+            },
+            {
+              "text": "Model judges can scale rubric checks but require calibration against human ratings and bias checks.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of memory design to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Useful memory is scoped, correctable, and deletable rather than treating every interaction as durable truth.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Useful memory is scoped, correctable, and deletable rather than treating every interaction as durable truth."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-12",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Agent budgets: Core idea",
+          "description": "Which statement best describes agent budgets?",
+          "choices": [
+            {
+              "text": "Typed errors let an agent distinguish timeouts and failures from a successful empty result.",
+              "correct": false
+            },
+            {
+              "text": "Model judges can scale rubric checks but require calibration against human ratings and bias checks.",
+              "correct": false
+            },
+            {
+              "text": "Regression cases preserve expected behavior across edits and should include ambiguous and adversarial inputs.",
+              "correct": false
+            },
+            {
+              "text": "Step, time, and token budgets limit runaway cost and repeated unproductive actions.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of agent budgets to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Step, time, and token budgets limit runaway cost and repeated unproductive actions.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Step, time, and token budgets limit runaway cost and repeated unproductive actions."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-13",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Tool errors: Core idea",
+          "description": "Which statement best describes tool errors?",
+          "choices": [
+            {
+              "text": "Typed errors let an agent distinguish timeouts and failures from a successful empty result.",
+              "correct": true
+            },
+            {
+              "text": "Model judges can scale rubric checks but require calibration against human ratings and bias checks.",
+              "correct": false
+            },
+            {
+              "text": "Regression cases preserve expected behavior across edits and should include ambiguous and adversarial inputs.",
+              "correct": false
+            },
+            {
+              "text": "Templates separate stable instructions from variable inputs and make changes traceable and testable.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of tool errors to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Typed errors let an agent distinguish timeouts and failures from a successful empty result.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Typed errors let an agent distinguish timeouts and failures from a successful empty result."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-14",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "LLM-as-judge: Core idea",
+          "description": "Which statement best describes llm-as-judge?",
+          "choices": [
+            {
+              "text": "Regression cases preserve expected behavior across edits and should include ambiguous and adversarial inputs.",
+              "correct": false
+            },
+            {
+              "text": "Model judges can scale rubric checks but require calibration against human ratings and bias checks.",
+              "correct": true
+            },
+            {
+              "text": "Templates separate stable instructions from variable inputs and make changes traceable and testable.",
+              "correct": false
+            },
+            {
+              "text": "Examples illustrate a desired pattern but consume context and can bias behavior toward narrow cases.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of llm-as-judge to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Model judges can scale rubric checks but require calibration against human ratings and bias checks.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Model judges can scale rubric checks but require calibration against human ratings and bias checks."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-15",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Prompt regression tests: Core idea",
+          "description": "Which statement best describes prompt regression tests?",
+          "choices": [
+            {
+              "text": "Templates separate stable instructions from variable inputs and make changes traceable and testable.",
+              "correct": false
+            },
+            {
+              "text": "Examples illustrate a desired pattern but consume context and can bias behavior toward narrow cases.",
+              "correct": false
+            },
+            {
+              "text": "Regression cases preserve expected behavior across edits and should include ambiguous and adversarial inputs.",
+              "correct": true
+            },
+            {
+              "text": "Chunk boundaries affect evidence completeness and irrelevant context; evaluate them against answerable questions.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of prompt regression tests to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Regression cases preserve expected behavior across edits and should include ambiguous and adversarial inputs.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Regression cases preserve expected behavior across edits and should include ambiguous and adversarial inputs."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-16",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Prompt templates: Applied decision 1",
+          "description": "A team is reviewing prompt templates in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Examples illustrate a desired pattern but consume context and can bias behavior toward narrow cases.",
+              "correct": false
+            },
+            {
+              "text": "Chunk boundaries affect evidence completeness and irrelevant context; evaluate them against answerable questions.",
+              "correct": false
+            },
+            {
+              "text": "Filters constrain retrieval by source, date, tenant, or permissions and should enforce access rules before ranking.",
+              "correct": false
+            },
+            {
+              "text": "Templates separate stable instructions from variable inputs and make changes traceable and testable.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of prompt templates to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Templates separate stable instructions from variable inputs and make changes traceable and testable.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Templates separate stable instructions from variable inputs and make changes traceable and testable."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-17",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Few-shot examples: Applied decision 2",
+          "description": "A team is reviewing few-shot examples in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Examples illustrate a desired pattern but consume context and can bias behavior toward narrow cases.",
+              "correct": true
+            },
+            {
+              "text": "Chunk boundaries affect evidence completeness and irrelevant context; evaluate them against answerable questions.",
+              "correct": false
+            },
+            {
+              "text": "Filters constrain retrieval by source, date, tenant, or permissions and should enforce access rules before ranking.",
+              "correct": false
+            },
+            {
+              "text": "A reranker reorders retrieved candidates with a focused relevance model, adding latency and compute cost.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of few-shot examples to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Examples illustrate a desired pattern but consume context and can bias behavior toward narrow cases.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Examples illustrate a desired pattern but consume context and can bias behavior toward narrow cases."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-18",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Retrieval chunking: Applied decision 3",
+          "description": "A team is reviewing retrieval chunking in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Filters constrain retrieval by source, date, tenant, or permissions and should enforce access rules before ranking.",
+              "correct": false
+            },
+            {
+              "text": "Chunk boundaries affect evidence completeness and irrelevant context; evaluate them against answerable questions.",
+              "correct": true
+            },
+            {
+              "text": "A reranker reorders retrieved candidates with a focused relevance model, adding latency and compute cost.",
+              "correct": false
+            },
+            {
+              "text": "Citations should support their associated claims with evidence, not merely point to a related document.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of retrieval chunking to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Chunk boundaries affect evidence completeness and irrelevant context; evaluate them against answerable questions.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Chunk boundaries affect evidence completeness and irrelevant context; evaluate them against answerable questions."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-19",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Metadata filters: Applied decision 4",
+          "description": "A team is reviewing metadata filters in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "A reranker reorders retrieved candidates with a focused relevance model, adding latency and compute cost.",
+              "correct": false
+            },
+            {
+              "text": "Citations should support their associated claims with evidence, not merely point to a related document.",
+              "correct": false
+            },
+            {
+              "text": "Filters constrain retrieval by source, date, tenant, or permissions and should enforce access rules before ranking.",
+              "correct": true
+            },
+            {
+              "text": "A system should abstain when evidence, authorization, or confidence is inadequate rather than inventing an answer.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of metadata filters to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Filters constrain retrieval by source, date, tenant, or permissions and should enforce access rules before ranking.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Filters constrain retrieval by source, date, tenant, or permissions and should enforce access rules before ranking."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-20",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Reranking: Applied decision 5",
+          "description": "A team is reviewing reranking in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Citations should support their associated claims with evidence, not merely point to a related document.",
+              "correct": false
+            },
+            {
+              "text": "A system should abstain when evidence, authorization, or confidence is inadequate rather than inventing an answer.",
+              "correct": false
+            },
+            {
+              "text": "Schemas constrain tool argument shape but do not establish that the caller may perform the requested action.",
+              "correct": false
+            },
+            {
+              "text": "A reranker reorders retrieved candidates with a focused relevance model, adding latency and compute cost.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of reranking to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A reranker reorders retrieved candidates with a focused relevance model, adding latency and compute cost.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A reranker reorders retrieved candidates with a focused relevance model, adding latency and compute cost."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-21",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Citation grounding: Applied decision 6",
+          "description": "A team is reviewing citation grounding in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Citations should support their associated claims with evidence, not merely point to a related document.",
+              "correct": true
+            },
+            {
+              "text": "A system should abstain when evidence, authorization, or confidence is inadequate rather than inventing an answer.",
+              "correct": false
+            },
+            {
+              "text": "Schemas constrain tool argument shape but do not establish that the caller may perform the requested action.",
+              "correct": false
+            },
+            {
+              "text": "Idempotency prevents retried tool calls from duplicating side effects.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of citation grounding to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Citations should support their associated claims with evidence, not merely point to a related document.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Citations should support their associated claims with evidence, not merely point to a related document."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-22",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Refusal and abstention: Applied decision 7",
+          "description": "A team is reviewing refusal and abstention in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Schemas constrain tool argument shape but do not establish that the caller may perform the requested action.",
+              "correct": false
+            },
+            {
+              "text": "A system should abstain when evidence, authorization, or confidence is inadequate rather than inventing an answer.",
+              "correct": true
+            },
+            {
+              "text": "Idempotency prevents retried tool calls from duplicating side effects.",
+              "correct": false
+            },
+            {
+              "text": "Explicit task state separates validated progress from potentially stale or contradictory conversation history.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of refusal and abstention to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A system should abstain when evidence, authorization, or confidence is inadequate rather than inventing an answer.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A system should abstain when evidence, authorization, or confidence is inadequate rather than inventing an answer."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-23",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Function schemas: Applied decision 8",
+          "description": "A team is reviewing function schemas in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Idempotency prevents retried tool calls from duplicating side effects.",
+              "correct": false
+            },
+            {
+              "text": "Explicit task state separates validated progress from potentially stale or contradictory conversation history.",
+              "correct": false
+            },
+            {
+              "text": "Schemas constrain tool argument shape but do not establish that the caller may perform the requested action.",
+              "correct": true
+            },
+            {
+              "text": "Useful memory is scoped, correctable, and deletable rather than treating every interaction as durable truth.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of function schemas to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Schemas constrain tool argument shape but do not establish that the caller may perform the requested action.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Schemas constrain tool argument shape but do not establish that the caller may perform the requested action."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-24",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Idempotent actions: Applied decision 9",
+          "description": "A team is reviewing idempotent actions in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Explicit task state separates validated progress from potentially stale or contradictory conversation history.",
+              "correct": false
+            },
+            {
+              "text": "Useful memory is scoped, correctable, and deletable rather than treating every interaction as durable truth.",
+              "correct": false
+            },
+            {
+              "text": "Step, time, and token budgets limit runaway cost and repeated unproductive actions.",
+              "correct": false
+            },
+            {
+              "text": "Idempotency prevents retried tool calls from duplicating side effects.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of idempotent actions to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Idempotency prevents retried tool calls from duplicating side effects.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Idempotency prevents retried tool calls from duplicating side effects."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-25",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Agent state: Applied decision 10",
+          "description": "A team is reviewing agent state in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Explicit task state separates validated progress from potentially stale or contradictory conversation history.",
+              "correct": true
+            },
+            {
+              "text": "Useful memory is scoped, correctable, and deletable rather than treating every interaction as durable truth.",
+              "correct": false
+            },
+            {
+              "text": "Step, time, and token budgets limit runaway cost and repeated unproductive actions.",
+              "correct": false
+            },
+            {
+              "text": "Typed errors let an agent distinguish timeouts and failures from a successful empty result.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of agent state to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Explicit task state separates validated progress from potentially stale or contradictory conversation history.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Explicit task state separates validated progress from potentially stale or contradictory conversation history."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "level": "intermediate",
+      "challenges": [
+        {
+          "id": "llm-intermediate-01",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Retrieval evaluation: Core idea",
+          "description": "Which statement best describes retrieval evaluation?",
+          "choices": [
+            {
+              "text": "Recall checks whether relevant passages are found, while precision and ranking metrics assess top results.",
+              "correct": true
+            },
+            {
+              "text": "Evaluate correctness, completeness, instruction following, and style as separate dimensions.",
+              "correct": false
+            },
+            {
+              "text": "Failures may arise in parsing, indexing, retrieval, context assembly, or generation; inspect each stage before changing prompts.",
+              "correct": false
+            },
+            {
+              "text": "Evidence position and redundancy can influence use in long contexts; test placement rather than assuming order is irrelevant.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of retrieval evaluation to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Recall checks whether relevant passages are found, while precision and ranking metrics assess top results.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Recall checks whether relevant passages are found, while precision and ranking metrics assess top results."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-02",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Generation evaluation: Core idea",
+          "description": "Which statement best describes generation evaluation?",
+          "choices": [
+            {
+              "text": "Failures may arise in parsing, indexing, retrieval, context assembly, or generation; inspect each stage before changing prompts.",
+              "correct": false
+            },
+            {
+              "text": "Evaluate correctness, completeness, instruction following, and style as separate dimensions.",
+              "correct": true
+            },
+            {
+              "text": "Evidence position and redundancy can influence use in long contexts; test placement rather than assuming order is irrelevant.",
+              "correct": false
+            },
+            {
+              "text": "Hybrid search combines lexical matches for exact terms with semantic retrieval for paraphrases.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of generation evaluation to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Evaluate correctness, completeness, instruction following, and style as separate dimensions.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Evaluate correctness, completeness, instruction following, and style as separate dimensions."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-03",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "RAG failure attribution: Core idea",
+          "description": "Which statement best describes rag failure attribution?",
+          "choices": [
+            {
+              "text": "Evidence position and redundancy can influence use in long contexts; test placement rather than assuming order is irrelevant.",
+              "correct": false
+            },
+            {
+              "text": "Hybrid search combines lexical matches for exact terms with semantic retrieval for paraphrases.",
+              "correct": false
+            },
+            {
+              "text": "Failures may arise in parsing, indexing, retrieval, context assembly, or generation; inspect each stage before changing prompts.",
+              "correct": true
+            },
+            {
+              "text": "Rewriting can improve vague searches but may alter entities, negation, or the user's intent.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of rag failure attribution to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Failures may arise in parsing, indexing, retrieval, context assembly, or generation; inspect each stage before changing prompts.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Failures may arise in parsing, indexing, retrieval, context assembly, or generation; inspect each stage before changing prompts."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-04",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Context ordering: Core idea",
+          "description": "Which statement best describes context ordering?",
+          "choices": [
+            {
+              "text": "Hybrid search combines lexical matches for exact terms with semantic retrieval for paraphrases.",
+              "correct": false
+            },
+            {
+              "text": "Rewriting can improve vague searches but may alter entities, negation, or the user's intent.",
+              "correct": false
+            },
+            {
+              "text": "Plans decompose work into actions but need checks against user goals and allowed tool capabilities.",
+              "correct": false
+            },
+            {
+              "text": "Evidence position and redundancy can influence use in long contexts; test placement rather than assuming order is irrelevant.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of context ordering to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Evidence position and redundancy can influence use in long contexts; test placement rather than assuming order is irrelevant.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Evidence position and redundancy can influence use in long contexts; test placement rather than assuming order is irrelevant."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-05",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Hybrid search: Core idea",
+          "description": "Which statement best describes hybrid search?",
+          "choices": [
+            {
+              "text": "Hybrid search combines lexical matches for exact terms with semantic retrieval for paraphrases.",
+              "correct": true
+            },
+            {
+              "text": "Rewriting can improve vague searches but may alter entities, negation, or the user's intent.",
+              "correct": false
+            },
+            {
+              "text": "Plans decompose work into actions but need checks against user goals and allowed tool capabilities.",
+              "correct": false
+            },
+            {
+              "text": "Evaluate full task outcomes and policy compliance across tool traces, not just final-response quality.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of hybrid search to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Hybrid search combines lexical matches for exact terms with semantic retrieval for paraphrases.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Hybrid search combines lexical matches for exact terms with semantic retrieval for paraphrases."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-06",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Query rewriting: Core idea",
+          "description": "Which statement best describes query rewriting?",
+          "choices": [
+            {
+              "text": "Plans decompose work into actions but need checks against user goals and allowed tool capabilities.",
+              "correct": false
+            },
+            {
+              "text": "Rewriting can improve vague searches but may alter entities, negation, or the user's intent.",
+              "correct": true
+            },
+            {
+              "text": "Evaluate full task outcomes and policy compliance across tool traces, not just final-response quality.",
+              "correct": false
+            },
+            {
+              "text": "Traces connect prompts, decisions, tools, and results while minimizing sensitive logged content.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of query rewriting to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Rewriting can improve vague searches but may alter entities, negation, or the user's intent.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Rewriting can improve vague searches but may alter entities, negation, or the user's intent."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-07",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Multi-step planning: Core idea",
+          "description": "Which statement best describes multi-step planning?",
+          "choices": [
+            {
+              "text": "Evaluate full task outcomes and policy compliance across tool traces, not just final-response quality.",
+              "correct": false
+            },
+            {
+              "text": "Traces connect prompts, decisions, tools, and results while minimizing sensitive logged content.",
+              "correct": false
+            },
+            {
+              "text": "Plans decompose work into actions but need checks against user goals and allowed tool capabilities.",
+              "correct": true
+            },
+            {
+              "text": "Defense in depth includes least privilege, external authorization, and output checks; keyword blocking alone is insufficient.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of multi-step planning to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Plans decompose work into actions but need checks against user goals and allowed tool capabilities.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Plans decompose work into actions but need checks against user goals and allowed tool capabilities."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-08",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Agent task evaluation: Core idea",
+          "description": "Which statement best describes agent task evaluation?",
+          "choices": [
+            {
+              "text": "Traces connect prompts, decisions, tools, and results while minimizing sensitive logged content.",
+              "correct": false
+            },
+            {
+              "text": "Defense in depth includes least privilege, external authorization, and output checks; keyword blocking alone is insufficient.",
+              "correct": false
+            },
+            {
+              "text": "Multiple agents add handoff and shared-state failure modes and are useful only when measured specialization helps.",
+              "correct": false
+            },
+            {
+              "text": "Evaluate full task outcomes and policy compliance across tool traces, not just final-response quality.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of agent task evaluation to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Evaluate full task outcomes and policy compliance across tool traces, not just final-response quality.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Evaluate full task outcomes and policy compliance across tool traces, not just final-response quality."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-09",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Agent observability: Core idea",
+          "description": "Which statement best describes agent observability?",
+          "choices": [
+            {
+              "text": "Traces connect prompts, decisions, tools, and results while minimizing sensitive logged content.",
+              "correct": true
+            },
+            {
+              "text": "Defense in depth includes least privilege, external authorization, and output checks; keyword blocking alone is insufficient.",
+              "correct": false
+            },
+            {
+              "text": "Multiple agents add handoff and shared-state failure modes and are useful only when measured specialization helps.",
+              "correct": false
+            },
+            {
+              "text": "Summaries save context but can omit constraints or introduce errors that affect future actions.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of agent observability to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Traces connect prompts, decisions, tools, and results while minimizing sensitive logged content.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Traces connect prompts, decisions, tools, and results while minimizing sensitive logged content."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-10",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Prompt-injection defense: Core idea",
+          "description": "Which statement best describes prompt-injection defense?",
+          "choices": [
+            {
+              "text": "Multiple agents add handoff and shared-state failure modes and are useful only when measured specialization helps.",
+              "correct": false
+            },
+            {
+              "text": "Defense in depth includes least privilege, external authorization, and output checks; keyword blocking alone is insufficient.",
+              "correct": true
+            },
+            {
+              "text": "Summaries save context but can omit constraints or introduce errors that affect future actions.",
+              "correct": false
+            },
+            {
+              "text": "Preference data shapes outputs but can encode rater bias and reward superficial signals.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of prompt-injection defense to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Defense in depth includes least privilege, external authorization, and output checks; keyword blocking alone is insufficient.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Defense in depth includes least privilege, external authorization, and output checks; keyword blocking alone is insufficient."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-11",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Multi-agent coordination: Core idea",
+          "description": "Which statement best describes multi-agent coordination?",
+          "choices": [
+            {
+              "text": "Summaries save context but can omit constraints or introduce errors that affect future actions.",
+              "correct": false
+            },
+            {
+              "text": "Preference data shapes outputs but can encode rater bias and reward superficial signals.",
+              "correct": false
+            },
+            {
+              "text": "Multiple agents add handoff and shared-state failure modes and are useful only when measured specialization helps.",
+              "correct": true
+            },
+            {
+              "text": "Routing trades quality, latency, and cost across models and needs measured fallback behavior.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of multi-agent coordination to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Multiple agents add handoff and shared-state failure modes and are useful only when measured specialization helps.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Multiple agents add handoff and shared-state failure modes and are useful only when measured specialization helps."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-12",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Conversation summarization: Core idea",
+          "description": "Which statement best describes conversation summarization?",
+          "choices": [
+            {
+              "text": "Preference data shapes outputs but can encode rater bias and reward superficial signals.",
+              "correct": false
+            },
+            {
+              "text": "Routing trades quality, latency, and cost across models and needs measured fallback behavior.",
+              "correct": false
+            },
+            {
+              "text": "Live sampling complements fixed tests because user behavior and external knowledge change over time.",
+              "correct": false
+            },
+            {
+              "text": "Summaries save context but can omit constraints or introduce errors that affect future actions.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of conversation summarization to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Summaries save context but can omit constraints or introduce errors that affect future actions.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Summaries save context but can omit constraints or introduce errors that affect future actions."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-13",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Preference optimization: Core idea",
+          "description": "Which statement best describes preference optimization?",
+          "choices": [
+            {
+              "text": "Preference data shapes outputs but can encode rater bias and reward superficial signals.",
+              "correct": true
+            },
+            {
+              "text": "Routing trades quality, latency, and cost across models and needs measured fallback behavior.",
+              "correct": false
+            },
+            {
+              "text": "Live sampling complements fixed tests because user behavior and external knowledge change over time.",
+              "correct": false
+            },
+            {
+              "text": "Recall checks whether relevant passages are found, while precision and ranking metrics assess top results.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of preference optimization to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Preference data shapes outputs but can encode rater bias and reward superficial signals.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Preference data shapes outputs but can encode rater bias and reward superficial signals."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-14",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Model routing: Core idea",
+          "description": "Which statement best describes model routing?",
+          "choices": [
+            {
+              "text": "Live sampling complements fixed tests because user behavior and external knowledge change over time.",
+              "correct": false
+            },
+            {
+              "text": "Routing trades quality, latency, and cost across models and needs measured fallback behavior.",
+              "correct": true
+            },
+            {
+              "text": "Recall checks whether relevant passages are found, while precision and ranking metrics assess top results.",
+              "correct": false
+            },
+            {
+              "text": "Evaluate correctness, completeness, instruction following, and style as separate dimensions.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of model routing to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Routing trades quality, latency, and cost across models and needs measured fallback behavior.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Routing trades quality, latency, and cost across models and needs measured fallback behavior."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-15",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Continuous evaluation: Core idea",
+          "description": "Which statement best describes continuous evaluation?",
+          "choices": [
+            {
+              "text": "Recall checks whether relevant passages are found, while precision and ranking metrics assess top results.",
+              "correct": false
+            },
+            {
+              "text": "Evaluate correctness, completeness, instruction following, and style as separate dimensions.",
+              "correct": false
+            },
+            {
+              "text": "Live sampling complements fixed tests because user behavior and external knowledge change over time.",
+              "correct": true
+            },
+            {
+              "text": "Failures may arise in parsing, indexing, retrieval, context assembly, or generation; inspect each stage before changing prompts.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of continuous evaluation to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Live sampling complements fixed tests because user behavior and external knowledge change over time.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Live sampling complements fixed tests because user behavior and external knowledge change over time."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-16",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Retrieval evaluation: Applied decision 1",
+          "description": "A team is reviewing retrieval evaluation in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Evaluate correctness, completeness, instruction following, and style as separate dimensions.",
+              "correct": false
+            },
+            {
+              "text": "Failures may arise in parsing, indexing, retrieval, context assembly, or generation; inspect each stage before changing prompts.",
+              "correct": false
+            },
+            {
+              "text": "Evidence position and redundancy can influence use in long contexts; test placement rather than assuming order is irrelevant.",
+              "correct": false
+            },
+            {
+              "text": "Recall checks whether relevant passages are found, while precision and ranking metrics assess top results.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of retrieval evaluation to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Recall checks whether relevant passages are found, while precision and ranking metrics assess top results.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Recall checks whether relevant passages are found, while precision and ranking metrics assess top results."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-17",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Generation evaluation: Applied decision 2",
+          "description": "A team is reviewing generation evaluation in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Evaluate correctness, completeness, instruction following, and style as separate dimensions.",
+              "correct": true
+            },
+            {
+              "text": "Failures may arise in parsing, indexing, retrieval, context assembly, or generation; inspect each stage before changing prompts.",
+              "correct": false
+            },
+            {
+              "text": "Evidence position and redundancy can influence use in long contexts; test placement rather than assuming order is irrelevant.",
+              "correct": false
+            },
+            {
+              "text": "Hybrid search combines lexical matches for exact terms with semantic retrieval for paraphrases.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of generation evaluation to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Evaluate correctness, completeness, instruction following, and style as separate dimensions.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Evaluate correctness, completeness, instruction following, and style as separate dimensions."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-18",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "RAG failure attribution: Applied decision 3",
+          "description": "A team is reviewing rag failure attribution in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Evidence position and redundancy can influence use in long contexts; test placement rather than assuming order is irrelevant.",
+              "correct": false
+            },
+            {
+              "text": "Failures may arise in parsing, indexing, retrieval, context assembly, or generation; inspect each stage before changing prompts.",
+              "correct": true
+            },
+            {
+              "text": "Hybrid search combines lexical matches for exact terms with semantic retrieval for paraphrases.",
+              "correct": false
+            },
+            {
+              "text": "Rewriting can improve vague searches but may alter entities, negation, or the user's intent.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of rag failure attribution to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Failures may arise in parsing, indexing, retrieval, context assembly, or generation; inspect each stage before changing prompts.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Failures may arise in parsing, indexing, retrieval, context assembly, or generation; inspect each stage before changing prompts."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-19",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Context ordering: Applied decision 4",
+          "description": "A team is reviewing context ordering in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Hybrid search combines lexical matches for exact terms with semantic retrieval for paraphrases.",
+              "correct": false
+            },
+            {
+              "text": "Rewriting can improve vague searches but may alter entities, negation, or the user's intent.",
+              "correct": false
+            },
+            {
+              "text": "Evidence position and redundancy can influence use in long contexts; test placement rather than assuming order is irrelevant.",
+              "correct": true
+            },
+            {
+              "text": "Plans decompose work into actions but need checks against user goals and allowed tool capabilities.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of context ordering to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Evidence position and redundancy can influence use in long contexts; test placement rather than assuming order is irrelevant.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Evidence position and redundancy can influence use in long contexts; test placement rather than assuming order is irrelevant."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-20",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Hybrid search: Applied decision 5",
+          "description": "A team is reviewing hybrid search in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Rewriting can improve vague searches but may alter entities, negation, or the user's intent.",
+              "correct": false
+            },
+            {
+              "text": "Plans decompose work into actions but need checks against user goals and allowed tool capabilities.",
+              "correct": false
+            },
+            {
+              "text": "Evaluate full task outcomes and policy compliance across tool traces, not just final-response quality.",
+              "correct": false
+            },
+            {
+              "text": "Hybrid search combines lexical matches for exact terms with semantic retrieval for paraphrases.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of hybrid search to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Hybrid search combines lexical matches for exact terms with semantic retrieval for paraphrases.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Hybrid search combines lexical matches for exact terms with semantic retrieval for paraphrases."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-21",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Query rewriting: Applied decision 6",
+          "description": "A team is reviewing query rewriting in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Rewriting can improve vague searches but may alter entities, negation, or the user's intent.",
+              "correct": true
+            },
+            {
+              "text": "Plans decompose work into actions but need checks against user goals and allowed tool capabilities.",
+              "correct": false
+            },
+            {
+              "text": "Evaluate full task outcomes and policy compliance across tool traces, not just final-response quality.",
+              "correct": false
+            },
+            {
+              "text": "Traces connect prompts, decisions, tools, and results while minimizing sensitive logged content.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of query rewriting to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Rewriting can improve vague searches but may alter entities, negation, or the user's intent.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Rewriting can improve vague searches but may alter entities, negation, or the user's intent."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-22",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Multi-step planning: Applied decision 7",
+          "description": "A team is reviewing multi-step planning in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Evaluate full task outcomes and policy compliance across tool traces, not just final-response quality.",
+              "correct": false
+            },
+            {
+              "text": "Plans decompose work into actions but need checks against user goals and allowed tool capabilities.",
+              "correct": true
+            },
+            {
+              "text": "Traces connect prompts, decisions, tools, and results while minimizing sensitive logged content.",
+              "correct": false
+            },
+            {
+              "text": "Defense in depth includes least privilege, external authorization, and output checks; keyword blocking alone is insufficient.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of multi-step planning to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Plans decompose work into actions but need checks against user goals and allowed tool capabilities.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Plans decompose work into actions but need checks against user goals and allowed tool capabilities."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-23",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Agent task evaluation: Applied decision 8",
+          "description": "A team is reviewing agent task evaluation in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Traces connect prompts, decisions, tools, and results while minimizing sensitive logged content.",
+              "correct": false
+            },
+            {
+              "text": "Defense in depth includes least privilege, external authorization, and output checks; keyword blocking alone is insufficient.",
+              "correct": false
+            },
+            {
+              "text": "Evaluate full task outcomes and policy compliance across tool traces, not just final-response quality.",
+              "correct": true
+            },
+            {
+              "text": "Multiple agents add handoff and shared-state failure modes and are useful only when measured specialization helps.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of agent task evaluation to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Evaluate full task outcomes and policy compliance across tool traces, not just final-response quality.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Evaluate full task outcomes and policy compliance across tool traces, not just final-response quality."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-24",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Agent observability: Applied decision 9",
+          "description": "A team is reviewing agent observability in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Defense in depth includes least privilege, external authorization, and output checks; keyword blocking alone is insufficient.",
+              "correct": false
+            },
+            {
+              "text": "Multiple agents add handoff and shared-state failure modes and are useful only when measured specialization helps.",
+              "correct": false
+            },
+            {
+              "text": "Summaries save context but can omit constraints or introduce errors that affect future actions.",
+              "correct": false
+            },
+            {
+              "text": "Traces connect prompts, decisions, tools, and results while minimizing sensitive logged content.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of agent observability to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Traces connect prompts, decisions, tools, and results while minimizing sensitive logged content.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Traces connect prompts, decisions, tools, and results while minimizing sensitive logged content."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-25",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Prompt-injection defense: Applied decision 10",
+          "description": "A team is reviewing prompt-injection defense in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Defense in depth includes least privilege, external authorization, and output checks; keyword blocking alone is insufficient.",
+              "correct": true
+            },
+            {
+              "text": "Multiple agents add handoff and shared-state failure modes and are useful only when measured specialization helps.",
+              "correct": false
+            },
+            {
+              "text": "Summaries save context but can omit constraints or introduce errors that affect future actions.",
+              "correct": false
+            },
+            {
+              "text": "Preference data shapes outputs but can encode rater bias and reward superficial signals.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of prompt-injection defense to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Defense in depth includes least privilege, external authorization, and output checks; keyword blocking alone is insufficient.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Defense in depth includes least privilege, external authorization, and output checks; keyword blocking alone is insufficient."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "level": "advanced",
+      "challenges": [
+        {
+          "id": "llm-advanced-01",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Agent threat modeling: Core idea",
+          "description": "Which statement best describes agent threat modeling?",
+          "choices": [
+            {
+              "text": "Threat models map assets, actors, trust boundaries, and attack paths before exposing agent capabilities.",
+              "correct": true
+            },
+            {
+              "text": "Narrow, scoped tools reduce potential impact if a model proposes unsafe or unintended actions.",
+              "correct": false
+            },
+            {
+              "text": "Retrieved webpages and tool results can carry malicious instructions and must remain untrusted content.",
+              "correct": false
+            },
+            {
+              "text": "Execution tools require isolation, resource limits, restricted networking, and disposable environments.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of agent threat modeling to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Threat models map assets, actors, trust boundaries, and attack paths before exposing agent capabilities.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Threat models map assets, actors, trust boundaries, and attack paths before exposing agent capabilities."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-02",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Least-privilege tools: Core idea",
+          "description": "Which statement best describes least-privilege tools?",
+          "choices": [
+            {
+              "text": "Retrieved webpages and tool results can carry malicious instructions and must remain untrusted content.",
+              "correct": false
+            },
+            {
+              "text": "Narrow, scoped tools reduce potential impact if a model proposes unsafe or unintended actions.",
+              "correct": true
+            },
+            {
+              "text": "Execution tools require isolation, resource limits, restricted networking, and disposable environments.",
+              "correct": false
+            },
+            {
+              "text": "Consequential actions should include preview, policy checks, confirmation, and auditable commit steps.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of least-privilege tools to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Narrow, scoped tools reduce potential impact if a model proposes unsafe or unintended actions.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Narrow, scoped tools reduce potential impact if a model proposes unsafe or unintended actions."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-03",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Indirect injection: Core idea",
+          "description": "Which statement best describes indirect injection?",
+          "choices": [
+            {
+              "text": "Execution tools require isolation, resource limits, restricted networking, and disposable environments.",
+              "correct": false
+            },
+            {
+              "text": "Consequential actions should include preview, policy checks, confirmation, and auditable commit steps.",
+              "correct": false
+            },
+            {
+              "text": "Retrieved webpages and tool results can carry malicious instructions and must remain untrusted content.",
+              "correct": true
+            },
+            {
+              "text": "Timeouts, circuit breakers, bounded retries, and idempotency contain failures without unbounded loops.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of indirect injection to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Retrieved webpages and tool results can carry malicious instructions and must remain untrusted content.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Retrieved webpages and tool results can carry malicious instructions and must remain untrusted content."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-04",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Sandboxed execution: Core idea",
+          "description": "Which statement best describes sandboxed execution?",
+          "choices": [
+            {
+              "text": "Consequential actions should include preview, policy checks, confirmation, and auditable commit steps.",
+              "correct": false
+            },
+            {
+              "text": "Timeouts, circuit breakers, bounded retries, and idempotency contain failures without unbounded loops.",
+              "correct": false
+            },
+            {
+              "text": "Long tasks need checkpoints, invariant checks, and recovery from partial completion.",
+              "correct": false
+            },
+            {
+              "text": "Execution tools require isolation, resource limits, restricted networking, and disposable environments.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of sandboxed execution to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Execution tools require isolation, resource limits, restricted networking, and disposable environments.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Execution tools require isolation, resource limits, restricted networking, and disposable environments."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-05",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Transactional actions: Core idea",
+          "description": "Which statement best describes transactional actions?",
+          "choices": [
+            {
+              "text": "Consequential actions should include preview, policy checks, confirmation, and auditable commit steps.",
+              "correct": true
+            },
+            {
+              "text": "Timeouts, circuit breakers, bounded retries, and idempotency contain failures without unbounded loops.",
+              "correct": false
+            },
+            {
+              "text": "Long tasks need checkpoints, invariant checks, and recovery from partial completion.",
+              "correct": false
+            },
+            {
+              "text": "Benchmarks should include realistic environments, hidden state, tool failures, and policy constraints.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of transactional actions to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Consequential actions should include preview, policy checks, confirmation, and auditable commit steps.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Consequential actions should include preview, policy checks, confirmation, and auditable commit steps."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-06",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Agent reliability: Core idea",
+          "description": "Which statement best describes agent reliability?",
+          "choices": [
+            {
+              "text": "Long tasks need checkpoints, invariant checks, and recovery from partial completion.",
+              "correct": false
+            },
+            {
+              "text": "Timeouts, circuit breakers, bounded retries, and idempotency contain failures without unbounded loops.",
+              "correct": true
+            },
+            {
+              "text": "Benchmarks should include realistic environments, hidden state, tool failures, and policy constraints.",
+              "correct": false
+            },
+            {
+              "text": "Red teaming probes misuse, privacy leakage, bias, and instruction failures under defined threat scenarios.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of agent reliability to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Timeouts, circuit breakers, bounded retries, and idempotency contain failures without unbounded loops.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Timeouts, circuit breakers, bounded retries, and idempotency contain failures without unbounded loops."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-07",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Long-horizon planning: Core idea",
+          "description": "Which statement best describes long-horizon planning?",
+          "choices": [
+            {
+              "text": "Benchmarks should include realistic environments, hidden state, tool failures, and policy constraints.",
+              "correct": false
+            },
+            {
+              "text": "Red teaming probes misuse, privacy leakage, bias, and instruction failures under defined threat scenarios.",
+              "correct": false
+            },
+            {
+              "text": "Long tasks need checkpoints, invariant checks, and recovery from partial completion.",
+              "correct": true
+            },
+            {
+              "text": "Document permissions must be enforced during retrieval rather than merely described in a prompt.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of long-horizon planning to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Long tasks need checkpoints, invariant checks, and recovery from partial completion.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Long tasks need checkpoints, invariant checks, and recovery from partial completion."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-08",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Agent benchmarks: Core idea",
+          "description": "Which statement best describes agent benchmarks?",
+          "choices": [
+            {
+              "text": "Red teaming probes misuse, privacy leakage, bias, and instruction failures under defined threat scenarios.",
+              "correct": false
+            },
+            {
+              "text": "Document permissions must be enforced during retrieval rather than merely described in a prompt.",
+              "correct": false
+            },
+            {
+              "text": "Grounded answers need provenance linking claims to source versions and access decisions.",
+              "correct": false
+            },
+            {
+              "text": "Benchmarks should include realistic environments, hidden state, tool failures, and policy constraints.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of agent benchmarks to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Benchmarks should include realistic environments, hidden state, tool failures, and policy constraints.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Benchmarks should include realistic environments, hidden state, tool failures, and policy constraints."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-09",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "LLM red teaming: Core idea",
+          "description": "Which statement best describes llm red teaming?",
+          "choices": [
+            {
+              "text": "Red teaming probes misuse, privacy leakage, bias, and instruction failures under defined threat scenarios.",
+              "correct": true
+            },
+            {
+              "text": "Document permissions must be enforced during retrieval rather than merely described in a prompt.",
+              "correct": false
+            },
+            {
+              "text": "Grounded answers need provenance linking claims to source versions and access decisions.",
+              "correct": false
+            },
+            {
+              "text": "Version model, tokenizer, prompt, retrieval index, and tool schema to attribute behavior changes.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of llm red teaming to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Red teaming probes misuse, privacy leakage, bias, and instruction failures under defined threat scenarios.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Red teaming probes misuse, privacy leakage, bias, and instruction failures under defined threat scenarios."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-10",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "RAG access control: Core idea",
+          "description": "Which statement best describes rag access control?",
+          "choices": [
+            {
+              "text": "Grounded answers need provenance linking claims to source versions and access decisions.",
+              "correct": false
+            },
+            {
+              "text": "Document permissions must be enforced during retrieval rather than merely described in a prompt.",
+              "correct": true
+            },
+            {
+              "text": "Version model, tokenizer, prompt, retrieval index, and tool schema to attribute behavior changes.",
+              "correct": false
+            },
+            {
+              "text": "Uncertainty can trigger retrieval, another model, or review but must be calibrated for the task.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of rag access control to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Document permissions must be enforced during retrieval rather than merely described in a prompt.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Document permissions must be enforced during retrieval rather than merely described in a prompt."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-11",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Provenance and citations: Core idea",
+          "description": "Which statement best describes provenance and citations?",
+          "choices": [
+            {
+              "text": "Version model, tokenizer, prompt, retrieval index, and tool schema to attribute behavior changes.",
+              "correct": false
+            },
+            {
+              "text": "Uncertainty can trigger retrieval, another model, or review but must be calibrated for the task.",
+              "correct": false
+            },
+            {
+              "text": "Grounded answers need provenance linking claims to source versions and access decisions.",
+              "correct": true
+            },
+            {
+              "text": "Prompts, outputs, embeddings, and logs can expose sensitive information and need retention controls.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of provenance and citations to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Grounded answers need provenance linking claims to source versions and access decisions.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Grounded answers need provenance linking claims to source versions and access decisions."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-12",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Model and prompt versioning: Core idea",
+          "description": "Which statement best describes model and prompt versioning?",
+          "choices": [
+            {
+              "text": "Uncertainty can trigger retrieval, another model, or review but must be calibrated for the task.",
+              "correct": false
+            },
+            {
+              "text": "Prompts, outputs, embeddings, and logs can expose sensitive information and need retention controls.",
+              "correct": false
+            },
+            {
+              "text": "Safe shutdown records in-flight work and prevents duplicate execution during restart.",
+              "correct": false
+            },
+            {
+              "text": "Version model, tokenizer, prompt, retrieval index, and tool schema to attribute behavior changes.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of model and prompt versioning to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Version model, tokenizer, prompt, retrieval index, and tool schema to attribute behavior changes.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Version model, tokenizer, prompt, retrieval index, and tool schema to attribute behavior changes."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-13",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Uncertainty-aware routing: Core idea",
+          "description": "Which statement best describes uncertainty-aware routing?",
+          "choices": [
+            {
+              "text": "Uncertainty can trigger retrieval, another model, or review but must be calibrated for the task.",
+              "correct": true
+            },
+            {
+              "text": "Prompts, outputs, embeddings, and logs can expose sensitive information and need retention controls.",
+              "correct": false
+            },
+            {
+              "text": "Safe shutdown records in-flight work and prevents duplicate execution during restart.",
+              "correct": false
+            },
+            {
+              "text": "Threat models map assets, actors, trust boundaries, and attack paths before exposing agent capabilities.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of uncertainty-aware routing to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Uncertainty can trigger retrieval, another model, or review but must be calibrated for the task.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Uncertainty can trigger retrieval, another model, or review but must be calibrated for the task."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-14",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "LLM privacy: Core idea",
+          "description": "Which statement best describes llm privacy?",
+          "choices": [
+            {
+              "text": "Safe shutdown records in-flight work and prevents duplicate execution during restart.",
+              "correct": false
+            },
+            {
+              "text": "Prompts, outputs, embeddings, and logs can expose sensitive information and need retention controls.",
+              "correct": true
+            },
+            {
+              "text": "Threat models map assets, actors, trust boundaries, and attack paths before exposing agent capabilities.",
+              "correct": false
+            },
+            {
+              "text": "Narrow, scoped tools reduce potential impact if a model proposes unsafe or unintended actions.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of llm privacy to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Prompts, outputs, embeddings, and logs can expose sensitive information and need retention controls.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Prompts, outputs, embeddings, and logs can expose sensitive information and need retention controls."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-15",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Agent shutdown and recovery: Core idea",
+          "description": "Which statement best describes agent shutdown and recovery?",
+          "choices": [
+            {
+              "text": "Threat models map assets, actors, trust boundaries, and attack paths before exposing agent capabilities.",
+              "correct": false
+            },
+            {
+              "text": "Narrow, scoped tools reduce potential impact if a model proposes unsafe or unintended actions.",
+              "correct": false
+            },
+            {
+              "text": "Safe shutdown records in-flight work and prevents duplicate execution during restart.",
+              "correct": true
+            },
+            {
+              "text": "Retrieved webpages and tool results can carry malicious instructions and must remain untrusted content.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of agent shutdown and recovery to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Safe shutdown records in-flight work and prevents duplicate execution during restart.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Safe shutdown records in-flight work and prevents duplicate execution during restart."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-16",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Agent threat modeling: Applied decision 1",
+          "description": "A team is reviewing agent threat modeling in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Narrow, scoped tools reduce potential impact if a model proposes unsafe or unintended actions.",
+              "correct": false
+            },
+            {
+              "text": "Retrieved webpages and tool results can carry malicious instructions and must remain untrusted content.",
+              "correct": false
+            },
+            {
+              "text": "Execution tools require isolation, resource limits, restricted networking, and disposable environments.",
+              "correct": false
+            },
+            {
+              "text": "Threat models map assets, actors, trust boundaries, and attack paths before exposing agent capabilities.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of agent threat modeling to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Threat models map assets, actors, trust boundaries, and attack paths before exposing agent capabilities.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Threat models map assets, actors, trust boundaries, and attack paths before exposing agent capabilities."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-17",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Least-privilege tools: Applied decision 2",
+          "description": "A team is reviewing least-privilege tools in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Narrow, scoped tools reduce potential impact if a model proposes unsafe or unintended actions.",
+              "correct": true
+            },
+            {
+              "text": "Retrieved webpages and tool results can carry malicious instructions and must remain untrusted content.",
+              "correct": false
+            },
+            {
+              "text": "Execution tools require isolation, resource limits, restricted networking, and disposable environments.",
+              "correct": false
+            },
+            {
+              "text": "Consequential actions should include preview, policy checks, confirmation, and auditable commit steps.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of least-privilege tools to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Narrow, scoped tools reduce potential impact if a model proposes unsafe or unintended actions.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Narrow, scoped tools reduce potential impact if a model proposes unsafe or unintended actions."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-18",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Indirect injection: Applied decision 3",
+          "description": "A team is reviewing indirect injection in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Execution tools require isolation, resource limits, restricted networking, and disposable environments.",
+              "correct": false
+            },
+            {
+              "text": "Retrieved webpages and tool results can carry malicious instructions and must remain untrusted content.",
+              "correct": true
+            },
+            {
+              "text": "Consequential actions should include preview, policy checks, confirmation, and auditable commit steps.",
+              "correct": false
+            },
+            {
+              "text": "Timeouts, circuit breakers, bounded retries, and idempotency contain failures without unbounded loops.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of indirect injection to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Retrieved webpages and tool results can carry malicious instructions and must remain untrusted content.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Retrieved webpages and tool results can carry malicious instructions and must remain untrusted content."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-19",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Sandboxed execution: Applied decision 4",
+          "description": "A team is reviewing sandboxed execution in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Consequential actions should include preview, policy checks, confirmation, and auditable commit steps.",
+              "correct": false
+            },
+            {
+              "text": "Timeouts, circuit breakers, bounded retries, and idempotency contain failures without unbounded loops.",
+              "correct": false
+            },
+            {
+              "text": "Execution tools require isolation, resource limits, restricted networking, and disposable environments.",
+              "correct": true
+            },
+            {
+              "text": "Long tasks need checkpoints, invariant checks, and recovery from partial completion.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of sandboxed execution to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Execution tools require isolation, resource limits, restricted networking, and disposable environments.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Execution tools require isolation, resource limits, restricted networking, and disposable environments."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-20",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Transactional actions: Applied decision 5",
+          "description": "A team is reviewing transactional actions in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Timeouts, circuit breakers, bounded retries, and idempotency contain failures without unbounded loops.",
+              "correct": false
+            },
+            {
+              "text": "Long tasks need checkpoints, invariant checks, and recovery from partial completion.",
+              "correct": false
+            },
+            {
+              "text": "Benchmarks should include realistic environments, hidden state, tool failures, and policy constraints.",
+              "correct": false
+            },
+            {
+              "text": "Consequential actions should include preview, policy checks, confirmation, and auditable commit steps.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of transactional actions to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Consequential actions should include preview, policy checks, confirmation, and auditable commit steps.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Consequential actions should include preview, policy checks, confirmation, and auditable commit steps."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-21",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Agent reliability: Applied decision 6",
+          "description": "A team is reviewing agent reliability in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Timeouts, circuit breakers, bounded retries, and idempotency contain failures without unbounded loops.",
+              "correct": true
+            },
+            {
+              "text": "Long tasks need checkpoints, invariant checks, and recovery from partial completion.",
+              "correct": false
+            },
+            {
+              "text": "Benchmarks should include realistic environments, hidden state, tool failures, and policy constraints.",
+              "correct": false
+            },
+            {
+              "text": "Red teaming probes misuse, privacy leakage, bias, and instruction failures under defined threat scenarios.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of agent reliability to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Timeouts, circuit breakers, bounded retries, and idempotency contain failures without unbounded loops.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Timeouts, circuit breakers, bounded retries, and idempotency contain failures without unbounded loops."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-22",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Long-horizon planning: Applied decision 7",
+          "description": "A team is reviewing long-horizon planning in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Benchmarks should include realistic environments, hidden state, tool failures, and policy constraints.",
+              "correct": false
+            },
+            {
+              "text": "Long tasks need checkpoints, invariant checks, and recovery from partial completion.",
+              "correct": true
+            },
+            {
+              "text": "Red teaming probes misuse, privacy leakage, bias, and instruction failures under defined threat scenarios.",
+              "correct": false
+            },
+            {
+              "text": "Document permissions must be enforced during retrieval rather than merely described in a prompt.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of long-horizon planning to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Long tasks need checkpoints, invariant checks, and recovery from partial completion.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Long tasks need checkpoints, invariant checks, and recovery from partial completion."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-23",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Agent benchmarks: Applied decision 8",
+          "description": "A team is reviewing agent benchmarks in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Red teaming probes misuse, privacy leakage, bias, and instruction failures under defined threat scenarios.",
+              "correct": false
+            },
+            {
+              "text": "Document permissions must be enforced during retrieval rather than merely described in a prompt.",
+              "correct": false
+            },
+            {
+              "text": "Benchmarks should include realistic environments, hidden state, tool failures, and policy constraints.",
+              "correct": true
+            },
+            {
+              "text": "Grounded answers need provenance linking claims to source versions and access decisions.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of agent benchmarks to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Benchmarks should include realistic environments, hidden state, tool failures, and policy constraints.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Benchmarks should include realistic environments, hidden state, tool failures, and policy constraints."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-24",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "LLM red teaming: Applied decision 9",
+          "description": "A team is reviewing llm red teaming in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Document permissions must be enforced during retrieval rather than merely described in a prompt.",
+              "correct": false
+            },
+            {
+              "text": "Grounded answers need provenance linking claims to source versions and access decisions.",
+              "correct": false
+            },
+            {
+              "text": "Version model, tokenizer, prompt, retrieval index, and tool schema to attribute behavior changes.",
+              "correct": false
+            },
+            {
+              "text": "Red teaming probes misuse, privacy leakage, bias, and instruction failures under defined threat scenarios.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of llm red teaming to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Red teaming probes misuse, privacy leakage, bias, and instruction failures under defined threat scenarios.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Red teaming probes misuse, privacy leakage, bias, and instruction failures under defined threat scenarios."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-25",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "RAG access control: Applied decision 10",
+          "description": "A team is reviewing rag access control in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Document permissions must be enforced during retrieval rather than merely described in a prompt.",
+              "correct": true
+            },
+            {
+              "text": "Grounded answers need provenance linking claims to source versions and access decisions.",
+              "correct": false
+            },
+            {
+              "text": "Version model, tokenizer, prompt, retrieval index, and tool schema to attribute behavior changes.",
+              "correct": false
+            },
+            {
+              "text": "Uncertainty can trigger retrieval, another model, or review but must be calibrated for the task.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of rag access control to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Document permissions must be enforced during retrieval rather than merely described in a prompt.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Document permissions must be enforced during retrieval rather than merely described in a prompt."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

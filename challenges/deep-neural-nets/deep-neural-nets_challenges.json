@@ -1,0 +1,3925 @@
+{
+  "language": "deep-neural-nets",
+  "levels": [
+    {
+      "level": "new",
+      "challenges": [
+        {
+          "id": "dnn-new-01",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Neuron and activation: Core idea",
+          "description": "Which statement best describes neuron and activation?",
+          "choices": [
+            {
+              "text": "A neuron combines weighted inputs and a bias, then applies a nonlinear activation; without nonlinearity, stacked layers remain a linear transformation.",
+              "correct": true
+            },
+            {
+              "text": "Each layer transforms an input into a representation for later layers; useful representations depend on the training objective and data.",
+              "correct": false
+            },
+            {
+              "text": "Weights scale input contributions and biases shift activations; training updates both to reduce a specified loss.",
+              "correct": false
+            },
+            {
+              "text": "A forward pass computes outputs by applying layer operations in sequence, making tensor shapes and transformations auditable.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of neuron and activation to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A neuron combines weighted inputs and a bias, then applies a nonlinear activation; without nonlinearity, stacked layers remain a linear transformation.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A neuron combines weighted inputs and a bias, then applies a nonlinear activation; without nonlinearity, stacked layers remain a linear transformation."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-02",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Layers and representations: Core idea",
+          "description": "Which statement best describes layers and representations?",
+          "choices": [
+            {
+              "text": "Weights scale input contributions and biases shift activations; training updates both to reduce a specified loss.",
+              "correct": false
+            },
+            {
+              "text": "Each layer transforms an input into a representation for later layers; useful representations depend on the training objective and data.",
+              "correct": true
+            },
+            {
+              "text": "A forward pass computes outputs by applying layer operations in sequence, making tensor shapes and transformations auditable.",
+              "correct": false
+            },
+            {
+              "text": "A loss measures prediction error and defines the signal training optimizes; it should match the task and output representation.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of layers and representations to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Each layer transforms an input into a representation for later layers; useful representations depend on the training objective and data.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Each layer transforms an input into a representation for later layers; useful representations depend on the training objective and data."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-03",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Weights and biases: Core idea",
+          "description": "Which statement best describes weights and biases?",
+          "choices": [
+            {
+              "text": "A forward pass computes outputs by applying layer operations in sequence, making tensor shapes and transformations auditable.",
+              "correct": false
+            },
+            {
+              "text": "A loss measures prediction error and defines the signal training optimizes; it should match the task and output representation.",
+              "correct": false
+            },
+            {
+              "text": "Weights scale input contributions and biases shift activations; training updates both to reduce a specified loss.",
+              "correct": true
+            },
+            {
+              "text": "Gradient descent updates parameters using loss gradients, and the learning rate controls the step size.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of weights and biases to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Weights scale input contributions and biases shift activations; training updates both to reduce a specified loss.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Weights scale input contributions and biases shift activations; training updates both to reduce a specified loss."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-04",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Forward pass: Core idea",
+          "description": "Which statement best describes forward pass?",
+          "choices": [
+            {
+              "text": "A loss measures prediction error and defines the signal training optimizes; it should match the task and output representation.",
+              "correct": false
+            },
+            {
+              "text": "Gradient descent updates parameters using loss gradients, and the learning rate controls the step size.",
+              "correct": false
+            },
+            {
+              "text": "Backpropagation applies the chain rule to calculate parameter gradients efficiently from the output layer toward earlier layers.",
+              "correct": false
+            },
+            {
+              "text": "A forward pass computes outputs by applying layer operations in sequence, making tensor shapes and transformations auditable.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of forward pass to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A forward pass computes outputs by applying layer operations in sequence, making tensor shapes and transformations auditable.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A forward pass computes outputs by applying layer operations in sequence, making tensor shapes and transformations auditable."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-05",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Loss function: Core idea",
+          "description": "Which statement best describes loss function?",
+          "choices": [
+            {
+              "text": "A loss measures prediction error and defines the signal training optimizes; it should match the task and output representation.",
+              "correct": true
+            },
+            {
+              "text": "Gradient descent updates parameters using loss gradients, and the learning rate controls the step size.",
+              "correct": false
+            },
+            {
+              "text": "Backpropagation applies the chain rule to calculate parameter gradients efficiently from the output layer toward earlier layers.",
+              "correct": false
+            },
+            {
+              "text": "A batch supplies examples for an optimizer update; batch size changes memory use, gradient noise, and update frequency.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of loss function to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A loss measures prediction error and defines the signal training optimizes; it should match the task and output representation.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A loss measures prediction error and defines the signal training optimizes; it should match the task and output representation."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-06",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Gradient descent: Core idea",
+          "description": "Which statement best describes gradient descent?",
+          "choices": [
+            {
+              "text": "Backpropagation applies the chain rule to calculate parameter gradients efficiently from the output layer toward earlier layers.",
+              "correct": false
+            },
+            {
+              "text": "Gradient descent updates parameters using loss gradients, and the learning rate controls the step size.",
+              "correct": true
+            },
+            {
+              "text": "A batch supplies examples for an optimizer update; batch size changes memory use, gradient noise, and update frequency.",
+              "correct": false
+            },
+            {
+              "text": "An epoch passes through the training set once, while an iteration is one optimizer update; they are not interchangeable.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of gradient descent to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Gradient descent updates parameters using loss gradients, and the learning rate controls the step size.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Gradient descent updates parameters using loss gradients, and the learning rate controls the step size."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-07",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Backpropagation: Core idea",
+          "description": "Which statement best describes backpropagation?",
+          "choices": [
+            {
+              "text": "A batch supplies examples for an optimizer update; batch size changes memory use, gradient noise, and update frequency.",
+              "correct": false
+            },
+            {
+              "text": "An epoch passes through the training set once, while an iteration is one optimizer update; they are not interchangeable.",
+              "correct": false
+            },
+            {
+              "text": "Backpropagation applies the chain rule to calculate parameter gradients efficiently from the output layer toward earlier layers.",
+              "correct": true
+            },
+            {
+              "text": "Comparing training and validation loss helps reveal underfitting and overfitting when validation data is not used to fit weights.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of backpropagation to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Backpropagation applies the chain rule to calculate parameter gradients efficiently from the output layer toward earlier layers.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Backpropagation applies the chain rule to calculate parameter gradients efficiently from the output layer toward earlier layers."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-08",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Training batches: Core idea",
+          "description": "Which statement best describes training batches?",
+          "choices": [
+            {
+              "text": "An epoch passes through the training set once, while an iteration is one optimizer update; they are not interchangeable.",
+              "correct": false
+            },
+            {
+              "text": "Comparing training and validation loss helps reveal underfitting and overfitting when validation data is not used to fit weights.",
+              "correct": false
+            },
+            {
+              "text": "A softmax head normalizes logits for mutually exclusive classes but does not guarantee that its probabilities are calibrated.",
+              "correct": false
+            },
+            {
+              "text": "A batch supplies examples for an optimizer update; batch size changes memory use, gradient noise, and update frequency.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of training batches to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A batch supplies examples for an optimizer update; batch size changes memory use, gradient noise, and update frequency.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A batch supplies examples for an optimizer update; batch size changes memory use, gradient noise, and update frequency."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-09",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Epochs and iterations: Core idea",
+          "description": "Which statement best describes epochs and iterations?",
+          "choices": [
+            {
+              "text": "An epoch passes through the training set once, while an iteration is one optimizer update; they are not interchangeable.",
+              "correct": true
+            },
+            {
+              "text": "Comparing training and validation loss helps reveal underfitting and overfitting when validation data is not used to fit weights.",
+              "correct": false
+            },
+            {
+              "text": "A softmax head normalizes logits for mutually exclusive classes but does not guarantee that its probabilities are calibrated.",
+              "correct": false
+            },
+            {
+              "text": "A regression output and loss should reflect the target's scale, range, and error costs.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of epochs and iterations to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "An epoch passes through the training set once, while an iteration is one optimizer update; they are not interchangeable.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "An epoch passes through the training set once, while an iteration is one optimizer update; they are not interchangeable."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-10",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Training and validation curves: Core idea",
+          "description": "Which statement best describes training and validation curves?",
+          "choices": [
+            {
+              "text": "A softmax head normalizes logits for mutually exclusive classes but does not guarantee that its probabilities are calibrated.",
+              "correct": false
+            },
+            {
+              "text": "Comparing training and validation loss helps reveal underfitting and overfitting when validation data is not used to fit weights.",
+              "correct": true
+            },
+            {
+              "text": "A regression output and loss should reflect the target's scale, range, and error costs.",
+              "correct": false
+            },
+            {
+              "text": "Overfitting occurs when a network learns training-specific details that do not generalize to relevant unseen examples.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of training and validation curves to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Comparing training and validation loss helps reveal underfitting and overfitting when validation data is not used to fit weights.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Comparing training and validation loss helps reveal underfitting and overfitting when validation data is not used to fit weights."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-11",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Classification heads: Core idea",
+          "description": "Which statement best describes classification heads?",
+          "choices": [
+            {
+              "text": "A regression output and loss should reflect the target's scale, range, and error costs.",
+              "correct": false
+            },
+            {
+              "text": "Overfitting occurs when a network learns training-specific details that do not generalize to relevant unseen examples.",
+              "correct": false
+            },
+            {
+              "text": "A softmax head normalizes logits for mutually exclusive classes but does not guarantee that its probabilities are calibrated.",
+              "correct": true
+            },
+            {
+              "text": "Parameters, activations, gradients, and optimizer state use memory; estimate the full training footprint before selecting batch size.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of classification heads to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A softmax head normalizes logits for mutually exclusive classes but does not guarantee that its probabilities are calibrated.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A softmax head normalizes logits for mutually exclusive classes but does not guarantee that its probabilities are calibrated."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-12",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Regression heads: Core idea",
+          "description": "Which statement best describes regression heads?",
+          "choices": [
+            {
+              "text": "Overfitting occurs when a network learns training-specific details that do not generalize to relevant unseen examples.",
+              "correct": false
+            },
+            {
+              "text": "Parameters, activations, gradients, and optimizer state use memory; estimate the full training footprint before selecting batch size.",
+              "correct": false
+            },
+            {
+              "text": "A small neural network or non-neural baseline gives a reference for judging whether added depth is worthwhile.",
+              "correct": false
+            },
+            {
+              "text": "A regression output and loss should reflect the target's scale, range, and error costs.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of regression heads to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A regression output and loss should reflect the target's scale, range, and error costs.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A regression output and loss should reflect the target's scale, range, and error costs."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-13",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Overfitting: Core idea",
+          "description": "Which statement best describes overfitting?",
+          "choices": [
+            {
+              "text": "Overfitting occurs when a network learns training-specific details that do not generalize to relevant unseen examples.",
+              "correct": true
+            },
+            {
+              "text": "Parameters, activations, gradients, and optimizer state use memory; estimate the full training footprint before selecting batch size.",
+              "correct": false
+            },
+            {
+              "text": "A small neural network or non-neural baseline gives a reference for judging whether added depth is worthwhile.",
+              "correct": false
+            },
+            {
+              "text": "A neuron combines weighted inputs and a bias, then applies a nonlinear activation; without nonlinearity, stacked layers remain a linear transformation.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of overfitting to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Overfitting occurs when a network learns training-specific details that do not generalize to relevant unseen examples.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Overfitting occurs when a network learns training-specific details that do not generalize to relevant unseen examples."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-14",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Compute and memory: Core idea",
+          "description": "Which statement best describes compute and memory?",
+          "choices": [
+            {
+              "text": "A small neural network or non-neural baseline gives a reference for judging whether added depth is worthwhile.",
+              "correct": false
+            },
+            {
+              "text": "Parameters, activations, gradients, and optimizer state use memory; estimate the full training footprint before selecting batch size.",
+              "correct": true
+            },
+            {
+              "text": "A neuron combines weighted inputs and a bias, then applies a nonlinear activation; without nonlinearity, stacked layers remain a linear transformation.",
+              "correct": false
+            },
+            {
+              "text": "Each layer transforms an input into a representation for later layers; useful representations depend on the training objective and data.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of compute and memory to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Parameters, activations, gradients, and optimizer state use memory; estimate the full training footprint before selecting batch size.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Parameters, activations, gradients, and optimizer state use memory; estimate the full training footprint before selecting batch size."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-15",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Neural-network baselines: Core idea",
+          "description": "Which statement best describes neural-network baselines?",
+          "choices": [
+            {
+              "text": "A neuron combines weighted inputs and a bias, then applies a nonlinear activation; without nonlinearity, stacked layers remain a linear transformation.",
+              "correct": false
+            },
+            {
+              "text": "Each layer transforms an input into a representation for later layers; useful representations depend on the training objective and data.",
+              "correct": false
+            },
+            {
+              "text": "A small neural network or non-neural baseline gives a reference for judging whether added depth is worthwhile.",
+              "correct": true
+            },
+            {
+              "text": "Weights scale input contributions and biases shift activations; training updates both to reduce a specified loss.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of neural-network baselines to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A small neural network or non-neural baseline gives a reference for judging whether added depth is worthwhile.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A small neural network or non-neural baseline gives a reference for judging whether added depth is worthwhile."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-16",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Neuron and activation: Applied decision 1",
+          "description": "A team is reviewing neuron and activation in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Each layer transforms an input into a representation for later layers; useful representations depend on the training objective and data.",
+              "correct": false
+            },
+            {
+              "text": "Weights scale input contributions and biases shift activations; training updates both to reduce a specified loss.",
+              "correct": false
+            },
+            {
+              "text": "A forward pass computes outputs by applying layer operations in sequence, making tensor shapes and transformations auditable.",
+              "correct": false
+            },
+            {
+              "text": "A neuron combines weighted inputs and a bias, then applies a nonlinear activation; without nonlinearity, stacked layers remain a linear transformation.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of neuron and activation to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A neuron combines weighted inputs and a bias, then applies a nonlinear activation; without nonlinearity, stacked layers remain a linear transformation.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A neuron combines weighted inputs and a bias, then applies a nonlinear activation; without nonlinearity, stacked layers remain a linear transformation."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-17",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Layers and representations: Applied decision 2",
+          "description": "A team is reviewing layers and representations in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Each layer transforms an input into a representation for later layers; useful representations depend on the training objective and data.",
+              "correct": true
+            },
+            {
+              "text": "Weights scale input contributions and biases shift activations; training updates both to reduce a specified loss.",
+              "correct": false
+            },
+            {
+              "text": "A forward pass computes outputs by applying layer operations in sequence, making tensor shapes and transformations auditable.",
+              "correct": false
+            },
+            {
+              "text": "A loss measures prediction error and defines the signal training optimizes; it should match the task and output representation.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of layers and representations to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Each layer transforms an input into a representation for later layers; useful representations depend on the training objective and data.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Each layer transforms an input into a representation for later layers; useful representations depend on the training objective and data."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-18",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Weights and biases: Applied decision 3",
+          "description": "A team is reviewing weights and biases in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "A forward pass computes outputs by applying layer operations in sequence, making tensor shapes and transformations auditable.",
+              "correct": false
+            },
+            {
+              "text": "Weights scale input contributions and biases shift activations; training updates both to reduce a specified loss.",
+              "correct": true
+            },
+            {
+              "text": "A loss measures prediction error and defines the signal training optimizes; it should match the task and output representation.",
+              "correct": false
+            },
+            {
+              "text": "Gradient descent updates parameters using loss gradients, and the learning rate controls the step size.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of weights and biases to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Weights scale input contributions and biases shift activations; training updates both to reduce a specified loss.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Weights scale input contributions and biases shift activations; training updates both to reduce a specified loss."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-19",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Forward pass: Applied decision 4",
+          "description": "A team is reviewing forward pass in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "A loss measures prediction error and defines the signal training optimizes; it should match the task and output representation.",
+              "correct": false
+            },
+            {
+              "text": "Gradient descent updates parameters using loss gradients, and the learning rate controls the step size.",
+              "correct": false
+            },
+            {
+              "text": "A forward pass computes outputs by applying layer operations in sequence, making tensor shapes and transformations auditable.",
+              "correct": true
+            },
+            {
+              "text": "Backpropagation applies the chain rule to calculate parameter gradients efficiently from the output layer toward earlier layers.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of forward pass to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A forward pass computes outputs by applying layer operations in sequence, making tensor shapes and transformations auditable.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A forward pass computes outputs by applying layer operations in sequence, making tensor shapes and transformations auditable."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-20",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Loss function: Applied decision 5",
+          "description": "A team is reviewing loss function in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Gradient descent updates parameters using loss gradients, and the learning rate controls the step size.",
+              "correct": false
+            },
+            {
+              "text": "Backpropagation applies the chain rule to calculate parameter gradients efficiently from the output layer toward earlier layers.",
+              "correct": false
+            },
+            {
+              "text": "A batch supplies examples for an optimizer update; batch size changes memory use, gradient noise, and update frequency.",
+              "correct": false
+            },
+            {
+              "text": "A loss measures prediction error and defines the signal training optimizes; it should match the task and output representation.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of loss function to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A loss measures prediction error and defines the signal training optimizes; it should match the task and output representation.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A loss measures prediction error and defines the signal training optimizes; it should match the task and output representation."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-21",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Gradient descent: Applied decision 6",
+          "description": "A team is reviewing gradient descent in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Gradient descent updates parameters using loss gradients, and the learning rate controls the step size.",
+              "correct": true
+            },
+            {
+              "text": "Backpropagation applies the chain rule to calculate parameter gradients efficiently from the output layer toward earlier layers.",
+              "correct": false
+            },
+            {
+              "text": "A batch supplies examples for an optimizer update; batch size changes memory use, gradient noise, and update frequency.",
+              "correct": false
+            },
+            {
+              "text": "An epoch passes through the training set once, while an iteration is one optimizer update; they are not interchangeable.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of gradient descent to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Gradient descent updates parameters using loss gradients, and the learning rate controls the step size.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Gradient descent updates parameters using loss gradients, and the learning rate controls the step size."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-22",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Backpropagation: Applied decision 7",
+          "description": "A team is reviewing backpropagation in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "A batch supplies examples for an optimizer update; batch size changes memory use, gradient noise, and update frequency.",
+              "correct": false
+            },
+            {
+              "text": "Backpropagation applies the chain rule to calculate parameter gradients efficiently from the output layer toward earlier layers.",
+              "correct": true
+            },
+            {
+              "text": "An epoch passes through the training set once, while an iteration is one optimizer update; they are not interchangeable.",
+              "correct": false
+            },
+            {
+              "text": "Comparing training and validation loss helps reveal underfitting and overfitting when validation data is not used to fit weights.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of backpropagation to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Backpropagation applies the chain rule to calculate parameter gradients efficiently from the output layer toward earlier layers.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Backpropagation applies the chain rule to calculate parameter gradients efficiently from the output layer toward earlier layers."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-23",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Training batches: Applied decision 8",
+          "description": "A team is reviewing training batches in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "An epoch passes through the training set once, while an iteration is one optimizer update; they are not interchangeable.",
+              "correct": false
+            },
+            {
+              "text": "Comparing training and validation loss helps reveal underfitting and overfitting when validation data is not used to fit weights.",
+              "correct": false
+            },
+            {
+              "text": "A batch supplies examples for an optimizer update; batch size changes memory use, gradient noise, and update frequency.",
+              "correct": true
+            },
+            {
+              "text": "A softmax head normalizes logits for mutually exclusive classes but does not guarantee that its probabilities are calibrated.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of training batches to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A batch supplies examples for an optimizer update; batch size changes memory use, gradient noise, and update frequency.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A batch supplies examples for an optimizer update; batch size changes memory use, gradient noise, and update frequency."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-24",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Epochs and iterations: Applied decision 9",
+          "description": "A team is reviewing epochs and iterations in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Comparing training and validation loss helps reveal underfitting and overfitting when validation data is not used to fit weights.",
+              "correct": false
+            },
+            {
+              "text": "A softmax head normalizes logits for mutually exclusive classes but does not guarantee that its probabilities are calibrated.",
+              "correct": false
+            },
+            {
+              "text": "A regression output and loss should reflect the target's scale, range, and error costs.",
+              "correct": false
+            },
+            {
+              "text": "An epoch passes through the training set once, while an iteration is one optimizer update; they are not interchangeable.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of epochs and iterations to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "An epoch passes through the training set once, while an iteration is one optimizer update; they are not interchangeable.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "An epoch passes through the training set once, while an iteration is one optimizer update; they are not interchangeable."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-25",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Training and validation curves: Applied decision 10",
+          "description": "A team is reviewing training and validation curves in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Comparing training and validation loss helps reveal underfitting and overfitting when validation data is not used to fit weights.",
+              "correct": true
+            },
+            {
+              "text": "A softmax head normalizes logits for mutually exclusive classes but does not guarantee that its probabilities are calibrated.",
+              "correct": false
+            },
+            {
+              "text": "A regression output and loss should reflect the target's scale, range, and error costs.",
+              "correct": false
+            },
+            {
+              "text": "Overfitting occurs when a network learns training-specific details that do not generalize to relevant unseen examples.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of training and validation curves to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Comparing training and validation loss helps reveal underfitting and overfitting when validation data is not used to fit weights.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Comparing training and validation loss helps reveal underfitting and overfitting when validation data is not used to fit weights."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "level": "beginner",
+      "challenges": [
+        {
+          "id": "dnn-beginner-01",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Initialization: Core idea",
+          "description": "Which statement best describes initialization?",
+          "choices": [
+            {
+              "text": "Variance-aware initialization preserves useful activation and gradient scales better than setting all weights to zero.",
+              "correct": true
+            },
+            {
+              "text": "Schedules adjust step size over training to balance rapid early learning with stable convergence.",
+              "correct": false
+            },
+            {
+              "text": "Momentum smooths updates and adaptive optimizers scale them using gradient history; neither removes the need to tune and validate.",
+              "correct": false
+            },
+            {
+              "text": "Weight decay discourages large weights to regularize a model; decoupled weight decay is not identical to L2 penalties for every optimizer.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of initialization to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Variance-aware initialization preserves useful activation and gradient scales better than setting all weights to zero.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Variance-aware initialization preserves useful activation and gradient scales better than setting all weights to zero."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-02",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Learning-rate schedules: Core idea",
+          "description": "Which statement best describes learning-rate schedules?",
+          "choices": [
+            {
+              "text": "Momentum smooths updates and adaptive optimizers scale them using gradient history; neither removes the need to tune and validate.",
+              "correct": false
+            },
+            {
+              "text": "Schedules adjust step size over training to balance rapid early learning with stable convergence.",
+              "correct": true
+            },
+            {
+              "text": "Weight decay discourages large weights to regularize a model; decoupled weight decay is not identical to L2 penalties for every optimizer.",
+              "correct": false
+            },
+            {
+              "text": "Dropout masks activations during training as regularization and should be disabled for ordinary inference.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of learning-rate schedules to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Schedules adjust step size over training to balance rapid early learning with stable convergence.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Schedules adjust step size over training to balance rapid early learning with stable convergence."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-03",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Momentum and adaptive optimizers: Core idea",
+          "description": "Which statement best describes momentum and adaptive optimizers?",
+          "choices": [
+            {
+              "text": "Weight decay discourages large weights to regularize a model; decoupled weight decay is not identical to L2 penalties for every optimizer.",
+              "correct": false
+            },
+            {
+              "text": "Dropout masks activations during training as regularization and should be disabled for ordinary inference.",
+              "correct": false
+            },
+            {
+              "text": "Momentum smooths updates and adaptive optimizers scale them using gradient history; neither removes the need to tune and validate.",
+              "correct": true
+            },
+            {
+              "text": "Batch normalization uses minibatch statistics during training and stored running statistics at inference.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of momentum and adaptive optimizers to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Momentum smooths updates and adaptive optimizers scale them using gradient history; neither removes the need to tune and validate.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Momentum smooths updates and adaptive optimizers scale them using gradient history; neither removes the need to tune and validate."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-04",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Weight decay: Core idea",
+          "description": "Which statement best describes weight decay?",
+          "choices": [
+            {
+              "text": "Dropout masks activations during training as regularization and should be disabled for ordinary inference.",
+              "correct": false
+            },
+            {
+              "text": "Batch normalization uses minibatch statistics during training and stored running statistics at inference.",
+              "correct": false
+            },
+            {
+              "text": "Layer normalization normalizes features within each example, making it useful when batch sizes or sequence lengths vary.",
+              "correct": false
+            },
+            {
+              "text": "Weight decay discourages large weights to regularize a model; decoupled weight decay is not identical to L2 penalties for every optimizer.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of weight decay to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Weight decay discourages large weights to regularize a model; decoupled weight decay is not identical to L2 penalties for every optimizer.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Weight decay discourages large weights to regularize a model; decoupled weight decay is not identical to L2 penalties for every optimizer."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-05",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Dropout: Core idea",
+          "description": "Which statement best describes dropout?",
+          "choices": [
+            {
+              "text": "Dropout masks activations during training as regularization and should be disabled for ordinary inference.",
+              "correct": true
+            },
+            {
+              "text": "Batch normalization uses minibatch statistics during training and stored running statistics at inference.",
+              "correct": false
+            },
+            {
+              "text": "Layer normalization normalizes features within each example, making it useful when batch sizes or sequence lengths vary.",
+              "correct": false
+            },
+            {
+              "text": "Convolutions reuse local filters across positions and exploit spatial locality in images and other grid-like inputs.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of dropout to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Dropout masks activations during training as regularization and should be disabled for ordinary inference.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Dropout masks activations during training as regularization and should be disabled for ordinary inference."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-06",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Batch normalization: Core idea",
+          "description": "Which statement best describes batch normalization?",
+          "choices": [
+            {
+              "text": "Layer normalization normalizes features within each example, making it useful when batch sizes or sequence lengths vary.",
+              "correct": false
+            },
+            {
+              "text": "Batch normalization uses minibatch statistics during training and stored running statistics at inference.",
+              "correct": true
+            },
+            {
+              "text": "Convolutions reuse local filters across positions and exploit spatial locality in images and other grid-like inputs.",
+              "correct": false
+            },
+            {
+              "text": "Downsampling reduces spatial compute but can discard fine details needed for localization or small-object recognition.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of batch normalization to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Batch normalization uses minibatch statistics during training and stored running statistics at inference.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Batch normalization uses minibatch statistics during training and stored running statistics at inference."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-07",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Layer normalization: Core idea",
+          "description": "Which statement best describes layer normalization?",
+          "choices": [
+            {
+              "text": "Convolutions reuse local filters across positions and exploit spatial locality in images and other grid-like inputs.",
+              "correct": false
+            },
+            {
+              "text": "Downsampling reduces spatial compute but can discard fine details needed for localization or small-object recognition.",
+              "correct": false
+            },
+            {
+              "text": "Layer normalization normalizes features within each example, making it useful when batch sizes or sequence lengths vary.",
+              "correct": true
+            },
+            {
+              "text": "Embeddings map discrete identifiers to learned vectors whose geometry reflects the training objective, not universal similarity.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of layer normalization to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Layer normalization normalizes features within each example, making it useful when batch sizes or sequence lengths vary.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Layer normalization normalizes features within each example, making it useful when batch sizes or sequence lengths vary."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-08",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Convolutions: Core idea",
+          "description": "Which statement best describes convolutions?",
+          "choices": [
+            {
+              "text": "Downsampling reduces spatial compute but can discard fine details needed for localization or small-object recognition.",
+              "correct": false
+            },
+            {
+              "text": "Embeddings map discrete identifiers to learned vectors whose geometry reflects the training objective, not universal similarity.",
+              "correct": false
+            },
+            {
+              "text": "Padding equalizes sequence lengths; attention and loss masks must prevent padded positions from affecting learning.",
+              "correct": false
+            },
+            {
+              "text": "Convolutions reuse local filters across positions and exploit spatial locality in images and other grid-like inputs.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of convolutions to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Convolutions reuse local filters across positions and exploit spatial locality in images and other grid-like inputs.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Convolutions reuse local filters across positions and exploit spatial locality in images and other grid-like inputs."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-09",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Pooling and downsampling: Core idea",
+          "description": "Which statement best describes pooling and downsampling?",
+          "choices": [
+            {
+              "text": "Downsampling reduces spatial compute but can discard fine details needed for localization or small-object recognition.",
+              "correct": true
+            },
+            {
+              "text": "Embeddings map discrete identifiers to learned vectors whose geometry reflects the training objective, not universal similarity.",
+              "correct": false
+            },
+            {
+              "text": "Padding equalizes sequence lengths; attention and loss masks must prevent padded positions from affecting learning.",
+              "correct": false
+            },
+            {
+              "text": "Class weighting or sampling can emphasize rare examples but may change the probability calibration of the resulting classifier.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of pooling and downsampling to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Downsampling reduces spatial compute but can discard fine details needed for localization or small-object recognition.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Downsampling reduces spatial compute but can discard fine details needed for localization or small-object recognition."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-10",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Embeddings: Core idea",
+          "description": "Which statement best describes embeddings?",
+          "choices": [
+            {
+              "text": "Padding equalizes sequence lengths; attention and loss masks must prevent padded positions from affecting learning.",
+              "correct": false
+            },
+            {
+              "text": "Embeddings map discrete identifiers to learned vectors whose geometry reflects the training objective, not universal similarity.",
+              "correct": true
+            },
+            {
+              "text": "Class weighting or sampling can emphasize rare examples but may change the probability calibration of the resulting classifier.",
+              "correct": false
+            },
+            {
+              "text": "Augmentations encode label-preserving variation and should match plausible conditions in the deployment environment.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of embeddings to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Embeddings map discrete identifiers to learned vectors whose geometry reflects the training objective, not universal similarity.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Embeddings map discrete identifiers to learned vectors whose geometry reflects the training objective, not universal similarity."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-11",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Padding and masks: Core idea",
+          "description": "Which statement best describes padding and masks?",
+          "choices": [
+            {
+              "text": "Class weighting or sampling can emphasize rare examples but may change the probability calibration of the resulting classifier.",
+              "correct": false
+            },
+            {
+              "text": "Augmentations encode label-preserving variation and should match plausible conditions in the deployment environment.",
+              "correct": false
+            },
+            {
+              "text": "Padding equalizes sequence lengths; attention and loss masks must prevent padded positions from affecting learning.",
+              "correct": true
+            },
+            {
+              "text": "Early stopping chooses a checkpoint using validation behavior and should not repeatedly adapt to a held-out test set.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of padding and masks to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Padding equalizes sequence lengths; attention and loss masks must prevent padded positions from affecting learning.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Padding equalizes sequence lengths; attention and loss masks must prevent padded positions from affecting learning."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-12",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Class imbalance: Core idea",
+          "description": "Which statement best describes class imbalance?",
+          "choices": [
+            {
+              "text": "Augmentations encode label-preserving variation and should match plausible conditions in the deployment environment.",
+              "correct": false
+            },
+            {
+              "text": "Early stopping chooses a checkpoint using validation behavior and should not repeatedly adapt to a held-out test set.",
+              "correct": false
+            },
+            {
+              "text": "Pretrained representations can reduce data needs, but domain mismatch determines how well they transfer.",
+              "correct": false
+            },
+            {
+              "text": "Class weighting or sampling can emphasize rare examples but may change the probability calibration of the resulting classifier.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of class imbalance to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Class weighting or sampling can emphasize rare examples but may change the probability calibration of the resulting classifier.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Class weighting or sampling can emphasize rare examples but may change the probability calibration of the resulting classifier."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-13",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Data augmentation: Core idea",
+          "description": "Which statement best describes data augmentation?",
+          "choices": [
+            {
+              "text": "Augmentations encode label-preserving variation and should match plausible conditions in the deployment environment.",
+              "correct": true
+            },
+            {
+              "text": "Early stopping chooses a checkpoint using validation behavior and should not repeatedly adapt to a held-out test set.",
+              "correct": false
+            },
+            {
+              "text": "Pretrained representations can reduce data needs, but domain mismatch determines how well they transfer.",
+              "correct": false
+            },
+            {
+              "text": "Variance-aware initialization preserves useful activation and gradient scales better than setting all weights to zero.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of data augmentation to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Augmentations encode label-preserving variation and should match plausible conditions in the deployment environment.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Augmentations encode label-preserving variation and should match plausible conditions in the deployment environment."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-14",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Early stopping: Core idea",
+          "description": "Which statement best describes early stopping?",
+          "choices": [
+            {
+              "text": "Pretrained representations can reduce data needs, but domain mismatch determines how well they transfer.",
+              "correct": false
+            },
+            {
+              "text": "Early stopping chooses a checkpoint using validation behavior and should not repeatedly adapt to a held-out test set.",
+              "correct": true
+            },
+            {
+              "text": "Variance-aware initialization preserves useful activation and gradient scales better than setting all weights to zero.",
+              "correct": false
+            },
+            {
+              "text": "Schedules adjust step size over training to balance rapid early learning with stable convergence.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of early stopping to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Early stopping chooses a checkpoint using validation behavior and should not repeatedly adapt to a held-out test set.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Early stopping chooses a checkpoint using validation behavior and should not repeatedly adapt to a held-out test set."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-15",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Transfer learning: Core idea",
+          "description": "Which statement best describes transfer learning?",
+          "choices": [
+            {
+              "text": "Variance-aware initialization preserves useful activation and gradient scales better than setting all weights to zero.",
+              "correct": false
+            },
+            {
+              "text": "Schedules adjust step size over training to balance rapid early learning with stable convergence.",
+              "correct": false
+            },
+            {
+              "text": "Pretrained representations can reduce data needs, but domain mismatch determines how well they transfer.",
+              "correct": true
+            },
+            {
+              "text": "Momentum smooths updates and adaptive optimizers scale them using gradient history; neither removes the need to tune and validate.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of transfer learning to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Pretrained representations can reduce data needs, but domain mismatch determines how well they transfer.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Pretrained representations can reduce data needs, but domain mismatch determines how well they transfer."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-16",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Initialization: Applied decision 1",
+          "description": "A team is reviewing initialization in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Schedules adjust step size over training to balance rapid early learning with stable convergence.",
+              "correct": false
+            },
+            {
+              "text": "Momentum smooths updates and adaptive optimizers scale them using gradient history; neither removes the need to tune and validate.",
+              "correct": false
+            },
+            {
+              "text": "Weight decay discourages large weights to regularize a model; decoupled weight decay is not identical to L2 penalties for every optimizer.",
+              "correct": false
+            },
+            {
+              "text": "Variance-aware initialization preserves useful activation and gradient scales better than setting all weights to zero.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of initialization to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Variance-aware initialization preserves useful activation and gradient scales better than setting all weights to zero.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Variance-aware initialization preserves useful activation and gradient scales better than setting all weights to zero."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-17",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Learning-rate schedules: Applied decision 2",
+          "description": "A team is reviewing learning-rate schedules in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Schedules adjust step size over training to balance rapid early learning with stable convergence.",
+              "correct": true
+            },
+            {
+              "text": "Momentum smooths updates and adaptive optimizers scale them using gradient history; neither removes the need to tune and validate.",
+              "correct": false
+            },
+            {
+              "text": "Weight decay discourages large weights to regularize a model; decoupled weight decay is not identical to L2 penalties for every optimizer.",
+              "correct": false
+            },
+            {
+              "text": "Dropout masks activations during training as regularization and should be disabled for ordinary inference.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of learning-rate schedules to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Schedules adjust step size over training to balance rapid early learning with stable convergence.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Schedules adjust step size over training to balance rapid early learning with stable convergence."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-18",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Momentum and adaptive optimizers: Applied decision 3",
+          "description": "A team is reviewing momentum and adaptive optimizers in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Weight decay discourages large weights to regularize a model; decoupled weight decay is not identical to L2 penalties for every optimizer.",
+              "correct": false
+            },
+            {
+              "text": "Momentum smooths updates and adaptive optimizers scale them using gradient history; neither removes the need to tune and validate.",
+              "correct": true
+            },
+            {
+              "text": "Dropout masks activations during training as regularization and should be disabled for ordinary inference.",
+              "correct": false
+            },
+            {
+              "text": "Batch normalization uses minibatch statistics during training and stored running statistics at inference.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of momentum and adaptive optimizers to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Momentum smooths updates and adaptive optimizers scale them using gradient history; neither removes the need to tune and validate.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Momentum smooths updates and adaptive optimizers scale them using gradient history; neither removes the need to tune and validate."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-19",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Weight decay: Applied decision 4",
+          "description": "A team is reviewing weight decay in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Dropout masks activations during training as regularization and should be disabled for ordinary inference.",
+              "correct": false
+            },
+            {
+              "text": "Batch normalization uses minibatch statistics during training and stored running statistics at inference.",
+              "correct": false
+            },
+            {
+              "text": "Weight decay discourages large weights to regularize a model; decoupled weight decay is not identical to L2 penalties for every optimizer.",
+              "correct": true
+            },
+            {
+              "text": "Layer normalization normalizes features within each example, making it useful when batch sizes or sequence lengths vary.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of weight decay to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Weight decay discourages large weights to regularize a model; decoupled weight decay is not identical to L2 penalties for every optimizer.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Weight decay discourages large weights to regularize a model; decoupled weight decay is not identical to L2 penalties for every optimizer."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-20",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Dropout: Applied decision 5",
+          "description": "A team is reviewing dropout in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Batch normalization uses minibatch statistics during training and stored running statistics at inference.",
+              "correct": false
+            },
+            {
+              "text": "Layer normalization normalizes features within each example, making it useful when batch sizes or sequence lengths vary.",
+              "correct": false
+            },
+            {
+              "text": "Convolutions reuse local filters across positions and exploit spatial locality in images and other grid-like inputs.",
+              "correct": false
+            },
+            {
+              "text": "Dropout masks activations during training as regularization and should be disabled for ordinary inference.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of dropout to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Dropout masks activations during training as regularization and should be disabled for ordinary inference.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Dropout masks activations during training as regularization and should be disabled for ordinary inference."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-21",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Batch normalization: Applied decision 6",
+          "description": "A team is reviewing batch normalization in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Batch normalization uses minibatch statistics during training and stored running statistics at inference.",
+              "correct": true
+            },
+            {
+              "text": "Layer normalization normalizes features within each example, making it useful when batch sizes or sequence lengths vary.",
+              "correct": false
+            },
+            {
+              "text": "Convolutions reuse local filters across positions and exploit spatial locality in images and other grid-like inputs.",
+              "correct": false
+            },
+            {
+              "text": "Downsampling reduces spatial compute but can discard fine details needed for localization or small-object recognition.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of batch normalization to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Batch normalization uses minibatch statistics during training and stored running statistics at inference.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Batch normalization uses minibatch statistics during training and stored running statistics at inference."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-22",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Layer normalization: Applied decision 7",
+          "description": "A team is reviewing layer normalization in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Convolutions reuse local filters across positions and exploit spatial locality in images and other grid-like inputs.",
+              "correct": false
+            },
+            {
+              "text": "Layer normalization normalizes features within each example, making it useful when batch sizes or sequence lengths vary.",
+              "correct": true
+            },
+            {
+              "text": "Downsampling reduces spatial compute but can discard fine details needed for localization or small-object recognition.",
+              "correct": false
+            },
+            {
+              "text": "Embeddings map discrete identifiers to learned vectors whose geometry reflects the training objective, not universal similarity.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of layer normalization to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Layer normalization normalizes features within each example, making it useful when batch sizes or sequence lengths vary.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Layer normalization normalizes features within each example, making it useful when batch sizes or sequence lengths vary."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-23",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Convolutions: Applied decision 8",
+          "description": "A team is reviewing convolutions in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Downsampling reduces spatial compute but can discard fine details needed for localization or small-object recognition.",
+              "correct": false
+            },
+            {
+              "text": "Embeddings map discrete identifiers to learned vectors whose geometry reflects the training objective, not universal similarity.",
+              "correct": false
+            },
+            {
+              "text": "Convolutions reuse local filters across positions and exploit spatial locality in images and other grid-like inputs.",
+              "correct": true
+            },
+            {
+              "text": "Padding equalizes sequence lengths; attention and loss masks must prevent padded positions from affecting learning.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of convolutions to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Convolutions reuse local filters across positions and exploit spatial locality in images and other grid-like inputs.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Convolutions reuse local filters across positions and exploit spatial locality in images and other grid-like inputs."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-24",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Pooling and downsampling: Applied decision 9",
+          "description": "A team is reviewing pooling and downsampling in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Embeddings map discrete identifiers to learned vectors whose geometry reflects the training objective, not universal similarity.",
+              "correct": false
+            },
+            {
+              "text": "Padding equalizes sequence lengths; attention and loss masks must prevent padded positions from affecting learning.",
+              "correct": false
+            },
+            {
+              "text": "Class weighting or sampling can emphasize rare examples but may change the probability calibration of the resulting classifier.",
+              "correct": false
+            },
+            {
+              "text": "Downsampling reduces spatial compute but can discard fine details needed for localization or small-object recognition.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of pooling and downsampling to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Downsampling reduces spatial compute but can discard fine details needed for localization or small-object recognition.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Downsampling reduces spatial compute but can discard fine details needed for localization or small-object recognition."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-25",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Embeddings: Applied decision 10",
+          "description": "A team is reviewing embeddings in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Embeddings map discrete identifiers to learned vectors whose geometry reflects the training objective, not universal similarity.",
+              "correct": true
+            },
+            {
+              "text": "Padding equalizes sequence lengths; attention and loss masks must prevent padded positions from affecting learning.",
+              "correct": false
+            },
+            {
+              "text": "Class weighting or sampling can emphasize rare examples but may change the probability calibration of the resulting classifier.",
+              "correct": false
+            },
+            {
+              "text": "Augmentations encode label-preserving variation and should match plausible conditions in the deployment environment.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of embeddings to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Embeddings map discrete identifiers to learned vectors whose geometry reflects the training objective, not universal similarity.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Embeddings map discrete identifiers to learned vectors whose geometry reflects the training objective, not universal similarity."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "level": "intermediate",
+      "challenges": [
+        {
+          "id": "dnn-intermediate-01",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Residual connections: Core idea",
+          "description": "Which statement best describes residual connections?",
+          "choices": [
+            {
+              "text": "Residual paths give gradients and representations a shortcut through deep blocks, often improving optimization.",
+              "correct": true
+            },
+            {
+              "text": "Attention combines value vectors using query-key compatibility and masks to control which positions can interact.",
+              "correct": false
+            },
+            {
+              "text": "Transformer blocks combine attention, feed-forward layers, normalization, and residual paths; ordering changes model behavior.",
+              "correct": false
+            },
+            {
+              "text": "Recurrent networks reuse hidden state across sequence steps but can struggle to preserve long-range gradients.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of residual connections to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Residual paths give gradients and representations a shortcut through deep blocks, often improving optimization.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Residual paths give gradients and representations a shortcut through deep blocks, often improving optimization."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-02",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Attention: Core idea",
+          "description": "Which statement best describes attention?",
+          "choices": [
+            {
+              "text": "Transformer blocks combine attention, feed-forward layers, normalization, and residual paths; ordering changes model behavior.",
+              "correct": false
+            },
+            {
+              "text": "Attention combines value vectors using query-key compatibility and masks to control which positions can interact.",
+              "correct": true
+            },
+            {
+              "text": "Recurrent networks reuse hidden state across sequence steps but can struggle to preserve long-range gradients.",
+              "correct": false
+            },
+            {
+              "text": "Encoder-decoder systems transform an input sequence into an output sequence, often using autoregressive decoding.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of attention to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Attention combines value vectors using query-key compatibility and masks to control which positions can interact.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Attention combines value vectors using query-key compatibility and masks to control which positions can interact."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-03",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Transformer blocks: Core idea",
+          "description": "Which statement best describes transformer blocks?",
+          "choices": [
+            {
+              "text": "Recurrent networks reuse hidden state across sequence steps but can struggle to preserve long-range gradients.",
+              "correct": false
+            },
+            {
+              "text": "Encoder-decoder systems transform an input sequence into an output sequence, often using autoregressive decoding.",
+              "correct": false
+            },
+            {
+              "text": "Transformer blocks combine attention, feed-forward layers, normalization, and residual paths; ordering changes model behavior.",
+              "correct": true
+            },
+            {
+              "text": "Shared representations can help related tasks but can also create negative transfer when task gradients conflict.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of transformer blocks to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Transformer blocks combine attention, feed-forward layers, normalization, and residual paths; ordering changes model behavior.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Transformer blocks combine attention, feed-forward layers, normalization, and residual paths; ordering changes model behavior."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-04",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Recurrent networks: Core idea",
+          "description": "Which statement best describes recurrent networks?",
+          "choices": [
+            {
+              "text": "Encoder-decoder systems transform an input sequence into an output sequence, often using autoregressive decoding.",
+              "correct": false
+            },
+            {
+              "text": "Shared representations can help related tasks but can also create negative transfer when task gradients conflict.",
+              "correct": false
+            },
+            {
+              "text": "Full and parameter-efficient tuning trade adaptation capacity against compute, memory, and preservation of pretrained behavior.",
+              "correct": false
+            },
+            {
+              "text": "Recurrent networks reuse hidden state across sequence steps but can struggle to preserve long-range gradients.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of recurrent networks to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Recurrent networks reuse hidden state across sequence steps but can struggle to preserve long-range gradients.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Recurrent networks reuse hidden state across sequence steps but can struggle to preserve long-range gradients."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-05",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Encoder-decoder models: Core idea",
+          "description": "Which statement best describes encoder-decoder models?",
+          "choices": [
+            {
+              "text": "Encoder-decoder systems transform an input sequence into an output sequence, often using autoregressive decoding.",
+              "correct": true
+            },
+            {
+              "text": "Shared representations can help related tasks but can also create negative transfer when task gradients conflict.",
+              "correct": false
+            },
+            {
+              "text": "Full and parameter-efficient tuning trade adaptation capacity against compute, memory, and preservation of pretrained behavior.",
+              "correct": false
+            },
+            {
+              "text": "Relative loss weights determine each objective's influence; inspect task-specific progress to catch domination or collapse.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of encoder-decoder models to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Encoder-decoder systems transform an input sequence into an output sequence, often using autoregressive decoding.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Encoder-decoder systems transform an input sequence into an output sequence, often using autoregressive decoding."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-06",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Multi-task learning: Core idea",
+          "description": "Which statement best describes multi-task learning?",
+          "choices": [
+            {
+              "text": "Full and parameter-efficient tuning trade adaptation capacity against compute, memory, and preservation of pretrained behavior.",
+              "correct": false
+            },
+            {
+              "text": "Shared representations can help related tasks but can also create negative transfer when task gradients conflict.",
+              "correct": true
+            },
+            {
+              "text": "Relative loss weights determine each objective's influence; inspect task-specific progress to catch domination or collapse.",
+              "correct": false
+            },
+            {
+              "text": "Clipping bounds gradient magnitude to limit unstable updates but should not conceal persistently exploding gradients.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of multi-task learning to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Shared representations can help related tasks but can also create negative transfer when task gradients conflict.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Shared representations can help related tasks but can also create negative transfer when task gradients conflict."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-07",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Fine-tuning strategies: Core idea",
+          "description": "Which statement best describes fine-tuning strategies?",
+          "choices": [
+            {
+              "text": "Relative loss weights determine each objective's influence; inspect task-specific progress to catch domination or collapse.",
+              "correct": false
+            },
+            {
+              "text": "Clipping bounds gradient magnitude to limit unstable updates but should not conceal persistently exploding gradients.",
+              "correct": false
+            },
+            {
+              "text": "Full and parameter-efficient tuning trade adaptation capacity against compute, memory, and preservation of pretrained behavior.",
+              "correct": true
+            },
+            {
+              "text": "Lower precision can reduce memory and accelerate training, while sensitive operations may require higher precision or loss scaling.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of fine-tuning strategies to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Full and parameter-efficient tuning trade adaptation capacity against compute, memory, and preservation of pretrained behavior.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Full and parameter-efficient tuning trade adaptation capacity against compute, memory, and preservation of pretrained behavior."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-08",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Loss balancing: Core idea",
+          "description": "Which statement best describes loss balancing?",
+          "choices": [
+            {
+              "text": "Clipping bounds gradient magnitude to limit unstable updates but should not conceal persistently exploding gradients.",
+              "correct": false
+            },
+            {
+              "text": "Lower precision can reduce memory and accelerate training, while sensitive operations may require higher precision or loss scaling.",
+              "correct": false
+            },
+            {
+              "text": "A resumable checkpoint includes model and optimizer state and often scheduler and random state, not just weights.",
+              "correct": false
+            },
+            {
+              "text": "Relative loss weights determine each objective's influence; inspect task-specific progress to catch domination or collapse.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of loss balancing to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Relative loss weights determine each objective's influence; inspect task-specific progress to catch domination or collapse.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Relative loss weights determine each objective's influence; inspect task-specific progress to catch domination or collapse."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-09",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Gradient clipping: Core idea",
+          "description": "Which statement best describes gradient clipping?",
+          "choices": [
+            {
+              "text": "Clipping bounds gradient magnitude to limit unstable updates but should not conceal persistently exploding gradients.",
+              "correct": true
+            },
+            {
+              "text": "Lower precision can reduce memory and accelerate training, while sensitive operations may require higher precision or loss scaling.",
+              "correct": false
+            },
+            {
+              "text": "A resumable checkpoint includes model and optimizer state and often scheduler and random state, not just weights.",
+              "correct": false
+            },
+            {
+              "text": "A probe tests whether information is recoverable from hidden states but does not prove the model causally uses it.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of gradient clipping to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Clipping bounds gradient magnitude to limit unstable updates but should not conceal persistently exploding gradients.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Clipping bounds gradient magnitude to limit unstable updates but should not conceal persistently exploding gradients."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-10",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Mixed precision: Core idea",
+          "description": "Which statement best describes mixed precision?",
+          "choices": [
+            {
+              "text": "A resumable checkpoint includes model and optimizer state and often scheduler and random state, not just weights.",
+              "correct": false
+            },
+            {
+              "text": "Lower precision can reduce memory and accelerate training, while sensitive operations may require higher precision or loss scaling.",
+              "correct": true
+            },
+            {
+              "text": "A probe tests whether information is recoverable from hidden states but does not prove the model causally uses it.",
+              "correct": false
+            },
+            {
+              "text": "Neural classifiers can be confidently wrong, so assess calibration separately from accuracy and ranking.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of mixed precision to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Lower precision can reduce memory and accelerate training, while sensitive operations may require higher precision or loss scaling.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Lower precision can reduce memory and accelerate training, while sensitive operations may require higher precision or loss scaling."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-11",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Checkpointing and recovery: Core idea",
+          "description": "Which statement best describes checkpointing and recovery?",
+          "choices": [
+            {
+              "text": "A probe tests whether information is recoverable from hidden states but does not prove the model causally uses it.",
+              "correct": false
+            },
+            {
+              "text": "Neural classifiers can be confidently wrong, so assess calibration separately from accuracy and ranking.",
+              "correct": false
+            },
+            {
+              "text": "A resumable checkpoint includes model and optimizer state and often scheduler and random state, not just weights.",
+              "correct": true
+            },
+            {
+              "text": "Robustness evaluation uses plausible corruptions and distribution changes rather than relying on clean benchmark accuracy alone.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of checkpointing and recovery to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A resumable checkpoint includes model and optimizer state and often scheduler and random state, not just weights.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A resumable checkpoint includes model and optimizer state and often scheduler and random state, not just weights."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-12",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Representation probing: Core idea",
+          "description": "Which statement best describes representation probing?",
+          "choices": [
+            {
+              "text": "Neural classifiers can be confidently wrong, so assess calibration separately from accuracy and ranking.",
+              "correct": false
+            },
+            {
+              "text": "Robustness evaluation uses plausible corruptions and distribution changes rather than relying on clean benchmark accuracy alone.",
+              "correct": false
+            },
+            {
+              "text": "Controlled ablations estimate a component's contribution when training data, compute, and evaluation are held comparable.",
+              "correct": false
+            },
+            {
+              "text": "A probe tests whether information is recoverable from hidden states but does not prove the model causally uses it.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of representation probing to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "A probe tests whether information is recoverable from hidden states but does not prove the model causally uses it.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "A probe tests whether information is recoverable from hidden states but does not prove the model causally uses it."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-13",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Neural calibration: Core idea",
+          "description": "Which statement best describes neural calibration?",
+          "choices": [
+            {
+              "text": "Neural classifiers can be confidently wrong, so assess calibration separately from accuracy and ranking.",
+              "correct": true
+            },
+            {
+              "text": "Robustness evaluation uses plausible corruptions and distribution changes rather than relying on clean benchmark accuracy alone.",
+              "correct": false
+            },
+            {
+              "text": "Controlled ablations estimate a component's contribution when training data, compute, and evaluation are held comparable.",
+              "correct": false
+            },
+            {
+              "text": "Residual paths give gradients and representations a shortcut through deep blocks, often improving optimization.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of neural calibration to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Neural classifiers can be confidently wrong, so assess calibration separately from accuracy and ranking.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Neural classifiers can be confidently wrong, so assess calibration separately from accuracy and ranking."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-14",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Robustness testing: Core idea",
+          "description": "Which statement best describes robustness testing?",
+          "choices": [
+            {
+              "text": "Controlled ablations estimate a component's contribution when training data, compute, and evaluation are held comparable.",
+              "correct": false
+            },
+            {
+              "text": "Robustness evaluation uses plausible corruptions and distribution changes rather than relying on clean benchmark accuracy alone.",
+              "correct": true
+            },
+            {
+              "text": "Residual paths give gradients and representations a shortcut through deep blocks, often improving optimization.",
+              "correct": false
+            },
+            {
+              "text": "Attention combines value vectors using query-key compatibility and masks to control which positions can interact.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of robustness testing to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Robustness evaluation uses plausible corruptions and distribution changes rather than relying on clean benchmark accuracy alone.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Robustness evaluation uses plausible corruptions and distribution changes rather than relying on clean benchmark accuracy alone."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-15",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Ablation studies: Core idea",
+          "description": "Which statement best describes ablation studies?",
+          "choices": [
+            {
+              "text": "Residual paths give gradients and representations a shortcut through deep blocks, often improving optimization.",
+              "correct": false
+            },
+            {
+              "text": "Attention combines value vectors using query-key compatibility and masks to control which positions can interact.",
+              "correct": false
+            },
+            {
+              "text": "Controlled ablations estimate a component's contribution when training data, compute, and evaluation are held comparable.",
+              "correct": true
+            },
+            {
+              "text": "Transformer blocks combine attention, feed-forward layers, normalization, and residual paths; ordering changes model behavior.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of ablation studies to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Controlled ablations estimate a component's contribution when training data, compute, and evaluation are held comparable.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Controlled ablations estimate a component's contribution when training data, compute, and evaluation are held comparable."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-16",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Residual connections: Applied decision 1",
+          "description": "A team is reviewing residual connections in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Attention combines value vectors using query-key compatibility and masks to control which positions can interact.",
+              "correct": false
+            },
+            {
+              "text": "Transformer blocks combine attention, feed-forward layers, normalization, and residual paths; ordering changes model behavior.",
+              "correct": false
+            },
+            {
+              "text": "Recurrent networks reuse hidden state across sequence steps but can struggle to preserve long-range gradients.",
+              "correct": false
+            },
+            {
+              "text": "Residual paths give gradients and representations a shortcut through deep blocks, often improving optimization.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of residual connections to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Residual paths give gradients and representations a shortcut through deep blocks, often improving optimization.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Residual paths give gradients and representations a shortcut through deep blocks, often improving optimization."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-17",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Attention: Applied decision 2",
+          "description": "A team is reviewing attention in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Attention combines value vectors using query-key compatibility and masks to control which positions can interact.",
+              "correct": true
+            },
+            {
+              "text": "Transformer blocks combine attention, feed-forward layers, normalization, and residual paths; ordering changes model behavior.",
+              "correct": false
+            },
+            {
+              "text": "Recurrent networks reuse hidden state across sequence steps but can struggle to preserve long-range gradients.",
+              "correct": false
+            },
+            {
+              "text": "Encoder-decoder systems transform an input sequence into an output sequence, often using autoregressive decoding.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of attention to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Attention combines value vectors using query-key compatibility and masks to control which positions can interact.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Attention combines value vectors using query-key compatibility and masks to control which positions can interact."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-18",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Transformer blocks: Applied decision 3",
+          "description": "A team is reviewing transformer blocks in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Recurrent networks reuse hidden state across sequence steps but can struggle to preserve long-range gradients.",
+              "correct": false
+            },
+            {
+              "text": "Transformer blocks combine attention, feed-forward layers, normalization, and residual paths; ordering changes model behavior.",
+              "correct": true
+            },
+            {
+              "text": "Encoder-decoder systems transform an input sequence into an output sequence, often using autoregressive decoding.",
+              "correct": false
+            },
+            {
+              "text": "Shared representations can help related tasks but can also create negative transfer when task gradients conflict.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of transformer blocks to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Transformer blocks combine attention, feed-forward layers, normalization, and residual paths; ordering changes model behavior.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Transformer blocks combine attention, feed-forward layers, normalization, and residual paths; ordering changes model behavior."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-19",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Recurrent networks: Applied decision 4",
+          "description": "A team is reviewing recurrent networks in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Encoder-decoder systems transform an input sequence into an output sequence, often using autoregressive decoding.",
+              "correct": false
+            },
+            {
+              "text": "Shared representations can help related tasks but can also create negative transfer when task gradients conflict.",
+              "correct": false
+            },
+            {
+              "text": "Recurrent networks reuse hidden state across sequence steps but can struggle to preserve long-range gradients.",
+              "correct": true
+            },
+            {
+              "text": "Full and parameter-efficient tuning trade adaptation capacity against compute, memory, and preservation of pretrained behavior.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of recurrent networks to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Recurrent networks reuse hidden state across sequence steps but can struggle to preserve long-range gradients.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Recurrent networks reuse hidden state across sequence steps but can struggle to preserve long-range gradients."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-20",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Encoder-decoder models: Applied decision 5",
+          "description": "A team is reviewing encoder-decoder models in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Shared representations can help related tasks but can also create negative transfer when task gradients conflict.",
+              "correct": false
+            },
+            {
+              "text": "Full and parameter-efficient tuning trade adaptation capacity against compute, memory, and preservation of pretrained behavior.",
+              "correct": false
+            },
+            {
+              "text": "Relative loss weights determine each objective's influence; inspect task-specific progress to catch domination or collapse.",
+              "correct": false
+            },
+            {
+              "text": "Encoder-decoder systems transform an input sequence into an output sequence, often using autoregressive decoding.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of encoder-decoder models to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Encoder-decoder systems transform an input sequence into an output sequence, often using autoregressive decoding.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Encoder-decoder systems transform an input sequence into an output sequence, often using autoregressive decoding."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-21",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Multi-task learning: Applied decision 6",
+          "description": "A team is reviewing multi-task learning in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Shared representations can help related tasks but can also create negative transfer when task gradients conflict.",
+              "correct": true
+            },
+            {
+              "text": "Full and parameter-efficient tuning trade adaptation capacity against compute, memory, and preservation of pretrained behavior.",
+              "correct": false
+            },
+            {
+              "text": "Relative loss weights determine each objective's influence; inspect task-specific progress to catch domination or collapse.",
+              "correct": false
+            },
+            {
+              "text": "Clipping bounds gradient magnitude to limit unstable updates but should not conceal persistently exploding gradients.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of multi-task learning to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Shared representations can help related tasks but can also create negative transfer when task gradients conflict.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Shared representations can help related tasks but can also create negative transfer when task gradients conflict."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-22",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Fine-tuning strategies: Applied decision 7",
+          "description": "A team is reviewing fine-tuning strategies in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Relative loss weights determine each objective's influence; inspect task-specific progress to catch domination or collapse.",
+              "correct": false
+            },
+            {
+              "text": "Full and parameter-efficient tuning trade adaptation capacity against compute, memory, and preservation of pretrained behavior.",
+              "correct": true
+            },
+            {
+              "text": "Clipping bounds gradient magnitude to limit unstable updates but should not conceal persistently exploding gradients.",
+              "correct": false
+            },
+            {
+              "text": "Lower precision can reduce memory and accelerate training, while sensitive operations may require higher precision or loss scaling.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of fine-tuning strategies to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Full and parameter-efficient tuning trade adaptation capacity against compute, memory, and preservation of pretrained behavior.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Full and parameter-efficient tuning trade adaptation capacity against compute, memory, and preservation of pretrained behavior."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-23",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Loss balancing: Applied decision 8",
+          "description": "A team is reviewing loss balancing in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Clipping bounds gradient magnitude to limit unstable updates but should not conceal persistently exploding gradients.",
+              "correct": false
+            },
+            {
+              "text": "Lower precision can reduce memory and accelerate training, while sensitive operations may require higher precision or loss scaling.",
+              "correct": false
+            },
+            {
+              "text": "Relative loss weights determine each objective's influence; inspect task-specific progress to catch domination or collapse.",
+              "correct": true
+            },
+            {
+              "text": "A resumable checkpoint includes model and optimizer state and often scheduler and random state, not just weights.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of loss balancing to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Relative loss weights determine each objective's influence; inspect task-specific progress to catch domination or collapse.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Relative loss weights determine each objective's influence; inspect task-specific progress to catch domination or collapse."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-24",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Gradient clipping: Applied decision 9",
+          "description": "A team is reviewing gradient clipping in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Lower precision can reduce memory and accelerate training, while sensitive operations may require higher precision or loss scaling.",
+              "correct": false
+            },
+            {
+              "text": "A resumable checkpoint includes model and optimizer state and often scheduler and random state, not just weights.",
+              "correct": false
+            },
+            {
+              "text": "A probe tests whether information is recoverable from hidden states but does not prove the model causally uses it.",
+              "correct": false
+            },
+            {
+              "text": "Clipping bounds gradient magnitude to limit unstable updates but should not conceal persistently exploding gradients.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of gradient clipping to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Clipping bounds gradient magnitude to limit unstable updates but should not conceal persistently exploding gradients.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Clipping bounds gradient magnitude to limit unstable updates but should not conceal persistently exploding gradients."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-25",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Mixed precision: Applied decision 10",
+          "description": "A team is reviewing mixed precision in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Lower precision can reduce memory and accelerate training, while sensitive operations may require higher precision or loss scaling.",
+              "correct": true
+            },
+            {
+              "text": "A resumable checkpoint includes model and optimizer state and often scheduler and random state, not just weights.",
+              "correct": false
+            },
+            {
+              "text": "A probe tests whether information is recoverable from hidden states but does not prove the model causally uses it.",
+              "correct": false
+            },
+            {
+              "text": "Neural classifiers can be confidently wrong, so assess calibration separately from accuracy and ranking.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of mixed precision to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Lower precision can reduce memory and accelerate training, while sensitive operations may require higher precision or loss scaling.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Lower precision can reduce memory and accelerate training, while sensitive operations may require higher precision or loss scaling."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "level": "advanced",
+      "challenges": [
+        {
+          "id": "dnn-advanced-01",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Scaling laws and compute: Core idea",
+          "description": "Which statement best describes scaling laws and compute?",
+          "choices": [
+            {
+              "text": "Scaling laws are empirical trends, not guarantees; data quality, task relevance, and inference cost constrain useful scaling.",
+              "correct": true
+            },
+            {
+              "text": "Data-parallel replicas synchronize gradients, and communication overhead can limit throughput as workers are added.",
+              "correct": false
+            },
+            {
+              "text": "Tensor parallelism partitions operations and pipeline parallelism partitions layers; both introduce communication and scheduling trade-offs.",
+              "correct": false
+            },
+            {
+              "text": "Checkpointing recomputes selected activations during backpropagation to exchange extra compute for lower memory use.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of scaling laws and compute to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Scaling laws are empirical trends, not guarantees; data quality, task relevance, and inference cost constrain useful scaling.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Scaling laws are empirical trends, not guarantees; data quality, task relevance, and inference cost constrain useful scaling."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-02",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Distributed data parallelism: Core idea",
+          "description": "Which statement best describes distributed data parallelism?",
+          "choices": [
+            {
+              "text": "Tensor parallelism partitions operations and pipeline parallelism partitions layers; both introduce communication and scheduling trade-offs.",
+              "correct": false
+            },
+            {
+              "text": "Data-parallel replicas synchronize gradients, and communication overhead can limit throughput as workers are added.",
+              "correct": true
+            },
+            {
+              "text": "Checkpointing recomputes selected activations during backpropagation to exchange extra compute for lower memory use.",
+              "correct": false
+            },
+            {
+              "text": "Quantization-aware training simulates low-precision effects during training to reduce quality loss after conversion.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of distributed data parallelism to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Data-parallel replicas synchronize gradients, and communication overhead can limit throughput as workers are added.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Data-parallel replicas synchronize gradients, and communication overhead can limit throughput as workers are added."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-03",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Tensor and pipeline parallelism: Core idea",
+          "description": "Which statement best describes tensor and pipeline parallelism?",
+          "choices": [
+            {
+              "text": "Checkpointing recomputes selected activations during backpropagation to exchange extra compute for lower memory use.",
+              "correct": false
+            },
+            {
+              "text": "Quantization-aware training simulates low-precision effects during training to reduce quality loss after conversion.",
+              "correct": false
+            },
+            {
+              "text": "Tensor parallelism partitions operations and pipeline parallelism partitions layers; both introduce communication and scheduling trade-offs.",
+              "correct": true
+            },
+            {
+              "text": "Distillation trains a smaller student using teacher outputs or intermediate signals and must be judged on task outcomes.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of tensor and pipeline parallelism to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Tensor parallelism partitions operations and pipeline parallelism partitions layers; both introduce communication and scheduling trade-offs.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Tensor parallelism partitions operations and pipeline parallelism partitions layers; both introduce communication and scheduling trade-offs."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-04",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Activation checkpointing: Core idea",
+          "description": "Which statement best describes activation checkpointing?",
+          "choices": [
+            {
+              "text": "Quantization-aware training simulates low-precision effects during training to reduce quality loss after conversion.",
+              "correct": false
+            },
+            {
+              "text": "Distillation trains a smaller student using teacher outputs or intermediate signals and must be judged on task outcomes.",
+              "correct": false
+            },
+            {
+              "text": "Removing weights reduces parameter count, but speed gains depend on sparse kernels and target hardware.",
+              "correct": false
+            },
+            {
+              "text": "Checkpointing recomputes selected activations during backpropagation to exchange extra compute for lower memory use.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of activation checkpointing to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Checkpointing recomputes selected activations during backpropagation to exchange extra compute for lower memory use.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Checkpointing recomputes selected activations during backpropagation to exchange extra compute for lower memory use."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-05",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Quantization-aware training: Core idea",
+          "description": "Which statement best describes quantization-aware training?",
+          "choices": [
+            {
+              "text": "Quantization-aware training simulates low-precision effects during training to reduce quality loss after conversion.",
+              "correct": true
+            },
+            {
+              "text": "Distillation trains a smaller student using teacher outputs or intermediate signals and must be judged on task outcomes.",
+              "correct": false
+            },
+            {
+              "text": "Removing weights reduces parameter count, but speed gains depend on sparse kernels and target hardware.",
+              "correct": false
+            },
+            {
+              "text": "Architecture search explores a bounded design space and can overfit validation results or consume excessive compute.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of quantization-aware training to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Quantization-aware training simulates low-precision effects during training to reduce quality loss after conversion.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Quantization-aware training simulates low-precision effects during training to reduce quality loss after conversion."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-06",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Knowledge distillation: Core idea",
+          "description": "Which statement best describes knowledge distillation?",
+          "choices": [
+            {
+              "text": "Removing weights reduces parameter count, but speed gains depend on sparse kernels and target hardware.",
+              "correct": false
+            },
+            {
+              "text": "Distillation trains a smaller student using teacher outputs or intermediate signals and must be judged on task outcomes.",
+              "correct": true
+            },
+            {
+              "text": "Architecture search explores a bounded design space and can overfit validation results or consume excessive compute.",
+              "correct": false
+            },
+            {
+              "text": "Continual learning adapts to new tasks while measuring and mitigating loss of previously acquired capabilities.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of knowledge distillation to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Distillation trains a smaller student using teacher outputs or intermediate signals and must be judged on task outcomes.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Distillation trains a smaller student using teacher outputs or intermediate signals and must be judged on task outcomes."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-07",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Pruning and sparsity: Core idea",
+          "description": "Which statement best describes pruning and sparsity?",
+          "choices": [
+            {
+              "text": "Architecture search explores a bounded design space and can overfit validation results or consume excessive compute.",
+              "correct": false
+            },
+            {
+              "text": "Continual learning adapts to new tasks while measuring and mitigating loss of previously acquired capabilities.",
+              "correct": false
+            },
+            {
+              "text": "Removing weights reduces parameter count, but speed gains depend on sparse kernels and target hardware.",
+              "correct": true
+            },
+            {
+              "text": "Robustness claims are relative to a defined threat model; no single attack suite covers every manipulation.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of pruning and sparsity to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Removing weights reduces parameter count, but speed gains depend on sparse kernels and target hardware.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Removing weights reduces parameter count, but speed gains depend on sparse kernels and target hardware."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-08",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Architecture search: Core idea",
+          "description": "Which statement best describes architecture search?",
+          "choices": [
+            {
+              "text": "Continual learning adapts to new tasks while measuring and mitigating loss of previously acquired capabilities.",
+              "correct": false
+            },
+            {
+              "text": "Robustness claims are relative to a defined threat model; no single attack suite covers every manipulation.",
+              "correct": false
+            },
+            {
+              "text": "Membership inference and extraction tests probe information exposure but do not alone establish a privacy guarantee.",
+              "correct": false
+            },
+            {
+              "text": "Architecture search explores a bounded design space and can overfit validation results or consume excessive compute.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of architecture search to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Architecture search explores a bounded design space and can overfit validation results or consume excessive compute.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Architecture search explores a bounded design space and can overfit validation results or consume excessive compute."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-09",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Continual learning: Core idea",
+          "description": "Which statement best describes continual learning?",
+          "choices": [
+            {
+              "text": "Continual learning adapts to new tasks while measuring and mitigating loss of previously acquired capabilities.",
+              "correct": true
+            },
+            {
+              "text": "Robustness claims are relative to a defined threat model; no single attack suite covers every manipulation.",
+              "correct": false
+            },
+            {
+              "text": "Membership inference and extraction tests probe information exposure but do not alone establish a privacy guarantee.",
+              "correct": false
+            },
+            {
+              "text": "Ensembles and approximate Bayesian methods estimate some uncertainty but can remain overconfident under distribution shift.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of continual learning to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Continual learning adapts to new tasks while measuring and mitigating loss of previously acquired capabilities.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Continual learning adapts to new tasks while measuring and mitigating loss of previously acquired capabilities."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-10",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Adversarial robustness: Core idea",
+          "description": "Which statement best describes adversarial robustness?",
+          "choices": [
+            {
+              "text": "Membership inference and extraction tests probe information exposure but do not alone establish a privacy guarantee.",
+              "correct": false
+            },
+            {
+              "text": "Robustness claims are relative to a defined threat model; no single attack suite covers every manipulation.",
+              "correct": true
+            },
+            {
+              "text": "Ensembles and approximate Bayesian methods estimate some uncertainty but can remain overconfident under distribution shift.",
+              "correct": false
+            },
+            {
+              "text": "Message-passing graph networks aggregate neighborhood information and can oversmooth or leak structure across data splits.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of adversarial robustness to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Robustness claims are relative to a defined threat model; no single attack suite covers every manipulation.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Robustness claims are relative to a defined threat model; no single attack suite covers every manipulation."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-11",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Model privacy attacks: Core idea",
+          "description": "Which statement best describes model privacy attacks?",
+          "choices": [
+            {
+              "text": "Ensembles and approximate Bayesian methods estimate some uncertainty but can remain overconfident under distribution shift.",
+              "correct": false
+            },
+            {
+              "text": "Message-passing graph networks aggregate neighborhood information and can oversmooth or leak structure across data splits.",
+              "correct": false
+            },
+            {
+              "text": "Membership inference and extraction tests probe information exposure but do not alone establish a privacy guarantee.",
+              "correct": true
+            },
+            {
+              "text": "Early, late, and cross-attention fusion differ in interaction depth and behavior when a modality is missing.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of model privacy attacks to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Membership inference and extraction tests probe information exposure but do not alone establish a privacy guarantee.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Membership inference and extraction tests probe information exposure but do not alone establish a privacy guarantee."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-12",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Deep-model uncertainty: Core idea",
+          "description": "Which statement best describes deep-model uncertainty?",
+          "choices": [
+            {
+              "text": "Message-passing graph networks aggregate neighborhood information and can oversmooth or leak structure across data splits.",
+              "correct": false
+            },
+            {
+              "text": "Early, late, and cross-attention fusion differ in interaction depth and behavior when a modality is missing.",
+              "correct": false
+            },
+            {
+              "text": "Batching, caching, kernel fusion, and sequence length affect throughput, memory, and tail latency differently.",
+              "correct": false
+            },
+            {
+              "text": "Ensembles and approximate Bayesian methods estimate some uncertainty but can remain overconfident under distribution shift.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of deep-model uncertainty to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Ensembles and approximate Bayesian methods estimate some uncertainty but can remain overconfident under distribution shift.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Ensembles and approximate Bayesian methods estimate some uncertainty but can remain overconfident under distribution shift."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-13",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Graph neural networks: Core idea",
+          "description": "Which statement best describes graph neural networks?",
+          "choices": [
+            {
+              "text": "Message-passing graph networks aggregate neighborhood information and can oversmooth or leak structure across data splits.",
+              "correct": true
+            },
+            {
+              "text": "Early, late, and cross-attention fusion differ in interaction depth and behavior when a modality is missing.",
+              "correct": false
+            },
+            {
+              "text": "Batching, caching, kernel fusion, and sequence length affect throughput, memory, and tail latency differently.",
+              "correct": false
+            },
+            {
+              "text": "Scaling laws are empirical trends, not guarantees; data quality, task relevance, and inference cost constrain useful scaling.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of graph neural networks to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Message-passing graph networks aggregate neighborhood information and can oversmooth or leak structure across data splits.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Message-passing graph networks aggregate neighborhood information and can oversmooth or leak structure across data splits."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-14",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Multimodal fusion: Core idea",
+          "description": "Which statement best describes multimodal fusion?",
+          "choices": [
+            {
+              "text": "Batching, caching, kernel fusion, and sequence length affect throughput, memory, and tail latency differently.",
+              "correct": false
+            },
+            {
+              "text": "Early, late, and cross-attention fusion differ in interaction depth and behavior when a modality is missing.",
+              "correct": true
+            },
+            {
+              "text": "Scaling laws are empirical trends, not guarantees; data quality, task relevance, and inference cost constrain useful scaling.",
+              "correct": false
+            },
+            {
+              "text": "Data-parallel replicas synchronize gradients, and communication overhead can limit throughput as workers are added.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of multimodal fusion to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Early, late, and cross-attention fusion differ in interaction depth and behavior when a modality is missing.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Early, late, and cross-attention fusion differ in interaction depth and behavior when a modality is missing."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-15",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Inference optimization: Core idea",
+          "description": "Which statement best describes inference optimization?",
+          "choices": [
+            {
+              "text": "Scaling laws are empirical trends, not guarantees; data quality, task relevance, and inference cost constrain useful scaling.",
+              "correct": false
+            },
+            {
+              "text": "Data-parallel replicas synchronize gradients, and communication overhead can limit throughput as workers are added.",
+              "correct": false
+            },
+            {
+              "text": "Batching, caching, kernel fusion, and sequence length affect throughput, memory, and tail latency differently.",
+              "correct": true
+            },
+            {
+              "text": "Tensor parallelism partitions operations and pipeline parallelism partitions layers; both introduce communication and scheduling trade-offs.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of inference optimization to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Batching, caching, kernel fusion, and sequence length affect throughput, memory, and tail latency differently.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Batching, caching, kernel fusion, and sequence length affect throughput, memory, and tail latency differently."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-16",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Scaling laws and compute: Applied decision 1",
+          "description": "A team is reviewing scaling laws and compute in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Data-parallel replicas synchronize gradients, and communication overhead can limit throughput as workers are added.",
+              "correct": false
+            },
+            {
+              "text": "Tensor parallelism partitions operations and pipeline parallelism partitions layers; both introduce communication and scheduling trade-offs.",
+              "correct": false
+            },
+            {
+              "text": "Checkpointing recomputes selected activations during backpropagation to exchange extra compute for lower memory use.",
+              "correct": false
+            },
+            {
+              "text": "Scaling laws are empirical trends, not guarantees; data quality, task relevance, and inference cost constrain useful scaling.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of scaling laws and compute to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Scaling laws are empirical trends, not guarantees; data quality, task relevance, and inference cost constrain useful scaling.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Scaling laws are empirical trends, not guarantees; data quality, task relevance, and inference cost constrain useful scaling."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-17",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Distributed data parallelism: Applied decision 2",
+          "description": "A team is reviewing distributed data parallelism in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Data-parallel replicas synchronize gradients, and communication overhead can limit throughput as workers are added.",
+              "correct": true
+            },
+            {
+              "text": "Tensor parallelism partitions operations and pipeline parallelism partitions layers; both introduce communication and scheduling trade-offs.",
+              "correct": false
+            },
+            {
+              "text": "Checkpointing recomputes selected activations during backpropagation to exchange extra compute for lower memory use.",
+              "correct": false
+            },
+            {
+              "text": "Quantization-aware training simulates low-precision effects during training to reduce quality loss after conversion.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of distributed data parallelism to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Data-parallel replicas synchronize gradients, and communication overhead can limit throughput as workers are added.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Data-parallel replicas synchronize gradients, and communication overhead can limit throughput as workers are added."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-18",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Tensor and pipeline parallelism: Applied decision 3",
+          "description": "A team is reviewing tensor and pipeline parallelism in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Checkpointing recomputes selected activations during backpropagation to exchange extra compute for lower memory use.",
+              "correct": false
+            },
+            {
+              "text": "Tensor parallelism partitions operations and pipeline parallelism partitions layers; both introduce communication and scheduling trade-offs.",
+              "correct": true
+            },
+            {
+              "text": "Quantization-aware training simulates low-precision effects during training to reduce quality loss after conversion.",
+              "correct": false
+            },
+            {
+              "text": "Distillation trains a smaller student using teacher outputs or intermediate signals and must be judged on task outcomes.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of tensor and pipeline parallelism to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Tensor parallelism partitions operations and pipeline parallelism partitions layers; both introduce communication and scheduling trade-offs.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Tensor parallelism partitions operations and pipeline parallelism partitions layers; both introduce communication and scheduling trade-offs."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-19",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Activation checkpointing: Applied decision 4",
+          "description": "A team is reviewing activation checkpointing in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Quantization-aware training simulates low-precision effects during training to reduce quality loss after conversion.",
+              "correct": false
+            },
+            {
+              "text": "Distillation trains a smaller student using teacher outputs or intermediate signals and must be judged on task outcomes.",
+              "correct": false
+            },
+            {
+              "text": "Checkpointing recomputes selected activations during backpropagation to exchange extra compute for lower memory use.",
+              "correct": true
+            },
+            {
+              "text": "Removing weights reduces parameter count, but speed gains depend on sparse kernels and target hardware.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of activation checkpointing to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Checkpointing recomputes selected activations during backpropagation to exchange extra compute for lower memory use.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Checkpointing recomputes selected activations during backpropagation to exchange extra compute for lower memory use."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-20",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Quantization-aware training: Applied decision 5",
+          "description": "A team is reviewing quantization-aware training in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Distillation trains a smaller student using teacher outputs or intermediate signals and must be judged on task outcomes.",
+              "correct": false
+            },
+            {
+              "text": "Removing weights reduces parameter count, but speed gains depend on sparse kernels and target hardware.",
+              "correct": false
+            },
+            {
+              "text": "Architecture search explores a bounded design space and can overfit validation results or consume excessive compute.",
+              "correct": false
+            },
+            {
+              "text": "Quantization-aware training simulates low-precision effects during training to reduce quality loss after conversion.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of quantization-aware training to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Quantization-aware training simulates low-precision effects during training to reduce quality loss after conversion.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Quantization-aware training simulates low-precision effects during training to reduce quality loss after conversion."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-21",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Knowledge distillation: Applied decision 6",
+          "description": "A team is reviewing knowledge distillation in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Distillation trains a smaller student using teacher outputs or intermediate signals and must be judged on task outcomes.",
+              "correct": true
+            },
+            {
+              "text": "Removing weights reduces parameter count, but speed gains depend on sparse kernels and target hardware.",
+              "correct": false
+            },
+            {
+              "text": "Architecture search explores a bounded design space and can overfit validation results or consume excessive compute.",
+              "correct": false
+            },
+            {
+              "text": "Continual learning adapts to new tasks while measuring and mitigating loss of previously acquired capabilities.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of knowledge distillation to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Distillation trains a smaller student using teacher outputs or intermediate signals and must be judged on task outcomes.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Distillation trains a smaller student using teacher outputs or intermediate signals and must be judged on task outcomes."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-22",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Pruning and sparsity: Applied decision 7",
+          "description": "A team is reviewing pruning and sparsity in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Architecture search explores a bounded design space and can overfit validation results or consume excessive compute.",
+              "correct": false
+            },
+            {
+              "text": "Removing weights reduces parameter count, but speed gains depend on sparse kernels and target hardware.",
+              "correct": true
+            },
+            {
+              "text": "Continual learning adapts to new tasks while measuring and mitigating loss of previously acquired capabilities.",
+              "correct": false
+            },
+            {
+              "text": "Robustness claims are relative to a defined threat model; no single attack suite covers every manipulation.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of pruning and sparsity to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Removing weights reduces parameter count, but speed gains depend on sparse kernels and target hardware.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Removing weights reduces parameter count, but speed gains depend on sparse kernels and target hardware."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-23",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Architecture search: Applied decision 8",
+          "description": "A team is reviewing architecture search in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Continual learning adapts to new tasks while measuring and mitigating loss of previously acquired capabilities.",
+              "correct": false
+            },
+            {
+              "text": "Robustness claims are relative to a defined threat model; no single attack suite covers every manipulation.",
+              "correct": false
+            },
+            {
+              "text": "Architecture search explores a bounded design space and can overfit validation results or consume excessive compute.",
+              "correct": true
+            },
+            {
+              "text": "Membership inference and extraction tests probe information exposure but do not alone establish a privacy guarantee.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of architecture search to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Architecture search explores a bounded design space and can overfit validation results or consume excessive compute.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Architecture search explores a bounded design space and can overfit validation results or consume excessive compute."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-24",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Continual learning: Applied decision 9",
+          "description": "A team is reviewing continual learning in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Robustness claims are relative to a defined threat model; no single attack suite covers every manipulation.",
+              "correct": false
+            },
+            {
+              "text": "Membership inference and extraction tests probe information exposure but do not alone establish a privacy guarantee.",
+              "correct": false
+            },
+            {
+              "text": "Ensembles and approximate Bayesian methods estimate some uncertainty but can remain overconfident under distribution shift.",
+              "correct": false
+            },
+            {
+              "text": "Continual learning adapts to new tasks while measuring and mitigating loss of previously acquired capabilities.",
+              "correct": true
+            }
+          ],
+          "hint": "Connect the purpose of continual learning to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Continual learning adapts to new tasks while measuring and mitigating loss of previously acquired capabilities.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Continual learning adapts to new tasks while measuring and mitigating loss of previously acquired capabilities."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-25",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Adversarial robustness: Applied decision 10",
+          "description": "A team is reviewing adversarial robustness in a production workflow. Which principle should guide the decision?",
+          "choices": [
+            {
+              "text": "Robustness claims are relative to a defined threat model; no single attack suite covers every manipulation.",
+              "correct": true
+            },
+            {
+              "text": "Membership inference and extraction tests probe information exposure but do not alone establish a privacy guarantee.",
+              "correct": false
+            },
+            {
+              "text": "Ensembles and approximate Bayesian methods estimate some uncertainty but can remain overconfident under distribution shift.",
+              "correct": false
+            },
+            {
+              "text": "Message-passing graph networks aggregate neighborhood information and can oversmooth or leak structure across data splits.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the purpose of adversarial robustness to the evidence and constraints in the scenario.",
+          "solution": {
+            "code": "Robustness claims are relative to a defined threat model; no single attack suite covers every manipulation.",
+            "steps": [
+              {
+                "title": "Identify the principle",
+                "explanation": "Robustness claims are relative to a defined threat model; no single attack suite covers every manipulation."
+              },
+              {
+                "title": "Apply with evidence",
+                "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

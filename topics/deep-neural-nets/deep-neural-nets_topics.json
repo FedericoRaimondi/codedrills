@@ -1,0 +1,867 @@
+{
+  "language": "deep-neural-nets",
+  "levels": [
+    {
+      "level": "new",
+      "topics": [
+        {
+          "id": "dnn-new-01-neuron-and-activation",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Neuron and activation",
+          "description": "A neuron combines weighted inputs and a bias, then applies a nonlinear activation; without nonlinearity, stacked layers remain a linear transformation.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "A neuron combines weighted inputs and a bias, then applies a nonlinear activation; without nonlinearity, stacked layers remain a linear transformation. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-new-02-layers-and-representations",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Layers and representations",
+          "description": "Each layer transforms an input into a representation for later layers; useful representations depend on the training objective and data.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Each layer transforms an input into a representation for later layers; useful representations depend on the training objective and data. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-new-03-weights-and-biases",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Weights and biases",
+          "description": "Weights scale input contributions and biases shift activations; training updates both to reduce a specified loss.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Weights scale input contributions and biases shift activations; training updates both to reduce a specified loss. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-new-04-forward-pass",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Forward pass",
+          "description": "A forward pass computes outputs by applying layer operations in sequence, making tensor shapes and transformations auditable.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "A forward pass computes outputs by applying layer operations in sequence, making tensor shapes and transformations auditable. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use.",
+              "image": "img/languages/deep-neural-nets/forward-and-backpropagation.png"
+            }
+          ]
+        },
+        {
+          "id": "dnn-new-05-loss-function",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Loss function",
+          "description": "A loss measures prediction error and defines the signal training optimizes; it should match the task and output representation.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "A loss measures prediction error and defines the signal training optimizes; it should match the task and output representation. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-new-06-gradient-descent",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Gradient descent",
+          "description": "Gradient descent updates parameters using loss gradients, and the learning rate controls the step size.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Gradient descent updates parameters using loss gradients, and the learning rate controls the step size. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-new-07-backpropagation",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Backpropagation",
+          "description": "Backpropagation applies the chain rule to calculate parameter gradients efficiently from the output layer toward earlier layers.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Backpropagation applies the chain rule to calculate parameter gradients efficiently from the output layer toward earlier layers. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-new-08-training-batches",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Training batches",
+          "description": "A batch supplies examples for an optimizer update; batch size changes memory use, gradient noise, and update frequency.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "A batch supplies examples for an optimizer update; batch size changes memory use, gradient noise, and update frequency. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-new-09-epochs-and-iterations",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Epochs and iterations",
+          "description": "An epoch passes through the training set once, while an iteration is one optimizer update; they are not interchangeable.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "An epoch passes through the training set once, while an iteration is one optimizer update; they are not interchangeable. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-new-10-training-and-validation-curves",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Training and validation curves",
+          "description": "Comparing training and validation loss helps reveal underfitting and overfitting when validation data is not used to fit weights.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Comparing training and validation loss helps reveal underfitting and overfitting when validation data is not used to fit weights. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-new-11-classification-heads",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Classification heads",
+          "description": "A softmax head normalizes logits for mutually exclusive classes but does not guarantee that its probabilities are calibrated.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "A softmax head normalizes logits for mutually exclusive classes but does not guarantee that its probabilities are calibrated. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-new-12-regression-heads",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Regression heads",
+          "description": "A regression output and loss should reflect the target's scale, range, and error costs.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "A regression output and loss should reflect the target's scale, range, and error costs. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-new-13-overfitting",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Overfitting",
+          "description": "Overfitting occurs when a network learns training-specific details that do not generalize to relevant unseen examples.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Overfitting occurs when a network learns training-specific details that do not generalize to relevant unseen examples. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-new-14-compute-and-memory",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Compute and memory",
+          "description": "Parameters, activations, gradients, and optimizer state use memory; estimate the full training footprint before selecting batch size.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Parameters, activations, gradients, and optimizer state use memory; estimate the full training footprint before selecting batch size. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-new-15-neural-network-baselines",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Neural-network baselines",
+          "description": "A small neural network or non-neural baseline gives a reference for judging whether added depth is worthwhile.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "A small neural network or non-neural baseline gives a reference for judging whether added depth is worthwhile. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": "beginner",
+      "topics": [
+        {
+          "id": "dnn-beginner-01-initialization",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Initialization",
+          "description": "Variance-aware initialization preserves useful activation and gradient scales better than setting all weights to zero.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Variance-aware initialization preserves useful activation and gradient scales better than setting all weights to zero. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-beginner-02-learning-rate-schedules",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Learning-rate schedules",
+          "description": "Schedules adjust step size over training to balance rapid early learning with stable convergence.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Schedules adjust step size over training to balance rapid early learning with stable convergence. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-beginner-03-momentum-and-adaptive-optimizers",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Momentum and adaptive optimizers",
+          "description": "Momentum smooths updates and adaptive optimizers scale them using gradient history; neither removes the need to tune and validate.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Momentum smooths updates and adaptive optimizers scale them using gradient history; neither removes the need to tune and validate. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-beginner-04-weight-decay",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Weight decay",
+          "description": "Weight decay discourages large weights to regularize a model; decoupled weight decay is not identical to L2 penalties for every optimizer.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Weight decay discourages large weights to regularize a model; decoupled weight decay is not identical to L2 penalties for every optimizer. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-beginner-05-dropout",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Dropout",
+          "description": "Dropout masks activations during training as regularization and should be disabled for ordinary inference.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Dropout masks activations during training as regularization and should be disabled for ordinary inference. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-beginner-06-batch-normalization",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Batch normalization",
+          "description": "Batch normalization uses minibatch statistics during training and stored running statistics at inference.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Batch normalization uses minibatch statistics during training and stored running statistics at inference. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-beginner-07-layer-normalization",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Layer normalization",
+          "description": "Layer normalization normalizes features within each example, making it useful when batch sizes or sequence lengths vary.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Layer normalization normalizes features within each example, making it useful when batch sizes or sequence lengths vary. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-beginner-08-convolutions",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Convolutions",
+          "description": "Convolutions reuse local filters across positions and exploit spatial locality in images and other grid-like inputs.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Convolutions reuse local filters across positions and exploit spatial locality in images and other grid-like inputs. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-beginner-09-pooling-and-downsampling",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Pooling and downsampling",
+          "description": "Downsampling reduces spatial compute but can discard fine details needed for localization or small-object recognition.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Downsampling reduces spatial compute but can discard fine details needed for localization or small-object recognition. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-beginner-10-embeddings",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Embeddings",
+          "description": "Embeddings map discrete identifiers to learned vectors whose geometry reflects the training objective, not universal similarity.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Embeddings map discrete identifiers to learned vectors whose geometry reflects the training objective, not universal similarity. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-beginner-11-padding-and-masks",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Padding and masks",
+          "description": "Padding equalizes sequence lengths; attention and loss masks must prevent padded positions from affecting learning.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Padding equalizes sequence lengths; attention and loss masks must prevent padded positions from affecting learning. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-beginner-12-class-imbalance",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Class imbalance",
+          "description": "Class weighting or sampling can emphasize rare examples but may change the probability calibration of the resulting classifier.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Class weighting or sampling can emphasize rare examples but may change the probability calibration of the resulting classifier. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-beginner-13-data-augmentation",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Data augmentation",
+          "description": "Augmentations encode label-preserving variation and should match plausible conditions in the deployment environment.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Augmentations encode label-preserving variation and should match plausible conditions in the deployment environment. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-beginner-14-early-stopping",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Early stopping",
+          "description": "Early stopping chooses a checkpoint using validation behavior and should not repeatedly adapt to a held-out test set.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Early stopping chooses a checkpoint using validation behavior and should not repeatedly adapt to a held-out test set. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-beginner-15-transfer-learning",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Transfer learning",
+          "description": "Pretrained representations can reduce data needs, but domain mismatch determines how well they transfer.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Pretrained representations can reduce data needs, but domain mismatch determines how well they transfer. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": "intermediate",
+      "topics": [
+        {
+          "id": "dnn-intermediate-01-residual-connections",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Residual connections",
+          "description": "Residual paths give gradients and representations a shortcut through deep blocks, often improving optimization.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Residual paths give gradients and representations a shortcut through deep blocks, often improving optimization. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-intermediate-02-attention",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Attention",
+          "description": "Attention combines value vectors using query-key compatibility and masks to control which positions can interact.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Attention combines value vectors using query-key compatibility and masks to control which positions can interact. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-intermediate-03-transformer-blocks",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Transformer blocks",
+          "description": "Transformer blocks combine attention, feed-forward layers, normalization, and residual paths; ordering changes model behavior.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Transformer blocks combine attention, feed-forward layers, normalization, and residual paths; ordering changes model behavior. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use.",
+              "image": "img/languages/deep-neural-nets/transformer-block.png"
+            }
+          ]
+        },
+        {
+          "id": "dnn-intermediate-04-recurrent-networks",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Recurrent networks",
+          "description": "Recurrent networks reuse hidden state across sequence steps but can struggle to preserve long-range gradients.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Recurrent networks reuse hidden state across sequence steps but can struggle to preserve long-range gradients. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-intermediate-05-encoder-decoder-models",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Encoder-decoder models",
+          "description": "Encoder-decoder systems transform an input sequence into an output sequence, often using autoregressive decoding.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Encoder-decoder systems transform an input sequence into an output sequence, often using autoregressive decoding. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-intermediate-06-multi-task-learning",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Multi-task learning",
+          "description": "Shared representations can help related tasks but can also create negative transfer when task gradients conflict.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Shared representations can help related tasks but can also create negative transfer when task gradients conflict. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-intermediate-07-fine-tuning-strategies",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Fine-tuning strategies",
+          "description": "Full and parameter-efficient tuning trade adaptation capacity against compute, memory, and preservation of pretrained behavior.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Full and parameter-efficient tuning trade adaptation capacity against compute, memory, and preservation of pretrained behavior. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-intermediate-08-loss-balancing",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Loss balancing",
+          "description": "Relative loss weights determine each objective's influence; inspect task-specific progress to catch domination or collapse.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Relative loss weights determine each objective's influence; inspect task-specific progress to catch domination or collapse. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-intermediate-09-gradient-clipping",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Gradient clipping",
+          "description": "Clipping bounds gradient magnitude to limit unstable updates but should not conceal persistently exploding gradients.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Clipping bounds gradient magnitude to limit unstable updates but should not conceal persistently exploding gradients. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-intermediate-10-mixed-precision",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Mixed precision",
+          "description": "Lower precision can reduce memory and accelerate training, while sensitive operations may require higher precision or loss scaling.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Lower precision can reduce memory and accelerate training, while sensitive operations may require higher precision or loss scaling. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-intermediate-11-checkpointing-and-recovery",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Checkpointing and recovery",
+          "description": "A resumable checkpoint includes model and optimizer state and often scheduler and random state, not just weights.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "A resumable checkpoint includes model and optimizer state and often scheduler and random state, not just weights. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-intermediate-12-representation-probing",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Representation probing",
+          "description": "A probe tests whether information is recoverable from hidden states but does not prove the model causally uses it.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "A probe tests whether information is recoverable from hidden states but does not prove the model causally uses it. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-intermediate-13-neural-calibration",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Neural calibration",
+          "description": "Neural classifiers can be confidently wrong, so assess calibration separately from accuracy and ranking.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Neural classifiers can be confidently wrong, so assess calibration separately from accuracy and ranking. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-intermediate-14-robustness-testing",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Robustness testing",
+          "description": "Robustness evaluation uses plausible corruptions and distribution changes rather than relying on clean benchmark accuracy alone.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Robustness evaluation uses plausible corruptions and distribution changes rather than relying on clean benchmark accuracy alone. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-intermediate-15-ablation-studies",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Ablation studies",
+          "description": "Controlled ablations estimate a component's contribution when training data, compute, and evaluation are held comparable.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Controlled ablations estimate a component's contribution when training data, compute, and evaluation are held comparable. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": "advanced",
+      "topics": [
+        {
+          "id": "dnn-advanced-01-scaling-laws-and-compute",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Scaling laws and compute",
+          "description": "Scaling laws are empirical trends, not guarantees; data quality, task relevance, and inference cost constrain useful scaling.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Scaling laws are empirical trends, not guarantees; data quality, task relevance, and inference cost constrain useful scaling. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-advanced-02-distributed-data-parallelism",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Distributed data parallelism",
+          "description": "Data-parallel replicas synchronize gradients, and communication overhead can limit throughput as workers are added.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Data-parallel replicas synchronize gradients, and communication overhead can limit throughput as workers are added. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-advanced-03-tensor-and-pipeline-parallelism",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Tensor and pipeline parallelism",
+          "description": "Tensor parallelism partitions operations and pipeline parallelism partitions layers; both introduce communication and scheduling trade-offs.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Tensor parallelism partitions operations and pipeline parallelism partitions layers; both introduce communication and scheduling trade-offs. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-advanced-04-activation-checkpointing",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Activation checkpointing",
+          "description": "Checkpointing recomputes selected activations during backpropagation to exchange extra compute for lower memory use.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Checkpointing recomputes selected activations during backpropagation to exchange extra compute for lower memory use. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-advanced-05-quantization-aware-training",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Quantization-aware training",
+          "description": "Quantization-aware training simulates low-precision effects during training to reduce quality loss after conversion.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Quantization-aware training simulates low-precision effects during training to reduce quality loss after conversion. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-advanced-06-knowledge-distillation",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Knowledge distillation",
+          "description": "Distillation trains a smaller student using teacher outputs or intermediate signals and must be judged on task outcomes.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Distillation trains a smaller student using teacher outputs or intermediate signals and must be judged on task outcomes. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-advanced-07-pruning-and-sparsity",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Pruning and sparsity",
+          "description": "Removing weights reduces parameter count, but speed gains depend on sparse kernels and target hardware.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Removing weights reduces parameter count, but speed gains depend on sparse kernels and target hardware. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-advanced-08-architecture-search",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Architecture search",
+          "description": "Architecture search explores a bounded design space and can overfit validation results or consume excessive compute.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Architecture search explores a bounded design space and can overfit validation results or consume excessive compute. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-advanced-09-continual-learning",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Continual learning",
+          "description": "Continual learning adapts to new tasks while measuring and mitigating loss of previously acquired capabilities.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Continual learning adapts to new tasks while measuring and mitigating loss of previously acquired capabilities. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-advanced-10-adversarial-robustness",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Adversarial robustness",
+          "description": "Robustness claims are relative to a defined threat model; no single attack suite covers every manipulation.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Robustness claims are relative to a defined threat model; no single attack suite covers every manipulation. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-advanced-11-model-privacy-attacks",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Model privacy attacks",
+          "description": "Membership inference and extraction tests probe information exposure but do not alone establish a privacy guarantee.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Membership inference and extraction tests probe information exposure but do not alone establish a privacy guarantee. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-advanced-12-deep-model-uncertainty",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Deep-model uncertainty",
+          "description": "Ensembles and approximate Bayesian methods estimate some uncertainty but can remain overconfident under distribution shift.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Ensembles and approximate Bayesian methods estimate some uncertainty but can remain overconfident under distribution shift. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-advanced-13-graph-neural-networks",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Graph neural networks",
+          "description": "Message-passing graph networks aggregate neighborhood information and can oversmooth or leak structure across data splits.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Message-passing graph networks aggregate neighborhood information and can oversmooth or leak structure across data splits. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-advanced-14-multimodal-fusion",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Multimodal fusion",
+          "description": "Early, late, and cross-attention fusion differ in interaction depth and behavior when a modality is missing.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Early, late, and cross-attention fusion differ in interaction depth and behavior when a modality is missing. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "dnn-advanced-15-inference-optimization",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Inference optimization",
+          "description": "Batching, caching, kernel fusion, and sequence length affect throughput, memory, and tail latency differently.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Batching, caching, kernel fusion, and sequence length affect throughput, memory, and tail latency differently. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

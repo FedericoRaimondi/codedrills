@@ -1,0 +1,867 @@
+{
+  "language": "mlops",
+  "levels": [
+    {
+      "level": "new",
+      "topics": [
+        {
+          "id": "mlops-new-01-ml-lifecycle",
+          "language": "mlops",
+          "level": "new",
+          "title": "ML lifecycle",
+          "description": "The lifecycle spans framing, data, training, evaluation, deployment, and monitoring rather than ending at model fit.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "The lifecycle spans framing, data, training, evaluation, deployment, and monitoring rather than ending at model fit. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use.",
+              "image": "img/languages/mlops/ml-lifecycle.png"
+            }
+          ]
+        },
+        {
+          "id": "mlops-new-02-reproducible-experiments",
+          "language": "mlops",
+          "level": "new",
+          "title": "Reproducible experiments",
+          "description": "Reproducibility requires recording data, code, configuration, environment, and relevant random seeds.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Reproducibility requires recording data, code, configuration, environment, and relevant random seeds. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-new-03-dataset-versioning",
+          "language": "mlops",
+          "level": "new",
+          "title": "Dataset versioning",
+          "description": "Dataset versions identify records and transformations used in an experiment, subject to privacy retention rules.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Dataset versions identify records and transformations used in an experiment, subject to privacy retention rules. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-new-04-model-artifacts",
+          "language": "mlops",
+          "level": "new",
+          "title": "Model artifacts",
+          "description": "Artifacts include weights and metadata needed to interpret and serve a model safely.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Artifacts include weights and metadata needed to interpret and serve a model safely. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-new-05-training-configuration",
+          "language": "mlops",
+          "level": "new",
+          "title": "Training configuration",
+          "description": "Explicit configuration makes training choices reviewable and repeatable across environments.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Explicit configuration makes training choices reviewable and repeatable across environments. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-new-06-evaluation-gates",
+          "language": "mlops",
+          "level": "new",
+          "title": "Evaluation gates",
+          "description": "Gates prevent deployment when critical quality, compatibility, or safety criteria are unmet.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Gates prevent deployment when critical quality, compatibility, or safety criteria are unmet. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-new-07-model-registry",
+          "language": "mlops",
+          "level": "new",
+          "title": "Model registry",
+          "description": "A registry tracks artifacts, metadata, approval, and deployment state across versions.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "A registry tracks artifacts, metadata, approval, and deployment state across versions. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-new-08-ci-for-ml",
+          "language": "mlops",
+          "level": "new",
+          "title": "CI for ML",
+          "description": "ML CI checks code, data contracts, reproducibility, and evaluation without requiring full retraining for every change.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "ML CI checks code, data contracts, reproducibility, and evaluation without requiring full retraining for every change. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-new-09-cd-for-models",
+          "language": "mlops",
+          "level": "new",
+          "title": "CD for models",
+          "description": "Model delivery automates controlled promotion while preserving approvals, canaries, and rollback.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Model delivery automates controlled promotion while preserving approvals, canaries, and rollback. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-new-10-batch-and-online-serving",
+          "language": "mlops",
+          "level": "new",
+          "title": "Batch and online serving",
+          "description": "Serving mode determines schedule, latency, scaling, and freshness needs.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Serving mode determines schedule, latency, scaling, and freshness needs. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-new-11-monitoring-basics",
+          "language": "mlops",
+          "level": "new",
+          "title": "Monitoring basics",
+          "description": "Monitoring covers service health and prediction behavior, though quality labels may arrive late.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Monitoring covers service health and prediction behavior, though quality labels may arrive late. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-new-12-data-quality-checks",
+          "language": "mlops",
+          "level": "new",
+          "title": "Data quality checks",
+          "description": "Checks detect schema changes, missing values, invalid ranges, and distribution anomalies.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Checks detect schema changes, missing values, invalid ranges, and distribution anomalies. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-new-13-model-drift",
+          "language": "mlops",
+          "level": "new",
+          "title": "Model drift",
+          "description": "Drift signals changing inputs or relationships but does not alone prove declining outcome quality.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Drift signals changing inputs or relationships but does not alone prove declining outcome quality. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-new-14-incident-response",
+          "language": "mlops",
+          "level": "new",
+          "title": "Incident response",
+          "description": "Incidents need defined severity, owners, rollback, communication, and post-incident learning.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Incidents need defined severity, owners, rollback, communication, and post-incident learning. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-new-15-retraining-decisions",
+          "language": "mlops",
+          "level": "new",
+          "title": "Retraining decisions",
+          "description": "Retraining should respond to evidence and validation rather than schedule alone.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Retraining should respond to evidence and validation rather than schedule alone. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": "beginner",
+      "topics": [
+        {
+          "id": "mlops-beginner-01-experiment-tracking",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Experiment tracking",
+          "description": "Tracking records parameters, metrics, and artifact references so results can be compared.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Tracking records parameters, metrics, and artifact references so results can be compared. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-beginner-02-feature-pipelines",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Feature pipelines",
+          "description": "Pipelines define transformations consistently for training and serving.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Pipelines define transformations consistently for training and serving. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-beginner-03-data-contracts",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Data contracts",
+          "description": "Contracts specify expected schemas and value constraints at pipeline boundaries.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Contracts specify expected schemas and value constraints at pipeline boundaries. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-beginner-04-workflow-orchestration",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Workflow orchestration",
+          "description": "Orchestrators coordinate dependent tasks with retries and recorded status.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Orchestrators coordinate dependent tasks with retries and recorded status. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-beginner-05-artifact-storage",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Artifact storage",
+          "description": "Artifact stores retain versioned models and related files with access and lifecycle policies.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Artifact stores retain versioned models and related files with access and lifecycle policies. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-beginner-06-containerized-training",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Containerized training",
+          "description": "Containers package dependencies and runtime assumptions for consistent execution.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Containers package dependencies and runtime assumptions for consistent execution. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-beginner-07-registry-stages",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Registry stages",
+          "description": "Stages communicate readiness and approval but should reflect evidence rather than labels alone.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Stages communicate readiness and approval but should reflect evidence rather than labels alone. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-beginner-08-deployment-strategies",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Deployment strategies",
+          "description": "Canary and blue-green releases limit exposure and simplify rollback.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Canary and blue-green releases limit exposure and simplify rollback. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-beginner-09-prediction-logging",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Prediction logging",
+          "description": "Logs enable diagnosis and audit but require minimization, access controls, and retention limits.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Logs enable diagnosis and audit but require minimization, access controls, and retention limits. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-beginner-10-service-health-monitoring",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Service health monitoring",
+          "description": "Availability, errors, latency, and saturation reveal serving problems before labels arrive.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Availability, errors, latency, and saturation reveal serving problems before labels arrive. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-beginner-11-data-drift-monitoring",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Data drift monitoring",
+          "description": "Distribution changes are investigation signals, not proof of model quality degradation.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Distribution changes are investigation signals, not proof of model quality degradation. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-beginner-12-label-delay",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Label delay",
+          "description": "Delayed outcomes require distinguishing immediate proxies from confirmed predictive quality.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Delayed outcomes require distinguishing immediate proxies from confirmed predictive quality. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-beginner-13-rollback-readiness",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Rollback readiness",
+          "description": "Rollback requires a known-good artifact, compatible interface, and tested procedure.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Rollback requires a known-good artifact, compatible interface, and tested procedure. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-beginner-14-access-control",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Access control",
+          "description": "Least privilege protects datasets, registries, secrets, and production endpoints.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Least privilege protects datasets, registries, secrets, and production endpoints. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-beginner-15-runbooks-and-ownership",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Runbooks and ownership",
+          "description": "Runbooks and named owners make model behavior and incident steps discoverable.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Runbooks and named owners make model behavior and incident steps discoverable. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": "intermediate",
+      "topics": [
+        {
+          "id": "mlops-intermediate-01-feature-parity",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Feature parity",
+          "description": "Parity tests verify transformations match between offline training and online serving paths.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Parity tests verify transformations match between offline training and online serving paths. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-intermediate-02-workflow-dags",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Workflow DAGs",
+          "description": "DAGs encode dependencies and support selective retries without repeating unrelated work.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "DAGs encode dependencies and support selective retries without repeating unrelated work. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-intermediate-03-immutable-snapshots",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Immutable snapshots",
+          "description": "Snapshots prevent mutable source tables from silently changing experiment meaning.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Snapshots prevent mutable source tables from silently changing experiment meaning. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-intermediate-04-lineage-and-provenance",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Lineage and provenance",
+          "description": "Lineage links data, code, features, artifacts, and deployment for audit and debugging.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Lineage links data, code, features, artifacts, and deployment for audit and debugging. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use.",
+              "image": "img/languages/mlops/lineage-provenance.png"
+            }
+          ]
+        },
+        {
+          "id": "mlops-intermediate-05-automated-validation",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Automated validation",
+          "description": "Validation checks schema, quality, safety, and compatibility before a candidate advances.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Validation checks schema, quality, safety, and compatibility before a candidate advances. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-intermediate-06-canary-analysis",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Canary analysis",
+          "description": "Canary analysis compares candidate and control under traffic with predefined rollback conditions.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Canary analysis compares candidate and control under traffic with predefined rollback conditions. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-intermediate-07-shadow-evaluation",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Shadow evaluation",
+          "description": "Shadow deployment exercises a candidate without serving its decisions to users.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Shadow deployment exercises a candidate without serving its decisions to users. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-intermediate-08-drift-response",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Drift response",
+          "description": "Drift and delayed-label signals require investigation and defined actions rather than automatic retraining.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Drift and delayed-label signals require investigation and defined actions rather than automatic retraining. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-intermediate-09-retraining-pipelines",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Retraining pipelines",
+          "description": "Retraining needs controlled data windows, validation, approvals, and artifact lineage.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Retraining needs controlled data windows, validation, approvals, and artifact lineage. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-intermediate-10-promotion-policy",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Promotion policy",
+          "description": "Promotion maps evidence and approvals to a production state, preventing unreviewed deployment.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Promotion maps evidence and approvals to a production state, preventing unreviewed deployment. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-intermediate-11-serving-autoscaling",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Serving autoscaling",
+          "description": "Autoscaling must account for model load, warmup, concurrency, and accelerator capacity.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Autoscaling must account for model load, warmup, concurrency, and accelerator capacity. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-intermediate-12-model-slos",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Model SLOs",
+          "description": "SLOs cover inference latency, availability, freshness, and where possible task quality.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "SLOs cover inference latency, availability, freshness, and where possible task quality. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-intermediate-13-resource-monitoring",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Resource monitoring",
+          "description": "Resource monitoring relates accelerator use, storage, and pipeline time to model value.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Resource monitoring relates accelerator use, storage, and pipeline time to model value. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-intermediate-14-a-b-testing",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "A/B testing",
+          "description": "Randomized exposure compares model versions with guardrails and adequate sample size.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Randomized exposure compares model versions with guardrails and adequate sample size. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-intermediate-15-reproducible-recovery",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Reproducible recovery",
+          "description": "Recovery restores artifacts and workflow state while avoiding partial or duplicate outputs.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Recovery restores artifacts and workflow state while avoiding partial or duplicate outputs. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": "advanced",
+      "topics": [
+        {
+          "id": "mlops-advanced-01-feature-store-architecture",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Feature store architecture",
+          "description": "Feature stores coordinate offline and online access, freshness, ownership, and point-in-time correctness.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Feature stores coordinate offline and online access, freshness, ownership, and point-in-time correctness. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-advanced-02-continuous-training-governance",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Continuous training governance",
+          "description": "Continuous training creates candidates automatically but retains validation, approval, and rollback boundaries.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Continuous training creates candidates automatically but retains validation, approval, and rollback boundaries. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-advanced-03-version-compatibility",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Version compatibility",
+          "description": "Compatibility contracts prevent serving a model with mismatched feature or preprocessing versions.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Compatibility contracts prevent serving a model with mismatched feature or preprocessing versions. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-advanced-04-safe-rollback",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Safe rollback",
+          "description": "Rollback accounts for schemas, consumers, and in-flight requests as well as model weights.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Rollback accounts for schemas, consumers, and in-flight requests as well as model weights. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-advanced-05-fleet-management",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Fleet management",
+          "description": "Fleet management coordinates ownership, versions, resource contention, and risk across deployed models.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Fleet management coordinates ownership, versions, resource contention, and risk across deployed models. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-advanced-06-federated-operations",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Federated operations",
+          "description": "Federated workflows coordinate clients and aggregation while managing privacy, availability, and non-IID data.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Federated workflows coordinate clients and aggregation while managing privacy, availability, and non-IID data. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-advanced-07-pipeline-privacy",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Pipeline privacy",
+          "description": "Privacy controls cover collection, transformation, access, logging, backups, and derived artifacts.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Privacy controls cover collection, transformation, access, logging, backups, and derived artifacts. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-advanced-08-supply-chain-security",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Supply-chain security",
+          "description": "Supply-chain controls verify code, dependencies, datasets, and artifacts from source to deployment.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Supply-chain controls verify code, dependencies, datasets, and artifacts from source to deployment. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-advanced-09-high-availability-serving",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "High-availability serving",
+          "description": "Availability requires redundancy, health-aware routing, capacity reserves, and tested failover.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Availability requires redundancy, health-aware routing, capacity reserves, and tested failover. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-advanced-10-disaster-recovery",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Disaster recovery",
+          "description": "Recovery objectives cover artifacts, metadata, workflows, and serving state.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Recovery objectives cover artifacts, metadata, workflows, and serving state. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-advanced-11-drift-diagnosis",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Drift diagnosis",
+          "description": "Diagnosis separates input drift, label shift, and concept change using data and outcome evidence.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Diagnosis separates input drift, label shift, and concept change using data and outcome evidence. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-advanced-12-fairness-monitoring",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Fairness monitoring",
+          "description": "Fairness monitoring tracks subgroup quality and coverage while accounting for privacy and population change.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Fairness monitoring tracks subgroup quality and coverage while accounting for privacy and population change. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-advanced-13-governance-trails",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Governance trails",
+          "description": "Governance requires attributable decisions, access history, approvals, and production-version evidence.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Governance requires attributable decisions, access history, approvals, and production-version evidence. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-advanced-14-decommissioning",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Decommissioning",
+          "description": "Decommissioning removes traffic and credentials safely while preserving required records and deleting expired data.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Decommissioning removes traffic and credentials safely while preserving required records and deleting expired data. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "mlops-advanced-15-platform-scheduling",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Platform scheduling",
+          "description": "Shared platforms need quotas and priority policies to prevent workload resource starvation.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Shared platforms need quotas and priority policies to prevent workload resource starvation. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
