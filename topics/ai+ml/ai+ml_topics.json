@@ -13,16 +13,16 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Starting Point",
-                            "body": "Artificial intelligence is the broad goal of building systems that perform intelligent tasks, while machine learning is the subset that learns patterns from data. This distinction helps you choose when to rely on rules versus data-driven models."
+                            "title": "Try this thought experiment",
+                            "body": "A thermostat can follow fixed rules, while a model can learn a temperature-to-energy pattern from examples. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Real-world framing",
-                            "body": "Use ai basics: what is ai and ml to translate a business question into a learning task. Write down the input available at prediction time and the exact output you need."
+                            "title": "The useful rule",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Artificial intelligence is the broad goal of building systems that perform intelligent tasks, while machine learning is a subset that learns patterns from data instead of relying only on hand-written rules. Record the baseline and the evidence needed to proceed."
                         },
                         {
-                            "title": "Common confusion to avoid",
-                            "body": "A common pitfall is rushing to implement algorithms without first establishing the problem foundation. Before selecting any algorithm, clearly define your problem type (classification, regression, clustering, etc.), verify data availability and quality, and establish measurable success metrics to guide your model development."
+                            "title": "Where the rule stops",
+                            "body": "Use a rule when behavior is stable and explicit; use learning only when patterns and data make it useful. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -35,16 +35,20 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Data checklist",
-                            "body": "Structured data has fixed columns and types, while unstructured data (text, images, audio) needs representation steps before modeling. For each source, identify schema stability, storage format, and preprocessing needed to make inputs model-ready."
+                            "title": "The short version",
+                            "body": "Structured data follows a fixed schema such as rows and columns, while unstructured data (text, audio, images) needs additional processing before models can consume it effectively. In other words, data types: structured vs unstructured data is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Quality signals",
-                            "body": "Assess data quality across multiple dimensions: completeness (all required fields present), validity (values conform to expected ranges/formats), timeliness (data reflects current state), and leakage risk (no target information leaked into features). For structured data, validate schema consistency and missing values. For unstructured data, check for encoding issues, corruption, and diversity. Define specific metrics to quantify each signal."
+                            "title": "At work",
+                            "body": "A spreadsheet of transactions has named columns; a customer email is text that needs parsing or an embedding before many models can use it. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Mini practice",
-                            "body": "Mini practice for data types: structured vs unstructured data: list 5 example fields and mark each as structured, semi-structured, or unstructured, then try to think about the preprocessing each one needs. Another useful exercise is to navigate a website you commonly use and identify the structured and unstructured data it collects."
+                            "title": "Check before you trust it",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Structured data follows a fixed schema such as rows and columns, while unstructured data (text, audio, images) needs additional processing before models can consume it effectively. Record the baseline and the evidence needed to proceed."
+                        },
+                        {
+                            "title": "A failure to watch for",
+                            "body": "A file extension does not determine meaning: inspect the schema, missingness, and how the information will be represented. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -57,16 +61,16 @@
                     "estimatedMinutes": 11,
                     "lessons": [
                         {
-                            "title": "Definition",
-                            "body": "A dataset is a collection of examples used for training and evaluation, usually with features and labels in supervised tasks. Check label quality, class balance, and temporal leakage so the dataset reflects the decision problem you want to solve."
+                            "title": "A distinction that matters",
+                            "body": "A dataset is a collection of examples used for training and evaluation, typically with features (inputs) and labels (targets) when the task is supervised. In other words, intro to datasets is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Quality",
-                            "body": "Have you heard of the phrase 'garbage in, garbage out'? This is especially true in machine learning. The quality of your dataset directly impacts the performance of your model because the model learns patterns from the data it is given."
+                            "title": "Use it on a real case",
+                            "body": "A row can represent one order, with features known before shipment and a label saying whether it arrived late. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Mini practice",
-                            "body": "Go on Kaggle (famous data science competition platform) and explore the dataset section."
+                            "title": "Questions to ask",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. A dataset is a collection of examples used for training and evaluation, typically with features (inputs) and labels (targets) when the task is supervised. Record the baseline and the evidence needed to proceed."
                         }
                     ]
                 },
@@ -79,16 +83,16 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Intuition first",
-                            "body": "Master the mathematical foundations of AI: vectors represent feature data, matrix operations enable efficient batch computations, and algebra governs how models combine features into predictions. Start by developing intuition—understand how scaling values affects distances, how noise impacts optimization convergence, and how feature correlation influences model learning before diving into formal equations."
+                            "title": "A small walkthrough",
+                            "body": "A linear model multiplies each feature by a weight and adds the results; a matrix packages many such calculations efficiently. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Why this matters for models",
-                            "body": "Vectors encode input features into a format ML algorithms can process. Dot products measure similarity and generate predictions through weighted feature combinations. Scaling normalizes data ranges to prevent certain features from dominating learning. Together, these operations determine how models compute distances between data points, how efficiently they optimize parameters, and the magnitude and accuracy of final predictions in supervised learning tasks."
+                            "title": "Why it works",
+                            "body": "Core AI math includes vectors, matrix operations, and basic algebra because model predictions are usually computed as weighted combinations of numeric features. In other words, basic math for ai is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "References",
-                            "body": "In these short lessons we can't cover the math in detail, but here are some resources if you want to learn more:\n1) 3Blue1Brown's YouTube channel has excellent visual explanations of linear algebra and calculus concepts relevant to AI.\n2) Andrew Ng's Machine Learning course on Coursera includes a refresher on the necessary math foundations for understanding ML algorithms.\n3) Stanford's YouTube channel has lectures from many of their AI courses."
+                            "title": "What could mislead you",
+                            "body": "Keep track of units and dimensions; an invalid shape or scale can make a correct formula meaningless. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -101,16 +105,12 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Intuition first",
-                            "body": "Statistics helps quantify uncertainty through concepts like mean, variance, and distributions, which are essential for understanding noisy real-world data."
+                            "title": "When this is useful",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Statistics helps quantify uncertainty through concepts like mean, variance, and distributions, which are essential for understanding noisy real-world data. Record the baseline and the evidence needed to proceed."
                         },
                         {
-                            "title": "Why this matters for models",
-                            "body": "Understanding statistics is crucial for AI practitioners because it allows you to quantify uncertainty, identify patterns, and make informed decisions based on data. Concepts like mean and variance help you summarize data distributions, while understanding probability distributions enables you to model real-world phenomena more accurately. Statistical inference techniques allow you to draw conclusions about populations from samples, which is essential when working with limited data. Additionally, statistical thinking helps you evaluate model performance, detect overfitting, and choose appropriate evaluation metrics that reflect the true impact of your models in production."
-                        },
-                        {
-                            "title": "Resources",
-                            "body": "In these short lessons we can't cover the statistics in detail, but here are some resources if you want to learn more:\n1) Free book: Introduction to Statistical Learning.\n2) Coursera's Data Science Specialization includes modules on statistical inference and modeling.\n3) Stanford's YouTube channel has lectures from their statistics courses."
+                            "title": "Follow one example",
+                            "body": "The mean delivery time can hide a long tail, so pair it with a spread measure and inspect the distribution. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         }
                     ]
                 },
@@ -123,17 +123,21 @@
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Data checklist",
-                            "body": "Visualizations reveal distribution shape, outliers, and feature relationships before modeling. Choose chart types deliberately: histograms for spread, scatter plots for relationships, and box plots for extreme values.",
+                            "title": "Picture the data",
+                            "body": "A histogram reveals skew in transaction amounts, while a scatter plot can expose a nonlinear relationship or an outlier. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful.",
                             "image": "img/languages/ai+ml/new-lesson-6.png"
                         },
                         {
-                            "title": "Data Visualization",
-                            "body": "Effective data visualization is crucial for AI practitioners because it allows you to quickly identify patterns, outliers, and relationships in your data that may not be apparent through summary statistics alone. Visualizations can help you understand the distribution of your features, detect skewness or kurtosis, and uncover correlations between variables. This insight is essential for making informed decisions about feature engineering, model selection, and potential data quality issues before you even start modeling."
+                            "title": "The principle",
+                            "body": "Visualizations like histograms, scatter plots, and box plots quickly reveal distribution shape, outliers, and variable relationships before modeling begins. In other words, visualization basics is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Art of visualization",
-                            "body": "Try to imagine how easier is to understand a concept when you have a good visualization of it. Give a look at this website: https://seeing-theory.brown.edu/ "
+                            "title": "A practical check",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Visualizations like histograms, scatter plots, and box plots quickly reveal distribution shape, outliers, and variable relationships before modeling begins. Record the baseline and the evidence needed to proceed."
+                        },
+                        {
+                            "title": "Its boundary",
+                            "body": "A visual pattern is a hypothesis, not proof of cause or reliable predictive signal. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -146,16 +150,16 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "You are the detective",
-                            "body": "Initial data inspection checks missing values, duplicates, data types, and unrealistic ranges to prevent avoidable modeling errors. Approach this step with curiosity and skepticism—look for patterns that don't make sense, question assumptions about data collection, and be ready to dig deeper when something looks off."
+                            "title": "A working definition",
+                            "body": "Initial data inspection checks missing values, duplicates, data types, and unrealistic ranges to prevent avoidable modeling errors. In other words, data inspection is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "It will pay off",
-                            "body": "Thorough data inspection is an investment that pays off by catching issues early, improving model performance, and building trust in your results. By identifying and addressing data quality problems upfront, you can avoid wasted time on training models that learn from flawed data and ensure that your insights are based on reliable information."
+                            "title": "A concrete case",
+                            "body": "Count missing values, verify a date column parses correctly, and inspect extreme quantities before training. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Consideration",
-                            "body": "Nowadays we mostly speak about AI, but imagine the best LLM (large language model, ChatGPT is an example of LLM) based on incorrect data. So as AI is becoming a commodity, the real value resides in the data. Unfortunately, it is less sexy to talk about data structure, quality and cleaning... but it is the most important part of the AI pipeline."
+                            "title": "A limit worth remembering",
+                            "body": "Summaries can hide duplicates and subgroup issues; sample actual records as well as aggregate counts. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -168,16 +172,12 @@
                     "estimatedMinutes": 11,
                     "lessons": [
                         {
-                            "title": "What is a prediction?",
-                            "body": "Crystal ball? Not quite. A prediction is an estimate produced by a model from input features (imagine them as columns in a spreadsheet). The output can be a class label, a probability, or a continuous numeric estimate. Predictions are used to inform decisions, automate processes, and provide insights into future events based on historical data."
+                            "title": "Start with the decision",
+                            "body": "A delivery model might return a delay probability of 0.3; a separate threshold determines whether the system flags the order. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "From input to output",
-                            "body": "The dataset with the features (and labels if supervised) is our model input. The model processes these features through its learned parameters to produce predictions. This process involves transforming the input data, applying the model's mathematical functions, and generating outputs that can be interpreted and used for decision-making."
-                        },
-                        {
-                            "title": "House Price Model",
-                            "body": "Take the case of a house price prediction model. The input features might include the number of bedrooms, square footage, location, and age of the property. The label would be the actual sale price of the house. The model learns from historical data to predict the price of a new house based on its features. So when a new house is listed, the model can provide an estimated price range."
+                            "title": "What the term means",
+                            "body": "A prediction is a model output produced from input features, such as a class label, a probability, or a continuous numeric estimate. In other words, intro to predictions is a way to reason about the task—not a promise that a model will work."
                         }
                     ]
                 },
@@ -190,16 +190,16 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Definition",
-                            "body": "Supervised learning trains with labeled targets (house prices, for example), while unsupervised learning finds latent structure such as clusters or low-dimensional representations without labels (e.g., customer segments)."
+                            "title": "Try this thought experiment",
+                            "body": "Predicting a known churn label is supervised; grouping users without labels is exploratory unsupervised learning. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Real-world framing",
-                            "body": "Start with the business question. If you have a clear target variable to predict, it's likely a supervised task. If you're exploring patterns or groupings in data without predefined labels, it's likely unsupervised. Clearly define your problem type before selecting algorithms."
+                            "title": "The useful rule",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Supervised learning trains with labeled targets, while unsupervised learning finds latent structure such as clusters or low-dimensional representations without labels. Record the baseline and the evidence needed to proceed."
                         },
                         {
-                            "title": "Hybrid approaches",
-                            "body": "They are less common, but hybrid approaches exist. Semi-supervised learning uses a small amount of labeled data with a large amount of unlabeled data to improve learning accuracy. Reinforcement learning, while not strictly supervised or unsupervised, involves learning optimal actions through trial and error interactions with an environment."
+                            "title": "Where the rule stops",
+                            "body": "Clusters do not come with business meaning; validate whether the groups are stable and useful. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -212,16 +212,20 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Task definition",
-                            "body": "Features are the inputs provided to a model, and the label is the ground-truth value the model is trained to predict. Start by writing the prediction target, the decision threshold (if any), and the cost of false positives vs false negatives."
+                            "title": "The short version",
+                            "body": "Features are the inputs provided to a model, and the label is the ground-truth value the model is trained to predict. In other words, feature vs label is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Features",
-                            "body": "Think of a table where each row is an example and each column is a feature. Features can be numeric, categorical, or derived from raw data through preprocessing and feature engineering. They should be relevant to the prediction task and available at prediction time."
+                            "title": "At work",
+                            "body": "For a house-price task, floor area available at listing time is a feature and the eventual sale price is the label. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Label",
-                            "body": "Having complete and informative labels is crucial for supervised learning and is sometimes the most expensive part of the AI pipeline. Labels should be accurate, consistent, and representative of the target variable you want to predict. In some cases, obtaining labels may require manual annotation, expert judgment, or integration with external data sources."
+                            "title": "Check before you trust it",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Features are the inputs provided to a model, and the label is the ground-truth value the model is trained to predict. Record the baseline and the evidence needed to proceed."
+                        },
+                        {
+                            "title": "A failure to watch for",
+                            "body": "Never use information recorded after the prediction point as a feature; that leaks the answer. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -234,16 +238,16 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Data checklist",
-                            "body": "Data cleaning standardizes formats, handles nulls, removes duplicates, and resolves inconsistent categories. Each cleaning rule should be deterministic and reproducible so training and inference receive the same transformations."
+                            "title": "A distinction that matters",
+                            "body": "Data cleaning standardizes formats, handles nulls, removes duplicates, and corrects inconsistencies so the model learns from reliable signals. In other words, data cleaning basics is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Quality signals",
-                            "body": "For data cleaning basics, identify at least three quality signals (completeness, validity, timeliness, leakage risk) and decide how you will measure each one."
+                            "title": "Use it on a real case",
+                            "body": "Normalize inconsistent date formats and investigate duplicate customer records before splitting data. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Mini practice",
-                            "body": "Mini practice for data cleaning basics: document one cleaning rule per issue type (missing values, typos, duplicates) and explain how each rule changes model inputs."
+                            "title": "Questions to ask",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Data cleaning standardizes formats, handles nulls, removes duplicates, and corrects inconsistencies so the model learns from reliable signals. Record the baseline and the evidence needed to proceed."
                         }
                     ]
                 },
@@ -256,16 +260,16 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Spam or not spam?",
-                            "body": "Classification maps an input to one of several classes, for example spam vs not spam. Most email providers use classification models to filter out unwanted messages."
+                            "title": "A small walkthrough",
+                            "body": "A spam filter estimates whether a message belongs to spam or legitimate mail, then applies a threshold to the score. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Data",
-                            "body": "For simple classification idea, the data consists of email features (sender, subject, content) and a label indicating whether it's spam or not. The model learns patterns in the features that correlate with the spam label to make predictions on new emails."
+                            "title": "Why it works",
+                            "body": "Classification maps an input to one of several classes, for example spam vs not spam, often using probabilities and a decision threshold. In other words, simple classification idea is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Model development",
-                            "body": "For simple classification idea, the model development process involves selecting an appropriate algorithm (e.g., logistic regression, decision tree), training it on the labeled dataset, and evaluating its performance using metrics like accuracy, precision, recall, and F1 score. The model can then be deployed and served to classify incoming emails in real-time."
+                            "title": "What could mislead you",
+                            "body": "The best threshold depends on the harm of missed spam versus blocking an important message. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -278,16 +282,12 @@
                     "estimatedMinutes": 11,
                     "lessons": [
                         {
-                            "title": "Task definition",
-                            "body": "Regression estimates a continuous value such as demand or price. Define the target range, acceptable error tolerance, and whether MAE or RMSE best reflects the business cost of prediction mistakes."
+                            "title": "When this is useful",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Regression estimates a continuous value such as demand or price and is evaluated with error-based metrics like MAE or RMSE. Record the baseline and the evidence needed to proceed."
                         },
                         {
-                            "title": "Forecasting product demand",
-                            "body": "A demand-forecasting model can estimate next week's units sold from historical sales and calendar features. Compare it with a seasonal baseline, split data by time to avoid leakage, and communicate uncertainty; an accurate forecast is not a guarantee of future demand."
-                        },
-                        {
-                            "title": "Evaluation metrics",
-                            "body": "To understand if the model can be trusted, we evaluate it using error-based metrics like Mean Absolute Error (MAE). It is important to choose the right metric based on the business context and to have a separate validation dataset that the model has never seen during training to get an unbiased estimate of its performance on new data."
+                            "title": "Follow one example",
+                            "body": "Forecast next week’s units sold from past sales and calendar features, then compare against a seasonal baseline. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         }
                     ]
                 },
@@ -300,16 +300,20 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Pipeline view",
-                            "body": "A practical AI workflow moves from problem framing and data preparation to training, evaluation, deployment, and continuous monitoring. Break the work into stages: framing, data prep, baseline, iteration, deployment, and monitoring."
+                            "title": "Picture the data",
+                            "body": "Frame the decision, establish a baseline, audit the data, evaluate on a held-out set, then deploy with monitoring. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Decision points",
-                            "body": "In ai workflows, every stage has a go/no-go decision. Define evidence required to move forward instead of relying on intuition alone. For example, before moving from data preparation to training, you might require that data quality metrics meet certain thresholds. Before deploying a model, you might require that offline evaluation metrics exceed a baseline and that error analysis shows no critical failure modes."
+                            "title": "The principle",
+                            "body": "A practical AI workflow moves from problem framing and data preparation to training, evaluation, deployment, and continuous monitoring. In other words, ai workflows is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Operational readiness",
-                            "body": "Operational readiness for ai workflows: Use stage gates so the team only advances when metrics and assumptions are documented. This prevents wasted effort on models that won't meet business needs or production requirements."
+                            "title": "A practical check",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. A practical AI workflow moves from problem framing and data preparation to training, evaluation, deployment, and continuous monitoring. Record the baseline and the evidence needed to proceed."
+                        },
+                        {
+                            "title": "Its boundary",
+                            "body": "Do not move to a more complex model until evidence shows the simpler approach misses the need. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -322,16 +326,16 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Common use cases",
-                            "body": "Common AI use cases include recommendation, fraud detection, forecasting, language understanding, and visual inspection in production systems. Break the work into stages: framing, data prep, baseline, iteration, deployment, and monitoring."
+                            "title": "A working definition",
+                            "body": "Common AI use cases include recommendation, fraud detection, forecasting, language understanding, and visual inspection in production systems. In other words, ai use cases is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Do you need an AI-based solution?",
-                            "body": "You'd be surprised how few people actually ask this question. AI is not the solution to every problem. Before jumping into an AI-based solution, it's crucial to evaluate whether it is the right fit for your specific use case. Consider factors such as the availability and quality of data, the complexity of the problem, the need for interpretability, and the potential return on investment. Sometimes, simpler rule-based systems or traditional statistical methods may be more effective and easier to maintain than complex AI models."
+                            "title": "A concrete case",
+                            "body": "Fraud review, demand forecasting, and image inspection have different labels, error costs, and latency needs. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "What next?",
-                            "body": "If you think an AI-based solution is appropriate for your use case, the next step is to define the problem clearly, identify the success metrics, and gather the necessary data. Then, you can start with a simple baseline model to establish a performance benchmark before iterating on more complex algorithms."
+                            "title": "A limit worth remembering",
+                            "body": "A rule or process change may be safer and cheaper when the decision is already explicit. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 }
@@ -349,17 +353,17 @@
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Model behavior",
-                            "body": "Think of linear regression as fitting the best straight line through a cloud of points. Each feature gets a weight, and the prediction is a weighted sum plus an intercept. This makes it great for explaining what drives a number like price, demand, or delivery time.",
+                            "title": "Try this thought experiment",
+                            "body": "Estimate apartment rent from area and location, then plot residuals to see whether errors vary by neighborhood. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful.",
                             "image": "img/languages/ai+ml/beginner-lesson-1.png"
                         },
                         {
-                            "title": "Strengths and limits",
-                            "body": "Linear regression shines when relationships are roughly linear and you need clear explanations for stakeholders. It struggles with strong nonlinear patterns or heavy outliers that pull the line off course. Practical fixes include feature transforms, robust scaling, and adding interaction terms."
+                            "title": "The useful rule",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Linear regression models a continuous target as a weighted sum of features and is a strong baseline for interpretable numeric prediction tasks. Record the baseline and the evidence needed to proceed."
                         },
                         {
-                            "title": "Tuning priorities",
-                            "body": "Start with feature scaling and a baseline model, then tune regularization to balance fit and simplicity. Compare L1 and L2 when you want sparsity vs stability. Keep one validation protocol fixed so each change is a fair apples-to-apples test."
+                            "title": "Where the rule stops",
+                            "body": "Linearity is an assumption to examine; a strong training fit does not ensure the relationship holds outside the sample. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -372,17 +376,21 @@
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Model behavior",
-                            "body": "Logistic regression predicts probability, then turns it into a class using a threshold. Under the hood, it learns a linear boundary in feature space and maps scores to values between 0 and 1. It is a reliable first model for spam detection, churn risk, or fraud screening.",
+                            "title": "The short version",
+                            "body": "Logistic regression transforms a linear score into a probability and is commonly used for binary classification with a clear decision boundary. In other words, logistic regression is a way to reason about the task—not a promise that a model will work.",
                             "image": "img/languages/ai+ml/beginner-lesson-2.png"
                         },
                         {
-                            "title": "Strengths and limits",
-                            "body": "This model is fast, interpretable, and surprisingly strong on clean tabular data. It can underperform when classes are separated by complex nonlinear boundaries. You can improve results with feature engineering, calibrated thresholds, and class-weight adjustments for imbalance."
+                            "title": "At work",
+                            "body": "A logistic model can rank applications by default probability; a threshold maps those scores to a review action. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Tuning priorities",
-                            "body": "Tune regularization first, then adjust class weights and the decision threshold to match business costs. For example, lower the threshold when missing positives is expensive. Evaluate with precision-recall tradeoffs, not accuracy alone."
+                            "title": "Check before you trust it",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Logistic regression transforms a linear score into a probability and is commonly used for binary classification with a clear decision boundary. Record the baseline and the evidence needed to proceed."
+                        },
+                        {
+                            "title": "A failure to watch for",
+                            "body": "The score is not automatically calibrated, and changing the threshold changes precision and recall. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -395,16 +403,16 @@
                     "estimatedMinutes": 11,
                     "lessons": [
                         {
-                            "title": "Metric strategy",
-                            "body": "A train/test split is your reality check: the model trains on one portion and proves itself on unseen data. If the test score drops sharply from training, your model is probably memorizing patterns instead of learning them. Keep the test set locked until major decisions are ready."
+                            "title": "A distinction that matters",
+                            "body": "A train/test split keeps one partition unseen during training so final metrics reflect how the model behaves on new data. In other words, train/test split is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Error analysis",
-                            "body": "After scoring, inspect wrong predictions by slices such as region, device type, season, or user segment. Hidden failure pockets often appear even when overall metrics look strong. This is where product risk usually hides."
+                            "title": "Use it on a real case",
+                            "body": "For a future-demand task, train on earlier dates and reserve a later period as the final test. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Decision policy",
-                            "body": "Define launch criteria before training starts: minimum metric targets, maximum acceptable false positives, and rollback triggers. Pre-committed rules prevent metric shopping. Teams move faster when the go/no-go bar is explicit."
+                            "title": "Questions to ask",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. A train/test split keeps one partition unseen during training so final metrics reflect how the model behaves on new data. Record the baseline and the evidence needed to proceed."
                         }
                     ]
                 },
@@ -417,16 +425,16 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Metric strategy",
-                            "body": "Metrics answer different questions, so one number is never enough. Precision asks how many flagged cases were truly positive, recall asks how many true positives you caught, and F1 balances both. For regression, MAE is easy to explain while RMSE penalizes large misses more strongly."
+                            "title": "A small walkthrough",
+                            "body": "For missed fraud, recall may matter; for costly investigations, precision may matter. Report both with the confusion matrix. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Error analysis",
-                            "body": "Turn every metric into a story by checking who the model fails on most often. A stable F1 can still hide poor recall for a minority class. Segment-level views prevent false confidence."
+                            "title": "Why it works",
+                            "body": "Classification metrics such as precision, recall, and F1 complement accuracy, while regression uses MAE, MSE, or RMSE depending on error sensitivity. In other words, basic metrics is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Decision policy",
-                            "body": "Choose a primary metric based on business impact, then set guardrail metrics that cannot degrade. Example: improve recall, but do not let precision fall below a safe floor. This keeps optimization aligned with real outcomes."
+                            "title": "What could mislead you",
+                            "body": "Accuracy can look high when one class dominates; choose metrics based on error consequences. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -439,16 +447,12 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Model behavior",
-                            "body": "k-NN predicts by asking nearby examples to vote, so distance is the whole game. If one feature has a huge numeric range, it can dominate neighbor selection unfairly. Normalizing features is often the difference between random and reliable performance."
+                            "title": "When this is useful",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. k-NN predicts using the labels of nearby examples, so performance depends strongly on distance scaling and the choice of k. Record the baseline and the evidence needed to proceed."
                         },
                         {
-                            "title": "Strengths and limits",
-                            "body": "k-NN is intuitive and requires almost no training time, which makes it great for quick baselines. It becomes slow at prediction time on large datasets and can struggle in high-dimensional spaces. Approximate nearest-neighbor search and dimensionality reduction help at scale."
-                        },
-                        {
-                            "title": "Tuning priorities",
-                            "body": "Tune k, distance metric, and scaling together because they interact strongly. Small k captures local detail but can be noisy; larger k is smoother but may blur boundaries. Validate choices with the same split and track inference latency too."
+                            "title": "Follow one example",
+                            "body": "A k-NN model predicts a new flower from nearby labeled flowers; centimeters should not be overwhelmed by millimeters. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         }
                     ]
                 },
@@ -461,17 +465,21 @@
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Model behavior",
-                            "body": "Decision trees split data into yes/no rules, which makes predictions easy to explain to non-technical teams. Each split reduces impurity, and leaves hold final predictions. You can literally follow the path from root to leaf like a flowchart.",
+                            "title": "Picture the data",
+                            "body": "A tree might first split by account age and then by recent activity to route a transaction for review. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful.",
                             "image": "img/languages/ai+ml/beginner-lesson-6.png"
                         },
                         {
-                            "title": "Strengths and limits",
-                            "body": "Trees handle mixed feature types and nonlinear patterns without much preprocessing. Unconstrained trees overfit quickly and can memorize noise. Depth limits, minimum samples per leaf, and pruning are your guardrails."
+                            "title": "The principle",
+                            "body": "Decision trees recursively split features into rules, making predictions easy to explain but often requiring pruning or ensembles to avoid overfitting. In other words, decision trees is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Tuning priorities",
-                            "body": "Tune max depth first, then min samples per split and min samples per leaf to stabilize behavior. If performance swings across splits, constrain complexity before adding more features. Compare against a simple baseline to confirm real gains."
+                            "title": "A practical check",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Decision trees recursively split features into rules, making predictions easy to explain but often requiring pruning or ensembles to avoid overfitting. Record the baseline and the evidence needed to proceed."
+                        },
+                        {
+                            "title": "Its boundary",
+                            "body": "Unrestricted depth can memorize records; constrain growth and validate the resulting rules. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -484,16 +492,16 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Data checklist",
-                            "body": "Preprocessing is where messy raw data becomes model-ready input. Standardize numeric scales, encode categories consistently, and decide explicit rules for missing values. If this step is sloppy, every downstream metric becomes hard to trust."
+                            "title": "A working definition",
+                            "body": "Preprocessing includes normalization, encoding categorical values, and handling missing data so model inputs are consistent and learnable. In other words, data preprocessing is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Quality signals",
-                            "body": "Track concrete signals: missing-value rate by feature, invalid-category rate, and schema mismatch frequency between training and serving data. Add leakage checks so no future-only information sneaks into inputs. These signals turn data quality into something measurable."
+                            "title": "A concrete case",
+                            "body": "Fit an imputer and category encoder on training folds, then apply those fitted transforms to validation examples. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Mini practice",
-                            "body": "Pick one small dataset and run three steps: scale one numeric column, one-hot encode one categorical column, and impute one missing-value feature. Compare summary stats before and after. You will see why preprocessing changes model behavior immediately."
+                            "title": "A limit worth remembering",
+                            "body": "Learning preprocessing statistics from the full dataset leaks information across the split. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -506,16 +514,12 @@
                     "estimatedMinutes": 11,
                     "lessons": [
                         {
-                            "title": "Data checklist",
-                            "body": "Feature engineering is the art of making important patterns easier for a model to see. Ratios, time-of-day flags, rolling averages, and domain aggregates often beat raw columns. Good features can make simple models surprisingly strong."
+                            "title": "Start with the decision",
+                            "body": "For a timestamped purchase, derive hour-of-day and time-since-last-order using only events available then. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Quality signals",
-                            "body": "For each engineered feature, verify three things: it is available at prediction time, it has stable distribution over time, and it does not leak target information. Track null rate and outlier rate after transformations. A clever feature is only useful if it is reliable in production."
-                        },
-                        {
-                            "title": "Mini practice",
-                            "body": "Create two features from the same raw table, such as price-per-unit and days-since-last-event. Write one sentence on why each could add signal. Then test whether either improves validation metrics versus the baseline set."
+                            "title": "What the term means",
+                            "body": "Feature engineering creates informative inputs from raw data, such as ratios, time features, or domain-derived aggregates that improve model signal. In other words, feature engineering is a way to reason about the task—not a promise that a model will work."
                         }
                     ]
                 },
@@ -528,17 +532,17 @@
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Model behavior",
-                            "body": "Clustering groups similar examples without labels, so the model discovers structure instead of predicting a target. It is useful for customer segmentation, anomaly exploration, and data understanding. Think of it as organizing a messy room into meaningful piles.",
+                            "title": "Try this thought experiment",
+                            "body": "Cluster support requests by text representation, then read examples from each cluster before assigning labels. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful.",
                             "image": "img/languages/ai+ml/beginner-lesson-9.png"
                         },
                         {
-                            "title": "Strengths and limits",
-                            "body": "Clustering is powerful for exploration but sensitive to scale and distance assumptions. Two different settings can produce very different clusters on the same data. Use domain checks and cluster profiles to judge whether segments are actually meaningful."
+                            "title": "The useful rule",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Clustering groups similar samples without labels, helping with segmentation, anomaly exploration, and dataset understanding. Record the baseline and the evidence needed to proceed."
                         },
                         {
-                            "title": "Tuning priorities",
-                            "body": "Tune number of clusters, initialization strategy, and scaling method together. Run multiple seeds to verify stability, not just one lucky run. Prefer settings that produce both good internal metrics and interpretable segments."
+                            "title": "Where the rule stops",
+                            "body": "A cluster metric cannot tell you whether groups are actionable or fair. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -551,17 +555,21 @@
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Model behavior",
-                            "body": "PCA rotates data into new axes that capture the most variance first. This can compress many correlated features into a few components while keeping most information. It is useful for visualization, noise reduction, and faster downstream modeling.",
+                            "title": "The short version",
+                            "body": "Principal Component Analysis projects data to lower dimensions while preserving maximum variance, useful for compression and denoising. In other words, pca basics is a way to reason about the task—not a promise that a model will work.",
                             "image": "img/languages/ai+ml/beginner-lesson-10.png"
                         },
                         {
-                            "title": "Strengths and limits",
-                            "body": "PCA is fast and often helps when features are highly correlated. The tradeoff is interpretability because principal components are mixtures of original features. It can also miss nonlinear structure that linear projections cannot capture."
+                            "title": "At work",
+                            "body": "PCA can compress correlated sensor measurements into a few orthogonal components for visualization. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Tuning priorities",
-                            "body": "Choose component count using explained variance and downstream validation performance together. A common starting point is enough components to explain 90-95% variance, then adjust by task. Always scale features before PCA so large-value columns do not dominate."
+                            "title": "Check before you trust it",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Principal Component Analysis projects data to lower dimensions while preserving maximum variance, useful for compression and denoising. Record the baseline and the evidence needed to proceed."
+                        },
+                        {
+                            "title": "A failure to watch for",
+                            "body": "The highest-variance directions may not preserve the target signal or make components easy to interpret. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -574,16 +582,16 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Pipeline view",
-                            "body": "A pipeline chains preprocessing and modeling into one reproducible workflow. That means the exact same transforms are applied during training and prediction, which prevents leakage and surprise behavior. Pipelines are your best defense against \"it worked offline\" problems."
+                            "title": "A distinction that matters",
+                            "body": "ML pipelines chain preprocessing and modeling steps into one reproducible workflow, reducing leakage and training-serving inconsistencies. In other words, pipeline basics is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Decision points",
-                            "body": "Set clear stage gates: data checks pass, baseline beats a naive model, and error analysis has no critical blind spots. Each gate should have evidence, not opinion. This keeps iteration focused and faster over time."
+                            "title": "Use it on a real case",
+                            "body": "A pipeline keeps imputation, scaling, and estimation together so cross-validation refits each step correctly. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Operational readiness",
-                            "body": "Version every pipeline step, including encoders, scalers, and feature logic. Log input schema and model version with predictions. When incidents happen, these breadcrumbs make debugging and rollback much easier."
+                            "title": "Questions to ask",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. ML pipelines chain preprocessing and modeling steps into one reproducible workflow, reducing leakage and training-serving inconsistencies. Record the baseline and the evidence needed to proceed."
                         }
                     ]
                 },
@@ -596,17 +604,17 @@
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Metric strategy",
-                            "body": "Overfitting happens when training metrics look amazing but test metrics disappoint. The model has learned noise and quirks instead of general patterns. Watch the train-test gap as a first warning signal.",
+                            "title": "A small walkthrough",
+                            "body": "A tree with near-perfect training accuracy but much lower test accuracy has likely learned sample-specific detail. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful.",
                             "image": "img/languages/ai+ml/beginner-lesson-12.png"
                         },
                         {
-                            "title": "Error analysis",
-                            "body": "Inspect failures by segment to find where overfitting hurts most, such as rare classes or recent time windows. If mistakes cluster in specific slices, your model may be too tailored to historical artifacts. This is a cue to simplify or regularize."
+                            "title": "Why it works",
+                            "body": "Overfitting occurs when a model learns noise from training data, causing strong train performance but weak generalization to unseen examples. In other words, overfitting concept is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Decision policy",
-                            "body": "Adopt guardrails like maximum allowed train-test gap and minimum performance on key slices. If a candidate breaks guardrails, do not ship, even with a flashy headline metric. Strong policy prevents fragile launches."
+                            "title": "What could mislead you",
+                            "body": "A training score alone cannot identify generalization; inspect validation behavior and data split quality. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -619,16 +627,12 @@
                     "estimatedMinutes": 11,
                     "lessons": [
                         {
-                            "title": "Metric strategy",
-                            "body": "Cross-validation gives a more reliable estimate by rotating validation folds. Instead of one lucky split, you see performance consistency across multiple data subsets. This reduces the chance of overtrusting a brittle model."
+                            "title": "When this is useful",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Cross-validation rotates validation folds to estimate performance more reliably and to compare models with less split-to-split variance. Record the baseline and the evidence needed to proceed."
                         },
                         {
-                            "title": "Error analysis",
-                            "body": "Compare fold-level metrics and error slices, not just the average score. Large spread across folds usually signals instability or hidden data drift. Use that signal to revisit features, sampling, or model complexity."
-                        },
-                        {
-                            "title": "Decision policy",
-                            "body": "Set promotion rules like \"mean score above baseline and fold variance below threshold.\" This rewards models that are both accurate and stable. Consistency is often more valuable than a single high score."
+                            "title": "Follow one example",
+                            "body": "Rotate the held-out fold across several partitions to compare model settings without depending on one lucky split. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         }
                     ]
                 },
@@ -641,16 +645,20 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Metric strategy",
-                            "body": "A solid evaluation workflow starts before model training: define success metrics, baselines, and acceptable risks up front. Then measure performance on held-out data and compare against simple alternatives. Clear framing prevents accidental metric chasing."
+                            "title": "Picture the data",
+                            "body": "Choose the target metric before fitting, compare to a baseline, inspect errors, and reserve the test set until selection ends. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Error analysis",
-                            "body": "Go beyond aggregate scores by reviewing confusion patterns, high-cost mistakes, and segment-level failures. Ask \"who is harmed if this prediction is wrong?\" This step translates model quality into product reality."
+                            "title": "The principle",
+                            "body": "A good evaluation workflow defines metrics upfront, checks baseline comparisons, inspects error patterns, and validates assumptions before deployment. In other words, model evaluation workflow is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Decision policy",
-                            "body": "Create a release checklist with thresholds, fairness checks, and rollback plans. Treat deployment as an evidence-based decision, not a milestone celebration. Good workflows turn evaluation into a repeatable habit."
+                            "title": "A practical check",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. A good evaluation workflow defines metrics upfront, checks baseline comparisons, inspects error patterns, and validates assumptions before deployment. Record the baseline and the evidence needed to proceed."
+                        },
+                        {
+                            "title": "Its boundary",
+                            "body": "A single aggregate metric can hide leakage, subgroup failures, or an unacceptable error type. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -663,16 +671,16 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Pipeline view",
-                            "body": "Your first ML project should be small enough to finish and realistic enough to teach end-to-end thinking. Pick one clear target, gather clean data, build a baseline, and iterate with focused improvements. Shipping a simple model beats designing a perfect one forever."
+                            "title": "A working definition",
+                            "body": "A first ML project should prioritize clear problem scope, clean data, a simple baseline, and iterative improvements guided by measurable outcomes. In other words, first ml project is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Decision points",
-                            "body": "At each phase, ask one practical question: Do we have enough data quality to continue? Is the baseline useful yet? Are errors acceptable for the intended use? These checkpoints keep scope under control."
+                            "title": "A concrete case",
+                            "body": "Start with a narrow question, a documented dataset, one baseline, and a result another person can reproduce. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Operational readiness",
-                            "body": "Before calling it done, document assumptions, data sources, and known failure modes. Add lightweight monitoring so you can detect drift after launch. This turns a classroom exercise into production-ready thinking."
+                            "title": "A limit worth remembering",
+                            "body": "Do not optimize a model before verifying that the label is meaningful and available at decision time. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 }
@@ -690,16 +698,20 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Model behavior",
-                            "body": "Ensembles combine multiple models so their errors cancel out and robustness improves. Bagging reduces variance, while boosting reduces bias by focusing on hard examples. The result is often stronger than any single model family."
+                            "title": "The short version",
+                            "body": "Ensembles combine multiple models to improve robustness and accuracy by averaging or boosting complementary prediction behaviors. In other words, ensemble methods is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Strengths and limits",
-                            "body": "Ensembles usually deliver top tabular performance and handle nonlinear patterns well. The tradeoff is higher compute cost and lower interpretability than a single simple model. Use feature importance and slice metrics to keep behavior understandable."
+                            "title": "At work",
+                            "body": "Averaging diverse models can reduce variance; boosting adds learners to correct earlier errors. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Tuning priorities",
-                            "body": "Tune estimator count, learning rate, and subsampling in a budget-aware order. Start with conservative defaults, then widen search only where sensitivity is high. Track both quality and inference cost because both matter in production."
+                            "title": "Check before you trust it",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Ensembles combine multiple models to improve robustness and accuracy by averaging or boosting complementary prediction behaviors. Record the baseline and the evidence needed to proceed."
+                        },
+                        {
+                            "title": "A failure to watch for",
+                            "body": "Ensembling costs complexity and latency; keep it only if held-out performance or reliability improves. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -712,16 +724,16 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Model behavior",
-                            "body": "Hyperparameter tuning is controlled experimentation, not random guessing. You are searching for settings that improve validation performance without overfitting to one split. Better search strategy often beats brute-force volume."
+                            "title": "A distinction that matters",
+                            "body": "Hyperparameter tuning explores settings like depth, learning rate, and regularization to maximize validation performance without overfitting. In other words, hyperparameter tuning is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Strengths and limits",
-                            "body": "Tuning can unlock major gains, especially for flexible models, but it can also burn time and compute quickly. Poor validation design leads to misleading \"improvements.\" Keep the protocol strict so wins are real."
+                            "title": "Use it on a real case",
+                            "body": "Tune tree depth and regularization on validation folds, then evaluate the selected pipeline once on the final test set. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Tuning priorities",
-                            "body": "Define a search space that reflects domain knowledge, then allocate budget with random or Bayesian search. Reserve holdout data for final confirmation only. Log every trial so results are reproducible and auditable."
+                            "title": "Questions to ask",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Hyperparameter tuning explores settings like depth, learning rate, and regularization to maximize validation performance without overfitting. Record the baseline and the evidence needed to proceed."
                         }
                     ]
                 },
@@ -734,16 +746,16 @@
                     "estimatedMinutes": 11,
                     "lessons": [
                         {
-                            "title": "Model behavior",
-                            "body": "Feature selection removes noisy or redundant inputs so models focus on signal. This can improve generalization, reduce training cost, and simplify explanations. In many projects, fewer high-quality features beat many weak ones."
+                            "title": "A small walkthrough",
+                            "body": "Remove redundant variables using selection performed inside each training fold, then compare stability and error. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Strengths and limits",
-                            "body": "Selection helps when datasets are wide, noisy, or expensive to serve. It can hurt if important interactions are dropped by simplistic criteria. Combine statistical filters with model-based importance and domain review."
+                            "title": "Why it works",
+                            "body": "Feature selection removes redundant or noisy variables, improving interpretability, reducing training cost, and sometimes improving generalization. In other words, feature selection is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Tuning priorities",
-                            "body": "Tune selection threshold, redundancy limits, and stability across folds. Prefer feature sets that perform consistently across resamples, not just one split. Stability is a strong sign the selected signals are real."
+                            "title": "What could mislead you",
+                            "body": "A feature that ranks highly may proxy for a sensitive attribute or leak future information. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -756,17 +768,13 @@
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Metric strategy",
-                            "body": "Bias-variance tradeoff explains why simple models can underfit while complex models can overfit. Your goal is not max complexity, but the right complexity for the data and task. Validation curves make this balance visible.",
+                            "title": "When this is useful",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. The bias-variance tradeoff balances underfitting and overfitting: simpler models have higher bias, complex models often have higher variance. Record the baseline and the evidence needed to proceed.",
                             "image": "img/languages/ai+ml/intermediate-lesson-4.png"
                         },
                         {
-                            "title": "Error analysis",
-                            "body": "High bias usually shows broad systematic mistakes, while high variance appears as unstable performance across folds or segments. Diagnose which side you are on before changing architecture. Different problems require opposite fixes."
-                        },
-                        {
-                            "title": "Decision policy",
-                            "body": "Define what counts as acceptable bias and variance for the use case, then choose interventions accordingly. Add complexity only when justified by stable gains. Keep a baseline model to prevent unnecessary complexity creep."
+                            "title": "Follow one example",
+                            "body": "A shallow model may miss a real pattern, while a very deep model may follow noise; compare learning curves. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         }
                     ]
                 },
@@ -779,16 +787,20 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Metric strategy",
-                            "body": "Advanced evaluation goes beyond one headline score. Include calibration, threshold curves, subgroup performance, and business-cost analysis. A model with lower accuracy can still be better if decision costs are lower."
+                            "title": "Picture the data",
+                            "body": "Choose a threshold using validation costs, inspect subgroup metrics, and calibrate probabilities if decisions use risk. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Error analysis",
-                            "body": "Inspect failure slices tied to user impact, such as high-value accounts, rare classes, or safety-critical scenarios. Calibration errors are especially important when outputs are used as probabilities. Good slicing reveals what aggregate metrics hide."
+                            "title": "The principle",
+                            "body": "Advanced evaluation includes calibration, threshold analysis, subgroup metrics, and cost-aware decision rules for production-relevant model assessment. In other words, advanced evaluation is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Decision policy",
-                            "body": "Set decision rules that combine model metrics with cost and risk constraints. Require evidence that improvements hold across critical subgroups, not just global averages. This protects both users and product outcomes."
+                            "title": "A practical check",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Advanced evaluation includes calibration, threshold analysis, subgroup metrics, and cost-aware decision rules for production-relevant model assessment. Record the baseline and the evidence needed to proceed."
+                        },
+                        {
+                            "title": "Its boundary",
+                            "body": "No metric is universally best; report the operational assumptions and uncertainty. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -801,16 +813,16 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Representation learning",
-                            "body": "Neural networks learn layered representations, where early layers capture simple patterns and deeper layers capture abstractions. This makes them powerful for complex signals such as images, text, and behavior sequences. Think of depth as progressive feature construction."
+                            "title": "A working definition",
+                            "body": "Neural networks stack differentiable layers that transform input features into richer representations learned from data. In other words, neural networks basics is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Training stability",
-                            "body": "Watch learning curves, validation gap, and gradient health during training. A stable run usually shows steady loss reduction without wild oscillations. Early stopping and regularization are practical tools when instability appears."
+                            "title": "A concrete case",
+                            "body": "A hidden layer transforms inputs through learned weights and nonlinear activations, allowing richer patterns than a linear map. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Practical trade-offs",
-                            "body": "More layers and parameters can improve accuracy, but they increase training cost and tuning complexity. Match architecture size to data volume and latency budget. A smaller, reliable model often wins in real products."
+                            "title": "A limit worth remembering",
+                            "body": "More layers do not guarantee better results; compare compute, data needs, and a simpler baseline. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -823,17 +835,13 @@
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Representation learning",
-                            "body": "Backpropagation efficiently computes how each parameter contributed to prediction error. Gradients flow from output back through layers so the optimizer can update weights in the right direction. This is the engine that makes deep learning trainable.",
+                            "title": "Start with the decision",
+                            "body": "Backpropagation applies the chain rule from the loss back through each layer to compute parameter gradients. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful.",
                             "image": "img/languages/ai+ml/intermediate-lesson-7.png"
                         },
                         {
-                            "title": "Training stability",
-                            "body": "Monitor gradient norms and loss behavior to catch vanishing or exploding gradients early. If training stalls or diverges, try normalization, learning-rate adjustments, or gradient clipping. Stable gradients are a prerequisite for useful learning."
-                        },
-                        {
-                            "title": "Practical trade-offs",
-                            "body": "Faster optimization settings can reduce training time but may increase instability. Conservative learning schedules are slower yet often more reliable. Choose the balance that fits your deadline and risk tolerance."
+                            "title": "What the term means",
+                            "body": "Backpropagation computes gradients efficiently from output to input layers, enabling gradient-based optimization of neural network parameters. In other words, backpropagation is a way to reason about the task—not a promise that a model will work."
                         }
                     ]
                 },
@@ -846,16 +854,16 @@
                     "estimatedMinutes": 11,
                     "lessons": [
                         {
-                            "title": "Representation learning",
-                            "body": "Deep learning stacks many layers to learn hierarchical patterns directly from data. In vision, layers move from edges to shapes to objects; in NLP, from tokens to context. This automatic feature learning is its biggest advantage."
+                            "title": "Try this thought experiment",
+                            "body": "A vision network can learn edges and textures in early layers and combine them into task-relevant patterns later. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Training stability",
-                            "body": "Track overfitting gap, gradient behavior, and validation trends during every run. Instability usually comes from mismatched learning rate, weak regularization, or noisy labels. Quick diagnostics save long retraining cycles."
+                            "title": "The useful rule",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Deep learning uses multi-layer neural networks to automatically learn hierarchical features in text, vision, and speech tasks. Record the baseline and the evidence needed to proceed."
                         },
                         {
-                            "title": "Practical trade-offs",
-                            "body": "Higher model capacity can improve quality, but it raises compute, memory, and serving cost. Choose model size based on measurable gain per resource spent. Efficiency is part of model quality in production."
+                            "title": "Where the rule stops",
+                            "body": "Representation learning still depends on labeled data quality, regularization, and evaluation outside the training set. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -868,16 +876,20 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Domain-specific constraints",
-                            "body": "NLP starts with messy human language: ambiguity, slang, misspellings, and domain-specific jargon. The same word can mean different things by context, so preprocessing and tokenization matter. Good language models begin with good problem framing."
+                            "title": "The short version",
+                            "body": "NLP converts human language into machine-readable representations for tasks such as classification, extraction, translation, and generation. In other words, nlp basics is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Feature representation choices",
-                            "body": "Compare sparse approaches like TF-IDF with dense embeddings from pretrained models. Sparse vectors are simple and fast; dense vectors capture richer semantics but can cost more. Pick based on task complexity and latency budget."
+                            "title": "At work",
+                            "body": "A text classifier turns tokens into representations to identify a topic, while tokenization choices affect rare words. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Failure-case review",
-                            "body": "Build targeted evaluation slices for negation, rare terms, and out-of-domain phrases. Many NLP systems fail silently on exactly these cases. Regular slice reviews keep quality aligned with real user language."
+                            "title": "Check before you trust it",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. NLP converts human language into machine-readable representations for tasks such as classification, extraction, translation, and generation. Record the baseline and the evidence needed to proceed."
+                        },
+                        {
+                            "title": "A failure to watch for",
+                            "body": "Language varies by domain and population; check errors beyond aggregate accuracy. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -890,17 +902,17 @@
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Domain-specific constraints",
-                            "body": "Vision models must handle lighting changes, camera angles, occlusion, and blur. Label quality is equally critical because noisy boxes or masks teach the wrong patterns. Data diversity often matters as much as architecture choice.",
+                            "title": "A distinction that matters",
+                            "body": "Computer vision models process images with spatial filters to detect patterns such as edges, objects, and scene context. In other words, computer vision basics is a way to reason about the task—not a promise that a model will work.",
                             "image": "img/languages/ai+ml/intermediate-lesson-10.png"
                         },
                         {
-                            "title": "Feature representation choices",
-                            "body": "Compare handcrafted pipelines, transfer learning features, and end-to-end CNN representations. Simpler features can work for constrained tasks, while deep features excel on complex scenes. Evaluate both accuracy and inference cost."
+                            "title": "Use it on a real case",
+                            "body": "Convolutional filters detect local image patterns, and deeper layers combine them into object-level signals. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Failure-case review",
-                            "body": "Create error slices for low light, motion blur, partial occlusion, and uncommon viewpoints. These are common production failure modes. Monitoring slice drift helps catch degradation before users notice."
+                            "title": "Questions to ask",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Computer vision models process images with spatial filters to detect patterns such as edges, objects, and scene context. Record the baseline and the evidence needed to proceed."
                         }
                     ]
                 },
@@ -913,16 +925,16 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Domain-specific constraints",
-                            "body": "Time series modeling respects order: yesterday can influence today, but not the reverse. Trends, seasonality, and shocks all shape forecasts. Data leakage is a major risk if future information sneaks into features."
+                            "title": "A small walkthrough",
+                            "body": "Predict tomorrow’s demand from earlier observations and calendar signals while preserving chronological order. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Feature representation choices",
-                            "body": "Compare lag features, rolling statistics, and decomposition-based signals. Some tasks benefit from simple autoregressive features; others need richer seasonality structure. Use backtesting that mirrors real forecasting windows."
+                            "title": "Why it works",
+                            "body": "Time series modeling respects temporal order and often uses lags, trends, and seasonality features to forecast future values. In other words, time series basics is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Failure-case review",
-                            "body": "Track errors around trend breaks, holidays, promotions, and sudden external events. Forecast models often look good on normal periods and fail on regime changes. Slice-based monitoring exposes that gap early."
+                            "title": "What could mislead you",
+                            "body": "Randomly shuffling time can leak future patterns; compare with seasonal and persistence baselines. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -935,17 +947,13 @@
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Domain-specific constraints",
-                            "body": "Recommendation systems optimize ranking, not just prediction. Feedback loops, cold start, and popularity bias make this domain tricky. User experience depends on diversity and novelty as much as raw relevance.",
+                            "title": "When this is useful",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Recommendation systems rank items by predicted relevance using collaborative signals, content features, or hybrid methods. Record the baseline and the evidence needed to proceed.",
                             "image": "img/languages/ai+ml/intermediate-lesson-12.png"
                         },
                         {
-                            "title": "Feature representation choices",
-                            "body": "Compare collaborative filtering, content-based features, and hybrid embeddings. Collaborative methods excel with dense interactions, while content helps with new items. Hybrids usually provide the most practical balance."
-                        },
-                        {
-                            "title": "Failure-case review",
-                            "body": "Review failures for cold-start users, sparse-item catalogs, and long-tail content. High average metrics can still hide poor experiences for new or niche users. Slice-level audits keep recommendations fair and useful."
+                            "title": "Follow one example",
+                            "body": "Combine item attributes with user-item interactions to rank candidates, then account for cold-start users. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         }
                     ]
                 },
@@ -958,16 +966,20 @@
                     "estimatedMinutes": 11,
                     "lessons": [
                         {
-                            "title": "System design view",
-                            "body": "Deployment turns a trained model into a dependable service or batch process. Success depends on contracts: input schema, model version, feature logic, and monitoring signals. Treat deployment as engineering, not a final checkbox."
+                            "title": "Picture the data",
+                            "body": "Package a versioned model behind a bounded API, monitor latency and input quality, and keep a rollback path. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Reliability controls",
-                            "body": "Monitor latency, error rate, drift, and prediction distribution from day one. Each alert should map to a concrete playbook: rollback, retrain, or data-pipeline fix. Reliable systems fail gracefully, not silently."
+                            "title": "The principle",
+                            "body": "Deployment packages a trained model behind an API or batch job with versioning, monitoring, and rollback safety. In other words, model deployment basics is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Lifecycle management",
-                            "body": "Define ownership for retraining cadence, validation gates, and incident response. Without clear responsibility, model quality decays in production. Lifecycle discipline keeps performance from slowly drifting off course."
+                            "title": "A practical check",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Deployment packages a trained model behind an API or batch job with versioning, monitoring, and rollback safety. Record the baseline and the evidence needed to proceed."
+                        },
+                        {
+                            "title": "Its boundary",
+                            "body": "Offline quality does not cover serving failures or distribution changes. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -980,16 +992,16 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "System design view",
-                            "body": "Data pipelines are the circulatory system of ML products. They ingest, validate, transform, and publish features used by both training and serving. Consistency across these paths is key to trustworthy predictions."
+                            "title": "A working definition",
+                            "body": "Data pipelines automate ingestion, validation, transformation, and feature generation so training and inference use consistent data logic. In other words, data pipelines is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Reliability controls",
-                            "body": "Add checks for schema drift, null spikes, freshness delays, and unexpected category values. Alerts should include impact scope and next actions so operators can respond quickly. Great pipelines are observable, not mysterious."
+                            "title": "A concrete case",
+                            "body": "Validate schemas at ingestion, produce point-in-time-correct features, and version outputs used for training. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Lifecycle management",
-                            "body": "Version transformations, track lineage, and document ownership at every stage. When a metric drops, lineage makes root cause analysis much faster. Mature pipelines optimize for maintainability as much as throughput."
+                            "title": "A limit worth remembering",
+                            "body": "A reliable pipeline needs idempotent retries and visibility into stale or partial data. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -1002,16 +1014,12 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Metric strategy",
-                            "body": "Interpretability helps answer the critical question: why did the model predict this? Global views like feature importance explain broad behavior, while local explanations clarify individual decisions. Both are useful for trust, debugging, and compliance."
+                            "title": "Start with the decision",
+                            "body": "Use feature attribution to debug an individual prediction, then verify the explanation under a suitable method. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Error analysis",
-                            "body": "Use explanations on failure cases to see whether the model relied on spurious signals. Segment by user group or context to detect uneven reasoning patterns. Interpretability is most valuable when paired with error analysis."
-                        },
-                        {
-                            "title": "Decision policy",
-                            "body": "Set policy for when human review is required, especially for high-impact predictions. Require explanation artifacts in release reviews for sensitive use cases. Transparent processes reduce risk and improve accountability."
+                            "title": "What the term means",
+                            "body": "Interpretability techniques such as feature importance and SHAP explain model behavior for trust, debugging, and compliance. In other words, model interpretability is a way to reason about the task—not a promise that a model will work."
                         }
                     ]
                 }
@@ -1029,17 +1037,13 @@
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Representation learning",
-                            "body": "Architecture choice is an inductive bias decision: CNNs exploit locality, transformers model long-range dependencies, and recurrent variants capture temporal flow. Pick the bias that matches your modality and objective. Better alignment often beats larger parameter count.",
+                            "title": "When this is useful",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Different architectures specialize in different data modalities: CNNs for images, transformers for sequences, and recurrent variants for temporal patterns. Record the baseline and the evidence needed to proceed.",
                             "image": "img/languages/ai+ml/advanced-lesson-1.png"
                         },
                         {
-                            "title": "Training stability",
-                            "body": "Architecture depth and attention width can destabilize optimization if not paired with proper normalization and scheduling. Track gradient statistics and validation gap continuously during sweeps. Stability diagnostics should be first-class metrics, not afterthoughts."
-                        },
-                        {
-                            "title": "Practical trade-offs",
-                            "body": "Evaluate architectures on a Pareto front of quality, latency, memory, and maintainability. The best offline score is not always the best production choice. Favor designs that meet constraints with predictable behavior."
+                            "title": "Follow one example",
+                            "body": "A convolutional model suits local image structure, while attention handles long-range relationships in sequences. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         }
                     ]
                 },
@@ -1052,16 +1056,20 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Representation learning",
-                            "body": "Transfer learning reuses representations learned on large source tasks, then adapts them to your target domain. Early layers often capture general patterns, while later layers encode task-specific signals. Freezing strategy controls how much prior knowledge you keep versus rewrite."
+                            "title": "Picture the data",
+                            "body": "Fine-tune a pretrained image encoder on a small labeled dataset and compare frozen features with selective unfreezing. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Training stability",
-                            "body": "Fine-tuning can collapse if learning rates are too aggressive or domain shift is severe. Monitor layer-wise gradients and validation drift after unfreezing stages. Gradual unfreezing plus discriminative learning rates often improves stability."
+                            "title": "The principle",
+                            "body": "Transfer learning adapts pretrained models to new tasks with less labeled data by reusing representations learned at scale. In other words, transfer learning is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Practical trade-offs",
-                            "body": "Frozen backbones are cheaper and safer with small datasets; full fine-tuning can win when target data is ample and mismatched. Choose based on data regime, compute budget, and deployment latency. Benchmark both paths before committing."
+                            "title": "A practical check",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Transfer learning adapts pretrained models to new tasks with less labeled data by reusing representations learned at scale. Record the baseline and the evidence needed to proceed."
+                        },
+                        {
+                            "title": "Its boundary",
+                            "body": "Source-target mismatch can reduce transfer; monitor overfitting and use a representative validation set. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -1074,16 +1082,16 @@
                     "estimatedMinutes": 11,
                     "lessons": [
                         {
-                            "title": "Core mechanism",
-                            "body": "Advanced NLP pipelines hinge on tokenization quality, context length strategy, and attention mechanisms that route information across long sequences. Small tokenizer or truncation decisions can materially change downstream behavior. Evaluation must include robustness beyond simple aggregate accuracy."
+                            "title": "A working definition",
+                            "body": "Advanced NLP covers tokenization strategy, attention-based architectures, fine-tuning, and evaluation beyond simple accuracy metrics. In other words, nlp advanced is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Scaling considerations",
-                            "body": "Before scaling model size, quantify gains per token processed, memory cost, and inference latency under realistic traffic. Larger models can improve capability but increase operational and safety burden. Capacity planning should be tied to user-value metrics, not model hype."
+                            "title": "A concrete case",
+                            "body": "Subword tokenization handles rare words, but truncation and context length can change downstream behavior. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Responsible use",
-                            "body": "Audit across dialects, sociolects, and low-resource language variants to detect uneven performance. Add safeguards for toxicity, hallucination, and privacy leakage in generated outputs. Responsible NLP is an ongoing monitoring loop, not a one-time checklist."
+                            "title": "A limit worth remembering",
+                            "body": "Aggregate benchmark scores do not reveal robustness across dialects, domains, or prompt formats. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -1096,17 +1104,13 @@
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Core mechanism",
-                            "body": "Advanced vision systems combine detection, segmentation, and augmentation policies to learn robust spatial reasoning under real-world noise. Architecture and annotation strategy are tightly coupled because supervision quality shapes learned features. Domain shift handling must be built in from day one.",
+                            "title": "Start with the decision",
+                            "body": "An object detector predicts boxes and classes; segmentation assigns labels at pixel level for a different use case. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful.",
                             "image": "img/languages/ai+ml/advanced-lesson-4.png"
                         },
                         {
-                            "title": "Scaling considerations",
-                            "body": "Scale with care: higher-resolution inputs and larger backbones raise both compute cost and labeling burden. Evaluate whether incremental quality gains justify annotation, retraining, and serving expenses. Throughput constraints often determine feasible architecture choices."
-                        },
-                        {
-                            "title": "Responsible use",
-                            "body": "Test robustness across demographics, environments, and camera conditions to avoid uneven error rates. Include safety policies for high-risk misdetections and uncertain outputs. Production vision systems need explicit fallback behavior."
+                            "title": "What the term means",
+                            "body": "Advanced vision topics include object detection, segmentation, augmentation policy design, and domain shift handling. In other words, computer vision advanced is a way to reason about the task—not a promise that a model will work."
                         }
                     ]
                 },
@@ -1119,17 +1123,17 @@
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Core mechanism",
-                            "body": "Reinforcement learning optimizes policies through reward-driven interaction, balancing exploration against exploitation over long horizons. Credit assignment is hard because good or bad outcomes may appear many steps later. Reward design is therefore as important as algorithm choice.",
+                            "title": "Try this thought experiment",
+                            "body": "An agent learns a policy from environment feedback, where reward design shapes which behavior is reinforced. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful.",
                             "image": "img/languages/ai+ml/advanced-lesson-5.png"
                         },
                         {
-                            "title": "Scaling considerations",
-                            "body": "Simulators, off-policy data reuse, and parallel rollouts can speed training, but each adds complexity and potential bias. Evaluate sample efficiency, wall-clock cost, and sim-to-real transfer risk together. Fast training is meaningless if learned behavior does not transfer safely."
+                            "title": "The useful rule",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Reinforcement learning trains agents to maximize cumulative reward by learning policies from environment interaction. Record the baseline and the evidence needed to proceed."
                         },
                         {
-                            "title": "Responsible use",
-                            "body": "Constrain unsafe exploration with action limits, safety critics, or human oversight in high-impact settings. Monitor for reward hacking, where the agent maximizes proxy reward while violating intent. Safety constraints should be treated as hard requirements."
+                            "title": "Where the rule stops",
+                            "body": "A high proxy reward can be gamed; constrain unsafe exploration and inspect behavior, not reward alone. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -1142,16 +1146,20 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Core mechanism",
-                            "body": "Generative models learn probability structure of data and sample from it to produce new text, images, or audio. Quality depends on both model capacity and the diversity/cleanliness of training data. Generation controls like temperature and decoding strategy strongly shape output behavior."
+                            "title": "The short version",
+                            "body": "Generative AI models learn data distributions to create new content such as text, images, or audio that follows observed patterns. In other words, generative ai is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Scaling considerations",
-                            "body": "Scaling improves fluency and coherence but multiplies compute, storage, and serving complexity. Measure gains with task-grounded evaluations, not only benchmark scores. Cost-aware scaling keeps generative systems sustainable."
+                            "title": "At work",
+                            "body": "A generative model samples plausible content from learned patterns; decoding settings influence variation. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Responsible use",
-                            "body": "Implement provenance signals, policy filters, and abuse-reporting channels before broad release. Continuously monitor harmful output patterns and adversarial misuse attempts. Responsible deployment requires rapid feedback loops and clear escalation paths."
+                            "title": "Check before you trust it",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Generative AI models learn data distributions to create new content such as text, images, or audio that follows observed patterns. Record the baseline and the evidence needed to proceed."
+                        },
+                        {
+                            "title": "A failure to watch for",
+                            "body": "Plausibility is not factuality, provenance, or permission to reuse training content. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -1164,17 +1172,17 @@
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Core mechanism",
-                            "body": "LLMs use transformer attention to model long-context dependencies and generate token-by-token completions. Their apparent reasoning emerges from scale, data diversity, and objective design rather than explicit symbolic rules. Retrieval augmentation can ground responses when parametric memory is insufficient.",
+                            "title": "A distinction that matters",
+                            "body": "LLMs are transformer-based models trained on massive corpora to perform reasoning, retrieval-augmented tasks, and controlled generation. In other words, large language models is a way to reason about the task—not a promise that a model will work.",
                             "image": "img/languages/ai+ml/advanced-lesson-7.png"
                         },
                         {
-                            "title": "Scaling considerations",
-                            "body": "Assess context length, throughput, and memory footprint under realistic concurrency, not lab conditions. Parameter count alone is a poor planning metric without latency and cost targets. Evaluation should include quality-per-dollar, not just quality-per-token."
+                            "title": "Use it on a real case",
+                            "body": "An LLM generates token sequences conditioned on context and can use retrieval or tools when a product supplies them. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Responsible use",
-                            "body": "Require citation paths or retrieval evidence for factual tasks and add hallucination checks in high-stakes flows. Defend against prompt injection and data exfiltration in tool-using systems. Governance for LLM apps must include both model and orchestration layers."
+                            "title": "Questions to ask",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. LLMs are transformer-based models trained on massive corpora to perform reasoning, retrieval-augmented tasks, and controlled generation. Record the baseline and the evidence needed to proceed."
                         }
                     ]
                 },
@@ -1187,17 +1195,17 @@
                     "estimatedMinutes": 11,
                     "lessons": [
                         {
-                            "title": "System design view",
-                            "body": "MLOps operationalizes ML with reproducible training, CI/CD, versioned artifacts, and observable serving systems. The goal is not only shipping models, but shipping models reliably and repeatedly. Strong interfaces between data, training, and serving reduce operational surprises.",
+                            "title": "A small walkthrough",
+                            "body": "Track data and model versions, gate releases on evaluation, then monitor serving behavior and outcomes. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful.",
                             "image": "img/languages/ai+ml/advanced-lesson-8.png"
                         },
                         {
-                            "title": "Reliability controls",
-                            "body": "Define SLOs for freshness, latency, drift, and prediction quality, then map each to actionable runbooks. Alerting without response playbooks creates noise, not reliability. Mature MLOps couples monitoring with fast incident resolution paths."
+                            "title": "Why it works",
+                            "body": "MLOps applies software engineering discipline to ML systems through CI/CD, reproducible training, monitoring, and governance. In other words, mlops is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Lifecycle management",
-                            "body": "Plan retraining, rollback, and governance as continuous processes with clear owners. Track lineage from raw data to deployed model version for auditability. Long-term success depends on disciplined operations, not one heroic launch."
+                            "title": "What could mislead you",
+                            "body": "Automation should not bypass review, rollback, or ownership for a high-impact model. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -1210,17 +1218,13 @@
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "System design view",
-                            "body": "Distributed training partitions computation across devices using data, model, or pipeline parallelism. Communication topology and synchronization strategy can dominate performance at scale. System design choices are as critical as model architecture.",
+                            "title": "When this is useful",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Distributed training splits data and computation across multiple devices to reduce training time for large models. Record the baseline and the evidence needed to proceed.",
                             "image": "img/languages/ai+ml/advanced-lesson-9.png"
                         },
                         {
-                            "title": "Reliability controls",
-                            "body": "Monitor stragglers, communication overhead, gradient synchronization health, and checkpoint integrity. Fault tolerance is mandatory because long runs will encounter node failures. Resumable training workflows save both cost and calendar time."
-                        },
-                        {
-                            "title": "Lifecycle management",
-                            "body": "Standardize experiment tracking, checkpoint versioning, and reproducible cluster configs. Without lifecycle discipline, distributed gains are hard to reproduce. Treat infra reproducibility as part of model reproducibility."
+                            "title": "Follow one example",
+                            "body": "Data parallel workers process batches and synchronize gradients, trading wall time for communication overhead. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         }
                     ]
                 },
@@ -1233,16 +1237,20 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Core mechanism",
-                            "body": "AutoML automates search across preprocessing, model families, and hyperparameters to produce strong baselines quickly. It is best viewed as accelerated experimentation, not fully autonomous decision-making. Human framing still determines objective quality."
+                            "title": "Picture the data",
+                            "body": "Automated search can produce a baseline across preprocessing and model choices under a fixed evaluation protocol. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Scaling considerations",
-                            "body": "AutoML can consume large compute budgets if search spaces are unconstrained. Define resource caps, early stopping, and candidate-pruning rules before running large sweeps. Efficient search design is the difference between speedup and waste."
+                            "title": "The principle",
+                            "body": "AutoML automates model search, feature processing, and tuning to speed up baseline creation while preserving reproducibility. In other words, automl is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Responsible use",
-                            "body": "Require transparent logs of candidate models, feature pipelines, and selection criteria for reviewability. Automated choice should still pass fairness, robustness, and domain-safety checks. Human oversight remains essential at decision boundaries."
+                            "title": "A practical check",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. AutoML automates model search, feature processing, and tuning to speed up baseline creation while preserving reproducibility. Record the baseline and the evidence needed to proceed."
+                        },
+                        {
+                            "title": "Its boundary",
+                            "body": "Search can leak validation data or consume a large budget; document the search space and holdout. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -1255,17 +1263,17 @@
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Core mechanism",
-                            "body": "Graph neural networks update node representations by aggregating neighborhood information across edges. This captures relational structure that flat tabular models miss, such as social links or molecular bonds. Message-passing depth controls how far information propagates.",
+                            "title": "A working definition",
+                            "body": "Graph neural networks propagate information across node neighborhoods, making them effective for relational data like networks and molecules. In other words, graph neural networks is a way to reason about the task—not a promise that a model will work.",
                             "image": "img/languages/ai+ml/advanced-lesson-11.png"
                         },
                         {
-                            "title": "Scaling considerations",
-                            "body": "Large graphs introduce memory and sampling challenges, especially with high-degree nodes. Compare full-batch, mini-batch, and neighborhood-sampling approaches under your latency and hardware limits. Scalability strategy should be chosen with graph topology in mind."
+                            "title": "A concrete case",
+                            "body": "A node representation aggregates neighbor information to classify accounts in a transaction graph. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Responsible use",
-                            "body": "Relational data can amplify bias through homophily and expose sensitive connections. Evaluate fairness and privacy risks tied to graph structure, not only node attributes. Add safeguards for link-based leakage and unintended inference."
+                            "title": "A limit worth remembering",
+                            "body": "Graph edges can leak labels across splits; define temporal or entity-aware evaluation boundaries. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -1278,17 +1286,13 @@
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Core mechanism",
-                            "body": "Multimodal systems learn aligned representations across text, image, audio, or other modalities. Fusion strategy determines whether the model reasons jointly or one modality dominates. Cross-modal grounding is central to reliable behavior.",
+                            "title": "Start with the decision",
+                            "body": "A vision-language system combines an image with text, but needs tests for missing or contradictory modalities. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful.",
                             "image": "img/languages/ai+ml/advanced-lesson-12.png"
                         },
                         {
-                            "title": "Scaling considerations",
-                            "body": "Scaling multimodal models increases data-engineering complexity because modalities differ in quality, cadence, and label availability. Measure gains from each additional modality against ingestion and serving cost. More modalities help only when alignment quality is high."
-                        },
-                        {
-                            "title": "Responsible use",
-                            "body": "Validate consistency across modalities and define policy for contradictory signals, such as safe text paired with unsafe imagery. Add safeguards against cross-modal jailbreak patterns. Monitoring should include modality-specific and fused-output risks."
+                            "title": "What the term means",
+                            "body": "Multimodal models align and fuse modalities such as text and images to solve tasks requiring cross-modal understanding. In other words, multimodal ai is a way to reason about the task—not a promise that a model will work."
                         }
                     ]
                 },
@@ -1301,16 +1305,16 @@
                     "estimatedMinutes": 11,
                     "lessons": [
                         {
-                            "title": "System design view",
-                            "body": "Model optimization methods like quantization, pruning, and distillation trade tiny accuracy losses for major speed and memory gains. The right approach depends on hardware targets and latency SLOs. Optimization is a system-level decision, not just a model tweak."
+                            "title": "Try this thought experiment",
+                            "body": "Quantization reduces numeric precision, pruning removes weights, and distillation transfers behavior to a smaller model. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Reliability controls",
-                            "body": "After optimization, monitor not only latency but also calibration and subgroup performance drift. Compression can affect classes unevenly, especially rare ones. Regression tests should include both quality and efficiency gates."
+                            "title": "The useful rule",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. Model optimization techniques like quantization, pruning, and distillation reduce latency and memory while preserving acceptable accuracy. Record the baseline and the evidence needed to proceed."
                         },
                         {
-                            "title": "Lifecycle management",
-                            "body": "Version optimized artifacts separately and document conversion settings for reproducibility. Re-run optimization whenever base models or hardware runtimes change materially. Treat optimization pipelines as maintainable production assets."
+                            "title": "Where the rule stops",
+                            "body": "Benchmark quality, memory, and tail latency on target hardware after each optimization. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -1323,16 +1327,20 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Risk taxonomy",
-                            "body": "AI ethics becomes practical when risks are classified clearly: fairness harms, privacy violations, transparency gaps, and accountability failures. Each category should map to concrete controls and measurable indicators. Vague principles are not enough for high-impact systems."
+                            "title": "The short version",
+                            "body": "AI ethics addresses fairness, transparency, privacy, and accountability to reduce harm and align systems with human values. In other words, ai ethics is a way to reason about the task—not a promise that a model will work."
                         },
                         {
-                            "title": "Assessment workflow",
-                            "body": "Run pre-launch impact assessments with affected-user mapping, harm scenarios, monitoring plans, and escalation owners. Include legal, policy, and domain stakeholders in the review loop. Shared ownership improves both safety and decision quality."
+                            "title": "At work",
+                            "body": "An impact assessment identifies affected groups, plausible harms, mitigations, and owners before launch. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Governance in practice",
-                            "body": "Operationalize ethics through model cards, dataset documentation, approval gates, and periodic audits. Tie policy exceptions to explicit risk acceptance, not informal sign-off. Governance works when it is routine, visible, and enforceable."
+                            "title": "Check before you trust it",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. AI ethics addresses fairness, transparency, privacy, and accountability to reduce harm and align systems with human values. Record the baseline and the evidence needed to proceed."
+                        },
+                        {
+                            "title": "A failure to watch for",
+                            "body": "Principles need concrete indicators and recourse; a checklist alone does not establish fairness. Before relying on the result, test the assumption with data that reflects the intended use and inspect cases where the approach fails."
                         }
                     ]
                 },
@@ -1345,83 +1353,17 @@
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "System design view",
-                            "body": "An end-to-end AI system links data collection, feature logic, training, deployment, monitoring, and feedback into one lifecycle. Weakness in any stage can erase gains from strong modeling. Design for reliability across the full chain, not isolated components.",
+                            "title": "A distinction that matters",
+                            "body": "An end-to-end AI system integrates data, training, deployment, monitoring, and feedback loops into one reliable production lifecycle. In other words, end-to-end system is a way to reason about the task—not a promise that a model will work.",
                             "image": "img/languages/ai+ml/advanced-lesson-15.png"
                         },
                         {
-                            "title": "Reliability controls",
-                            "body": "Instrument every stage with quality signals: data freshness, schema health, model drift, latency, and user-impact metrics. Connect alerts to clear incident workflows so teams can respond quickly. End-to-end observability is your early warning system."
+                            "title": "Use it on a real case",
+                            "body": "Trace a prediction from source data through features and serving to monitoring and user feedback. Use the example to identify the inputs, the decision being made, and what evidence would show the approach is useful."
                         },
                         {
-                            "title": "Lifecycle management",
-                            "body": "Assign ownership across data, modeling, platform, and product teams with explicit handoffs and SLAs. Schedule regular retraining and postmortem reviews to incorporate learning. Durable AI systems are built through disciplined iteration."
-                        }
-                    ]
-                },
-                {
-                    "id": "aiml-advanced-agent-engineering",
-                    "language": "ai+ml",
-                    "level": "advanced",
-                    "title": "Engineering tool-using agents",
-                    "description": "Reliable agents combine constrained tools, explicit state, bounded execution, and task-level evaluation rather than relying on open-ended model autonomy.",
-                    "estimatedMinutes": 12,
-                    "lessons": [
-                        {
-                            "title": "Define the tool boundary",
-                            "body": "Give each tool a narrow, typed input and output contract, and validate both before use. Treat model-produced arguments as untrusted: authorize the requested action in application code, restrict access to the minimum required data, and require confirmation for consequential actions."
-                        },
-                        {
-                            "title": "Bound the control loop",
-                            "body": "Keep orchestration in trusted code. Set step, time, and cost limits; handle timeouts and tool errors explicitly; and make retries safe through idempotency where possible. Store only task-relevant state, and do not treat retrieved or tool-returned text as trusted instructions."
-                        },
-                        {
-                            "title": "Evaluate the whole task",
-                            "body": "Measure task completion and policy compliance across realistic multi-step scenarios, including tool failures and ambiguous requests. Trace model decisions and tool calls while redacting sensitive inputs. A successful response is not enough if the agent took an unauthorized path to produce it."
-                        }
-                    ]
-                },
-                {
-                    "id": "aiml-advanced-ai-engineering",
-                    "language": "ai+ml",
-                    "level": "advanced",
-                    "title": "AI engineering in production",
-                    "description": "AI engineering turns models into dependable product capabilities by designing contracts, fallbacks, observability, and service-level objectives around model behavior.",
-                    "estimatedMinutes": 11,
-                    "lessons": [
-                        {
-                            "title": "Design the product contract",
-                            "body": "Define what the system accepts, returns, and must never do before selecting a model. Validate inputs and outputs, version prompts and model settings, and make uncertainty or unsupported requests visible to downstream callers. A model response should not silently become a trusted application decision."
-                        },
-                        {
-                            "title": "Plan for failure",
-                            "body": "Model services can be unavailable, slow, inconsistent, or wrong. Set latency and cost budgets, add timeouts and bounded retries, and define a safe fallback such as a smaller model, a deterministic path, or a clear refusal. Test these behaviors as part of the service, not only in a notebook."
-                        },
-                        {
-                            "title": "Observe user impact",
-                            "body": "Monitor task success, error categories, latency, cost, and user feedback alongside infrastructure health. Keep representative evaluation cases for regression tests and review failures by cohort to find uneven impacts. Use traces to diagnose behavior, with sensitive data minimized or redacted."
-                        }
-                    ]
-                },
-                {
-                    "id": "aiml-advanced-rag-evaluation",
-                    "language": "ai+ml",
-                    "level": "advanced",
-                    "title": "Evaluating retrieval-augmented generation",
-                    "description": "RAG quality depends on retrieval, evidence use, answer correctness, and citation support; evaluate these stages separately to locate failures.",
-                    "estimatedMinutes": 10,
-                    "lessons": [
-                        {
-                            "title": "Measure retrieval quality",
-                            "body": "Build a set of questions with known relevant passages. Measure whether retrieval finds those passages, whether the top results are useful, and how performance changes with chunk size, filters, and reranking. A fluent answer cannot compensate for evidence that was never retrieved."
-                        },
-                        {
-                            "title": "Check evidence use",
-                            "body": "Evaluate whether each answer claim is supported by the retrieved context and whether citations point to the supporting passages. Include questions with missing or conflicting evidence to verify that the system communicates uncertainty instead of inventing details."
-                        },
-                        {
-                            "title": "Test the full pipeline",
-                            "body": "Track retrieval recall, answer correctness, citation support, latency, and cost as separate signals. Use a fixed test set for changes to parsing, indexes, prompts, and models, then inspect failures by cause. Keep safety checks for hostile instructions embedded in retrieved documents."
+                            "title": "Questions to ask",
+                            "body": "Ask what information is available at decision time, which outcome matters, and how errors affect people. An end-to-end AI system integrates data, training, deployment, monitoring, and feedback loops into one reliable production lifecycle. Record the baseline and the evidence needed to proceed."
                         }
                     ]
                 }
