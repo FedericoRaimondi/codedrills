@@ -1358,6 +1358,72 @@
                             "body": "Assign ownership across data, modeling, platform, and product teams with explicit handoffs and SLAs. Schedule regular retraining and postmortem reviews to incorporate learning. Durable AI systems are built through disciplined iteration."
                         }
                     ]
+                },
+                {
+                    "id": "aiml-advanced-agent-engineering",
+                    "language": "ai+ml",
+                    "level": "advanced",
+                    "title": "Engineering tool-using agents",
+                    "description": "Reliable agents combine constrained tools, explicit state, bounded execution, and task-level evaluation rather than relying on open-ended model autonomy.",
+                    "estimatedMinutes": 12,
+                    "lessons": [
+                        {
+                            "title": "Define the tool boundary",
+                            "body": "Give each tool a narrow, typed input and output contract, and validate both before use. Treat model-produced arguments as untrusted: authorize the requested action in application code, restrict access to the minimum required data, and require confirmation for consequential actions."
+                        },
+                        {
+                            "title": "Bound the control loop",
+                            "body": "Keep orchestration in trusted code. Set step, time, and cost limits; handle timeouts and tool errors explicitly; and make retries safe through idempotency where possible. Store only task-relevant state, and do not treat retrieved or tool-returned text as trusted instructions."
+                        },
+                        {
+                            "title": "Evaluate the whole task",
+                            "body": "Measure task completion and policy compliance across realistic multi-step scenarios, including tool failures and ambiguous requests. Trace model decisions and tool calls while redacting sensitive inputs. A successful response is not enough if the agent took an unauthorized path to produce it."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-advanced-ai-engineering",
+                    "language": "ai+ml",
+                    "level": "advanced",
+                    "title": "AI engineering in production",
+                    "description": "AI engineering turns models into dependable product capabilities by designing contracts, fallbacks, observability, and service-level objectives around model behavior.",
+                    "estimatedMinutes": 11,
+                    "lessons": [
+                        {
+                            "title": "Design the product contract",
+                            "body": "Define what the system accepts, returns, and must never do before selecting a model. Validate inputs and outputs, version prompts and model settings, and make uncertainty or unsupported requests visible to downstream callers. A model response should not silently become a trusted application decision."
+                        },
+                        {
+                            "title": "Plan for failure",
+                            "body": "Model services can be unavailable, slow, inconsistent, or wrong. Set latency and cost budgets, add timeouts and bounded retries, and define a safe fallback such as a smaller model, a deterministic path, or a clear refusal. Test these behaviors as part of the service, not only in a notebook."
+                        },
+                        {
+                            "title": "Observe user impact",
+                            "body": "Monitor task success, error categories, latency, cost, and user feedback alongside infrastructure health. Keep representative evaluation cases for regression tests and review failures by cohort to find uneven impacts. Use traces to diagnose behavior, with sensitive data minimized or redacted."
+                        }
+                    ]
+                },
+                {
+                    "id": "aiml-advanced-rag-evaluation",
+                    "language": "ai+ml",
+                    "level": "advanced",
+                    "title": "Evaluating retrieval-augmented generation",
+                    "description": "RAG quality depends on retrieval, evidence use, answer correctness, and citation support; evaluate these stages separately to locate failures.",
+                    "estimatedMinutes": 10,
+                    "lessons": [
+                        {
+                            "title": "Measure retrieval quality",
+                            "body": "Build a set of questions with known relevant passages. Measure whether retrieval finds those passages, whether the top results are useful, and how performance changes with chunk size, filters, and reranking. A fluent answer cannot compensate for evidence that was never retrieved."
+                        },
+                        {
+                            "title": "Check evidence use",
+                            "body": "Evaluate whether each answer claim is supported by the retrieved context and whether citations point to the supporting passages. Include questions with missing or conflicting evidence to verify that the system communicates uncertainty instead of inventing details."
+                        },
+                        {
+                            "title": "Test the full pipeline",
+                            "body": "Track retrieval recall, answer correctness, citation support, latency, and cost as separate signals. Use a fixed test set for changes to parsing, indexes, prompts, and models, then inspect failures by cause. Keep safety checks for hostile instructions embedded in retrieved documents."
+                        }
+                    ]
                 }
             ]
         }
