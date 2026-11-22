@@ -1,0 +1,865 @@
+{
+  "language": "llm-agents",
+  "levels": [
+    {
+      "level": "new",
+      "topics": [
+        {
+          "id": "llm-new-01-what-an-llm-predicts",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "What an LLM predicts",
+          "description": "An autoregressive LLM predicts a distribution over the next token given prior context; fluent output does not establish truth.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "An autoregressive LLM predicts a distribution over the next token given prior context; fluent output does not establish truth. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-new-02-tokens-and-tokenization",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Tokens and tokenization",
+          "description": "Tokenizers split text into model-specific units, so character length and context-window usage are different quantities.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Tokenizers split text into model-specific units, so character length and context-window usage are different quantities. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-new-03-context-window",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Context window",
+          "description": "A context window bounds available tokens for instructions, history, retrieved text, and generated output.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "A context window bounds available tokens for instructions, history, retrieved text, and generated output. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-new-04-prompt-instructions",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Prompt instructions",
+          "description": "A prompt describes a task and desired format but cannot replace application-side validation or authorization.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "A prompt describes a task and desired format but cannot replace application-side validation or authorization. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-new-05-message-roles",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Message roles",
+          "description": "Conversation roles organize instructions and input, but user and retrieved content remain untrusted data.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Conversation roles organize instructions and input, but user and retrieved content remain untrusted data. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-new-06-sampling-and-temperature",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Sampling and temperature",
+          "description": "Sampling settings influence output variability and do not provide a measure of factual confidence.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Sampling settings influence output variability and do not provide a measure of factual confidence. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-new-07-hallucinations",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Hallucinations",
+          "description": "Hallucinations are unsupported or incorrect generated claims and can appear confidently phrased.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Hallucinations are unsupported or incorrect generated claims and can appear confidently phrased. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-new-08-retrieval-augmented-generation",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Retrieval-augmented generation",
+          "description": "RAG supplies retrieved passages to generation; missing or irrelevant retrieval limits grounding.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "RAG supplies retrieved passages to generation; missing or irrelevant retrieval limits grounding. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-new-09-embeddings-and-search",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Embeddings and search",
+          "description": "Embeddings support similarity search, but semantic similarity is not the same as factual relevance.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Embeddings support similarity search, but semantic similarity is not the same as factual relevance. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-new-10-prompt-injection",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Prompt injection",
+          "description": "Prompt injection uses untrusted content to manipulate model behavior, including through retrieved documents.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Prompt injection uses untrusted content to manipulate model behavior, including through retrieved documents. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-new-11-structured-output",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Structured output",
+          "description": "A schema can constrain output shape, but the application must still validate values and business rules.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "A schema can constrain output shape, but the application must still validate values and business rules. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-new-12-tool-calling",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Tool calling",
+          "description": "A model may propose a tool and arguments; trusted application code decides whether execution is authorized.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "A model may propose a tool and arguments; trusted application code decides whether execution is authorized. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-new-13-agent-loop",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Agent loop",
+          "description": "An agent cycles through model decisions and tool results, so it needs explicit limits and stop conditions.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "An agent cycles through model decisions and tool results, so it needs explicit limits and stop conditions. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-new-14-human-review",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Human review",
+          "description": "Human review is valuable when impact, uncertainty, or policy exceeds what automated checks can safely resolve.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Human review is valuable when impact, uncertainty, or policy exceeds what automated checks can safely resolve. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-new-15-llm-evaluation",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "LLM evaluation",
+          "description": "Task-specific examples and rubrics measure product behavior better than a single broad benchmark.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Task-specific examples and rubrics measure product behavior better than a single broad benchmark. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": "beginner",
+      "topics": [
+        {
+          "id": "llm-beginner-01-prompt-templates",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Prompt templates",
+          "description": "Templates separate stable instructions from variable inputs and make changes traceable and testable.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Templates separate stable instructions from variable inputs and make changes traceable and testable. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-beginner-02-few-shot-examples",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Few-shot examples",
+          "description": "Examples illustrate a desired pattern but consume context and can bias behavior toward narrow cases.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Examples illustrate a desired pattern but consume context and can bias behavior toward narrow cases. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-beginner-03-retrieval-chunking",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Retrieval chunking",
+          "description": "Chunk boundaries affect evidence completeness and irrelevant context; evaluate them against answerable questions.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Chunk boundaries affect evidence completeness and irrelevant context; evaluate them against answerable questions. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-beginner-04-metadata-filters",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Metadata filters",
+          "description": "Filters constrain retrieval by source, date, tenant, or permissions and should enforce access rules before ranking.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Filters constrain retrieval by source, date, tenant, or permissions and should enforce access rules before ranking. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-beginner-05-reranking",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Reranking",
+          "description": "A reranker reorders retrieved candidates with a focused relevance model, adding latency and compute cost.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "A reranker reorders retrieved candidates with a focused relevance model, adding latency and compute cost. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-beginner-06-citation-grounding",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Citation grounding",
+          "description": "Citations should support their associated claims with evidence, not merely point to a related document.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Citations should support their associated claims with evidence, not merely point to a related document. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-beginner-07-refusal-and-abstention",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Refusal and abstention",
+          "description": "A system should abstain when evidence, authorization, or confidence is inadequate rather than inventing an answer.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "A system should abstain when evidence, authorization, or confidence is inadequate rather than inventing an answer. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-beginner-08-function-schemas",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Function schemas",
+          "description": "Schemas constrain tool argument shape but do not establish that the caller may perform the requested action.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Schemas constrain tool argument shape but do not establish that the caller may perform the requested action. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-beginner-09-idempotent-actions",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Idempotent actions",
+          "description": "Idempotency prevents retried tool calls from duplicating side effects.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Idempotency prevents retried tool calls from duplicating side effects. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-beginner-10-agent-state",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Agent state",
+          "description": "Explicit task state separates validated progress from potentially stale or contradictory conversation history.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Explicit task state separates validated progress from potentially stale or contradictory conversation history. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-beginner-11-memory-design",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Memory design",
+          "description": "Useful memory is scoped, correctable, and deletable rather than treating every interaction as durable truth.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Useful memory is scoped, correctable, and deletable rather than treating every interaction as durable truth. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-beginner-12-agent-budgets",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Agent budgets",
+          "description": "Step, time, and token budgets limit runaway cost and repeated unproductive actions.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Step, time, and token budgets limit runaway cost and repeated unproductive actions. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-beginner-13-tool-errors",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Tool errors",
+          "description": "Typed errors let an agent distinguish timeouts and failures from a successful empty result.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Typed errors let an agent distinguish timeouts and failures from a successful empty result. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-beginner-14-llm-as-judge",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "LLM-as-judge",
+          "description": "Model judges can scale rubric checks but require calibration against human ratings and bias checks.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Model judges can scale rubric checks but require calibration against human ratings and bias checks. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-beginner-15-prompt-regression-tests",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Prompt regression tests",
+          "description": "Regression cases preserve expected behavior across edits and should include ambiguous and adversarial inputs.",
+          "estimatedMinutes": 8,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Regression cases preserve expected behavior across edits and should include ambiguous and adversarial inputs. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": "intermediate",
+      "topics": [
+        {
+          "id": "llm-intermediate-01-retrieval-evaluation",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Retrieval evaluation",
+          "description": "Recall checks whether relevant passages are found, while precision and ranking metrics assess top results.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Recall checks whether relevant passages are found, while precision and ranking metrics assess top results. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-intermediate-02-generation-evaluation",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Generation evaluation",
+          "description": "Evaluate correctness, completeness, instruction following, and style as separate dimensions.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Evaluate correctness, completeness, instruction following, and style as separate dimensions. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-intermediate-03-rag-failure-attribution",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "RAG failure attribution",
+          "description": "Failures may arise in parsing, indexing, retrieval, context assembly, or generation; inspect each stage before changing prompts.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Failures may arise in parsing, indexing, retrieval, context assembly, or generation; inspect each stage before changing prompts. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-intermediate-04-context-ordering",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Context ordering",
+          "description": "Evidence position and redundancy can influence use in long contexts; test placement rather than assuming order is irrelevant.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Evidence position and redundancy can influence use in long contexts; test placement rather than assuming order is irrelevant. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-intermediate-05-hybrid-search",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Hybrid search",
+          "description": "Hybrid search combines lexical matches for exact terms with semantic retrieval for paraphrases.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Hybrid search combines lexical matches for exact terms with semantic retrieval for paraphrases. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-intermediate-06-query-rewriting",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Query rewriting",
+          "description": "Rewriting can improve vague searches but may alter entities, negation, or the user's intent.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Rewriting can improve vague searches but may alter entities, negation, or the user's intent. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-intermediate-07-multi-step-planning",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Multi-step planning",
+          "description": "Plans decompose work into actions but need checks against user goals and allowed tool capabilities.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Plans decompose work into actions but need checks against user goals and allowed tool capabilities. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-intermediate-08-agent-task-evaluation",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Agent task evaluation",
+          "description": "Evaluate full task outcomes and policy compliance across tool traces, not just final-response quality.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Evaluate full task outcomes and policy compliance across tool traces, not just final-response quality. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-intermediate-09-agent-observability",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Agent observability",
+          "description": "Traces connect prompts, decisions, tools, and results while minimizing sensitive logged content.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Traces connect prompts, decisions, tools, and results while minimizing sensitive logged content. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-intermediate-10-prompt-injection-defense",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Prompt-injection defense",
+          "description": "Defense in depth includes least privilege, external authorization, and output checks; keyword blocking alone is insufficient.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Defense in depth includes least privilege, external authorization, and output checks; keyword blocking alone is insufficient. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-intermediate-11-multi-agent-coordination",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Multi-agent coordination",
+          "description": "Multiple agents add handoff and shared-state failure modes and are useful only when measured specialization helps.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Multiple agents add handoff and shared-state failure modes and are useful only when measured specialization helps. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-intermediate-12-conversation-summarization",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Conversation summarization",
+          "description": "Summaries save context but can omit constraints or introduce errors that affect future actions.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Summaries save context but can omit constraints or introduce errors that affect future actions. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-intermediate-13-preference-optimization",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Preference optimization",
+          "description": "Preference data shapes outputs but can encode rater bias and reward superficial signals.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Preference data shapes outputs but can encode rater bias and reward superficial signals. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-intermediate-14-model-routing",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Model routing",
+          "description": "Routing trades quality, latency, and cost across models and needs measured fallback behavior.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Routing trades quality, latency, and cost across models and needs measured fallback behavior. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-intermediate-15-continuous-evaluation",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Continuous evaluation",
+          "description": "Live sampling complements fixed tests because user behavior and external knowledge change over time.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Live sampling complements fixed tests because user behavior and external knowledge change over time. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": "advanced",
+      "topics": [
+        {
+          "id": "llm-advanced-01-agent-threat-modeling",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Agent threat modeling",
+          "description": "Threat models map assets, actors, trust boundaries, and attack paths before exposing agent capabilities.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Threat models map assets, actors, trust boundaries, and attack paths before exposing agent capabilities. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-advanced-02-least-privilege-tools",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Least-privilege tools",
+          "description": "Narrow, scoped tools reduce potential impact if a model proposes unsafe or unintended actions.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Narrow, scoped tools reduce potential impact if a model proposes unsafe or unintended actions. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-advanced-03-indirect-injection",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Indirect injection",
+          "description": "Retrieved webpages and tool results can carry malicious instructions and must remain untrusted content.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Retrieved webpages and tool results can carry malicious instructions and must remain untrusted content. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-advanced-04-sandboxed-execution",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Sandboxed execution",
+          "description": "Execution tools require isolation, resource limits, restricted networking, and disposable environments.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Execution tools require isolation, resource limits, restricted networking, and disposable environments. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-advanced-05-transactional-actions",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Transactional actions",
+          "description": "Consequential actions should include preview, policy checks, confirmation, and auditable commit steps.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Consequential actions should include preview, policy checks, confirmation, and auditable commit steps. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-advanced-06-agent-reliability",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Agent reliability",
+          "description": "Timeouts, circuit breakers, bounded retries, and idempotency contain failures without unbounded loops.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Timeouts, circuit breakers, bounded retries, and idempotency contain failures without unbounded loops. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-advanced-07-long-horizon-planning",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Long-horizon planning",
+          "description": "Long tasks need checkpoints, invariant checks, and recovery from partial completion.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Long tasks need checkpoints, invariant checks, and recovery from partial completion. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-advanced-08-agent-benchmarks",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Agent benchmarks",
+          "description": "Benchmarks should include realistic environments, hidden state, tool failures, and policy constraints.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Benchmarks should include realistic environments, hidden state, tool failures, and policy constraints. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-advanced-09-llm-red-teaming",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "LLM red teaming",
+          "description": "Red teaming probes misuse, privacy leakage, bias, and instruction failures under defined threat scenarios.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Red teaming probes misuse, privacy leakage, bias, and instruction failures under defined threat scenarios. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-advanced-10-rag-access-control",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "RAG access control",
+          "description": "Document permissions must be enforced during retrieval rather than merely described in a prompt.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Document permissions must be enforced during retrieval rather than merely described in a prompt. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-advanced-11-provenance-and-citations",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Provenance and citations",
+          "description": "Grounded answers need provenance linking claims to source versions and access decisions.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Grounded answers need provenance linking claims to source versions and access decisions. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-advanced-12-model-and-prompt-versioning",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Model and prompt versioning",
+          "description": "Version model, tokenizer, prompt, retrieval index, and tool schema to attribute behavior changes.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Version model, tokenizer, prompt, retrieval index, and tool schema to attribute behavior changes. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-advanced-13-uncertainty-aware-routing",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Uncertainty-aware routing",
+          "description": "Uncertainty can trigger retrieval, another model, or review but must be calibrated for the task.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Uncertainty can trigger retrieval, another model, or review but must be calibrated for the task. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-advanced-14-llm-privacy",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "LLM privacy",
+          "description": "Prompts, outputs, embeddings, and logs can expose sensitive information and need retention controls.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Prompts, outputs, embeddings, and logs can expose sensitive information and need retention controls. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        },
+        {
+          "id": "llm-advanced-15-agent-shutdown-and-recovery",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Agent shutdown and recovery",
+          "description": "Safe shutdown records in-flight work and prevents duplicate execution during restart.",
+          "estimatedMinutes": 10,
+          "lessons": [
+            {
+              "title": "Concept and application",
+              "body": "Safe shutdown records in-flight work and prevents duplicate execution during restart. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
