@@ -13,8 +13,29 @@
           "estimatedMinutes": 7,
           "lessons": [
             {
-              "title": "Core idea and practice",
-              "body": "Prediction estimates an unseen outcome, while inference asks what relationships the data support; the goal determines the method and evaluation. Separate a sales forecast from a causal claim about a promotion. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "title": "Two different questions",
+              "body": "Prediction estimates an unknown outcome, such as next week's sales. Statistical inference uses sample data to learn about a broader population or a relationship, such as how sales differ between promoted and non-promoted weeks. The same data can be used for either task, but the questions are different.",
+              "image": "img/languages/traditional-ml/prediction-and-inference.png"
+            },
+            {
+              "title": "Test a prediction",
+              "body": "A sales forecast is useful when it predicts future sales accurately enough for a decision, such as ordering stock. Test it on data that was not used to fit or choose the model; for a forecast, keep the test period after the training period. Compare the errors with a simple baseline, such as last week's sales.",
+              "image": "img/languages/traditional-ml/forecast-test-period.png"
+            },
+            {
+              "title": "Estimate a relationship",
+              "body": "An inference question might ask how average sales differ between weeks with and without a promotion. An estimated difference summarizes the observed relationship, while an interval can express uncertainty about the estimate under the method's assumptions. A narrow interval does not by itself prove a cause.",
+              "image": "img/languages/traditional-ml/estimate-and-interval.png"
+            },
+            {
+              "title": "Watch for confounding",
+              "body": "Promotions may occur more often during holidays, when demand would have been higher anyway. A sales difference between promoted and non-promoted weeks therefore does not automatically measure the effect of the promotion. A causal estimate needs a suitable study design and assumptions about other influences.",
+              "image": "img/languages/traditional-ml/holiday-confounding.png"
+            },
+            {
+              "title": "Match the method to the goal",
+              "body": "A useful predictor can exploit an association even when that association is not causal. Conversely, explaining the effect of a promotion requires more than a model that forecasts sales accurately. Write down the decision, the target population, and whether the question is predictive, associational, or causal before choosing an evaluation.",
+              "image": "img/languages/traditional-ml/choose-ml-goal.png"
             }
           ]
         },
@@ -28,7 +49,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "Features are available inputs and the target is the outcome to predict; exclude information that would not exist at decision time. For a loan model, use application-time facts rather than later repayment status. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "A feature is an input used to make a prediction; the target is the outcome being predicted. In a demand forecast, past sales and calendar information might be features, while next week's sales are the target. An example in training pairs available feature values with an observed target.",
+              "image": "img/languages/traditional-ml/features-and-target.png"
+            },
+            {
+              "title": "Set the prediction time",
+              "body": "Write down exactly when the prediction is made and what information is available then. For a loan decision made at application time, later repayment status is not a valid input. A field that was unavailable or updated later can leak information about the outcome.",
+              "image": "img/languages/traditional-ml/loan-prediction-time.png"
+            },
+            {
+              "title": "Define the target",
+              "body": "Specify the outcome and the time window precisely. 'Sales next week' needs a store, product scope, and consistent definition of a week. If different records use different windows or definitions, the model may learn an inconsistent task.",
+              "image": "img/languages/traditional-ml/define-target-window.png"
+            },
+            {
+              "title": "Check availability at serving",
+              "body": "A field can exist in a historical dataset but be unavailable, delayed, or defined differently when predictions are served. Check its source, freshness, and meaning in both settings. Decide what the system should do when an expected feature is missing.",
+              "image": "img/languages/traditional-ml/feature-training-and-serving.png"
+            },
+            {
+              "title": "Evaluate without leakage",
+              "body": "Build examples using only information available at each prediction time, then evaluate on held-out examples that reflect the intended use. An unusually accurate result may indicate that a feature contains information from after the outcome; inspect the data before assuming the model is excellent.",
+              "image": "img/languages/traditional-ml/avoid-future-leakage.png"
             }
           ]
         },
@@ -42,7 +84,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "A labeled example pairs input data with the outcome the learner should predict; label definitions must be consistent. Document whether a churn label means cancellation or a period of inactivity. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "A labeled example pairs input values with the outcome a supervised model should learn to predict. For a delivery estimate, an example might contain shipment details available before dispatch and a label indicating whether the shipment arrived late.",
+              "image": "img/languages/traditional-ml/labeled-shipment-example.png"
+            },
+            {
+              "title": "Define the label",
+              "body": "Write an explicit rule for assigning each label. For customer churn, 'cancelled during the next 30 days' is different from 'inactive for 30 days'. Record the observation window and how to handle customers whose outcomes are not yet known.",
+              "image": "img/languages/traditional-ml/churn-label-definitions.png"
+            },
+            {
+              "title": "Gather and review labels",
+              "body": "Labels can come from records, measurements, or human reviewers. Each source can contain mistakes: a cancellation record may be delayed, and reviewers may disagree on ambiguous cases. Use clear instructions and review a sample of labels against the source evidence.",
+              "image": "img/languages/traditional-ml/label-quality-review.png"
+            },
+            {
+              "title": "Respect timing",
+              "body": "The label is observed after the prediction point, but the input features must be available when the prediction is made. For example, a delivery's eventual arrival time can define lateness but cannot be an input to a forecast made before dispatch.",
+              "image": "img/languages/traditional-ml/label-prediction-timing.png"
+            },
+            {
+              "title": "Check coverage",
+              "body": "Inspect whether labels cover the populations and outcomes the system will encounter. A model trained only on labeled shipments from one region may not perform well elsewhere. Keep a representative held-out set and investigate missing or unreliable labels before trusting evaluation.",
+              "image": "img/languages/traditional-ml/label-coverage.png"
             }
           ]
         },
@@ -56,7 +119,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "Supervised methods learn a mapping from labeled examples to outputs, commonly for classification or regression. Predict a delivery delay category from historical labeled shipments. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "Supervised learning uses examples with inputs and known target labels to fit a mapping from inputs to outputs. To predict delivery delay categories, each training example could contain shipment features and the observed delay category.",
+              "image": "img/languages/traditional-ml/labeled-shipment-example.png"
+            },
+            {
+              "title": "Choose the target",
+              "body": "Classification predicts a category, such as on time or delayed. Regression predicts a number, such as minutes late. Define the target and its measurement window before selecting features or a metric.",
+              "image": "img/languages/traditional-ml/supervised-target-types.png"
+            },
+            {
+              "title": "Use available inputs",
+              "body": "Select features that would be known at the time the prediction is made. For example, a planned route may be available before dispatch, while actual arrival time is not. Using a future value can leak the answer into training.",
+              "image": "img/languages/traditional-ml/label-prediction-timing.png"
+            },
+            {
+              "title": "Fit and evaluate",
+              "body": "Fit the model on training examples and evaluate it on separate examples that represent the intended use. Compare with a simple baseline, such as predicting the most common category. For time-dependent deliveries, a later test period may better reflect deployment.",
+              "image": "img/languages/traditional-ml/train-validation-test.png"
+            },
+            {
+              "title": "Inspect mistakes",
+              "body": "Review errors by route, time period, and other relevant groups when enough examples are available. An overall score can hide a recurring failure on a particular route. Investigate label quality and changes in delivery patterns before deciding how to improve the model.",
+              "image": "img/languages/traditional-ml/supervised-error-analysis.png"
             }
           ]
         },
@@ -70,7 +154,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "Unsupervised methods find structure without a supplied target and need human interpretation to establish usefulness. Cluster support tickets, then inspect representative examples in each group. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "Unsupervised learning looks for patterns in data without a supplied target label for each example. Common tasks include clustering similar examples and reducing the number of dimensions used to represent them.",
+              "image": "img/languages/traditional-ml/unsupervised-overview.png"
+            },
+            {
+              "title": "Explore clusters",
+              "body": "A clustering method groups examples according to a chosen representation and similarity measure. For support tickets, a group might contain related requests, but the algorithm does not automatically know the business meaning of the group.",
+              "image": "img/languages/traditional-ml/unsupervised-ticket-clusters.png"
+            },
+            {
+              "title": "Prepare the representation",
+              "body": "The input features and their scale can strongly affect which examples appear similar. Choose features available for the intended use, handle missing values, and consider scaling where the method requires it. Different representations can produce different groups.",
+              "image": "img/languages/traditional-ml/unsupervised-representation.png"
+            },
+            {
+              "title": "Interpret the result",
+              "body": "Inspect representative examples from each cluster and look for mixed or misleading groups. Assign a descriptive label only after reviewing the data. A cluster ID is not a verified category or a prediction of a desired outcome.",
+              "image": "img/languages/traditional-ml/unsupervised-cluster-interpretation.png"
+            },
+            {
+              "title": "Evaluate usefulness",
+              "body": "Compare alternative settings and check whether the groups are stable enough and useful for the actual task. A mathematical clustering score alone cannot establish business usefulness. Watch for sensitive patterns and access restrictions when inspecting examples.",
+              "image": "img/languages/traditional-ml/unsupervised-evaluation.png"
             }
           ]
         },
@@ -84,7 +189,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "Classification predicts a discrete class; threshold choice and class-specific errors matter beyond accuracy. A screening model should report missed-positive and false-alarm rates. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "Classification predicts a discrete category, such as whether a transaction should be reviewed. Some classifiers produce scores or probabilities that can be converted into decisions using a threshold.",
+              "image": "img/languages/traditional-ml/classification-overview.png"
+            },
+            {
+              "title": "Use a threshold",
+              "body": "If a model assigns a positive-class score of 0.7 and the decision threshold is 0.6, the example is classified as positive. Changing the threshold can change which examples are flagged, even when the underlying scores stay the same.",
+              "image": "img/languages/traditional-ml/classification-threshold.png"
+            },
+            {
+              "title": "Distinguish errors",
+              "body": "A false positive flags a negative example; a false negative misses a positive example. In a screening workflow, both false alarms and missed positives have consequences. Assess them using representative labeled outcomes.",
+              "image": "img/languages/traditional-ml/classification-errors.png"
+            },
+            {
+              "title": "Look beyond accuracy",
+              "body": "Accuracy counts all correct decisions, but can hide poor performance on a rare class. Precision describes the proportion of flagged examples that are truly positive; recall describes the proportion of positives that are flagged.",
+              "image": "img/languages/traditional-ml/classification-precision-recall.png"
+            },
+            {
+              "title": "Choose for the task",
+              "body": "Select a threshold using validation data and the costs of different errors. Evaluate the selected policy on separate held-out data, including important groups when feasible. Monitor outcomes after deployment because class prevalence and behavior can change.",
+              "image": "img/languages/traditional-ml/classification-evaluation.png"
             }
           ]
         },
@@ -98,7 +224,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "Regression predicts a numeric quantity; error metrics should reflect the scale and cost of mistakes. Forecast units sold and compare MAE with a seasonal baseline. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "Regression predicts a numeric quantity, such as next week's units sold. The target, available inputs, and error metric should match the decision the prediction supports.",
+              "image": "img/languages/traditional-ml/regression-overview.png"
+            },
+            {
+              "title": "Define the target",
+              "body": "Specify what is predicted, its units, and the time horizon. For a weekly sales forecast, use only features available before that week. Future information in training inputs can make evaluation misleading.",
+              "image": "img/languages/traditional-ml/regression-target.png"
+            },
+            {
+              "title": "Measure error",
+              "body": "Absolute error is the absolute difference between prediction and target. If a forecast is 12 units and the actual value is 9, the absolute error is 3 units. Mean absolute error averages these errors across examples.",
+              "image": "img/languages/traditional-ml/regression-absolute-error.png"
+            },
+            {
+              "title": "Compare a baseline",
+              "body": "A seasonal baseline might use sales from the same period in a previous cycle when that information is available. Compare the model and baseline on the same held-out periods, including operationally important errors.",
+              "image": "img/languages/traditional-ml/regression-baseline.png"
+            },
+            {
+              "title": "Evaluate in context",
+              "body": "Choose metrics that reflect the scale and cost of mistakes. Inspect errors across time and relevant groups, and check whether large errors have disproportionate impact. A low average error can hide poor performance in important cases.",
+              "image": "img/languages/traditional-ml/regression-evaluation.png"
             }
           ]
         },
@@ -111,9 +258,29 @@
           "estimatedMinutes": 7,
           "lessons": [
             {
-              "title": "Core idea and practice",
-              "body": "Training fits model parameters, validation supports choices, and a final test estimates performance after choices are fixed. Keep test records untouched until model selection is complete. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee.",
-              "image": "img/languages/traditional-ml/train-validation-test.png"
+              "title": "Give each split a role",
+              "body": "The training set is used to fit model parameters. The validation set helps choose models, features, and settings, while a final test set estimates performance after those choices are fixed. Separating these roles makes it harder to mistake performance on familiar data for generalization. Each split should reflect the intended prediction task.",
+              "image": "img/languages/traditional-ml/splits-roles.png"
+            },
+            {
+              "title": "Avoid reusing the final test",
+              "body": "Repeatedly checking a test score while changing a model effectively uses that test set for selection. The resulting score can become optimistic even though the model never directly trained on the test rows. Use validation data for iteration, then evaluate the fixed approach on the reserved test set. If a test set has guided repeated decisions, obtain a suitable new holdout when possible.",
+              "image": "img/languages/traditional-ml/splits-reuse.png"
+            },
+            {
+              "title": "Split according to deployment",
+              "body": "A random split is not always appropriate. For future forecasting, train on earlier periods and evaluate on later periods so the split matches the direction of time. If multiple rows belong to the same person or device, a group split may be needed to avoid placing closely related examples in both training and evaluation. Choose the split based on what will be new at deployment.",
+              "image": "img/languages/traditional-ml/splits-strategy.png"
+            },
+            {
+              "title": "Fit preprocessing on training data",
+              "body": "Preprocessing can leak information when it learns statistics from all rows before splitting. For example, a scaler should estimate its mean and standard deviation from training data, then apply those fitted values to validation and test data. During cross-validation, fit the preprocessing separately inside each training fold. Keep selection and preprocessing inside the evaluated pipeline.",
+              "image": "img/languages/traditional-ml/splits-preprocessing.png"
+            },
+            {
+              "title": "Interpret the final estimate",
+              "body": "A test score is an estimate based on a finite sample, not a guarantee of performance on every future group or period. Inspect class balance, important groups, and uncertainty when sample sizes permit. Data collected under a different process may not represent deployment, even if the split was technically separate. Document the evaluation population and its limitations.",
+              "image": "img/languages/traditional-ml/splits-interpret.png"
             }
           ]
         },
@@ -230,7 +397,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "Linear regression estimates a numeric target as a weighted sum of inputs; residual patterns reveal where the model misses structure. Predict rent from floor area, then inspect residuals by neighborhood. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "Linear regression predicts a numeric target using an intercept plus a weighted sum of features. A delivery model might estimate minutes from distance and load. Its coefficients are fitted from training data to minimize a chosen error objective.",
+              "image": "img/languages/traditional-ml/linear-regression-overview.png"
+            },
+            {
+              "title": "Interpret a coefficient",
+              "body": "If the distance coefficient is 2 minutes per kilometer, the prediction rises by 2 minutes for one additional kilometer while other included inputs are held fixed. This is a property of the fitted model, not proof that changing distance causes that exact change in delivery time.",
+              "image": "img/languages/traditional-ml/linear-regression-coefficient.png"
+            },
+            {
+              "title": "Calculate a prediction",
+              "body": "For a model predicting minutes as 10 + 2 * distance, a 7-kilometer route receives a prediction of 24 minutes. The intercept of 10 is the model's prediction when distance is zero; whether that is meaningful depends on the data and the task.",
+              "image": "img/languages/traditional-ml/linear-regression-example.png"
+            },
+            {
+              "title": "Inspect residuals",
+              "body": "A residual is the observed target minus the prediction. If a delivery takes 30 minutes and the prediction is 24, its residual is 6 minutes. Examine residuals by route or distance: a systematic pattern can indicate missing structure, changing error variance, or data issues.",
+              "image": "img/languages/traditional-ml/linear-regression-residual.png"
+            },
+            {
+              "title": "Evaluate on new data",
+              "body": "Compare held-out predictions with observed delivery times using a suitable error measure and a simple baseline. Check errors across important routes and time periods, not only the overall average. Predictions far outside the training range can be unreliable.",
+              "image": "img/languages/traditional-ml/forecast-test-period.png"
             }
           ]
         },
@@ -244,7 +432,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "Logistic regression models class probabilities through a logistic link and supports threshold-based decisions. Choose a recall-oriented threshold for a screening workflow. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "Binary logistic regression combines input features into a score and applies the logistic function to produce a value between zero and one. That value is commonly interpreted as the model's estimated probability of the positive class, subject to evaluation and calibration.",
+              "image": "img/languages/traditional-ml/logistic-regression-pipeline.png"
+            },
+            {
+              "title": "From score to probability",
+              "body": "The logistic function maps a score of zero to 0.5. Positive scores map above 0.5 and negative scores below it. A feature coefficient changes the score per unit of that feature, holding other inputs fixed; it does not add a fixed amount to the probability.",
+              "image": "img/languages/traditional-ml/logistic-score-probability.png"
+            },
+            {
+              "title": "Choose a decision threshold",
+              "body": "A threshold converts a model score into a class decision. Lowering the threshold generally identifies more positive cases but can also produce more false positives on a fixed set of examples. Choose it on validation data using the costs and constraints of the task.",
+              "image": "img/languages/traditional-ml/logistic-decision-threshold.png"
+            },
+            {
+              "title": "Evaluate screening trade-offs",
+              "body": "For a screening workflow, compare recall, precision, and the number of cases requiring follow-up across candidate thresholds. High recall can be useful when missed positives are costly, but follow-up capacity and false positives matter too.",
+              "image": "img/languages/traditional-ml/logistic-screening-evaluation.png"
+            },
+            {
+              "title": "Check probabilities and generalization",
+              "body": "Assess performance on separate representative data and examine whether predicted probabilities are calibrated for the intended population. A value of 0.8 is not automatically a reliable 80% risk estimate. Data shifts and changes in class prevalence can affect performance.",
+              "image": "img/languages/traditional-ml/logistic-calibration.png"
             }
           ]
         },
@@ -258,7 +467,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "A decision tree partitions feature space with sequential tests and can express nonlinear rules, but deep trees overfit. Limit depth and compare validation performance with a simple baseline. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "A decision tree predicts by following a sequence of feature tests from a root to a leaf. The leaf supplies a prediction, such as a class or a numeric value. Different paths describe different regions of the feature space.",
+              "image": "img/languages/traditional-ml/tree-root-to-leaf.png"
+            },
+            {
+              "title": "Follow a split",
+              "body": "A delivery tree might first test whether distance is at most 5 km, then test traffic on one branch. Each decision routes an example to the next node. Features can be tested again deeper in the tree.",
+              "image": "img/languages/traditional-ml/tree-distance-branch.png"
+            },
+            {
+              "title": "Learn from data",
+              "body": "During training, a tree algorithm selects splits using a criterion such as impurity reduction for classification or reduced squared error for regression. The chosen rule depends on the training data and the algorithm; a split is not necessarily a causal relationship.",
+              "image": "img/languages/traditional-ml/tree-split-selection.png"
+            },
+            {
+              "title": "Control overfitting",
+              "body": "A deep tree can fit rare patterns and noise in the training set. Limiting depth, requiring a minimum number of examples in a leaf, or pruning can reduce complexity. Select settings with validation data rather than assuming the deepest tree will generalize best.",
+              "image": "img/languages/traditional-ml/tree-control-complexity.png"
+            },
+            {
+              "title": "Evaluate and interpret",
+              "body": "Compare the tree with a simple baseline using a metric suited to the problem. Inspect held-out performance and important groups, and consider how missing values are handled by the chosen implementation. A readable path explains the model's rule, not why an outcome occurred.",
+              "image": "img/languages/traditional-ml/evaluate-decision-tree.png"
             }
           ]
         },
@@ -272,7 +502,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "k-NN predicts from nearby training examples, so scaling and the neighborhood size strongly affect results. Scale mixed-unit measurements before distance-based classification. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "k-nearest neighbors predicts for a new example using nearby training examples under a chosen distance measure. For classification it may use a majority vote; for regression it may average neighbors' targets.",
+              "image": "img/languages/traditional-ml/knn-prediction.png"
+            },
+            {
+              "title": "Find the neighbors",
+              "body": "For a selected k, calculate distances from the new example to the stored training examples and select the k closest. The distance function and representation determine what nearby means. Ties require a defined handling rule.",
+              "image": "img/languages/traditional-ml/knn-neighborhood.png"
+            },
+            {
+              "title": "Scale appropriately",
+              "body": "When features use different units or ranges, one can dominate an unscaled distance. Fit any scaling transformation on the training data and apply the same transformation to validation and new examples to avoid leakage.",
+              "image": "img/languages/traditional-ml/knn-scaling.png"
+            },
+            {
+              "title": "Choose k",
+              "body": "A small k can be sensitive to noise, while a larger k can smooth local distinctions. Compare candidate values using validation data and a relevant metric. The best setting depends on the data, distance, and problem.",
+              "image": "img/languages/traditional-ml/knn-k-choice.png"
+            },
+            {
+              "title": "Consider prediction cost",
+              "body": "A basic k-NN implementation stores training examples and searches them at prediction time. Consider memory, latency, and data access requirements as the dataset grows. Evaluate both predictive quality and practical constraints.",
+              "image": "img/languages/traditional-ml/knn-cost.png"
             }
           ]
         },
@@ -286,7 +537,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "Naive Bayes combines class-conditional feature evidence under a conditional-independence assumption. Use token counts for a fast text baseline and check correlated-word limitations. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "Naive Bayes is a family of classifiers that combines prior class probabilities with evidence from features. Its simplifying assumption is that features are conditionally independent given the class.",
+              "image": "img/languages/traditional-ml/bayes-overview.png"
+            },
+            {
+              "title": "Represent a document",
+              "body": "For a text classification baseline, represent each document using token counts or another appropriate feature representation. Learn the vocabulary and preprocessing from training data and apply the same transformation to new documents.",
+              "image": "img/languages/traditional-ml/bayes-document-features.png"
+            },
+            {
+              "title": "Combine evidence",
+              "body": "The classifier estimates how likely the features are under each class and combines them with class priors. Smoothing can prevent an unseen token from giving a class a zero likelihood in common count-based variants.",
+              "image": "img/languages/traditional-ml/bayes-evidence.png"
+            },
+            {
+              "title": "Understand the assumption",
+              "body": "Related words often appear together, so conditional independence is not always realistic. Naive Bayes can still be useful as a fast baseline, but correlated features can affect its probability estimates and decisions.",
+              "image": "img/languages/traditional-ml/bayes-independence.png"
+            },
+            {
+              "title": "Evaluate the baseline",
+              "body": "Compare predictions with labeled held-out examples using task-relevant metrics. Check class-specific errors and whether estimated probabilities are suitable for the decision. Avoid fitting the vocabulary or tuning settings on the final test set.",
+              "image": "img/languages/traditional-ml/bayes-evaluation.png"
             }
           ]
         },
@@ -300,7 +572,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "Scaling aligns feature magnitudes for distance- and gradient-sensitive algorithms but is usually fitted only on training data. Fit a standardizer on the training fold, then transform validation data. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "Feature scaling transforms numeric inputs to make their ranges or units more comparable. It can matter for distance-based methods and gradient-based optimization, while its usefulness depends on the algorithm and features.",
+              "image": "img/languages/traditional-ml/scaling-overview.png"
+            },
+            {
+              "title": "Standardize a feature",
+              "body": "Standardization commonly subtracts the training mean and divides by the training standard deviation. For a training mean of 10 and standard deviation of 2, a value of 14 becomes 2. Handle constant features according to the chosen implementation.",
+              "image": "img/languages/traditional-ml/scaling-standardization.png"
+            },
+            {
+              "title": "Fit only on training data",
+              "body": "Learn scaling parameters from the training split, then apply those same parameters to validation, test, and future inputs. Fitting on held-out data leaks information from evaluation into the training workflow.",
+              "image": "img/languages/traditional-ml/scaling-training-only.png"
+            },
+            {
+              "title": "Use a pipeline",
+              "body": "Keep the fitted scaler with the model so training and serving use the same transformation. In cross-validation, fit a new scaler within each training fold. Record the transformation and its version with the model.",
+              "image": "img/languages/traditional-ml/scaling-pipeline.png"
+            },
+            {
+              "title": "Check the effect",
+              "body": "Compare held-out performance with a suitable baseline and inspect sensitivity to outliers or missing values. Scaling does not make all models accurate, and tree-based methods may not need it in the same way as distance-based methods.",
+              "image": "img/languages/traditional-ml/scaling-evaluation.png"
             }
           ]
         },
@@ -313,8 +606,29 @@
           "estimatedMinutes": 7,
           "lessons": [
             {
-              "title": "Core idea and practice",
-              "body": "Imputation estimates missing entries using training data and may need a missingness indicator when absence is informative. Compare median imputation with an explicit missing flag. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "title": "Inspect missingness",
+              "body": "A missing value may mean a measurement was unavailable, a question was skipped, or a field did not apply. Measure how often values are missing and check whether absence varies across groups or time periods. A blank is not automatically equivalent to zero. Understanding how missingness arises helps choose a suitable handling strategy.",
+              "image": "img/languages/traditional-ml/missing-inspect.png"
+            },
+            {
+              "title": "Fit an imputer on training data",
+              "body": "Imputation fills missing entries with a defined estimate, such as a training-set median for a numeric feature. Fit that estimate on training data only, then use the fitted value for validation, test, and serving inputs. For example, if the training median is 40, replace a missing validation value with 40, not the validation median. This keeps held-out information out of preprocessing.",
+              "image": "img/languages/traditional-ml/missing-impute.png"
+            },
+            {
+              "title": "Represent informative absence",
+              "body": "Missingness itself may carry useful information. For example, an optional measurement may be absent more often for a particular workflow. A missingness indicator records whether the original value was missing, alongside any imputed value. Test whether this helps on appropriate held-out data; it can also reflect an unstable collection process.",
+              "image": "img/languages/traditional-ml/missing-indicator.png"
+            },
+            {
+              "title": "Choose by feature and model",
+              "body": "Mean, median, most-frequent-category, and model-supported missing-value handling have different assumptions and trade-offs. A median can be less affected by extreme numeric values than a mean, while an explicit unknown category may be suitable for some categorical inputs. Avoid assuming one method is best for every feature. Compare candidate approaches in a pipeline using validation data.",
+              "image": "img/languages/traditional-ml/missing-methods.png"
+            },
+            {
+              "title": "Monitor in production",
+              "body": "A change in the missing-value rate can signal an upstream outage, a changed form, or a population shift. Track rates by important feature and, where appropriate, by group and source. Ensure serving uses the same fitted imputer and indicator rules as training. Investigate changes before assuming the model will behave as it did offline.",
+              "image": "img/languages/traditional-ml/missing-monitor.png"
             }
           ]
         },
@@ -446,7 +760,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "High bias misses real structure while high variance follows sample noise; validation curves help locate a useful complexity range. Compare shallow and deep trees across repeated folds. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "A high-bias model can miss important structure even when trained on representative data. A high-variance model can change substantially with the training sample and fit noise. For squared-error prediction under standard assumptions, expected error can be decomposed into bias squared, variance, and irreducible noise.",
+              "image": "img/languages/traditional-ml/bias-variance-targets.png"
+            },
+            {
+              "title": "Compare model complexity",
+              "body": "A shallow decision tree may underfit if it cannot capture important interactions; a very deep tree may fit quirks of the training sample. These are possibilities, not guarantees. Compare training and validation errors across tree depths rather than choosing a depth from the training score alone.",
+              "image": "img/languages/traditional-ml/tree-model-complexity.png"
+            },
+            {
+              "title": "Use repeated validation",
+              "body": "Evaluate candidate models across appropriate splits and inspect both the average and variation in validation error. For time-dependent data, preserve temporal order instead of randomly mixing future records into training. Use the same metric and splits when comparing candidates.",
+              "image": "img/languages/traditional-ml/validation-folds.png"
+            },
+            {
+              "title": "Choose a response",
+              "body": "Underfitting may call for richer features or a less restrictive model; excessive sensitivity to the training sample may benefit from regularization, more representative data, or an ensemble. Diagnose first: data leakage, distribution shift, and label errors can produce misleading error patterns too.",
+              "image": "img/languages/traditional-ml/underfit-overfit-responses.png"
+            },
+            {
+              "title": "Protect the final evaluation",
+              "body": "Select complexity using training and validation data, then evaluate the chosen approach on a separate test set. Repeatedly choosing models based on the test score turns that set into another selection set. Report uncertainty and subgroup errors when the sample supports them.",
+              "image": "img/languages/traditional-ml/protect-final-test.png"
             }
           ]
         },
@@ -460,7 +795,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "Ensembles combine predictors to improve stability or reduce error; the benefit depends on member diversity and calibration. Use bagging to stabilize high-variance trees and verify held-out gains. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "An ensemble combines predictions from multiple models. Averaging numeric outputs or voting on classes can reduce sensitivity to individual models when their errors differ. Combining models does not guarantee an improvement.",
+              "image": "img/languages/traditional-ml/ensemble-predictions.png"
+            },
+            {
+              "title": "Understand bagging",
+              "body": "Bagging trains members on bootstrap samples drawn with replacement from the training set, then aggregates their predictions. High-variance learners such as deep decision trees can benefit because the average is often less sensitive to a particular sample.",
+              "image": "img/languages/traditional-ml/ensemble-bagging.png"
+            },
+            {
+              "title": "Inspect diversity",
+              "body": "If members make nearly identical mistakes, averaging provides limited benefit. Compare member errors as well as overall scores. Diversity is useful only when individual models also contain predictive signal; adding weak or unsuitable models can degrade an ensemble.",
+              "image": "img/languages/traditional-ml/ensemble-diversity.png"
+            },
+            {
+              "title": "Combine predictions deliberately",
+              "body": "For regression, an ensemble can average numeric predictions. For classification, it can vote on labels or average predicted probabilities; these are different aggregation rules and can yield different decisions. Evaluate probability calibration if the combined scores will be used as risk estimates.",
+              "image": "img/languages/traditional-ml/ensemble-aggregation.png"
+            },
+            {
+              "title": "Evaluate cost and quality",
+              "body": "Compare the ensemble against a single-model baseline using the same representative validation protocol and metric. Include training and serving costs, memory, and latency. Use an untouched test set after selecting the approach.",
+              "image": "img/languages/traditional-ml/protect-final-test.png"
             }
           ]
         },
@@ -474,7 +830,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "Random forests average decorrelated trees built from resampled data and feature subsets, often reducing variance. Check out-of-bag and held-out scores while tracking model size. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "A random forest combines predictions from multiple decision trees. The trees are trained with randomness in the examples and candidate features, which can make their errors less correlated than identical trees trained the same way.",
+              "image": "img/languages/traditional-ml/forest-overview.png"
+            },
+            {
+              "title": "Build diverse trees",
+              "body": "A common implementation trains each tree on a bootstrap sample drawn with replacement from the training set. At each split, it considers a random subset of features. Exact sampling and splitting behavior depends on the implementation.",
+              "image": "img/languages/traditional-ml/forest-diversity.png"
+            },
+            {
+              "title": "Combine predictions",
+              "body": "For regression, a forest commonly averages tree predictions. For classification, implementations may aggregate class probabilities or votes. Combining varied trees often reduces variance compared with a single unstable tree, but it does not guarantee better performance.",
+              "image": "img/languages/traditional-ml/forest-aggregation.png"
+            },
+            {
+              "title": "Use out-of-bag evaluation carefully",
+              "body": "A training example omitted from a tree's bootstrap sample can be evaluated by that tree. Aggregating predictions from trees for which the example was omitted gives an out-of-bag estimate when supported. Keep an appropriate independent evaluation set for final assessment.",
+              "image": "img/languages/traditional-ml/forest-out-of-bag.png"
+            },
+            {
+              "title": "Tune and assess cost",
+              "body": "Compare held-out metrics with a baseline and tune settings such as tree depth, feature sampling, and tree count using validation data. More trees can increase memory and prediction cost. Check subgroup results and missing-value behavior where relevant.",
+              "image": "img/languages/traditional-ml/forest-resource-tradeoff.png"
             }
           ]
         },
@@ -488,7 +865,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "Boosting adds learners sequentially to correct residual errors and can fit complex patterns, but requires careful regularization. Tune learning rate and tree depth using validation data. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "Gradient boosting builds an additive model in stages. Each new learner is fitted to improve the current model according to a loss function, often using shallow decision trees.",
+              "image": "img/languages/traditional-ml/boosting-overview.png"
+            },
+            {
+              "title": "Improve sequentially",
+              "body": "At each stage, the algorithm computes a direction related to the loss gradient and fits a new learner to it. For squared-error regression, this direction corresponds to residuals. Other losses have different gradients.",
+              "image": "img/languages/traditional-ml/boosting-residuals.png"
+            },
+            {
+              "title": "Control the update",
+              "body": "The learning rate scales each learner's contribution, and the number and depth of trees affect model capacity. A smaller learning rate may require more stages. These settings interact and should be evaluated together.",
+              "image": "img/languages/traditional-ml/boosting-settings.png"
+            },
+            {
+              "title": "Prevent overfitting",
+              "body": "Complex trees or too many boosting stages can fit noise. Limit capacity and use validation-based early stopping where supported. Keep the final test set separate from tuning and early-stopping decisions.",
+              "image": "img/languages/traditional-ml/boosting-early-stop.png"
+            },
+            {
+              "title": "Evaluate tradeoffs",
+              "body": "Compare held-out metrics against a simple baseline and inspect relevant subgroups. Consider training and prediction cost, missing-value handling, and implementation details. Strong validation results do not prove a model will remain accurate after a distribution change.",
+              "image": "img/languages/traditional-ml/boosting-tradeoffs.png"
             }
           ]
         },
@@ -502,7 +900,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "Search methods allocate evaluation effort across model settings; the final test set must not guide the search. Use nested validation when estimating the performance of a tuned workflow. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "Hyperparameter search compares model settings such as tree depth or regularization strength. The search needs an evaluation procedure and a budget; the final test set should remain separate from tuning.",
+              "image": "img/languages/traditional-ml/search-overview.png"
+            },
+            {
+              "title": "Choose a search strategy",
+              "body": "Grid search tests specified combinations, while random search samples combinations from chosen distributions. Both depend on the search space and budget. A larger search is not automatically better if the evaluation data or metric is unsuitable.",
+              "image": "img/languages/traditional-ml/search-strategies.png"
+            },
+            {
+              "title": "Use validation properly",
+              "body": "Fit preprocessing within each training fold and evaluate candidates on its validation fold. Select the setting using validation results. Repeatedly choosing based on the final test set leaks information into model selection.",
+              "image": "img/languages/traditional-ml/search-validation.png"
+            },
+            {
+              "title": "Estimate a tuned workflow",
+              "body": "Nested cross-validation uses an inner loop for tuning and an outer loop to evaluate the full selection procedure. Each outer test fold is kept out of its corresponding inner search. The resulting estimate can still have sampling uncertainty.",
+              "image": "img/languages/traditional-ml/search-nested.png"
+            },
+            {
+              "title": "Record and assess",
+              "body": "Record the search space, data splits, metric, random seeds, and selected settings. After choosing the workflow, evaluate the final fitted model on the reserved test set. Also consider training cost and stability across folds.",
+              "image": "img/languages/traditional-ml/search-records.png"
             }
           ]
         },
@@ -516,7 +935,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "Feature selection can improve efficiency and interpretability, but selecting on all data leaks validation information. Perform selection independently inside each training fold. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "Feature selection chooses a subset of inputs for a model. It can reduce computation or simplify interpretation, but removing a feature can also remove useful information.",
+              "image": "img/languages/traditional-ml/feature-selection-overview.png"
+            },
+            {
+              "title": "Choose a selection method",
+              "body": "Methods can rank features using training-data statistics, search subsets, or use selection built into a model. Each method has assumptions and cost. A selected feature is not automatically causal or useful in every deployment.",
+              "image": "img/languages/traditional-ml/feature-selection-methods.png"
+            },
+            {
+              "title": "Avoid leakage",
+              "body": "Fit the selector using only each cross-validation training fold, then apply it to the corresponding validation fold. Selecting features once using all available examples lets validation information influence the selected subset.",
+              "image": "img/languages/traditional-ml/feature-selection-folds.png"
+            },
+            {
+              "title": "Assess stability",
+              "body": "Compare selected features and validation scores across folds or resamples. Highly correlated features may be interchangeable, so a selected subset can vary even when predictive performance is similar.",
+              "image": "img/languages/traditional-ml/feature-selection-stability.png"
+            },
+            {
+              "title": "Evaluate the workflow",
+              "body": "Compare the complete selection-and-model pipeline with a suitable baseline on held-out data. Record selected features and transformation versions for serving. Check cost, missing-feature behavior, and relevant subgroup results.",
+              "image": "img/languages/traditional-ml/feature-selection-evaluation.png"
             }
           ]
         },
@@ -529,8 +969,29 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core idea and practice",
-              "body": "Calibration aligns predicted probabilities with empirical frequencies and is distinct from ranking quality. Check reliability curves before using a probability as a risk estimate. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "title": "Interpret calibration",
+              "body": "A probabilistic classifier is calibrated when predicted probabilities agree with observed frequencies in the relevant population. Among many cases assigned about 0.7, roughly 70% should be positive if the model is calibrated at that level. This is a population statement, not a guarantee for an individual case. Calibration can differ between groups or change over time.",
+              "image": "img/languages/traditional-ml/prob-calibration-meaning.png"
+            },
+            {
+              "title": "Separate ranking and calibration",
+              "body": "A model may rank positive cases above negative cases well while giving probabilities that are systematically too high or too low. Ranking metrics such as ROC AUC and probability calibration answer different questions. A score transformation can preserve ranking while changing probability values. Evaluate both when decisions depend on risk estimates as well as ordering.",
+              "image": "img/languages/traditional-ml/prob-calibration-ranking.png"
+            },
+            {
+              "title": "Inspect reliability",
+              "body": "A reliability diagram groups predictions into probability ranges and compares average prediction with observed positive frequency in each group. Small groups have noisy frequency estimates, and the choice of bins affects the picture. Use a held-out evaluation set and consider uncertainty rather than treating every visible difference as a real change. Examine important populations where sufficient data is available.",
+              "image": "img/languages/traditional-ml/prob-calibration-reliability.png"
+            },
+            {
+              "title": "Fit a calibration method",
+              "body": "Methods such as sigmoid scaling and isotonic regression can map model scores to adjusted probabilities. Fit the calibrator using data separate from the data used to fit the underlying model, or use a properly designed cross-validation procedure. Select the method on validation evidence, then reserve a separate test for final evaluation. Small calibration sets can make flexible methods unstable.",
+              "image": "img/languages/traditional-ml/prob-calibration-fit.png"
+            },
+            {
+              "title": "Monitor after deployment",
+              "body": "Evaluate calibration and proper scoring rules on held-out outcomes, and monitor again once production labels arrive. Brier score and log loss reflect probability quality but are not pure measures of calibration alone. Population shift, label delay, and selection effects can change the observed relationship between predictions and outcomes. Compare the intended deployment population and document uncertainty.",
+              "image": "img/languages/traditional-ml/prob-calibration-monitor.png"
             }
           ]
         },
@@ -661,7 +1122,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "Causal estimates require identification assumptions and design, not just predictive accuracy or feature importance. Use a randomized or defensible quasi-experimental design to assess a policy change. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "Prediction asks what outcome is likely given observed features. Causal inference asks how an outcome would change under different interventions. A model can predict well using a proxy without estimating the effect of changing that proxy.",
+              "image": "img/languages/traditional-ml/causal-versus-prediction.png"
+            },
+            {
+              "title": "Define the estimand",
+              "body": "Specify the population, intervention, comparison, outcome, and time horizon. For example, estimate the average effect of offering a training program versus not offering it on employment after six months. This differs from predicting employment among people who chose to enroll.",
+              "image": "img/languages/traditional-ml/causal-estimand.png"
+            },
+            {
+              "title": "Account for confounding",
+              "body": "Participants who enroll voluntarily may differ in motivation or prior experience, which can affect both enrollment and outcomes. Comparing their average outcomes with nonparticipants therefore need not isolate the program's effect. A causal diagram can help state which variables are assumed to influence treatment and outcome.",
+              "image": "img/languages/traditional-ml/causal-confounding.png"
+            },
+            {
+              "title": "Select an identification design",
+              "body": "Random assignment can support a causal comparison when implemented and analyzed appropriately. In observational data, methods such as adjustment or a defensible quasi-experiment rely on explicit assumptions, such as adequate overlap and no unmeasured confounding for a given adjustment strategy. Check the assumptions and their limitations.",
+              "image": "img/languages/traditional-ml/causal-design.png"
+            },
+            {
+              "title": "Report uncertainty and limits",
+              "body": "State the estimated effect, uncertainty interval, population, design, and plausible threats to identification. Sensitivity analyses can show how conclusions depend on assumptions but cannot verify an unobserved confounder is absent. Good predictive accuracy alone does not establish a causal effect.",
+              "image": "img/languages/traditional-ml/causal-uncertainty.png"
             }
           ]
         },
@@ -675,7 +1157,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "Covariate, label, and concept shift describe different changes and call for different diagnostics and responses. Track input drift separately from delayed outcome performance. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "Distribution shift occurs when the data encountered after training differs from the data used to develop the model. Changes can affect inputs, outcomes, or the relationship between them; the right response depends on what changed and how the model is used.",
+              "image": "img/languages/traditional-ml/shift-distributions.png"
+            },
+            {
+              "title": "Identify covariate shift",
+              "body": "Covariate shift refers to a change in the input distribution P(X) while the conditional relationship P(Y|X) remains unchanged under the formal assumption. For example, delivery routes may become longer. Input drift alone does not establish whether model performance has changed.",
+              "image": "img/languages/traditional-ml/covariate-shift.png"
+            },
+            {
+              "title": "Identify label shift",
+              "body": "Label shift refers to a change in the outcome distribution P(Y) while P(X|Y) remains unchanged under the label-shift assumption. A changing positive-class rate can affect precision even if some other metrics stay stable. These assumptions should be examined, not inferred from a single alert.",
+              "image": "img/languages/traditional-ml/label-shift.png"
+            },
+            {
+              "title": "Investigate concept shift",
+              "body": "Concept shift changes the relationship P(Y|X). For example, a route with the same observed features may have a different delay probability after a policy change. Detecting the impact typically requires outcomes or other evidence, which may arrive later than input data.",
+              "image": "img/languages/traditional-ml/concept-shift.png"
+            },
+            {
+              "title": "Respond with evidence",
+              "body": "Track data quality and input distributions, then evaluate performance when representative labels arrive. Investigate measurement changes and subgroup effects before choosing a response such as recalibration, retraining, or rollback. Retraining on new data is not automatically safe or effective.",
+              "image": "img/languages/traditional-ml/shift-investigation.png"
             }
           ]
         },
@@ -689,7 +1192,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "Conformal methods can provide finite-sample marginal coverage under exchangeability, but coverage can fail under shift. Validate coverage on exchangeable held-out data and monitor deployment changes. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "Conformal prediction uses calibration data to construct prediction sets or intervals. Under exchangeability and the method's conditions, it can provide a finite-sample marginal coverage guarantee for a new example.",
+              "image": "img/languages/traditional-ml/conformal-overview.png"
+            },
+            {
+              "title": "Calibrate uncertainty",
+              "body": "In split conformal regression, fit a model on training data and compute nonconformity scores, such as absolute residuals, on separate calibration examples. Choose the appropriate finite-sample quantile for the target miscoverage rate, then use it to form intervals.",
+              "image": "img/languages/traditional-ml/conformal-calibration.png"
+            },
+            {
+              "title": "Interpret coverage",
+              "body": "A 90% marginal coverage target concerns coverage across future examples under the stated assumptions; it does not mean every subgroup or every individual receives 90% conditional coverage. Interval width and usefulness matter alongside overall coverage.",
+              "image": "img/languages/traditional-ml/conformal-marginal-coverage.png"
+            },
+            {
+              "title": "Evaluate on held-out data",
+              "body": "Use data separate from model fitting and calibration to estimate empirical coverage and interval width. Examine relevant groups and uncertainty in the estimate. A small evaluation sample can make observed coverage noisy.",
+              "image": "img/languages/traditional-ml/conformal-held-out.png"
+            },
+            {
+              "title": "Watch for distribution shift",
+              "body": "The guarantee relies on assumptions such as exchangeability between calibration and future examples. Changes in inputs, outcomes, or collection can break those assumptions. Monitor delayed outcomes and coverage, investigate changes, and recalibrate or redesign when appropriate.",
+              "image": "img/languages/traditional-ml/conformal-shift.png"
             }
           ]
         },
@@ -703,7 +1227,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "Survival models account for event timing and right-censoring rather than treating unobserved events as negatives. Model time to equipment failure when some units remain operational at study end. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "Survival analysis models time until a defined event, such as equipment failure. It can use information from units whose event has not been observed by the end of follow-up.",
+              "image": "img/languages/traditional-ml/survival-overview.png"
+            },
+            {
+              "title": "Understand right-censoring",
+              "body": "If a machine remains operational when observation ends, its failure time is unknown but exceeds its observed follow-up time. This is right-censoring; it is not evidence that the machine will never fail.",
+              "image": "img/languages/traditional-ml/survival-censoring.png"
+            },
+            {
+              "title": "Define time and event",
+              "body": "Specify the start of observation, event definition, time units, and censoring rule before fitting a model. For example, record operating days until failure or study end. Changes in entry or observation practices can affect interpretation.",
+              "image": "img/languages/traditional-ml/survival-definition.png"
+            },
+            {
+              "title": "Interpret survival probability",
+              "body": "A survival curve describes the probability that the event time exceeds a given time under the model or estimator. It concerns a population or specified covariates, not certainty about one machine. Confidence and assumptions should be considered.",
+              "image": "img/languages/traditional-ml/survival-probability.png"
+            },
+            {
+              "title": "Evaluate with censoring in mind",
+              "body": "Use an appropriate held-out evaluation and metrics that account for censoring. Consider whether censoring is informative and whether follow-up differs across groups. A model can be misleading if the data collection process violates its assumptions.",
+              "image": "img/languages/traditional-ml/survival-evaluation.png"
             }
           ]
         },
@@ -717,7 +1262,28 @@
           "lessons": [
             {
               "title": "Core idea and practice",
-              "body": "Poisson and negative-binomial models represent counts with different dispersion assumptions. Check overdispersion before choosing a Poisson model for incident counts. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "body": "Count models predict nonnegative event counts, such as incidents in a time interval. Poisson and negative-binomial models use different assumptions about how counts vary.",
+              "image": "img/languages/traditional-ml/count-model-overview.png"
+            },
+            {
+              "title": "Consider exposure",
+              "body": "Counts collected over different observation durations or population sizes are not directly comparable without accounting for exposure. A count regression may include the logarithm of exposure as an offset when its assumptions are appropriate.",
+              "image": "img/languages/traditional-ml/count-model-exposure.png"
+            },
+            {
+              "title": "Understand Poisson variation",
+              "body": "A Poisson distribution has equal mean and variance for a given parameter. In regression, assess dispersion conditional on the fitted mean rather than comparing only raw overall counts. Extra variation may indicate that the model assumptions are inadequate.",
+              "image": "img/languages/traditional-ml/count-model-poisson.png"
+            },
+            {
+              "title": "Consider overdispersion",
+              "body": "Negative-binomial models can allow conditional variance greater than the mean. They are one possible response to overdispersion, not an automatic fix for omitted variables, dependence, or other data issues.",
+              "image": "img/languages/traditional-ml/count-model-overdispersion.png"
+            },
+            {
+              "title": "Evaluate the model",
+              "body": "Use held-out data and diagnostics suited to the count task. Inspect residual patterns, exposure, and uncertainty, and compare a suitable baseline. Check whether sampling, dependence, or excess zeros require a different model.",
+              "image": "img/languages/traditional-ml/count-model-evaluation.png"
             }
           ]
         },
@@ -730,8 +1296,29 @@
           "estimatedMinutes": 9,
           "lessons": [
             {
-              "title": "Core idea and practice",
-              "body": "Quantile regression estimates conditional quantiles, supporting asymmetric risk and service-level planning. Forecast the 90th percentile of delivery time for capacity buffers. This distinction should be checked against the data, users, and constraints of the actual task rather than treated as a guarantee."
+              "title": "Predict a conditional quantile",
+              "body": "A conditional quantile describes a point in the distribution of an outcome for inputs like the current case. For example, a 0.9 quantile of delivery time is a value at or below which approximately 90% of comparable delivery times fall. Unlike a mean, it is useful for questions about the upper tail. This interpretation depends on the model and the data; an individual prediction is not a guaranteed deadline.",
+              "image": "img/languages/traditional-ml/quantile-conditional.png"
+            },
+            {
+              "title": "Train with asymmetric loss",
+              "body": "For a target quantile q, define the residual as actual minus prediction. Pinball loss is q times the residual when the residual is nonnegative, and (q - 1) times the residual otherwise. At q = 0.9, underpredicting by one unit costs 0.9 while overpredicting by one unit costs 0.1. Minimizing this loss targets the conditional q quantile rather than the conditional mean.",
+              "image": "img/languages/traditional-ml/quantile-pinball.png"
+            },
+            {
+              "title": "Match the quantile to the decision",
+              "body": "An upper quantile can inform a delivery buffer when an underestimate is more costly than an overestimate. A lower quantile can be useful when the cost trade-off is reversed. The right level depends on the decision and the relative costs; choosing 0.9 does not automatically give an optimal policy. Confirm that the training targets and available features match how predictions will be used.",
+              "image": "img/languages/traditional-ml/quantile-decision.png"
+            },
+            {
+              "title": "Evaluate on held-out outcomes",
+              "body": "On held-out examples, report pinball loss at the chosen quantile and the fraction of outcomes at or below the prediction. For a well-calibrated continuous conditional distribution, that fraction should be near the chosen quantile; ties and discrete outcomes complicate this comparison. Check important groups and time periods separately, and account for sampling uncertainty rather than relying on one aggregate rate.",
+              "image": "img/languages/traditional-ml/quantile-evaluation.png"
+            },
+            {
+              "title": "Check intervals and changing data",
+              "body": "Predictions at a lower and an upper quantile can form an estimated interval, but independently fitted quantiles can cross and their nominal levels do not by themselves guarantee future coverage. Measure both observed coverage and interval width on held-out data, including relevant groups. Monitor those measures after deployment because changes in the population or measurement process can make earlier results unreliable.",
+              "image": "img/languages/traditional-ml/quantile-interval.png"
             }
           ]
         },

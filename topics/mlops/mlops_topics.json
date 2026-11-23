@@ -13,9 +13,29 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "The lifecycle spans framing, data, training, evaluation, deployment, and monitoring rather than ending at model fit. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use.",
+              "title": "Follow the lifecycle",
+              "body": "A machine-learning system moves through problem framing, data preparation, training, evaluation, deployment, and monitoring. The work does not end when a model fits the training data: the deployed system must continue to serve its intended use.",
               "image": "img/languages/mlops/ml-lifecycle.png"
+            },
+            {
+              "title": "Frame the problem and data",
+              "body": "Define the decision the model will support, the outcome to predict, and how success will be measured. Gather data that represents the intended use and check its quality, permissions, and timing. For example, a demand forecast may use only information available before the forecast is made.",
+              "image": "img/languages/mlops/prediction-time-inputs.png"
+            },
+            {
+              "title": "Train and evaluate",
+              "body": "Train candidate models using the prepared training data, then evaluate them on data held out from fitting and model selection. Compare results with a baseline and check errors that matter to users. Record the data, code, and configuration so the result can be investigated or reproduced.",
+              "image": "img/languages/mlops/training-and-held-out-test.png"
+            },
+            {
+              "title": "Deploy with safeguards",
+              "body": "Deployment connects a model to the application or process that uses its predictions. Verify that serving inputs match the assumptions made during training, and define how to handle errors or unavailable predictions. A staged rollout and a documented rollback path can reduce the impact of a bad release.",
+              "image": "img/languages/mlops/staged-rollout.png"
+            },
+            {
+              "title": "Monitor and respond",
+              "body": "After deployment, monitor service health and data changes, and evaluate prediction quality when outcome labels become available. An alert should lead to an investigation, not automatic retraining by default: a data pipeline error and a genuine change in user behavior require different responses. Feed what you learn back into the next iteration.",
+              "image": "img/languages/mlops/monitor-and-investigate.png"
             }
           ]
         },
@@ -29,7 +49,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Reproducibility requires recording data, code, configuration, environment, and relevant random seeds. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A reproducible experiment records enough information to rerun and investigate a result. Save the code revision, data version, training and evaluation settings, and relevant outputs. Without these records, a reported score is hard to compare or explain.",
+              "image": "img/languages/mlops/experiment-record.png"
+            },
+            {
+              "title": "Identify the data",
+              "body": "Record which data snapshot, split, and preprocessing steps were used. A dataset name alone is not enough if its records can change. Respect access and retention requirements: reproducibility does not mean keeping sensitive data indefinitely.",
+              "image": "img/languages/mlops/experiment-data-provenance.png"
+            },
+            {
+              "title": "Record the environment",
+              "body": "Capture relevant library versions, runtime, hardware, and configuration alongside the experiment. A dependency or hardware change can affect behavior even when the code is unchanged. Record the evaluation procedure and metric definitions as well as the final score.",
+              "image": "img/languages/mlops/experiment-environment.png"
+            },
+            {
+              "title": "Control randomness",
+              "body": "Record seeds used for data splitting, initialization, and other random operations where applicable. A seed helps reproduce a run, but does not guarantee identical results across different hardware, library versions, or nondeterministic operations. Document any known sources of variation.",
+              "image": "img/languages/mlops/experiment-random-seeds.png"
+            },
+            {
+              "title": "Verify with a rerun",
+              "body": "Rerun an experiment from its recorded inputs and compare the resulting metrics and artifacts within an appropriate tolerance. If results differ, check the data, environment, and nondeterministic operations. Keep a clear record of the discrepancy rather than silently substituting a new result.",
+              "image": "img/languages/mlops/reproduce-experiment.png"
             }
           ]
         },
@@ -43,7 +84,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Dataset versions identify records and transformations used in an experiment, subject to privacy retention rules. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A dataset version identifies the data used for a particular experiment or model. A stable version lets a team distinguish one snapshot from another when records are added, corrected, or removed.",
+              "image": "img/languages/mlops/experiment-data-provenance.png"
+            },
+            {
+              "title": "Record what changed",
+              "body": "Track the source snapshot, selection rules, preprocessing code, and relevant schema alongside the version identifier. For example, a corrected delivery timestamp or a change to the lateness definition can alter both features and labels.",
+              "image": "img/languages/mlops/dataset-version-changes.png"
+            },
+            {
+              "title": "Connect data to runs",
+              "body": "Record the dataset version and split with each experiment and model artifact. When an evaluation changes, this lineage helps determine whether the data, code, configuration, or another factor changed.",
+              "image": "img/languages/mlops/experiment-record.png"
+            },
+            {
+              "title": "Protect access and retention",
+              "body": "Versioning must follow privacy, access, and retention requirements. A deletion request may require removing or updating data in stored snapshots; reproducibility does not override those obligations. Document when an older version can no longer be reconstructed.",
+              "image": "img/languages/mlops/dataset-version-privacy.png"
+            },
+            {
+              "title": "Verify a version",
+              "body": "Check that the recorded identifier points to the intended snapshot and that preprocessing and split definitions are available. Compare expected schema and row counts, and investigate unexpected changes before using the version in training or evaluation.",
+              "image": "img/languages/mlops/dataset-version-verification.png"
             }
           ]
         },
@@ -57,7 +119,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Artifacts include weights and metadata needed to interpret and serve a model safely. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A model artifact is a saved output of a training or packaging process. It may include learned weights, configuration, and metadata needed to load and identify the model. The exact files depend on the framework and deployment.",
+              "image": "img/languages/mlops/model-artifact-package.png"
+            },
+            {
+              "title": "Include preprocessing",
+              "body": "A model may depend on a fitted scaler, vocabulary, category mapping, or other preprocessing. Version these components with the model so serving uses compatible transformations. Saving weights alone may not reproduce the original predictions.",
+              "image": "img/languages/mlops/model-preprocessing-artifact.png"
+            },
+            {
+              "title": "Record provenance",
+              "body": "Link an artifact to its training run, data version, configuration, and evaluation results. Use immutable identifiers where possible. These records help a team investigate which model was trained and why it was selected.",
+              "image": "img/languages/mlops/experiment-artifact-lineage.png"
+            },
+            {
+              "title": "Load safely",
+              "body": "Restrict who can publish and access artifacts, verify their origin and integrity, and use supported loading formats. Some serialization formats can execute code when loaded, so do not load untrusted files blindly.",
+              "image": "img/languages/mlops/model-artifact-loading.png"
+            },
+            {
+              "title": "Prepare for deployment",
+              "body": "Check the model and preprocessing versions together, test a representative prediction in the serving environment, and record the deployed version. Keep a compatible rollback artifact according to the team's retention and access policies.",
+              "image": "img/languages/mlops/model-artifact-deployment.png"
             }
           ]
         },
@@ -71,7 +154,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Explicit configuration makes training choices reviewable and repeatable across environments. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Training configuration records choices such as data version, model settings, and optimization parameters. Making those choices explicit helps teams review and compare runs instead of relying on undocumented defaults.",
+              "image": "img/languages/mlops/training-config-overview.png"
+            },
+            {
+              "title": "Record key settings",
+              "body": "Capture relevant parameters such as learning rate, batch size, epoch count, and model architecture. Record the data version, preprocessing, code version, and random seed when applicable. The important settings depend on the training workflow.",
+              "image": "img/languages/mlops/training-config-settings.png"
+            },
+            {
+              "title": "Validate configuration",
+              "body": "Check required fields, types, and valid ranges before launching training. Reject a negative batch size or an unknown dataset version with a clear error rather than silently substituting a default.",
+              "image": "img/languages/mlops/training-config-validation.png"
+            },
+            {
+              "title": "Compare runs",
+              "body": "Associate the resolved configuration with each run's metrics and artifacts. When comparing two experiments, identify which settings changed and whether the data split and evaluation procedure stayed the same.",
+              "image": "img/languages/mlops/training-config-comparison.png"
+            },
+            {
+              "title": "Manage sensitive values",
+              "body": "Keep credentials in an appropriate secret system rather than embedding them in configuration files or logs. Record the identity or reference needed for audit where policy permits, without exposing the secret value.",
+              "image": "img/languages/mlops/training-config-secrets.png"
             }
           ]
         },
@@ -85,7 +189,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Gates prevent deployment when critical quality, compatibility, or safety criteria are unmet. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "An evaluation gate checks defined criteria before a candidate model can advance to deployment. It separates producing a model from deciding whether that model is suitable for the intended use.",
+              "image": "img/languages/mlops/evaluation-gate-overview.png"
+            },
+            {
+              "title": "Define criteria",
+              "body": "A gate may include task quality, subgroup performance, latency, compatibility, or safety checks. Set thresholds and identify who owns them before evaluating candidates. Criteria should reflect the deployment context.",
+              "image": "img/languages/mlops/evaluation-gate-criteria.png"
+            },
+            {
+              "title": "Use representative evidence",
+              "body": "Evaluate with data and tests that reflect the intended use, while protecting a final test set from repeated tuning. Record dataset and model versions with the results. A single aggregate metric can hide important failures.",
+              "image": "img/languages/mlops/evaluation-gate-evidence.png"
+            },
+            {
+              "title": "Handle failures",
+              "body": "If a required check fails or cannot be evaluated, block promotion or follow an explicit exception process. Surface the reason to the responsible team. A missing result should not silently count as a pass.",
+              "image": "img/languages/mlops/evaluation-gate-failure.png"
+            },
+            {
+              "title": "Monitor after release",
+              "body": "Passing a gate is evidence for a release decision, not a guarantee of future performance. Monitor production behavior and data changes, and keep a tested rollback path. Revisit criteria when the task or risks change.",
+              "image": "img/languages/mlops/evaluation-gate-monitor.png"
             }
           ]
         },
@@ -99,7 +224,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "A registry tracks artifacts, metadata, approval, and deployment state across versions. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A model registry records model versions and related metadata so teams can track candidates and deployed artifacts. A registry supports governance, but its presence alone does not ensure a model is approved or safe.",
+              "image": "img/languages/mlops/registry-overview.png"
+            },
+            {
+              "title": "Identify a version",
+              "body": "Link each registered model version to its artifact and producing run. Record relevant data, preprocessing, and evaluation references. A mutable alias such as production can point to different versions over time.",
+              "image": "img/languages/mlops/registry-version.png"
+            },
+            {
+              "title": "Track review state",
+              "body": "Record evaluation results and required approval decisions for a candidate. Define who may change its status and what evidence is needed. A version being registered is not the same as being authorized for deployment.",
+              "image": "img/languages/mlops/registry-approval.png"
+            },
+            {
+              "title": "Connect deployment",
+              "body": "Record which model and compatible preprocessing are deployed in each environment. Monitor alias changes and retain a way to identify the exact artifact used by a request or release where practical.",
+              "image": "img/languages/mlops/registry-deployment.png"
+            },
+            {
+              "title": "Manage access and lifecycle",
+              "body": "Restrict who can publish, approve, or deploy versions, and define retention and retirement policies. Test that required rollback artifacts remain available. Registry metadata can be incomplete, so verify it against workflow records.",
+              "image": "img/languages/mlops/registry-lifecycle.png"
             }
           ]
         },
@@ -112,8 +258,29 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "ML CI checks code, data contracts, reproducibility, and evaluation without requiring full retraining for every change. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "What ML continuous integration checks",
+              "body": "Continuous integration runs automated checks when a change is proposed. For machine learning, checks can cover application code, data contracts, training configuration, and model evaluation in addition to ordinary unit tests. The goal is to catch actionable problems early, not to assume every change needs a full production training run. Choose checks based on what changed and the risks involved.",
+              "image": "img/languages/mlops/ml-ci-overview.png"
+            },
+            {
+              "title": "Validate data contracts",
+              "body": "A data contract describes expected properties such as field names, types, allowed values, and units. A CI check can detect a missing required column or an unexpected type using representative fixtures or a controlled sample. Passing a schema check does not prove the data is unbiased, fresh, or suitable for training. Treat those as separate questions.",
+              "image": "img/languages/mlops/ml-ci-contracts.png"
+            },
+            {
+              "title": "Run small reproducible checks",
+              "body": "A small fixture and a short training or inference smoke test can reveal broken code paths without the expense of full retraining. Record relevant dependencies, configuration, and random seeds where feasible, while recognizing that some operations may remain nondeterministic. A smoke test checks that a path runs; it does not establish production model quality. Make failures visible and reproducible.",
+              "image": "img/languages/mlops/ml-ci-smoke.png"
+            },
+            {
+              "title": "Test model behavior",
+              "body": "A model evaluation suite can check a fixed set of representative cases and relevant metrics against agreed thresholds. Include important slices and error types where the sample is adequate. Separate fast checks in CI from larger, scheduled or release-stage evaluations when necessary. Avoid repeatedly tuning against a supposedly final test set.",
+              "image": "img/languages/mlops/ml-ci-evaluation.png"
+            },
+            {
+              "title": "Make failures actionable",
+              "body": "A useful pipeline reports which check failed, the relevant version, and enough context to reproduce the issue without exposing sensitive data. Decide which failures block a merge or release and who owns investigation. Track flaky or nondeterministic checks instead of silently ignoring them. Version the evaluation inputs and thresholds so changes to the check are reviewable.",
+              "image": "img/languages/mlops/ml-ci-failures.png"
             }
           ]
         },
@@ -230,7 +397,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Tracking records parameters, metrics, and artifact references so results can be compared. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Experiment tracking records the inputs and results of model runs so a team can compare and investigate them. A run can include parameters, metric definitions, dataset and code versions, and references to model artifacts.",
+              "image": "img/languages/mlops/experiment-record.png"
+            },
+            {
+              "title": "Identify the run",
+              "body": "Give each run a distinct identifier and record its data snapshot, split, code revision, environment, and configuration. Store the preprocessing and evaluation settings as well as the training settings so another person can understand the reported result.",
+              "image": "img/languages/mlops/experiment-data-provenance.png"
+            },
+            {
+              "title": "Compare fairly",
+              "body": "Compare candidates using the same validation split and metric definitions when possible. A higher score on a different dataset or with a different threshold is not necessarily an improvement. Keep a final test set separate from repeated model selection.",
+              "image": "img/languages/mlops/experiment-comparison.png"
+            },
+            {
+              "title": "Link artifacts",
+              "body": "Associate the trained model, preprocessing artifacts, and evaluation reports with the run that produced them. References should identify the exact versions and respect access controls. A metric without the corresponding model and data lineage is difficult to audit.",
+              "image": "img/languages/mlops/experiment-artifact-lineage.png"
+            },
+            {
+              "title": "Investigate variation",
+              "body": "Record relevant seeds and environment details, then compare repeated runs when randomness matters. A seed alone cannot guarantee identical results across nondeterministic operations or different environments. Document discrepancies and preserve only data permitted by retention policies.",
+              "image": "img/languages/mlops/experiment-random-seeds.png"
             }
           ]
         },
@@ -244,7 +432,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Pipelines define transformations consistently for training and serving. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A feature pipeline turns raw data into model inputs through a defined sequence of transformations. The same feature meaning must be preserved when preparing training examples and serving predictions.",
+              "image": "img/languages/mlops/feature-pipeline-overview.png"
+            },
+            {
+              "title": "Fit only on training data",
+              "body": "Some transformations learn parameters from data, such as a scaler's mean or a vocabulary. Fit those parameters on the training partition, then apply the fitted transformation to validation, test, and serving data. Fitting on held-out data can leak information.",
+              "image": "img/languages/mlops/feature-pipeline-fit-training.png"
+            },
+            {
+              "title": "Preserve the transformation",
+              "body": "Save the fitted preprocessing artifact and its version with the model. For example, the same category mapping used during training should encode serving inputs. Define how to handle unknown categories and missing values.",
+              "image": "img/languages/mlops/model-preprocessing-artifact.png"
+            },
+            {
+              "title": "Respect prediction time",
+              "body": "Construct historical features using information available when each prediction would have been made. A transaction recorded or published later should not enter an earlier example merely because it appears in the current database.",
+              "image": "img/languages/mlops/feature-store-point-in-time.png"
+            },
+            {
+              "title": "Test both paths",
+              "body": "Run representative raw inputs through offline and online paths and compare feature values, types, units, and missing-value behavior. Include edge cases and monitor feature freshness after release. Parity on tested inputs does not by itself prove the model is accurate.",
+              "image": "img/languages/mlops/feature-parity-overview.png"
             }
           ]
         },
@@ -258,7 +467,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Contracts specify expected schemas and value constraints at pipeline boundaries. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A data contract describes expectations at a boundary between a data producer and consumer. It can cover schema, value constraints, freshness, and how incompatible changes are handled.",
+              "image": "img/languages/mlops/data-contract-boundary.png"
+            },
+            {
+              "title": "Specify a schema",
+              "body": "Name required fields, their types, and whether values may be missing. For example, an event may require an event ID and a timestamp. Schema validity alone does not establish that the event is accurate or appropriate for a model.",
+              "image": "img/languages/mlops/data-contract-schema.png"
+            },
+            {
+              "title": "Specify value and timing rules",
+              "body": "Define constraints such as valid ranges, allowed categories, units, and expected arrival times. A numeric temperature in the wrong unit can pass a type check but violate the intended meaning. State which team owns the rule and what happens when it fails.",
+              "image": "img/languages/mlops/data-contract-value-rules.png"
+            },
+            {
+              "title": "Manage changes",
+              "body": "Version contract changes and communicate them to consumers before rollout. Adding an optional field may be compatible for one consumer but not another, so check the actual readers and policies. Breaking changes need a coordinated migration.",
+              "image": "img/languages/mlops/data-contract-changes.png"
+            },
+            {
+              "title": "Enforce and monitor",
+              "body": "Validate data at the agreed boundary and surface failures through the pipeline's normal error and alerting process. Test both valid and invalid examples, monitor freshness and quality, and investigate violations. Avoid silently treating rejected data as successful input.",
+              "image": "img/languages/mlops/data-contract-enforcement.png"
             }
           ]
         },
@@ -272,7 +502,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Orchestrators coordinate dependent tasks with retries and recorded status. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Workflow orchestration coordinates tasks such as data validation, training, and evaluation. An orchestrator tracks dependencies and run status so a downstream task can wait for its required inputs.",
+              "image": "img/languages/mlops/orchestration-overview.png"
+            },
+            {
+              "title": "Define dependencies",
+              "body": "A training task may depend on a successful data validation task, and evaluation may depend on the trained model. Represent these dependencies explicitly rather than relying on task start times alone.",
+              "image": "img/languages/mlops/orchestration-dependencies.png"
+            },
+            {
+              "title": "Handle failures and retries",
+              "body": "A transient failure may be retryable, but repeated operations must handle side effects safely. Define retry limits and distinguish failures that need investigation. Do not mark a failed validation task as successful merely to keep the pipeline moving.",
+              "image": "img/languages/mlops/orchestration-retries.png"
+            },
+            {
+              "title": "Record run state",
+              "body": "Track task status, inputs, outputs, timestamps, and relevant versions. These records help diagnose failures and determine whether an upstream result can be reused. Avoid logging secrets or unnecessary sensitive data.",
+              "image": "img/languages/mlops/orchestration-run-record.png"
+            },
+            {
+              "title": "Test recovery",
+              "body": "Exercise failure, retry, and restart scenarios before relying on automation. Verify that only valid dependencies run and that outputs are not duplicated by unsafe retries. Monitor the workflow after deployment.",
+              "image": "img/languages/mlops/orchestration-recovery.png"
             }
           ]
         },
@@ -286,7 +537,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Artifact stores retain versioned models and related files with access and lifecycle policies. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "An artifact store retains files produced by a workflow, such as a model, preprocessing package, or evaluation report. Versioned artifacts support traceability and controlled deployment.",
+              "image": "img/languages/mlops/artifact-store-overview.png"
+            },
+            {
+              "title": "Record artifact identity",
+              "body": "Assign a stable version or immutable identifier and link the artifact to its producing run. Record relevant dependencies and metadata. A mutable filename alone may refer to different contents over time.",
+              "image": "img/languages/mlops/artifact-store-identity.png"
+            },
+            {
+              "title": "Protect access",
+              "body": "Grant read and write permissions according to each role's needs, and protect artifacts in transit and at rest according to policy. Restrict who can publish or replace release artifacts; not every reader should be a writer.",
+              "image": "img/languages/mlops/artifact-store-access.png"
+            },
+            {
+              "title": "Manage the lifecycle",
+              "body": "Define retention, deletion, and archival rules for model files and related reports. Keep required rollback versions available while honoring privacy and legal requirements. Account for copies and dependent releases.",
+              "image": "img/languages/mlops/artifact-store-lifecycle.png"
+            },
+            {
+              "title": "Verify before use",
+              "body": "Check that the requested version and compatible dependencies are available before deployment. Verify integrity against a trusted expected digest or signature where supported. Test retrieval and recovery rather than assuming stored artifacts will always be usable.",
+              "image": "img/languages/mlops/artifact-store-verification.png"
             }
           ]
         },
@@ -300,7 +572,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Containers package dependencies and runtime assumptions for consistent execution. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A training container packages an application and its runtime dependencies into an image. It can make environments more consistent, but it does not by itself identify data, hardware, or every source of randomness.",
+              "image": "img/languages/mlops/training-container-overview.png"
+            },
+            {
+              "title": "Build an image",
+              "body": "Specify a base image, application code, and required dependencies using the project's supported build process. Pin or otherwise record versions and identify the resulting image by an immutable digest where possible.",
+              "image": "img/languages/mlops/training-container-build.png"
+            },
+            {
+              "title": "Provide runtime inputs",
+              "body": "Pass configuration and data references through controlled interfaces. Supply secrets through an appropriate secret system rather than baking them into an image or logging them. Record the resolved nonsecret settings for the run.",
+              "image": "img/languages/mlops/training-container-inputs.png"
+            },
+            {
+              "title": "Run with required resources",
+              "body": "The host and container runtime must provide compatible hardware, drivers, and resource limits. A container image that works on one machine may behave differently if those requirements are missing elsewhere.",
+              "image": "img/languages/mlops/training-container-resources.png"
+            },
+            {
+              "title": "Verify the artifact",
+              "body": "Test the image with representative inputs and record its digest, code, data version, and outputs. Scan and update dependencies according to policy. A container improves packaging consistency but does not guarantee bit-for-bit reproducibility.",
+              "image": "img/languages/mlops/training-container-verification.png"
             }
           ]
         },
@@ -313,8 +606,29 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Stages communicate readiness and approval but should reflect evidence rather than labels alone. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Record model versions",
+              "body": "A model registry records model artifacts and their versions alongside metadata needed to identify and manage them. A stage or status can communicate where a version is in an organization's release process. The exact stages depend on the registry and team workflow. A label helps coordination but does not itself prove a model is safe or ready.",
+              "image": "img/languages/mlops/registry-stage-version.png"
+            },
+            {
+              "title": "Define promotion criteria",
+              "body": "Before moving a candidate to a production-ready state, define the required evidence: for example, evaluation results, compatibility checks, and an authorized approval. Record who made the decision and which artifact was reviewed. A passing metric on one dataset may not satisfy every requirement. Promotion criteria should match the application's risk and intended use.",
+              "image": "img/languages/mlops/registry-promotion.png"
+            },
+            {
+              "title": "Deploy the intended artifact",
+              "body": "The artifact deployed to serving should be the one that was evaluated and approved, along with compatible preprocessing and dependencies. A registry label that points to a different version can otherwise make the deployment misleading. Verify the resolved version and artifact identity at deployment time. Record the deployment so operators can trace a prediction back to its release.",
+              "image": "img/languages/mlops/registry-deploy.png"
+            },
+            {
+              "title": "Plan rollback",
+              "body": "A rollback should restore a known compatible release, not merely an old model file. Check whether feature definitions, preprocessing, dependencies, and serving configuration match that release. Keep a documented process for choosing and deploying the previous approved version. Verify the rollback and continue monitoring after it completes.",
+              "image": "img/languages/mlops/registry-rollback.png"
+            },
+            {
+              "title": "Control and audit changes",
+              "body": "Limit who can register, approve, relabel, or deploy models according to the organization's access rules. Keep an audit trail of changes to versions, evidence, and release decisions. Periodically review whether a registry status still reflects the current model, data, and evaluation context. A stale approval may not cover a changed environment.",
+              "image": "img/languages/mlops/registry-audit.png"
             }
           ]
         },
@@ -445,7 +759,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Parity tests verify transformations match between offline training and online serving paths. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Feature parity means the offline and online paths apply equivalent feature definitions for the same entity and point in time. A mismatch can occur even when the model artifact itself is unchanged, making offline evaluation unrepresentative of serving behavior.",
+              "image": "img/languages/mlops/feature-parity-overview.png"
+            },
+            {
+              "title": "Compare the same inputs",
+              "body": "Construct test cases with identical raw values, timestamps, and expected availability for both paths. Compare resulting feature names, types, units, missing-value handling, and values within justified numeric tolerances. A different point-in-time join can produce a mismatch even if individual transformations look identical.",
+              "image": "img/languages/mlops/feature-parity-checks.png"
+            },
+            {
+              "title": "Check time and freshness",
+              "body": "Offline training must use only data available at the historical prediction time. Online serving must respect publication delays, time zones, and freshness requirements. For example, a daily aggregate published after a decision should not be included in the offline feature for that decision.",
+              "image": "img/languages/mlops/feature-availability-timeline.png"
+            },
+            {
+              "title": "Investigate mismatches",
+              "body": "A mismatch may come from code versions, defaults, category mappings, source updates, or serialization. Log enough lineage to trace the raw input and transformation version without exposing unnecessary sensitive data. Fix the source of the difference and rerun the parity cases.",
+              "image": "img/languages/mlops/feature-parity-mismatch.png"
+            },
+            {
+              "title": "Guard the release",
+              "body": "Run parity tests as part of feature or model changes and include boundary cases such as missing fields and late-arriving data. Monitor production feature distributions and freshness after deployment. Passing parity tests only covers the tested cases; it does not prove the model is accurate.",
+              "image": "img/languages/mlops/feature-parity-release.png"
             }
           ]
         },
@@ -459,7 +794,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "DAGs encode dependencies and support selective retries without repeating unrelated work. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A directed acyclic graph, or DAG, represents workflow tasks and their dependencies without cycles. A training workflow might validate data, train a model, evaluate it, and then conditionally publish an artifact.",
+              "image": "img/languages/mlops/workflow-dag.png"
+            },
+            {
+              "title": "Define dependencies",
+              "body": "A task can start only when its required upstream conditions are satisfied. If evaluation depends on a trained model, its dependency must point from training to evaluation. Independent validation tasks can run in parallel when their inputs and resource limits permit.",
+              "image": "img/languages/mlops/workflow-dependencies.png"
+            },
+            {
+              "title": "Design retries",
+              "body": "A failed task can often be retried without rerunning unrelated completed tasks, but this depends on the workflow engine and artifact validity. Make side effects idempotent or otherwise protect them against duplicate execution. Distinguish transient failures from invalid inputs that need correction.",
+              "image": "img/languages/mlops/workflow-retries.png"
+            },
+            {
+              "title": "Track artifacts and versions",
+              "body": "Record which data snapshot, code version, configuration, and upstream artifacts each task used. A retry or cache reuse is only valid when its inputs and relevant dependencies match. Avoid overwriting a shared output with an ambiguous version.",
+              "image": "img/languages/mlops/experiment-artifact-lineage.png"
+            },
+            {
+              "title": "Observe and recover",
+              "body": "Monitor task status, duration, retries, and dependency failures. Alert owners when a workflow stalls and define how to resume or rerun it safely. A completed DAG indicates its tasks ran according to their checks; it does not by itself prove the resulting model is suitable for deployment.",
+              "image": "img/languages/mlops/monitor-and-investigate.png"
             }
           ]
         },
@@ -473,7 +829,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Snapshots prevent mutable source tables from silently changing experiment meaning. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "An immutable snapshot identifies a fixed version of data used for an experiment or pipeline run. It prevents later edits to a mutable source from silently changing what that recorded run refers to.",
+              "image": "img/languages/mlops/snapshot-fixed-data.png"
+            },
+            {
+              "title": "Identify the snapshot",
+              "body": "Record an immutable version or snapshot identifier with the run, along with relevant source and preprocessing information. A timestamp alone may not identify an exact dataset if records can be corrected or backfilled later.",
+              "image": "img/languages/mlops/snapshot-identifiers.png"
+            },
+            {
+              "title": "Preserve the transformation",
+              "body": "Data identity also depends on the query, code, configuration, and feature transformations used to construct the training set. Capture these alongside the snapshot so another run can understand how inputs were produced.",
+              "image": "img/languages/mlops/snapshot-transformations.png"
+            },
+            {
+              "title": "Verify and control access",
+              "body": "Check that the selected version is accessible and matches expected schema and quality constraints. Restrict access according to data policy and account for retention or deletion requirements. An immutable reference does not eliminate privacy obligations.",
+              "image": "img/languages/mlops/snapshot-access-quality.png"
+            },
+            {
+              "title": "Reproduce and compare",
+              "body": "Use the recorded snapshot and pipeline versions to reproduce or investigate a result where possible. Record environment and randomness as needed, and compare artifacts and metrics. Reusing the same snapshot alone does not guarantee bit-for-bit reproducibility.",
+              "image": "img/languages/mlops/snapshot-reproduction.png"
             }
           ]
         },
@@ -487,8 +864,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Lineage links data, code, features, artifacts, and deployment for audit and debugging. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use.",
-              "image": "img/languages/mlops/lineage-provenance.png"
+              "body": "Lineage records relationships among inputs, transformations, model artifacts, and deployments. Provenance describes where an artifact came from and how it was produced. Together they support investigation and audit.",
+              "image": "img/languages/mlops/lineage-overview.png"
+            },
+            {
+              "title": "Trace training inputs",
+              "body": "Connect a training run to data snapshots, feature definitions, preprocessing, code, and configuration. Use stable version identifiers where available. A mutable dataset name alone does not identify the exact input.",
+              "image": "img/languages/mlops/lineage-training-input.png"
+            },
+            {
+              "title": "Trace outputs to deployment",
+              "body": "Record which run produced a model artifact and which deployment uses it, including compatible preprocessing. This link helps identify affected deployments when a data or code issue is discovered.",
+              "image": "img/languages/mlops/lineage-deployment.png"
+            },
+            {
+              "title": "Investigate an incident",
+              "body": "Starting from a production model, follow its recorded dependencies to identify the relevant data and transformations. Confirm the records against artifacts and logs. A missing lineage edge is a gap to investigate, not proof that no dependency exists.",
+              "image": "img/languages/mlops/lineage-incident.png"
+            },
+            {
+              "title": "Maintain trustworthy records",
+              "body": "Capture lineage as part of the workflow, restrict unauthorized changes, and test that records are complete enough for the intended investigation. Apply retention and privacy policies; lineage supports reproducibility but does not guarantee it.",
+              "image": "img/languages/mlops/lineage-record-quality.png"
             }
           ]
         },
@@ -502,7 +899,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Validation checks schema, quality, safety, and compatibility before a candidate advances. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Automated validation runs defined checks on data, artifacts, and model behavior before a workflow advances. It can detect known problems consistently, but the checks must match the intended deployment.",
+              "image": "img/languages/mlops/automated-validation-overview.png"
+            },
+            {
+              "title": "Validate inputs",
+              "body": "Check required fields, types, ranges, freshness, and other data contracts before training or inference. A schema-valid dataset may still contain incorrect or unrepresentative values, so include appropriate quality checks.",
+              "image": "img/languages/mlops/automated-validation-inputs.png"
+            },
+            {
+              "title": "Validate the candidate",
+              "body": "Evaluate task metrics, important subgroup behavior where feasible, and compatibility with serving components. Include safety checks relevant to the task. Record the model and dataset versions used for each result.",
+              "image": "img/languages/mlops/automated-validation-candidate.png"
+            },
+            {
+              "title": "Handle failures",
+              "body": "Block advancement or follow a defined exception process when a required check fails or cannot run. Surface the reason and preserve useful evidence for investigation. Missing results must not silently count as passing.",
+              "image": "img/languages/mlops/automated-validation-failure.png"
+            },
+            {
+              "title": "Maintain checks",
+              "body": "Test the checks with both valid and intentionally invalid examples. Monitor false alarms and missed issues, update rules as data or requirements change, and review results after deployment. Passing automation is not proof of complete safety.",
+              "image": "img/languages/mlops/automated-validation-maintenance.png"
             }
           ]
         },
@@ -516,7 +934,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Canary analysis compares candidate and control under traffic with predefined rollback conditions. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A canary release sends a limited portion of traffic to a candidate while a control continues serving comparable traffic. Teams compare defined metrics before deciding whether to expand, hold, or roll back.",
+              "image": "img/languages/mlops/canary-overview.png"
+            },
+            {
+              "title": "Define the comparison",
+              "body": "Choose control and candidate versions, traffic allocation, metrics, and observation windows before rollout. Ensure assignment is appropriate for the service and that both versions receive comparable traffic where possible.",
+              "image": "img/languages/mlops/canary-comparison.png"
+            },
+            {
+              "title": "Set decision rules",
+              "body": "Define thresholds for errors, latency, and task quality as well as conditions that require investigation or rollback. Some outcome labels arrive later than operational metrics, so a short canary may not reveal all quality problems.",
+              "image": "img/languages/mlops/canary-decision.png"
+            },
+            {
+              "title": "Interpret evidence",
+              "body": "Small traffic samples produce uncertain estimates. Inspect traffic mix and relevant groups, and account for monitoring delays. A passing short test is evidence for a decision, not a guarantee of long-term safety.",
+              "image": "img/languages/mlops/canary-uncertainty.png"
+            },
+            {
+              "title": "Recover safely",
+              "body": "Keep a tested path to restore a compatible control release, including preprocessing and dependencies. Monitor the candidate and control throughout the rollout, record the decision, and investigate unexpected behavior before expanding traffic.",
+              "image": "img/languages/mlops/canary-recovery.png"
             }
           ]
         },
@@ -529,8 +968,29 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Shadow deployment exercises a candidate without serving its decisions to users. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Run a candidate in shadow",
+              "body": "In shadow evaluation, a candidate model receives inputs alongside the serving model, but its decisions are not used to control the user-facing result. This lets a team examine candidate behavior under realistic traffic before promotion. It does not by itself establish that the candidate is safe or ready. The shadow path must not cause unintended side effects.",
+              "image": "img/languages/mlops/shadow-overview.png"
+            },
+            {
+              "title": "Keep the comparison fair",
+              "body": "Compare models on the same eligible inputs and record their versions, preprocessing, and execution conditions. Check whether both paths receive the same information at the same time and whether sampling excludes important cases. A mismatch in feature freshness can look like a model difference. Measure and document any differences that cannot be eliminated.",
+              "image": "img/languages/mlops/shadow-comparison.png"
+            },
+            {
+              "title": "Prevent side effects",
+              "body": "A shadow path must not send duplicate emails, execute purchases, or write decisions to live systems. Disable or isolate downstream actions and verify that logs or metrics do not leak protected inputs. If the candidate invokes tools, use safe substitutes or controls designed for the evaluation. A label saying shadow is not enough to prevent effects.",
+              "image": "img/languages/mlops/shadow-side-effects.png"
+            },
+            {
+              "title": "Evaluate delayed outcomes",
+              "body": "Some outcomes, such as whether a transaction was fraudulent, are known only later. Store authorized identifiers needed to join predictions to outcomes, and report which labels are still pending. A candidate may have different scores from the serving model without being better or worse. Compare task metrics once enough relevant outcomes are available.",
+              "image": "img/languages/mlops/shadow-outcomes.png"
+            },
+            {
+              "title": "Decide whether to promote",
+              "body": "Define evaluation windows, quality measures, operational limits, and decision criteria before reviewing results. Consider sampling uncertainty, relevant groups, latency, cost, and policy requirements. Shadow traffic does not fully reproduce the feedback or effects of actually serving the candidate. A controlled rollout may still be needed after shadow evaluation.",
+              "image": "img/languages/mlops/shadow-promotion.png"
             }
           ]
         },
@@ -661,7 +1121,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Feature stores coordinate offline and online access, freshness, ownership, and point-in-time correctness. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A feature store manages feature definitions and access for model workflows. Offline paths often support historical training data; online paths serve recent features for low-latency predictions. The architecture must specify ownership, materialization, access controls, and consistency rather than assuming a product automatically provides them.",
+              "image": "img/languages/mlops/feature-store-paths.png"
+            },
+            {
+              "title": "Build point-in-time examples",
+              "body": "For each historical prediction, join the entity to feature values available at that prediction time. Distinguish event time from the time a value became available, including publication delays and corrections. A value published after the decision can leak future information even if it describes an earlier event.",
+              "image": "img/languages/mlops/feature-store-point-in-time.png"
+            },
+            {
+              "title": "Set freshness contracts",
+              "body": "Document the expected update cadence, acceptable staleness, and behavior when a feature is missing or late. A stale value may be acceptable for one feature but harmful for another. Monitor freshness and make fallback behavior explicit to the serving application.",
+              "image": "img/languages/mlops/feature-store-freshness.png"
+            },
+            {
+              "title": "Protect parity and lineage",
+              "body": "Version feature definitions and record the sources, transformation, and data timestamps used for a model. Test equivalent offline and online transformations using the same inputs and point-in-time assumptions. Compare boundary cases such as missing categories and late-arriving records.",
+              "image": "img/languages/mlops/feature-store-lineage.png"
+            },
+            {
+              "title": "Operate with ownership",
+              "body": "Assign owners for feature definitions, quality checks, access policy, and incident response. Review consumer impact before changing semantics or deleting a feature, and monitor usage and costs. Centralizing feature access does not eliminate the need for data quality and model evaluation.",
+              "image": "img/languages/mlops/feature-store-ownership.png"
             }
           ]
         },
@@ -675,7 +1156,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Continuous training creates candidates automatically but retains validation, approval, and rollback boundaries. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Continuous training automates creation of new model candidates as data or code changes. Training a candidate is distinct from approving and deploying it; automation should preserve explicit quality and governance checks.",
+              "image": "img/languages/mlops/continuous-training-promotion.png"
+            },
+            {
+              "title": "Validate inputs",
+              "body": "Check source freshness, schema, data quality, and point-in-time correctness before training. Record the data snapshot and code versions. If a check fails, stop or route the run for investigation instead of silently training on invalid inputs.",
+              "image": "img/languages/mlops/dataset-version-verification.png"
+            },
+            {
+              "title": "Evaluate candidates",
+              "body": "Compare the candidate with a relevant baseline using representative data, task metrics, and important subgroup checks where feasible. Inspect uncertainty and resource constraints. Automated thresholds should reflect the intended use and cannot cover every failure mode.",
+              "image": "img/languages/mlops/training-and-held-out-test.png"
+            },
+            {
+              "title": "Gate promotion",
+              "body": "Apply the required approval and deployment policy after evaluation. A candidate that passes automated checks is not necessarily authorized for production. Record the decision, artifact versions, and evidence needed to understand what was promoted.",
+              "image": "img/languages/mlops/model-promotion-governance.png"
+            },
+            {
+              "title": "Monitor and roll back",
+              "body": "Observe production quality, operational metrics, and data changes after rollout. Keep a tested rollback path to a compatible previous model and preprocessing package. Retraining on recent data can introduce new failures, so monitor outcomes rather than assuming freshness ensures quality.",
+              "image": "img/languages/mlops/monitor-and-investigate.png"
             }
           ]
         },
@@ -689,7 +1191,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Compatibility contracts prevent serving a model with mismatched feature or preprocessing versions. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A model depends on the features and preprocessing used during training. Compatibility rules specify which model, feature definitions, and transformations can be served together.",
+              "image": "img/languages/mlops/compatibility-overview.png"
+            },
+            {
+              "title": "Record the bundle",
+              "body": "Record the model artifact, expected feature schema, preprocessing version, and relevant dependencies as a versioned release. Include feature names, types, units, and ordering when the model relies on them.",
+              "image": "img/languages/mlops/compatibility-bundle.png"
+            },
+            {
+              "title": "Check compatibility",
+              "body": "Validate the serving inputs and preprocessing against the model's declared expectations before promotion. Matching names alone is insufficient if units, category mappings, or transformation semantics changed.",
+              "image": "img/languages/mlops/compatibility-semantics.png"
+            },
+            {
+              "title": "Test representative inputs",
+              "body": "Run known examples through both training and serving paths and compare resulting features with appropriate tolerances. Include missing and boundary values. A passing schema check cannot detect every semantic mismatch.",
+              "image": "img/languages/mlops/compatibility-parity.png"
+            },
+            {
+              "title": "Release and recover together",
+              "body": "Promote compatible artifacts together and keep their identifiers in deployment records. Monitor feature and prediction behavior after rollout. A rollback must restore a compatible combination, not merely an older model file.",
+              "image": "img/languages/mlops/compatibility-rollback.png"
             }
           ]
         },
@@ -703,7 +1226,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Rollback accounts for schemas, consumers, and in-flight requests as well as model weights. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Rollback returns a service to a known compatible release after a problem. The release includes more than model weights: preprocessing, schemas, dependencies, and consumer expectations may also need to change.",
+              "image": "img/languages/mlops/rollback-release.png"
+            },
+            {
+              "title": "Keep a compatible release",
+              "body": "Record and retain the prior model, feature definitions, preprocessing, configuration, and relevant runtime artifacts. Verify that the combination remains deployable and permitted by retention policy.",
+              "image": "img/languages/mlops/rollback-retention.png"
+            },
+            {
+              "title": "Consider traffic and state",
+              "body": "Plan how to route new requests and handle in-flight work during a rollback. Stateful or asynchronous operations may require extra coordination to avoid duplicate work or incompatible results. Define what clients observe during the transition.",
+              "image": "img/languages/mlops/rollback-traffic.png"
+            },
+            {
+              "title": "Check dependencies",
+              "body": "An older model may expect a feature or response schema that current producers and consumers no longer support. Test compatibility across those boundaries before relying on a rollback. A successful artifact download is not a compatibility test.",
+              "image": "img/languages/mlops/rollback-schema-compatibility.png"
+            },
+            {
+              "title": "Practice and observe",
+              "body": "Exercise rollback in a representative environment, document triggers and responsibilities, and monitor errors, latency, and model behavior afterward. Investigate the original incident before retrying the failed release.",
+              "image": "img/languages/mlops/rollback-practice.png"
             }
           ]
         },
@@ -717,7 +1261,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Fleet management coordinates ownership, versions, resource contention, and risk across deployed models. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Model fleet management coordinates many deployed models rather than treating each deployment in isolation. It tracks ownership, versions, shared resources, and operational risk across the portfolio.",
+              "image": "img/languages/mlops/model-fleet-overview.png"
+            },
+            {
+              "title": "Maintain an inventory",
+              "body": "Record each deployment's owner, purpose, model and preprocessing versions, dependencies, and environment. Identify who can respond when a service fails or an artifact needs review.",
+              "image": "img/languages/mlops/model-fleet-inventory.png"
+            },
+            {
+              "title": "Manage shared capacity",
+              "body": "Models can compete for accelerator memory, compute, or serving throughput. Monitor utilization and latency by workload, and define capacity and prioritization policies. A healthy aggregate can conceal an overloaded individual service.",
+              "image": "img/languages/mlops/model-fleet-capacity.png"
+            },
+            {
+              "title": "Control changes",
+              "body": "Coordinate rollouts, compatibility checks, and rollback readiness across affected services. Shared dependencies can create correlated failures, so record which models use them and avoid assuming every deployment is independent.",
+              "image": "img/languages/mlops/model-fleet-changes.png"
+            },
+            {
+              "title": "Review fleet risk",
+              "body": "Track stale models, unmet ownership or evaluation requirements, incidents, and resource saturation. Use the inventory to prioritize review and retirement. Apply privacy and retention policies to the operational records.",
+              "image": "img/languages/mlops/model-fleet-risk.png"
             }
           ]
         },
@@ -730,8 +1295,29 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Federated workflows coordinate clients and aggregation while managing privacy, availability, and non-IID data. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Coordinate a training round",
+              "body": "In federated learning, a coordinator distributes a model or training instructions to participating clients, which compute local updates. The coordinator aggregates accepted updates into a new global model according to a defined rule. Raw training data need not be sent to the coordinator, but updates and metadata can still be sensitive. A round needs clear selection, deadlines, authentication, and model-version rules.",
+              "image": "img/languages/mlops/federated-round.png"
+            },
+            {
+              "title": "Manage availability and versions",
+              "body": "Clients can be offline, slow, or running different software versions. Define participation and minimum-response requirements, round timeouts, and how to handle stale or incompatible updates. If too few valid updates arrive, abort or defer according to the policy rather than silently treating the round as representative. Record which model version and configuration each accepted update used.",
+              "image": "img/languages/mlops/federated-availability.png"
+            },
+            {
+              "title": "Account for non-IID data",
+              "body": "Client datasets may differ in label prevalence, feature distributions, and size. An aggregate improvement can conceal poor performance for some client populations, and a client-weighting rule changes whose data has the greatest influence. Compare relevant client or population slices where privacy and sample sizes allow. Interpret small-sample results cautiously and consider participation bias when clients join unevenly.",
+              "image": "img/languages/mlops/federated-noniid.png"
+            },
+            {
+              "title": "Choose privacy protections",
+              "body": "Keeping raw records on clients is not by itself a privacy guarantee: model updates can reveal information. Secure aggregation and differential privacy address different risks and require explicit threat models and correct implementation. Differential privacy also needs a defined privacy accounting mechanism and an assessed utility trade-off. Control metadata access and comply with the applicable data-handling rules.",
+              "image": "img/languages/mlops/federated-privacy.png"
+            },
+            {
+              "title": "Monitor the deployed process",
+              "body": "Track participation, timeout rates, update acceptance, model versions, and aggregate quality over time. Investigate whether a drop in participation changes which populations influence training. Test rollback and recovery with compatible model and coordinator versions, and document why a round was accepted or rejected. Limit telemetry to what operators need and protect it as potentially sensitive.",
+              "image": "img/languages/mlops/federated-monitoring.png"
             }
           ]
         },

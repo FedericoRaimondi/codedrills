@@ -13,8 +13,29 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "A neuron combines weighted inputs and a bias, then applies a nonlinear activation; without nonlinearity, stacked layers remain a linear transformation. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Combine inputs",
+              "body": "A neuron first multiplies each input by its weight, adds the results, and adds a bias. For two inputs this value is z = w1*x1 + w2*x2 + b. The weights and bias are parameters learned during training.",
+              "image": "img/languages/deep-neural-nets/neuron-and-relu.png"
+            },
+            {
+              "title": "Interpret weights and bias",
+              "body": "A positive weight makes an increase in its input increase the weighted sum when the other inputs are held fixed; a negative weight makes it decrease. The bias shifts the sum independently of the inputs. These are local statements about this calculation, not a guarantee of how an entire network behaves.",
+              "image": "img/languages/deep-neural-nets/weights-and-bias.png"
+            },
+            {
+              "title": "Apply an activation",
+              "body": "The activation transforms the weighted sum into the neuron's output. ReLU, for example, returns max(0, z): it outputs zero for a negative z and z itself when z is positive. Other activation functions have different shapes and may be chosen for different layers or tasks.",
+              "image": "img/languages/deep-neural-nets/relu-activation.png"
+            },
+            {
+              "title": "Work through an example",
+              "body": "Suppose x1 = 2, x2 = 1, w1 = 0.5, w2 = -1, and b = 0.25. The weighted sum is 0.5*2 - 1*1 + 0.25 = 0.25, so ReLU returns 0.25. If the bias were -0.5 instead, the sum would be -0.5 and ReLU would return zero.",
+              "image": "img/languages/deep-neural-nets/neuron-worked-example.png"
+            },
+            {
+              "title": "Why nonlinearity matters",
+              "body": "Without nonlinear activations, a stack of dense layers with weighted sums and biases can be combined into one affine transformation. Nonlinear activations allow the network to represent more complex relationships. They do not guarantee that training will succeed or that the learned pattern will generalize.",
+              "image": "img/languages/deep-neural-nets/affine-layer-composition.png"
             }
           ]
         },
@@ -28,7 +49,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Each layer transforms an input into a representation for later layers; useful representations depend on the training objective and data. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A layer transforms its input into values passed to the next layer. Those values form a representation: a way of encoding information that later computations can use. The representation is learned from data through the training objective rather than manually assigned a meaning.",
+              "image": "img/languages/deep-neural-nets/layers-and-representations.png"
+            },
+            {
+              "title": "Follow the transformations",
+              "body": "For an image classifier, an input image is converted to numbers and passed through successive layers before the final layer produces class scores. Intermediate layers can emphasize different patterns. Their precise behavior depends on the architecture, data, and learned parameters; the values in the illustration are schematic.",
+              "image": "img/languages/deep-neural-nets/representation-transformations.png"
+            },
+            {
+              "title": "Track shapes",
+              "body": "The output shape of one layer must be compatible with the input expected by the next. For example, a dense layer producing a vector of 16 values can feed a layer that expects 16 inputs. A shape mismatch is an implementation error, not evidence that the learned representation is poor.",
+              "image": "img/languages/deep-neural-nets/adjacent-layer-shapes.png"
+            },
+            {
+              "title": "Understand the objective",
+              "body": "Training adjusts the network to reduce a specified loss on training examples. A representation useful for classifying images is not automatically suitable for a different task or population. Evaluate it on the intended task and representative held-out data.",
+              "image": "img/languages/deep-neural-nets/representation-evaluation.png"
+            },
+            {
+              "title": "Avoid overinterpreting",
+              "body": "A hidden value does not necessarily correspond to one human-readable concept, and a pattern may be spread across many values. Visualization or probing can help investigate a representation, but an appealing picture alone does not establish how the network makes every decision.",
+              "image": "img/languages/deep-neural-nets/hidden-value-interpretation.png"
             }
           ]
         },
@@ -42,7 +84,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Weights scale input contributions and biases shift activations; training updates both to reduce a specified loss. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "For a neuron with inputs x1 and x2, the pre-activation value is z = w1*x1 + w2*x2 + b. The weights w1 and w2 scale the inputs, while bias b shifts the sum. An activation then transforms z into the neuron's output.",
+              "image": "img/languages/deep-neural-nets/neuron-and-relu.png"
+            },
+            {
+              "title": "Read their effect",
+              "body": "Holding other inputs fixed, a positive weight makes the pre-activation sum rise as its input rises; a negative weight makes it fall. Bias adds the same offset regardless of that input. Later nonlinearities and layers can make the complete network's behavior more complex.",
+              "image": "img/languages/deep-neural-nets/weights-and-bias.png"
+            },
+            {
+              "title": "Calculate an example",
+              "body": "If x1 = 2, x2 = 1, w1 = 0.5, w2 = -1, and b = 0.25, the sum is 0.25. Changing b to -0.5 changes the sum to -0.5. With ReLU, the resulting outputs are 0.25 and 0 respectively.",
+              "image": "img/languages/deep-neural-nets/neuron-worked-example.png"
+            },
+            {
+              "title": "Update parameters",
+              "body": "During training, an optimizer uses gradients of a specified loss to adjust weights and biases. For gradient descent, each update subtracts a learning-rate-scaled gradient from a parameter. A single update need not improve performance on every example.",
+              "image": "img/languages/deep-neural-nets/gradient-descent-update.png"
+            },
+            {
+              "title": "Check generalization",
+              "body": "A low training loss does not guarantee that the learned parameters work on new examples. Compare performance on representative held-out data and investigate errors relevant to the task. Avoid treating an individual weight as a complete explanation of a network's prediction.",
+              "image": "img/languages/deep-neural-nets/held-out-generalization.png"
             }
           ]
         },
@@ -56,7 +119,27 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "A forward pass computes outputs by applying layer operations in sequence, making tensor shapes and transformations auditable. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use.",
+              "body": "A forward pass computes a network's output from its input using the current parameter values. Each layer transforms the result of the previous layer; during training, the output can then be compared with a target to compute a loss.",
+              "image": "img/languages/deep-neural-nets/layers-and-representations.png"
+            },
+            {
+              "title": "Apply a layer",
+              "body": "For a scalar input x = 2, weight w = 3, and bias b = -1, an affine layer computes z = w * x + b = 5. A following ReLU activation returns max(0, z), so this layer's activated output is 5.",
+              "image": "img/languages/deep-neural-nets/forward-scalar-example.png"
+            },
+            {
+              "title": "Follow shapes",
+              "body": "Suppose a batch contains four examples, each with three features. Multiplying a 4-by-3 input matrix by a 3-by-2 weight matrix yields a 4-by-2 result before adding a compatible bias. Keeping the dimensions explicit helps catch invalid operations.",
+              "image": "img/languages/deep-neural-nets/forward-batch-shapes.png"
+            },
+            {
+              "title": "Interpret the output",
+              "body": "The last layer's output depends on the task and model design. A regression network may output a number; a classifier may output logits that require a suitable conversion before being interpreted as probabilities. Check the actual output contract.",
+              "image": "img/languages/deep-neural-nets/forward-output-types.png"
+            },
+            {
+              "title": "Separate forward and learning",
+              "body": "A forward pass alone does not update weights. In training, a loss is computed from the output, gradients are calculated, and an optimizer applies updates. In evaluation, parameters generally remain fixed while predictions are measured on held-out data.",
               "image": "img/languages/deep-neural-nets/forward-and-backpropagation.png"
             }
           ]
@@ -71,7 +154,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "A loss measures prediction error and defines the signal training optimizes; it should match the task and output representation. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A loss function measures how a model's prediction compares with a target. During training, the optimizer uses gradients of the loss to update parameters. Choose a loss that fits the task and the model's output.",
+              "image": "img/languages/deep-neural-nets/loss-training-signal.png"
+            },
+            {
+              "title": "Regression example",
+              "body": "For numeric prediction, squared error is the square of prediction minus target. If a model predicts 7 and the target is 5, the squared error is 4. Mean squared error averages such errors across examples.",
+              "image": "img/languages/deep-neural-nets/loss-squared-error.png"
+            },
+            {
+              "title": "Classification example",
+              "body": "For classification, cross-entropy can penalize a model that assigns low probability to the correct class. Libraries differ in whether a loss expects probabilities or raw logits, so check the function's contract to avoid applying a transformation twice.",
+              "image": "img/languages/deep-neural-nets/loss-cross-entropy.png"
+            },
+            {
+              "title": "Loss and metrics",
+              "body": "The training loss is not always the same as the metric used to judge the product. For example, classification training may use cross-entropy while evaluation tracks precision and recall. Choose metrics that reflect the costs of errors.",
+              "image": "img/languages/deep-neural-nets/loss-versus-metric.png"
+            },
+            {
+              "title": "Monitor generalization",
+              "body": "Track loss on training and held-out validation data. A decreasing training loss alongside worsening validation loss can indicate overfitting, though data or measurement issues can also contribute. Investigate before selecting a response.",
+              "image": "img/languages/deep-neural-nets/loss-training-validation.png"
             }
           ]
         },
@@ -85,7 +189,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Gradient descent updates parameters using loss gradients, and the learning rate controls the step size. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Gradient descent adjusts model parameters to reduce a loss. The gradient describes how the loss changes locally with the parameters; an update moves opposite the gradient, scaled by a learning rate.",
+              "image": "img/languages/deep-neural-nets/gradient-descent-overview.png"
+            },
+            {
+              "title": "Calculate an update",
+              "body": "For a parameter value of 2, gradient of 0.5, and learning rate of 0.1, a plain gradient-descent step gives 2 - 0.1 * 0.5 = 1.95. Actual neural networks update many parameters together.",
+              "image": "img/languages/deep-neural-nets/gradient-descent-example.png"
+            },
+            {
+              "title": "Choose a learning rate",
+              "body": "A very large learning rate can cause unstable updates, while a very small one can make progress slow. The useful range depends on the model, data, and optimizer. A schedule can change the rate during training.",
+              "image": "img/languages/deep-neural-nets/gradient-descent-rate.png"
+            },
+            {
+              "title": "Use batches",
+              "body": "Mini-batch gradient descent computes an update from a subset of training examples. Different batches can produce different gradient estimates. Batch size affects memory, update frequency, and training behavior.",
+              "image": "img/languages/deep-neural-nets/gradient-descent-batches.png"
+            },
+            {
+              "title": "Monitor progress",
+              "body": "Track training loss and a separate validation metric. If training is unstable or progress stalls, inspect learning rate, data, and gradients before changing settings. Lower training loss alone does not establish good generalization.",
+              "image": "img/languages/deep-neural-nets/gradient-descent-monitor.png"
             }
           ]
         },
@@ -99,7 +224,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Backpropagation applies the chain rule to calculate parameter gradients efficiently from the output layer toward earlier layers. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Backpropagation uses the chain rule to calculate how a loss changes with model parameters. It moves gradient information backward through the computations used in the forward pass.",
+              "image": "img/languages/deep-neural-nets/backprop-overview.png"
+            },
+            {
+              "title": "Compute the forward pass",
+              "body": "The model transforms inputs through its layers to produce a prediction. A loss function compares that prediction with the target. Intermediate values are needed to calculate gradients during the backward pass.",
+              "image": "img/languages/deep-neural-nets/backprop-forward.png"
+            },
+            {
+              "title": "Apply the chain rule",
+              "body": "If a quantity depends on an intermediate value, its derivative with respect to an earlier value combines derivatives along the path. Backpropagation reuses these local derivatives rather than separately recomputing the full derivative for every parameter.",
+              "image": "img/languages/deep-neural-nets/backprop-chain-rule.png"
+            },
+            {
+              "title": "Update parameters",
+              "body": "After gradients are computed, an optimizer uses them to update parameters. Backpropagation calculates the gradients; the optimizer determines the update using its learning rate and other settings.",
+              "image": "img/languages/deep-neural-nets/backprop-optimizer.png"
+            },
+            {
+              "title": "Check gradients",
+              "body": "Inspect loss and gradient behavior during training, and compare a small calculation with a numerical gradient when debugging custom operations. Vanishing, exploding, or incorrect gradients can prevent effective learning.",
+              "image": "img/languages/deep-neural-nets/backprop-gradient-check.png"
             }
           ]
         },
@@ -112,8 +258,29 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "A batch supplies examples for an optimizer update; batch size changes memory use, gradient noise, and update frequency. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "What a batch does",
+              "body": "A training batch is a group of examples processed together to calculate a loss and gradients. An optimizer then uses those gradients to update model parameters. A data pass, or epoch, typically contains multiple batches, with a possible smaller final batch. The exact update schedule depends on the training loop.",
+              "image": "img/languages/deep-neural-nets/batch-overview.png"
+            },
+            {
+              "title": "Batch size and memory",
+              "body": "Larger batches usually require more memory for inputs and intermediate activations. They can improve hardware utilization, but the result depends on the model, device, and implementation. If a batch does not fit, a smaller batch is one option; gradient accumulation is another when implemented with the intended loss scaling. Measure actual memory and throughput rather than assuming a larger batch is always faster.",
+              "image": "img/languages/deep-neural-nets/batch-memory.png"
+            },
+            {
+              "title": "Gradient estimates",
+              "body": "A mini-batch gradient estimates a training signal from a subset of examples. Different batches can produce different gradients, so batch size changes the noise in that estimate as well as how often updates occur. Larger batches do not guarantee better generalization, and changes in batch size can require retuning the learning rate or schedule. Compare outcomes under a controlled experiment.",
+              "image": "img/languages/deep-neural-nets/batch-gradient.png"
+            },
+            {
+              "title": "Shuffle without leaking",
+              "body": "For many independent examples, shuffling training data helps prevent batches from reflecting an arbitrary file order. Do not mix held-out validation or test rows into training batches. Some tasks require different handling: time-ordered or sequence data may need order preserved within an example, and a split must still respect time or group boundaries. Follow the requirements of the data and model.",
+              "image": "img/languages/deep-neural-nets/batch-shuffle.png"
+            },
+            {
+              "title": "Count updates carefully",
+              "body": "With 100 training examples and batch size 20, a single pass contains five batches if all examples are used once. If each batch produces one optimizer update, that is five updates per epoch. Gradient accumulation, dropping an incomplete final batch, or distributed training can change the count. Record the actual update schedule when comparing experiments.",
+              "image": "img/languages/deep-neural-nets/batch-update-count.png"
             }
           ]
         },
@@ -230,7 +397,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Variance-aware initialization preserves useful activation and gradient scales better than setting all weights to zero. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Initialization chooses the starting values of a network's parameters before training. Starting values affect the scale of activations and gradients, which can make optimization easier or harder.",
+              "image": "img/languages/deep-neural-nets/initialization-overview.png"
+            },
+            {
+              "title": "Break symmetry",
+              "body": "If identical neurons in the same layer start with identical weights and biases and receive identical gradients, they remain identical under the same updates. Randomly initializing weights differently helps neurons learn different features. Biases may still be initialized to zero.",
+              "image": "img/languages/deep-neural-nets/initialization-symmetry.png"
+            },
+            {
+              "title": "Control scale",
+              "body": "Weights that are too large can make activations or gradients grow, while weights that are too small can make signals shrink across layers. Variance-aware schemes select an initialization scale using layer dimensions and assumptions about the activation.",
+              "image": "img/languages/deep-neural-nets/initialization-signal-scale.png"
+            },
+            {
+              "title": "Match the activation",
+              "body": "Xavier initialization is commonly used with tanh-like activations, while He initialization is commonly used with ReLU-like activations. These are starting choices, not guarantees: architecture, normalization, data, and implementation details also matter.",
+              "image": "img/languages/deep-neural-nets/initialization-activation.png"
+            },
+            {
+              "title": "Check early training",
+              "body": "Inspect activation and gradient distributions and watch the loss in early batches. If signals vanish, explode, or become non-finite, investigate initialization alongside input scaling, learning rate, and the rest of the model. Compare candidate setups on the intended task.",
+              "image": "img/languages/deep-neural-nets/initialization-training-checks.png"
             }
           ]
         },
@@ -244,7 +432,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Schedules adjust step size over training to balance rapid early learning with stable convergence. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A learning-rate schedule changes an optimizer's learning rate during training according to a chosen rule. The learning rate affects update size; a schedule is a training choice, not a guarantee of better convergence.",
+              "image": "img/languages/deep-neural-nets/learning-rate-schedule-overview.png"
+            },
+            {
+              "title": "Reduce over time",
+              "body": "A step schedule lowers the rate at specified milestones. A smooth schedule may decrease it gradually. For example, a rate could drop from 0.01 to 0.001 after a chosen epoch; the appropriate values depend on the optimizer, model, and data.",
+              "image": "img/languages/deep-neural-nets/learning-rate-step-schedule.png"
+            },
+            {
+              "title": "Understand warmup",
+              "body": "Warmup starts with a smaller learning rate and increases it over an initial period before the main schedule. It can help stabilize some training setups, especially when early updates are sensitive. It is not required for every model.",
+              "image": "img/languages/deep-neural-nets/learning-rate-warmup.png"
+            },
+            {
+              "title": "Track the schedule",
+              "body": "Record the rate at each optimizer step or epoch and check the intended units. If a scheduler expects steps but is advanced once per epoch, it follows a different curve than planned. When resuming training, restore scheduler state together with model and optimizer state.",
+              "image": "img/languages/deep-neural-nets/learning-rate-scheduler-state.png"
+            },
+            {
+              "title": "Compare fairly",
+              "body": "Compare schedules with the same data split, training budget, and evaluation metric. Watch for divergence, slow learning, and held-out performance; a lower training loss does not necessarily mean better generalization. Repeat runs when randomness could materially change the result.",
+              "image": "img/languages/deep-neural-nets/learning-rate-comparison.png"
             }
           ]
         },
@@ -258,7 +467,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Momentum smooths updates and adaptive optimizers scale them using gradient history; neither removes the need to tune and validate. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "An optimizer uses gradients to update model parameters. Momentum and adaptive optimizers incorporate gradient history, but their behavior depends on settings and the training problem.",
+              "image": "img/languages/deep-neural-nets/optimizer-update.png"
+            },
+            {
+              "title": "Understand momentum",
+              "body": "Momentum maintains a running direction informed by recent gradients. Consistent gradients can accumulate in that direction, while changing directions can be smoothed. The update also depends on the learning rate and the momentum coefficient.",
+              "image": "img/languages/deep-neural-nets/optimizer-momentum.png"
+            },
+            {
+              "title": "Understand adaptive scaling",
+              "body": "Adaptive methods use statistics of past gradients to scale parameter updates. Adam, for example, tracks moving averages of gradients and squared gradients with bias correction. The resulting effective step size can vary across parameters.",
+              "image": "img/languages/deep-neural-nets/optimizer-adam-statistics.png"
+            },
+            {
+              "title": "Tune and compare",
+              "body": "Compare optimizers using the same data split, metric, and training budget. Tune learning rate and other relevant settings for each rather than comparing default settings alone. Faster initial loss reduction does not guarantee better held-out performance.",
+              "image": "img/languages/deep-neural-nets/compare-optimizers.png"
+            },
+            {
+              "title": "Monitor training",
+              "body": "Track training and validation metrics and investigate instability or stalled progress. Check learning-rate schedules, gradient magnitudes, and preprocessing before changing methods. Save optimizer state when resuming so its accumulated statistics are not accidentally discarded.",
+              "image": "img/languages/deep-neural-nets/optimizer-monitoring.png"
             }
           ]
         },
@@ -272,7 +502,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Weight decay discourages large weights to regularize a model; decoupled weight decay is not identical to L2 penalties for every optimizer. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Weight decay is a regularization technique that shrinks selected parameter values during optimization. It can help control model complexity, but its effect depends on the optimizer, parameter groups, and chosen strength.",
+              "image": "img/languages/deep-neural-nets/weight-decay-overview.png"
+            },
+            {
+              "title": "Understand shrinkage",
+              "body": "A decoupled weight-decay update applies a shrinkage term separately from the loss gradient update. Larger decay can shrink weights more strongly, but too much can harm learning. The exact update depends on the optimizer implementation.",
+              "image": "img/languages/deep-neural-nets/weight-decay-shrinkage.png"
+            },
+            {
+              "title": "Distinguish L2 penalties",
+              "body": "An L2 penalty adds a parameter-size term to the loss. For plain gradient descent it can correspond to an appropriate weight-decay update, but with adaptive optimizers the penalty gradient is scaled by the optimizer, so it is not generally equivalent to decoupled decay.",
+              "image": "img/languages/deep-neural-nets/weight-decay-l2.png"
+            },
+            {
+              "title": "Choose parameter groups",
+              "body": "Some training setups exclude bias or normalization parameters from decay, while others use different policies. Follow the model and optimizer's conventions and record which parameters receive decay rather than assuming every parameter is treated the same way.",
+              "image": "img/languages/deep-neural-nets/weight-decay-groups.png"
+            },
+            {
+              "title": "Tune on validation data",
+              "body": "Compare decay strengths with an appropriate validation metric and a controlled training setup. Monitor both underfitting and overfitting. Weight decay is not a guarantee of better generalization and does not replace good data or evaluation.",
+              "image": "img/languages/deep-neural-nets/weight-decay-evaluation.png"
             }
           ]
         },
@@ -286,7 +537,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Dropout masks activations during training as regularization and should be disabled for ordinary inference. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Dropout randomly masks selected activations during training as a form of regularization. It can reduce reliance on particular activations, but its effect depends on where and how strongly it is applied.",
+              "image": "img/languages/deep-neural-nets/dropout-overview.png"
+            },
+            {
+              "title": "Apply the mask",
+              "body": "For each training pass, a dropout layer samples which activations to keep according to its configured probability. Common inverted-dropout implementations scale retained activations during training so ordinary inference does not need the same random masking.",
+              "image": "img/languages/deep-neural-nets/dropout-inverted.png"
+            },
+            {
+              "title": "Switch to evaluation mode",
+              "body": "For ordinary deterministic inference, put the model in evaluation mode so dropout is disabled. Other layers can also behave differently between training and evaluation. Intentional Monte Carlo dropout is a separate technique with different requirements.",
+              "image": "img/languages/deep-neural-nets/dropout-evaluation.png"
+            },
+            {
+              "title": "Tune the rate",
+              "body": "Too much dropout can make fitting difficult, while too little may have limited regularization effect. Compare rates and placement using validation data under a controlled setup. The best setting is task-dependent.",
+              "image": "img/languages/deep-neural-nets/dropout-rate.png"
+            },
+            {
+              "title": "Check behavior",
+              "body": "Test that repeated ordinary inference calls use evaluation mode and monitor validation quality. Save and restore relevant training state when reproducibility matters. Dropout does not replace a representative test set.",
+              "image": "img/languages/deep-neural-nets/dropout-checks.png"
             }
           ]
         },
@@ -300,7 +572,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Batch normalization uses minibatch statistics during training and stored running statistics at inference. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Batch normalization normalizes activations using statistics and usually includes learned scale and shift parameters. Its behavior differs between training and ordinary evaluation in common implementations.",
+              "image": "img/languages/deep-neural-nets/batchnorm-overview.png"
+            },
+            {
+              "title": "Use batch statistics",
+              "body": "During training, a batch-normalization layer commonly computes a mean and variance from the current minibatch and updates running estimates. The exact dimensions and update rules depend on the layer and framework.",
+              "image": "img/languages/deep-neural-nets/batchnorm-training.png"
+            },
+            {
+              "title": "Switch to evaluation mode",
+              "body": "With running-statistics tracking enabled, ordinary evaluation commonly uses the stored estimates instead of the current batch statistics. Check the framework configuration: disabling tracking or using a different normalization layer changes behavior.",
+              "image": "img/languages/deep-neural-nets/batchnorm-evaluation.png"
+            },
+            {
+              "title": "Consider batch size",
+              "body": "Small or unrepresentative batches can produce noisy statistics. Batch composition and distributed training configuration can also affect the estimates. Compare alternatives when the batch setup makes the usual statistics unsuitable.",
+              "image": "img/languages/deep-neural-nets/batchnorm-batch-size.png"
+            },
+            {
+              "title": "Validate and save state",
+              "body": "Save the layer's running statistics with the model and test that inference uses the intended mode. Compare validation behavior across representative batches. Correct tensor shapes do not ensure that training and serving normalization agree.",
+              "image": "img/languages/deep-neural-nets/batchnorm-state.png"
             }
           ]
         },
@@ -313,8 +606,29 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Layer normalization normalizes features within each example, making it useful when batch sizes or sequence lengths vary. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Normalize within an example",
+              "body": "Layer normalization rescales a selected set of features within each example using their mean and variance. In many sequence models, it is applied to the feature vector at each token position, though the normalized dimensions depend on the implementation. It does not require statistics from other examples in the batch. This differs from normalization that uses batch-level statistics.",
+              "image": "img/languages/deep-neural-nets/layernorm-overview.png"
+            },
+            {
+              "title": "Compute the normalization",
+              "body": "For a feature vector, subtract its mean and divide by the square root of its variance plus a small epsilon. Epsilon helps avoid division by zero or unstable division when variance is very small. For features [1, 3], the mean is 2 and the population variance is 1, so the normalized values are approximately [-1, 1] when epsilon is small. Actual results depend on the chosen dimensions and epsilon.",
+              "image": "img/languages/deep-neural-nets/layernorm-compute.png"
+            },
+            {
+              "title": "Learn scale and shift",
+              "body": "Layer normalization commonly includes learnable scale and shift parameters, often called gamma and beta. After normalization, the layer multiplies by gamma and adds beta for the configured features. These parameters let the model learn useful output scales and offsets. They are trained with the rest of the model rather than calculated as batch statistics.",
+              "image": "img/languages/deep-neural-nets/layernorm-affine.png"
+            },
+            {
+              "title": "Compare with batch normalization",
+              "body": "Layer normalization typically computes statistics within each example over configured features. Batch normalization commonly uses batch statistics during training and stored running statistics during evaluation, depending on configuration. These choices behave differently when batch composition or size changes. Select a method based on architecture and data rather than assuming that either method is universally better.",
+              "image": "img/languages/deep-neural-nets/layernorm-comparison.png"
+            },
+            {
+              "title": "Test dimensions and behavior",
+              "body": "Check which axes are normalized in the library implementation and whether scale and shift are enabled. Verify tensor shapes for both training and inference, especially when sequence lengths or padding vary. Layer normalization is not a substitute for masking padded tokens in attention or losses. Compare model behavior with a baseline rather than assuming normalization guarantees training success.",
+              "image": "img/languages/deep-neural-nets/layernorm-validation.png"
             }
           ]
         },
@@ -445,7 +759,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Residual paths give gradients and representations a shortcut through deep blocks, often improving optimization. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A residual block combines a transformed input with a shortcut: y = F(x) + x when the shapes match. The block learns the residual transformation F rather than requiring the entire mapping to pass only through that transformation.",
+              "image": "img/languages/deep-neural-nets/residual-block.png"
+            },
+            {
+              "title": "Trace the forward path",
+              "body": "The input x follows two paths: one passes through F, and the other is carried along the shortcut. Their outputs are added element by element. If F(x) is zero, the block's output equals x, although actual blocks may include other operations such as normalization or activation.",
+              "image": "img/languages/deep-neural-nets/residual-elementwise-addition.png"
+            },
+            {
+              "title": "Trace gradients",
+              "body": "For the simple sum y = F(x) + x, the derivative with respect to x contains both the derivative through F and an identity contribution from the shortcut. This gives gradients a direct path through the addition, often helping optimize deep networks. It does not guarantee that gradients or training will always be stable.",
+              "image": "img/languages/deep-neural-nets/residual-gradient-paths.png"
+            },
+            {
+              "title": "Match shapes",
+              "body": "Elementwise addition requires compatible shapes. If a block changes the number of channels or spatial dimensions, the shortcut may use a projection or downsampling so it matches F(x). Check the architecture's exact operations rather than assuming every shortcut is an identity.",
+              "image": "img/languages/deep-neural-nets/residual-projection.png"
+            },
+            {
+              "title": "Validate the design",
+              "body": "Compare a residual design with an appropriate baseline using the same data and evaluation protocol. Track training behavior, held-out performance, and inference cost. A shortcut can improve optimization without guaranteeing better accuracy for every task.",
+              "image": "img/languages/deep-neural-nets/held-out-generalization.png"
             }
           ]
         },
@@ -459,7 +794,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Attention combines value vectors using query-key compatibility and masks to control which positions can interact. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Attention constructs an output for a query by weighting value vectors according to compatibility between that query and corresponding keys. The weights depend on the input, so different queries can combine information differently.",
+              "image": "img/languages/deep-neural-nets/attention-overview.png"
+            },
+            {
+              "title": "Compute attention weights",
+              "body": "In scaled dot-product attention, each query is compared with keys using dot products scaled by the square root of key dimension. A softmax over eligible keys converts scores into nonnegative weights that sum to one for that query.",
+              "image": "img/languages/deep-neural-nets/attention-scaled-weights.png"
+            },
+            {
+              "title": "Combine values",
+              "body": "Multiply each value vector by its attention weight and sum the results. For scalar values 10 and 20 with weights 0.25 and 0.75, the output is 17.5. The weights describe this combination, not a complete explanation of the model's decision.",
+              "image": "img/languages/deep-neural-nets/attention-weighted-example.png"
+            },
+            {
+              "title": "Apply masks",
+              "body": "A causal mask prevents a position from attending to later positions in an autoregressive sequence. A padding mask prevents padded positions from contributing. The exact mask depends on the task and implementation; every query needs a valid set of eligible keys.",
+              "image": "img/languages/deep-neural-nets/attention-causal-mask.png"
+            },
+            {
+              "title": "Check shapes and costs",
+              "body": "For a sequence of n queries and m keys, the score matrix has n rows and m columns per attention head. Full attention across a long sequence can be expensive in memory and compute. Test any approximation or context limit against the task rather than assuming it is lossless.",
+              "image": "img/languages/deep-neural-nets/attention-score-shape.png"
             }
           ]
         },
@@ -473,8 +829,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Transformer blocks combine attention, feed-forward layers, normalization, and residual paths; ordering changes model behavior. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use.",
-              "image": "img/languages/deep-neural-nets/transformer-block.png"
+              "body": "A transformer block combines attention and a position-wise feed-forward network with residual connections and normalization. Variants differ in how these operations are ordered and in which attention masks they use.",
+              "image": "img/languages/deep-neural-nets/transformer-block-parts.png"
+            },
+            {
+              "title": "Mix context with attention",
+              "body": "Self-attention lets a token representation use information from allowed positions in the sequence. A causal mask prevents a position from attending to later positions, while other tasks may allow different attention patterns.",
+              "image": "img/languages/deep-neural-nets/transformer-attention-mask.png"
+            },
+            {
+              "title": "Transform each position",
+              "body": "The feed-forward sublayer applies a learned nonlinear transformation to each position's representation. It typically shares the same parameters across positions. Attention mixes information across positions; the feed-forward sublayer transforms each resulting representation.",
+              "image": "img/languages/deep-neural-nets/transformer-feedforward.png"
+            },
+            {
+              "title": "Connect and normalize",
+              "body": "Residual paths add a sublayer's input to its output, with compatible dimensions. Layer normalization is placed before or after a sublayer depending on the architecture. These choices affect training behavior, so follow the specific model's design.",
+              "image": "img/languages/deep-neural-nets/transformer-residual-normalization.png"
+            },
+            {
+              "title": "Check shapes and masks",
+              "body": "Track batch, sequence, and hidden dimensions through the block, and verify that the mask matches the task. Test padding and causal behavior with small examples. A shape-compatible block can still be wrong if it exposes future information.",
+              "image": "img/languages/deep-neural-nets/transformer-shapes-masks.png"
             }
           ]
         },
@@ -488,7 +864,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Recurrent networks reuse hidden state across sequence steps but can struggle to preserve long-range gradients. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A recurrent neural network processes a sequence one step at a time, updating a hidden state from the current input and previous state. The state summarizes information useful to the model's task.",
+              "image": "img/languages/deep-neural-nets/rnn-state-overview.png"
+            },
+            {
+              "title": "Follow a sequence",
+              "body": "At each position, the network combines the current input with the previous hidden state to compute a new state. It may produce an output at every step or use a later state for a sequence-level prediction.",
+              "image": "img/languages/deep-neural-nets/rnn-state-update.png"
+            },
+            {
+              "title": "Train through time",
+              "body": "Backpropagation through time computes gradients across the unrolled sequence. Repeated operations can make gradients shrink or grow over long spans, making learning difficult. Truncating the backward span also limits which earlier dependencies receive gradient signal.",
+              "image": "img/languages/deep-neural-nets/rnn-backpropagation.png"
+            },
+            {
+              "title": "Use gated variants",
+              "body": "LSTM and GRU architectures use gates to control information flow through state. Gates can help with longer dependencies, but they do not guarantee that all long-range information will be retained. Compare architectures on the actual task.",
+              "image": "img/languages/deep-neural-nets/rnn-gated-variants.png"
+            },
+            {
+              "title": "Handle sequence boundaries",
+              "body": "Reset or carry state according to the application's sequence boundaries, and mask padding where needed. Test variable-length inputs and prevent information from one independent sequence leaking into another through unintended state reuse.",
+              "image": "img/languages/deep-neural-nets/rnn-boundary-handling.png"
             }
           ]
         },
@@ -502,7 +899,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Encoder-decoder systems transform an input sequence into an output sequence, often using autoregressive decoding. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "An encoder-decoder model maps an input sequence to an output sequence. The encoder builds representations of the input, and the decoder uses them to generate the output.",
+              "image": "img/languages/deep-neural-nets/encoder-decoder-overview.png"
+            },
+            {
+              "title": "Encode the input",
+              "body": "The encoder processes the source sequence into representations that carry information for the task. Padding masks and input preprocessing must match the model's design so padding is not treated as ordinary content.",
+              "image": "img/languages/deep-neural-nets/encoder-input.png"
+            },
+            {
+              "title": "Decode sequentially",
+              "body": "An autoregressive decoder generates each output token using earlier output tokens and the encoded source. During generation, its own previous outputs become context; an early mistake can influence later tokens.",
+              "image": "img/languages/deep-neural-nets/decoder-autoregressive.png"
+            },
+            {
+              "title": "Connect source and output",
+              "body": "Cross-attention lets a decoder position use encoder representations when the architecture supports it. Decoder self-attention and cross-attention have different inputs and masks. Other encoder-decoder architectures connect the components differently.",
+              "image": "img/languages/deep-neural-nets/decoder-cross-attention.png"
+            },
+            {
+              "title": "Evaluate generation",
+              "body": "Test complete outputs on representative held-out examples with task-relevant metrics and human inspection where useful. Check length limits, stopping behavior, and whether outputs preserve important source information.",
+              "image": "img/languages/deep-neural-nets/encoder-decoder-evaluation.png"
             }
           ]
         },
@@ -516,7 +934,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Shared representations can help related tasks but can also create negative transfer when task gradients conflict. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Multi-task learning trains a model on more than one task, often sharing part of its representation while using task-specific outputs. Related tasks can share useful signals, but sharing does not always help.",
+              "image": "img/languages/deep-neural-nets/multitask-overview.png"
+            },
+            {
+              "title": "Structure shared learning",
+              "body": "A shared encoder can feed separate prediction heads, each trained against its own target. Data availability and labels may differ by task, so the training procedure must handle missing labels appropriately.",
+              "image": "img/languages/deep-neural-nets/multitask-structure.png"
+            },
+            {
+              "title": "Balance objectives",
+              "body": "A combined loss can weight each task's loss. The weights and scales influence the shared update, so one task can dominate if its contribution is much larger. Choose weights using the goals and evaluation for the actual tasks.",
+              "image": "img/languages/deep-neural-nets/multitask-loss.png"
+            },
+            {
+              "title": "Identify negative transfer",
+              "body": "Sharing can hurt a task if the shared representation or updates favor another objective. Compare each task with a suitable single-task baseline and inspect per-task outcomes; an improved aggregate can hide a regression.",
+              "image": "img/languages/deep-neural-nets/multitask-negative-transfer.png"
+            },
+            {
+              "title": "Evaluate and monitor",
+              "body": "Use task-appropriate held-out metrics and representative data for each task. Check performance across relevant groups and monitor changes after deployment. Adjust task weighting or sharing only after investigating the evidence.",
+              "image": "img/languages/deep-neural-nets/multitask-evaluation.png"
             }
           ]
         },
@@ -529,8 +968,29 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Full and parameter-efficient tuning trade adaptation capacity against compute, memory, and preservation of pretrained behavior. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Choose what to update",
+              "body": "Fine-tuning adapts a pretrained model to a task by training on task-specific data. Full fine-tuning updates all selected model parameters, while parameter-efficient methods update a smaller set, such as adapters or low-rank updates. The choice affects training memory, storage, and adaptation capacity. Compare approaches for the target task rather than assuming the smallest update always works.",
+              "image": "img/languages/deep-neural-nets/finetune-strategy.png"
+            },
+            {
+              "title": "Prepare suitable data",
+              "body": "Training examples should reflect the intended task and respect the applicable data permissions. Split data to prevent related examples or future information from leaking into evaluation. Review label or demonstration quality and include relevant input types. A small or biased fine-tuning set can shift model behavior in undesirable ways.",
+              "image": "img/languages/deep-neural-nets/finetune-data.png"
+            },
+            {
+              "title": "Compare update methods",
+              "body": "A frozen-base method can train added parameters while keeping original weights fixed, reducing the number of trainable parameters. This can reduce optimizer-state memory, but it does not eliminate the cost of the base model or guarantee lower inference latency. Full fine-tuning can offer more flexibility at greater training cost. Measure the actual implementation on the target hardware.",
+              "image": "img/languages/deep-neural-nets/finetune-cost.png"
+            },
+            {
+              "title": "Check retained behavior",
+              "body": "Adaptation can improve the target task while degrading capabilities the pretrained model previously handled. Evaluate both target performance and retained behaviors that matter to the application, including safety or formatting requirements. Compare with the original model and relevant baselines on held-out cases. Investigate regressions rather than relying only on training loss.",
+              "image": "img/languages/deep-neural-nets/finetune-regression.png"
+            },
+            {
+              "title": "Version the release",
+              "body": "Record the base model, tokenizer, training data version, configuration, and adapter or full-weight artifact. Ensure the serving stack loads the intended combination, and test it under realistic inputs. If an adapter is deployed separately, its compatibility with the base version matters. Keep a rollback path and monitor behavior after release.",
+              "image": "img/languages/deep-neural-nets/finetune-release.png"
             }
           ]
         },
@@ -661,7 +1121,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Scaling laws are empirical trends, not guarantees; data quality, task relevance, and inference cost constrain useful scaling. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Scaling laws summarize empirical relationships between measures such as model size, training data, compute, and loss within a particular training setup. They help plan experiments, but a curve fitted to one setting does not guarantee performance on a different architecture, dataset, or task.",
+              "image": "img/languages/deep-neural-nets/scaling-law-measures.png"
+            },
+            {
+              "title": "Separate compute budgets",
+              "body": "Training compute covers optimization and data processing; inference compute recurs when the deployed model serves requests. A larger model can have acceptable training cost but exceed latency or serving budgets. Estimate both budgets using expected traffic and measured performance.",
+              "image": "img/languages/deep-neural-nets/training-inference-budgets.png"
+            },
+            {
+              "title": "Consider data quality",
+              "body": "More examples are useful only in the context of their quality, diversity, relevance, and licensing constraints. Duplicates or evaluation contamination can distort apparent gains. Track data provenance and evaluate on representative, appropriately held-out examples.",
+              "image": "img/languages/deep-neural-nets/scaling-data-quality.png"
+            },
+            {
+              "title": "Fit and test the trend",
+              "body": "Measure comparable runs at multiple scales and fit a trend only over a range with sufficient evidence. Report uncertainty and check whether an extrapolation changes the architecture or data regime. Compare predicted improvements with the cost of the next experiment.",
+              "image": "img/languages/deep-neural-nets/scaling-extrapolation.png"
+            },
+            {
+              "title": "Choose for the application",
+              "body": "Compare candidate models on the task's quality metrics, failure modes, latency, memory, and cost. A lower aggregate language-model loss need not translate to acceptable performance in every downstream use. Prefer the smallest solution that meets the measured requirements rather than assuming bigger is always better.",
+              "image": "img/languages/deep-neural-nets/scaling-application-constraints.png"
             }
           ]
         },
@@ -675,7 +1156,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Data-parallel replicas synchronize gradients, and communication overhead can limit throughput as workers are added. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Data parallelism keeps a model replica on each worker and processes different portions of a batch in parallel. Workers synchronize gradients before the optimizer update so their replicas remain consistent under the intended training setup.",
+              "image": "img/languages/deep-neural-nets/data-parallel-gradients.png"
+            },
+            {
+              "title": "Synchronize gradients",
+              "body": "Each worker computes gradients for its local examples. A collective operation such as all-reduce aggregates gradients across workers; implementations often average them. The exact scaling must match the loss reduction and local batch sizes, especially when batches differ.",
+              "image": "img/languages/deep-neural-nets/distributed-synchronization.png"
+            },
+            {
+              "title": "Account for effective batch",
+              "body": "With four workers processing eight examples each and no gradient accumulation, the global batch contains 32 examples per synchronized update. Gradient accumulation can increase that effective batch. Changing batch size may require retuning learning rate or other settings.",
+              "image": "img/languages/deep-neural-nets/global-batch-example.png"
+            },
+            {
+              "title": "Measure scaling limits",
+              "body": "Adding workers can improve throughput, but communication, data loading, and synchronization delays can limit gains. Measure examples per second, accelerator utilization, and time spent communicating rather than assuming linear speedup.",
+              "image": "img/languages/deep-neural-nets/distributed-scaling.png"
+            },
+            {
+              "title": "Validate and recover",
+              "body": "Check that data sharding avoids unintended duplication and that distributed metrics use correct aggregation. Save model, optimizer, scheduler, and relevant training state for recovery. Compare held-out behavior with a baseline because a faster run is not necessarily an equivalent model.",
+              "image": "img/languages/deep-neural-nets/distributed-recovery.png"
             }
           ]
         },
@@ -689,7 +1191,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Tensor parallelism partitions operations and pipeline parallelism partitions layers; both introduce communication and scheduling trade-offs. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Model parallelism distributes parts of a model across devices. Tensor parallelism splits work within operations, while pipeline parallelism assigns different layers or stages to different devices.",
+              "image": "img/languages/deep-neural-nets/parallelism-types.png"
+            },
+            {
+              "title": "Partition an operation",
+              "body": "Tensor parallelism can partition a large matrix operation across devices and combine or exchange intermediate results as required. It can help a model fit or use multiple devices, but frequent communication makes network performance important.",
+              "image": "img/languages/deep-neural-nets/tensor-parallel-operation.png"
+            },
+            {
+              "title": "Partition stages",
+              "body": "Pipeline parallelism places consecutive model stages on different devices. Activations move forward between stages and gradients move backward during training. Microbatches can keep stages busy, though scheduling introduces idle periods and memory trade-offs.",
+              "image": "img/languages/deep-neural-nets/pipeline-parallel-stages.png"
+            },
+            {
+              "title": "Measure the bottleneck",
+              "body": "Compare throughput, device memory, communication time, and stage utilization. An uneven pipeline stage can slow the rest, while tensor parallelism can be limited by collective communication. More devices do not automatically improve throughput.",
+              "image": "img/languages/deep-neural-nets/parallelism-bottlenecks.png"
+            },
+            {
+              "title": "Validate equivalence",
+              "body": "Test tensor shapes, synchronization, and output or gradient behavior against a small reference setup. Record partitioning and checkpoint state so training can be resumed consistently. Numerical differences can arise from operation ordering and hardware.",
+              "image": "img/languages/deep-neural-nets/parallelism-validation.png"
             }
           ]
         },
@@ -703,7 +1226,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Checkpointing recomputes selected activations during backpropagation to exchange extra compute for lower memory use. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Activation checkpointing reduces training memory by retaining selected intermediate values and recomputing others during the backward pass. It trades additional computation for lower activation storage.",
+              "image": "img/languages/deep-neural-nets/activation-checkpoint-tradeoff.png"
+            },
+            {
+              "title": "Follow the passes",
+              "body": "During the forward pass, a checkpointed region keeps only the values needed to rerun it. During backpropagation, the region is recomputed so its intermediate activations are available for gradient calculation.",
+              "image": "img/languages/deep-neural-nets/activation-checkpoint-passes.png"
+            },
+            {
+              "title": "Choose boundaries",
+              "body": "Checkpointing more regions can save activation memory but add more recomputation overhead. Measure peak memory and step time for representative batches. The best boundaries depend on the model, framework, and available hardware.",
+              "image": "img/languages/deep-neural-nets/activation-checkpoint-boundaries.png"
+            },
+            {
+              "title": "Handle state and randomness",
+              "body": "Recomputation must be compatible with operations that use randomness or mutate state. Follow the framework's checkpointing rules for random state and side effects. An operation that behaves differently when rerun can produce incorrect gradients.",
+              "image": "img/languages/deep-neural-nets/activation-checkpoint-randomness.png"
+            },
+            {
+              "title": "Validate the change",
+              "body": "Compare outputs and gradients against a non-checkpointed reference on a small case within suitable numerical tolerances. Measure training speed and peak memory, and distinguish activation checkpointing from saving model checkpoints for recovery.",
+              "image": "img/languages/deep-neural-nets/activation-checkpoint-validation.png"
             }
           ]
         },
@@ -717,7 +1261,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Quantization-aware training simulates low-precision effects during training to reduce quality loss after conversion. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Quantization-aware training simulates selected low-precision effects during training. It aims to help a model adapt before conversion to a quantized representation for an intended deployment target.",
+              "image": "img/languages/deep-neural-nets/qat-overview.png"
+            },
+            {
+              "title": "Simulate quantization",
+              "body": "A typical workflow inserts fake-quantization operations that approximate rounding and clipping while training retains suitable higher-precision state. The exact operators and supported formats depend on the framework and target hardware.",
+              "image": "img/languages/deep-neural-nets/qat-simulation.png"
+            },
+            {
+              "title": "Choose a target",
+              "body": "Define the deployment backend, supported operations, precision, and performance constraints before preparing the model. A quantization scheme unsupported by the target cannot be assumed to provide the expected speed or memory savings.",
+              "image": "img/languages/deep-neural-nets/qat-target.png"
+            },
+            {
+              "title": "Train and convert",
+              "body": "Fine-tune or train with the simulated quantization behavior, then convert using the framework's supported procedure. Preserve preprocessing and version information. Conversion can change numerical behavior, so evaluate the converted artifact itself.",
+              "image": "img/languages/deep-neural-nets/qat-conversion.png"
+            },
+            {
+              "title": "Measure the outcome",
+              "body": "Compare held-out quality, model size, latency, and resource use with a suitable baseline on representative hardware. Investigate quality regressions and unsupported operations. Quantization-aware training does not guarantee no accuracy loss.",
+              "image": "img/languages/deep-neural-nets/qat-measurement.png"
             }
           ]
         },
@@ -730,8 +1295,29 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Distillation trains a smaller student using teacher outputs or intermediate signals and must be judged on task outcomes. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Transfer from teacher to student",
+              "body": "Knowledge distillation trains a student model using information from a teacher, often to reduce inference cost or latency. The student can learn from the teacher's output probabilities, logits, generated examples, or intermediate representations. A smaller model is not automatically better: compare task quality, resource use, and operational constraints against both teacher and baseline.",
+              "image": "img/languages/deep-neural-nets/distillation-overview.png"
+            },
+            {
+              "title": "Learn from soft targets",
+              "body": "In classification, a teacher's probability distribution can convey relative preference among classes, not just its top choice. A student can minimize a divergence from that distribution, sometimes alongside ordinary loss against labeled targets. Temperature rescales logits before softmax and can reveal differences among lower-probability classes. The exact objective and any temperature-dependent scaling must be defined consistently in the implementation.",
+              "image": "img/languages/deep-neural-nets/distillation-soft-targets.png"
+            },
+            {
+              "title": "Combine objectives carefully",
+              "body": "A common objective combines a supervised loss on available labels with a distillation loss from the teacher. Their relative weights change the gradients the student receives. A teacher's confident mistake can be copied, so validate the weights on data that reflects the intended task. Record the teacher version, training data, temperature, and loss definition to make results reproducible.",
+              "image": "img/languages/deep-neural-nets/distillation-losses.png"
+            },
+            {
+              "title": "Select transfer data",
+              "body": "The examples used to obtain teacher targets shape what the student can learn. Include relevant input types and hard cases, and check data permissions and label quality. If the student sees a narrow distribution, it may match the teacher there but fail elsewhere. Keep evaluation examples separate from transfer-data selection and tuning.",
+              "image": "img/languages/deep-neural-nets/distillation-data.png"
+            },
+            {
+              "title": "Evaluate the deployed student",
+              "body": "Compare the student with the teacher and an appropriate non-distilled baseline on held-out task metrics, important slices, and failure cases. Measure latency, memory, throughput, and cost on the target hardware under realistic input sizes. A low teacher-matching loss does not prove that the student meets the application's quality requirements. Monitor the deployed model if the data or environment changes.",
+              "image": "img/languages/deep-neural-nets/distillation-evaluation.png"
             }
           ]
         },

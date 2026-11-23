@@ -978,6 +978,942 @@
               }
             ]
           }
+        },
+        {
+          "id": "aie-new-26",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Frame the user problem",
+          "description": "A support team requests an AI chatbot because agents spend several minutes searching for refund rules. Which problem statement best guides the project?",
+          "choices": [
+            {
+              "text": "Support agents need to find the applicable refund rule faster while handling customer requests.",
+              "correct": true
+            },
+            {
+              "text": "Every customer conversation must be fully automated.",
+              "correct": false
+            },
+            {
+              "text": "The team needs to use the newest chatbot model.",
+              "correct": false
+            },
+            {
+              "text": "The system should generate longer answers than the current tool.",
+              "correct": false
+            }
+          ],
+          "hint": "Identify the user, the task, and the difficulty without prescribing a model.",
+          "solution": {
+            "code": "Support agents need to find the applicable refund rule faster while handling customer requests.",
+            "steps": [
+              {
+                "title": "Describe the work",
+                "explanation": "The agents are searching for a rule while responding to customers; that is the task to improve."
+              },
+              {
+                "title": "Leave the solution open",
+                "explanation": "A problem statement should not assume that a chatbot, full automation, or longer answers will solve the problem."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-27",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Choose a decision point",
+          "description": "An assistant finds possible policy passages for a support agent. The team wants a human to remain responsible for refund decisions. Which design matches that goal?",
+          "choices": [
+            {
+              "text": "Issue the refund automatically whenever a passage is found.",
+              "correct": false
+            },
+            {
+              "text": "Show the passages and their sources for the agent to review before deciding.",
+              "correct": true
+            },
+            {
+              "text": "Refuse to show any information until the customer selects a refund amount.",
+              "correct": false
+            },
+            {
+              "text": "Hide the source passages and show only a confidence score.",
+              "correct": false
+            }
+          ],
+          "hint": "Consider what evidence the person needs to make the decision.",
+          "solution": {
+            "code": "Show the passages and their sources for the agent to review before deciding.",
+            "steps": [
+              {
+                "title": "Separate suggestion from action",
+                "explanation": "Retrieving evidence assists the agent without making the refund decision on their behalf."
+              },
+              {
+                "title": "Support review",
+                "explanation": "Source passages let the agent check whether the policy applies to this particular case."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-28",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Measure speed and quality",
+          "description": "A policy assistant is intended to help agents respond faster without giving unsupported advice. Which evaluation best captures both goals?",
+          "choices": [
+            {
+              "text": "Count how many employees attend the launch meeting.",
+              "correct": false
+            },
+            {
+              "text": "Measure time to find the correct policy and the rate of unsupported answers on representative cases.",
+              "correct": true
+            },
+            {
+              "text": "Measure only the average response time.",
+              "correct": false
+            },
+            {
+              "text": "Count generated words and measure model size.",
+              "correct": false
+            }
+          ],
+          "hint": "Pair a measure of the desired improvement with a measure of the risk.",
+          "solution": {
+            "code": "Measure time to find the correct policy and the rate of unsupported answers on representative cases.",
+            "steps": [
+              {
+                "title": "Measure the benefit",
+                "explanation": "Time to find the correct policy addresses the stated goal of helping agents respond faster."
+              },
+              {
+                "title": "Check the guardrail",
+                "explanation": "Unsupported answers reveal whether speed comes at the expense of reliable advice."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-29",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Compare against a baseline",
+          "description": "A team wants to know whether an AI policy assistant improves on keyword search. How should it compare the two approaches?",
+          "choices": [
+            {
+              "text": "Test the assistant on easy cases and keyword search on difficult cases.",
+              "correct": false
+            },
+            {
+              "text": "Compare only their model names.",
+              "correct": false
+            },
+            {
+              "text": "Evaluate the assistant without recording how the current workflow performs.",
+              "correct": false
+            },
+            {
+              "text": "Compare both on the same representative cases using the same success criteria.",
+              "correct": true
+            }
+          ],
+          "hint": "A fair comparison keeps the evaluation cases and criteria consistent.",
+          "solution": {
+            "code": "Compare both on the same representative cases using the same success criteria.",
+            "steps": [
+              {
+                "title": "Hold the test constant",
+                "explanation": "Using the same cases prevents differences in case difficulty from explaining the result."
+              },
+              {
+                "title": "Assess the trade-off",
+                "explanation": "The same measures make it possible to compare the approaches on the benefit and risks that matter."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-30",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Handle an unclear request",
+          "description": "A customer asks about a refund, but the information needed to identify the applicable policy is missing. What should the assistant do?",
+          "choices": [
+            {
+              "text": "Ask for the missing information or hand the case to a person.",
+              "correct": true
+            },
+            {
+              "text": "Guess the missing facts and present the result as certain.",
+              "correct": false
+            },
+            {
+              "text": "Select the policy with the longest text.",
+              "correct": false
+            },
+            {
+              "text": "Promise a refund to avoid a delay.",
+              "correct": false
+            }
+          ],
+          "hint": "Consider what happens when the request is outside the information available to the assistant.",
+          "solution": {
+            "code": "Ask for the missing information or hand the case to a person.",
+            "steps": [
+              {
+                "title": "Identify the gap",
+                "explanation": "The assistant cannot reliably choose a policy without the facts needed to determine which one applies."
+              },
+              {
+                "title": "Provide a safe next step",
+                "explanation": "Clarification or human review avoids presenting a guess as a decision."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-31",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Investigate missing evidence",
+          "description": "A policy assistant's model performs well when given the right passage, but users receive answers without the relevant policy. What should the team investigate first?",
+          "choices": [
+            {
+              "text": "Whether the product has a more colorful icon.",
+              "correct": false
+            },
+            {
+              "text": "Whether the model can produce longer sentences.",
+              "correct": false
+            },
+            {
+              "text": "Whether retrieval finds and passes the relevant policy to the model.",
+              "correct": true
+            },
+            {
+              "text": "Whether users have memorized every policy.",
+              "correct": false
+            }
+          ],
+          "hint": "Follow the evidence from the source documents to the model.",
+          "solution": {
+            "code": "Whether retrieval finds and passes the relevant policy to the model.",
+            "steps": [
+              {
+                "title": "Trace the workflow",
+                "explanation": "The model can use a relevant passage only if an earlier stage supplies it."
+              },
+              {
+                "title": "Inspect retrieval",
+                "explanation": "A retrieval or passage-selection failure can affect the product even when the model performs well with correct evidence."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-32",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Handle a model timeout",
+          "description": "An AI assistant times out while answering a customer. Which response best supports a reliable product experience?",
+          "choices": [
+            {
+              "text": "Present an invented answer as though the request succeeded.",
+              "correct": false
+            },
+            {
+              "text": "Hide the timeout and leave the customer waiting indefinitely.",
+              "correct": false
+            },
+            {
+              "text": "Remove the error logs so the service appears healthy.",
+              "correct": false
+            },
+            {
+              "text": "Show that the request failed and offer a retry or human assistance.",
+              "correct": true
+            }
+          ],
+          "hint": "Make the failure visible and provide a next step.",
+          "solution": {
+            "code": "Show that the request failed and offer a retry or human assistance.",
+            "steps": [
+              {
+                "title": "Communicate the failure",
+                "explanation": "A timeout means the requested answer was not produced successfully."
+              },
+              {
+                "title": "Offer recourse",
+                "explanation": "A retry or human handoff gives the customer a clear next step without disguising the failure."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-33",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Validate assistant input",
+          "description": "A policy assistant requires a nonempty question. A request arrives with an empty question. What should the application do?",
+          "choices": [
+            {
+              "text": "Invent a question and return an answer as success.",
+              "correct": false
+            },
+            {
+              "text": "Return a clear validation error before invoking the model.",
+              "correct": true
+            },
+            {
+              "text": "Discard all other requests until the user guesses the problem.",
+              "correct": false
+            },
+            {
+              "text": "Treat the empty value as proof that the user is authorized.",
+              "correct": false
+            }
+          ],
+          "hint": "The input contract specifies required fields.",
+          "solution": {
+            "code": "Return a clear validation error before invoking the model.",
+            "steps": [
+              {
+                "title": "Check the contract",
+                "explanation": "The request does not meet the nonempty-question requirement."
+              },
+              {
+                "title": "Report the failure",
+                "explanation": "An explicit validation error identifies the problem without fabricating a successful answer."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-34",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Check generated output",
+          "description": "A model returns valid JSON with an answer and a source ID, but the ID is not in the application's permitted source set. What should happen?",
+          "choices": [
+            {
+              "text": "Reject or explicitly handle the invalid source reference.",
+              "correct": true
+            },
+            {
+              "text": "Accept the source because the JSON parses.",
+              "correct": false
+            },
+            {
+              "text": "Replace the source with a random permitted ID and claim success.",
+              "correct": false
+            },
+            {
+              "text": "Assume the answer is factual because it contains an ID.",
+              "correct": false
+            }
+          ],
+          "hint": "Syntactic validity and source validity are separate checks.",
+          "solution": {
+            "code": "Reject or explicitly handle the invalid source reference.",
+            "steps": [
+              {
+                "title": "Validate the reference",
+                "explanation": "The source identifier must belong to the allowed set, not just be well formed."
+              },
+              {
+                "title": "Handle the failure",
+                "explanation": "Do not present an unverified or substituted source as a successful answer."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-35",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Separate format from correctness",
+          "description": "A support assistant returns valid JSON but cites a passage that does not support its answer. Which quality dimension failed?",
+          "choices": [
+            {
+              "text": "Network latency only.",
+              "correct": false
+            },
+            {
+              "text": "The ability to serialize JSON.",
+              "correct": false
+            },
+            {
+              "text": "JSON syntax.",
+              "correct": false
+            },
+            {
+              "text": "Factual correctness and grounding.",
+              "correct": true
+            }
+          ],
+          "hint": "A valid shape does not establish a correct answer.",
+          "solution": {
+            "code": "Factual correctness and grounding.",
+            "steps": [
+              {
+                "title": "Check the format",
+                "explanation": "The response satisfies the JSON requirement."
+              },
+              {
+                "title": "Check the evidence",
+                "explanation": "Unsupported claims fail the factual grounding criterion."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-36",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Investigate uneven coverage",
+          "description": "An assistant answers 90% of all requests correctly but fails most requests from one important category. What should the team do?",
+          "choices": [
+            {
+              "text": "Ignore the category because the average is high.",
+              "correct": false
+            },
+            {
+              "text": "Inspect per-category performance and decide how to address the gap.",
+              "correct": true
+            },
+            {
+              "text": "Measure only the length of answers.",
+              "correct": false
+            },
+            {
+              "text": "Assume every user has the same experience.",
+              "correct": false
+            }
+          ],
+          "hint": "An overall average can hide concentrated failures.",
+          "solution": {
+            "code": "Inspect per-category performance and decide how to address the gap.",
+            "steps": [
+              {
+                "title": "Locate the gap",
+                "explanation": "Aggregate quality does not reveal which cases fail."
+              },
+              {
+                "title": "Investigate the cases",
+                "explanation": "Category-level evaluation shows where improvement or a safe fallback is needed."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-37",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Compare realistic latency",
+          "description": "Two models have similar answer quality, but one is slower at peak traffic. Which measurement helps decide if it meets the user requirement?",
+          "choices": [
+            {
+              "text": "A single response measured on an idle machine.",
+              "correct": false
+            },
+            {
+              "text": "Only the model's training time.",
+              "correct": false
+            },
+            {
+              "text": "The number of letters in the model name.",
+              "correct": false
+            },
+            {
+              "text": "End-to-end response times under representative traffic, including slow requests.",
+              "correct": true
+            }
+          ],
+          "hint": "Measure the experience users receive under realistic load.",
+          "solution": {
+            "code": "End-to-end response times under representative traffic, including slow requests.",
+            "steps": [
+              {
+                "title": "Measure the workflow",
+                "explanation": "Include end-to-end response time rather than only internal model time."
+              },
+              {
+                "title": "Inspect slower requests",
+                "explanation": "Tail behavior under representative traffic can reveal missed latency targets."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-38",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Choose a practical baseline",
+          "description": "A team wants to automate support-ticket routing. Which is a useful baseline?",
+          "choices": [
+            {
+              "text": "An unrelated image classifier.",
+              "correct": false
+            },
+            {
+              "text": "Only the proposed model's training loss.",
+              "correct": false
+            },
+            {
+              "text": "The current routing workflow measured on representative tickets.",
+              "correct": true
+            },
+            {
+              "text": "A score with no defined task.",
+              "correct": false
+            }
+          ],
+          "hint": "Compare against a real alternative for the same task.",
+          "solution": {
+            "code": "The current routing workflow measured on representative tickets.",
+            "steps": [
+              {
+                "title": "Identify the existing alternative",
+                "explanation": "The current routing workflow already handles the task."
+              },
+              {
+                "title": "Measure it",
+                "explanation": "Evaluate it on representative cases using relevant criteria."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-39",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Compare approaches fairly",
+          "description": "A rule is evaluated on easy tickets and a new model on hard tickets. Why is the comparison unreliable?",
+          "choices": [
+            {
+              "text": "The ticket sets differ in difficulty.",
+              "correct": true
+            },
+            {
+              "text": "All tickets have equal difficulty.",
+              "correct": false
+            },
+            {
+              "text": "Rules cannot be evaluated.",
+              "correct": false
+            },
+            {
+              "text": "Model quality is independent of the cases used.",
+              "correct": false
+            }
+          ],
+          "hint": "The data differs between the two measurements.",
+          "solution": {
+            "code": "The ticket sets differ in difficulty.",
+            "steps": [
+              {
+                "title": "Identify the difference",
+                "explanation": "The two approaches faced different cases."
+              },
+              {
+                "title": "Improve the comparison",
+                "explanation": "Use the same representative evaluation cases and criteria."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-40",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Consider the full tradeoff",
+          "description": "A complex system is slightly more accurate than a rule but exceeds the latency budget. What should the team consider?",
+          "choices": [
+            {
+              "text": "Ignoring latency because accuracy is higher.",
+              "correct": false
+            },
+            {
+              "text": "Only the model's name.",
+              "correct": false
+            },
+            {
+              "text": "Assuming complexity is always preferable.",
+              "correct": false
+            },
+            {
+              "text": "Whether the gain justifies the cost and missed constraint.",
+              "correct": true
+            }
+          ],
+          "hint": "The intended use has more than one requirement.",
+          "solution": {
+            "code": "Whether the gain justifies the cost and missed constraint.",
+            "steps": [
+              {
+                "title": "Compare quality",
+                "explanation": "The complex system has a small measured gain."
+              },
+              {
+                "title": "Include constraints",
+                "explanation": "Latency, cost, and operational requirements affect the decision."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-41",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Escalate outside scope",
+          "description": "A customer asks about an issue the assistant is not authorized to resolve. What is the best fallback?",
+          "choices": [
+            {
+              "text": "Route the request to an authorized human channel and explain the handoff.",
+              "correct": true
+            },
+            {
+              "text": "Ask the model to grant itself the missing permission.",
+              "correct": false
+            },
+            {
+              "text": "Close the request without telling the customer.",
+              "correct": false
+            },
+            {
+              "text": "Invent a policy answer to avoid escalation.",
+              "correct": false
+            }
+          ],
+          "hint": "The fallback must provide a usable path rather than inventing an answer.",
+          "solution": {
+            "code": "Route the request to an authorized human channel and explain the handoff.",
+            "steps": [
+              {
+                "title": "Identify the limitation",
+                "explanation": "The request is outside the assistant's authority."
+              },
+              {
+                "title": "Provide a route",
+                "explanation": "An authorized reviewer can handle the request with appropriate context."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-42",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Prepare a privacy-aware handoff",
+          "description": "A support case is escalated to a human. What information should be included?",
+          "choices": [
+            {
+              "text": "Every conversation ever held by the customer.",
+              "correct": false
+            },
+            {
+              "text": "The necessary request context and escalation reason, subject to access and privacy rules.",
+              "correct": true
+            },
+            {
+              "text": "No context at all, regardless of the reviewer's needs.",
+              "correct": false
+            },
+            {
+              "text": "All service credentials to help the reviewer.",
+              "correct": false
+            }
+          ],
+          "hint": "Balance the reviewer's needs with data minimization.",
+          "solution": {
+            "code": "The necessary request context and escalation reason, subject to access and privacy rules.",
+            "steps": [
+              {
+                "title": "Identify necessary context",
+                "explanation": "The reviewer needs enough information to act."
+              },
+              {
+                "title": "Limit disclosure",
+                "explanation": "Share only appropriate information with authorized reviewers."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-43",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Measure fallback reliability",
+          "description": "Which measure helps assess whether a human fallback actually works?",
+          "choices": [
+            {
+              "text": "Only the number of prompt tokens.",
+              "correct": false
+            },
+            {
+              "text": "The color of the escalation button.",
+              "correct": false
+            },
+            {
+              "text": "Successful handoff rate and review wait time.",
+              "correct": true
+            },
+            {
+              "text": "Only the model's training loss.",
+              "correct": false
+            }
+          ],
+          "hint": "The user needs a completed route to help.",
+          "solution": {
+            "code": "Successful handoff rate and review wait time.",
+            "steps": [
+              {
+                "title": "Measure routing",
+                "explanation": "Check whether requests reach the appropriate reviewers."
+              },
+              {
+                "title": "Measure service",
+                "explanation": "Wait times and outcomes reveal whether the route is useful."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-44",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Map an external boundary",
+          "description": "A service sends retrieved documents to a model provider. What should a boundary map show?",
+          "choices": [
+            {
+              "text": "No external service because retrieval happens first.",
+              "correct": false
+            },
+            {
+              "text": "The data flow to the external provider and applicable controls.",
+              "correct": true
+            },
+            {
+              "text": "Only the user interface.",
+              "correct": false
+            },
+            {
+              "text": "Only the model name without the data flow.",
+              "correct": false
+            }
+          ],
+          "hint": "Trace where data leaves one component and enters another.",
+          "solution": {
+            "code": "The data flow to the external provider and applicable controls.",
+            "steps": [
+              {
+                "title": "Identify the flow",
+                "explanation": "Retrieved content is sent to a separate provider."
+              },
+              {
+                "title": "Mark the boundary",
+                "explanation": "Record the crossing and relevant access and data-handling controls."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-45",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Separate proposal and execution",
+          "description": "A model suggests a database update. Which component should authorize the action?",
+          "choices": [
+            {
+              "text": "The model output by itself.",
+              "correct": false
+            },
+            {
+              "text": "The application or trusted execution layer under its policy.",
+              "correct": true
+            },
+            {
+              "text": "The retrieved document containing the request.",
+              "correct": false
+            },
+            {
+              "text": "Any user who can see the response.",
+              "correct": false
+            }
+          ],
+          "hint": "A generated proposal does not grant authority.",
+          "solution": {
+            "code": "The application or trusted execution layer under its policy.",
+            "steps": [
+              {
+                "title": "Identify the proposal",
+                "explanation": "The model suggests an update."
+              },
+              {
+                "title": "Enforce the boundary",
+                "explanation": "A trusted component checks permissions before execution."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-46",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Maintain a boundary map",
+          "description": "A new external tool is added to an agent. What should happen to the system map?",
+          "choices": [
+            {
+              "text": "Assume the new tool has no data access.",
+              "correct": false
+            },
+            {
+              "text": "Update the flows, trust boundaries, and permissions for the new tool.",
+              "correct": true
+            },
+            {
+              "text": "Leave the map unchanged because it was once reviewed.",
+              "correct": false
+            },
+            {
+              "text": "Remove existing failure paths.",
+              "correct": false
+            }
+          ],
+          "hint": "New dependencies can introduce new data flows.",
+          "solution": {
+            "code": "Update the flows, trust boundaries, and permissions for the new tool.",
+            "steps": [
+              {
+                "title": "Identify the change",
+                "explanation": "The tool adds another component and possible boundary."
+              },
+              {
+                "title": "Review the map",
+                "explanation": "Record its actual access, flows, and failure handling."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-47",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Identify future information",
+          "description": "A model predicts whether a loan will default when the application is submitted. Which feature would leak future information?",
+          "choices": [
+            {
+              "text": "Income reported on the application before the decision.",
+              "correct": false
+            },
+            {
+              "text": "The application date available at decision time.",
+              "correct": false
+            },
+            {
+              "text": "The requested loan amount at application time.",
+              "correct": false
+            },
+            {
+              "text": "Whether the borrower missed a payment three months after approval.",
+              "correct": true
+            }
+          ],
+          "hint": "Compare each feature's availability with the decision time.",
+          "solution": {
+            "code": "Whether the borrower missed a payment three months after approval.",
+            "steps": [
+              {
+                "title": "Set the decision time",
+                "explanation": "The prediction is made when the application is submitted."
+              },
+              {
+                "title": "Identify leakage",
+                "explanation": "A missed payment three months later is not available at that time."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-48",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Check feature timing",
+          "description": "A report describes yesterday's sales but is published at noon. A prediction runs at 9 a.m. Which version can the prediction use?",
+          "choices": [
+            {
+              "text": "The noon report if it improves the offline score.",
+              "correct": false
+            },
+            {
+              "text": "Any future revision as long as it uses yesterday's date.",
+              "correct": false
+            },
+            {
+              "text": "The most recent version actually available by 9 a.m.",
+              "correct": true
+            },
+            {
+              "text": "The noon report because it describes yesterday.",
+              "correct": false
+            }
+          ],
+          "hint": "The event date and publication time can differ.",
+          "solution": {
+            "code": "The most recent version actually available by 9 a.m.",
+            "steps": [
+              {
+                "title": "Compare times",
+                "explanation": "The noon report is published after the 9 a.m. prediction."
+              },
+              {
+                "title": "Use available data",
+                "explanation": "Use an appropriately recorded earlier version, if available."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-new-49",
+          "language": "ai-engineering",
+          "level": "new",
+          "title": "Detect a unit mismatch",
+          "description": "A training pipeline expects annual income in dollars, but the serving pipeline supplies cents under the same field name. What is the likely issue?",
+          "choices": [
+            {
+              "text": "The model receives a value with different units and may produce invalid predictions.",
+              "correct": true
+            },
+            {
+              "text": "The mismatch can only affect the display, not inference.",
+              "correct": false
+            },
+            {
+              "text": "The feature is compatible because the field name is unchanged.",
+              "correct": false
+            },
+            {
+              "text": "The model automatically converts cents to dollars.",
+              "correct": false
+            }
+          ],
+          "hint": "A matching name does not guarantee matching meaning.",
+          "solution": {
+            "code": "The model receives a value with different units and may produce invalid predictions.",
+            "steps": [
+              {
+                "title": "Compare the units",
+                "explanation": "The serving value is 100 times the dollar value."
+              },
+              {
+                "title": "Assess the contract",
+                "explanation": "Training and serving must use consistent units and transformations."
+              }
+            ]
+          }
         }
       ]
     },
@@ -1955,6 +2891,786 @@
               {
                 "title": "Apply with evidence",
                 "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-beginner-26",
+          "language": "ai-engineering",
+          "level": "beginner",
+          "title": "Plan a contract change",
+          "description": "An API team wants to add an optional response field. An existing client rejects unknown fields. What should the team do before release?",
+          "choices": [
+            {
+              "text": "Remove all error responses from the API.",
+              "correct": false
+            },
+            {
+              "text": "Change the model without checking the client.",
+              "correct": false
+            },
+            {
+              "text": "Assume optional additions can never affect clients.",
+              "correct": false
+            },
+            {
+              "text": "Test compatibility and plan a versioned or coordinated migration.",
+              "correct": true
+            }
+          ],
+          "hint": "Client behavior can make even an added field incompatible.",
+          "solution": {
+            "code": "Test compatibility and plan a versioned or coordinated migration.",
+            "steps": [
+              {
+                "title": "Identify the assumption",
+                "explanation": "The client rejects fields it does not recognize."
+              },
+              {
+                "title": "Protect existing clients",
+                "explanation": "Compatibility tests and an appropriate migration can prevent the added field from breaking them."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-beginner-27",
+          "language": "ai-engineering",
+          "level": "beginner",
+          "title": "Distinguish API failures",
+          "description": "A client sends invalid input; another valid request fails because the model service times out. Why should the API distinguish these failures?",
+          "choices": [
+            {
+              "text": "The client should always fabricate an answer.",
+              "correct": false
+            },
+            {
+              "text": "A timeout means the input schema was valid for every client.",
+              "correct": false
+            },
+            {
+              "text": "The client can correct invalid input or handle a temporary dependency failure differently.",
+              "correct": true
+            },
+            {
+              "text": "Both failures prove the generated answer is correct.",
+              "correct": false
+            }
+          ],
+          "hint": "Consider the different next steps available to the client.",
+          "solution": {
+            "code": "The client can correct invalid input or handle a temporary dependency failure differently.",
+            "steps": [
+              {
+                "title": "Identify the cause",
+                "explanation": "An invalid request requires a correction; a timeout concerns the service dependency."
+              },
+              {
+                "title": "Expose useful states",
+                "explanation": "Documented error categories help clients choose an appropriate response or retry policy."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-beginner-28",
+          "language": "ai-engineering",
+          "level": "beginner",
+          "title": "Validate a required field",
+          "description": "A summary endpoint requires a nonempty text field. A request omits it. What should the service do?",
+          "choices": [
+            {
+              "text": "Return a clear validation error before invoking the model.",
+              "correct": true
+            },
+            {
+              "text": "Grant the caller access to all documents.",
+              "correct": false
+            },
+            {
+              "text": "Pass the missing field to the model and assume it will enforce the API contract.",
+              "correct": false
+            },
+            {
+              "text": "Invent text and report success.",
+              "correct": false
+            }
+          ],
+          "hint": "Missing required data is a request-contract failure.",
+          "solution": {
+            "code": "Return a clear validation error before invoking the model.",
+            "steps": [
+              {
+                "title": "Check the input",
+                "explanation": "The required text is missing."
+              },
+              {
+                "title": "Return an error",
+                "explanation": "Reject the invalid request and identify the problem without fabricating data."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-beginner-29",
+          "language": "ai-engineering",
+          "level": "beginner",
+          "title": "Separate validation and authorization",
+          "description": "A document identifier has a valid format, but its owner has not granted the requester access. What should happen?",
+          "choices": [
+            {
+              "text": "Allow access because the identifier is valid.",
+              "correct": false
+            },
+            {
+              "text": "Pass the document into the model and ask it to refuse.",
+              "correct": false
+            },
+            {
+              "text": "Replace the document with another user's data.",
+              "correct": false
+            },
+            {
+              "text": "Deny access according to the authorization policy.",
+              "correct": true
+            }
+          ],
+          "hint": "A syntactically valid identifier does not grant permission.",
+          "solution": {
+            "code": "Deny access according to the authorization policy.",
+            "steps": [
+              {
+                "title": "Check the contract",
+                "explanation": "The identifier passes its format check."
+              },
+              {
+                "title": "Enforce access",
+                "explanation": "A separate authorization decision determines whether the caller can read the resource."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-beginner-30",
+          "language": "ai-engineering",
+          "level": "beginner",
+          "title": "Count the context budget",
+          "description": "A model limit applies to the complete request and generated output. What should an application count when enforcing that limit?",
+          "choices": [
+            {
+              "text": "Only the number of sentences in the response.",
+              "correct": false
+            },
+            {
+              "text": "Only the user input characters.",
+              "correct": false
+            },
+            {
+              "text": "Only the uploaded file name.",
+              "correct": false
+            },
+            {
+              "text": "Instructions and input tokens, plus reserved output tokens, using the relevant tokenizer.",
+              "correct": true
+            }
+          ],
+          "hint": "The input is not the whole context budget.",
+          "solution": {
+            "code": "Instructions and input tokens, plus reserved output tokens, using the relevant tokenizer.",
+            "steps": [
+              {
+                "title": "Count request components",
+                "explanation": "Instructions and user content consume input tokens."
+              },
+              {
+                "title": "Reserve output",
+                "explanation": "Leave space for generated tokens within the model's limit."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-beginner-31",
+          "language": "ai-engineering",
+          "level": "beginner",
+          "title": "Distinguish syntax from meaning",
+          "description": "An AI returns parseable JSON with an integer quantity of -4. The application requires quantities of at least zero. What should happen?",
+          "choices": [
+            {
+              "text": "Accept it because any integer is valid.",
+              "correct": false
+            },
+            {
+              "text": "Convert it silently to zero.",
+              "correct": false
+            },
+            {
+              "text": "Reject the value because it violates a business rule.",
+              "correct": true
+            },
+            {
+              "text": "Send it to checkout before checking it.",
+              "correct": false
+            }
+          ],
+          "hint": "The data type and permitted value range are separate checks.",
+          "solution": {
+            "code": "Reject the value because it violates a business rule.",
+            "steps": [
+              {
+                "title": "Check structure",
+                "explanation": "An integer satisfies the type requirement."
+              },
+              {
+                "title": "Check the rule",
+                "explanation": "A negative quantity violates the stated minimum and must be rejected."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-beginner-32",
+          "language": "ai-engineering",
+          "level": "beginner",
+          "title": "Test missing required output",
+          "description": "A response schema requires order_id and quantity. Which test checks a missing required field?",
+          "choices": [
+            {
+              "text": "A response containing both required fields with valid values.",
+              "correct": false
+            },
+            {
+              "text": "A response containing quantity as a valid integer and order_id as a string.",
+              "correct": false
+            },
+            {
+              "text": "A response containing only order_id.",
+              "correct": true
+            },
+            {
+              "text": "A valid response submitted twice.",
+              "correct": false
+            }
+          ],
+          "hint": "Remove one required field while keeping the other.",
+          "solution": {
+            "code": "A response containing only order_id.",
+            "steps": [
+              {
+                "title": "Identify the requirement",
+                "explanation": "Both order_id and quantity are required."
+              },
+              {
+                "title": "Choose the case",
+                "explanation": "A response with only order_id lacks quantity."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-beginner-33",
+          "language": "ai-engineering",
+          "level": "beginner",
+          "title": "Handle invalid generated actions",
+          "description": "An output fails validation before any action runs. Which response is appropriate?",
+          "choices": [
+            {
+              "text": "Report the failure or perform a bounded retry according to policy.",
+              "correct": true
+            },
+            {
+              "text": "Execute it anyway because it came from the model.",
+              "correct": false
+            },
+            {
+              "text": "Replace the missing value without recording the change.",
+              "correct": false
+            },
+            {
+              "text": "Treat the failed validation as successful.",
+              "correct": false
+            }
+          ],
+          "hint": "The downstream action should not consume invalid output.",
+          "solution": {
+            "code": "Report the failure or perform a bounded retry according to policy.",
+            "steps": [
+              {
+                "title": "Stop the invalid action",
+                "explanation": "Validation failed before execution."
+              },
+              {
+                "title": "Use an explicit failure path",
+                "explanation": "Report the error or retry within defined limits if appropriate."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-beginner-34",
+          "language": "ai-engineering",
+          "level": "beginner",
+          "title": "Identify a prompt version",
+          "description": "A production run records its prompt as latest. Why can this hinder investigation later?",
+          "choices": [
+            {
+              "text": "The label may point to different template contents over time.",
+              "correct": true
+            },
+            {
+              "text": "Model settings become irrelevant.",
+              "correct": false
+            },
+            {
+              "text": "Prompt text cannot affect behavior.",
+              "correct": false
+            },
+            {
+              "text": "The label always identifies immutable contents.",
+              "correct": false
+            }
+          ],
+          "hint": "Consider whether the label can change its target.",
+          "solution": {
+            "code": "The label may point to different template contents over time.",
+            "steps": [
+              {
+                "title": "Identify the ambiguity",
+                "explanation": "A mutable label may refer to another version later."
+              },
+              {
+                "title": "Record a fixed version",
+                "explanation": "An immutable identifier and retained template make the run traceable."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-beginner-35",
+          "language": "ai-engineering",
+          "level": "beginner",
+          "title": "Compare prompt revisions",
+          "description": "A team changes both its prompt and model between two evaluations. What makes attribution difficult?",
+          "choices": [
+            {
+              "text": "Models always behave identically.",
+              "correct": false
+            },
+            {
+              "text": "Both changes may affect the result.",
+              "correct": true
+            },
+            {
+              "text": "Prompts cannot change outputs.",
+              "correct": false
+            },
+            {
+              "text": "The evaluation cases never matter.",
+              "correct": false
+            }
+          ],
+          "hint": "More than one variable changed.",
+          "solution": {
+            "code": "Both changes may affect the result.",
+            "steps": [
+              {
+                "title": "Identify the changes",
+                "explanation": "Both the prompt and model were changed."
+              },
+              {
+                "title": "Control the comparison",
+                "explanation": "Record settings and isolate changes where practical."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-beginner-36",
+          "language": "ai-engineering",
+          "level": "beginner",
+          "title": "Recover a prompt release",
+          "description": "A new prompt revision causes a production regression. What helps restore behavior?",
+          "choices": [
+            {
+              "text": "Assuming every model uses identical settings.",
+              "correct": false
+            },
+            {
+              "text": "Retaining a previous compatible prompt and model configuration.",
+              "correct": true
+            },
+            {
+              "text": "Keeping only the label latest.",
+              "correct": false
+            },
+            {
+              "text": "Deleting evaluation results.",
+              "correct": false
+            }
+          ],
+          "hint": "Recovery requires knowing which configuration previously worked.",
+          "solution": {
+            "code": "Retaining a previous compatible prompt and model configuration.",
+            "steps": [
+              {
+                "title": "Identify the release",
+                "explanation": "The new prompt is associated with a regression."
+              },
+              {
+                "title": "Restore a known configuration",
+                "explanation": "Use the recorded prior compatible version and monitor the outcome."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-beginner-37",
+          "language": "ai-engineering",
+          "level": "beginner",
+          "title": "Handle a lost response",
+          "description": "A payment request times out after the server may have completed it. What can reduce duplicate charges on retry?",
+          "choices": [
+            {
+              "text": "Use a supported stable idempotency key and check status as appropriate.",
+              "correct": true
+            },
+            {
+              "text": "Send every retry with a new operation key.",
+              "correct": false
+            },
+            {
+              "text": "Retry without limits until a response arrives.",
+              "correct": false
+            },
+            {
+              "text": "Assume timeout proves the server did nothing.",
+              "correct": false
+            }
+          ],
+          "hint": "The operation might have completed despite the missing response.",
+          "solution": {
+            "code": "Use a supported stable idempotency key and check status as appropriate.",
+            "steps": [
+              {
+                "title": "Recognize the ambiguity",
+                "explanation": "A timeout concerns the caller's wait, not necessarily remote completion."
+              },
+              {
+                "title": "Deduplicate safely",
+                "explanation": "A stable operation key can identify retries of the same action."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-beginner-38",
+          "language": "ai-engineering",
+          "level": "beginner",
+          "title": "Select a retryable failure",
+          "description": "Which failure is most likely to warrant a bounded retry under a suitable service contract?",
+          "choices": [
+            {
+              "text": "A missing permission that requires an administrator.",
+              "correct": false
+            },
+            {
+              "text": "A temporary service-unavailable response.",
+              "correct": true
+            },
+            {
+              "text": "An invalid field that the caller has not corrected.",
+              "correct": false
+            },
+            {
+              "text": "A malformed request that will not change on retry.",
+              "correct": false
+            }
+          ],
+          "hint": "A retry is most useful when the same request may succeed after a temporary condition.",
+          "solution": {
+            "code": "A temporary service-unavailable response.",
+            "steps": [
+              {
+                "title": "Compare causes",
+                "explanation": "Invalid input and missing permissions generally need correction."
+              },
+              {
+                "title": "Choose the transient case",
+                "explanation": "A temporary service failure may be retryable with backoff and limits."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-beginner-39",
+          "language": "ai-engineering",
+          "level": "beginner",
+          "title": "Limit retry latency",
+          "description": "Why use an overall deadline in addition to individual attempt timeouts?",
+          "choices": [
+            {
+              "text": "It makes attempt timeouts impossible.",
+              "correct": false
+            },
+            {
+              "text": "It removes all network failures.",
+              "correct": false
+            },
+            {
+              "text": "Several retries can otherwise exceed the user-facing latency budget.",
+              "correct": true
+            },
+            {
+              "text": "It guarantees the remote operation is canceled.",
+              "correct": false
+            }
+          ],
+          "hint": "Add up the time spent on multiple attempts and waits.",
+          "solution": {
+            "code": "Several retries can otherwise exceed the user-facing latency budget.",
+            "steps": [
+              {
+                "title": "Consider total time",
+                "explanation": "Each attempt and backoff consumes part of the user's budget."
+              },
+              {
+                "title": "Bound the operation",
+                "explanation": "An overall deadline limits the combined wait."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-beginner-40",
+          "language": "ai-engineering",
+          "level": "beginner",
+          "title": "Report degraded capability",
+          "description": "A model service is unavailable and a fallback can only answer a limited set of questions. How should the application respond?",
+          "choices": [
+            {
+              "text": "Bypass authorization to access more data.",
+              "correct": false
+            },
+            {
+              "text": "Suppress the failure and fabricate an answer.",
+              "correct": false
+            },
+            {
+              "text": "Explain the limitation and provide an appropriate next step.",
+              "correct": true
+            },
+            {
+              "text": "Claim every request was fully handled.",
+              "correct": false
+            }
+          ],
+          "hint": "The user needs to understand what the fallback can do.",
+          "solution": {
+            "code": "Explain the limitation and provide an appropriate next step.",
+            "steps": [
+              {
+                "title": "Identify the degradation",
+                "explanation": "The alternative has a narrower scope."
+              },
+              {
+                "title": "Communicate honestly",
+                "explanation": "Explain the limits and offer a safe route for unsupported requests."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-beginner-41",
+          "language": "ai-engineering",
+          "level": "beginner",
+          "title": "Keep fallback authorization",
+          "description": "A primary service is down. Should its fallback bypass authorization to remain available?",
+          "choices": [
+            {
+              "text": "Yes, if the model generated the request.",
+              "correct": false
+            },
+            {
+              "text": "No; the fallback must enforce the applicable access policy.",
+              "correct": true
+            },
+            {
+              "text": "No checks are needed for a fallback.",
+              "correct": false
+            },
+            {
+              "text": "Yes; failures automatically grant broader access.",
+              "correct": false
+            }
+          ],
+          "hint": "An outage does not change caller permissions.",
+          "solution": {
+            "code": "No; the fallback must enforce the applicable access policy.",
+            "steps": [
+              {
+                "title": "Identify the boundary",
+                "explanation": "The fallback can still access data or perform actions."
+              },
+              {
+                "title": "Preserve controls",
+                "explanation": "Apply the required authorization on the alternative path."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-beginner-42",
+          "language": "ai-engineering",
+          "level": "beginner",
+          "title": "Test fallback recovery",
+          "description": "Which scenario should a team test for a rarely used fallback?",
+          "choices": [
+            {
+              "text": "Only the model training loss.",
+              "correct": false
+            },
+            {
+              "text": "Primary failure followed by fallback failure and recovery.",
+              "correct": true
+            },
+            {
+              "text": "Only the primary success path.",
+              "correct": false
+            },
+            {
+              "text": "Only a changed interface color.",
+              "correct": false
+            }
+          ],
+          "hint": "A fallback can itself fail.",
+          "solution": {
+            "code": "Primary failure followed by fallback failure and recovery.",
+            "steps": [
+              {
+                "title": "Exercise degradation",
+                "explanation": "Cause the primary path to fail in a controlled test."
+              },
+              {
+                "title": "Check outcomes",
+                "explanation": "Verify fallback failure and recovery are surfaced correctly."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-beginner-43",
+          "language": "ai-engineering",
+          "level": "beginner",
+          "title": "Report an uncertain action",
+          "description": "An automated support system sent a refund request, but the tool timed out before confirming its outcome. What should the human handoff say?",
+          "choices": [
+            {
+              "text": "The refund outcome is unknown and needs verification.",
+              "correct": true
+            },
+            {
+              "text": "The refund definitely failed and should be repeated.",
+              "correct": false
+            },
+            {
+              "text": "The customer has already received the funds.",
+              "correct": false
+            },
+            {
+              "text": "The refund definitely succeeded.",
+              "correct": false
+            }
+          ],
+          "hint": "A timeout can happen after the remote action is performed.",
+          "solution": {
+            "code": "The refund outcome is unknown and needs verification.",
+            "steps": [
+              {
+                "title": "Identify the uncertainty",
+                "explanation": "No confirmation was received, so the outcome is unknown."
+              },
+              {
+                "title": "Prevent duplication",
+                "explanation": "Tell the recipient to verify the existing request before taking another action."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-beginner-44",
+          "language": "ai-engineering",
+          "level": "beginner",
+          "title": "Minimize handoff data",
+          "description": "A support task is escalated to a team that needs the ticket number and an error summary. The model context also contains an unrelated credential. What should be included?",
+          "choices": [
+            {
+              "text": "The required ticket context, without the unrelated credential.",
+              "correct": true
+            },
+            {
+              "text": "No context, even though the recipient needs the ticket number.",
+              "correct": false
+            },
+            {
+              "text": "Only the credential, to help identify the user.",
+              "correct": false
+            },
+            {
+              "text": "The complete model context including the credential.",
+              "correct": false
+            }
+          ],
+          "hint": "Include only information needed by the authorized recipient.",
+          "solution": {
+            "code": "The required ticket context, without the unrelated credential.",
+            "steps": [
+              {
+                "title": "Identify useful context",
+                "explanation": "The ticket number and error summary support investigation."
+              },
+              {
+                "title": "Exclude unnecessary secrets",
+                "explanation": "The unrelated credential is not needed for the handoff."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-beginner-45",
+          "language": "ai-engineering",
+          "level": "beginner",
+          "title": "Distinguish transfer from resolution",
+          "description": "A case has been queued for a human team but no one has accepted it yet. What status should the user see?",
+          "choices": [
+            {
+              "text": "The human team has completed the requested action.",
+              "correct": false
+            },
+            {
+              "text": "The case has been transferred or queued, not resolved.",
+              "correct": true
+            },
+            {
+              "text": "The result is guaranteed to arrive within five minutes.",
+              "correct": false
+            },
+            {
+              "text": "The case is resolved because it entered the queue.",
+              "correct": false
+            }
+          ],
+          "hint": "A queued task is not a completed task.",
+          "solution": {
+            "code": "The case has been transferred or queued, not resolved.",
+            "steps": [
+              {
+                "title": "Identify the actual state",
+                "explanation": "The case is waiting for human acceptance."
+              },
+              {
+                "title": "Report it accurately",
+                "explanation": "Do not claim acceptance, resolution, or a deadline without evidence."
               }
             ]
           }
@@ -2938,6 +4654,825 @@
               }
             ]
           }
+        },
+        {
+          "id": "aie-intermediate-26",
+          "language": "ai-engineering",
+          "level": "intermediate",
+          "title": "Enforce access at retrieval",
+          "description": "An orchestrator checks a user's role, but the retrieval service can also be called directly. What prevents a caller from retrieving unauthorized passages through that path?",
+          "choices": [
+            {
+              "text": "Require retrieval to enforce access using the caller's authorized identity.",
+              "correct": true
+            },
+            {
+              "text": "Increase the retrieval timeout.",
+              "correct": false
+            },
+            {
+              "text": "Ask the language model not to reveal restricted passages.",
+              "correct": false
+            },
+            {
+              "text": "Trust the orchestrator's check even when it is bypassed.",
+              "correct": false
+            }
+          ],
+          "hint": "Protect the resource at the point where it is accessed.",
+          "solution": {
+            "code": "Require retrieval to enforce access using the caller's authorized identity.",
+            "steps": [
+              {
+                "title": "Identify the bypass",
+                "explanation": "A direct call can avoid the orchestrator's check."
+              },
+              {
+                "title": "Enforce the boundary",
+                "explanation": "Retrieval must authorize access before returning protected passages."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-intermediate-27",
+          "language": "ai-engineering",
+          "level": "intermediate",
+          "title": "Retry a side-effecting call",
+          "description": "A tool creates a support ticket, but its response times out after the server may have created it. Which design helps avoid duplicates on retry?",
+          "choices": [
+            {
+              "text": "Generate a new key for every retry and assume the first request failed.",
+              "correct": false
+            },
+            {
+              "text": "Return a fabricated ticket ID to the user.",
+              "correct": false
+            },
+            {
+              "text": "Remove the request deadline and always retry indefinitely.",
+              "correct": false
+            },
+            {
+              "text": "Use a stable idempotency key and make the service deduplicate requests.",
+              "correct": true
+            }
+          ],
+          "hint": "A timeout does not establish whether the side effect occurred.",
+          "solution": {
+            "code": "Use a stable idempotency key and make the service deduplicate requests.",
+            "steps": [
+              {
+                "title": "Account for ambiguity",
+                "explanation": "The original request may have completed even though its response was lost."
+              },
+              {
+                "title": "Make retries recognizable",
+                "explanation": "A stable key lets the service identify the same operation and avoid repeating its side effect."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-intermediate-28",
+          "language": "ai-engineering",
+          "level": "intermediate",
+          "title": "Measure decomposition trade-offs",
+          "description": "A team splits retrieval and inference into services to scale them independently. What evidence best shows whether the change benefits users?",
+          "choices": [
+            {
+              "text": "Only the retrieval service's CPU utilization.",
+              "correct": false
+            },
+            {
+              "text": "The number of services created.",
+              "correct": false
+            },
+            {
+              "text": "End-to-end latency and quality alongside resource use and operational cost.",
+              "correct": true
+            },
+            {
+              "text": "Only the amount of code moved between repositories.",
+              "correct": false
+            }
+          ],
+          "hint": "Include user-visible outcomes and the cost of the new boundary.",
+          "solution": {
+            "code": "End-to-end latency and quality alongside resource use and operational cost.",
+            "steps": [
+              {
+                "title": "Measure the user experience",
+                "explanation": "Independent scaling can change overall latency and response quality."
+              },
+              {
+                "title": "Include operating costs",
+                "explanation": "Service boundaries introduce network and operational overhead, so compare those costs too."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-intermediate-29",
+          "language": "ai-engineering",
+          "level": "intermediate",
+          "title": "Handle ambiguous job submission",
+          "description": "A client submits a job and its request times out. The server may already have queued it. What reduces duplicate jobs when the client retries?",
+          "choices": [
+            {
+              "text": "Assume a timeout proves no job was accepted.",
+              "correct": false
+            },
+            {
+              "text": "Send the same job with a new key each time.",
+              "correct": false
+            },
+            {
+              "text": "Reuse a stable idempotency key and deduplicate on the server.",
+              "correct": true
+            },
+            {
+              "text": "Retry forever without checking status.",
+              "correct": false
+            }
+          ],
+          "hint": "The missing response does not establish whether the job was accepted.",
+          "solution": {
+            "code": "Reuse a stable idempotency key and deduplicate on the server.",
+            "steps": [
+              {
+                "title": "Identify the ambiguity",
+                "explanation": "The server may have accepted the original request before the response was lost."
+              },
+              {
+                "title": "Deduplicate submission",
+                "explanation": "A stable key lets the server recognize a retry of the same operation."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-intermediate-30",
+          "language": "ai-engineering",
+          "level": "intermediate",
+          "title": "Interpret cancellation",
+          "description": "A user requests cancellation just as a job finishes. What should the API contract define?",
+          "choices": [
+            {
+              "text": "That a cancellation request always stops work instantly.",
+              "correct": false
+            },
+            {
+              "text": "That all jobs have no terminal status.",
+              "correct": false
+            },
+            {
+              "text": "That any caller can read the result.",
+              "correct": false
+            },
+            {
+              "text": "How the cancellation race is resolved and which terminal status is reported.",
+              "correct": true
+            }
+          ],
+          "hint": "The job can complete before the cancellation takes effect.",
+          "solution": {
+            "code": "How the cancellation race is resolved and which terminal status is reported.",
+            "steps": [
+              {
+                "title": "Consider the race",
+                "explanation": "Completion and cancellation can occur close together."
+              },
+              {
+                "title": "Define the outcome",
+                "explanation": "The client needs an authoritative terminal state and documented result behavior."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-intermediate-31",
+          "language": "ai-engineering",
+          "level": "intermediate",
+          "title": "Respond to queue overload",
+          "description": "A job queue grows steadily because submissions exceed worker capacity. What is an appropriate operational response?",
+          "choices": [
+            {
+              "text": "Apply admission limits or backpressure and monitor queue wait.",
+              "correct": true
+            },
+            {
+              "text": "Disable authorization on status endpoints.",
+              "correct": false
+            },
+            {
+              "text": "Mark every queued job as succeeded.",
+              "correct": false
+            },
+            {
+              "text": "Accept unlimited work and hide all delays.",
+              "correct": false
+            }
+          ],
+          "hint": "Control incoming work and communicate the delay.",
+          "solution": {
+            "code": "Apply admission limits or backpressure and monitor queue wait.",
+            "steps": [
+              {
+                "title": "Identify the bottleneck",
+                "explanation": "The arrival rate exceeds processing capacity."
+              },
+              {
+                "title": "Protect the service",
+                "explanation": "Limit or defer submissions and monitor backlog and wait time."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-intermediate-32",
+          "language": "ai-engineering",
+          "level": "intermediate",
+          "title": "Scope a shared quota",
+          "description": "A service has a single global limit. One tenant uses the entire quota and other tenants receive rejections. Which change can address this fairness issue?",
+          "choices": [
+            {
+              "text": "Remove all limits.",
+              "correct": false
+            },
+            {
+              "text": "Add tenant-scoped limits alongside the global limit.",
+              "correct": true
+            },
+            {
+              "text": "Treat all tenants as one tenant for accounting.",
+              "correct": false
+            },
+            {
+              "text": "Retry rejected requests immediately without bounds.",
+              "correct": false
+            }
+          ],
+          "hint": "A shared limit alone does not reserve fair access between tenants.",
+          "solution": {
+            "code": "Add tenant-scoped limits alongside the global limit.",
+            "steps": [
+              {
+                "title": "Identify the issue",
+                "explanation": "One tenant can consume the whole shared quota."
+              },
+              {
+                "title": "Add a scope",
+                "explanation": "Per-tenant limits can constrain each tenant while the global limit protects overall capacity."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-intermediate-33",
+          "language": "ai-engineering",
+          "level": "intermediate",
+          "title": "Account for different request costs",
+          "description": "Two requests each count as one request, but one uses 100 times as many tokens. What limitation does a request-count quota have?",
+          "choices": [
+            {
+              "text": "It guarantees equal latency for all requests.",
+              "correct": false
+            },
+            {
+              "text": "It does not directly reflect the difference in token consumption.",
+              "correct": true
+            },
+            {
+              "text": "It accurately represents every resource cost.",
+              "correct": false
+            },
+            {
+              "text": "It eliminates the need for capacity planning.",
+              "correct": false
+            }
+          ],
+          "hint": "Counted requests and consumed tokens are different quantities.",
+          "solution": {
+            "code": "It does not directly reflect the difference in token consumption.",
+            "steps": [
+              {
+                "title": "Compare the requests",
+                "explanation": "They count equally despite consuming different numbers of tokens."
+              },
+              {
+                "title": "Choose a suitable measure",
+                "explanation": "A token-based or combined policy may better reflect that resource."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-intermediate-34",
+          "language": "ai-engineering",
+          "level": "intermediate",
+          "title": "Retry after throttling",
+          "description": "Many clients hit a rate limit at once. Why use jitter with retry backoff?",
+          "choices": [
+            {
+              "text": "It spreads retry attempts over time.",
+              "correct": true
+            },
+            {
+              "text": "It guarantees that every retry succeeds.",
+              "correct": false
+            },
+            {
+              "text": "It removes the server rate limit.",
+              "correct": false
+            },
+            {
+              "text": "It allows clients to ignore retry bounds.",
+              "correct": false
+            }
+          ],
+          "hint": "Avoid clients retrying together.",
+          "solution": {
+            "code": "It spreads retry attempts over time.",
+            "steps": [
+              {
+                "title": "Identify the risk",
+                "explanation": "Synchronized retries can create another traffic spike."
+              },
+              {
+                "title": "Spread the attempts",
+                "explanation": "Jitter introduces variation in retry timing; it does not guarantee success."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-intermediate-35",
+          "language": "ai-engineering",
+          "level": "intermediate",
+          "title": "Handle an open circuit",
+          "description": "A circuit breaker is open after repeated dependency failures. What does it typically do?",
+          "choices": [
+            {
+              "text": "Send every call to the failing dependency.",
+              "correct": false
+            },
+            {
+              "text": "Report all unperformed operations as successful.",
+              "correct": false
+            },
+            {
+              "text": "Reject or route calls without contacting the dependency each time.",
+              "correct": true
+            },
+            {
+              "text": "Remove the need for client error handling.",
+              "correct": false
+            }
+          ],
+          "hint": "Opening the circuit prevents repeated calls to the unhealthy service.",
+          "solution": {
+            "code": "Reject or route calls without contacting the dependency each time.",
+            "steps": [
+              {
+                "title": "Identify the state",
+                "explanation": "The breaker has opened after failures."
+              },
+              {
+                "title": "Protect the dependency",
+                "explanation": "Calls are rejected or handled by an explicit fallback during the open period."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-intermediate-36",
+          "language": "ai-engineering",
+          "level": "intermediate",
+          "title": "Probe recovery",
+          "description": "After a breaker's cooldown, why allow only a few half-open calls?",
+          "choices": [
+            {
+              "text": "To test recovery without flooding the dependency.",
+              "correct": true
+            },
+            {
+              "text": "To guarantee every future call succeeds.",
+              "correct": false
+            },
+            {
+              "text": "To hide failures from monitoring.",
+              "correct": false
+            },
+            {
+              "text": "To remove all timeouts.",
+              "correct": false
+            }
+          ],
+          "hint": "A recovering dependency may still have limited capacity.",
+          "solution": {
+            "code": "To test recovery without flooding the dependency.",
+            "steps": [
+              {
+                "title": "Identify the purpose",
+                "explanation": "The probes test whether the dependency has recovered."
+              },
+              {
+                "title": "Limit the load",
+                "explanation": "A small number of probes avoids overwhelming it."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-intermediate-37",
+          "language": "ai-engineering",
+          "level": "intermediate",
+          "title": "Classify breaker failures",
+          "description": "A client sends invalid input and the dependency returns a validation error. Why consider excluding this error from a dependency-health breaker?",
+          "choices": [
+            {
+              "text": "It may reflect a bad request rather than dependency unavailability.",
+              "correct": true
+            },
+            {
+              "text": "Invalid requests must always be retried indefinitely.",
+              "correct": false
+            },
+            {
+              "text": "Every validation error proves the service is down.",
+              "correct": false
+            },
+            {
+              "text": "Circuit breakers require all errors to count equally.",
+              "correct": false
+            }
+          ],
+          "hint": "Different error types have different causes.",
+          "solution": {
+            "code": "It may reflect a bad request rather than dependency unavailability.",
+            "steps": [
+              {
+                "title": "Identify the response",
+                "explanation": "The request itself was invalid."
+              },
+              {
+                "title": "Define the policy",
+                "explanation": "Count errors that indicate dependency health according to the service contract."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-intermediate-38",
+          "language": "ai-engineering",
+          "level": "intermediate",
+          "title": "Recognize saturation",
+          "description": "A queue grows continuously because requests arrive faster than workers can process them. What does this suggest?",
+          "choices": [
+            {
+              "text": "A larger queue creates processing capacity.",
+              "correct": false
+            },
+            {
+              "text": "Incoming demand exceeds current processing capacity.",
+              "correct": true
+            },
+            {
+              "text": "Workers are necessarily idle.",
+              "correct": false
+            },
+            {
+              "text": "All queued requests have completed.",
+              "correct": false
+            }
+          ],
+          "hint": "Compare arrival and processing rates.",
+          "solution": {
+            "code": "Incoming demand exceeds current processing capacity.",
+            "steps": [
+              {
+                "title": "Identify the trend",
+                "explanation": "The backlog is growing."
+              },
+              {
+                "title": "Compare rates",
+                "explanation": "More work is arriving than workers are completing."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-intermediate-39",
+          "language": "ai-engineering",
+          "level": "intermediate",
+          "title": "Handle a full queue",
+          "description": "A bounded queue is full and cannot accept work within its deadline. What is an appropriate behavior?",
+          "choices": [
+            {
+              "text": "Mark the request as complete without processing it.",
+              "correct": false
+            },
+            {
+              "text": "Immediately retry every rejected request without limit.",
+              "correct": false
+            },
+            {
+              "text": "Return an explicit overload response according to the service contract.",
+              "correct": true
+            },
+            {
+              "text": "Accept unlimited work without communicating delay.",
+              "correct": false
+            }
+          ],
+          "hint": "The service should communicate that it cannot accept the work.",
+          "solution": {
+            "code": "Return an explicit overload response according to the service contract.",
+            "steps": [
+              {
+                "title": "Identify the constraint",
+                "explanation": "The queue has reached its limit."
+              },
+              {
+                "title": "Signal overload",
+                "explanation": "Reject or defer work explicitly rather than claiming success."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-intermediate-40",
+          "language": "ai-engineering",
+          "level": "intermediate",
+          "title": "Test backpressure recovery",
+          "description": "After a traffic burst ends, what observation helps confirm the system is recovering?",
+          "choices": [
+            {
+              "text": "All rejected requests are reported as successful.",
+              "correct": false
+            },
+            {
+              "text": "The backlog grows indefinitely with no processing.",
+              "correct": false
+            },
+            {
+              "text": "The queue drains while accepted work continues to complete.",
+              "correct": true
+            },
+            {
+              "text": "Workers stop consuming queued tasks.",
+              "correct": false
+            }
+          ],
+          "hint": "The accumulated backlog should decrease once capacity exceeds arrivals.",
+          "solution": {
+            "code": "The queue drains while accepted work continues to complete.",
+            "steps": [
+              {
+                "title": "Compare rates",
+                "explanation": "Processing can catch up when incoming demand falls."
+              },
+              {
+                "title": "Observe the backlog",
+                "explanation": "A draining queue indicates progress toward recovery."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-intermediate-41",
+          "language": "ai-engineering",
+          "level": "intermediate",
+          "title": "Route by task requirements",
+          "description": "A low-cost model handles simple extraction well but fails on complex analysis. What is a reasonable routing policy?",
+          "choices": [
+            {
+              "text": "Ignore access rules when a request is complex.",
+              "correct": false
+            },
+            {
+              "text": "Assume every model has identical capability.",
+              "correct": false
+            },
+            {
+              "text": "Send every request to the cheapest model regardless of quality.",
+              "correct": false
+            },
+            {
+              "text": "Use task requirements and measured quality to select an eligible route.",
+              "correct": true
+            }
+          ],
+          "hint": "Different tasks can need different capabilities.",
+          "solution": {
+            "code": "Use task requirements and measured quality to select an eligible route.",
+            "steps": [
+              {
+                "title": "Compare routes",
+                "explanation": "The models have different measured strengths."
+              },
+              {
+                "title": "Apply constraints",
+                "explanation": "Choose using task quality, cost, latency, and policy."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-intermediate-42",
+          "language": "ai-engineering",
+          "level": "intermediate",
+          "title": "Handle route failure",
+          "description": "The selected model is unavailable and an alternative cannot process the data under residency policy. What should happen?",
+          "choices": [
+            {
+              "text": "Pretend the original model completed the request.",
+              "correct": false
+            },
+            {
+              "text": "Use another compliant route or return an explicit failure.",
+              "correct": true
+            },
+            {
+              "text": "Send the data to the prohibited route anyway.",
+              "correct": false
+            },
+            {
+              "text": "Remove the residency policy for retries.",
+              "correct": false
+            }
+          ],
+          "hint": "A fallback must satisfy the same applicable data-handling rules.",
+          "solution": {
+            "code": "Use another compliant route or return an explicit failure.",
+            "steps": [
+              {
+                "title": "Identify the constraint",
+                "explanation": "The available alternative is not permitted."
+              },
+              {
+                "title": "Respond safely",
+                "explanation": "Choose a compliant option or surface the failure."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-intermediate-43",
+          "language": "ai-engineering",
+          "level": "intermediate",
+          "title": "Monitor router changes",
+          "description": "After updating a routing policy, which measures help identify regressions?",
+          "choices": [
+            {
+              "text": "Only a successful deployment notification.",
+              "correct": false
+            },
+            {
+              "text": "Only the router filename.",
+              "correct": false
+            },
+            {
+              "text": "Only the number of models in the catalog.",
+              "correct": false
+            },
+            {
+              "text": "Route distribution, task quality, latency, and errors.",
+              "correct": true
+            }
+          ],
+          "hint": "A routing change can affect several outcomes.",
+          "solution": {
+            "code": "Route distribution, task quality, latency, and errors.",
+            "steps": [
+              {
+                "title": "Observe routing",
+                "explanation": "Track which requests go to each route."
+              },
+              {
+                "title": "Measure outcomes",
+                "explanation": "Compare quality, latency, errors, and cost against expectations."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-intermediate-44",
+          "language": "ai-engineering",
+          "level": "intermediate",
+          "title": "Diagnose healthy but poor responses",
+          "description": "An AI service has normal latency and no server errors, but users report that answers are increasingly unsupported. Which evidence should the team investigate?",
+          "choices": [
+            {
+              "text": "Only the number of application replicas.",
+              "correct": false
+            },
+            {
+              "text": "Task-quality evaluations and the retrieval and model versions used by affected requests.",
+              "correct": true
+            },
+            {
+              "text": "Only CPU utilization, because successful responses prove the answers are correct.",
+              "correct": false
+            },
+            {
+              "text": "Only whether the HTTP status was 200.",
+              "correct": false
+            }
+          ],
+          "hint": "Service health and response quality measure different things.",
+          "solution": {
+            "code": "Task-quality evaluations and the retrieval and model versions used by affected requests.",
+            "steps": [
+              {
+                "title": "Separate the signals",
+                "explanation": "Operational success does not establish answer quality."
+              },
+              {
+                "title": "Trace the regression",
+                "explanation": "Review quality evidence and the components involved in affected requests."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-intermediate-45",
+          "language": "ai-engineering",
+          "level": "intermediate",
+          "title": "Interpret input drift",
+          "description": "The distribution of request lengths changes substantially from the evaluation baseline. What does that observation establish?",
+          "choices": [
+            {
+              "text": "The evaluation labels must all be incorrect.",
+              "correct": false
+            },
+            {
+              "text": "The model has definitely become inaccurate.",
+              "correct": false
+            },
+            {
+              "text": "The model is definitely still accurate.",
+              "correct": false
+            },
+            {
+              "text": "The input mix changed and quality should be investigated on representative traffic.",
+              "correct": true
+            }
+          ],
+          "hint": "A distribution change is a warning signal, not a direct outcome metric.",
+          "solution": {
+            "code": "The input mix changed and quality should be investigated on representative traffic.",
+            "steps": [
+              {
+                "title": "Identify the change",
+                "explanation": "Current input lengths differ from the baseline."
+              },
+              {
+                "title": "Check consequences",
+                "explanation": "Use representative quality and operational evidence to assess impact."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-intermediate-46",
+          "language": "ai-engineering",
+          "level": "intermediate",
+          "title": "Protect observability data",
+          "description": "A trace is useful for diagnosing latency, but full prompts can contain sensitive personal data. What is a suitable design?",
+          "choices": [
+            {
+              "text": "Publish raw traces to an unrestricted dashboard.",
+              "correct": false
+            },
+            {
+              "text": "Store every full prompt indefinitely for all employees.",
+              "correct": false
+            },
+            {
+              "text": "Disable every latency metric.",
+              "correct": false
+            },
+            {
+              "text": "Record necessary timings and version identifiers with appropriate access and retention controls.",
+              "correct": true
+            }
+          ],
+          "hint": "Collect only what operators need.",
+          "solution": {
+            "code": "Record necessary timings and version identifiers with appropriate access and retention controls.",
+            "steps": [
+              {
+                "title": "Identify the diagnostic need",
+                "explanation": "Timings and versions can help locate latency regressions."
+              },
+              {
+                "title": "Limit exposure",
+                "explanation": "Minimize sensitive content and protect access and retention."
+              }
+            ]
+          }
         }
       ]
     },
@@ -3915,6 +6450,747 @@
               {
                 "title": "Apply with evidence",
                 "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-advanced-26",
+          "language": "ai-engineering",
+          "level": "advanced",
+          "title": "Map an injection path",
+          "description": "A document-answering service can read internal files and call an external messaging tool. An attacker can edit retrieved public pages. Which threat path warrants analysis?",
+          "choices": [
+            {
+              "text": "The attacker automatically becomes the system owner.",
+              "correct": false
+            },
+            {
+              "text": "The page induces a tool request that sends internal data externally.",
+              "correct": true
+            },
+            {
+              "text": "The model necessarily ignores every retrieved page.",
+              "correct": false
+            },
+            {
+              "text": "The page changes the model weights directly without a training process.",
+              "correct": false
+            }
+          ],
+          "hint": "Follow untrusted input to the actions and assets it can influence.",
+          "solution": {
+            "code": "The page induces a tool request that sends internal data externally.",
+            "steps": [
+              {
+                "title": "Trace the boundary",
+                "explanation": "The retrieved page enters the model context as untrusted data."
+              },
+              {
+                "title": "Trace the consequence",
+                "explanation": "The messaging tool and data access could enable disclosure if independent controls fail."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-advanced-27",
+          "language": "ai-engineering",
+          "level": "advanced",
+          "title": "Test authorization enforcement",
+          "description": "A security test injects an unauthorized tool instruction into a retrieved page. Which assertion best verifies the application boundary?",
+          "choices": [
+            {
+              "text": "The prompt includes a warning somewhere.",
+              "correct": false
+            },
+            {
+              "text": "The model produces a longer answer.",
+              "correct": false
+            },
+            {
+              "text": "The response avoids a particular word.",
+              "correct": false
+            },
+            {
+              "text": "The tool rejects the unauthorized action and emits the expected audit event.",
+              "correct": true
+            }
+          ],
+          "hint": "Check the actual protected action rather than only the wording.",
+          "solution": {
+            "code": "The tool rejects the unauthorized action and emits the expected audit event.",
+            "steps": [
+              {
+                "title": "Exercise the threat",
+                "explanation": "The instruction attempts to cause an action beyond the caller's authority."
+              },
+              {
+                "title": "Assert enforcement",
+                "explanation": "Verify the tool denies the action and records the denial according to policy."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-advanced-28",
+          "language": "ai-engineering",
+          "level": "advanced",
+          "title": "Revisit architectural threats",
+          "description": "An agent gains a new tool that can modify account settings. What is the appropriate threat-model response?",
+          "choices": [
+            {
+              "text": "Assume prior tests prove the new tool is safe.",
+              "correct": false
+            },
+            {
+              "text": "Keep the old model unchanged because the language model did not change.",
+              "correct": false
+            },
+            {
+              "text": "Remove the need for user authorization.",
+              "correct": false
+            },
+            {
+              "text": "Update assets, attack paths, permissions, and tests for the new capability.",
+              "correct": true
+            }
+          ],
+          "hint": "A new action changes the possible consequences of failures.",
+          "solution": {
+            "code": "Update assets, attack paths, permissions, and tests for the new capability.",
+            "steps": [
+              {
+                "title": "Identify the change",
+                "explanation": "The new tool adds a state-changing capability."
+              },
+              {
+                "title": "Reassess controls",
+                "explanation": "Review who may use it, applicable failure paths, and tests for unauthorized operations."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-advanced-29",
+          "language": "ai-engineering",
+          "level": "advanced",
+          "title": "Scope a retrieval identity",
+          "description": "A retrieval service only needs to read a specific document collection. Which grant best follows least privilege?",
+          "choices": [
+            {
+              "text": "Read access to that collection.",
+              "correct": true
+            },
+            {
+              "text": "Write access to all databases.",
+              "correct": false
+            },
+            {
+              "text": "Access to every user credential.",
+              "correct": false
+            },
+            {
+              "text": "Administrator access to the whole account.",
+              "correct": false
+            }
+          ],
+          "hint": "Match the permission to the required operation and resource.",
+          "solution": {
+            "code": "Read access to that collection.",
+            "steps": [
+              {
+                "title": "Identify the task",
+                "explanation": "The service needs to read a particular collection."
+              },
+              {
+                "title": "Limit the grant",
+                "explanation": "Read access to that collection avoids unrelated write and administrative authority."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-advanced-30",
+          "language": "ai-engineering",
+          "level": "advanced",
+          "title": "Treat model actions as proposals",
+          "description": "A model produces a correctly formatted request to delete a document. What else is required before execution?",
+          "choices": [
+            {
+              "text": "Assume valid formatting proves authorization.",
+              "correct": false
+            },
+            {
+              "text": "Delete the document before checking the request.",
+              "correct": false
+            },
+            {
+              "text": "Trust the request because the model produced it.",
+              "correct": false
+            },
+            {
+              "text": "Check the caller's authorization and any required approval.",
+              "correct": true
+            }
+          ],
+          "hint": "Schema validity is not permission.",
+          "solution": {
+            "code": "Check the caller's authorization and any required approval.",
+            "steps": [
+              {
+                "title": "Check structure",
+                "explanation": "The request is correctly formatted."
+              },
+              {
+                "title": "Check authority",
+                "explanation": "The application must still authorize the operation and apply its policy."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-advanced-31",
+          "language": "ai-engineering",
+          "level": "advanced",
+          "title": "Protect credentials",
+          "description": "Why prefer a short-lived scoped identity for a service when available?",
+          "choices": [
+            {
+              "text": "It allows credentials to be placed safely in prompts.",
+              "correct": false
+            },
+            {
+              "text": "It can reduce the duration and scope of credential exposure.",
+              "correct": true
+            },
+            {
+              "text": "It makes authorization checks unnecessary.",
+              "correct": false
+            },
+            {
+              "text": "It guarantees credentials cannot be stolen.",
+              "correct": false
+            }
+          ],
+          "hint": "Consider what happens if a credential is exposed.",
+          "solution": {
+            "code": "It can reduce the duration and scope of credential exposure.",
+            "steps": [
+              {
+                "title": "Limit the scope",
+                "explanation": "The identity has only the required permissions."
+              },
+              {
+                "title": "Limit lifetime",
+                "explanation": "Expiration reduces how long a compromised credential may remain usable."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-advanced-32",
+          "language": "ai-engineering",
+          "level": "advanced",
+          "title": "Verify artifact integrity",
+          "description": "A model file and its checksum are both downloaded from an untrusted webpage. What is the limitation?",
+          "choices": [
+            {
+              "text": "An attacker who replaced the file could also replace the checksum.",
+              "correct": true
+            },
+            {
+              "text": "A checksum makes the model safe to execute.",
+              "correct": false
+            },
+            {
+              "text": "The checksum is a substitute for access control.",
+              "correct": false
+            },
+            {
+              "text": "The checksum independently proves the publisher's identity.",
+              "correct": false
+            }
+          ],
+          "hint": "Consider whether the expected value comes from a trusted source.",
+          "solution": {
+            "code": "An attacker who replaced the file could also replace the checksum.",
+            "steps": [
+              {
+                "title": "Identify the trust issue",
+                "explanation": "Both items came from the same untrusted source."
+              },
+              {
+                "title": "Use independent evidence",
+                "explanation": "Verify against a trusted expected digest or signature where supported."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-advanced-33",
+          "language": "ai-engineering",
+          "level": "advanced",
+          "title": "Trace a deployed model",
+          "description": "A vulnerability is reported in a training library. Which release record helps identify affected deployments?",
+          "choices": [
+            {
+              "text": "Provenance linking deployed models to their training dependencies.",
+              "correct": true
+            },
+            {
+              "text": "The current time without artifact versions.",
+              "correct": false
+            },
+            {
+              "text": "A list of unrelated user sessions.",
+              "correct": false
+            },
+            {
+              "text": "Only the model's display name.",
+              "correct": false
+            }
+          ],
+          "hint": "The team needs to connect artifacts to their dependencies.",
+          "solution": {
+            "code": "Provenance linking deployed models to their training dependencies.",
+            "steps": [
+              {
+                "title": "Trace the release",
+                "explanation": "Find the library version associated with each model."
+              },
+              {
+                "title": "Identify affected deployments",
+                "explanation": "Use the provenance links to determine which releases need investigation."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-advanced-34",
+          "language": "ai-engineering",
+          "level": "advanced",
+          "title": "Promote the reviewed artifact",
+          "description": "A team tests one container image but rebuilds a new image from mutable dependencies for production. What risk does this introduce?",
+          "choices": [
+            {
+              "text": "The deployed image may differ from the reviewed image.",
+              "correct": true
+            },
+            {
+              "text": "Artifact identifiers become unnecessary.",
+              "correct": false
+            },
+            {
+              "text": "Testing the first image proves all future builds are safe.",
+              "correct": false
+            },
+            {
+              "text": "The second image must be identical.",
+              "correct": false
+            }
+          ],
+          "hint": "A rebuild may resolve different dependency contents.",
+          "solution": {
+            "code": "The deployed image may differ from the reviewed image.",
+            "steps": [
+              {
+                "title": "Compare the artifacts",
+                "explanation": "The production image was built separately."
+              },
+              {
+                "title": "Preserve the reviewed release",
+                "explanation": "Promote the same identified artifact that passed checks."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-advanced-35",
+          "language": "ai-engineering",
+          "level": "advanced",
+          "title": "Minimize diagnostic content",
+          "description": "A team needs to monitor service latency and error rates. Which telemetry choice best limits unnecessary exposure?",
+          "choices": [
+            {
+              "text": "Disable access controls on the log store.",
+              "correct": false
+            },
+            {
+              "text": "Store service credentials in every log entry.",
+              "correct": false
+            },
+            {
+              "text": "Record latency and error categories without storing raw prompts by default.",
+              "correct": true
+            },
+            {
+              "text": "Store every raw prompt indefinitely to measure latency.",
+              "correct": false
+            }
+          ],
+          "hint": "Start with signals directly needed for the operational purpose.",
+          "solution": {
+            "code": "Record latency and error categories without storing raw prompts by default.",
+            "steps": [
+              {
+                "title": "Identify the need",
+                "explanation": "Latency and error categories support the stated monitoring goal."
+              },
+              {
+                "title": "Minimize collection",
+                "explanation": "Avoid recording raw content when it is not needed."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-advanced-36",
+          "language": "ai-engineering",
+          "level": "advanced",
+          "title": "Evaluate redaction limits",
+          "description": "A log filter removes known secret patterns. What limitation remains?",
+          "choices": [
+            {
+              "text": "The filter guarantees anonymity in every case.",
+              "correct": false
+            },
+            {
+              "text": "No access controls are needed after filtering.",
+              "correct": false
+            },
+            {
+              "text": "Sensitive values may appear in formats the filter does not recognize.",
+              "correct": true
+            },
+            {
+              "text": "Retention limits no longer matter.",
+              "correct": false
+            }
+          ],
+          "hint": "A filter recognizes only the patterns it was designed to detect.",
+          "solution": {
+            "code": "Sensitive values may appear in formats the filter does not recognize.",
+            "steps": [
+              {
+                "title": "Identify the scope",
+                "explanation": "The filter handles known patterns."
+              },
+              {
+                "title": "Keep other controls",
+                "explanation": "Unknown formats and sensitive context may still remain."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-advanced-37",
+          "language": "ai-engineering",
+          "level": "advanced",
+          "title": "Apply retention policy",
+          "description": "Logs are deleted from the primary store after 30 days but remain in an untracked export. What should the retention review include?",
+          "choices": [
+            {
+              "text": "Only logs created after the audit.",
+              "correct": false
+            },
+            {
+              "text": "Only the primary store.",
+              "correct": false
+            },
+            {
+              "text": "The export and other downstream copies.",
+              "correct": true
+            },
+            {
+              "text": "No copies because the primary store was cleaned.",
+              "correct": false
+            }
+          ],
+          "hint": "Copies can outlive the original record.",
+          "solution": {
+            "code": "The export and other downstream copies.",
+            "steps": [
+              {
+                "title": "Identify the gap",
+                "explanation": "The export retains data beyond the primary store."
+              },
+              {
+                "title": "Apply the policy",
+                "explanation": "Account for downstream copies and their deletion procedures."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-advanced-38",
+          "language": "ai-engineering",
+          "level": "advanced",
+          "title": "Route within residency policy",
+          "description": "The lowest-latency region cannot process a user's data under the applicable residency rule. What should the service do?",
+          "choices": [
+            {
+              "text": "Choose an eligible healthy region or return an explicit failure.",
+              "correct": true
+            },
+            {
+              "text": "Copy the data to every region.",
+              "correct": false
+            },
+            {
+              "text": "Route to the restricted region and remove the audit record.",
+              "correct": false
+            },
+            {
+              "text": "Ignore residency because latency is lower.",
+              "correct": false
+            }
+          ],
+          "hint": "Eligibility is a constraint on the routing choice.",
+          "solution": {
+            "code": "Choose an eligible healthy region or return an explicit failure.",
+            "steps": [
+              {
+                "title": "Apply policy",
+                "explanation": "The closest region is not permitted for this data."
+              },
+              {
+                "title": "Choose safely",
+                "explanation": "Use a compliant healthy region if available, otherwise fail explicitly."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-advanced-39",
+          "language": "ai-engineering",
+          "level": "advanced",
+          "title": "Assess regional failover",
+          "description": "A service adds a second region, but both regions depend on the same unavailable control service. What does this reveal?",
+          "choices": [
+            {
+              "text": "The deployments may share a failure mode.",
+              "correct": true
+            },
+            {
+              "text": "The second region guarantees independence.",
+              "correct": false
+            },
+            {
+              "text": "Regional dependencies never affect failover.",
+              "correct": false
+            },
+            {
+              "text": "A common dependency ensures capacity.",
+              "correct": false
+            }
+          ],
+          "hint": "Trace dependencies shared by both regions.",
+          "solution": {
+            "code": "The deployments may share a failure mode.",
+            "steps": [
+              {
+                "title": "Identify the common dependency",
+                "explanation": "Both regions need the same control service."
+              },
+              {
+                "title": "Assess resilience",
+                "explanation": "Its failure can affect both despite geographic separation."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-advanced-40",
+          "language": "ai-engineering",
+          "level": "advanced",
+          "title": "Track regional rollout",
+          "description": "One region serves model v2 while another still serves v1 during a staged release. What operational record is useful?",
+          "choices": [
+            {
+              "text": "Only the global service name.",
+              "correct": false
+            },
+            {
+              "text": "A claim that all regions always match.",
+              "correct": false
+            },
+            {
+              "text": "The model filename without a region or version.",
+              "correct": false
+            },
+            {
+              "text": "The model and configuration version active in each region.",
+              "correct": true
+            }
+          ],
+          "hint": "A staged rollout can temporarily create different regional behavior.",
+          "solution": {
+            "code": "The model and configuration version active in each region.",
+            "steps": [
+              {
+                "title": "Identify the difference",
+                "explanation": "Regions are serving different versions."
+              },
+              {
+                "title": "Make it observable",
+                "explanation": "Record and monitor the active regional configurations."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-advanced-41",
+          "language": "ai-engineering",
+          "level": "advanced",
+          "title": "Assess a mixed workload",
+          "description": "An inference benchmark uses only short prompts, but production traffic includes a substantial fraction of long-context requests. What is the strongest next step before setting capacity?",
+          "choices": [
+            {
+              "text": "Scale solely from the short-prompt requests per second.",
+              "correct": false
+            },
+            {
+              "text": "Use the average input length and assume all requests cost the same.",
+              "correct": false
+            },
+            {
+              "text": "Benchmark the expected prompt and output length distribution at representative concurrency.",
+              "correct": true
+            },
+            {
+              "text": "Replace tail latency with mean latency as the service objective.",
+              "correct": false
+            }
+          ],
+          "hint": "Request shape affects processing and memory use.",
+          "solution": {
+            "code": "Benchmark the expected prompt and output length distribution at representative concurrency.",
+            "steps": [
+              {
+                "title": "Identify the mismatch",
+                "explanation": "The benchmark excludes a significant production workload."
+              },
+              {
+                "title": "Measure representative work",
+                "explanation": "Test the actual mix and concurrency before estimating capacity."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-advanced-42",
+          "language": "ai-engineering",
+          "level": "advanced",
+          "title": "Reason about a backlog",
+          "description": "A serving pool completes 80 requests per minute while 100 requests per minute arrive for several minutes. What happens if all requests enter an unbounded queue?",
+          "choices": [
+            {
+              "text": "The backlog grows while the excess arrival rate continues.",
+              "correct": true
+            },
+            {
+              "text": "The arrival rate automatically decreases to the service rate.",
+              "correct": false
+            },
+            {
+              "text": "The backlog falls because all arrivals were accepted.",
+              "correct": false
+            },
+            {
+              "text": "The queue stays stable because the service completes some requests.",
+              "correct": false
+            }
+          ],
+          "hint": "Compare incoming and completed work over the same period.",
+          "solution": {
+            "code": "The backlog grows while the excess arrival rate continues.",
+            "steps": [
+              {
+                "title": "Compare rates",
+                "explanation": "About 20 more requests arrive than complete each minute."
+              },
+              {
+                "title": "Infer the effect",
+                "explanation": "The queue accumulates requests until rates change or admission is limited."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-advanced-43",
+          "language": "ai-engineering",
+          "level": "advanced",
+          "title": "Find a scaling bottleneck",
+          "description": "Adding application replicas does not improve throughput. Each replica calls the same model endpoint, which is already at its enforced rate limit. What should the capacity investigation focus on?",
+          "choices": [
+            {
+              "text": "Only the number of application replicas, because every replica scales independently.",
+              "correct": false
+            },
+            {
+              "text": "The application's log level, because the endpoint limit does not affect throughput.",
+              "correct": false
+            },
+            {
+              "text": "Only average request size, because shared limits cannot be bottlenecks.",
+              "correct": false
+            },
+            {
+              "text": "The shared endpoint limit and feasible ways to manage demand or increase its capacity.",
+              "correct": true
+            }
+          ],
+          "hint": "Follow the requests to the shared dependency.",
+          "solution": {
+            "code": "The shared endpoint limit and feasible ways to manage demand or increase its capacity.",
+            "steps": [
+              {
+                "title": "Identify the common constraint",
+                "explanation": "All replicas compete for the same endpoint quota."
+              },
+              {
+                "title": "Assess the bottleneck",
+                "explanation": "More application replicas cannot by themselves raise the shared endpoint limit."
+              }
+            ]
+          }
+        },
+        {
+          "id": "aie-advanced-44",
+          "language": "ai-engineering",
+          "level": "advanced",
+          "title": "Choose an overload response",
+          "description": "During a burst, predicted wait time exceeds the request deadline and the queue is already at its configured bound. Which response best preserves an honest API contract?",
+          "choices": [
+            {
+              "text": "Reject excess work explicitly or use an approved degraded path.",
+              "correct": true
+            },
+            {
+              "text": "Accept all work and report success before execution.",
+              "correct": false
+            },
+            {
+              "text": "Retry every rejected request immediately without a limit.",
+              "correct": false
+            },
+            {
+              "text": "Remove the deadline and allow the queue to grow indefinitely.",
+              "correct": false
+            }
+          ],
+          "hint": "A bounded system must communicate when it cannot accept work.",
+          "solution": {
+            "code": "Reject excess work explicitly or use an approved degraded path.",
+            "steps": [
+              {
+                "title": "Identify infeasible work",
+                "explanation": "The queue and deadline do not support accepting more requests."
+              },
+              {
+                "title": "Respond explicitly",
+                "explanation": "Reject or use a defined fallback rather than pretending the work completed."
               }
             ]
           }

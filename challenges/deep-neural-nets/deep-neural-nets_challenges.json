@@ -978,6 +978,825 @@
               }
             ]
           }
+        },
+        {
+          "id": "dnn-new-26",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Calculate a neuron output",
+          "description": "A neuron uses z = w1*x1 + w2*x2 + b and ReLU(z) = max(0, z). If x1 = 2, x2 = 1, w1 = 0.5, w2 = -1, and b = 0.25, what is its output?",
+          "choices": [
+            {
+              "text": "1.25",
+              "correct": false
+            },
+            {
+              "text": "0.25",
+              "correct": true
+            },
+            {
+              "text": "-0.25",
+              "correct": false
+            },
+            {
+              "text": "0",
+              "correct": false
+            }
+          ],
+          "hint": "Compute the weighted sum before applying ReLU.",
+          "solution": {
+            "code": "0.25",
+            "steps": [
+              {
+                "title": "Add the weighted inputs",
+                "explanation": "The sum is 0.5*2 + (-1)*1 + 0.25 = 0.25."
+              },
+              {
+                "title": "Apply ReLU",
+                "explanation": "The sum is positive, so max(0, 0.25) is 0.25."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-27",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Stacking without activations",
+          "description": "A network stacks several dense layers, each using only a weighted sum and bias, with no nonlinear activation between them. What can the stack represent?",
+          "choices": [
+            {
+              "text": "A probability distribution regardless of its output values.",
+              "correct": false
+            },
+            {
+              "text": "An affine transformation that can also be expressed by one dense layer.",
+              "correct": true
+            },
+            {
+              "text": "Any nonlinear relationship solely because there are many layers.",
+              "correct": false
+            },
+            {
+              "text": "Only the constant zero, regardless of its weights.",
+              "correct": false
+            }
+          ],
+          "hint": "Consider what happens when affine transformations are composed.",
+          "solution": {
+            "code": "An affine transformation that can also be expressed by one dense layer.",
+            "steps": [
+              {
+                "title": "Compose the layers",
+                "explanation": "The composition of weighted sums and biases remains an affine transformation."
+              },
+              {
+                "title": "Consider nonlinearity",
+                "explanation": "Adding layers without nonlinear activations does not by itself create a nonlinear mapping."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-28",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Match layer dimensions",
+          "description": "A dense layer outputs a vector with 16 values. Which input size must the next dense layer expect to accept that vector directly?",
+          "choices": [
+            {
+              "text": "8",
+              "correct": false
+            },
+            {
+              "text": "16",
+              "correct": true
+            },
+            {
+              "text": "32",
+              "correct": false
+            },
+            {
+              "text": "Any size, without a transformation.",
+              "correct": false
+            }
+          ],
+          "hint": "Compare the number of values supplied with the number expected.",
+          "solution": {
+            "code": "16",
+            "steps": [
+              {
+                "title": "Read the output shape",
+                "explanation": "The first layer supplies 16 values."
+              },
+              {
+                "title": "Match the input",
+                "explanation": "The next layer must accept 16 inputs if no intervening transformation changes the vector."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-29",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Assess a representation",
+          "description": "A representation performs well on an image-classification benchmark. A team wants to use it for a different population and task. What is the strongest next step?",
+          "choices": [
+            {
+              "text": "Assume it will perform equally well without evaluation.",
+              "correct": false
+            },
+            {
+              "text": "Evaluate it on representative held-out data for the intended task.",
+              "correct": true
+            },
+            {
+              "text": "Select it solely because it contains many layers.",
+              "correct": false
+            },
+            {
+              "text": "Infer that every hidden value has a fixed human-readable meaning.",
+              "correct": false
+            }
+          ],
+          "hint": "The new population and objective may differ from the benchmark.",
+          "solution": {
+            "code": "Evaluate it on representative held-out data for the intended task.",
+            "steps": [
+              {
+                "title": "Identify the change",
+                "explanation": "A new task or population can require information that the original benchmark did not test."
+              },
+              {
+                "title": "Gather relevant evidence",
+                "explanation": "Held-out examples from the intended use help assess whether the representation transfers."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-30",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Update a weight",
+          "description": "A parameter is 2.0, its loss gradient is 0.5, and the learning rate is 0.1. Using gradient descent, what is the updated parameter?",
+          "choices": [
+            {
+              "text": "2.05",
+              "correct": false
+            },
+            {
+              "text": "1.5",
+              "correct": false
+            },
+            {
+              "text": "1.95",
+              "correct": true
+            },
+            {
+              "text": "0.05",
+              "correct": false
+            }
+          ],
+          "hint": "Subtract the learning rate multiplied by the gradient.",
+          "solution": {
+            "code": "1.95",
+            "steps": [
+              {
+                "title": "Calculate the step",
+                "explanation": "The learning-rate-scaled gradient is 0.1 * 0.5 = 0.05."
+              },
+              {
+                "title": "Update the parameter",
+                "explanation": "Gradient descent subtracts the step: 2.0 - 0.05 = 1.95."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-31",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Interpret low training loss",
+          "description": "A network has very low loss on its training examples. What additional evidence is needed before assuming it works on new examples?",
+          "choices": [
+            {
+              "text": "Its parameter count alone.",
+              "correct": false
+            },
+            {
+              "text": "A larger training score printed in a different format.",
+              "correct": false
+            },
+            {
+              "text": "Proof that every weight is positive.",
+              "correct": false
+            },
+            {
+              "text": "Evaluation on representative held-out examples.",
+              "correct": true
+            }
+          ],
+          "hint": "The evaluation must include examples that did not fit the model.",
+          "solution": {
+            "code": "Evaluation on representative held-out examples.",
+            "steps": [
+              {
+                "title": "Separate fitting and evaluation",
+                "explanation": "Low loss on the examples used to train the network does not show how it handles unseen data."
+              },
+              {
+                "title": "Test the intended use",
+                "explanation": "Representative held-out data provides evidence about performance on new examples."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-32",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Calculate a forward pass",
+          "description": "A scalar layer computes z = 2x - 3 and then applies ReLU. For x = 1, what is the activated output?",
+          "choices": [
+            {
+              "text": "1",
+              "correct": false
+            },
+            {
+              "text": "-1",
+              "correct": false
+            },
+            {
+              "text": "0",
+              "correct": true
+            },
+            {
+              "text": "5",
+              "correct": false
+            }
+          ],
+          "hint": "ReLU returns zero for a negative input.",
+          "solution": {
+            "code": "0",
+            "steps": [
+              {
+                "title": "Compute the affine value",
+                "explanation": "2 * 1 - 3 = -1."
+              },
+              {
+                "title": "Apply ReLU",
+                "explanation": "max(0, -1) = 0."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-33",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Check batch dimensions",
+          "description": "An input matrix has shape 8 by 3 and a weight matrix has shape 3 by 5. What is the shape of their matrix product?",
+          "choices": [
+            {
+              "text": "8 by 3",
+              "correct": false
+            },
+            {
+              "text": "5 by 8",
+              "correct": false
+            },
+            {
+              "text": "3 by 3",
+              "correct": false
+            },
+            {
+              "text": "8 by 5",
+              "correct": true
+            }
+          ],
+          "hint": "The inner dimensions match; the outer dimensions remain.",
+          "solution": {
+            "code": "8 by 5",
+            "steps": [
+              {
+                "title": "Check compatibility",
+                "explanation": "The input's 3 columns match the weight matrix's 3 rows."
+              },
+              {
+                "title": "Read the result",
+                "explanation": "The product has 8 rows and 5 columns."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-34",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Distinguish a forward pass",
+          "description": "What happens to model weights during a forward pass by itself?",
+          "choices": [
+            {
+              "text": "They are replaced by the target labels.",
+              "correct": false
+            },
+            {
+              "text": "They are used to compute outputs but are not updated by that pass alone.",
+              "correct": true
+            },
+            {
+              "text": "They are automatically updated by gradient descent.",
+              "correct": false
+            },
+            {
+              "text": "They are always set to zero.",
+              "correct": false
+            }
+          ],
+          "hint": "Separate calculating predictions from applying an optimizer update.",
+          "solution": {
+            "code": "They are used to compute outputs but are not updated by that pass alone.",
+            "steps": [
+              {
+                "title": "Compute outputs",
+                "explanation": "The current parameters determine the layer transformations."
+              },
+              {
+                "title": "Update separately",
+                "explanation": "Training needs a loss, gradients, and an optimizer step to change weights."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-35",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Calculate squared error",
+          "description": "A model predicts 7 for a target value of 5. What is its squared error?",
+          "choices": [
+            {
+              "text": "2",
+              "correct": false
+            },
+            {
+              "text": "12",
+              "correct": false
+            },
+            {
+              "text": "4",
+              "correct": true
+            },
+            {
+              "text": "49",
+              "correct": false
+            }
+          ],
+          "hint": "Subtract the target and square the difference.",
+          "solution": {
+            "code": "4",
+            "steps": [
+              {
+                "title": "Find the error",
+                "explanation": "7 - 5 = 2."
+              },
+              {
+                "title": "Square it",
+                "explanation": "2 squared is 4."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-36",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Check loss inputs",
+          "description": "A classification loss expects raw logits, but a team passes values after applying a softmax operation. What should it check?",
+          "choices": [
+            {
+              "text": "Whether the chart background is blue.",
+              "correct": false
+            },
+            {
+              "text": "Whether the target is stored in a different folder only.",
+              "correct": false
+            },
+            {
+              "text": "The library contract to avoid applying the transformation twice.",
+              "correct": true
+            },
+            {
+              "text": "Whether every model uses mean squared error.",
+              "correct": false
+            }
+          ],
+          "hint": "Loss APIs differ in the input representation they expect.",
+          "solution": {
+            "code": "The library contract to avoid applying the transformation twice.",
+            "steps": [
+              {
+                "title": "Identify the expected input",
+                "explanation": "The specified loss expects logits."
+              },
+              {
+                "title": "Check preprocessing",
+                "explanation": "Applying a transformation before a loss that already handles it can be incorrect."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-37",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Compare training and validation loss",
+          "description": "Training loss falls while validation loss rises across several epochs. What is a reasonable interpretation?",
+          "choices": [
+            {
+              "text": "The model is guaranteed to generalize better.",
+              "correct": false
+            },
+            {
+              "text": "The training examples have become test labels.",
+              "correct": false
+            },
+            {
+              "text": "Possible overfitting or a data issue warrants investigation.",
+              "correct": true
+            },
+            {
+              "text": "Validation is unnecessary.",
+              "correct": false
+            }
+          ],
+          "hint": "The two measurements show different trends.",
+          "solution": {
+            "code": "Possible overfitting or a data issue warrants investigation.",
+            "steps": [
+              {
+                "title": "Identify the gap",
+                "explanation": "Training loss improves while held-out loss worsens."
+              },
+              {
+                "title": "Investigate causes",
+                "explanation": "Overfitting is possible, but data and measurement issues can also matter."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-38",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Calculate a gradient step",
+          "description": "A parameter is 2, the gradient is 0.5, and the learning rate is 0.1. What is the plain gradient-descent update?",
+          "choices": [
+            {
+              "text": "2.5",
+              "correct": false
+            },
+            {
+              "text": "2.05",
+              "correct": false
+            },
+            {
+              "text": "1.5",
+              "correct": false
+            },
+            {
+              "text": "1.95",
+              "correct": true
+            }
+          ],
+          "hint": "Subtract learning rate times gradient.",
+          "solution": {
+            "code": "1.95",
+            "steps": [
+              {
+                "title": "Scale the gradient",
+                "explanation": "0.1 * 0.5 = 0.05."
+              },
+              {
+                "title": "Update the parameter",
+                "explanation": "2 - 0.05 = 1.95."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-39",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Diagnose unstable training",
+          "description": "Training loss oscillates sharply after the learning rate is increased. What is a reasonable experiment?",
+          "choices": [
+            {
+              "text": "Treat instability as proof of better generalization.",
+              "correct": false
+            },
+            {
+              "text": "Try a lower learning rate and compare the training behavior.",
+              "correct": true
+            },
+            {
+              "text": "Remove the validation data.",
+              "correct": false
+            },
+            {
+              "text": "Assume larger learning rates always improve convergence.",
+              "correct": false
+            }
+          ],
+          "hint": "An overly large update can overshoot.",
+          "solution": {
+            "code": "Try a lower learning rate and compare the training behavior.",
+            "steps": [
+              {
+                "title": "Identify the change",
+                "explanation": "The oscillation followed a learning-rate increase."
+              },
+              {
+                "title": "Test the hypothesis",
+                "explanation": "Compare a lower rate while monitoring training and validation."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-40",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Understand mini-batch gradients",
+          "description": "Why can gradient estimates differ between mini-batches?",
+          "choices": [
+            {
+              "text": "All batches necessarily contain identical examples.",
+              "correct": false
+            },
+            {
+              "text": "A batch cannot contain more than one example.",
+              "correct": false
+            },
+            {
+              "text": "The gradient never depends on data.",
+              "correct": false
+            },
+            {
+              "text": "Each batch contains a different subset of examples.",
+              "correct": true
+            }
+          ],
+          "hint": "The loss is computed on the examples in the batch.",
+          "solution": {
+            "code": "Each batch contains a different subset of examples.",
+            "steps": [
+              {
+                "title": "Identify the sample",
+                "explanation": "Different batches can contain different training examples."
+              },
+              {
+                "title": "Relate it to the gradient",
+                "explanation": "Their losses and resulting gradient estimates can differ."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-41",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Identify backpropagation",
+          "description": "What does backpropagation compute?",
+          "choices": [
+            {
+              "text": "Only a list of input filenames.",
+              "correct": false
+            },
+            {
+              "text": "Gradients of the loss with respect to model parameters.",
+              "correct": true
+            },
+            {
+              "text": "The final deployment approval.",
+              "correct": false
+            },
+            {
+              "text": "The next training dataset automatically.",
+              "correct": false
+            }
+          ],
+          "hint": "It applies the chain rule backward through the model.",
+          "solution": {
+            "code": "Gradients of the loss with respect to model parameters.",
+            "steps": [
+              {
+                "title": "Start with the loss",
+                "explanation": "The loss depends on the model's computations."
+              },
+              {
+                "title": "Compute derivatives",
+                "explanation": "Backpropagation finds parameter gradients through those computations."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-42",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Separate gradients and updates",
+          "description": "What is the optimizer's role after backpropagation?",
+          "choices": [
+            {
+              "text": "Replace the loss with the validation labels.",
+              "correct": false
+            },
+            {
+              "text": "Prevent any model output.",
+              "correct": false
+            },
+            {
+              "text": "Compute a source document citation.",
+              "correct": false
+            },
+            {
+              "text": "Use computed gradients and its settings to update parameters.",
+              "correct": true
+            }
+          ],
+          "hint": "Computing a gradient and applying an update are different steps.",
+          "solution": {
+            "code": "Use computed gradients and its settings to update parameters.",
+            "steps": [
+              {
+                "title": "Identify the gradient",
+                "explanation": "Backpropagation provides derivatives."
+              },
+              {
+                "title": "Update parameters",
+                "explanation": "The optimizer uses those derivatives and its configuration."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-43",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Debug custom gradients",
+          "description": "A custom layer appears to train incorrectly. What is a useful small-scale check?",
+          "choices": [
+            {
+              "text": "Only change the file name.",
+              "correct": false
+            },
+            {
+              "text": "Assume the gradient is correct because dimensions match.",
+              "correct": false
+            },
+            {
+              "text": "Compare its computed gradients with numerical approximations.",
+              "correct": true
+            },
+            {
+              "text": "Remove all validation examples.",
+              "correct": false
+            }
+          ],
+          "hint": "Test the derivative independently on a small example.",
+          "solution": {
+            "code": "Compare its computed gradients with numerical approximations.",
+            "steps": [
+              {
+                "title": "Compute a reference",
+                "explanation": "A numerical approximation provides a comparison."
+              },
+              {
+                "title": "Inspect differences",
+                "explanation": "Large unexpected discrepancies can reveal an implementation error."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-44",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Count batch updates",
+          "description": "A training set has 120 examples. Batch size is 30, and each batch produces one optimizer update. How many updates occur in one full epoch?",
+          "choices": [
+            {
+              "text": "30",
+              "correct": false
+            },
+            {
+              "text": "120",
+              "correct": false
+            },
+            {
+              "text": "150",
+              "correct": false
+            },
+            {
+              "text": "4",
+              "correct": true
+            }
+          ],
+          "hint": "Divide the number of examples by batch size.",
+          "solution": {
+            "code": "4",
+            "steps": [
+              {
+                "title": "Count batches",
+                "explanation": "120 divided by 30 gives four batches."
+              },
+              {
+                "title": "Count updates",
+                "explanation": "With one update per batch, the epoch has four updates."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-45",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Reason about batch memory",
+          "description": "A model runs out of device memory when training with batch size 128. Which adjustment is a reasonable first experiment?",
+          "choices": [
+            {
+              "text": "Add validation examples to each training batch.",
+              "correct": false
+            },
+            {
+              "text": "Try a smaller batch and measure memory and training behavior.",
+              "correct": true
+            },
+            {
+              "text": "Increase the batch size to 256.",
+              "correct": false
+            },
+            {
+              "text": "Assume batch size cannot affect activation memory.",
+              "correct": false
+            }
+          ],
+          "hint": "Batch size affects the number of examples processed together.",
+          "solution": {
+            "code": "Try a smaller batch and measure memory and training behavior.",
+            "steps": [
+              {
+                "title": "Identify the constraint",
+                "explanation": "The current batch does not fit in device memory."
+              },
+              {
+                "title": "Reduce concurrent work",
+                "explanation": "A smaller batch often reduces memory use, but should be measured."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-new-46",
+          "language": "deep-neural-nets",
+          "level": "new",
+          "title": "Protect held-out data",
+          "description": "A training loader shuffles examples at each epoch. Which examples should it shuffle?",
+          "choices": [
+            {
+              "text": "Only the final test examples.",
+              "correct": false
+            },
+            {
+              "text": "Future labels that are unavailable during training.",
+              "correct": false
+            },
+            {
+              "text": "Training, validation, and test examples together.",
+              "correct": false
+            },
+            {
+              "text": "Examples from the training split, while respecting task-specific ordering requirements.",
+              "correct": true
+            }
+          ],
+          "hint": "Shuffling does not eliminate the need for separate evaluation.",
+          "solution": {
+            "code": "Examples from the training split, while respecting task-specific ordering requirements.",
+            "steps": [
+              {
+                "title": "Keep the split boundary",
+                "explanation": "Held-out examples should not enter the training batches."
+              },
+              {
+                "title": "Respect the task",
+                "explanation": "Shuffle training examples only when doing so preserves necessary ordering."
+              }
+            ]
+          }
         }
       ]
     },
@@ -1955,6 +2774,786 @@
               {
                 "title": "Apply with evidence",
                 "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-26",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Break initialization symmetry",
+          "description": "Two neurons in the same layer have identical parameters and receive identical gradients at every step. What happens if the same optimizer updates both identically?",
+          "choices": [
+            {
+              "text": "They necessarily learn different features.",
+              "correct": false
+            },
+            {
+              "text": "They become different solely because their names differ.",
+              "correct": false
+            },
+            {
+              "text": "Their parameters remain identical.",
+              "correct": true
+            },
+            {
+              "text": "Their gradients must become infinite.",
+              "correct": false
+            }
+          ],
+          "hint": "Equal starting values and equal updates preserve equality.",
+          "solution": {
+            "code": "Their parameters remain identical.",
+            "steps": [
+              {
+                "title": "Compare the updates",
+                "explanation": "Each neuron starts from the same parameters and receives the same update."
+              },
+              {
+                "title": "Follow the consequence",
+                "explanation": "The parameters remain equal under those conditions, motivating symmetry-breaking initialization."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-27",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Investigate shrinking signals",
+          "description": "Activations and gradients become extremely small through many layers at the start of training. Which investigation is most relevant?",
+          "choices": [
+            {
+              "text": "Remove the held-out evaluation set.",
+              "correct": false
+            },
+            {
+              "text": "Choose a longer model name.",
+              "correct": false
+            },
+            {
+              "text": "Assume training is healthy because all values are small.",
+              "correct": false
+            },
+            {
+              "text": "Check initialization scale, input scaling, and activation behavior.",
+              "correct": true
+            }
+          ],
+          "hint": "Consider the factors that affect signal scale through layers.",
+          "solution": {
+            "code": "Check initialization scale, input scaling, and activation behavior.",
+            "steps": [
+              {
+                "title": "Identify the symptom",
+                "explanation": "Very small signals can make parameter updates ineffective."
+              },
+              {
+                "title": "Inspect the causes",
+                "explanation": "Initialization and the scales of inputs and activations can all influence signal propagation."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-28",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Read a step schedule",
+          "description": "A schedule uses a learning rate of 0.01 for the first 10 epochs, then 0.001. What happens at the milestone?",
+          "choices": [
+            {
+              "text": "The model weights are automatically reset.",
+              "correct": false
+            },
+            {
+              "text": "The rate decreases by a factor of ten.",
+              "correct": true
+            },
+            {
+              "text": "The rate increases by a factor of ten.",
+              "correct": false
+            },
+            {
+              "text": "All gradients are guaranteed to vanish.",
+              "correct": false
+            }
+          ],
+          "hint": "Compare 0.001 with 0.01.",
+          "solution": {
+            "code": "The rate decreases by a factor of ten.",
+            "steps": [
+              {
+                "title": "Calculate the ratio",
+                "explanation": "0.001 / 0.01 = 0.1."
+              },
+              {
+                "title": "Interpret the schedule",
+                "explanation": "The new rate is one tenth of the previous rate."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-29",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Restore a schedule",
+          "description": "A training job resumes from a checkpoint but resets its scheduler to the beginning. What can happen?",
+          "choices": [
+            {
+              "text": "The training data becomes a test set.",
+              "correct": false
+            },
+            {
+              "text": "The optimizer is guaranteed to converge faster.",
+              "correct": false
+            },
+            {
+              "text": "The model can no longer compute a forward pass.",
+              "correct": false
+            },
+            {
+              "text": "The resumed learning-rate sequence differs from the intended continuation.",
+              "correct": true
+            }
+          ],
+          "hint": "The scheduler tracks position in the training schedule.",
+          "solution": {
+            "code": "The resumed learning-rate sequence differs from the intended continuation.",
+            "steps": [
+              {
+                "title": "Identify the lost state",
+                "explanation": "Resetting the scheduler loses its previous position."
+              },
+              {
+                "title": "Assess the effect",
+                "explanation": "Subsequent updates can use rates intended for the beginning rather than the resumed step."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-30",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Compare learning-rate schedules",
+          "description": "A team wants to compare two schedules. Which setup supports a fairer comparison?",
+          "choices": [
+            {
+              "text": "The same split and budget, with the same held-out metric.",
+              "correct": true
+            },
+            {
+              "text": "Different data splits and unrelated training budgets.",
+              "correct": false
+            },
+            {
+              "text": "Choosing the schedule based on one training batch only.",
+              "correct": false
+            },
+            {
+              "text": "Always selecting the schedule with the lowest initial rate.",
+              "correct": false
+            }
+          ],
+          "hint": "Control other factors that affect model performance.",
+          "solution": {
+            "code": "The same split and budget, with the same held-out metric.",
+            "steps": [
+              {
+                "title": "Match the conditions",
+                "explanation": "Use the same evaluation split and training budget."
+              },
+              {
+                "title": "Measure the outcome",
+                "explanation": "Compare the relevant metric and training behavior, accounting for randomness."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-31",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Reason about momentum",
+          "description": "What is the role of momentum in a gradient-based optimizer?",
+          "choices": [
+            {
+              "text": "Replace all training data with validation data.",
+              "correct": false
+            },
+            {
+              "text": "Use recent gradients to maintain an update direction.",
+              "correct": true
+            },
+            {
+              "text": "Guarantee that the model never overfits.",
+              "correct": false
+            },
+            {
+              "text": "Make learning rate irrelevant.",
+              "correct": false
+            }
+          ],
+          "hint": "The optimizer keeps a history-dependent direction.",
+          "solution": {
+            "code": "Use recent gradients to maintain an update direction.",
+            "steps": [
+              {
+                "title": "Track recent information",
+                "explanation": "Momentum incorporates a running history of gradients."
+              },
+              {
+                "title": "Apply it",
+                "explanation": "The accumulated direction influences the parameter update."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-32",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Compare optimizers",
+          "description": "One optimizer is tested for twice as many training steps as another. What makes their validation-score comparison difficult?",
+          "choices": [
+            {
+              "text": "Optimizers cannot use gradients.",
+              "correct": false
+            },
+            {
+              "text": "Validation data must always equal training data.",
+              "correct": false
+            },
+            {
+              "text": "The optimizer name uniquely determines accuracy.",
+              "correct": false
+            },
+            {
+              "text": "The training budgets differ.",
+              "correct": true
+            }
+          ],
+          "hint": "The methods did not receive the same opportunity to train.",
+          "solution": {
+            "code": "The training budgets differ.",
+            "steps": [
+              {
+                "title": "Find the confound",
+                "explanation": "The number of optimization steps differs."
+              },
+              {
+                "title": "Improve the comparison",
+                "explanation": "Compare with an agreed budget and tune each method appropriately."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-33",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Resume with optimizer state",
+          "description": "Why save optimizer state alongside model parameters when resuming training with Adam?",
+          "choices": [
+            {
+              "text": "Adam uses accumulated gradient statistics that affect later updates.",
+              "correct": true
+            },
+            {
+              "text": "It guarantees identical results on every hardware setup.",
+              "correct": false
+            },
+            {
+              "text": "Parameters are unnecessary if optimizer state is saved.",
+              "correct": false
+            },
+            {
+              "text": "Optimizer state contains the final test labels.",
+              "correct": false
+            }
+          ],
+          "hint": "Adam remembers statistics from previous steps.",
+          "solution": {
+            "code": "Adam uses accumulated gradient statistics that affect later updates.",
+            "steps": [
+              {
+                "title": "Identify saved history",
+                "explanation": "Adam tracks moving averages used for update scaling."
+              },
+              {
+                "title": "Preserve training behavior",
+                "explanation": "Restoring those statistics avoids unintentionally restarting the optimizer history."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-34",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Distinguish decay from L2",
+          "description": "Why can an L2 loss penalty differ from decoupled weight decay with an adaptive optimizer?",
+          "choices": [
+            {
+              "text": "Both methods always produce identical updates.",
+              "correct": false
+            },
+            {
+              "text": "Adaptive optimizers never update parameters.",
+              "correct": false
+            },
+            {
+              "text": "The optimizer can scale the penalty gradient along with other gradients.",
+              "correct": true
+            },
+            {
+              "text": "L2 penalties remove the need for a loss.",
+              "correct": false
+            }
+          ],
+          "hint": "Consider where the regularization term enters the update.",
+          "solution": {
+            "code": "The optimizer can scale the penalty gradient along with other gradients.",
+            "steps": [
+              {
+                "title": "Locate L2",
+                "explanation": "The penalty contributes to the loss gradient."
+              },
+              {
+                "title": "Compare decay",
+                "explanation": "Decoupled decay applies shrinkage separately, so adaptive scaling can make the updates differ."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-35",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Choose decay groups",
+          "description": "A training setup excludes normalization parameters from weight decay. What should the team record?",
+          "choices": [
+            {
+              "text": "Only the model display name.",
+              "correct": false
+            },
+            {
+              "text": "Which parameter groups receive decay and their settings.",
+              "correct": true
+            },
+            {
+              "text": "A claim that all parameters receive the same decay.",
+              "correct": false
+            },
+            {
+              "text": "The final test labels.",
+              "correct": false
+            }
+          ],
+          "hint": "Different groups may have different policies.",
+          "solution": {
+            "code": "Which parameter groups receive decay and their settings.",
+            "steps": [
+              {
+                "title": "Identify the configuration",
+                "explanation": "Some parameters are excluded from decay."
+              },
+              {
+                "title": "Record the groups",
+                "explanation": "The optimizer configuration should reflect that distinction."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-36",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Assess excessive decay",
+          "description": "A model underfits after weight decay is increased substantially. What is a reasonable next step?",
+          "choices": [
+            {
+              "text": "Assume stronger decay always improves accuracy.",
+              "correct": false
+            },
+            {
+              "text": "Disable evaluation permanently.",
+              "correct": false
+            },
+            {
+              "text": "Compare lower decay strengths using validation data.",
+              "correct": true
+            },
+            {
+              "text": "Train on the final test labels.",
+              "correct": false
+            }
+          ],
+          "hint": "Excessive regularization can restrict learning.",
+          "solution": {
+            "code": "Compare lower decay strengths using validation data.",
+            "steps": [
+              {
+                "title": "Consider the change",
+                "explanation": "The decay strength increased before the underfitting."
+              },
+              {
+                "title": "Test alternatives",
+                "explanation": "Evaluate lower values under a controlled setup."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-37",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Choose inference mode",
+          "description": "What should happen to ordinary dropout during standard inference?",
+          "choices": [
+            {
+              "text": "It must randomly mask outputs on every call.",
+              "correct": false
+            },
+            {
+              "text": "It should be fitted on the test labels.",
+              "correct": false
+            },
+            {
+              "text": "It replaces the model output layer.",
+              "correct": false
+            },
+            {
+              "text": "It should be disabled using evaluation mode.",
+              "correct": true
+            }
+          ],
+          "hint": "The usual evaluation path does not use training-time masking.",
+          "solution": {
+            "code": "It should be disabled using evaluation mode.",
+            "steps": [
+              {
+                "title": "Identify the mode",
+                "explanation": "Inference should use the model's evaluation behavior."
+              },
+              {
+                "title": "Apply it",
+                "explanation": "Ordinary dropout is disabled in that mode."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-38",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Interpret excessive dropout",
+          "description": "A network struggles to fit the training data after a large increase in dropout. What is a reasonable experiment?",
+          "choices": [
+            {
+              "text": "Remove the optimizer.",
+              "correct": false
+            },
+            {
+              "text": "Assume the maximum rate always improves generalization.",
+              "correct": false
+            },
+            {
+              "text": "Train on the final test labels.",
+              "correct": false
+            },
+            {
+              "text": "Compare a lower dropout rate on validation data.",
+              "correct": true
+            }
+          ],
+          "hint": "Strong regularization can make fitting harder.",
+          "solution": {
+            "code": "Compare a lower dropout rate on validation data.",
+            "steps": [
+              {
+                "title": "Identify the change",
+                "explanation": "The dropout rate increased before underfitting."
+              },
+              {
+                "title": "Test a smaller rate",
+                "explanation": "Compare training and validation behavior under controlled conditions."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-39",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Recognize dropout variability",
+          "description": "Why might training-mode predictions differ across repeated passes with dropout?",
+          "choices": [
+            {
+              "text": "The input must change automatically.",
+              "correct": false
+            },
+            {
+              "text": "A new random activation mask may be sampled.",
+              "correct": true
+            },
+            {
+              "text": "All model parameters are deleted each time.",
+              "correct": false
+            },
+            {
+              "text": "Evaluation mode is always active.",
+              "correct": false
+            }
+          ],
+          "hint": "Dropout samples a mask during training.",
+          "solution": {
+            "code": "A new random activation mask may be sampled.",
+            "steps": [
+              {
+                "title": "Identify randomness",
+                "explanation": "The kept activations can differ between passes."
+              },
+              {
+                "title": "Relate it to output",
+                "explanation": "Different masks can produce different predictions."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-40",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Use batch normalization at inference",
+          "description": "With running-statistics tracking enabled, what does ordinary evaluation commonly use?",
+          "choices": [
+            {
+              "text": "Stored running statistics.",
+              "correct": true
+            },
+            {
+              "text": "Final test labels to compute the mean.",
+              "correct": false
+            },
+            {
+              "text": "New random dropout masks as normalization statistics.",
+              "correct": false
+            },
+            {
+              "text": "No normalization parameters or statistics.",
+              "correct": false
+            }
+          ],
+          "hint": "Evaluation behavior typically differs from training.",
+          "solution": {
+            "code": "Stored running statistics.",
+            "steps": [
+              {
+                "title": "Identify the stored state",
+                "explanation": "Training updates running estimates."
+              },
+              {
+                "title": "Use evaluation mode",
+                "explanation": "The layer commonly uses those estimates for inference."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-41",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Consider small batches",
+          "description": "Why can very small training batches be problematic for batch normalization?",
+          "choices": [
+            {
+              "text": "They force every model to use identical activations.",
+              "correct": false
+            },
+            {
+              "text": "Their estimated batch statistics may be noisy.",
+              "correct": true
+            },
+            {
+              "text": "They eliminate the need for model state.",
+              "correct": false
+            },
+            {
+              "text": "They guarantee perfect population statistics.",
+              "correct": false
+            }
+          ],
+          "hint": "A small sample can provide unstable estimates.",
+          "solution": {
+            "code": "Their estimated batch statistics may be noisy.",
+            "steps": [
+              {
+                "title": "Identify the calculation",
+                "explanation": "Batch normalization estimates statistics from a minibatch."
+              },
+              {
+                "title": "Assess the sample",
+                "explanation": "Small batches may make those estimates noisy or unrepresentative."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-42",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Preserve normalization state",
+          "description": "A trained model uses batch normalization with tracked running statistics. What should be saved for ordinary inference?",
+          "choices": [
+            {
+              "text": "No state because inference always recomputes training statistics.",
+              "correct": false
+            },
+            {
+              "text": "The running statistics as well as learned parameters.",
+              "correct": true
+            },
+            {
+              "text": "Only the training data filename.",
+              "correct": false
+            },
+            {
+              "text": "Only the model display name.",
+              "correct": false
+            }
+          ],
+          "hint": "Inference may depend on statistics accumulated during training.",
+          "solution": {
+            "code": "The running statistics as well as learned parameters.",
+            "steps": [
+              {
+                "title": "Identify required state",
+                "explanation": "Evaluation commonly uses stored running estimates."
+              },
+              {
+                "title": "Save it",
+                "explanation": "Retain those estimates alongside the learned model parameters."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-43",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Compute a normalized vector",
+          "description": "For features [1, 3], layer normalization uses their mean and population variance. Ignoring epsilon and any learned scale or shift, what is the normalized vector?",
+          "choices": [
+            {
+              "text": "[-2, 2]",
+              "correct": false
+            },
+            {
+              "text": "[0, 1]",
+              "correct": false
+            },
+            {
+              "text": "[1, 3]",
+              "correct": false
+            },
+            {
+              "text": "[-1, 1]",
+              "correct": true
+            }
+          ],
+          "hint": "The mean is 2 and the population variance is 1.",
+          "solution": {
+            "code": "[-1, 1]",
+            "steps": [
+              {
+                "title": "Subtract the mean",
+                "explanation": "The centered values are [-1, 1]."
+              },
+              {
+                "title": "Divide by standard deviation",
+                "explanation": "The standard deviation is 1, so the values remain [-1, 1]."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-44",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Identify normalization statistics",
+          "description": "A layer normalization operation is configured over the feature vector at each token. Which values contribute to the mean for one token?",
+          "choices": [
+            {
+              "text": "Only the model's final test labels.",
+              "correct": false
+            },
+            {
+              "text": "All tokens in every example in the batch.",
+              "correct": false
+            },
+            {
+              "text": "The configured features of that token's vector.",
+              "correct": true
+            },
+            {
+              "text": "A running mean shared across unrelated future batches.",
+              "correct": false
+            }
+          ],
+          "hint": "Consider the configured normalization axes.",
+          "solution": {
+            "code": "The configured features of that token's vector.",
+            "steps": [
+              {
+                "title": "Identify the axes",
+                "explanation": "The operation is configured over features at one token."
+              },
+              {
+                "title": "Find the statistic",
+                "explanation": "Its mean uses those features, not other examples' batch statistics."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-beginner-45",
+          "language": "deep-neural-nets",
+          "level": "beginner",
+          "title": "Use masking separately",
+          "description": "A sequence model applies layer normalization to token features. Padding tokens still affect an unmasked loss. What is the correct interpretation?",
+          "choices": [
+            {
+              "text": "The loss cannot include padded positions after normalization.",
+              "correct": false
+            },
+            {
+              "text": "Padding changes into a learned normalization parameter.",
+              "correct": false
+            },
+            {
+              "text": "Layer normalization automatically removes every padding token from the loss.",
+              "correct": false
+            },
+            {
+              "text": "Layer normalization does not replace the required loss mask.",
+              "correct": true
+            }
+          ],
+          "hint": "Normalization and masking perform different operations.",
+          "solution": {
+            "code": "Layer normalization does not replace the required loss mask.",
+            "steps": [
+              {
+                "title": "Separate the operations",
+                "explanation": "Normalization rescales features; it does not select valid loss positions."
+              },
+              {
+                "title": "Apply the mask",
+                "explanation": "Exclude padding from the loss according to the task."
               }
             ]
           }
@@ -2938,6 +4537,825 @@
               }
             ]
           }
+        },
+        {
+          "id": "dnn-intermediate-26",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Compute a residual output",
+          "description": "A simple residual block computes y = F(x) + x. If x = [2, -1] and F(x) = [3, 4], what is y?",
+          "choices": [
+            {
+              "text": "[3, 4]",
+              "correct": false
+            },
+            {
+              "text": "[5, 3]",
+              "correct": true
+            },
+            {
+              "text": "[-1, -5]",
+              "correct": false
+            },
+            {
+              "text": "[6, -4]",
+              "correct": false
+            }
+          ],
+          "hint": "Add corresponding elements of the two vectors.",
+          "solution": {
+            "code": "[5, 3]",
+            "steps": [
+              {
+                "title": "Add the first elements",
+                "explanation": "2 + 3 = 5."
+              },
+              {
+                "title": "Add the second elements",
+                "explanation": "-1 + 4 = 3."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-27",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Handle residual shape changes",
+          "description": "A residual branch outputs 64 channels while the input shortcut has 32. Both have the same batch and spatial dimensions. How can the block perform elementwise addition?",
+          "choices": [
+            {
+              "text": "Add the tensors unchanged and assume channels match.",
+              "correct": false
+            },
+            {
+              "text": "Concatenate the tensors and call the result an elementwise sum.",
+              "correct": false
+            },
+            {
+              "text": "Project the shortcut to 64 channels before addition.",
+              "correct": true
+            },
+            {
+              "text": "Remove the training labels.",
+              "correct": false
+            }
+          ],
+          "hint": "The two inputs to the sum need compatible shapes.",
+          "solution": {
+            "code": "Project the shortcut to 64 channels before addition.",
+            "steps": [
+              {
+                "title": "Find the mismatch",
+                "explanation": "The residual and shortcut paths have different channel counts."
+              },
+              {
+                "title": "Align the paths",
+                "explanation": "A projection can transform the shortcut to the required shape before addition."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-28",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Follow a shortcut gradient",
+          "description": "For the scalar block y = F(x) + x, which derivative describes how y changes with x?",
+          "choices": [
+            {
+              "text": "F'(x) - 1",
+              "correct": false
+            },
+            {
+              "text": "1 alone for every possible F",
+              "correct": false
+            },
+            {
+              "text": "F'(x) alone",
+              "correct": false
+            },
+            {
+              "text": "F'(x) + 1",
+              "correct": true
+            }
+          ],
+          "hint": "Differentiate both terms of the sum.",
+          "solution": {
+            "code": "F'(x) + 1",
+            "steps": [
+              {
+                "title": "Differentiate the residual branch",
+                "explanation": "The derivative of F(x) is F'(x)."
+              },
+              {
+                "title": "Include the shortcut",
+                "explanation": "The derivative of x is 1, so the two contributions add."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-29",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Calculate a weighted output",
+          "description": "An attention head assigns weights 0.4 and 0.6 to scalar values 5 and 15. What is the weighted sum?",
+          "choices": [
+            {
+              "text": "10",
+              "correct": false
+            },
+            {
+              "text": "20",
+              "correct": false
+            },
+            {
+              "text": "12",
+              "correct": false
+            },
+            {
+              "text": "11",
+              "correct": true
+            }
+          ],
+          "hint": "Multiply each value by its weight, then add.",
+          "solution": {
+            "code": "11",
+            "steps": [
+              {
+                "title": "Weight each value",
+                "explanation": "0.4 * 5 = 2 and 0.6 * 15 = 9."
+              },
+              {
+                "title": "Add contributions",
+                "explanation": "2 + 9 = 11."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-30",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Apply a causal mask",
+          "description": "In causal self-attention, which keys may query position 3 attend to in a four-token sequence?",
+          "choices": [
+            {
+              "text": "Positions 3 and 4 only.",
+              "correct": false
+            },
+            {
+              "text": "Only position 4.",
+              "correct": false
+            },
+            {
+              "text": "All four positions without restriction.",
+              "correct": false
+            },
+            {
+              "text": "Positions 1, 2, and 3.",
+              "correct": true
+            }
+          ],
+          "hint": "Causal masking excludes later positions.",
+          "solution": {
+            "code": "Positions 1, 2, and 3.",
+            "steps": [
+              {
+                "title": "Find the query position",
+                "explanation": "The query is at position 3."
+              },
+              {
+                "title": "Exclude the future",
+                "explanation": "Positions 1 through 3 are eligible; position 4 is later."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-31",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Determine attention score shape",
+          "description": "One attention head uses 6 query vectors and 9 key vectors. How many rows and columns are in its score matrix?",
+          "choices": [
+            {
+              "text": "6 rows and 9 columns.",
+              "correct": true
+            },
+            {
+              "text": "9 rows and 9 columns.",
+              "correct": false
+            },
+            {
+              "text": "6 rows and 6 columns.",
+              "correct": false
+            },
+            {
+              "text": "9 rows and 6 columns.",
+              "correct": false
+            }
+          ],
+          "hint": "Each query is scored against each key.",
+          "solution": {
+            "code": "6 rows and 9 columns.",
+            "steps": [
+              {
+                "title": "Count rows",
+                "explanation": "There is one row for each of the 6 queries."
+              },
+              {
+                "title": "Count columns",
+                "explanation": "Each row has one score for each of the 9 keys."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-32",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Check causal attention",
+          "description": "A decoder block uses causal self-attention. Can a token at position 2 attend to position 4?",
+          "choices": [
+            {
+              "text": "No, because position 2 cannot attend to itself.",
+              "correct": false
+            },
+            {
+              "text": "Yes, because every position is always visible.",
+              "correct": false
+            },
+            {
+              "text": "Yes, but only if position 4 is padding.",
+              "correct": false
+            },
+            {
+              "text": "No, because position 4 is later.",
+              "correct": true
+            }
+          ],
+          "hint": "A causal mask blocks later positions.",
+          "solution": {
+            "code": "No, because position 4 is later.",
+            "steps": [
+              {
+                "title": "Compare positions",
+                "explanation": "Position 4 follows position 2."
+              },
+              {
+                "title": "Apply the mask",
+                "explanation": "The later position is not visible to that query under causal attention."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-33",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Understand feed-forward layers",
+          "description": "What does a position-wise feed-forward sublayer typically do?",
+          "choices": [
+            {
+              "text": "Use unrelated parameters for every sequence position by definition.",
+              "correct": false
+            },
+            {
+              "text": "Replace the attention mask with training labels.",
+              "correct": false
+            },
+            {
+              "text": "Average all tokens into a single position.",
+              "correct": false
+            },
+            {
+              "text": "Apply the same learned nonlinear transformation to each position.",
+              "correct": true
+            }
+          ],
+          "hint": "The transformation is applied independently at each position.",
+          "solution": {
+            "code": "Apply the same learned nonlinear transformation to each position.",
+            "steps": [
+              {
+                "title": "Locate the operation",
+                "explanation": "It transforms individual position representations."
+              },
+              {
+                "title": "Identify parameter sharing",
+                "explanation": "The same learned sublayer is commonly used across positions."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-34",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Validate mask behavior",
+          "description": "A transformer block has the expected output shape, but its causal mask was accidentally removed. Why is the shape check insufficient?",
+          "choices": [
+            {
+              "text": "A correct shape proves causality.",
+              "correct": false
+            },
+            {
+              "text": "Masks affect only the optimizer state.",
+              "correct": false
+            },
+            {
+              "text": "Removing a mask must always change tensor dimensions.",
+              "correct": false
+            },
+            {
+              "text": "The block may expose future tokens despite compatible dimensions.",
+              "correct": true
+            }
+          ],
+          "hint": "A tensor can have the correct dimensions and still contain disallowed information.",
+          "solution": {
+            "code": "The block may expose future tokens despite compatible dimensions.",
+            "steps": [
+              {
+                "title": "Check what shape verifies",
+                "explanation": "It confirms dimensions, not which positions are visible."
+              },
+              {
+                "title": "Test the behavior",
+                "explanation": "Use a targeted example to verify future tokens are masked."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-35",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Follow recurrent state",
+          "description": "At a sequence step, what inputs does a basic recurrent update use?",
+          "choices": [
+            {
+              "text": "Only the next sequence's label.",
+              "correct": false
+            },
+            {
+              "text": "The current input and previous hidden state.",
+              "correct": true
+            },
+            {
+              "text": "A new unrelated model at every step.",
+              "correct": false
+            },
+            {
+              "text": "The full test dataset by default.",
+              "correct": false
+            }
+          ],
+          "hint": "The state carries information forward.",
+          "solution": {
+            "code": "The current input and previous hidden state.",
+            "steps": [
+              {
+                "title": "Identify the current information",
+                "explanation": "The model receives the current input."
+              },
+              {
+                "title": "Include history",
+                "explanation": "The previous hidden state contributes to the next state."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-36",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Understand vanishing gradients",
+          "description": "Why can a simple recurrent network struggle with long-range dependencies?",
+          "choices": [
+            {
+              "text": "Gradients can shrink over many time steps.",
+              "correct": true
+            },
+            {
+              "text": "Every gradient is guaranteed to remain constant.",
+              "correct": false
+            },
+            {
+              "text": "It has no parameters.",
+              "correct": false
+            },
+            {
+              "text": "Sequences cannot contain more than two tokens.",
+              "correct": false
+            }
+          ],
+          "hint": "Backpropagation passes through repeated operations.",
+          "solution": {
+            "code": "Gradients can shrink over many time steps.",
+            "steps": [
+              {
+                "title": "Trace the gradient",
+                "explanation": "The backward signal crosses many recurrent steps."
+              },
+              {
+                "title": "Recognize the difficulty",
+                "explanation": "Repeated transformations can cause the signal to shrink or grow."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-37",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Handle independent sequences",
+          "description": "Why reset recurrent state between independent user sessions?",
+          "choices": [
+            {
+              "text": "To guarantee all predictions are correct.",
+              "correct": false
+            },
+            {
+              "text": "Because hidden state is never used within a sequence.",
+              "correct": false
+            },
+            {
+              "text": "To expose one user's state to the next.",
+              "correct": false
+            },
+            {
+              "text": "To avoid unintentionally carrying information from one session into another.",
+              "correct": true
+            }
+          ],
+          "hint": "State may contain information from previous inputs.",
+          "solution": {
+            "code": "To avoid unintentionally carrying information from one session into another.",
+            "steps": [
+              {
+                "title": "Identify the boundary",
+                "explanation": "The sessions are independent sequences."
+              },
+              {
+                "title": "Prevent unintended carryover",
+                "explanation": "Reset or manage state according to the application's boundaries."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-38",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Identify encoder role",
+          "description": "What does the encoder provide in an encoder-decoder model?",
+          "choices": [
+            {
+              "text": "The complete output before seeing the input.",
+              "correct": false
+            },
+            {
+              "text": "Only a final evaluation metric.",
+              "correct": false
+            },
+            {
+              "text": "Representations of the input sequence for the decoder.",
+              "correct": true
+            },
+            {
+              "text": "A guarantee that no padding mask is required.",
+              "correct": false
+            }
+          ],
+          "hint": "The encoder processes the source sequence.",
+          "solution": {
+            "code": "Representations of the input sequence for the decoder.",
+            "steps": [
+              {
+                "title": "Identify the input",
+                "explanation": "The encoder receives the source sequence."
+              },
+              {
+                "title": "Describe its output",
+                "explanation": "It produces representations used by the decoder."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-39",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Understand autoregressive decoding",
+          "description": "What does an autoregressive decoder use when producing the next token?",
+          "choices": [
+            {
+              "text": "The encoded source and previous output tokens.",
+              "correct": true
+            },
+            {
+              "text": "An unrelated training run.",
+              "correct": false
+            },
+            {
+              "text": "Only the final test labels.",
+              "correct": false
+            },
+            {
+              "text": "Future output tokens that have not yet been generated.",
+              "correct": false
+            }
+          ],
+          "hint": "Generation proceeds sequentially.",
+          "solution": {
+            "code": "The encoded source and previous output tokens.",
+            "steps": [
+              {
+                "title": "Identify available context",
+                "explanation": "Earlier output tokens have already been produced."
+              },
+              {
+                "title": "Generate the next step",
+                "explanation": "The decoder conditions on that context and the encoded source."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-40",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Distinguish cross-attention",
+          "description": "In a transformer encoder-decoder architecture, what does decoder cross-attention use?",
+          "choices": [
+            {
+              "text": "A separate final test set as keys.",
+              "correct": false
+            },
+            {
+              "text": "Only the decoder's future tokens.",
+              "correct": false
+            },
+            {
+              "text": "Only optimizer state.",
+              "correct": false
+            },
+            {
+              "text": "Decoder queries and encoder representations.",
+              "correct": true
+            }
+          ],
+          "hint": "Cross-attention connects the decoder to the encoded source.",
+          "solution": {
+            "code": "Decoder queries and encoder representations.",
+            "steps": [
+              {
+                "title": "Identify the query",
+                "explanation": "A decoder position queries for relevant information."
+              },
+              {
+                "title": "Identify the source",
+                "explanation": "Keys and values come from encoder representations in the usual design."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-41",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Identify multi-task structure",
+          "description": "Which design is a common multi-task model?",
+          "choices": [
+            {
+              "text": "One unrelated test set used as a model.",
+              "correct": false
+            },
+            {
+              "text": "A shared encoder with separate task-specific heads.",
+              "correct": true
+            },
+            {
+              "text": "A single fixed answer for all tasks.",
+              "correct": false
+            },
+            {
+              "text": "A training process with no task labels.",
+              "correct": false
+            }
+          ],
+          "hint": "Tasks can share representations while keeping different outputs.",
+          "solution": {
+            "code": "A shared encoder with separate task-specific heads.",
+            "steps": [
+              {
+                "title": "Identify sharing",
+                "explanation": "An encoder learns a common representation."
+              },
+              {
+                "title": "Separate outputs",
+                "explanation": "Task-specific heads predict each task's target."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-42",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Detect negative transfer",
+          "description": "A shared model improves task A but lowers task B's held-out score compared with a single-task baseline. What should the team investigate?",
+          "choices": [
+            {
+              "text": "Possible negative transfer affecting task B.",
+              "correct": true
+            },
+            {
+              "text": "Conclude task B has no labels.",
+              "correct": false
+            },
+            {
+              "text": "Assume every task improved because the average rose.",
+              "correct": false
+            },
+            {
+              "text": "Discard all per-task metrics.",
+              "correct": false
+            }
+          ],
+          "hint": "Aggregate improvement can conceal a task-specific regression.",
+          "solution": {
+            "code": "Possible negative transfer affecting task B.",
+            "steps": [
+              {
+                "title": "Compare task B",
+                "explanation": "The shared model underperforms its baseline."
+              },
+              {
+                "title": "Investigate sharing",
+                "explanation": "Task interactions may have harmed that task."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-43",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Balance task losses",
+          "description": "A combined multi-task loss is dominated by one task's much larger numerical contribution. What is a relevant experiment?",
+          "choices": [
+            {
+              "text": "Assume all tasks contribute equally.",
+              "correct": false
+            },
+            {
+              "text": "Ignore task metrics because the total loss is smaller.",
+              "correct": false
+            },
+            {
+              "text": "Use final test data to choose weights repeatedly.",
+              "correct": false
+            },
+            {
+              "text": "Review loss scales and compare task weights using per-task validation metrics.",
+              "correct": true
+            }
+          ],
+          "hint": "Loss magnitude and weighting affect shared updates.",
+          "solution": {
+            "code": "Review loss scales and compare task weights using per-task validation metrics.",
+            "steps": [
+              {
+                "title": "Identify dominance",
+                "explanation": "One objective contributes much more to the combined loss."
+              },
+              {
+                "title": "Evaluate alternatives",
+                "explanation": "Adjust weighting carefully and compare each task on validation data."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-44",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Assess parameter-efficient tuning",
+          "description": "An adapter-based method trains fewer parameters than full fine-tuning. Which claim requires measurement rather than following automatically?",
+          "choices": [
+            {
+              "text": "The adapter method has fewer trainable parameters in this setup.",
+              "correct": false
+            },
+            {
+              "text": "Some base weights can remain frozen.",
+              "correct": false
+            },
+            {
+              "text": "The adapter must be compatible with the loaded base model.",
+              "correct": false
+            },
+            {
+              "text": "The deployed model has lower inference latency.",
+              "correct": true
+            }
+          ],
+          "hint": "Training parameter count and serving latency are different measurements.",
+          "solution": {
+            "code": "The deployed model has lower inference latency.",
+            "steps": [
+              {
+                "title": "Identify the known property",
+                "explanation": "The setup trains fewer parameters."
+              },
+              {
+                "title": "Measure serving",
+                "explanation": "The base model and adapter still affect actual inference cost."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-45",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Detect lost capabilities",
+          "description": "A fine-tuned model improves on a new domain task but worsens on a previously required formatting task. What should the team conclude?",
+          "choices": [
+            {
+              "text": "The formatting regression is impossible because the training loss fell.",
+              "correct": false
+            },
+            {
+              "text": "The adaptation has a regression that should be assessed alongside the target-task gain.",
+              "correct": true
+            },
+            {
+              "text": "The original model no longer needs to be included as a baseline.",
+              "correct": false
+            },
+            {
+              "text": "The model is ready solely because the new task improved.",
+              "correct": false
+            }
+          ],
+          "hint": "A target gain can coexist with a regression.",
+          "solution": {
+            "code": "The adaptation has a regression that should be assessed alongside the target-task gain.",
+            "steps": [
+              {
+                "title": "Compare evaluations",
+                "explanation": "The new task improved while a required behavior worsened."
+              },
+              {
+                "title": "Assess the trade-off",
+                "explanation": "Investigate both outcomes against the release requirements."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-intermediate-46",
+          "language": "deep-neural-nets",
+          "level": "intermediate",
+          "title": "Track adapter compatibility",
+          "description": "A separately stored adapter was trained on base model version A. A serving system loads it with version B instead. What should the team verify?",
+          "choices": [
+            {
+              "text": "That the serving system can display a success message.",
+              "correct": false
+            },
+            {
+              "text": "That the adapter and version B are compatible and the combined model meets evaluation requirements.",
+              "correct": true
+            },
+            {
+              "text": "Only that both files have the same extension.",
+              "correct": false
+            },
+            {
+              "text": "That the adapter was trained with any base model.",
+              "correct": false
+            }
+          ],
+          "hint": "The adapter depends on the base model and its configuration.",
+          "solution": {
+            "code": "That the adapter and version B are compatible and the combined model meets evaluation requirements.",
+            "steps": [
+              {
+                "title": "Identify the mismatch",
+                "explanation": "Training used base A while serving uses base B."
+              },
+              {
+                "title": "Verify the combination",
+                "explanation": "Check compatibility and evaluate the actual deployed combination."
+              }
+            ]
+          }
         }
       ]
     },
@@ -3915,6 +6333,747 @@
               {
                 "title": "Apply with evidence",
                 "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-26",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Check extrapolation",
+          "description": "A scaling curve fits experiments on one architecture and dataset. A team plans a much larger run using a different data mix. What is the safest interpretation?",
+          "choices": [
+            {
+              "text": "The change in data cannot affect the curve.",
+              "correct": false
+            },
+            {
+              "text": "The earlier trend may inform planning, but its assumptions and extrapolation need testing.",
+              "correct": true
+            },
+            {
+              "text": "A single measured point proves a universal scaling law.",
+              "correct": false
+            },
+            {
+              "text": "The earlier curve guarantees the new run will match its prediction.",
+              "correct": false
+            }
+          ],
+          "hint": "The planned run changes both scale and data regime.",
+          "solution": {
+            "code": "The earlier trend may inform planning, but its assumptions and extrapolation need testing.",
+            "steps": [
+              {
+                "title": "Identify the evidence range",
+                "explanation": "The fitted trend describes the tested architecture, data, and scales."
+              },
+              {
+                "title": "Assess the forecast",
+                "explanation": "Changing regimes or extrapolating beyond observations introduces uncertainty."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-27",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Budget recurring inference",
+          "description": "Model A costs less to train than B, but each request to A costs more to serve. For a high-volume application, what comparison is needed?",
+          "choices": [
+            {
+              "text": "Only the number of parameters in B.",
+              "correct": false
+            },
+            {
+              "text": "Training plus expected serving cost, latency, and task quality.",
+              "correct": true
+            },
+            {
+              "text": "The model names and release dates.",
+              "correct": false
+            },
+            {
+              "text": "Training cost alone.",
+              "correct": false
+            }
+          ],
+          "hint": "Serving costs recur with request volume.",
+          "solution": {
+            "code": "Training plus expected serving cost, latency, and task quality.",
+            "steps": [
+              {
+                "title": "Account for workload",
+                "explanation": "Per-request cost accumulates over the deployment traffic."
+              },
+              {
+                "title": "Compare feasible systems",
+                "explanation": "Include total expected cost and the application's quality and latency requirements."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-28",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Spot benchmark contamination",
+          "description": "Training data contains near-duplicates of a held-out evaluation set. Why can this distort a scaling experiment?",
+          "choices": [
+            {
+              "text": "The measured improvement may reflect exposure to evaluation content rather than generalization.",
+              "correct": true
+            },
+            {
+              "text": "Contamination guarantees worse held-out performance.",
+              "correct": false
+            },
+            {
+              "text": "The model can no longer run inference.",
+              "correct": false
+            },
+            {
+              "text": "The test set becomes a randomized experiment.",
+              "correct": false
+            }
+          ],
+          "hint": "A held-out set should provide evidence on unseen examples.",
+          "solution": {
+            "code": "The measured improvement may reflect exposure to evaluation content rather than generalization.",
+            "steps": [
+              {
+                "title": "Identify the overlap",
+                "explanation": "Near-duplicates can expose evaluation content during training."
+              },
+              {
+                "title": "Interpret the metric",
+                "explanation": "The reported score may overstate performance on genuinely unseen data."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-29",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Compute global batch size",
+          "description": "Four data-parallel workers each process eight examples per synchronized update with no accumulation. What is the global batch size?",
+          "choices": [
+            {
+              "text": "4",
+              "correct": false
+            },
+            {
+              "text": "32",
+              "correct": true
+            },
+            {
+              "text": "8",
+              "correct": false
+            },
+            {
+              "text": "12",
+              "correct": false
+            }
+          ],
+          "hint": "Multiply workers by examples per worker.",
+          "solution": {
+            "code": "32",
+            "steps": [
+              {
+                "title": "Count local examples",
+                "explanation": "Each worker processes 8 examples."
+              },
+              {
+                "title": "Combine workers",
+                "explanation": "4 * 8 = 32 examples per update."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-30",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Diagnose scaling limits",
+          "description": "A data-parallel run uses more workers but throughput barely improves while synchronization time rises. What is a plausible bottleneck?",
+          "choices": [
+            {
+              "text": "The number of model names.",
+              "correct": false
+            },
+            {
+              "text": "Gradient communication overhead.",
+              "correct": true
+            },
+            {
+              "text": "The absence of a user interface theme.",
+              "correct": false
+            },
+            {
+              "text": "A guarantee that workers never communicate.",
+              "correct": false
+            }
+          ],
+          "hint": "Workers must exchange gradients.",
+          "solution": {
+            "code": "Gradient communication overhead.",
+            "steps": [
+              {
+                "title": "Compare measurements",
+                "explanation": "Synchronization time rises while throughput stalls."
+              },
+              {
+                "title": "Investigate communication",
+                "explanation": "Gradient exchange may limit scaling and should be measured."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-31",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Restore distributed training",
+          "description": "Why save optimizer and scheduler state with model parameters?",
+          "choices": [
+            {
+              "text": "They influence subsequent updates and the learning-rate schedule.",
+              "correct": true
+            },
+            {
+              "text": "They are required only for inference.",
+              "correct": false
+            },
+            {
+              "text": "They are interchangeable with the training data.",
+              "correct": false
+            },
+            {
+              "text": "They guarantee identical results on all hardware.",
+              "correct": false
+            }
+          ],
+          "hint": "Training depends on more than model weights.",
+          "solution": {
+            "code": "They influence subsequent updates and the learning-rate schedule.",
+            "steps": [
+              {
+                "title": "Identify state",
+                "explanation": "The optimizer and scheduler hold information used by later updates."
+              },
+              {
+                "title": "Preserve it",
+                "explanation": "Restoring relevant state supports a consistent resume."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-32",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Distinguish model parallel methods",
+          "description": "Which strategy partitions work within a large matrix operation across devices?",
+          "choices": [
+            {
+              "text": "Pipeline parallelism by layer only.",
+              "correct": false
+            },
+            {
+              "text": "A single-device baseline.",
+              "correct": false
+            },
+            {
+              "text": "Data labeling.",
+              "correct": false
+            },
+            {
+              "text": "Tensor parallelism.",
+              "correct": true
+            }
+          ],
+          "hint": "The operation itself is split.",
+          "solution": {
+            "code": "Tensor parallelism.",
+            "steps": [
+              {
+                "title": "Identify the partition",
+                "explanation": "The matrix operation is divided among devices."
+              },
+              {
+                "title": "Name the approach",
+                "explanation": "That is tensor parallelism."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-33",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Identify a pipeline bottleneck",
+          "description": "Three pipeline stages take 2, 8, and 2 milliseconds per microbatch. Which stage is the clearest initial bottleneck?",
+          "choices": [
+            {
+              "text": "The last 2 ms stage by definition.",
+              "correct": false
+            },
+            {
+              "text": "The 8 ms stage.",
+              "correct": true
+            },
+            {
+              "text": "The first 2 ms stage by definition.",
+              "correct": false
+            },
+            {
+              "text": "No stage can affect throughput.",
+              "correct": false
+            }
+          ],
+          "hint": "The slowest stage can constrain the rate of the pipeline.",
+          "solution": {
+            "code": "The 8 ms stage.",
+            "steps": [
+              {
+                "title": "Compare stage times",
+                "explanation": "The second stage takes much longer than the others."
+              },
+              {
+                "title": "Investigate the bottleneck",
+                "explanation": "Its workload or placement may need balancing."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-34",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Check parallel correctness",
+          "description": "A partitioned model produces the expected output shape. What additional check is useful?",
+          "choices": [
+            {
+              "text": "Compare outputs or gradients with a small reference setup.",
+              "correct": true
+            },
+            {
+              "text": "Discard checkpoint metadata.",
+              "correct": false
+            },
+            {
+              "text": "Skip all synchronization checks.",
+              "correct": false
+            },
+            {
+              "text": "Assume shape proves numerical correctness.",
+              "correct": false
+            }
+          ],
+          "hint": "Correct dimensions do not prove the computation is correct.",
+          "solution": {
+            "code": "Compare outputs or gradients with a small reference setup.",
+            "steps": [
+              {
+                "title": "Identify the limitation",
+                "explanation": "A shape check does not verify values or synchronization."
+              },
+              {
+                "title": "Compare behavior",
+                "explanation": "Use a reference setup to test outputs and gradients within appropriate tolerances."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-35",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Explain checkpointing tradeoff",
+          "description": "Why can activation checkpointing reduce peak training memory?",
+          "choices": [
+            {
+              "text": "It guarantees the model uses no memory.",
+              "correct": false
+            },
+            {
+              "text": "It replaces model weights with labels.",
+              "correct": false
+            },
+            {
+              "text": "It recomputes selected activations instead of retaining all of them.",
+              "correct": true
+            },
+            {
+              "text": "It removes the backward pass.",
+              "correct": false
+            }
+          ],
+          "hint": "Some intermediates are regenerated later.",
+          "solution": {
+            "code": "It recomputes selected activations instead of retaining all of them.",
+            "steps": [
+              {
+                "title": "Reduce storage",
+                "explanation": "Selected activations are not retained throughout the forward pass."
+              },
+              {
+                "title": "Pay recomputation cost",
+                "explanation": "They are recomputed when needed for gradients."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-36",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Handle checkpoint randomness",
+          "description": "A checkpointed region includes a random operation that behaves differently when recomputed. What is the concern?",
+          "choices": [
+            {
+              "text": "Randomness can never affect gradients.",
+              "correct": false
+            },
+            {
+              "text": "Peak memory must increase in every case.",
+              "correct": false
+            },
+            {
+              "text": "The optimizer no longer has parameters.",
+              "correct": false
+            },
+            {
+              "text": "The backward computation may use inconsistent intermediates.",
+              "correct": true
+            }
+          ],
+          "hint": "The backward pass depends on the recomputed forward operation.",
+          "solution": {
+            "code": "The backward computation may use inconsistent intermediates.",
+            "steps": [
+              {
+                "title": "Identify the difference",
+                "explanation": "The recomputed region did not reproduce compatible behavior."
+              },
+              {
+                "title": "Check framework rules",
+                "explanation": "Random state and side effects must be handled correctly."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-37",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Measure checkpoint benefit",
+          "description": "After enabling activation checkpointing, what should a team compare?",
+          "choices": [
+            {
+              "text": "Only the screen resolution.",
+              "correct": false
+            },
+            {
+              "text": "Only the model filename.",
+              "correct": false
+            },
+            {
+              "text": "Only the number of source files.",
+              "correct": false
+            },
+            {
+              "text": "Peak memory, step time, and outputs or gradients against a reference.",
+              "correct": true
+            }
+          ],
+          "hint": "The method trades memory for computation and must remain correct.",
+          "solution": {
+            "code": "Peak memory, step time, and outputs or gradients against a reference.",
+            "steps": [
+              {
+                "title": "Measure the tradeoff",
+                "explanation": "Track peak memory and step time."
+              },
+              {
+                "title": "Check correctness",
+                "explanation": "Compare a small case with a non-checkpointed reference."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-38",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Explain fake quantization",
+          "description": "What is the purpose of fake-quantization operations in a typical QAT workflow?",
+          "choices": [
+            {
+              "text": "Guarantee the converted model has identical predictions.",
+              "correct": false
+            },
+            {
+              "text": "Train exclusively on the final test labels.",
+              "correct": false
+            },
+            {
+              "text": "Simulate selected rounding and clipping effects during training.",
+              "correct": true
+            },
+            {
+              "text": "Remove the need for a deployment backend.",
+              "correct": false
+            }
+          ],
+          "hint": "Training approximates some low-precision behavior before conversion.",
+          "solution": {
+            "code": "Simulate selected rounding and clipping effects during training.",
+            "steps": [
+              {
+                "title": "Identify the simulation",
+                "explanation": "Fake quantization approximates selected low-precision effects."
+              },
+              {
+                "title": "Interpret its goal",
+                "explanation": "The model can adapt to those effects during training."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-39",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Evaluate converted output",
+          "description": "After quantization-aware training, which artifact should be evaluated on the target backend?",
+          "choices": [
+            {
+              "text": "Only the training configuration filename.",
+              "correct": false
+            },
+            {
+              "text": "The converted quantized artifact.",
+              "correct": true
+            },
+            {
+              "text": "Only the unconverted training model.",
+              "correct": false
+            },
+            {
+              "text": "A different model from another release.",
+              "correct": false
+            }
+          ],
+          "hint": "Conversion itself can change numerical behavior.",
+          "solution": {
+            "code": "The converted quantized artifact.",
+            "steps": [
+              {
+                "title": "Identify the deployment artifact",
+                "explanation": "The converted model is what will run on the target."
+              },
+              {
+                "title": "Measure it",
+                "explanation": "Check quality and performance on representative inputs and hardware."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-40",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Check target support",
+          "description": "A quantization scheme is unsupported by the intended hardware backend. What can be concluded about its expected speedup?",
+          "choices": [
+            {
+              "text": "It is guaranteed to run faster.",
+              "correct": false
+            },
+            {
+              "text": "Hardware support never affects execution.",
+              "correct": false
+            },
+            {
+              "text": "The expected speedup cannot be assumed on that backend.",
+              "correct": true
+            },
+            {
+              "text": "Conversion automatically makes every operation supported.",
+              "correct": false
+            }
+          ],
+          "hint": "Deployment performance depends on backend capabilities.",
+          "solution": {
+            "code": "The expected speedup cannot be assumed on that backend.",
+            "steps": [
+              {
+                "title": "Check compatibility",
+                "explanation": "The scheme is unsupported by the target."
+              },
+              {
+                "title": "Limit the claim",
+                "explanation": "Benchmark a supported converted artifact instead of assuming a speedup."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-41",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Compare distillation targets",
+          "description": "A teacher assigns probabilities 0.60, 0.35, and 0.05 across three classes. What can this distribution convey that a top-class label alone does not?",
+          "choices": [
+            {
+              "text": "The teacher has proven which class is correct.",
+              "correct": false
+            },
+            {
+              "text": "The teacher assigns substantially more probability to the second class than the third.",
+              "correct": true
+            },
+            {
+              "text": "The student will always outperform the teacher.",
+              "correct": false
+            },
+            {
+              "text": "The true class frequencies in the production population.",
+              "correct": false
+            }
+          ],
+          "hint": "Compare the two non-leading probabilities.",
+          "solution": {
+            "code": "The teacher assigns substantially more probability to the second class than the third.",
+            "steps": [
+              {
+                "title": "Inspect the scores",
+                "explanation": "The second class receives 0.35 while the third receives 0.05."
+              },
+              {
+                "title": "Interpret the additional signal",
+                "explanation": "The teacher's relative preferences are available even though neither is the top class."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-42",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Separate agreement from quality",
+          "description": "A student agrees with its teacher on 99% of examples, but both models fail a critical held-out safety slice. What is the appropriate conclusion?",
+          "choices": [
+            {
+              "text": "The agreement metric guarantees robustness to new inputs.",
+              "correct": false
+            },
+            {
+              "text": "The student passes the safety slice because it matches the teacher.",
+              "correct": false
+            },
+            {
+              "text": "High teacher agreement does not establish task success on that slice.",
+              "correct": true
+            },
+            {
+              "text": "The teacher's errors are irrelevant when agreement is high.",
+              "correct": false
+            }
+          ],
+          "hint": "Agreement can include copying mistakes.",
+          "solution": {
+            "code": "High teacher agreement does not establish task success on that slice.",
+            "steps": [
+              {
+                "title": "Compare the metrics",
+                "explanation": "Teacher agreement is high, but the critical slice still fails."
+              },
+              {
+                "title": "Interpret the result",
+                "explanation": "Distillation can reproduce teacher errors and must be judged on task outcomes."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-43",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Evaluate transfer data coverage",
+          "description": "A student is distilled using only short documents. It performs well on short held-out inputs but poorly on long documents needed in production. What experiment is most relevant?",
+          "choices": [
+            {
+              "text": "Assume the teacher's long-document skill transferred automatically.",
+              "correct": false
+            },
+            {
+              "text": "Remove long documents from production metrics without changing requirements.",
+              "correct": false
+            },
+            {
+              "text": "Add authorized representative long documents to the transfer-data study and evaluate on separate long-document cases.",
+              "correct": true
+            },
+            {
+              "text": "Tune only on the existing short-document test set.",
+              "correct": false
+            }
+          ],
+          "hint": "Consider what the student observed during transfer.",
+          "solution": {
+            "code": "Add authorized representative long documents to the transfer-data study and evaluate on separate long-document cases.",
+            "steps": [
+              {
+                "title": "Identify the coverage gap",
+                "explanation": "The distillation data omitted an important production input type."
+              },
+              {
+                "title": "Test a representative transfer set",
+                "explanation": "Use suitable long examples for training and independently evaluate generalization."
+              }
+            ]
+          }
+        },
+        {
+          "id": "dnn-advanced-44",
+          "language": "deep-neural-nets",
+          "level": "advanced",
+          "title": "Assess student deployment trade-offs",
+          "description": "A distilled model has similar validation accuracy to its teacher but higher latency on the target device. Which measurement is needed before claiming a deployment benefit?",
+          "choices": [
+            {
+              "text": "Measure only teacher-student agreement on training inputs.",
+              "correct": false
+            },
+            {
+              "text": "Assume parameter count directly determines end-to-end latency.",
+              "correct": false
+            },
+            {
+              "text": "Compare the models only on a different accelerator.",
+              "correct": false
+            },
+            {
+              "text": "Compare task quality and resource costs under realistic target-device workloads.",
+              "correct": true
+            }
+          ],
+          "hint": "Deployment benefit depends on actual serving conditions.",
+          "solution": {
+            "code": "Compare task quality and resource costs under realistic target-device workloads.",
+            "steps": [
+              {
+                "title": "Identify the trade-off",
+                "explanation": "Similar accuracy does not offset an unmeasured latency or cost regression by itself."
+              },
+              {
+                "title": "Measure the target workload",
+                "explanation": "Compare quality, latency, throughput, and resources on the intended device."
               }
             ]
           }

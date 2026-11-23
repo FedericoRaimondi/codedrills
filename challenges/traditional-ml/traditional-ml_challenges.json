@@ -978,6 +978,825 @@
               }
             ]
           }
+        },
+        {
+          "id": "tml-new-26",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Forecast or explain",
+          "description": "A store wants to order enough stock for next week. Which question is primarily about prediction?",
+          "choices": [
+            {
+              "text": "Did last month's promotion cause sales to increase?",
+              "correct": false
+            },
+            {
+              "text": "How many units will the store sell next week?",
+              "correct": true
+            },
+            {
+              "text": "Why did the manager choose to run a promotion?",
+              "correct": false
+            },
+            {
+              "text": "What effect would removing a promotion have had last month?",
+              "correct": false
+            }
+          ],
+          "hint": "Look for the question about an outcome that has not yet been observed.",
+          "solution": {
+            "code": "How many units will the store sell next week?",
+            "steps": [
+              {
+                "title": "Identify the decision",
+                "explanation": "Ordering stock depends on an estimate of future demand."
+              },
+              {
+                "title": "Separate the questions",
+                "explanation": "Asking what a promotion caused is a causal question, not simply a forecast."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-27",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Promotion and holidays",
+          "description": "A store promotes products more often during holidays and sees higher sales on promoted days. Why is that not enough to conclude that the promotions caused the increase?",
+          "choices": [
+            {
+              "text": "A promotion cannot change customer behavior.",
+              "correct": false
+            },
+            {
+              "text": "Only neural networks can measure sales.",
+              "correct": false
+            },
+            {
+              "text": "Future sales can never be predicted.",
+              "correct": false
+            },
+            {
+              "text": "Holidays may influence both the decision to promote and customer demand.",
+              "correct": true
+            }
+          ],
+          "hint": "Look for another factor that could affect both the promotion and sales.",
+          "solution": {
+            "code": "Holidays may influence both the decision to promote and customer demand.",
+            "steps": [
+              {
+                "title": "Identify the confounder",
+                "explanation": "Holidays may make promotions more likely and independently increase demand."
+              },
+              {
+                "title": "Limit the conclusion",
+                "explanation": "The observed association alone does not isolate the causal effect of the promotion."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-28",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Choose a feature",
+          "description": "A store predicts next week's sales before the week begins. Which field can be an input if it is known at prediction time?",
+          "choices": [
+            {
+              "text": "The calendar date of the forecast week.",
+              "correct": true
+            },
+            {
+              "text": "The actual sales total at the end of next week.",
+              "correct": false
+            },
+            {
+              "text": "A flag computed from the actual sales total next week.",
+              "correct": false
+            },
+            {
+              "text": "A report created after next week closes.",
+              "correct": false
+            }
+          ],
+          "hint": "The input must exist before the outcome being predicted.",
+          "solution": {
+            "code": "The calendar date of the forecast week.",
+            "steps": [
+              {
+                "title": "Set the timing",
+                "explanation": "The forecast is made before the target week starts."
+              },
+              {
+                "title": "Exclude future outcomes",
+                "explanation": "The calendar is known in advance, unlike the actual sales total and fields derived from it."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-29",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Investigate suspicious accuracy",
+          "description": "A loan model is evaluated using repayment information recorded after the application decision, and its score is nearly perfect. What should the team check?",
+          "choices": [
+            {
+              "text": "Whether the training file is sorted alphabetically.",
+              "correct": false
+            },
+            {
+              "text": "Whether the application form uses a large font.",
+              "correct": false
+            },
+            {
+              "text": "Whether the model uses future repayment information as an input.",
+              "correct": true
+            },
+            {
+              "text": "Whether the model has a memorable name.",
+              "correct": false
+            }
+          ],
+          "hint": "Consider when each feature becomes available.",
+          "solution": {
+            "code": "Whether the model uses future repayment information as an input.",
+            "steps": [
+              {
+                "title": "Check the decision time",
+                "explanation": "The repayment outcome is not available when the application decision is made."
+              },
+              {
+                "title": "Look for leakage",
+                "explanation": "Using later outcome information can make evaluation results unrealistically optimistic."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-30",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Define a churn label",
+          "description": "A team labels churn as cancellation within the next 30 days. A customer's 30-day observation window has not ended. How should the team treat the outcome?",
+          "choices": [
+            {
+              "text": "Treat the outcome as not yet known until the window can be assessed.",
+              "correct": true
+            },
+            {
+              "text": "Assume the customer did not cancel during the full window.",
+              "correct": false
+            },
+            {
+              "text": "Label every customer as cancelled.",
+              "correct": false
+            },
+            {
+              "text": "Use a different definition for this one customer without recording it.",
+              "correct": false
+            }
+          ],
+          "hint": "The target describes an outcome over a future window.",
+          "solution": {
+            "code": "Treat the outcome as not yet known until the window can be assessed.",
+            "steps": [
+              {
+                "title": "Check the observation window",
+                "explanation": "The full 30 days have not elapsed, so a no-cancellation outcome is not established."
+              },
+              {
+                "title": "Preserve label meaning",
+                "explanation": "Marking the outcome unknown avoids introducing an incorrectly assigned negative label."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-31",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Review labeling disagreement",
+          "description": "Two reviewers disagree about whether a support ticket is a billing complaint. What is the most useful response?",
+          "choices": [
+            {
+              "text": "Remove the label definitions to let each reviewer decide independently.",
+              "correct": false
+            },
+            {
+              "text": "Use the ticket's final resolution as a feature when predicting before resolution.",
+              "correct": false
+            },
+            {
+              "text": "Ignore all disagreements and declare the first reviewer correct.",
+              "correct": false
+            },
+            {
+              "text": "Review the example against a documented definition and refine guidance if needed.",
+              "correct": true
+            }
+          ],
+          "hint": "Consistent labels require shared rules and a process for ambiguous cases.",
+          "solution": {
+            "code": "Review the example against a documented definition and refine guidance if needed.",
+            "steps": [
+              {
+                "title": "Inspect the evidence",
+                "explanation": "The original ticket and label rules can reveal why reviewers disagreed."
+              },
+              {
+                "title": "Improve consistency",
+                "explanation": "Clearer guidance and an agreed review process help with similar cases."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-32",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Choose the supervised target",
+          "description": "A delivery team wants to predict whether a shipment will be late or on time. What type of target is this?",
+          "choices": [
+            {
+              "text": "A continuous duration suitable only for regression.",
+              "correct": false
+            },
+            {
+              "text": "An unlabeled cluster.",
+              "correct": false
+            },
+            {
+              "text": "A model parameter.",
+              "correct": false
+            },
+            {
+              "text": "A category suitable for classification.",
+              "correct": true
+            }
+          ],
+          "hint": "The desired output has two named categories.",
+          "solution": {
+            "code": "A category suitable for classification.",
+            "steps": [
+              {
+                "title": "Identify the output",
+                "explanation": "Late and on time are discrete labels."
+              },
+              {
+                "title": "Choose the task",
+                "explanation": "Predicting one of the categories is a classification problem."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-33",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Avoid a future input",
+          "description": "A model predicts delay before dispatch. Which proposed feature would leak the outcome?",
+          "choices": [
+            {
+              "text": "The actual delivery arrival time.",
+              "correct": true
+            },
+            {
+              "text": "The selected shipping method.",
+              "correct": false
+            },
+            {
+              "text": "The package weight measured before dispatch.",
+              "correct": false
+            },
+            {
+              "text": "The planned route available before dispatch.",
+              "correct": false
+            }
+          ],
+          "hint": "Only information known at prediction time is eligible.",
+          "solution": {
+            "code": "The actual delivery arrival time.",
+            "steps": [
+              {
+                "title": "Establish the decision time",
+                "explanation": "The model must predict before dispatch."
+              },
+              {
+                "title": "Check availability",
+                "explanation": "Actual arrival time is observed after the prediction and can reveal the target."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-34",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Use a baseline",
+          "description": "A new delay classifier reports 92% accuracy on a representative test set. The majority class accounts for 95% of that same set. What should the team conclude?",
+          "choices": [
+            {
+              "text": "The classifier beats a majority-class baseline.",
+              "correct": false
+            },
+            {
+              "text": "Accuracy is always the only relevant metric.",
+              "correct": false
+            },
+            {
+              "text": "The classifier underperforms the majority-class baseline on accuracy.",
+              "correct": true
+            },
+            {
+              "text": "The test labels are necessarily wrong.",
+              "correct": false
+            }
+          ],
+          "hint": "Compare both accuracies on the same examples.",
+          "solution": {
+            "code": "The classifier underperforms the majority-class baseline on accuracy.",
+            "steps": [
+              {
+                "title": "Compute the baseline",
+                "explanation": "Always predicting the majority class gives 95% accuracy on this set."
+              },
+              {
+                "title": "Compare results",
+                "explanation": "The model's 92% is lower, although other metrics may also matter."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-35",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Identify unsupervised learning",
+          "description": "A team groups support tickets without predefined category labels. What type of task is this?",
+          "choices": [
+            {
+              "text": "A guaranteed causal analysis.",
+              "correct": false
+            },
+            {
+              "text": "Unsupervised clustering.",
+              "correct": true
+            },
+            {
+              "text": "Supervised regression with supplied targets.",
+              "correct": false
+            },
+            {
+              "text": "Manual labeling only.",
+              "correct": false
+            }
+          ],
+          "hint": "There is no target label supplied for each ticket.",
+          "solution": {
+            "code": "Unsupervised clustering.",
+            "steps": [
+              {
+                "title": "Identify the input",
+                "explanation": "The tickets have no predefined target categories."
+              },
+              {
+                "title": "Identify the method",
+                "explanation": "Clustering groups examples using their representations."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-36",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Interpret a cluster",
+          "description": "A clustering algorithm places several tickets together. What should the team do before naming the group?",
+          "choices": [
+            {
+              "text": "Assume the cluster ID is a verified category.",
+              "correct": false
+            },
+            {
+              "text": "Treat the group as proof of causation.",
+              "correct": false
+            },
+            {
+              "text": "Ignore the underlying examples.",
+              "correct": false
+            },
+            {
+              "text": "Inspect representative tickets and check for mixed content.",
+              "correct": true
+            }
+          ],
+          "hint": "The algorithm does not know the business meaning of a group.",
+          "solution": {
+            "code": "Inspect representative tickets and check for mixed content.",
+            "steps": [
+              {
+                "title": "Inspect the members",
+                "explanation": "Representative examples show what the group contains."
+              },
+              {
+                "title": "Assign meaning cautiously",
+                "explanation": "A useful label requires interpretation and may not fit every member."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-37",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Recognize representation effects",
+          "description": "Two clustering runs use different feature scales and produce different groups. What is a plausible explanation?",
+          "choices": [
+            {
+              "text": "Scaling changed the distances or similarities used by the method.",
+              "correct": true
+            },
+            {
+              "text": "The data automatically received verified target labels.",
+              "correct": false
+            },
+            {
+              "text": "Feature scale can never affect clustering.",
+              "correct": false
+            },
+            {
+              "text": "Every clustering method uses identical distances.",
+              "correct": false
+            }
+          ],
+          "hint": "Consider how the algorithm measures similarity.",
+          "solution": {
+            "code": "Scaling changed the distances or similarities used by the method.",
+            "steps": [
+              {
+                "title": "Identify the change",
+                "explanation": "The feature scales differ between runs."
+              },
+              {
+                "title": "Connect it to grouping",
+                "explanation": "Distance-based methods can group examples differently when scales change."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-38",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Apply a decision threshold",
+          "description": "A classifier's positive score is 0.7 and the threshold is 0.6. What is the decision?",
+          "choices": [
+            {
+              "text": "Positive only if the score is below 0.6.",
+              "correct": false
+            },
+            {
+              "text": "Positive.",
+              "correct": true
+            },
+            {
+              "text": "Undecidable because scores cannot be compared.",
+              "correct": false
+            },
+            {
+              "text": "Negative.",
+              "correct": false
+            }
+          ],
+          "hint": "Compare the score with the threshold.",
+          "solution": {
+            "code": "Positive.",
+            "steps": [
+              {
+                "title": "Compare values",
+                "explanation": "0.7 is greater than 0.6."
+              },
+              {
+                "title": "Apply the rule",
+                "explanation": "The example is classified as positive."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-39",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Identify a false negative",
+          "description": "A screening system predicts negative for an example that is actually positive. What error is this?",
+          "choices": [
+            {
+              "text": "True negative.",
+              "correct": false
+            },
+            {
+              "text": "False positive.",
+              "correct": false
+            },
+            {
+              "text": "True positive.",
+              "correct": false
+            },
+            {
+              "text": "False negative.",
+              "correct": true
+            }
+          ],
+          "hint": "The actual class is positive but the system missed it.",
+          "solution": {
+            "code": "False negative.",
+            "steps": [
+              {
+                "title": "Compare prediction and outcome",
+                "explanation": "The prediction is negative and the true class is positive."
+              },
+              {
+                "title": "Name the error",
+                "explanation": "A missed positive is a false negative."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-40",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Interpret recall",
+          "description": "A classifier flags 60 of 100 actual positives. What is recall?",
+          "choices": [
+            {
+              "text": "60 out of all predictions regardless of class.",
+              "correct": false
+            },
+            {
+              "text": "40%.",
+              "correct": false
+            },
+            {
+              "text": "60%.",
+              "correct": true
+            },
+            {
+              "text": "100%.",
+              "correct": false
+            }
+          ],
+          "hint": "Recall uses actual positives as its denominator.",
+          "solution": {
+            "code": "60%.",
+            "steps": [
+              {
+                "title": "Count detected positives",
+                "explanation": "60 actual positives were flagged."
+              },
+              {
+                "title": "Divide by actual positives",
+                "explanation": "60 / 100 = 60%."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-41",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Calculate absolute error",
+          "description": "A forecast predicts 12 units and the actual value is 9. What is the absolute error?",
+          "choices": [
+            {
+              "text": "9 units.",
+              "correct": false
+            },
+            {
+              "text": "21 units.",
+              "correct": false
+            },
+            {
+              "text": "3 units.",
+              "correct": true
+            },
+            {
+              "text": "-3 units.",
+              "correct": false
+            }
+          ],
+          "hint": "Take the absolute difference.",
+          "solution": {
+            "code": "3 units.",
+            "steps": [
+              {
+                "title": "Subtract",
+                "explanation": "12 - 9 = 3."
+              },
+              {
+                "title": "Take the absolute value",
+                "explanation": "The error is 3 units."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-42",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Avoid future leakage",
+          "description": "A weekly sales forecast uses next week's final sales as an input during training. What is the problem?",
+          "choices": [
+            {
+              "text": "That value is not available when the forecast must be made.",
+              "correct": true
+            },
+            {
+              "text": "Sales can never be numeric.",
+              "correct": false
+            },
+            {
+              "text": "A model must always predict a category.",
+              "correct": false
+            },
+            {
+              "text": "A forecast cannot use any features.",
+              "correct": false
+            }
+          ],
+          "hint": "Check whether each feature exists at decision time.",
+          "solution": {
+            "code": "That value is not available when the forecast must be made.",
+            "steps": [
+              {
+                "title": "Identify the timing",
+                "explanation": "Next week's final sales are known only after the week ends."
+              },
+              {
+                "title": "Prevent leakage",
+                "explanation": "Use only information available when making the forecast."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-43",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Compare a seasonal baseline",
+          "description": "How should a sales model be compared with a seasonal baseline?",
+          "choices": [
+            {
+              "text": "Evaluate both on the same held-out periods with the same metric.",
+              "correct": true
+            },
+            {
+              "text": "Evaluate the model on different easier periods.",
+              "correct": false
+            },
+            {
+              "text": "Assume any model is better than a simple baseline.",
+              "correct": false
+            },
+            {
+              "text": "Compare only the model's training loss.",
+              "correct": false
+            }
+          ],
+          "hint": "A fair comparison uses the same cases and metric.",
+          "solution": {
+            "code": "Evaluate both on the same held-out periods with the same metric.",
+            "steps": [
+              {
+                "title": "Choose held-out periods",
+                "explanation": "Reserve representative future periods for evaluation."
+              },
+              {
+                "title": "Compare consistently",
+                "explanation": "Score both approaches on those same periods."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-44",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Select a final evaluation",
+          "description": "A team compares several models and chooses one using validation scores. What is the reserved test set for?",
+          "choices": [
+            {
+              "text": "Estimating the fixed choice's performance on held-out data.",
+              "correct": true
+            },
+            {
+              "text": "Fitting a scaler together with the training data.",
+              "correct": false
+            },
+            {
+              "text": "Choosing additional hyperparameters until the test score is highest.",
+              "correct": false
+            },
+            {
+              "text": "Replacing all future monitoring.",
+              "correct": false
+            }
+          ],
+          "hint": "The test is evaluated after choices are fixed.",
+          "solution": {
+            "code": "Estimating the fixed choice's performance on held-out data.",
+            "steps": [
+              {
+                "title": "Separate the roles",
+                "explanation": "Validation supports model selection."
+              },
+              {
+                "title": "Use the holdout",
+                "explanation": "Evaluate the selected approach on the reserved test data."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-45",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Spot preprocessing leakage",
+          "description": "A team computes the mean of a numerical feature using the entire dataset and then splits it into training and test sets. Why is that a concern?",
+          "choices": [
+            {
+              "text": "The feature can no longer be numeric.",
+              "correct": false
+            },
+            {
+              "text": "A mean can never be used for preprocessing.",
+              "correct": false
+            },
+            {
+              "text": "The training set must always be smaller than the test set.",
+              "correct": false
+            },
+            {
+              "text": "Test-set information influenced the fitted preprocessing step.",
+              "correct": true
+            }
+          ],
+          "hint": "Ask which rows contributed to the fitted statistic.",
+          "solution": {
+            "code": "Test-set information influenced the fitted preprocessing step.",
+            "steps": [
+              {
+                "title": "Trace the statistic",
+                "explanation": "The mean used values from both training and test rows."
+              },
+              {
+                "title": "Avoid leakage",
+                "explanation": "Fit the transformation on training rows and apply it to the held-out rows."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-new-46",
+          "language": "traditional-ml",
+          "level": "new",
+          "title": "Choose a time-aware split",
+          "description": "A model will predict next month's demand using information available before that month. Which evaluation split best matches this use?",
+          "choices": [
+            {
+              "text": "Train on later periods and evaluate on earlier periods.",
+              "correct": false
+            },
+            {
+              "text": "Randomly mix future target values into the training features.",
+              "correct": false
+            },
+            {
+              "text": "Train on earlier periods and evaluate on a later period.",
+              "correct": true
+            },
+            {
+              "text": "Evaluate on the same rows used to fit the model.",
+              "correct": false
+            }
+          ],
+          "hint": "Evaluation should respect the direction of deployment time.",
+          "solution": {
+            "code": "Train on earlier periods and evaluate on a later period.",
+            "steps": [
+              {
+                "title": "Identify the deployment setting",
+                "explanation": "The model predicts a future period from past information."
+              },
+              {
+                "title": "Mirror it in evaluation",
+                "explanation": "Hold out a later period that was not used for training or selection."
+              }
+            ]
+          }
         }
       ]
     },
@@ -1955,6 +2774,786 @@
               {
                 "title": "Apply it carefully",
                 "explanation": "Inspect false negatives separately when missing a defect is expensive. The other options describe related ideas, but they do not answer the question about confusion matrix."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-26",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Calculate a regression prediction",
+          "description": "A fitted model predicts delivery minutes as 10 + 2 * distance in kilometers. What does it predict for a distance of 7 kilometers?",
+          "choices": [
+            {
+              "text": "30 minutes",
+              "correct": false
+            },
+            {
+              "text": "70 minutes",
+              "correct": false
+            },
+            {
+              "text": "17 minutes",
+              "correct": false
+            },
+            {
+              "text": "24 minutes",
+              "correct": true
+            }
+          ],
+          "hint": "Multiply the distance by its coefficient, then add the intercept.",
+          "solution": {
+            "code": "24 minutes",
+            "steps": [
+              {
+                "title": "Apply the coefficient",
+                "explanation": "Distance contributes 2 * 7 = 14 minutes."
+              },
+              {
+                "title": "Add the intercept",
+                "explanation": "The prediction is 10 + 14 = 24 minutes."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-27",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Interpret a residual",
+          "description": "A delivery takes 30 minutes and a model predicted 24 minutes. If residual means observed minus predicted, what is the residual?",
+          "choices": [
+            {
+              "text": "24 minutes",
+              "correct": false
+            },
+            {
+              "text": "6 minutes",
+              "correct": true
+            },
+            {
+              "text": "-6 minutes",
+              "correct": false
+            },
+            {
+              "text": "54 minutes",
+              "correct": false
+            }
+          ],
+          "hint": "Subtract the prediction from the observed outcome.",
+          "solution": {
+            "code": "6 minutes",
+            "steps": [
+              {
+                "title": "Use the definition",
+                "explanation": "Residual is observed delivery time minus the predicted time."
+              },
+              {
+                "title": "Calculate",
+                "explanation": "30 - 24 = 6 minutes, so the model underpredicted this delivery."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-28",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Interpret a zero score",
+          "description": "A binary logistic regression model produces a linear score of zero. What value does the logistic function return?",
+          "choices": [
+            {
+              "text": "2",
+              "correct": false
+            },
+            {
+              "text": "1",
+              "correct": false
+            },
+            {
+              "text": "0",
+              "correct": false
+            },
+            {
+              "text": "0.5",
+              "correct": true
+            }
+          ],
+          "hint": "The logistic function is centered at score zero.",
+          "solution": {
+            "code": "0.5",
+            "steps": [
+              {
+                "title": "Apply the function",
+                "explanation": "The logistic value at zero is 1 / (1 + exp(0))."
+              },
+              {
+                "title": "Calculate",
+                "explanation": "1 / 2 = 0.5."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-29",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Compare thresholds",
+          "description": "For the same set of prediction scores, a team lowers its positive-class threshold. Which result must be true if positives are predicted at or above the threshold?",
+          "choices": [
+            {
+              "text": "Every newly positive prediction is correct.",
+              "correct": false
+            },
+            {
+              "text": "Precision must always increase.",
+              "correct": false
+            },
+            {
+              "text": "The model scores are retrained automatically.",
+              "correct": false
+            },
+            {
+              "text": "Previously positive predictions remain positive.",
+              "correct": true
+            }
+          ],
+          "hint": "Lowering the cutoff cannot remove an existing positive prediction.",
+          "solution": {
+            "code": "Previously positive predictions remain positive.",
+            "steps": [
+              {
+                "title": "Compare decisions",
+                "explanation": "Every score above the old threshold is also above the lower one."
+              },
+              {
+                "title": "Limit the claim",
+                "explanation": "The added positive predictions can be true or false positives."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-30",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Check probability calibration",
+          "description": "A classifier outputs 0.8 for many examples. In a representative evaluation, roughly 50% of those examples are positive. What does this suggest?",
+          "choices": [
+            {
+              "text": "The threshold must be 0.8 in every application.",
+              "correct": false
+            },
+            {
+              "text": "Every individual prediction is exactly 80% accurate.",
+              "correct": false
+            },
+            {
+              "text": "Those predictions may be poorly calibrated for the evaluated population.",
+              "correct": true
+            },
+            {
+              "text": "The model has proven a causal relationship.",
+              "correct": false
+            }
+          ],
+          "hint": "Compare predicted probability with observed frequency.",
+          "solution": {
+            "code": "Those predictions may be poorly calibrated for the evaluated population.",
+            "steps": [
+              {
+                "title": "Read the group",
+                "explanation": "The observed positive frequency is about 0.5 among cases assigned 0.8."
+              },
+              {
+                "title": "Interpret the difference",
+                "explanation": "This mismatch is evidence of poor calibration for that group, subject to sampling uncertainty."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-31",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Follow a tree split",
+          "description": "A tree first tests distance <= 5 km. A delivery is 8 km away. Which branch does it follow?",
+          "choices": [
+            {
+              "text": "Both branches at once.",
+              "correct": false
+            },
+            {
+              "text": "The yes branch.",
+              "correct": false
+            },
+            {
+              "text": "Neither branch because 8 is numeric.",
+              "correct": false
+            },
+            {
+              "text": "The no branch.",
+              "correct": true
+            }
+          ],
+          "hint": "Compare 8 with the threshold.",
+          "solution": {
+            "code": "The no branch.",
+            "steps": [
+              {
+                "title": "Evaluate the condition",
+                "explanation": "8 is greater than 5."
+              },
+              {
+                "title": "Choose the branch",
+                "explanation": "The condition is false, so follow the no branch."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-32",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Detect tree overfitting",
+          "description": "A deep tree has nearly perfect training accuracy but much lower validation accuracy. What is a reasonable next experiment?",
+          "choices": [
+            {
+              "text": "Tune against the final test set repeatedly.",
+              "correct": false
+            },
+            {
+              "text": "Try limiting tree depth and compare validation results.",
+              "correct": true
+            },
+            {
+              "text": "Assume training accuracy proves generalization.",
+              "correct": false
+            },
+            {
+              "text": "Remove the validation split.",
+              "correct": false
+            }
+          ],
+          "hint": "A simpler tree may fit less training noise.",
+          "solution": {
+            "code": "Try limiting tree depth and compare validation results.",
+            "steps": [
+              {
+                "title": "Identify the gap",
+                "explanation": "Training performance is much higher than validation performance."
+              },
+              {
+                "title": "Control complexity",
+                "explanation": "Test a depth limit and evaluate it on validation data."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-33",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Interpret a tree rule",
+          "description": "A trained tree splits on delivery distance. What does the split establish?",
+          "choices": [
+            {
+              "text": "No other feature can influence a prediction.",
+              "correct": false
+            },
+            {
+              "text": "Distance was proven to cause the outcome.",
+              "correct": false
+            },
+            {
+              "text": "The model uses distance in a decision rule.",
+              "correct": true
+            },
+            {
+              "text": "Every example with that distance has the same outcome.",
+              "correct": false
+            }
+          ],
+          "hint": "A model rule is not automatically a causal conclusion.",
+          "solution": {
+            "code": "The model uses distance in a decision rule.",
+            "steps": [
+              {
+                "title": "Interpret the model",
+                "explanation": "The feature and threshold determine a branch."
+              },
+              {
+                "title": "Avoid overclaiming",
+                "explanation": "The learned split alone does not establish cause and effect."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-34",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Classify by nearest votes",
+          "description": "For k=3, the nearest labels are A, A, and B. What is the majority-vote prediction?",
+          "choices": [
+            {
+              "text": "B",
+              "correct": false
+            },
+            {
+              "text": "A",
+              "correct": true
+            },
+            {
+              "text": "No prediction is possible",
+              "correct": false
+            },
+            {
+              "text": "A and B equally",
+              "correct": false
+            }
+          ],
+          "hint": "Count the three labels.",
+          "solution": {
+            "code": "A",
+            "steps": [
+              {
+                "title": "Count votes",
+                "explanation": "A appears twice and B appears once."
+              },
+              {
+                "title": "Choose the majority",
+                "explanation": "A has two of the three votes."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-35",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Prevent scaling leakage",
+          "description": "How should a scaler be used for k-NN evaluation?",
+          "choices": [
+            {
+              "text": "Fit it on training data and apply it to validation data.",
+              "correct": true
+            },
+            {
+              "text": "Fit a different scaler on every validation example.",
+              "correct": false
+            },
+            {
+              "text": "Fit it on the combined training and final test data.",
+              "correct": false
+            },
+            {
+              "text": "Use test labels to choose scaling values.",
+              "correct": false
+            }
+          ],
+          "hint": "Validation data should not determine training preprocessing.",
+          "solution": {
+            "code": "Fit it on training data and apply it to validation data.",
+            "steps": [
+              {
+                "title": "Fit preprocessing",
+                "explanation": "Compute scaling parameters using the training split."
+              },
+              {
+                "title": "Apply consistently",
+                "explanation": "Transform validation examples with those same parameters."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-36",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Understand neighborhood size",
+          "description": "A k-NN classifier with k=1 is very sensitive to a mislabeled nearby example. What is a reasonable experiment?",
+          "choices": [
+            {
+              "text": "Compare a larger k on validation data.",
+              "correct": true
+            },
+            {
+              "text": "Assume k=1 always generalizes best.",
+              "correct": false
+            },
+            {
+              "text": "Tune on the final test set repeatedly.",
+              "correct": false
+            },
+            {
+              "text": "Remove the distance measure.",
+              "correct": false
+            }
+          ],
+          "hint": "More neighbors can reduce sensitivity to one example.",
+          "solution": {
+            "code": "Compare a larger k on validation data.",
+            "steps": [
+              {
+                "title": "Identify sensitivity",
+                "explanation": "One neighbor determines the k=1 prediction."
+              },
+              {
+                "title": "Compare a candidate",
+                "explanation": "A larger neighborhood may smooth noise, but validate its effect."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-37",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "State the Naive Bayes assumption",
+          "description": "What independence assumption does Naive Bayes make?",
+          "choices": [
+            {
+              "text": "Features are conditionally independent given the class.",
+              "correct": true
+            },
+            {
+              "text": "Features are always unconditionally independent.",
+              "correct": false
+            },
+            {
+              "text": "All documents have the same number of tokens.",
+              "correct": false
+            },
+            {
+              "text": "Classes are independent of every feature.",
+              "correct": false
+            }
+          ],
+          "hint": "The assumption is conditional on the class.",
+          "solution": {
+            "code": "Features are conditionally independent given the class.",
+            "steps": [
+              {
+                "title": "Identify the conditioning",
+                "explanation": "The class is held fixed."
+              },
+              {
+                "title": "State the assumption",
+                "explanation": "Feature evidence is treated as conditionally independent given that class."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-38",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Handle an unseen token",
+          "description": "Why can smoothing help a count-based Naive Bayes text classifier?",
+          "choices": [
+            {
+              "text": "It can prevent an unseen token from giving a class zero likelihood.",
+              "correct": true
+            },
+            {
+              "text": "It removes the need for training examples.",
+              "correct": false
+            },
+            {
+              "text": "It guarantees calibrated probabilities.",
+              "correct": false
+            },
+            {
+              "text": "It proves all words are independent.",
+              "correct": false
+            }
+          ],
+          "hint": "Consider a token absent from one class's training examples.",
+          "solution": {
+            "code": "It can prevent an unseen token from giving a class zero likelihood.",
+            "steps": [
+              {
+                "title": "Identify the issue",
+                "explanation": "A zero estimated likelihood can dominate a product of feature likelihoods."
+              },
+              {
+                "title": "Apply smoothing",
+                "explanation": "A nonzero estimate can avoid that failure in common variants."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-39",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Avoid vocabulary leakage",
+          "description": "When evaluating a text classifier, where should the vocabulary normally be learned?",
+          "choices": [
+            {
+              "text": "The final test labels.",
+              "correct": false
+            },
+            {
+              "text": "The final test data combined with the training data.",
+              "correct": false
+            },
+            {
+              "text": "Only the production outcomes.",
+              "correct": false
+            },
+            {
+              "text": "The training data.",
+              "correct": true
+            }
+          ],
+          "hint": "Preprocessing choices should not use the final evaluation set.",
+          "solution": {
+            "code": "The training data.",
+            "steps": [
+              {
+                "title": "Fit the representation",
+                "explanation": "Learn vocabulary from the training split."
+              },
+              {
+                "title": "Apply consistently",
+                "explanation": "Transform held-out and future examples using that vocabulary."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-40",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Calculate a standardized value",
+          "description": "A feature has training mean 10 and standard deviation 2. What is the standardized value of 14?",
+          "choices": [
+            {
+              "text": "7",
+              "correct": false
+            },
+            {
+              "text": "2",
+              "correct": true
+            },
+            {
+              "text": "4",
+              "correct": false
+            },
+            {
+              "text": "12",
+              "correct": false
+            }
+          ],
+          "hint": "Subtract the mean and divide by the standard deviation.",
+          "solution": {
+            "code": "2",
+            "steps": [
+              {
+                "title": "Center",
+                "explanation": "14 - 10 = 4."
+              },
+              {
+                "title": "Scale",
+                "explanation": "4 / 2 = 2."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-41",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Prevent scaler leakage",
+          "description": "How should a scaler be used on held-out data?",
+          "choices": [
+            {
+              "text": "Use test labels to estimate the training mean.",
+              "correct": false
+            },
+            {
+              "text": "Fit it on training data and apply the fitted parameters to held-out data.",
+              "correct": true
+            },
+            {
+              "text": "Fit it on the combined training and final test data.",
+              "correct": false
+            },
+            {
+              "text": "Refit it independently on each test example.",
+              "correct": false
+            }
+          ],
+          "hint": "The evaluation split must not influence fitted preprocessing.",
+          "solution": {
+            "code": "Fit it on training data and apply the fitted parameters to held-out data.",
+            "steps": [
+              {
+                "title": "Fit on training",
+                "explanation": "Estimate the scaling parameters using the training split."
+              },
+              {
+                "title": "Apply unchanged",
+                "explanation": "Transform held-out examples with those parameters."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-42",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Scale within cross-validation",
+          "description": "Why fit a separate scaler inside each cross-validation training fold?",
+          "choices": [
+            {
+              "text": "Because scaling does not depend on data.",
+              "correct": false
+            },
+            {
+              "text": "To avoid using that fold's validation examples to estimate scaling parameters.",
+              "correct": true
+            },
+            {
+              "text": "To guarantee all validation scores are equal.",
+              "correct": false
+            },
+            {
+              "text": "To include final test labels in training.",
+              "correct": false
+            }
+          ],
+          "hint": "Each validation fold must remain held out from fitting.",
+          "solution": {
+            "code": "To avoid using that fold's validation examples to estimate scaling parameters.",
+            "steps": [
+              {
+                "title": "Identify learned statistics",
+                "explanation": "A scaler estimates parameters such as mean and variance."
+              },
+              {
+                "title": "Protect the fold",
+                "explanation": "Fit those parameters only on the corresponding training portion."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-43",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Use the training median",
+          "description": "A training-set median for a feature is 40. A validation row has a missing value. Which value should a fitted median imputer apply?",
+          "choices": [
+            {
+              "text": "The median calculated from the validation set",
+              "correct": false
+            },
+            {
+              "text": "40",
+              "correct": true
+            },
+            {
+              "text": "The median calculated from the final test set",
+              "correct": false
+            },
+            {
+              "text": "A new random value for each evaluation",
+              "correct": false
+            }
+          ],
+          "hint": "The imputer's statistic is learned from training data.",
+          "solution": {
+            "code": "40",
+            "steps": [
+              {
+                "title": "Fit on training",
+                "explanation": "The median learned during training is 40."
+              },
+              {
+                "title": "Apply unchanged",
+                "explanation": "Use that fitted value on the validation row."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-44",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Use a missingness indicator",
+          "description": "A feature is missing for some examples, and the absence may itself be informative. Which representation can preserve this information after imputation?",
+          "choices": [
+            {
+              "text": "A flag that is always zero.",
+              "correct": false
+            },
+            {
+              "text": "The imputed value plus a flag indicating whether the original value was missing.",
+              "correct": true
+            },
+            {
+              "text": "The final test label as a replacement for the missing value.",
+              "correct": false
+            },
+            {
+              "text": "Only the imputed value, with no record of missingness.",
+              "correct": false
+            }
+          ],
+          "hint": "Separate the filled value from the fact it was missing.",
+          "solution": {
+            "code": "The imputed value plus a flag indicating whether the original value was missing.",
+            "steps": [
+              {
+                "title": "Fill the value",
+                "explanation": "An imputer supplies a numeric or categorical replacement."
+              },
+              {
+                "title": "Retain the signal",
+                "explanation": "An indicator marks which original values were absent."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-beginner-45",
+          "language": "traditional-ml",
+          "level": "beginner",
+          "title": "Investigate a missingness spike",
+          "description": "A serving feature's missing rate rises from 1% to 35% after a data-source change. What should the team investigate?",
+          "choices": [
+            {
+              "text": "The final test labels before receiving them.",
+              "correct": false
+            },
+            {
+              "text": "Only the model file name, because missing inputs cannot affect predictions.",
+              "correct": false
+            },
+            {
+              "text": "The source and preprocessing pipeline, and potential impact on predictions.",
+              "correct": true
+            },
+            {
+              "text": "Whether the feature can be removed from monitoring.",
+              "correct": false
+            }
+          ],
+          "hint": "A sudden input change can reflect an upstream problem.",
+          "solution": {
+            "code": "The source and preprocessing pipeline, and potential impact on predictions.",
+            "steps": [
+              {
+                "title": "Identify the change",
+                "explanation": "A large increase coincides with a source change."
+              },
+              {
+                "title": "Trace the cause",
+                "explanation": "Check data delivery, preprocessing, and model behavior before deciding on a remedy."
               }
             ]
           }
@@ -2938,6 +4537,825 @@
               }
             ]
           }
+        },
+        {
+          "id": "tml-intermediate-26",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Diagnose a depth curve",
+          "description": "A tree's training error decreases as depth grows, while validation error falls initially and then rises across appropriate splits. Which choice is best supported?",
+          "choices": [
+            {
+              "text": "Choose a depth near the lowest validation error and confirm on a separate test set.",
+              "correct": true
+            },
+            {
+              "text": "Choose the depth with the highest validation error.",
+              "correct": false
+            },
+            {
+              "text": "Choose the deepest tree because its training error is lowest.",
+              "correct": false
+            },
+            {
+              "text": "Select repeatedly using the final test set.",
+              "correct": false
+            }
+          ],
+          "hint": "Training error alone does not measure generalization.",
+          "solution": {
+            "code": "Choose a depth near the lowest validation error and confirm on a separate test set.",
+            "steps": [
+              {
+                "title": "Read both curves",
+                "explanation": "The deeper tree fits training data better but performs worse on the validation splits after a point."
+              },
+              {
+                "title": "Select and evaluate",
+                "explanation": "Use validation for selection and retain a separate test set for the final estimate."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-27",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Choose time-aware validation",
+          "description": "A model predicts next week's demand from information available today. Why can a random split of historical rows give an overly optimistic estimate?",
+          "choices": [
+            {
+              "text": "Using a test set eliminates the need for validation.",
+              "correct": false
+            },
+            {
+              "text": "A random split always makes the training dataset too small.",
+              "correct": false
+            },
+            {
+              "text": "Temporal order is irrelevant to forecasting.",
+              "correct": false
+            },
+            {
+              "text": "Training rows may include observations from after the validation period.",
+              "correct": true
+            }
+          ],
+          "hint": "At deployment, future observations are not available for training.",
+          "solution": {
+            "code": "Training rows may include observations from after the validation period.",
+            "steps": [
+              {
+                "title": "Compare with deployment",
+                "explanation": "A forecast must be made using information available before its target period."
+              },
+              {
+                "title": "Match the split to the task",
+                "explanation": "Time-ordered evaluation prevents future observations from entering earlier training folds."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-28",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Investigate unstable predictions",
+          "description": "An unpruned tree fits its training set closely but its predictions vary widely across different representative training samples. Which change is a reasonable candidate to validate?",
+          "choices": [
+            {
+              "text": "Assume the variability proves labels contain no noise.",
+              "correct": false
+            },
+            {
+              "text": "Always deepen the tree until all leaves have one observation.",
+              "correct": false
+            },
+            {
+              "text": "Limit tree complexity or compare an ensemble on the same validation protocol.",
+              "correct": true
+            },
+            {
+              "text": "Tune against the final test set after every experiment.",
+              "correct": false
+            }
+          ],
+          "hint": "Consider ways to reduce sensitivity to individual samples.",
+          "solution": {
+            "code": "Limit tree complexity or compare an ensemble on the same validation protocol.",
+            "steps": [
+              {
+                "title": "Identify the symptom",
+                "explanation": "A large change across training samples suggests sensitivity to sample variation."
+              },
+              {
+                "title": "Test a candidate remedy",
+                "explanation": "Regularizing the tree or using an ensemble may reduce variance, but the benefit must be validated."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-29",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Average ensemble predictions",
+          "description": "Three regression models predict 10, 14, and 18. What is their equally weighted average?",
+          "choices": [
+            {
+              "text": "14",
+              "correct": true
+            },
+            {
+              "text": "42",
+              "correct": false
+            },
+            {
+              "text": "12",
+              "correct": false
+            },
+            {
+              "text": "16",
+              "correct": false
+            }
+          ],
+          "hint": "Add the predictions and divide by the number of models.",
+          "solution": {
+            "code": "14",
+            "steps": [
+              {
+                "title": "Sum predictions",
+                "explanation": "10 + 14 + 18 = 42."
+              },
+              {
+                "title": "Average",
+                "explanation": "42 / 3 = 14."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-30",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Understand bootstrap samples",
+          "description": "What distinguishes a bootstrap sample used in bagging?",
+          "choices": [
+            {
+              "text": "Examples are sampled from the training set with replacement.",
+              "correct": true
+            },
+            {
+              "text": "The model's final score is used as a training label.",
+              "correct": false
+            },
+            {
+              "text": "Every example must appear exactly once.",
+              "correct": false
+            },
+            {
+              "text": "Only the test set is sampled to train each model.",
+              "correct": false
+            }
+          ],
+          "hint": "The same training example may be selected more than once.",
+          "solution": {
+            "code": "Examples are sampled from the training set with replacement.",
+            "steps": [
+              {
+                "title": "Sample training examples",
+                "explanation": "A bootstrap draw takes examples from the training data."
+              },
+              {
+                "title": "Allow repeats",
+                "explanation": "Sampling with replacement permits some examples to repeat and others to be omitted."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-31",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Evaluate ensemble value",
+          "description": "An ensemble and a single tree have similar held-out quality, but the ensemble is much slower and exceeds the latency budget. What should the team consider?",
+          "choices": [
+            {
+              "text": "The latency budget cannot affect deployment.",
+              "correct": false
+            },
+            {
+              "text": "Held-out evaluation is unnecessary.",
+              "correct": false
+            },
+            {
+              "text": "The single tree may be preferable if it meets task requirements and latency constraints.",
+              "correct": true
+            },
+            {
+              "text": "The ensemble is automatically preferable because it contains more models.",
+              "correct": false
+            }
+          ],
+          "hint": "Quality and operational requirements both matter.",
+          "solution": {
+            "code": "The single tree may be preferable if it meets task requirements and latency constraints.",
+            "steps": [
+              {
+                "title": "Compare task metrics",
+                "explanation": "The measured held-out quality is similar."
+              },
+              {
+                "title": "Include constraints",
+                "explanation": "A model that meets the latency budget may be a better fit for the application."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-32",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Predict with a regression forest",
+          "description": "Three regression trees predict 4, 7, and 10. What is their equally weighted average?",
+          "choices": [
+            {
+              "text": "10",
+              "correct": false
+            },
+            {
+              "text": "21",
+              "correct": false
+            },
+            {
+              "text": "8",
+              "correct": false
+            },
+            {
+              "text": "7",
+              "correct": true
+            }
+          ],
+          "hint": "Add the predictions and divide by three.",
+          "solution": {
+            "code": "7",
+            "steps": [
+              {
+                "title": "Sum outputs",
+                "explanation": "4 + 7 + 10 = 21."
+              },
+              {
+                "title": "Average the trees",
+                "explanation": "21 / 3 = 7."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-33",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Explain feature sampling",
+          "description": "Why might a random forest consider a random subset of features at each split?",
+          "choices": [
+            {
+              "text": "It removes the need to use training examples.",
+              "correct": false
+            },
+            {
+              "text": "It guarantees perfect accuracy.",
+              "correct": false
+            },
+            {
+              "text": "It can make trees less correlated.",
+              "correct": true
+            },
+            {
+              "text": "It proves all features cause the target.",
+              "correct": false
+            }
+          ],
+          "hint": "The aim is to encourage variation among trees.",
+          "solution": {
+            "code": "It can make trees less correlated.",
+            "steps": [
+              {
+                "title": "Identify the mechanism",
+                "explanation": "Different candidate features can lead trees to choose different splits."
+              },
+              {
+                "title": "Identify the potential benefit",
+                "explanation": "Less correlated errors can help aggregation reduce variance."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-34",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Interpret out-of-bag evaluation",
+          "description": "Which trees can contribute an out-of-bag prediction for a particular training example?",
+          "choices": [
+            {
+              "text": "Trees whose bootstrap samples omitted that example.",
+              "correct": true
+            },
+            {
+              "text": "Every tree regardless of its bootstrap sample.",
+              "correct": false
+            },
+            {
+              "text": "Only trees that included the example multiple times.",
+              "correct": false
+            },
+            {
+              "text": "Only trees trained exclusively on the test set.",
+              "correct": false
+            }
+          ],
+          "hint": "The example must not have appeared in that tree's bootstrap sample.",
+          "solution": {
+            "code": "Trees whose bootstrap samples omitted that example.",
+            "steps": [
+              {
+                "title": "Find eligible trees",
+                "explanation": "A tree is eligible for this example if its sample omitted it."
+              },
+              {
+                "title": "Aggregate predictions",
+                "explanation": "Combine the eligible trees' predictions to form an out-of-bag estimate."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-35",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Interpret residual fitting",
+          "description": "In squared-error regression boosting, what does the next learner commonly fit?",
+          "choices": [
+            {
+              "text": "An unrelated dataset selected after deployment.",
+              "correct": false
+            },
+            {
+              "text": "Only the final test labels.",
+              "correct": false
+            },
+            {
+              "text": "Residuals related to the current predictions.",
+              "correct": true
+            },
+            {
+              "text": "A random model name.",
+              "correct": false
+            }
+          ],
+          "hint": "Compare the current prediction with its target.",
+          "solution": {
+            "code": "Residuals related to the current predictions.",
+            "steps": [
+              {
+                "title": "Find the error",
+                "explanation": "Residuals describe the difference between target and current prediction."
+              },
+              {
+                "title": "Fit the next stage",
+                "explanation": "A learner can use that direction to improve the model."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-36",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Avoid early-stopping leakage",
+          "description": "Which data should normally guide early stopping while protecting the final test set?",
+          "choices": [
+            {
+              "text": "Validation data.",
+              "correct": true
+            },
+            {
+              "text": "Only the model filename.",
+              "correct": false
+            },
+            {
+              "text": "Production labels not available at training time.",
+              "correct": false
+            },
+            {
+              "text": "The final test set used repeatedly.",
+              "correct": false
+            }
+          ],
+          "hint": "Reserve final test data for the final assessment.",
+          "solution": {
+            "code": "Validation data.",
+            "steps": [
+              {
+                "title": "Separate the roles",
+                "explanation": "Validation data can guide model selection."
+              },
+              {
+                "title": "Protect the test set",
+                "explanation": "Avoid repeatedly using it to choose the stopping point."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-37",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Tune boosting capacity",
+          "description": "A boosted model performs much better on training data than validation data. Which experiment can reduce capacity?",
+          "choices": [
+            {
+              "text": "Increase tree depth without evaluation.",
+              "correct": false
+            },
+            {
+              "text": "Remove the validation split.",
+              "correct": false
+            },
+            {
+              "text": "Train directly on test labels.",
+              "correct": false
+            },
+            {
+              "text": "Compare shallower trees or fewer stages.",
+              "correct": true
+            }
+          ],
+          "hint": "A complex ensemble may fit training noise.",
+          "solution": {
+            "code": "Compare shallower trees or fewer stages.",
+            "steps": [
+              {
+                "title": "Identify the gap",
+                "explanation": "Training quality is much higher than validation quality."
+              },
+              {
+                "title": "Test regularization",
+                "explanation": "Shallower trees or fewer stages may reduce overfitting."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-38",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Protect the final test set",
+          "description": "Which data should guide hyperparameter selection?",
+          "choices": [
+            {
+              "text": "The final test set after every candidate.",
+              "correct": false
+            },
+            {
+              "text": "Only the model filename.",
+              "correct": false
+            },
+            {
+              "text": "Future production outcomes unavailable during training.",
+              "correct": false
+            },
+            {
+              "text": "Validation data or inner cross-validation folds.",
+              "correct": true
+            }
+          ],
+          "hint": "Keep final evaluation separate from tuning.",
+          "solution": {
+            "code": "Validation data or inner cross-validation folds.",
+            "steps": [
+              {
+                "title": "Select candidates",
+                "explanation": "Use validation results to choose settings."
+              },
+              {
+                "title": "Reserve the test set",
+                "explanation": "Evaluate the selected workflow separately after tuning."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-39",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Understand nested validation",
+          "description": "What is the outer loop used for in nested cross-validation?",
+          "choices": [
+            {
+              "text": "Guaranteeing identical performance in production.",
+              "correct": false
+            },
+            {
+              "text": "Replacing all training data with test data.",
+              "correct": false
+            },
+            {
+              "text": "Evaluating the full model-selection procedure on held-out folds.",
+              "correct": true
+            },
+            {
+              "text": "Selecting hyperparameters using the outer fold labels.",
+              "correct": false
+            }
+          ],
+          "hint": "The inner loop performs the tuning.",
+          "solution": {
+            "code": "Evaluating the full model-selection procedure on held-out folds.",
+            "steps": [
+              {
+                "title": "Separate the roles",
+                "explanation": "The inner search chooses settings without its corresponding outer fold."
+              },
+              {
+                "title": "Estimate the workflow",
+                "explanation": "The outer fold evaluates the selected procedure."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-40",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Fit preprocessing within folds",
+          "description": "Why fit a scaler separately inside each training fold?",
+          "choices": [
+            {
+              "text": "To avoid using validation-fold information when fitting preprocessing.",
+              "correct": true
+            },
+            {
+              "text": "To make all folds share their labels.",
+              "correct": false
+            },
+            {
+              "text": "To guarantee every candidate has the same score.",
+              "correct": false
+            },
+            {
+              "text": "Because scaling never affects model selection.",
+              "correct": false
+            }
+          ],
+          "hint": "Preprocessing can learn statistics from its input data.",
+          "solution": {
+            "code": "To avoid using validation-fold information when fitting preprocessing.",
+            "steps": [
+              {
+                "title": "Identify the leak",
+                "explanation": "Using validation data to compute scaling parameters influences the evaluation."
+              },
+              {
+                "title": "Keep folds separate",
+                "explanation": "Fit the scaler using only each training fold."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-41",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Avoid selection leakage",
+          "description": "Why select features independently inside each cross-validation training fold?",
+          "choices": [
+            {
+              "text": "Because feature selection never depends on data.",
+              "correct": false
+            },
+            {
+              "text": "To guarantee all folds choose identical features.",
+              "correct": false
+            },
+            {
+              "text": "To keep validation examples from influencing feature selection.",
+              "correct": true
+            },
+            {
+              "text": "To use final test labels more effectively.",
+              "correct": false
+            }
+          ],
+          "hint": "Selection can learn from the data it sees.",
+          "solution": {
+            "code": "To keep validation examples from influencing feature selection.",
+            "steps": [
+              {
+                "title": "Identify the risk",
+                "explanation": "Selecting on all examples uses validation information."
+              },
+              {
+                "title": "Fit within the fold",
+                "explanation": "Select using only the training portion before validation."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-42",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Interpret unstable subsets",
+          "description": "Across folds, a selector chooses one of two strongly correlated features, while validation scores stay similar. What is plausible?",
+          "choices": [
+            {
+              "text": "Both features must be irrelevant.",
+              "correct": false
+            },
+            {
+              "text": "Validation is impossible with correlated inputs.",
+              "correct": false
+            },
+            {
+              "text": "The model is guaranteed to be causal.",
+              "correct": false
+            },
+            {
+              "text": "The features may provide overlapping information.",
+              "correct": true
+            }
+          ],
+          "hint": "Correlated features can substitute for each other.",
+          "solution": {
+            "code": "The features may provide overlapping information.",
+            "steps": [
+              {
+                "title": "Observe the pattern",
+                "explanation": "The selected feature varies but scores remain similar."
+              },
+              {
+                "title": "Consider redundancy",
+                "explanation": "Either feature may capture similar predictive information."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-43",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Evaluate selection",
+          "description": "How should a selected-feature model be assessed?",
+          "choices": [
+            {
+              "text": "Select features on the final test set and report the same score.",
+              "correct": false
+            },
+            {
+              "text": "Evaluate the full selection-and-model pipeline on held-out data.",
+              "correct": true
+            },
+            {
+              "text": "Assume fewer features always improve accuracy.",
+              "correct": false
+            },
+            {
+              "text": "Evaluate only the feature names.",
+              "correct": false
+            }
+          ],
+          "hint": "Feature selection is part of the fitted workflow.",
+          "solution": {
+            "code": "Evaluate the full selection-and-model pipeline on held-out data.",
+            "steps": [
+              {
+                "title": "Define the pipeline",
+                "explanation": "Selection and model fitting both use training data."
+              },
+              {
+                "title": "Evaluate separately",
+                "explanation": "Measure the complete workflow on held-out examples."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-44",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Interpret a calibration bin",
+          "description": "In a sufficiently large, representative group of predictions near 0.8, about 60% of outcomes are positive. What does this suggest?",
+          "choices": [
+            {
+              "text": "Predictions in that group are overconfident relative to the observed frequency.",
+              "correct": true
+            },
+            {
+              "text": "The model is perfectly calibrated in that group.",
+              "correct": false
+            },
+            {
+              "text": "The model has perfect ranking performance.",
+              "correct": false
+            },
+            {
+              "text": "Every individual prediction is wrong.",
+              "correct": false
+            }
+          ],
+          "hint": "Compare predicted probability with observed frequency.",
+          "solution": {
+            "code": "Predictions in that group are overconfident relative to the observed frequency.",
+            "steps": [
+              {
+                "title": "Compare values",
+                "explanation": "Predictions near 0.8 exceed the observed positive rate of 0.6."
+              },
+              {
+                "title": "Interpret cautiously",
+                "explanation": "The model appears overconfident in this group, subject to sampling uncertainty."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-45",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Separate ranking and calibration",
+          "description": "A model orders positive cases above negative cases well, but its probabilities are consistently too high. Which statement is most accurate?",
+          "choices": [
+            {
+              "text": "Poor calibration proves the ordering is random.",
+              "correct": false
+            },
+            {
+              "text": "Good ranking guarantees calibrated probabilities.",
+              "correct": false
+            },
+            {
+              "text": "Calibration describes only whether a prediction is above a classification threshold.",
+              "correct": false
+            },
+            {
+              "text": "Good ranking can coexist with poor probability calibration.",
+              "correct": true
+            }
+          ],
+          "hint": "Ordering and numeric probability accuracy are separate properties.",
+          "solution": {
+            "code": "Good ranking can coexist with poor probability calibration.",
+            "steps": [
+              {
+                "title": "Identify ranking",
+                "explanation": "The model orders cases well."
+              },
+              {
+                "title": "Identify calibration",
+                "explanation": "Its reported probabilities do not match observed frequencies."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-intermediate-46",
+          "language": "traditional-ml",
+          "level": "intermediate",
+          "title": "Fit a calibrator without leakage",
+          "description": "A team has fitted a classifier and wants to fit a probability calibrator. How should the final test set be used?",
+          "choices": [
+            {
+              "text": "Merge it with training data solely for the calibration step.",
+              "correct": false
+            },
+            {
+              "text": "Use its labels to choose calibration settings repeatedly.",
+              "correct": false
+            },
+            {
+              "text": "Fit the calibrator directly on it and report the same score as final evidence.",
+              "correct": false
+            },
+            {
+              "text": "Reserve it for final evaluation after the model and calibrator are chosen.",
+              "correct": true
+            }
+          ],
+          "hint": "The final test should remain independent of fitting and selection.",
+          "solution": {
+            "code": "Reserve it for final evaluation after the model and calibrator are chosen.",
+            "steps": [
+              {
+                "title": "Assign data roles",
+                "explanation": "The calibrator needs separate fitting or cross-validation data."
+              },
+              {
+                "title": "Protect the holdout",
+                "explanation": "Use the final test only after choices are fixed."
+              }
+            ]
+          }
         }
       ]
     },
@@ -3915,6 +6333,747 @@
               {
                 "title": "Apply it carefully",
                 "explanation": "Pre-register a primary outcome and guardrail before an A/B test. The other options describe related ideas, but they do not answer the question about online experimentation."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-26",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Separate prediction and effect",
+          "description": "A model accurately predicts that program participants earn more, but participation is voluntary. What is justified?",
+          "choices": [
+            {
+              "text": "Changing a predictive feature must change earnings by its coefficient.",
+              "correct": false
+            },
+            {
+              "text": "The model alone does not establish the effect of offering the program.",
+              "correct": true
+            },
+            {
+              "text": "Confounding cannot occur when predictive accuracy is high.",
+              "correct": false
+            },
+            {
+              "text": "The program necessarily caused the entire earnings difference.",
+              "correct": false
+            }
+          ],
+          "hint": "Consider why people chose to participate.",
+          "solution": {
+            "code": "The model alone does not establish the effect of offering the program.",
+            "steps": [
+              {
+                "title": "Identify selection",
+                "explanation": "Participants can differ from nonparticipants in ways that also affect earnings."
+              },
+              {
+                "title": "Limit the conclusion",
+                "explanation": "Prediction accuracy does not identify the intervention effect without a defensible causal design."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-27",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Identify a confounder",
+          "description": "Prior experience influences both enrollment in a training course and later employment. What role can prior experience play when estimating the course effect?",
+          "choices": [
+            {
+              "text": "A guaranteed consequence of the course.",
+              "correct": false
+            },
+            {
+              "text": "An outcome that cannot affect enrollment.",
+              "correct": false
+            },
+            {
+              "text": "Proof of random assignment.",
+              "correct": false
+            },
+            {
+              "text": "A potential confounder.",
+              "correct": true
+            }
+          ],
+          "hint": "Look for a common cause of treatment and outcome.",
+          "solution": {
+            "code": "A potential confounder.",
+            "steps": [
+              {
+                "title": "Trace the paths",
+                "explanation": "Experience affects enrollment and can independently affect employment."
+              },
+              {
+                "title": "State the implication",
+                "explanation": "Unadjusted comparisons can mix the course effect with differences in experience."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-28",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Define an intervention estimand",
+          "description": "A team wants the average six-month effect of offering training to eligible applicants. Which comparison describes that estimand?",
+          "choices": [
+            {
+              "text": "Training accuracy versus validation accuracy.",
+              "correct": false
+            },
+            {
+              "text": "Predicted employment among those who accepted the offer.",
+              "correct": false
+            },
+            {
+              "text": "Employment under an offer versus employment under no offer for the eligible population.",
+              "correct": true
+            },
+            {
+              "text": "Employment among volunteers versus everyone else, without assumptions.",
+              "correct": false
+            }
+          ],
+          "hint": "Specify the same population under two intervention conditions.",
+          "solution": {
+            "code": "Employment under an offer versus employment under no offer for the eligible population.",
+            "steps": [
+              {
+                "title": "Specify the population",
+                "explanation": "The target is eligible applicants."
+              },
+              {
+                "title": "Compare interventions",
+                "explanation": "The estimand contrasts their outcomes under an offer and no offer at the chosen horizon."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-29",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Identify input drift",
+          "description": "Input features change while the conditional relationship P(Y|X) is assumed unchanged. Which shift describes this setup?",
+          "choices": [
+            {
+              "text": "No shift because P(X) changed.",
+              "correct": false
+            },
+            {
+              "text": "Covariate shift.",
+              "correct": true
+            },
+            {
+              "text": "Label shift under the P(X|Y) assumption.",
+              "correct": false
+            },
+            {
+              "text": "A guaranteed change in P(Y|X).",
+              "correct": false
+            }
+          ],
+          "hint": "Focus on the distribution that changed.",
+          "solution": {
+            "code": "Covariate shift.",
+            "steps": [
+              {
+                "title": "Identify the change",
+                "explanation": "The input distribution P(X) changed."
+              },
+              {
+                "title": "Apply the definition",
+                "explanation": "Covariate shift assumes the conditional relationship stays unchanged."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-30",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Interpret input drift",
+          "description": "A monitoring alert detects a change in input distribution. What does it establish by itself?",
+          "choices": [
+            {
+              "text": "Model performance has certainly worsened.",
+              "correct": false
+            },
+            {
+              "text": "All labels have changed.",
+              "correct": false
+            },
+            {
+              "text": "Inputs changed according to the monitor; performance impact needs investigation.",
+              "correct": true
+            },
+            {
+              "text": "The model is guaranteed to be safe.",
+              "correct": false
+            }
+          ],
+          "hint": "A drift alert and a performance measurement are different evidence.",
+          "solution": {
+            "code": "Inputs changed according to the monitor; performance impact needs investigation.",
+            "steps": [
+              {
+                "title": "Interpret the alert",
+                "explanation": "The monitor observed an input distribution change."
+              },
+              {
+                "title": "Check the impact",
+                "explanation": "Evaluate outcomes and context before concluding how performance changed."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-31",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Investigate concept shift",
+          "description": "The probability of delay for the same observed route features changes after a policy update. Which relationship changed?",
+          "choices": [
+            {
+              "text": "P(Y|X).",
+              "correct": true
+            },
+            {
+              "text": "The name of the model file only.",
+              "correct": false
+            },
+            {
+              "text": "The number of fields in JSON by definition.",
+              "correct": false
+            },
+            {
+              "text": "P(X|Y) must remain unchanged in every case.",
+              "correct": false
+            }
+          ],
+          "hint": "The outcome relationship changes for the same inputs.",
+          "solution": {
+            "code": "P(Y|X).",
+            "steps": [
+              {
+                "title": "Identify inputs and outcome",
+                "explanation": "X represents route features and Y represents delay."
+              },
+              {
+                "title": "Identify the relationship",
+                "explanation": "The conditional outcome distribution P(Y|X) has changed."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-32",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Interpret marginal coverage",
+          "description": "A conformal interval method targets 90% marginal coverage under its assumptions. Which statement is justified?",
+          "choices": [
+            {
+              "text": "Every individual has a guaranteed 90% conditional coverage rate.",
+              "correct": false
+            },
+            {
+              "text": "Every subgroup is guaranteed 90% coverage.",
+              "correct": false
+            },
+            {
+              "text": "The target concerns coverage across future examples under the assumptions.",
+              "correct": true
+            },
+            {
+              "text": "Coverage cannot be affected by distribution shift.",
+              "correct": false
+            }
+          ],
+          "hint": "Marginal and conditional coverage are different.",
+          "solution": {
+            "code": "The target concerns coverage across future examples under the assumptions.",
+            "steps": [
+              {
+                "title": "Identify the guarantee",
+                "explanation": "It applies marginally under the method's conditions."
+              },
+              {
+                "title": "Avoid overclaiming",
+                "explanation": "The same guarantee does not automatically hold for each subgroup or individual."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-33",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Separate calibration and evaluation",
+          "description": "Why evaluate conformal intervals on data separate from calibration?",
+          "choices": [
+            {
+              "text": "To guarantee coverage under any future shift.",
+              "correct": false
+            },
+            {
+              "text": "To estimate coverage and width on examples not used to select the calibration threshold.",
+              "correct": true
+            },
+            {
+              "text": "Because calibration examples must be part of the test set.",
+              "correct": false
+            },
+            {
+              "text": "Because the model must train on the evaluation labels.",
+              "correct": false
+            }
+          ],
+          "hint": "The evaluation should measure behavior beyond the data used to choose the threshold.",
+          "solution": {
+            "code": "To estimate coverage and width on examples not used to select the calibration threshold.",
+            "steps": [
+              {
+                "title": "Identify calibration's role",
+                "explanation": "Calibration scores select the conformal threshold."
+              },
+              {
+                "title": "Evaluate separately",
+                "explanation": "Held-out examples provide an assessment of coverage and width."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-34",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Assess shift risk",
+          "description": "A conformal model calibrated on one population is deployed on a substantially different population. What is the concern?",
+          "choices": [
+            {
+              "text": "The calibration set becomes a training set.",
+              "correct": false
+            },
+            {
+              "text": "Exchangeability may no longer hold, so the original coverage guarantee may fail.",
+              "correct": true
+            },
+            {
+              "text": "The original guarantee automatically applies under all shifts.",
+              "correct": false
+            },
+            {
+              "text": "Intervals cannot change width.",
+              "correct": false
+            }
+          ],
+          "hint": "The guarantee depends on the relationship between calibration and future examples.",
+          "solution": {
+            "code": "Exchangeability may no longer hold, so the original coverage guarantee may fail.",
+            "steps": [
+              {
+                "title": "Identify the assumption",
+                "explanation": "The usual finite-sample guarantee requires exchangeability under its conditions."
+              },
+              {
+                "title": "Assess the change",
+                "explanation": "A population shift may violate that assumption and requires monitoring."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-35",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Interpret a censored unit",
+          "description": "A machine is still operating when a 100-day study ends. What is known about its failure time?",
+          "choices": [
+            {
+              "text": "The failure occurred before observation started.",
+              "correct": false
+            },
+            {
+              "text": "It exceeds the observed follow-up time, but the exact time is unknown.",
+              "correct": true
+            },
+            {
+              "text": "The machine will never fail.",
+              "correct": false
+            },
+            {
+              "text": "It is exactly 100 days.",
+              "correct": false
+            }
+          ],
+          "hint": "The event was not observed during follow-up.",
+          "solution": {
+            "code": "It exceeds the observed follow-up time, but the exact time is unknown.",
+            "steps": [
+              {
+                "title": "Identify censoring",
+                "explanation": "Observation ended before failure was observed."
+              },
+              {
+                "title": "Interpret the record",
+                "explanation": "The failure time is beyond the observed period, not known exactly."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-36",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Define a survival event",
+          "description": "A team models time to equipment failure but some records use installation date and others use first service date as the start. What risk does this introduce?",
+          "choices": [
+            {
+              "text": "The event definition becomes irrelevant.",
+              "correct": false
+            },
+            {
+              "text": "Censoring automatically disappears.",
+              "correct": false
+            },
+            {
+              "text": "All units have identical failure times.",
+              "correct": false
+            },
+            {
+              "text": "Follow-up durations are not consistently defined.",
+              "correct": true
+            }
+          ],
+          "hint": "Time-to-event requires a consistent origin.",
+          "solution": {
+            "code": "Follow-up durations are not consistently defined.",
+            "steps": [
+              {
+                "title": "Identify the inconsistency",
+                "explanation": "The starting point differs across records."
+              },
+              {
+                "title": "Assess the result",
+                "explanation": "Durations may not represent the same interval and need careful definition."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-37",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Interpret survival probability",
+          "description": "A model estimates a survival probability of 0.8 at one year for a group of machines. Which interpretation is appropriate?",
+          "choices": [
+            {
+              "text": "The event cannot occur after one year.",
+              "correct": false
+            },
+            {
+              "text": "It estimates the chance that event time exceeds one year for that group under the model.",
+              "correct": true
+            },
+            {
+              "text": "Every machine is certain to last one year.",
+              "correct": false
+            },
+            {
+              "text": "Exactly 80% of any sample must survive.",
+              "correct": false
+            }
+          ],
+          "hint": "A model probability is not certainty for each individual.",
+          "solution": {
+            "code": "It estimates the chance that event time exceeds one year for that group under the model.",
+            "steps": [
+              {
+                "title": "Interpret the time point",
+                "explanation": "The event has not occurred before the specified time."
+              },
+              {
+                "title": "Limit the claim",
+                "explanation": "The estimate is probabilistic and depends on the model and assumptions."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-38",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Account for observation time",
+          "description": "Two sites have the same incident count, but one was observed for twice as long. What should a count model consider?",
+          "choices": [
+            {
+              "text": "Their different exposure durations.",
+              "correct": true
+            },
+            {
+              "text": "Ignoring time because counts are integers.",
+              "correct": false
+            },
+            {
+              "text": "Assuming both had identical observation windows.",
+              "correct": false
+            },
+            {
+              "text": "Only that their raw counts match.",
+              "correct": false
+            }
+          ],
+          "hint": "A longer opportunity to observe can change expected counts.",
+          "solution": {
+            "code": "Their different exposure durations.",
+            "steps": [
+              {
+                "title": "Compare exposure",
+                "explanation": "The sites have different follow-up durations."
+              },
+              {
+                "title": "Model it",
+                "explanation": "Account for exposure when interpreting or modeling rates."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-39",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Interpret Poisson dispersion",
+          "description": "What property does a Poisson distribution have for a given parameter?",
+          "choices": [
+            {
+              "text": "Its variance is always greater than its mean.",
+              "correct": false
+            },
+            {
+              "text": "Its mean must be negative.",
+              "correct": false
+            },
+            {
+              "text": "Its mean equals its variance.",
+              "correct": true
+            },
+            {
+              "text": "Its variance is always zero.",
+              "correct": false
+            }
+          ],
+          "hint": "The two quantities are equal under the Poisson model.",
+          "solution": {
+            "code": "Its mean equals its variance.",
+            "steps": [
+              {
+                "title": "Identify the assumption",
+                "explanation": "Poisson variance equals its mean for a given parameter."
+              },
+              {
+                "title": "Check data appropriately",
+                "explanation": "Assess dispersion conditional on the fitted mean in regression."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-40",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Investigate overdispersion",
+          "description": "A Poisson count model shows extra conditional variation. Which response is reasonable?",
+          "choices": [
+            {
+              "text": "Investigate the cause and consider a negative-binomial model.",
+              "correct": true
+            },
+            {
+              "text": "Delete observations until variance equals the mean.",
+              "correct": false
+            },
+            {
+              "text": "Treat overdispersion as proof that no features matter.",
+              "correct": false
+            },
+            {
+              "text": "Assume Poisson assumptions must hold.",
+              "correct": false
+            }
+          ],
+          "hint": "A negative-binomial model can allow more variance, but does not fix every issue.",
+          "solution": {
+            "code": "Investigate the cause and consider a negative-binomial model.",
+            "steps": [
+              {
+                "title": "Diagnose the pattern",
+                "explanation": "Conditional variation exceeds the Poisson assumption."
+              },
+              {
+                "title": "Consider alternatives",
+                "explanation": "Investigate dependence and omitted variables as well as an appropriate model."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-41",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Compute asymmetric loss",
+          "description": "A model predicts 10 hours, the outcome is 12 hours, and q = 0.9. What is the pinball loss?",
+          "choices": [
+            {
+              "text": "0.9",
+              "correct": false
+            },
+            {
+              "text": "1.8",
+              "correct": true
+            },
+            {
+              "text": "0.2",
+              "correct": false
+            },
+            {
+              "text": "2.0",
+              "correct": false
+            }
+          ],
+          "hint": "Use actual minus prediction as the residual.",
+          "solution": {
+            "code": "1.8",
+            "steps": [
+              {
+                "title": "Calculate residual",
+                "explanation": "The residual is 12 - 10 = 2."
+              },
+              {
+                "title": "Apply the positive-residual term",
+                "explanation": "Multiply 2 by 0.9 to obtain 1.8."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-42",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Interpret an upper quantile",
+          "description": "What does a calibrated conditional 0.9 quantile of delivery time describe?",
+          "choices": [
+            {
+              "text": "The average delivery time for all customers.",
+              "correct": false
+            },
+            {
+              "text": "A value at or below which about 90% of comparable outcomes fall.",
+              "correct": true
+            },
+            {
+              "text": "A deadline that every delivery is guaranteed to meet.",
+              "correct": false
+            },
+            {
+              "text": "A value above which about 90% of comparable outcomes fall.",
+              "correct": false
+            }
+          ],
+          "hint": "The quantile is a distributional threshold, not a guarantee.",
+          "solution": {
+            "code": "A value at or below which about 90% of comparable outcomes fall.",
+            "steps": [
+              {
+                "title": "Identify the target",
+                "explanation": "The model estimates an upper conditional quantile."
+              },
+              {
+                "title": "Interpret the level",
+                "explanation": "Approximately 90% of outcomes for comparable cases fall at or below it, subject to calibration."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-43",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Assess a nominal interval",
+          "description": "A model produces 0.1 and 0.9 quantile predictions. On held-out data, the interval contains 65% of outcomes. What is the best conclusion?",
+          "choices": [
+            {
+              "text": "The interval must be too wide because coverage is below 80%.",
+              "correct": false
+            },
+            {
+              "text": "Investigate calibration, sampling uncertainty and distribution shift before relying on nominal 80% coverage.",
+              "correct": true
+            },
+            {
+              "text": "The interval has proven 65% coverage for every future subgroup.",
+              "correct": false
+            },
+            {
+              "text": "The interval has proven 80% coverage because its quantile levels differ by 0.8.",
+              "correct": false
+            }
+          ],
+          "hint": "Quantile levels alone do not guarantee empirical coverage.",
+          "solution": {
+            "code": "Investigate calibration, sampling uncertainty and distribution shift before relying on nominal 80% coverage.",
+            "steps": [
+              {
+                "title": "Compare rates",
+                "explanation": "The observed 65% differs from the nominal 80%."
+              },
+              {
+                "title": "Investigate the gap",
+                "explanation": "Check uncertainty, groups, data shift and model calibration."
+              }
+            ]
+          }
+        },
+        {
+          "id": "tml-advanced-44",
+          "language": "traditional-ml",
+          "level": "advanced",
+          "title": "Detect quantile crossing",
+          "description": "Independent models predict a 0.1 quantile of 15 and a 0.9 quantile of 12 for the same input. What issue should be addressed?",
+          "choices": [
+            {
+              "text": "The predicted lower quantile exceeds the predicted upper quantile.",
+              "correct": true
+            },
+            {
+              "text": "The two quantiles are necessarily equal for this input.",
+              "correct": false
+            },
+            {
+              "text": "Pinball loss cannot be used for quantile models.",
+              "correct": false
+            },
+            {
+              "text": "The predictions prove that the outcome is between 12 and 15.",
+              "correct": false
+            }
+          ],
+          "hint": "Quantiles should be ordered by their levels.",
+          "solution": {
+            "code": "The predicted lower quantile exceeds the predicted upper quantile.",
+            "steps": [
+              {
+                "title": "Compare predictions",
+                "explanation": "The lower-level prediction is 15 while the upper-level prediction is 12."
+              },
+              {
+                "title": "Identify crossing",
+                "explanation": "The estimates violate the expected quantile ordering."
               }
             ]
           }

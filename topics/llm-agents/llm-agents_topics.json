@@ -13,8 +13,29 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "An autoregressive LLM predicts a distribution over the next token given prior context; fluent output does not establish truth. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Predict the next token",
+              "body": "An autoregressive language model uses the tokens in its current context to produce a probability distribution over possible next tokens. A token can be a word, part of a word, punctuation, or another unit defined by the tokenizer. The model predicts one next token at each generation step.",
+              "image": "img/languages/llm-agents/next-token-generation.png"
+            },
+            {
+              "title": "Choose and continue",
+              "body": "A decoding method selects a token from the distribution. It might always select the highest-probability token or sample from candidate tokens. The selected token is appended to the context, and the model predicts again until a stopping condition is reached.",
+              "image": "img/languages/llm-agents/autoregressive-generation.png"
+            },
+            {
+              "title": "Context changes the distribution",
+              "body": "The likely continuation depends on what comes before it. After 'Please reply in French:', a French continuation may become more likely than it was without that instruction. Earlier messages, retrieved documents, and generated tokens can all influence later predictions when included in the context.",
+              "image": "img/languages/llm-agents/context-and-continuation.png"
+            },
+            {
+              "title": "Fluency is not evidence",
+              "body": "The next-token objective can produce fluent answers that contain mistakes or invented details. A plausible sentence does not prove that a cited source exists or that a claim is correct. Check important claims against reliable sources and verify any citations before relying on them.",
+              "image": "img/languages/llm-agents/verify-model-claims.png"
+            },
+            {
+              "title": "Use the model in a workflow",
+              "body": "For a question-answering feature, provide relevant context, ask for a grounded answer, and check the response against the source material. Define what the system should do when evidence is missing, such as saying it cannot determine the answer or handing the request to a person. Supplying context helps, but does not guarantee correctness.",
+              "image": "img/languages/llm-agents/grounded-answer-workflow.png"
             }
           ]
         },
@@ -28,7 +49,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Tokenizers split text into model-specific units, so character length and context-window usage are different quantities. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A tokenizer converts text into a sequence of tokens that a model can process. A token may represent a whole word, part of a word, whitespace, punctuation, or another unit. The exact split depends on the tokenizer, so words and tokens are not interchangeable counts.",
+              "image": "img/languages/llm-agents/text-to-tokens.png"
+            },
+            {
+              "title": "Tokens are model-specific",
+              "body": "Different model families can use different tokenizers. The same text can therefore produce different token counts, and a split shown for one model should not be assumed for another. Use the tokenizer associated with the model when an exact count matters.",
+              "image": "img/languages/llm-agents/tokenizer-differences.png"
+            },
+            {
+              "title": "Plan the context budget",
+              "body": "Instructions, conversation history, retrieved passages, and generated output all use tokens. Their total must fit the applicable model and API limits. Reserve room for the response, and shorten or select input deliberately when the request would exceed the available budget.",
+              "image": "img/languages/llm-agents/token-context-budget.png"
+            },
+            {
+              "title": "Consider language and format",
+              "body": "The number of characters per token varies with language, spelling, symbols, and formatting. A fixed character limit is only a rough estimate of token use. Check representative content, including code, multilingual text, and long identifiers, using the appropriate tokenizer.",
+              "image": "img/languages/llm-agents/tokenization-input-formats.png"
+            },
+            {
+              "title": "Count before sending",
+              "body": "Use the provider's token-counting method or the model's tokenizer to check a request, including any message formatting the provider counts. Leave a safety margin when the exact accounting is unavailable. Handle an over-limit response explicitly rather than silently dropping important instructions.",
+              "image": "img/languages/llm-agents/count-request-tokens.png"
             }
           ]
         },
@@ -42,7 +84,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "A context window bounds available tokens for instructions, history, retrieved text, and generated output. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "The context window limits how much tokenized information a model can consider in a request and its continuation. Instructions, conversation history, retrieved passages, and generated output compete for that space. Exact input and output limits depend on the model and API.",
+              "image": "img/languages/llm-agents/token-context-budget.png"
+            },
+            {
+              "title": "Budget the request",
+              "body": "Count the input with the model's tokenizer or provider method, include message overhead where applicable, and reserve room for output. For example, if the input alone fills the allowed context, the application may have insufficient space for an answer.",
+              "image": "img/languages/llm-agents/count-request-tokens.png"
+            },
+            {
+              "title": "Select useful context",
+              "body": "When material is too long, select relevant passages and retain essential instructions rather than dropping content arbitrarily. Summaries can reduce length, but they can omit details or introduce errors. Preserve source references where users need to verify claims.",
+              "image": "img/languages/llm-agents/select-relevant-context.png"
+            },
+            {
+              "title": "Understand conversation history",
+              "body": "A model can use previous messages only when the relevant content is included in its current context or supplied through an external mechanism. Do not assume it remembers a detail that has been removed. Decide which past messages or verified summaries the next request needs.",
+              "image": "img/languages/llm-agents/conversation-context-history.png"
+            },
+            {
+              "title": "Handle limits explicitly",
+              "body": "Check provider-specific limits and handle an oversized request with a clear next step, such as selecting less source material or asking for a narrower question. A large context window does not guarantee that every included detail will be used correctly.",
+              "image": "img/languages/llm-agents/context-limit-handling.png"
             }
           ]
         },
@@ -56,7 +119,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "A prompt describes a task and desired format but cannot replace application-side validation or authorization. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A prompt gives a language model context about a task and the response expected. It can help the model focus on the user's goal, but it does not guarantee a correct or safe output.",
+              "image": "img/languages/llm-agents/prompt-template-fields.png"
+            },
+            {
+              "title": "State the task",
+              "body": "Use a specific instruction such as 'Summarize the supplied passage in two sentences.' Identify the input and what the answer should cover. If the task requires evidence, tell the model how to respond when the supplied material does not answer the question.",
+              "image": "img/languages/llm-agents/prompt-task-instruction.png"
+            },
+            {
+              "title": "Describe the output",
+              "body": "A requested structure can make results easier to use: for example, ask for a title and a short summary. Validate the returned structure before a program consumes it, since a model may not follow the requested format.",
+              "image": "img/languages/llm-agents/prompt-output-validation.png"
+            },
+            {
+              "title": "Separate instructions from data",
+              "body": "A retrieved page or user-provided document may contain instructions that conflict with the application's task. Marking content as data improves clarity, but delimiters do not make it trustworthy. Enforce access permissions and tool rules outside the model.",
+              "image": "img/languages/llm-agents/prompt-template-untrusted-data.png"
+            },
+            {
+              "title": "Evaluate variations",
+              "body": "Compare prompt revisions on representative examples, including unclear requests and missing evidence. Assess factual quality and format separately, and record the prompt and model versions. One successful example does not establish reliability.",
+              "image": "img/languages/llm-agents/prompt-template-evaluation.png"
             }
           ]
         },
@@ -70,7 +154,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Conversation roles organize instructions and input, but user and retrieved content remain untrusted data. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Conversation roles identify the source or purpose of messages, such as application instructions, user requests, assistant responses, and tool results. The exact role names and precedence rules depend on the model provider.",
+              "image": "img/languages/llm-agents/message-roles-overview.png"
+            },
+            {
+              "title": "Separate instructions and input",
+              "body": "The application provides its authorized instructions separately from the user's request. A user's text is input to be handled under those instructions, not proof that the user can change application permissions or policy.",
+              "image": "img/languages/llm-agents/message-instructions-input.png"
+            },
+            {
+              "title": "Treat tool results as data",
+              "body": "A tool result may contain useful facts or malicious instructions. Its source does not become an authorized policy-maker merely because the model can read it. Preserve its provenance and apply application-level authorization to tool actions.",
+              "image": "img/languages/llm-agents/message-tool-data.png"
+            },
+            {
+              "title": "Understand assistant messages",
+              "body": "An assistant message can contain an answer or a proposed tool call, depending on the interface. The application must validate and authorize a proposed action before execution. A role label or valid JSON alone does not grant permission.",
+              "image": "img/languages/llm-agents/message-assistant-action.png"
+            },
+            {
+              "title": "Test message boundaries",
+              "body": "Test normal conversations and cases where user or tool content tries to redirect an action. Check both the generated response and whether unauthorized operations are blocked. Formatting helps organize content but is not a security boundary by itself.",
+              "image": "img/languages/llm-agents/message-boundary-tests.png"
             }
           ]
         },
@@ -84,7 +189,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Sampling settings influence output variability and do not provide a measure of factual confidence. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Sampling selects tokens from a model's output distribution. Settings such as temperature can affect how varied responses are, but they do not measure whether an answer is factually correct.",
+              "image": "img/languages/llm-agents/sampling-overview.png"
+            },
+            {
+              "title": "Understand temperature",
+              "body": "In common sampling implementations, a higher positive temperature makes the token distribution flatter and can increase variety; a lower temperature makes higher-scoring tokens more favored. Exact behavior, including a zero setting, depends on the provider.",
+              "image": "img/languages/llm-agents/sampling-temperature.png"
+            },
+            {
+              "title": "Consider the task",
+              "body": "A brainstorming task may benefit from varied outputs, while a structured extraction task may value consistency. Evaluate the setting against the task instead of assuming one temperature is best for every application.",
+              "image": "img/languages/llm-agents/sampling-task-choice.png"
+            },
+            {
+              "title": "Do not confuse variety and truth",
+              "body": "A consistent answer can still be wrong, and a varied answer is not necessarily uncertain or incorrect. Check factual claims against appropriate evidence. Sampling parameters are not calibrated confidence estimates.",
+              "image": "img/languages/llm-agents/sampling-truth.png"
+            },
+            {
+              "title": "Compare configurations",
+              "body": "Record the model, prompt, and sampling settings when evaluating. Use representative cases and repeat runs when variability matters. A lower temperature may reduce variation but does not guarantee identical outputs across all systems or model versions.",
+              "image": "img/languages/llm-agents/sampling-comparison.png"
             }
           ]
         },
@@ -98,7 +224,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Hallucinations are unsupported or incorrect generated claims and can appear confidently phrased. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A generated answer can include a claim that is incorrect or unsupported by the available evidence. Fluent wording and a confident tone do not establish that the claim is true.",
+              "image": "img/languages/llm-agents/hallucination-overview.png"
+            },
+            {
+              "title": "Identify unsupported claims",
+              "body": "Compare each important claim with the source or evidence available for the task. An answer may be plausible but omit a qualification, cite an unrelated source, or state something the evidence does not establish.",
+              "image": "img/languages/llm-agents/hallucination-support.png"
+            },
+            {
+              "title": "Use evidence carefully",
+              "body": "Retrieval can supply relevant sources, but the model can still misread or ignore them. Check that the retrieved evidence is current, authorized, and sufficient, and verify that cited passages support the specific claims.",
+              "image": "img/languages/llm-agents/hallucination-retrieval.png"
+            },
+            {
+              "title": "Handle uncertainty",
+              "body": "When evidence is missing or conflicting, the application should make that limitation clear and use an appropriate fallback. A sampling setting or confident phrasing is not a calibrated measure of factual confidence.",
+              "image": "img/languages/llm-agents/hallucination-uncertainty.png"
+            },
+            {
+              "title": "Evaluate with examples",
+              "body": "Test representative questions with known evidence, including cases with no answer in the sources. Measure unsupported claims and missing qualifications, and inspect errors. No finite evaluation proves a system will never hallucinate.",
+              "image": "img/languages/llm-agents/hallucination-evaluation.png"
             }
           ]
         },
@@ -111,9 +258,29 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "RAG supplies retrieved passages to generation; missing or irrelevant retrieval limits grounding. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use.",
-              "image": "img/languages/llm-agents/rag-pipeline.png"
+              "title": "Connect retrieval and generation",
+              "body": "Retrieval-augmented generation, or RAG, retrieves relevant material and supplies it to a language model when it answers. The retrieval step can use a search index built from documents the application is authorized to access. The model still generates the answer; retrieval does not automatically make it correct. The quality of both the retrieved evidence and the final response matters.",
+              "image": "img/languages/llm-agents/rag-overview.png"
+            },
+            {
+              "title": "Prepare searchable material",
+              "body": "Documents are often split into passages before indexing so retrieval can return focused context. Chunk boundaries, metadata, freshness, and the indexing method affect what the search system can find. Splitting a sentence or separating a table from its header can make a passage misleading. Retain source information and update the index when the underlying material changes.",
+              "image": "img/languages/llm-agents/rag-indexing.png"
+            },
+            {
+              "title": "Retrieve under access controls",
+              "body": "At query time, the system searches for passages related to the user's question and supplies selected results as context. Apply the user's permissions to the retrieval path so unauthorized material is not exposed to the model or user. A relevant-looking passage can still be outdated, incomplete, or unrelated to the exact question. Retrieval ranking and access filtering need evaluation together.",
+              "image": "img/languages/llm-agents/rag-retrieval.png"
+            },
+            {
+              "title": "Ground the answer",
+              "body": "A generated answer should distinguish what the retrieved evidence supports from what it does not. References to sources can help a user inspect the evidence, but a citation alone does not prove that the cited text supports the claim. If the necessary evidence is missing or conflicting, the application should say so or follow its defined escalation behavior rather than inventing support.",
+              "image": "img/languages/llm-agents/rag-grounding.png"
+            },
+            {
+              "title": "Evaluate the stages separately",
+              "body": "Build questions with known relevant documents or passages and assess whether retrieval finds authorized evidence. Then assess whether the answer uses that evidence accurately and handles missing information. This separation helps diagnose whether a failure came from indexing, retrieval, context selection, or generation. Test realistic queries, including exact identifiers and permission boundaries.",
+              "image": "img/languages/llm-agents/rag-evaluation.png"
             }
           ]
         },
@@ -231,7 +398,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Templates separate stable instructions from variable inputs and make changes traceable and testable. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A prompt template combines stable task instructions with variable inputs, such as a user's question or retrieved passages. Keeping these parts distinct makes it easier to review changes and test the same task across many examples.",
+              "image": "img/languages/llm-agents/prompt-template-fields.png"
+            },
+            {
+              "title": "Define the task and fields",
+              "body": "Specify the task, required output, and where each input belongs. A support-answer template can ask for an answer grounded in supplied passages and a no-evidence response when the passages do not answer the question. Keep required application behavior outside the prompt when it needs enforcement.",
+              "image": "img/languages/llm-agents/prompt-template-request.png"
+            },
+            {
+              "title": "Treat inputs as untrusted",
+              "body": "A user question or retrieved document can contain instructions that conflict with the application's task. Separating fields or adding delimiters can improve clarity but is not a security boundary. Enforce authorization and validate tool actions outside the model.",
+              "image": "img/languages/llm-agents/prompt-template-untrusted-data.png"
+            },
+            {
+              "title": "Version and evaluate",
+              "body": "Record the template version alongside the model and evaluation settings. Compare revisions on representative cases, including missing evidence, ambiguous requests, and adversarial content. Examine correctness and format separately rather than relying on one example.",
+              "image": "img/languages/llm-agents/prompt-template-evaluation.png"
+            },
+            {
+              "title": "Handle limits and data",
+              "body": "Count the complete request with the relevant tokenizer and reserve space for the output. Avoid logging sensitive inputs unnecessarily; follow the application's access and retention rules. If a request is too long, select content deliberately rather than silently removing critical instructions.",
+              "image": "img/languages/llm-agents/prompt-template-limits.png"
             }
           ]
         },
@@ -245,7 +433,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Examples illustrate a desired pattern but consume context and can bias behavior toward narrow cases. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Few-shot prompting includes a small number of examples in a request to illustrate the desired input-output pattern. Examples can clarify a task, but they consume context and do not guarantee that the model will generalize.",
+              "image": "img/languages/llm-agents/few-shot-overview.png"
+            },
+            {
+              "title": "Select useful examples",
+              "body": "Choose examples that match the task and cover important variations. For a support classifier, include distinct request categories and an ambiguous case if ambiguity is expected. Avoid using private or sensitive examples without an appropriate basis and safeguards.",
+              "image": "img/languages/llm-agents/few-shot-example-selection.png"
+            },
+            {
+              "title": "Keep examples consistent",
+              "body": "Use the same label definitions and output structure across examples. Contradictory labels can teach an unclear pattern. Keep instructions distinct from example content, and validate the model's actual output before using it downstream.",
+              "image": "img/languages/llm-agents/few-shot-consistency.png"
+            },
+            {
+              "title": "Budget the context",
+              "body": "Examples use tokens that could otherwise hold user input, retrieved evidence, or the response. Measure the complete request with the relevant tokenizer and reserve room for output. Remove or shorten examples deliberately rather than silently dropping essential context.",
+              "image": "img/languages/llm-agents/few-shot-context-budget.png"
+            },
+            {
+              "title": "Evaluate on new cases",
+              "body": "Compare the prompt with and without examples on held-out, representative inputs. Inspect cases outside the demonstrated pattern and measure both task accuracy and format. A prompt that reproduces its examples may still fail on new requests.",
+              "image": "img/languages/llm-agents/prompt-template-evaluation.png"
             }
           ]
         },
@@ -259,7 +468,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Chunk boundaries affect evidence completeness and irrelevant context; evaluate them against answerable questions. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Chunking divides source documents into units for retrieval. The boundaries influence which evidence can be retrieved together and how much irrelevant text reaches the model.",
+              "image": "img/languages/llm-agents/chunk-document-retrieval.png"
+            },
+            {
+              "title": "Choose meaningful boundaries",
+              "body": "Consider document structure such as headings, paragraphs, and tables instead of splitting only by a fixed character count. A chunk should preserve enough context to interpret its content, including relevant headings or units.",
+              "image": "img/languages/llm-agents/chunk-document-structure.png"
+            },
+            {
+              "title": "Balance size and overlap",
+              "body": "Small chunks can make matching precise but may separate a claim from its explanation. Larger chunks preserve more context but consume more space and can include unrelated material. Overlap can reduce boundary loss, though it also duplicates content.",
+              "image": "img/languages/llm-agents/chunk-size-tradeoffs.png"
+            },
+            {
+              "title": "Keep source context",
+              "body": "Store source identifiers and locations with each chunk so retrieved evidence can be traced back to the original document. Preserve access controls when indexing and retrieving. Metadata is useful for filtering but does not itself prove a generated answer is supported.",
+              "image": "img/languages/llm-agents/chunk-source-metadata.png"
+            },
+            {
+              "title": "Evaluate the strategy",
+              "body": "Use representative questions with known evidence, including answers that span boundaries. Compare whether retrieval returns sufficient relevant evidence, then inspect generated answers for support and completeness. Re-evaluate when document formats or query patterns change.",
+              "image": "img/languages/llm-agents/chunking-evaluation.png"
             }
           ]
         },
@@ -273,7 +503,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Filters constrain retrieval by source, date, tenant, or permissions and should enforce access rules before ranking. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Metadata filters limit which documents are eligible for retrieval using attributes such as source, date, or tenant. Access restrictions must be enforced by trusted application or retrieval infrastructure, not left to the model.",
+              "image": "img/languages/llm-agents/metadata-filter-overview.png"
+            },
+            {
+              "title": "Define eligibility",
+              "body": "For a tenant-specific search, restrict the candidate set to resources the caller is allowed to access. Apply authorization before results are exposed to the model or user. A relevance score cannot grant permission.",
+              "image": "img/languages/llm-agents/metadata-filter-authorization.png"
+            },
+            {
+              "title": "Use task filters",
+              "body": "A date or source filter can narrow results to the relevant collection, but overly restrictive filters can hide evidence. Distinguish user-selected relevance filters from mandatory access controls so a user cannot bypass the latter.",
+              "image": "img/languages/llm-agents/metadata-filter-task.png"
+            },
+            {
+              "title": "Maintain metadata",
+              "body": "Keep document metadata and access information current when indexing and when permissions change. Missing, stale, or incorrect attributes can cause both missing results and unauthorized exposure. Define how the system handles uncertain access.",
+              "image": "img/languages/llm-agents/metadata-filter-freshness.png"
+            },
+            {
+              "title": "Test and monitor",
+              "body": "Test authorized and unauthorized callers, stale metadata, and legitimate queries that need evidence near filter boundaries. Measure retrieval quality within the authorized set and investigate denied or missing results without exposing protected content.",
+              "image": "img/languages/llm-agents/metadata-filter-tests.png"
             }
           ]
         },
@@ -287,7 +538,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "A reranker reorders retrieved candidates with a focused relevance model, adding latency and compute cost. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A reranker scores an initial set of retrieved candidates against the query and changes their order. It can improve which passages appear near the top, but it adds work after the first retrieval stage.",
+              "image": "img/languages/llm-agents/reranking-overview.png"
+            },
+            {
+              "title": "Retrieve candidates first",
+              "body": "The first stage selects a manageable candidate set from the collection using a retrieval method. The reranker can only reorder candidates it receives; it cannot recover evidence missing from that set.",
+              "image": "img/languages/llm-agents/reranking-candidates.png"
+            },
+            {
+              "title": "Score relevance",
+              "body": "A reranking model examines the query and each candidate to estimate relevance. The score is a ranking signal, not proof that the passage is true or that the caller is authorized to see it.",
+              "image": "img/languages/llm-agents/reranking-relevance.png"
+            },
+            {
+              "title": "Consider cost",
+              "body": "More candidates can improve coverage but increase reranking latency and compute. Choose candidate count and result count using measured quality and operational constraints. Enforce access restrictions before protected content is exposed.",
+              "image": "img/languages/llm-agents/reranking-cost.png"
+            },
+            {
+              "title": "Evaluate the pipeline",
+              "body": "Compare retrieval with and without reranking on representative queries with known relevant passages. Measure ranking quality, evidence coverage, and latency, then inspect downstream answer support. A good rerank score cannot compensate for missing source evidence.",
+              "image": "img/languages/llm-agents/reranking-evaluation.png"
             }
           ]
         },
@@ -301,7 +573,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Citations should support their associated claims with evidence, not merely point to a related document. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A grounded citation points to evidence that supports the specific claim it accompanies. A related document title or plausible-looking link alone is not enough.",
+              "image": "img/languages/llm-agents/citation-grounding-overview.png"
+            },
+            {
+              "title": "Connect claim and source",
+              "body": "For each important claim, identify the supporting passage and check that it says what the answer asserts. Preserve source identifiers and locations so a reader can inspect the evidence.",
+              "image": "img/languages/llm-agents/citation-grounding-source.png"
+            },
+            {
+              "title": "Preserve qualifications",
+              "body": "A source may include conditions, dates, or exceptions. An answer that cites the source but omits a relevant qualification can still mislead. Check the claim in its original context.",
+              "image": "img/languages/llm-agents/citation-grounding-qualification.png"
+            },
+            {
+              "title": "Handle missing evidence",
+              "body": "If no available passage supports a claim, revise the answer or state the limitation rather than attaching an unrelated citation. Follow access and privacy rules when showing sources.",
+              "image": "img/languages/llm-agents/citation-grounding-missing.png"
+            },
+            {
+              "title": "Evaluate grounding",
+              "body": "Test representative questions with known evidence, including conflicting and no-answer cases. Inspect citation support and completeness as well as overall answer quality. A retrieved passage can be relevant yet insufficient for a particular claim.",
+              "image": "img/languages/llm-agents/citation-grounding-evaluation.png"
             }
           ]
         },
@@ -314,8 +607,29 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "A system should abstain when evidence, authorization, or confidence is inadequate rather than inventing an answer. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Distinguish refusal and abstention",
+              "body": "A refusal declines a request or action that the system is not permitted to perform. An abstention indicates that the system cannot provide a reliable answer or complete a task with the available information. Both should be communicated clearly, but they can have different causes and next steps. A system should not invent an answer merely to avoid admitting uncertainty.",
+              "image": "img/languages/llm-agents/abstain-overview.png"
+            },
+            {
+              "title": "Identify insufficient evidence",
+              "body": "A retrieval system may return no relevant evidence or documents that conflict on a key detail. In that case, the answer can state what is known, identify the gap, and request clarification or escalate according to the workflow. A model's confidence wording alone is not proof of correctness. Define the evidence requirements for important decisions in advance.",
+              "image": "img/languages/llm-agents/abstain-evidence.png"
+            },
+            {
+              "title": "Enforce authorization",
+              "body": "A user may ask an agent to view or change data they are not authorized to access. The application must enforce permissions outside the model before accessing the data or performing the action. Explain the refusal without revealing protected information. Uncertainty about a permission is not a reason to grant access by default.",
+              "image": "img/languages/llm-agents/abstain-permission.png"
+            },
+            {
+              "title": "Offer a permitted next step",
+              "body": "When appropriate, an abstention can suggest a concrete next step: provide a missing identifier, consult an authorized source, or contact the responsible team. The suggestion should not circumvent a refusal or imply that an unavailable action has already been completed. Keep the distinction between an unanswered question and a completed action visible to the user.",
+              "image": "img/languages/llm-agents/abstain-next-step.png"
+            },
+            {
+              "title": "Measure both kinds of error",
+              "body": "Evaluate cases where the system should answer as well as cases where it should abstain or refuse. Too many unsupported answers and too many unnecessary refusals are different failures. Review important groups and task types, using labeled examples and human review where suitable. Update the policy and tests when the application or its access rules change.",
+              "image": "img/languages/llm-agents/abstain-evaluation.png"
             }
           ]
         },
@@ -446,7 +760,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Recall checks whether relevant passages are found, while precision and ranking metrics assess top results. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Retrieval evaluation checks whether a search system returns useful evidence for a query. Build representative queries and relevance judgments before comparing retrievers. Evaluate retrieval separately from answer generation so a missing passage is not confused with an answer-generation error.",
+              "image": "img/languages/llm-agents/retrieval-evaluation.png"
+            },
+            {
+              "title": "Measure recall",
+              "body": "Recall at k is the number of relevant items in the top k divided by the total number of relevant items for that query, using the available judgments. If three judged passages are relevant and the top five contain two of them, recall at five is 2/3. Incomplete judgments can make the estimate misleading.",
+              "image": "img/languages/llm-agents/retrieval-recall-at-five.png"
+            },
+            {
+              "title": "Measure precision",
+              "body": "Precision at k is the number of relevant items in the top k divided by k, under the usual fixed-k definition. If the top five include two relevant passages, precision at five is 2/5. Recall and precision describe different trade-offs; the relevant balance depends on the application.",
+              "image": "img/languages/llm-agents/retrieval-precision-at-five.png"
+            },
+            {
+              "title": "Inspect ranking",
+              "body": "Order matters when only a few results fit in a prompt. Ranking metrics such as reciprocal rank or normalized discounted cumulative gain reward useful results appearing earlier, with their own assumptions about relevance. Review individual rankings as well as aggregate scores.",
+              "image": "img/languages/llm-agents/retrieval-reciprocal-rank.png"
+            },
+            {
+              "title": "Test realistic constraints",
+              "body": "Include queries with no answer, ambiguous wording, access restrictions, and multiple relevant documents. Assess permissions and freshness separately from relevance. After improving retrieval, evaluate the full answer workflow too: finding evidence does not guarantee the model will use it correctly.",
+              "image": "img/languages/llm-agents/retrieval-evaluation-coverage.png"
             }
           ]
         },
@@ -460,7 +795,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Evaluate correctness, completeness, instruction following, and style as separate dimensions. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Generation evaluation assesses whether an output serves the intended task. Correctness, completeness, instruction following, and style are distinct: a fluent answer may omit a necessary detail or invent a source.",
+              "image": "img/languages/llm-agents/generation-evaluation-dimensions.png"
+            },
+            {
+              "title": "Define a rubric",
+              "body": "Write concrete criteria for each dimension and include examples of acceptable and unacceptable outputs. For a support answer, correctness can require claims to match supplied evidence, while completeness checks whether the answer addresses the user's question.",
+              "image": "img/languages/llm-agents/generation-evaluation-rubric.png"
+            },
+            {
+              "title": "Build an evaluation set",
+              "body": "Include representative requests, difficult edge cases, and cases where the evidence is missing. Keep evaluation inputs separate from prompt examples used to develop the system. Review performance by category so aggregate scores do not hide concentrated failures.",
+              "image": "img/languages/llm-agents/retrieval-evaluation-coverage.png"
+            },
+            {
+              "title": "Use evaluators carefully",
+              "body": "Automated checks can validate a response schema or compare a known answer; human review can assess nuance. A model-based evaluator can assist but may have its own biases and errors. Check agreement against reviewed examples and do not treat any single evaluator as ground truth by default.",
+              "image": "img/languages/llm-agents/generation-evaluation-methods.png"
+            },
+            {
+              "title": "Compare revisions",
+              "body": "Run candidate versions on the same held-out cases with recorded model and prompt settings. Examine regressions and uncertainty alongside aggregate results. Repeatedly tuning against a fixed test set can overfit that set, so preserve an independent evaluation when feasible.",
+              "image": "img/languages/llm-agents/prompt-template-evaluation.png"
             }
           ]
         },
@@ -474,7 +830,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Failures may arise in parsing, indexing, retrieval, context assembly, or generation; inspect each stage before changing prompts. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A retrieval-augmented answer can fail at several stages. Attribution means tracing the evidence through the pipeline to identify where it was lost, altered, or misused before choosing a fix.",
+              "image": "img/languages/llm-agents/rag-attribution-stages.png"
+            },
+            {
+              "title": "Inspect source and parsing",
+              "body": "First confirm that the relevant source exists and that parsing extracted the required text, tables, or metadata. If an exception is missing from parsed content, changing the retrieval prompt cannot recover it from that index.",
+              "image": "img/languages/llm-agents/rag-parsing-check.png"
+            },
+            {
+              "title": "Inspect indexing and retrieval",
+              "body": "Check that the parsed evidence was indexed with the expected version and permissions. Then inspect retrieved chunks, their ranks, and query filters. A missing chunk may indicate an indexing, filtering, or retrieval problem rather than a generation problem.",
+              "image": "img/languages/llm-agents/rag-index-retrieval.png"
+            },
+            {
+              "title": "Inspect assembled context",
+              "body": "A relevant chunk can be retrieved but omitted or truncated before generation because of context limits or assembly rules. Record which evidence actually reached the model and whether its source and surrounding context were preserved.",
+              "image": "img/languages/llm-agents/rag-context-assembly.png"
+            },
+            {
+              "title": "Assess generation",
+              "body": "If sufficient evidence reached the model, compare the answer with that evidence for missing claims, unsupported claims, and citation errors. Test the suspected fix on representative cases and check for regressions in other stages.",
+              "image": "img/languages/llm-agents/rag-answer-attribution.png"
             }
           ]
         },
@@ -488,7 +865,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Evidence position and redundancy can influence use in long contexts; test placement rather than assuming order is irrelevant. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "The order and amount of evidence placed in a model's context can affect its answer. Context assembly should preserve relevant evidence and be evaluated rather than assuming every position is used equally.",
+              "image": "img/languages/llm-agents/context-order-overview.png"
+            },
+            {
+              "title": "Choose an ordering",
+              "body": "A system might order passages by retrieval relevance or group them by source. Either choice can affect how a model interprets related evidence. Preserve provenance so the answer can be checked against the original source.",
+              "image": "img/languages/llm-agents/context-order-options.png"
+            },
+            {
+              "title": "Handle limited space",
+              "body": "A context budget may require dropping or shortening passages. Prioritize task-relevant evidence while preserving exceptions and qualifications. Record what was actually sent to the model; a retrieved passage can be lost during assembly.",
+              "image": "img/languages/llm-agents/context-order-budget.png"
+            },
+            {
+              "title": "Manage redundancy",
+              "body": "Duplicate passages can consume context space without adding evidence, while some overlap can preserve important boundary context. Deduplicate carefully so distinct revisions, sources, or qualifications are not accidentally removed.",
+              "image": "img/languages/llm-agents/context-order-redundancy.png"
+            },
+            {
+              "title": "Test placement",
+              "body": "Use representative questions and compare answer quality when the same relevant evidence appears at different positions. Check citations and unsupported claims as well as correctness. Results depend on the model, task, and context length.",
+              "image": "img/languages/llm-agents/context-order-testing.png"
             }
           ]
         },
@@ -502,7 +900,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Hybrid search combines lexical matches for exact terms with semantic retrieval for paraphrases. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Hybrid search combines lexical retrieval and semantic retrieval. Lexical matching can help with exact terms, while semantic methods can retrieve passages that express similar ideas with different wording.",
+              "image": "img/languages/llm-agents/hybrid-search-overview.png"
+            },
+            {
+              "title": "Retrieve from both paths",
+              "body": "A query can be sent to a keyword-based index and a vector or other semantic index. Each path returns candidate documents or passages. Both paths must enforce the same applicable access policy before protected content is exposed.",
+              "image": "img/languages/llm-agents/hybrid-search-paths.png"
+            },
+            {
+              "title": "Combine rankings",
+              "body": "A fusion method merges the candidate rankings, for example by combining ranks rather than directly adding incomparable raw scores. Deduplicate results carefully while preserving source identity and meaningful versions.",
+              "image": "img/languages/llm-agents/hybrid-search-fusion.png"
+            },
+            {
+              "title": "Tune tradeoffs",
+              "body": "Candidate counts, ranking weights, and optional reranking affect coverage, latency, and cost. An exact product code may favor lexical evidence, while a paraphrased question may benefit from semantic retrieval. Evaluate rather than assuming either path always wins.",
+              "image": "img/languages/llm-agents/hybrid-search-tradeoffs.png"
+            },
+            {
+              "title": "Evaluate queries",
+              "body": "Test exact identifiers, synonyms, paraphrases, and access-controlled cases with known relevant evidence. Compare each retrieval path and the combined ranking using suitable metrics and latency measurements. Inspect whether retrieved evidence supports the final answer.",
+              "image": "img/languages/llm-agents/hybrid-search-evaluation.png"
             }
           ]
         },
@@ -516,7 +935,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Rewriting can improve vague searches but may alter entities, negation, or the user's intent. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Query rewriting converts a user's request into a search query, for example by resolving context or adding useful terminology. It can improve retrieval, but an inaccurate rewrite can change the question.",
+              "image": "img/languages/llm-agents/query-rewrite-overview.png"
+            },
+            {
+              "title": "Preserve the intent",
+              "body": "Keep important entities, dates, constraints, and negation. Rewriting 'orders not shipped' as 'orders shipped' reverses the requested condition. Do not invent details that the user did not provide.",
+              "image": "img/languages/llm-agents/query-rewrite-negation.png"
+            },
+            {
+              "title": "Use conversation context",
+              "body": "A follow-up such as 'What about its price?' may require resolving 'its' from the conversation. If the reference is ambiguous, ask for clarification or use the application's defined handling instead of guessing.",
+              "image": "img/languages/llm-agents/query-rewrite-context.png"
+            },
+            {
+              "title": "Compare retrieval",
+              "body": "Test the original query and the rewritten query on representative cases with known relevant evidence. A rewrite can help a vague query but harm an exact identifier search. Preserve the original query for diagnosis where policy permits.",
+              "image": "img/languages/llm-agents/query-rewrite-comparison.png"
+            },
+            {
+              "title": "Monitor failures",
+              "body": "Inspect entity substitutions, lost negation, unsupported additions, and changes in retrieval coverage. Apply the same access controls to all rewritten queries. Evaluate final answers as well as the rewrite itself.",
+              "image": "img/languages/llm-agents/query-rewrite-monitor.png"
             }
           ]
         },
@@ -529,8 +969,29 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Plans decompose work into actions but need checks against user goals and allowed tool capabilities. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Decompose a goal",
+              "body": "A multi-step plan breaks a user's goal into actions with clear dependencies. For example, an agent might first retrieve an order, then inspect its status, then propose an appropriate response. A plan is a proposal, not proof that its steps are allowed or have been completed. Keep the goal and expected result explicit so the agent can detect when work has gone off track.",
+              "image": "img/languages/llm-agents/plan-decompose.png"
+            },
+            {
+              "title": "Check tool capabilities",
+              "body": "Before executing a step, verify that the selected tool supports the action and that the user and application are authorized to perform it. The model's plan does not grant permission. Validate arguments and distinguish read-only investigation from actions that change state. Require confirmation or approval where the application policy calls for it.",
+              "image": "img/languages/llm-agents/plan-authorize.png"
+            },
+            {
+              "title": "Use results to revise the plan",
+              "body": "A tool result may show that an assumption was wrong or that a required item is missing. Inspect the result, update the plan where appropriate, and preserve the original user goal. For example, if an order does not exist, do not continue as though its refund was approved. Limit retries and steps to avoid endless replanning.",
+              "image": "img/languages/llm-agents/plan-revise.png"
+            },
+            {
+              "title": "Handle partial completion",
+              "body": "If some steps succeed and a later step fails, report what actually happened and what remains uncertain. A failed response may follow a completed remote action, so verify side effects before attempting them again. Do not describe the entire goal as complete when only an intermediate step succeeded. Use an explicit recovery or handoff path when needed.",
+              "image": "img/languages/llm-agents/plan-partial.png"
+            },
+            {
+              "title": "Evaluate the workflow",
+              "body": "Test multi-step tasks with successful paths, missing data, denied permissions, tool failures, and ambiguous requests. Check whether the final outcome satisfies the user's goal and whether every action stayed within authorized boundaries. Review step count and latency as well as task success. A plausible plan alone is not evidence that the executed workflow was correct.",
+              "image": "img/languages/llm-agents/plan-evaluate.png"
             }
           ]
         },
@@ -661,7 +1122,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Threat models map assets, actors, trust boundaries, and attack paths before exposing agent capabilities. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "An agent threat model describes assets, actors, entry points, trust boundaries, and allowed actions. An attacker may influence a user message, retrieved page, tool output, or stored memory. Map each input's route to the model and to any tool that can read or change protected resources.",
+              "image": "img/languages/llm-agents/agent-threat-model.png"
+            },
+            {
+              "title": "Trace an injection attempt",
+              "body": "A retrieved page can contain text asking the agent to send private data to an external address. The page is task data, not an authorized request. Trace whether the agent can access the data and whether a tool permits the proposed destination; both capabilities affect the potential harm.",
+              "image": "img/languages/llm-agents/agent-injection-path.png"
+            },
+            {
+              "title": "Limit capability and authority",
+              "body": "Give tools the minimum necessary permissions and check authorization independently for each action. Validate destinations and arguments against application policy, and require an appropriate human approval for sensitive operations. A model's decision or a delimiter around text is not an authorization boundary.",
+              "image": "img/languages/llm-agents/agent-tool-controls.png"
+            },
+            {
+              "title": "Test and observe",
+              "body": "Build adversarial cases for retrieved content, tool responses, and stored context. Check whether prohibited actions are blocked, legitimate tasks remain possible, and denials are auditable without unnecessarily logging secrets. Evaluate changes across the complete workflow, not just the generated reply.",
+              "image": "img/languages/llm-agents/agent-adversarial-tests.png"
+            },
+            {
+              "title": "Update the threat model",
+              "body": "Record residual risks and owners, then reassess when the agent gains a tool, a data source, or a broader audience. Include failures of external services and overly broad credentials. A passing test set supplies evidence for the cases covered, not proof that all attacks are blocked.",
+              "image": "img/languages/llm-agents/agent-threat-model-update.png"
             }
           ]
         },
@@ -675,7 +1157,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Narrow, scoped tools reduce potential impact if a model proposes unsafe or unintended actions. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Least-privilege tools expose only the operations and resources needed for a task. A model may propose an action, but the application must decide whether the caller and tool are authorized to perform it.",
+              "image": "img/languages/llm-agents/authorized-agent-loop.png"
+            },
+            {
+              "title": "Narrow the capability",
+              "body": "Prefer a tool that reads a permitted report over one that can read or modify an entire database when the task only needs that report. Limit accessible resources, operations, and destinations. Separate read-only and state-changing capabilities when their policies differ.",
+              "image": "img/languages/llm-agents/least-privilege-tool.png"
+            },
+            {
+              "title": "Validate the action",
+              "body": "Check tool arguments, resource ownership, destination, and caller permissions at execution time. A well-formed tool call can still be unauthorized. For sensitive actions, bind any required human approval to the specific action and recheck when it changes.",
+              "image": "img/languages/llm-agents/tool-authorization-checks.png"
+            },
+            {
+              "title": "Manage credentials",
+              "body": "Keep secrets outside prompts and untrusted tool output. Use scoped, short-lived service identities where practical and avoid exposing raw credentials to generated code. Limit and audit delegated authority even when credentials expire quickly.",
+              "image": "img/languages/llm-agents/prompt-template-untrusted-data.png"
+            },
+            {
+              "title": "Test allowed and denied paths",
+              "body": "Exercise legitimate tasks as well as attempts to access other users' resources or send data to disallowed destinations. Verify the tool blocks unauthorized operations and records relevant audit events without retaining unnecessary sensitive data. Reassess grants when tools or users change.",
+              "image": "img/languages/llm-agents/agent-adversarial-tests.png"
             }
           ]
         },
@@ -689,7 +1192,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Retrieved webpages and tool results can carry malicious instructions and must remain untrusted content. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Indirect prompt injection places instructions in content an agent encounters, such as a webpage, document, or tool response. That content can be useful evidence, but it does not acquire authority to change the application's instructions or permissions.",
+              "image": "img/languages/llm-agents/indirect-injection-boundary.png"
+            },
+            {
+              "title": "Recognize the boundary",
+              "body": "A retrieved page might ask the assistant to ignore the user's request or send private data elsewhere. Treat the page as untrusted input even when it appears relevant. Quoting or labeling content can clarify context but is not a security boundary by itself.",
+              "image": "img/languages/llm-agents/indirect-injection-example.png"
+            },
+            {
+              "title": "Constrain tool actions",
+              "body": "Validate and authorize every tool action outside the model. Restrict accessible resources and destinations, and require the appropriate approval for sensitive actions. A model's decision to call a tool is not proof that the action is permitted.",
+              "image": "img/languages/llm-agents/indirect-injection-tool.png"
+            },
+            {
+              "title": "Limit exposed data",
+              "body": "Provide the model and tools only the data and privileges required for the task. Avoid placing credentials in prompts or retrieved content, and apply access controls to retrieval. These controls limit impact but do not make untrusted instructions harmless.",
+              "image": "img/languages/llm-agents/indirect-injection-scope.png"
+            },
+            {
+              "title": "Test the workflow",
+              "body": "Test representative malicious documents and tool results alongside legitimate tasks. Verify that unauthorized actions are denied and inspect whether the answer misuses injected text. Monitor safely without retaining unnecessary sensitive payloads.",
+              "image": "img/languages/llm-agents/indirect-injection-testing.png"
             }
           ]
         },
@@ -703,7 +1227,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Execution tools require isolation, resource limits, restricted networking, and disposable environments. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "An execution tool may run code proposed by a model or provided by a user. Treat that code as untrusted and isolate execution from application credentials, sensitive files, and unrelated workloads.",
+              "image": "img/languages/llm-agents/sandbox-untrusted-code.png"
+            },
+            {
+              "title": "Limit capabilities",
+              "body": "Provide only the files and permissions needed for the task. Restrict network access and system capabilities according to policy, and avoid mounting secrets into the execution environment. Isolation mechanisms differ in strength and configuration.",
+              "image": "img/languages/llm-agents/sandbox-capabilities.png"
+            },
+            {
+              "title": "Bound resources",
+              "body": "Set appropriate limits on runtime, CPU, memory, process count, and output size. Terminate work that exceeds policy and report the failure clearly. Resource limits reduce impact but do not by themselves establish isolation.",
+              "image": "img/languages/llm-agents/sandbox-resource-limits.png"
+            },
+            {
+              "title": "Use disposable state",
+              "body": "Create a fresh environment for an execution and remove it according to the platform's lifecycle rules. Do not let one user's files or processes persist into another user's session. Handle intended output separately and validate it before use.",
+              "image": "img/languages/llm-agents/sandbox-disposable.png"
+            },
+            {
+              "title": "Test the boundary",
+              "body": "Verify that unauthorized file and network access are denied and that resource limits are enforced. Test cleanup and failure reporting using approved test cases. Keep the isolation platform patched and monitor for misconfiguration.",
+              "image": "img/languages/llm-agents/sandbox-boundary-tests.png"
             }
           ]
         },
@@ -717,7 +1262,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Consequential actions should include preview, policy checks, confirmation, and auditable commit steps. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Consequential agent actions, such as sending a message or changing a record, need controls beyond generating a valid tool call. A transaction-like flow can separate a proposed action from authorization and execution.",
+              "image": "img/languages/llm-agents/transactional-action-overview.png"
+            },
+            {
+              "title": "Prepare a preview",
+              "body": "Show the intended operation, target, and relevant parameters before execution when policy requires confirmation. The preview should reflect the actual action; hidden or later-changed details undermine meaningful review.",
+              "image": "img/languages/llm-agents/transactional-action-preview.png"
+            },
+            {
+              "title": "Check policy and approval",
+              "body": "Validate permissions, resource ownership, limits, and required human approval outside the model. Bind approval to the specific action and recheck when parameters or relevant state change.",
+              "image": "img/languages/llm-agents/transactional-action-approval.png"
+            },
+            {
+              "title": "Commit safely",
+              "body": "Execute only after the required checks pass. Use idempotency or other appropriate safeguards for retries, and handle failures explicitly. An external system may not support atomic transactions, so define how partial outcomes are reported and recovered.",
+              "image": "img/languages/llm-agents/transactional-action-commit.png"
+            },
+            {
+              "title": "Audit and test",
+              "body": "Record the decision and action identifiers needed for investigation without retaining unnecessary sensitive data. Test altered targets, denied permissions, duplicate requests, and partial failures. A preview alone does not enforce authorization.",
+              "image": "img/languages/llm-agents/transactional-action-audit.png"
             }
           ]
         },
@@ -730,8 +1296,29 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Timeouts, circuit breakers, bounded retries, and idempotency contain failures without unbounded loops. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Bound work and waiting",
+              "body": "An agent can stall while waiting for a model, tool, or downstream service, or repeat steps without making progress. Set timeouts for individual calls and an overall deadline or step budget for the workflow. When a limit is reached, preserve useful state where appropriate and return an explicit failure or partial-result status. A timeout does not prove that a remote side effect did not happen.",
+              "image": "img/languages/llm-agents/reliability-budgets.png"
+            },
+            {
+              "title": "Retry only appropriate failures",
+              "body": "Transient errors such as a temporary rate limit can justify a bounded retry with backoff and jitter. Invalid arguments or missing permissions usually require correction rather than repeated calls. Respect the remaining deadline and retry guidance from the service. When a request may have produced a side effect, ensure it is safe to repeat before retrying.",
+              "image": "img/languages/llm-agents/reliability-retry.png"
+            },
+            {
+              "title": "Make side effects idempotent",
+              "body": "A network timeout can occur after a server performed an action but before the agent received the response. Retrying a payment or ticket creation blindly can create duplicates. When the downstream system supports it, send a stable idempotency key for the same logical operation and retain the result. Otherwise reconcile the operation's status or use an explicit approval and recovery process rather than assuming a retry is safe.",
+              "image": "img/languages/llm-agents/reliability-idempotency.png"
+            },
+            {
+              "title": "Contain a failing dependency",
+              "body": "A circuit breaker can stop repeated calls to a dependency after a configured failure threshold. While open, requests fail fast or take an approved fallback; after a waiting period, limited probes can test recovery. Choose thresholds and time windows for the dependency, and avoid treating the breaker as a replacement for monitoring or authorization. A fallback must still respect data and access policies.",
+              "image": "img/languages/llm-agents/reliability-breaker.png"
+            },
+            {
+              "title": "Test recovery end to end",
+              "body": "Inject timeouts, rate limits, duplicate responses, and partial failures in a controlled environment. Verify that budgets are enforced, retries do not duplicate side effects, and users receive an accurate status. Inspect traces that link attempts to the same operation without exposing sensitive data. Test how the workflow resumes or reconciles work after a process restart.",
+              "image": "img/languages/llm-agents/reliability-tests.png"
             }
           ]
         },

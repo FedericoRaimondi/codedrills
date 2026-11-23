@@ -978,6 +978,825 @@
               }
             ]
           }
+        },
+        {
+          "id": "llm-new-26",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Continue generation",
+          "description": "An autoregressive language model selects a token after reading a prompt. What does it use to predict the following token?",
+          "choices": [
+            {
+              "text": "The final answer, which must already be known.",
+              "correct": false
+            },
+            {
+              "text": "The previous context with the selected token appended.",
+              "correct": true
+            },
+            {
+              "text": "Only the selected token, with all earlier context discarded.",
+              "correct": false
+            },
+            {
+              "text": "A database lookup that is guaranteed to occur.",
+              "correct": false
+            }
+          ],
+          "hint": "Generation updates the context one token at a time.",
+          "solution": {
+            "code": "The previous context with the selected token appended.",
+            "steps": [
+              {
+                "title": "Append the selection",
+                "explanation": "The generated token becomes part of the context for the next step."
+              },
+              {
+                "title": "Predict again",
+                "explanation": "The model computes another next-token distribution from the updated context."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-27",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Assess a fluent answer",
+          "description": "An assistant provides a polished answer and cites a specific report. What is the safest way to use the claim?",
+          "choices": [
+            {
+              "text": "Assume a citation proves the model accessed the report.",
+              "correct": false
+            },
+            {
+              "text": "Check the report exists and supports the claim before relying on it.",
+              "correct": true
+            },
+            {
+              "text": "Accept the claim if the response is longer than the question.",
+              "correct": false
+            },
+            {
+              "text": "Treat the claim as verified because the answer is fluent.",
+              "correct": false
+            }
+          ],
+          "hint": "A generated citation and a verified source are not the same thing.",
+          "solution": {
+            "code": "Check the report exists and supports the claim before relying on it.",
+            "steps": [
+              {
+                "title": "Check the source",
+                "explanation": "A language model can generate a citation that is missing or does not support the stated claim."
+              },
+              {
+                "title": "Check the evidence",
+                "explanation": "Inspecting the source provides evidence that fluent wording alone cannot supply."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-28",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Count model tokens",
+          "description": "A team switches its application to a model with a different tokenizer. How should it check whether an existing request fits the new model's limit?",
+          "choices": [
+            {
+              "text": "Count with the new model's tokenizer or provider method and account for the response budget.",
+              "correct": true
+            },
+            {
+              "text": "Count words and assume each word is exactly one token.",
+              "correct": false
+            },
+            {
+              "text": "Ignore message formatting and output limits.",
+              "correct": false
+            },
+            {
+              "text": "Assume the old model's token count is always identical.",
+              "correct": false
+            }
+          ],
+          "hint": "Token boundaries and request accounting can differ between models.",
+          "solution": {
+            "code": "Count with the new model's tokenizer or provider method and account for the response budget.",
+            "steps": [
+              {
+                "title": "Use the relevant tokenizer",
+                "explanation": "The same text can have a different token count under a different tokenizer."
+              },
+              {
+                "title": "Budget the whole request",
+                "explanation": "Include provider-specific message accounting and reserve room for output within the applicable limits."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-29",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Handle an oversized prompt",
+          "description": "A request exceeds the available token budget because it includes many retrieved documents. What should the application do?",
+          "choices": [
+            {
+              "text": "Silently remove all instructions and send the remaining text.",
+              "correct": false
+            },
+            {
+              "text": "Assume the provider will accept any request if it is valid JSON.",
+              "correct": false
+            },
+            {
+              "text": "Treat the character count as an exact token count.",
+              "correct": false
+            },
+            {
+              "text": "Select relevant passages, preserve required instructions, and recount the request.",
+              "correct": true
+            }
+          ],
+          "hint": "Reduce input deliberately while preserving the information needed for the task.",
+          "solution": {
+            "code": "Select relevant passages, preserve required instructions, and recount the request.",
+            "steps": [
+              {
+                "title": "Reduce the input",
+                "explanation": "Selecting the most relevant passages can bring the request within the available budget."
+              },
+              {
+                "title": "Recheck the budget",
+                "explanation": "Recount with the relevant tokenizer and preserve space for the output and necessary instructions."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-30",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Reserve output space",
+          "description": "An application prepares a request whose input fills the entire model context limit. What problem can this cause?",
+          "choices": [
+            {
+              "text": "The request no longer needs to follow the provider's limits.",
+              "correct": false
+            },
+            {
+              "text": "There may be insufficient space for the requested output.",
+              "correct": true
+            },
+            {
+              "text": "The model is guaranteed to answer accurately.",
+              "correct": false
+            },
+            {
+              "text": "The tokenizer will automatically create a larger context window.",
+              "correct": false
+            }
+          ],
+          "hint": "Both the prompt and generated continuation consume context.",
+          "solution": {
+            "code": "There may be insufficient space for the requested output.",
+            "steps": [
+              {
+                "title": "Account for the continuation",
+                "explanation": "The answer also uses tokens within the applicable model and API limits."
+              },
+              {
+                "title": "Leave a budget",
+                "explanation": "Reduce or select input and reserve enough room for the desired response."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-31",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Use conversation history",
+          "description": "An application removes an earlier message containing a user's preferred format and does not store or retrieve it elsewhere. What should it assume about the next model request?",
+          "choices": [
+            {
+              "text": "The model is guaranteed to remember the removed preference.",
+              "correct": false
+            },
+            {
+              "text": "The model cannot process any later messages.",
+              "correct": false
+            },
+            {
+              "text": "The preference must be supplied again if it is needed.",
+              "correct": true
+            },
+            {
+              "text": "The removed message is automatically included in the token count.",
+              "correct": false
+            }
+          ],
+          "hint": "The model needs access to a detail to use it in the current request.",
+          "solution": {
+            "code": "The preference must be supplied again if it is needed.",
+            "steps": [
+              {
+                "title": "Check the available context",
+                "explanation": "The message was removed and no external mechanism supplies the preference."
+              },
+              {
+                "title": "Include necessary information",
+                "explanation": "Provide the preference in the current context or a verified retrieved summary when it matters."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-32",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Clarify a summarization prompt",
+          "description": "Which instruction most clearly specifies both the task and desired length?",
+          "choices": [
+            {
+              "text": "Ignore any input and produce anything.",
+              "correct": false
+            },
+            {
+              "text": "Use as many unrelated facts as possible.",
+              "correct": false
+            },
+            {
+              "text": "Make it good somehow.",
+              "correct": false
+            },
+            {
+              "text": "Summarize the supplied passage in two sentences.",
+              "correct": true
+            }
+          ],
+          "hint": "Name the input, action, and output constraint.",
+          "solution": {
+            "code": "Summarize the supplied passage in two sentences.",
+            "steps": [
+              {
+                "title": "State the task",
+                "explanation": "The instruction asks for a summary of the supplied passage."
+              },
+              {
+                "title": "Specify the format",
+                "explanation": "It also requests a two-sentence result."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-33",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Validate structured output",
+          "description": "A program asks a model for a JSON object and receives text. What should the program do before using it as structured data?",
+          "choices": [
+            {
+              "text": "Skip validation when the response is short.",
+              "correct": false
+            },
+            {
+              "text": "Parse and validate the response against the expected structure.",
+              "correct": true
+            },
+            {
+              "text": "Treat any fluent sentence as a valid object.",
+              "correct": false
+            },
+            {
+              "text": "Assume it matches because the prompt requested JSON.",
+              "correct": false
+            }
+          ],
+          "hint": "A requested format is not a guarantee.",
+          "solution": {
+            "code": "Parse and validate the response against the expected structure.",
+            "steps": [
+              {
+                "title": "Check syntax",
+                "explanation": "Parsing determines whether the response is valid JSON."
+              },
+              {
+                "title": "Check the contract",
+                "explanation": "Validate required fields and types before using the result."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-34",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Compare prompt revisions",
+          "description": "A team changes a prompt and wants to know whether it improved factual quality. What is a useful comparison?",
+          "choices": [
+            {
+              "text": "Use the same representative test cases and assess the outputs.",
+              "correct": true
+            },
+            {
+              "text": "Assume a prompt change always improves accuracy.",
+              "correct": false
+            },
+            {
+              "text": "Compare two unrelated examples chosen after seeing each result.",
+              "correct": false
+            },
+            {
+              "text": "Choose the prompt with more words.",
+              "correct": false
+            }
+          ],
+          "hint": "Keep the evaluation cases comparable.",
+          "solution": {
+            "code": "Use the same representative test cases and assess the outputs.",
+            "steps": [
+              {
+                "title": "Control the cases",
+                "explanation": "Using the same cases makes the outputs comparable."
+              },
+              {
+                "title": "Assess the outcome",
+                "explanation": "Review factual quality separately from whether the output follows the requested format."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-35",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Treat a tool response",
+          "description": "A tool returns a web page containing instructions to change the application's permissions. How should the content be treated?",
+          "choices": [
+            {
+              "text": "As proof the user approved all actions.",
+              "correct": false
+            },
+            {
+              "text": "As untrusted data rather than authorization.",
+              "correct": true
+            },
+            {
+              "text": "As a credential.",
+              "correct": false
+            },
+            {
+              "text": "As an application policy update.",
+              "correct": false
+            }
+          ],
+          "hint": "The page is not the application's authority.",
+          "solution": {
+            "code": "As untrusted data rather than authorization.",
+            "steps": [
+              {
+                "title": "Identify the source",
+                "explanation": "The text came from a tool result."
+              },
+              {
+                "title": "Keep the boundary",
+                "explanation": "The application must enforce its own policy and authorization."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-36",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Interpret a tool call",
+          "description": "An assistant produces valid JSON requesting a sensitive action. What is still needed?",
+          "choices": [
+            {
+              "text": "No further checks because the JSON parses.",
+              "correct": false
+            },
+            {
+              "text": "A different display color.",
+              "correct": false
+            },
+            {
+              "text": "Application validation and authorization.",
+              "correct": true
+            },
+            {
+              "text": "Automatic execution before user policy is checked.",
+              "correct": false
+            }
+          ],
+          "hint": "Valid syntax and permission are different.",
+          "solution": {
+            "code": "Application validation and authorization.",
+            "steps": [
+              {
+                "title": "Check the format",
+                "explanation": "Valid JSON is structurally usable."
+              },
+              {
+                "title": "Check authority",
+                "explanation": "The requested action still requires validation and authorization."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-37",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Test message boundaries",
+          "description": "Which test helps evaluate message-role handling?",
+          "choices": [
+            {
+              "text": "A tool result attempts to redirect the agent toward an unauthorized action.",
+              "correct": true
+            },
+            {
+              "text": "Only a screenshot of the chat layout.",
+              "correct": false
+            },
+            {
+              "text": "Only a normal greeting.",
+              "correct": false
+            },
+            {
+              "text": "A case with no messages or actions.",
+              "correct": false
+            }
+          ],
+          "hint": "Test whether untrusted content can cross an authorization boundary.",
+          "solution": {
+            "code": "A tool result attempts to redirect the agent toward an unauthorized action.",
+            "steps": [
+              {
+                "title": "Construct a case",
+                "explanation": "Include an attempted redirection in tool content."
+              },
+              {
+                "title": "Check the result",
+                "explanation": "Verify the unauthorized action is blocked and inspect the response."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-38",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Interpret temperature",
+          "description": "What is a common effect of increasing a positive sampling temperature?",
+          "choices": [
+            {
+              "text": "Every answer becomes factually correct.",
+              "correct": false
+            },
+            {
+              "text": "The token distribution becomes flatter, potentially increasing variety.",
+              "correct": true
+            },
+            {
+              "text": "Output variability is guaranteed to disappear.",
+              "correct": false
+            },
+            {
+              "text": "The model gains access to a new source.",
+              "correct": false
+            }
+          ],
+          "hint": "Temperature changes the relative preference among tokens.",
+          "solution": {
+            "code": "The token distribution becomes flatter, potentially increasing variety.",
+            "steps": [
+              {
+                "title": "Identify the distribution change",
+                "explanation": "Higher temperature commonly flattens token probabilities."
+              },
+              {
+                "title": "Interpret the result",
+                "explanation": "Less dominant preferences can increase output variety."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-39",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Separate confidence and truth",
+          "description": "A model gives the same answer across several low-temperature runs. What does that establish?",
+          "choices": [
+            {
+              "text": "The answer is proven correct.",
+              "correct": false
+            },
+            {
+              "text": "The model is perfectly calibrated.",
+              "correct": false
+            },
+            {
+              "text": "The source was verified automatically.",
+              "correct": false
+            },
+            {
+              "text": "The output was consistent in those runs, not necessarily correct.",
+              "correct": true
+            }
+          ],
+          "hint": "Consistency and factual accuracy are different properties.",
+          "solution": {
+            "code": "The output was consistent in those runs, not necessarily correct.",
+            "steps": [
+              {
+                "title": "Interpret the evidence",
+                "explanation": "Repeated runs produced the same answer."
+              },
+              {
+                "title": "Check the claim",
+                "explanation": "Factual accuracy still requires appropriate verification."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-40",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Evaluate sampling settings",
+          "description": "A team compares temperature settings but changes the prompt and evaluation cases as well. Why is attribution difficult?",
+          "choices": [
+            {
+              "text": "Temperature never affects sampling.",
+              "correct": false
+            },
+            {
+              "text": "Evaluation cases have no influence on results.",
+              "correct": false
+            },
+            {
+              "text": "Several factors changed at once.",
+              "correct": true
+            },
+            {
+              "text": "Prompts cannot affect model outputs.",
+              "correct": false
+            }
+          ],
+          "hint": "Isolate the factor being compared.",
+          "solution": {
+            "code": "Several factors changed at once.",
+            "steps": [
+              {
+                "title": "Identify the changes",
+                "explanation": "Prompt, cases, and temperature differed."
+              },
+              {
+                "title": "Improve the evaluation",
+                "explanation": "Hold relevant conditions constant and repeat runs when variability matters."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-41",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Identify an unsupported claim",
+          "description": "An answer cites a passage, but that passage does not support a key claim. What is the issue?",
+          "choices": [
+            {
+              "text": "The citation automatically proves the claim.",
+              "correct": false
+            },
+            {
+              "text": "The claim is unsupported by the cited evidence.",
+              "correct": true
+            },
+            {
+              "text": "The passage becomes an authorization policy.",
+              "correct": false
+            },
+            {
+              "text": "The answer must be correct because it is fluent.",
+              "correct": false
+            }
+          ],
+          "hint": "Check the specific claim against the cited text.",
+          "solution": {
+            "code": "The claim is unsupported by the cited evidence.",
+            "steps": [
+              {
+                "title": "Read the source",
+                "explanation": "The passage does not establish the claim."
+              },
+              {
+                "title": "Assess the answer",
+                "explanation": "The citation does not support that assertion."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-42",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Handle missing evidence",
+          "description": "The available documents do not answer the user's question. What is an appropriate response?",
+          "choices": [
+            {
+              "text": "State the limitation and use the defined fallback.",
+              "correct": true
+            },
+            {
+              "text": "Cite an unrelated passage as proof.",
+              "correct": false
+            },
+            {
+              "text": "Invent a plausible answer and present it as verified.",
+              "correct": false
+            },
+            {
+              "text": "Assume absence of evidence proves the opposite claim.",
+              "correct": false
+            }
+          ],
+          "hint": "Do not fill an evidence gap with an unsupported assertion.",
+          "solution": {
+            "code": "State the limitation and use the defined fallback.",
+            "steps": [
+              {
+                "title": "Identify the gap",
+                "explanation": "The provided sources do not answer the question."
+              },
+              {
+                "title": "Communicate it",
+                "explanation": "Explain the limitation and follow the appropriate fallback."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-43",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Interpret confident wording",
+          "description": "A generated answer sounds certain. What does its tone prove about factual accuracy?",
+          "choices": [
+            {
+              "text": "It proves the model consulted a source.",
+              "correct": false
+            },
+            {
+              "text": "Nothing by itself; the claim still needs evidence.",
+              "correct": true
+            },
+            {
+              "text": "It proves the answer is correct.",
+              "correct": false
+            },
+            {
+              "text": "It guarantees calibrated confidence.",
+              "correct": false
+            }
+          ],
+          "hint": "Fluency and truth are distinct.",
+          "solution": {
+            "code": "Nothing by itself; the claim still needs evidence.",
+            "steps": [
+              {
+                "title": "Interpret the tone",
+                "explanation": "The wording sounds confident."
+              },
+              {
+                "title": "Verify the content",
+                "explanation": "Use appropriate evidence to assess the claim."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-44",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Recognize a retrieval failure",
+          "description": "A question has an answer in an indexed document, but the search step returns unrelated passages. Which stage should be investigated first?",
+          "choices": [
+            {
+              "text": "Only the formatting of the final answer.",
+              "correct": false
+            },
+            {
+              "text": "The user's device battery level.",
+              "correct": false
+            },
+            {
+              "text": "The choice of output font.",
+              "correct": false
+            },
+            {
+              "text": "Retrieval and its indexing or ranking inputs.",
+              "correct": true
+            }
+          ],
+          "hint": "The relevant evidence did not reach the model.",
+          "solution": {
+            "code": "Retrieval and its indexing or ranking inputs.",
+            "steps": [
+              {
+                "title": "Trace the evidence",
+                "explanation": "The correct document exists but unrelated passages were selected."
+              },
+              {
+                "title": "Inspect retrieval",
+                "explanation": "Check indexing, query matching, ranking, and filters."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-45",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Check a citation",
+          "description": "An answer cites a real document, but the cited passage does not support the stated claim. What does the citation establish?",
+          "choices": [
+            {
+              "text": "A reference was provided, but the claim still lacks support from that passage.",
+              "correct": true
+            },
+            {
+              "text": "The user has permission to access every document in the index.",
+              "correct": false
+            },
+            {
+              "text": "The retrieval system found all relevant documents.",
+              "correct": false
+            },
+            {
+              "text": "The claim is verified because the document exists.",
+              "correct": false
+            }
+          ],
+          "hint": "A source reference and evidential support are different.",
+          "solution": {
+            "code": "A reference was provided, but the claim still lacks support from that passage.",
+            "steps": [
+              {
+                "title": "Inspect the passage",
+                "explanation": "It does not substantiate the claim."
+              },
+              {
+                "title": "Assess the answer",
+                "explanation": "A citation alone does not make an unsupported claim grounded."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-new-46",
+          "language": "llm-agents",
+          "level": "new",
+          "title": "Respect document permissions",
+          "description": "A passage is highly relevant to a question, but the requesting user is not authorized to access it. What should retrieval do?",
+          "choices": [
+            {
+              "text": "Exclude it according to the user's access policy.",
+              "correct": true
+            },
+            {
+              "text": "Return only the first sentence to avoid an access check.",
+              "correct": false
+            },
+            {
+              "text": "Send it to the model but hide the citation.",
+              "correct": false
+            },
+            {
+              "text": "Include it because relevance overrides permissions.",
+              "correct": false
+            }
+          ],
+          "hint": "Relevance and authorization are separate requirements.",
+          "solution": {
+            "code": "Exclude it according to the user's access policy.",
+            "steps": [
+              {
+                "title": "Check authorization",
+                "explanation": "The requester lacks access to the passage."
+              },
+              {
+                "title": "Enforce the boundary",
+                "explanation": "Do not expose unauthorized content during retrieval or generation."
+              }
+            ]
+          }
         }
       ]
     },
@@ -1955,6 +2774,786 @@
               {
                 "title": "Apply with evidence",
                 "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-26",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Evaluate template revisions",
+          "description": "A team changes the instructions in a support-answer template. How should it compare the old and new templates?",
+          "choices": [
+            {
+              "text": "Assume a version number guarantees improvement.",
+              "correct": false
+            },
+            {
+              "text": "Use the same representative test cases and assess correctness and format separately.",
+              "correct": true
+            },
+            {
+              "text": "Use unrelated easy cases for one template and difficult cases for the other.",
+              "correct": false
+            },
+            {
+              "text": "Choose whichever template is longer without evaluating outputs.",
+              "correct": false
+            }
+          ],
+          "hint": "Control the cases and check the outcomes that matter.",
+          "solution": {
+            "code": "Use the same representative test cases and assess correctness and format separately.",
+            "steps": [
+              {
+                "title": "Make the comparison fair",
+                "explanation": "Shared cases prevent differences in test difficulty from dominating the comparison."
+              },
+              {
+                "title": "Measure distinct outcomes",
+                "explanation": "Correctness and format can change independently and should be assessed separately."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-27",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Protect tool authorization",
+          "description": "A retrieved document includes an instruction to call a privileged tool. The document is placed between delimiters in a prompt. What must the application still do?",
+          "choices": [
+            {
+              "text": "Enforce authorization and validate tool actions outside the model.",
+              "correct": true
+            },
+            {
+              "text": "Trust the document because delimiters make it safe.",
+              "correct": false
+            },
+            {
+              "text": "Treat retrieved text as higher authority than application policy.",
+              "correct": false
+            },
+            {
+              "text": "Grant all tools access to every user.",
+              "correct": false
+            }
+          ],
+          "hint": "Separating content in a prompt is not a security boundary.",
+          "solution": {
+            "code": "Enforce authorization and validate tool actions outside the model.",
+            "steps": [
+              {
+                "title": "Identify untrusted input",
+                "explanation": "Retrieved content can contain instructions unrelated to the user's authorized task."
+              },
+              {
+                "title": "Enforce the boundary",
+                "explanation": "Application-side controls must authorize and validate proposed tool actions regardless of delimiters."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-28",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Choose few-shot examples",
+          "description": "A prompt classifies support requests into several categories. Which examples are most useful to try first?",
+          "choices": [
+            {
+              "text": "Representative cases with consistent labels across the important categories.",
+              "correct": true
+            },
+            {
+              "text": "Examples with conflicting labels for the same case.",
+              "correct": false
+            },
+            {
+              "text": "Only identical examples from one easy category.",
+              "correct": false
+            },
+            {
+              "text": "Unrelated examples chosen solely because they are long.",
+              "correct": false
+            }
+          ],
+          "hint": "Examples should clarify the pattern the model must apply.",
+          "solution": {
+            "code": "Representative cases with consistent labels across the important categories.",
+            "steps": [
+              {
+                "title": "Cover the task",
+                "explanation": "Examples should reflect relevant categories and variation."
+              },
+              {
+                "title": "Keep definitions consistent",
+                "explanation": "The examples should demonstrate the same labeling rules."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-29",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Account for example tokens",
+          "description": "Adding examples makes a request exceed the model's context limit. What is a suitable response?",
+          "choices": [
+            {
+              "text": "Remove or shorten examples deliberately while retaining required input and output space.",
+              "correct": true
+            },
+            {
+              "text": "Assume examples do not consume tokens.",
+              "correct": false
+            },
+            {
+              "text": "Treat a character count as an exact token count.",
+              "correct": false
+            },
+            {
+              "text": "Drop the user request silently.",
+              "correct": false
+            }
+          ],
+          "hint": "Examples share the context budget with other request components.",
+          "solution": {
+            "code": "Remove or shorten examples deliberately while retaining required input and output space.",
+            "steps": [
+              {
+                "title": "Count the complete request",
+                "explanation": "Instructions, examples, user input, and output reserve all matter."
+              },
+              {
+                "title": "Adjust intentionally",
+                "explanation": "Select a smaller useful set without silently losing essential information."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-30",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Evaluate generalization",
+          "description": "A model perfectly copies the labels in the prompt examples. What additional evidence is needed?",
+          "choices": [
+            {
+              "text": "A longer label name.",
+              "correct": false
+            },
+            {
+              "text": "Proof that the model can reproduce its prompt.",
+              "correct": false
+            },
+            {
+              "text": "More copies of the same examples in the prompt.",
+              "correct": false
+            },
+            {
+              "text": "Performance on held-out examples that represent the intended task.",
+              "correct": true
+            }
+          ],
+          "hint": "Reproducing demonstrations is different from handling new inputs.",
+          "solution": {
+            "code": "Performance on held-out examples that represent the intended task.",
+            "steps": [
+              {
+                "title": "Separate examples from evaluation",
+                "explanation": "The examples have already been shown to the model."
+              },
+              {
+                "title": "Test new cases",
+                "explanation": "Held-out representative inputs reveal whether the pattern transfers."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-31",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Diagnose a split answer",
+          "description": "The first half of a policy answer is in one chunk and an essential exception is in the next. Retrieval returns only the first chunk. What risk does this introduce?",
+          "choices": [
+            {
+              "text": "Chunking makes access controls unnecessary.",
+              "correct": false
+            },
+            {
+              "text": "The source document becomes immutable.",
+              "correct": false
+            },
+            {
+              "text": "The response must include both chunks automatically.",
+              "correct": false
+            },
+            {
+              "text": "The generated answer may omit the exception.",
+              "correct": true
+            }
+          ],
+          "hint": "Consider the evidence the model actually receives.",
+          "solution": {
+            "code": "The generated answer may omit the exception.",
+            "steps": [
+              {
+                "title": "Identify the missing evidence",
+                "explanation": "The exception is in a chunk that was not retrieved."
+              },
+              {
+                "title": "Assess the answer",
+                "explanation": "Without that evidence, the answer can be incomplete."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-32",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Trade off chunk overlap",
+          "description": "What is a likely cost of adding overlap between neighboring chunks?",
+          "choices": [
+            {
+              "text": "All documents lose their original metadata.",
+              "correct": false
+            },
+            {
+              "text": "The model no longer needs a context window.",
+              "correct": false
+            },
+            {
+              "text": "Some text is duplicated in the index or retrieved context.",
+              "correct": true
+            },
+            {
+              "text": "Every question is guaranteed to retrieve the correct evidence.",
+              "correct": false
+            }
+          ],
+          "hint": "Overlap repeats content near boundaries.",
+          "solution": {
+            "code": "Some text is duplicated in the index or retrieved context.",
+            "steps": [
+              {
+                "title": "Identify the benefit",
+                "explanation": "Overlap can preserve evidence near a boundary."
+              },
+              {
+                "title": "Recognize the cost",
+                "explanation": "Repeated text consumes storage or context and may produce redundant results."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-33",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Evaluate chunk boundaries",
+          "description": "How can a team compare two chunking strategies for a question-answering system?",
+          "choices": [
+            {
+              "text": "Test representative questions with known evidence, including boundary-spanning cases.",
+              "correct": true
+            },
+            {
+              "text": "Select the shortest chunks without evaluation.",
+              "correct": false
+            },
+            {
+              "text": "Assume a readable answer proves the evidence was retrieved.",
+              "correct": false
+            },
+            {
+              "text": "Count only the number of indexed files.",
+              "correct": false
+            }
+          ],
+          "hint": "Test whether relevant evidence is available for realistic queries.",
+          "solution": {
+            "code": "Test representative questions with known evidence, including boundary-spanning cases.",
+            "steps": [
+              {
+                "title": "Prepare cases",
+                "explanation": "Use questions whose supporting evidence is known."
+              },
+              {
+                "title": "Compare retrieval and answers",
+                "explanation": "Check evidence coverage and whether answers are supported."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-34",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Enforce tenant access",
+          "description": "A search retrieves highly relevant documents from two tenants. A caller has access to only one tenant. Which results may be exposed?",
+          "choices": [
+            {
+              "text": "Only the newest documents regardless of permissions.",
+              "correct": false
+            },
+            {
+              "text": "All documents if the model requests them.",
+              "correct": false
+            },
+            {
+              "text": "Only documents authorized for that caller.",
+              "correct": true
+            },
+            {
+              "text": "Both tenants because relevance is high.",
+              "correct": false
+            }
+          ],
+          "hint": "Ranking is separate from authorization.",
+          "solution": {
+            "code": "Only documents authorized for that caller.",
+            "steps": [
+              {
+                "title": "Determine eligibility",
+                "explanation": "Apply the caller's access policy to the candidate documents."
+              },
+              {
+                "title": "Rank permitted results",
+                "explanation": "Only authorized documents may be exposed."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-35",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Distinguish task and access filters",
+          "description": "A user removes a date filter. Should that remove a mandatory tenant-access restriction too?",
+          "choices": [
+            {
+              "text": "Yes; relevance replaces authorization.",
+              "correct": false
+            },
+            {
+              "text": "No; mandatory access controls remain enforced.",
+              "correct": true
+            },
+            {
+              "text": "Yes; all filters must be optional.",
+              "correct": false
+            },
+            {
+              "text": "Only if the model asks to remove it.",
+              "correct": false
+            }
+          ],
+          "hint": "The date filter and access restriction have different purposes.",
+          "solution": {
+            "code": "No; mandatory access controls remain enforced.",
+            "steps": [
+              {
+                "title": "Identify the user choice",
+                "explanation": "The user changed a task-specific date filter."
+              },
+              {
+                "title": "Preserve authorization",
+                "explanation": "Mandatory access restrictions still apply."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-36",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Investigate stale metadata",
+          "description": "A document's access policy changes, but its indexed permissions remain outdated. What is a risk?",
+          "choices": [
+            {
+              "text": "The model can grant access by ranking it highly.",
+              "correct": false
+            },
+            {
+              "text": "Metadata can no longer affect retrieval.",
+              "correct": false
+            },
+            {
+              "text": "The retriever may expose unauthorized content or hide permitted content.",
+              "correct": true
+            },
+            {
+              "text": "The index is automatically correct in every system.",
+              "correct": false
+            }
+          ],
+          "hint": "The index may no longer reflect the current policy.",
+          "solution": {
+            "code": "The retriever may expose unauthorized content or hide permitted content.",
+            "steps": [
+              {
+                "title": "Identify the mismatch",
+                "explanation": "Indexed permissions differ from the current access policy."
+              },
+              {
+                "title": "Assess impact",
+                "explanation": "Eligibility decisions based on stale information can be incorrect."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-37",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Diagnose missing evidence",
+          "description": "A reranker receives ten retrieved passages, none of which contains the correct evidence. Can reordering alone recover the missing passage?",
+          "choices": [
+            {
+              "text": "Only if the missing passage has a high score before retrieval.",
+              "correct": false
+            },
+            {
+              "text": "Yes; ranking automatically creates missing evidence.",
+              "correct": false
+            },
+            {
+              "text": "Yes; a reranker can rank any document in the collection without receiving it.",
+              "correct": false
+            },
+            {
+              "text": "No; the evidence must first enter the candidate set.",
+              "correct": true
+            }
+          ],
+          "hint": "The reranker operates on its supplied candidates.",
+          "solution": {
+            "code": "No; the evidence must first enter the candidate set.",
+            "steps": [
+              {
+                "title": "Inspect candidates",
+                "explanation": "The relevant passage is absent."
+              },
+              {
+                "title": "Address retrieval",
+                "explanation": "Improve candidate generation or indexing before relying on reranking."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-38",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Interpret a rerank score",
+          "description": "A passage receives a high relevance score. What still requires separate checking?",
+          "choices": [
+            {
+              "text": "Whether the passage is authorized and supports a true claim.",
+              "correct": true
+            },
+            {
+              "text": "Whether the score is a number.",
+              "correct": false
+            },
+            {
+              "text": "Whether the query was submitted.",
+              "correct": false
+            },
+            {
+              "text": "Whether ranking has any order.",
+              "correct": false
+            }
+          ],
+          "hint": "Relevance, permission, and factual accuracy are different.",
+          "solution": {
+            "code": "Whether the passage is authorized and supports a true claim.",
+            "steps": [
+              {
+                "title": "Interpret the score",
+                "explanation": "It estimates relevance to the query."
+              },
+              {
+                "title": "Apply other checks",
+                "explanation": "Access control and evidence verification remain necessary."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-39",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Measure reranking cost",
+          "description": "Increasing the reranker candidate set improves evidence coverage but doubles latency. What should the team do?",
+          "choices": [
+            {
+              "text": "Compare the quality gain against the application's latency and compute budget.",
+              "correct": true
+            },
+            {
+              "text": "Assume more candidates always improve the final answer.",
+              "correct": false
+            },
+            {
+              "text": "Remove access filtering to reduce cost.",
+              "correct": false
+            },
+            {
+              "text": "Ignore latency because coverage improved.",
+              "correct": false
+            }
+          ],
+          "hint": "A retrieval design must satisfy operational constraints.",
+          "solution": {
+            "code": "Compare the quality gain against the application's latency and compute budget.",
+            "steps": [
+              {
+                "title": "Measure both outcomes",
+                "explanation": "Coverage improved and latency increased."
+              },
+              {
+                "title": "Choose a tradeoff",
+                "explanation": "Use representative quality and cost measurements to select a candidate count."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-40",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Check citation support",
+          "description": "A cited passage discusses the same product but does not support the answer's specific claim. What should happen?",
+          "choices": [
+            {
+              "text": "Revise the claim or find evidence that actually supports it.",
+              "correct": true
+            },
+            {
+              "text": "Assume the model's confidence establishes support.",
+              "correct": false
+            },
+            {
+              "text": "Keep the citation because a link is present.",
+              "correct": false
+            },
+            {
+              "text": "Treat topical similarity as proof.",
+              "correct": false
+            }
+          ],
+          "hint": "The citation must support the specific assertion.",
+          "solution": {
+            "code": "Revise the claim or find evidence that actually supports it.",
+            "steps": [
+              {
+                "title": "Compare claim and passage",
+                "explanation": "They are related but the passage does not establish the claim."
+              },
+              {
+                "title": "Correct the answer",
+                "explanation": "Use supporting evidence or clearly state the limitation."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-41",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Preserve an exception",
+          "description": "A source says a policy applies only to purchases over $50. An answer cites it but says the policy applies to all purchases. What is wrong?",
+          "choices": [
+            {
+              "text": "The citation makes the broader claim correct.",
+              "correct": false
+            },
+            {
+              "text": "A threshold cannot affect meaning.",
+              "correct": false
+            },
+            {
+              "text": "The answer omits a relevant qualification.",
+              "correct": true
+            },
+            {
+              "text": "The source automatically changes the policy.",
+              "correct": false
+            }
+          ],
+          "hint": "The scope of the answer is broader than the source.",
+          "solution": {
+            "code": "The answer omits a relevant qualification.",
+            "steps": [
+              {
+                "title": "Read the condition",
+                "explanation": "The policy has a purchase threshold."
+              },
+              {
+                "title": "Match the claim",
+                "explanation": "The answer must preserve that qualification."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-42",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Handle no supporting source",
+          "description": "A system cannot find evidence for a requested claim. What should it do?",
+          "choices": [
+            {
+              "text": "Invent a citation.",
+              "correct": false
+            },
+            {
+              "text": "Assume the claim is true because it is plausible.",
+              "correct": false
+            },
+            {
+              "text": "Attach any related document as proof.",
+              "correct": false
+            },
+            {
+              "text": "State the limitation or revise the answer instead of citing an unrelated source.",
+              "correct": true
+            }
+          ],
+          "hint": "A citation should not be used to disguise missing evidence.",
+          "solution": {
+            "code": "State the limitation or revise the answer instead of citing an unrelated source.",
+            "steps": [
+              {
+                "title": "Identify the gap",
+                "explanation": "No available passage supports the assertion."
+              },
+              {
+                "title": "Respond honestly",
+                "explanation": "State the limitation or omit the unsupported claim."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-43",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Handle missing evidence",
+          "description": "An agent is asked for a policy deadline, but retrieved documents do not contain one. What is an appropriate response?",
+          "choices": [
+            {
+              "text": "Cite an unrelated document as proof.",
+              "correct": false
+            },
+            {
+              "text": "State that the evidence is insufficient and follow the clarification or escalation policy.",
+              "correct": true
+            },
+            {
+              "text": "Invent a plausible deadline to provide a complete answer.",
+              "correct": false
+            },
+            {
+              "text": "Assume the deadline is the same as a different policy.",
+              "correct": false
+            }
+          ],
+          "hint": "A fluent answer is not a substitute for evidence.",
+          "solution": {
+            "code": "State that the evidence is insufficient and follow the clarification or escalation policy.",
+            "steps": [
+              {
+                "title": "Check the evidence",
+                "explanation": "The retrieved material does not establish a deadline."
+              },
+              {
+                "title": "Communicate the gap",
+                "explanation": "Abstain or seek the information through an approved path."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-44",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Enforce access restrictions",
+          "description": "An agent receives a request to read a record that the requester cannot access. Which control should decide whether the record is retrieved?",
+          "choices": [
+            {
+              "text": "The application's authorization check.",
+              "correct": true
+            },
+            {
+              "text": "The wording of the request alone.",
+              "correct": false
+            },
+            {
+              "text": "The model's confidence in the answer.",
+              "correct": false
+            },
+            {
+              "text": "The relevance score alone.",
+              "correct": false
+            }
+          ],
+          "hint": "Permissions must be enforced outside model-generated text.",
+          "solution": {
+            "code": "The application's authorization check.",
+            "steps": [
+              {
+                "title": "Identify the boundary",
+                "explanation": "The record is protected by an access policy."
+              },
+              {
+                "title": "Enforce it",
+                "explanation": "The application must deny retrieval when the requester lacks permission."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-beginner-45",
+          "language": "llm-agents",
+          "level": "beginner",
+          "title": "Evaluate unnecessary refusal",
+          "description": "An assistant refuses a permitted, well-supported question. What kind of error is this?",
+          "choices": [
+            {
+              "text": "An unnecessary refusal.",
+              "correct": true
+            },
+            {
+              "text": "A correctly completed action.",
+              "correct": false
+            },
+            {
+              "text": "A supported answer.",
+              "correct": false
+            },
+            {
+              "text": "Evidence that the source is unauthorized.",
+              "correct": false
+            }
+          ],
+          "hint": "The request was permitted and sufficient evidence was available.",
+          "solution": {
+            "code": "An unnecessary refusal.",
+            "steps": [
+              {
+                "title": "Check the expected behavior",
+                "explanation": "The system had both permission and evidence to answer."
+              },
+              {
+                "title": "Classify the result",
+                "explanation": "Refusing in this case is an unnecessary refusal."
               }
             ]
           }
@@ -2938,6 +4537,825 @@
               }
             ]
           }
+        },
+        {
+          "id": "llm-intermediate-26",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Calculate retrieval recall",
+          "description": "For a query, four passages are judged relevant. The top five results contain three of them. What is recall at five based on these judgments?",
+          "choices": [
+            {
+              "text": "3/5",
+              "correct": false
+            },
+            {
+              "text": "4/5",
+              "correct": false
+            },
+            {
+              "text": "1/4",
+              "correct": false
+            },
+            {
+              "text": "3/4",
+              "correct": true
+            }
+          ],
+          "hint": "Divide relevant retrieved passages by all judged relevant passages.",
+          "solution": {
+            "code": "3/4",
+            "steps": [
+              {
+                "title": "Count relevant results",
+                "explanation": "Three relevant passages appear in the top five."
+              },
+              {
+                "title": "Divide by relevant total",
+                "explanation": "There are four judged relevant passages, so recall is 3/4."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-27",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Compare ranking quality",
+          "description": "Two retrievers each return one relevant passage in their top five. Retriever A ranks it first; B ranks it fifth. What are their reciprocal ranks?",
+          "choices": [
+            {
+              "text": "A: 5; B: 1",
+              "correct": false
+            },
+            {
+              "text": "A: 1/5; B: 1/5",
+              "correct": false
+            },
+            {
+              "text": "A: 1; B: 1/5",
+              "correct": true
+            },
+            {
+              "text": "A: 1/5; B: 1",
+              "correct": false
+            }
+          ],
+          "hint": "Reciprocal rank is one divided by the rank of the first relevant result.",
+          "solution": {
+            "code": "A: 1; B: 1/5",
+            "steps": [
+              {
+                "title": "Find the first relevant rank",
+                "explanation": "The ranks are 1 for A and 5 for B."
+              },
+              {
+                "title": "Take reciprocals",
+                "explanation": "Their reciprocal ranks are 1/1 and 1/5 respectively."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-28",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Interpret missing judgments",
+          "description": "A retrieval test labels only a small fraction of documents. A new system returns an unjudged passage that actually answers the query. What can happen if unjudged passages are treated as irrelevant?",
+          "choices": [
+            {
+              "text": "The test proves the passage cannot be relevant.",
+              "correct": false
+            },
+            {
+              "text": "All ranking metrics necessarily become perfect.",
+              "correct": false
+            },
+            {
+              "text": "The system no longer needs access controls.",
+              "correct": false
+            },
+            {
+              "text": "Measured precision can underestimate the usefulness of the returned results.",
+              "correct": true
+            }
+          ],
+          "hint": "The absence of a relevance label is not evidence of irrelevance.",
+          "solution": {
+            "code": "Measured precision can underestimate the usefulness of the returned results.",
+            "steps": [
+              {
+                "title": "Identify the missing evidence",
+                "explanation": "An unjudged passage has not been assessed as relevant or irrelevant."
+              },
+              {
+                "title": "Understand the metric effect",
+                "explanation": "Counting a relevant but unjudged passage as irrelevant lowers the measured precision."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-29",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Separate completeness from style",
+          "description": "A support answer is clear and polite but omits an essential step requested by the user. Which evaluation dimension most directly captures the omission?",
+          "choices": [
+            {
+              "text": "Formatting only.",
+              "correct": false
+            },
+            {
+              "text": "Tokenization.",
+              "correct": false
+            },
+            {
+              "text": "Network latency.",
+              "correct": false
+            },
+            {
+              "text": "Completeness.",
+              "correct": true
+            }
+          ],
+          "hint": "The response does not fully address the task.",
+          "solution": {
+            "code": "Completeness.",
+            "steps": [
+              {
+                "title": "Identify the strength",
+                "explanation": "The answer is clear and polite."
+              },
+              {
+                "title": "Identify the gap",
+                "explanation": "Omitting a required step makes it incomplete."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-30",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Check a model-based evaluator",
+          "description": "A team uses an LLM to grade generated answers. How can it assess whether the grader is useful?",
+          "choices": [
+            {
+              "text": "Evaluate only examples the grader wrote itself.",
+              "correct": false
+            },
+            {
+              "text": "Ignore all rubric criteria.",
+              "correct": false
+            },
+            {
+              "text": "Compare its judgments with reviewed examples and inspect disagreements.",
+              "correct": true
+            },
+            {
+              "text": "Assume it is always correct because it is a model.",
+              "correct": false
+            }
+          ],
+          "hint": "The evaluator can make mistakes too.",
+          "solution": {
+            "code": "Compare its judgments with reviewed examples and inspect disagreements.",
+            "steps": [
+              {
+                "title": "Establish reference cases",
+                "explanation": "Use a reviewed set with explicit evaluation criteria."
+              },
+              {
+                "title": "Inspect agreement",
+                "explanation": "Disagreements can reveal grader limitations and rubric ambiguity."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-31",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Compare generation revisions",
+          "description": "Two prompt revisions are tested on different collections of questions. Why is it hard to attribute their score difference to the prompt change?",
+          "choices": [
+            {
+              "text": "Every question has identical difficulty.",
+              "correct": false
+            },
+            {
+              "text": "The sets may differ in difficulty and coverage.",
+              "correct": true
+            },
+            {
+              "text": "A prompt cannot affect generated answers.",
+              "correct": false
+            },
+            {
+              "text": "Model settings never matter.",
+              "correct": false
+            }
+          ],
+          "hint": "The evaluation inputs are not controlled.",
+          "solution": {
+            "code": "The sets may differ in difficulty and coverage.",
+            "steps": [
+              {
+                "title": "Identify the confound",
+                "explanation": "Different question sets can change the measured score."
+              },
+              {
+                "title": "Improve the comparison",
+                "explanation": "Use the same held-out cases and record the relevant settings."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-32",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Locate missing parsed evidence",
+          "description": "A source document contains an exception, but the parser omitted it before indexing. Which stage should be investigated first?",
+          "choices": [
+            {
+              "text": "Only the model temperature.",
+              "correct": false
+            },
+            {
+              "text": "Parsing.",
+              "correct": true
+            },
+            {
+              "text": "The final citation style.",
+              "correct": false
+            },
+            {
+              "text": "Only answer formatting.",
+              "correct": false
+            }
+          ],
+          "hint": "The evidence disappeared before indexing.",
+          "solution": {
+            "code": "Parsing.",
+            "steps": [
+              {
+                "title": "Trace the evidence",
+                "explanation": "It exists in the source but not in parsed text."
+              },
+              {
+                "title": "Investigate the boundary",
+                "explanation": "The parsing step is the earliest observed failure."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-33",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Locate context truncation",
+          "description": "A relevant passage appears in retrieval results but not in the context sent to the model. Which stage is the likely first investigation target?",
+          "choices": [
+            {
+              "text": "The user's display theme.",
+              "correct": false
+            },
+            {
+              "text": "Source document authoring.",
+              "correct": false
+            },
+            {
+              "text": "Only the embedding training objective.",
+              "correct": false
+            },
+            {
+              "text": "Context assembly or truncation.",
+              "correct": true
+            }
+          ],
+          "hint": "Retrieval found the passage, but it was lost afterward.",
+          "solution": {
+            "code": "Context assembly or truncation.",
+            "steps": [
+              {
+                "title": "Confirm retrieval",
+                "explanation": "The passage appears in retrieval results."
+              },
+              {
+                "title": "Inspect the next boundary",
+                "explanation": "Assembly or context limits may have omitted it."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-34",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Identify generation failure",
+          "description": "The model received an accurate passage that directly answers a question, but its answer contradicts the passage. What should the team inspect?",
+          "choices": [
+            {
+              "text": "Only whether the passage was indexed.",
+              "correct": false
+            },
+            {
+              "text": "A rate-limit window unrelated to the answer.",
+              "correct": false
+            },
+            {
+              "text": "Generation behavior and answer support.",
+              "correct": true
+            },
+            {
+              "text": "Whether the document exists at all.",
+              "correct": false
+            }
+          ],
+          "hint": "The relevant evidence reached the model.",
+          "solution": {
+            "code": "Generation behavior and answer support.",
+            "steps": [
+              {
+                "title": "Eliminate earlier observed loss",
+                "explanation": "The passage was retrieved and included in context."
+              },
+              {
+                "title": "Inspect the answer",
+                "explanation": "Compare generated claims with the evidence and evaluate the suspected fix."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-35",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Test evidence placement",
+          "description": "How can a team test whether evidence position affects answers?",
+          "choices": [
+            {
+              "text": "Only count the number of characters.",
+              "correct": false
+            },
+            {
+              "text": "Change the question and evidence at the same time.",
+              "correct": false
+            },
+            {
+              "text": "Assume every position is equally effective.",
+              "correct": false
+            },
+            {
+              "text": "Use the same question and evidence with different placements.",
+              "correct": true
+            }
+          ],
+          "hint": "Keep other inputs controlled while changing position.",
+          "solution": {
+            "code": "Use the same question and evidence with different placements.",
+            "steps": [
+              {
+                "title": "Control the case",
+                "explanation": "Use the same question and relevant evidence."
+              },
+              {
+                "title": "Compare placement",
+                "explanation": "Move the evidence and evaluate answer support and correctness."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-36",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Preserve an exception",
+          "description": "A context budget forces passage selection. A short policy exception is relevant but lower-ranked than repeated general text. What should the team consider?",
+          "choices": [
+            {
+              "text": "Preserving the exception rather than filling the context with duplicates.",
+              "correct": true
+            },
+            {
+              "text": "Discarding all exceptions automatically.",
+              "correct": false
+            },
+            {
+              "text": "Ignoring what is sent to the model.",
+              "correct": false
+            },
+            {
+              "text": "Treating duplicate text as new independent evidence.",
+              "correct": false
+            }
+          ],
+          "hint": "Completeness depends on relevant qualifications.",
+          "solution": {
+            "code": "Preserving the exception rather than filling the context with duplicates.",
+            "steps": [
+              {
+                "title": "Identify the evidence",
+                "explanation": "The exception changes the interpretation of the policy."
+              },
+              {
+                "title": "Manage the budget",
+                "explanation": "Remove unnecessary redundancy while retaining relevant qualifications."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-37",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Diagnose context loss",
+          "description": "A passage is retrieved but omitted during context assembly. What should the team inspect?",
+          "choices": [
+            {
+              "text": "The model's display name.",
+              "correct": false
+            },
+            {
+              "text": "A later unrelated deployment.",
+              "correct": false
+            },
+            {
+              "text": "Only the original source author.",
+              "correct": false
+            },
+            {
+              "text": "Selection and truncation rules.",
+              "correct": true
+            }
+          ],
+          "hint": "The passage was lost between retrieval and generation.",
+          "solution": {
+            "code": "Selection and truncation rules.",
+            "steps": [
+              {
+                "title": "Locate the boundary",
+                "explanation": "Retrieval returned the passage but the model did not receive it."
+              },
+              {
+                "title": "Inspect assembly",
+                "explanation": "Selection and budget rules may have removed it."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-38",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Choose a lexical retrieval strength",
+          "description": "A query contains an exact product code that is rare in the corpus. Which retrieval path may be particularly useful?",
+          "choices": [
+            {
+              "text": "A model output without retrieval.",
+              "correct": false
+            },
+            {
+              "text": "Random ranking.",
+              "correct": false
+            },
+            {
+              "text": "Only a semantic similarity score regardless of exact terms.",
+              "correct": false
+            },
+            {
+              "text": "Lexical matching.",
+              "correct": true
+            }
+          ],
+          "hint": "Exact identifiers are explicit text matches.",
+          "solution": {
+            "code": "Lexical matching.",
+            "steps": [
+              {
+                "title": "Identify the query",
+                "explanation": "The product code is a specific string."
+              },
+              {
+                "title": "Use an appropriate path",
+                "explanation": "Lexical retrieval can match that exact term."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-39",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Combine unlike scores",
+          "description": "Two retrieval methods produce scores on different scales. Why use a rank-based fusion method?",
+          "choices": [
+            {
+              "text": "It proves all retrieved passages are true.",
+              "correct": false
+            },
+            {
+              "text": "It can combine rankings without assuming raw scores are directly comparable.",
+              "correct": true
+            },
+            {
+              "text": "It guarantees both methods use the same score scale.",
+              "correct": false
+            },
+            {
+              "text": "It replaces access control.",
+              "correct": false
+            }
+          ],
+          "hint": "Raw score magnitudes may have different meanings.",
+          "solution": {
+            "code": "It can combine rankings without assuming raw scores are directly comparable.",
+            "steps": [
+              {
+                "title": "Identify the issue",
+                "explanation": "The two scores are not necessarily calibrated to the same scale."
+              },
+              {
+                "title": "Fuse the rankings",
+                "explanation": "A rank-based method can combine positions without directly adding raw scores."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-40",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Enforce hybrid access",
+          "description": "A hybrid system has lexical and semantic indexes. Where must access policy be enforced?",
+          "choices": [
+            {
+              "text": "Only on the lexical path.",
+              "correct": false
+            },
+            {
+              "text": "Only when the user asks for an exact match.",
+              "correct": false
+            },
+            {
+              "text": "Across both retrieval paths before protected content is exposed.",
+              "correct": true
+            },
+            {
+              "text": "Only after the model has read every result.",
+              "correct": false
+            }
+          ],
+          "hint": "Either path could return protected content.",
+          "solution": {
+            "code": "Across both retrieval paths before protected content is exposed.",
+            "steps": [
+              {
+                "title": "Identify the exposure",
+                "explanation": "Both indexes can retrieve documents."
+              },
+              {
+                "title": "Apply the policy",
+                "explanation": "Each path must restrict eligible content before exposure."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-41",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Preserve negation in rewriting",
+          "description": "A query asks for orders not shipped. The rewrite says orders shipped. What changed?",
+          "choices": [
+            {
+              "text": "No meaningful constraint changed.",
+              "correct": false
+            },
+            {
+              "text": "The rewrite preserved the same condition.",
+              "correct": false
+            },
+            {
+              "text": "The negation was lost, reversing the condition.",
+              "correct": true
+            },
+            {
+              "text": "The query gained an access policy.",
+              "correct": false
+            }
+          ],
+          "hint": "Compare the conditions directly.",
+          "solution": {
+            "code": "The negation was lost, reversing the condition.",
+            "steps": [
+              {
+                "title": "Read the original",
+                "explanation": "It asks for orders that were not shipped."
+              },
+              {
+                "title": "Inspect the rewrite",
+                "explanation": "The missing negation changes the meaning."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-42",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Handle an ambiguous reference",
+          "description": "A follow-up asks about its price, but two products were discussed and neither is clearly intended. What is appropriate?",
+          "choices": [
+            {
+              "text": "Ask for clarification or use the defined ambiguity policy.",
+              "correct": true
+            },
+            {
+              "text": "Invent a third product.",
+              "correct": false
+            },
+            {
+              "text": "Choose a product without evidence.",
+              "correct": false
+            },
+            {
+              "text": "Remove all access controls from retrieval.",
+              "correct": false
+            }
+          ],
+          "hint": "The pronoun does not identify a unique product.",
+          "solution": {
+            "code": "Ask for clarification or use the defined ambiguity policy.",
+            "steps": [
+              {
+                "title": "Identify ambiguity",
+                "explanation": "Two possible referents exist."
+              },
+              {
+                "title": "Avoid guessing",
+                "explanation": "Clarify or follow the application's defined behavior."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-43",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Evaluate rewrites",
+          "description": "A rewrite improves vague queries but removes exact product codes in other cases. What should the team measure?",
+          "choices": [
+            {
+              "text": "Assume every rewrite improves retrieval.",
+              "correct": false
+            },
+            {
+              "text": "Only whether the output is grammatical.",
+              "correct": false
+            },
+            {
+              "text": "Retrieval quality separately for exact identifiers and vague queries.",
+              "correct": true
+            },
+            {
+              "text": "Only the number of rewritten words.",
+              "correct": false
+            }
+          ],
+          "hint": "Different query types can behave differently.",
+          "solution": {
+            "code": "Retrieval quality separately for exact identifiers and vague queries.",
+            "steps": [
+              {
+                "title": "Identify the regression",
+                "explanation": "Exact identifiers are being lost."
+              },
+              {
+                "title": "Evaluate by case type",
+                "explanation": "Compare known relevant evidence for both query categories."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-44",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Treat a plan as a proposal",
+          "description": "An agent's plan includes canceling an order, but the application has not yet checked whether the user may cancel it. What must happen before the action?",
+          "choices": [
+            {
+              "text": "The application must verify authorization and any required confirmation.",
+              "correct": true
+            },
+            {
+              "text": "The agent may execute because the model generated the plan.",
+              "correct": false
+            },
+            {
+              "text": "The plan automatically grants the user's permissions.",
+              "correct": false
+            },
+            {
+              "text": "The agent should hide the cancellation from the user.",
+              "correct": false
+            }
+          ],
+          "hint": "Planning does not grant tool authority.",
+          "solution": {
+            "code": "The application must verify authorization and any required confirmation.",
+            "steps": [
+              {
+                "title": "Separate plan and permission",
+                "explanation": "The planned action has not been authorized."
+              },
+              {
+                "title": "Enforce the boundary",
+                "explanation": "Check permissions and required confirmation before executing."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-45",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Revise after a tool result",
+          "description": "A plan says to refund an order, but the lookup tool reports that the order number does not exist. What should the agent do?",
+          "choices": [
+            {
+              "text": "Stop or clarify the order details rather than continuing the refund.",
+              "correct": true
+            },
+            {
+              "text": "Claim that the refund was completed.",
+              "correct": false
+            },
+            {
+              "text": "Invent an order matching the user's description.",
+              "correct": false
+            },
+            {
+              "text": "Keep calling the refund tool with the same invalid order number indefinitely.",
+              "correct": false
+            }
+          ],
+          "hint": "A tool result can invalidate a plan's assumptions.",
+          "solution": {
+            "code": "Stop or clarify the order details rather than continuing the refund.",
+            "steps": [
+              {
+                "title": "Inspect the result",
+                "explanation": "The lookup did not find the order."
+              },
+              {
+                "title": "Revise safely",
+                "explanation": "Clarify or stop instead of acting on an unsupported assumption."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-intermediate-46",
+          "language": "llm-agents",
+          "level": "intermediate",
+          "title": "Report a partial run",
+          "description": "An agent retrieved a report successfully but failed to email it. What should its final status say?",
+          "choices": [
+            {
+              "text": "The report was emailed regardless of the tool result.",
+              "correct": false
+            },
+            {
+              "text": "The entire request succeeded because retrieval worked.",
+              "correct": false
+            },
+            {
+              "text": "No steps ran because one step failed.",
+              "correct": false
+            },
+            {
+              "text": "The report was retrieved, but sending failed or remains unresolved.",
+              "correct": true
+            }
+          ],
+          "hint": "A multi-step workflow can be partly complete.",
+          "solution": {
+            "code": "The report was retrieved, but sending failed or remains unresolved.",
+            "steps": [
+              {
+                "title": "Identify completed work",
+                "explanation": "The report retrieval succeeded."
+              },
+              {
+                "title": "Report the remaining issue",
+                "explanation": "The email step did not complete successfully."
+              }
+            ]
+          }
         }
       ]
     },
@@ -3915,6 +6333,747 @@
               {
                 "title": "Apply with evidence",
                 "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-26",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Trace an agent attack surface",
+          "description": "An agent reads external pages and can send messages. What additional information is needed to assess an instruction in a page asking it to send data away?",
+          "choices": [
+            {
+              "text": "Whether the page uses a large font.",
+              "correct": false
+            },
+            {
+              "text": "Which data the agent can access and which destinations the messaging tool permits.",
+              "correct": true
+            },
+            {
+              "text": "Whether the model response contains Markdown.",
+              "correct": false
+            },
+            {
+              "text": "Whether the page is longer than the user request.",
+              "correct": false
+            }
+          ],
+          "hint": "The risk depends on both access to assets and capability to act.",
+          "solution": {
+            "code": "Which data the agent can access and which destinations the messaging tool permits.",
+            "steps": [
+              {
+                "title": "Identify reachable assets",
+                "explanation": "Determine what information the agent can read."
+              },
+              {
+                "title": "Inspect the action boundary",
+                "explanation": "Check whether the messaging tool authorizes the target destination and operation."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-27",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Test tool-side enforcement",
+          "description": "A model sometimes follows malicious retrieved instructions. Which test provides direct evidence that a forbidden transfer is blocked?",
+          "choices": [
+            {
+              "text": "Verify the tool refuses the unauthorized transfer when the model proposes it.",
+              "correct": true
+            },
+            {
+              "text": "Count the number of model tokens.",
+              "correct": false
+            },
+            {
+              "text": "Check that a harmless user request returns a fluent answer.",
+              "correct": false
+            },
+            {
+              "text": "Check that the prompt asks the model to be careful.",
+              "correct": false
+            }
+          ],
+          "hint": "Test the actual action boundary under a malicious proposal.",
+          "solution": {
+            "code": "Verify the tool refuses the unauthorized transfer when the model proposes it.",
+            "steps": [
+              {
+                "title": "Exercise the failure",
+                "explanation": "Make the model or test harness propose an unauthorized transfer."
+              },
+              {
+                "title": "Check enforcement",
+                "explanation": "The tool should deny the action independently of the generated text."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-28",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Limit approval scope",
+          "description": "An agent asks for approval to send a specific report to one recipient. Which approval design best limits misuse?",
+          "choices": [
+            {
+              "text": "Let retrieved pages approve the request.",
+              "correct": false
+            },
+            {
+              "text": "Treat approval as permanent permission for any future message.",
+              "correct": false
+            },
+            {
+              "text": "Bind approval to the specific action, content, and destination, then reauthorize changes.",
+              "correct": true
+            },
+            {
+              "text": "Skip destination checks after any unrelated approval.",
+              "correct": false
+            }
+          ],
+          "hint": "Approval should cover what the reviewer actually authorized.",
+          "solution": {
+            "code": "Bind approval to the specific action, content, and destination, then reauthorize changes.",
+            "steps": [
+              {
+                "title": "Bind the decision",
+                "explanation": "The approval identifies the particular intended action and recipient."
+              },
+              {
+                "title": "Handle changes",
+                "explanation": "A modified destination or content needs evaluation and any required renewed approval."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-29",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Limit tool authority",
+          "description": "An agent only needs to read one approved report. Which tool design follows least privilege?",
+          "choices": [
+            {
+              "text": "A read-only tool scoped to that report.",
+              "correct": true
+            },
+            {
+              "text": "A tool that exposes all service credentials.",
+              "correct": false
+            },
+            {
+              "text": "A tool with write access to every database.",
+              "correct": false
+            },
+            {
+              "text": "An administrator shell.",
+              "correct": false
+            }
+          ],
+          "hint": "Grant the operation and resource required by the task.",
+          "solution": {
+            "code": "A read-only tool scoped to that report.",
+            "steps": [
+              {
+                "title": "Identify the task",
+                "explanation": "The agent needs to read one report."
+              },
+              {
+                "title": "Scope the capability",
+                "explanation": "A read-only tool for that report excludes unrelated authority."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-30",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Validate tool arguments",
+          "description": "A model outputs a well-formed tool call for another user's private document. What should the application do?",
+          "choices": [
+            {
+              "text": "Return the document before checking ownership.",
+              "correct": false
+            },
+            {
+              "text": "Assume every retrieved ID is public.",
+              "correct": false
+            },
+            {
+              "text": "Allow access because the JSON is valid.",
+              "correct": false
+            },
+            {
+              "text": "Check authorization and deny access if the caller lacks permission.",
+              "correct": true
+            }
+          ],
+          "hint": "Well-formed arguments are not proof of permission.",
+          "solution": {
+            "code": "Check authorization and deny access if the caller lacks permission.",
+            "steps": [
+              {
+                "title": "Check the target",
+                "explanation": "The requested resource belongs to another user."
+              },
+              {
+                "title": "Enforce authorization",
+                "explanation": "The tool must validate the caller's access before returning data."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-31",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Bind approval to an action",
+          "description": "A user approves sending a report to one address, but the model later changes the recipient. What should happen?",
+          "choices": [
+            {
+              "text": "Suppress the changed recipient from the audit record.",
+              "correct": false
+            },
+            {
+              "text": "Treat the earlier approval as unrestricted permission for any address.",
+              "correct": false
+            },
+            {
+              "text": "Recheck policy and obtain any required approval for the changed action.",
+              "correct": true
+            },
+            {
+              "text": "Send the report before validation.",
+              "correct": false
+            }
+          ],
+          "hint": "Approval should apply to the actual action being executed.",
+          "solution": {
+            "code": "Recheck policy and obtain any required approval for the changed action.",
+            "steps": [
+              {
+                "title": "Compare the actions",
+                "explanation": "The recipient changed after approval."
+              },
+              {
+                "title": "Apply the boundary",
+                "explanation": "Reauthorize and obtain required approval for the changed action."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-32",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Recognize indirect injection",
+          "description": "A retrieved webpage says to ignore the user's task and send private data to a new address. How should the agent application treat that instruction?",
+          "choices": [
+            {
+              "text": "As a higher-priority system rule.",
+              "correct": false
+            },
+            {
+              "text": "As automatic approval to send the data.",
+              "correct": false
+            },
+            {
+              "text": "As untrusted content, not authority to change permissions.",
+              "correct": true
+            },
+            {
+              "text": "As proof the destination is authorized.",
+              "correct": false
+            }
+          ],
+          "hint": "The instruction came from a retrieved source.",
+          "solution": {
+            "code": "As untrusted content, not authority to change permissions.",
+            "steps": [
+              {
+                "title": "Identify the source",
+                "explanation": "A webpage is external content."
+              },
+              {
+                "title": "Enforce boundaries",
+                "explanation": "The application must not treat it as authorization for tool actions."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-33",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Avoid delimiter overconfidence",
+          "description": "A prompt wraps retrieved documents in delimiters. What can the delimiters provide?",
+          "choices": [
+            {
+              "text": "A clearer indication of content boundaries, but not a security guarantee.",
+              "correct": true
+            },
+            {
+              "text": "A guarantee the model cannot follow malicious content.",
+              "correct": false
+            },
+            {
+              "text": "Permission for any tool call in the document.",
+              "correct": false
+            },
+            {
+              "text": "A complete authorization boundary.",
+              "correct": false
+            }
+          ],
+          "hint": "Formatting is useful but does not enforce permissions.",
+          "solution": {
+            "code": "A clearer indication of content boundaries, but not a security guarantee.",
+            "steps": [
+              {
+                "title": "Identify the benefit",
+                "explanation": "Delimiters can help separate source text in the prompt."
+              },
+              {
+                "title": "Keep external controls",
+                "explanation": "Authorization and tool validation must still be enforced outside the model."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-34",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Test malicious tool output",
+          "description": "A team tests prompt injection only in webpages, but its agent also consumes tool responses. What is a missing test?",
+          "choices": [
+            {
+              "text": "A malicious instruction embedded in a tool response.",
+              "correct": true
+            },
+            {
+              "text": "A document with no content.",
+              "correct": false
+            },
+            {
+              "text": "Only a successful authorized tool call.",
+              "correct": false
+            },
+            {
+              "text": "A new font for the interface.",
+              "correct": false
+            }
+          ],
+          "hint": "Other external inputs can carry instructions too.",
+          "solution": {
+            "code": "A malicious instruction embedded in a tool response.",
+            "steps": [
+              {
+                "title": "Identify the untested boundary",
+                "explanation": "Tool responses are another source of untrusted content."
+              },
+              {
+                "title": "Add a targeted case",
+                "explanation": "Verify that malicious tool output cannot authorize a prohibited action."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-35",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Restrict execution access",
+          "description": "A model-generated script needs to analyze one provided CSV. Which environment best limits exposure?",
+          "choices": [
+            {
+              "text": "A disposable restricted environment with access only to the required input.",
+              "correct": true
+            },
+            {
+              "text": "The production host with all credentials mounted.",
+              "correct": false
+            },
+            {
+              "text": "An unrestricted administrator shell.",
+              "correct": false
+            },
+            {
+              "text": "A shared directory containing other users' files.",
+              "correct": false
+            }
+          ],
+          "hint": "Grant only the files and capabilities needed.",
+          "solution": {
+            "code": "A disposable restricted environment with access only to the required input.",
+            "steps": [
+              {
+                "title": "Identify the task",
+                "explanation": "The script needs a specific input file."
+              },
+              {
+                "title": "Restrict the environment",
+                "explanation": "Limit access and isolate unrelated data and credentials."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-36",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Bound a runaway program",
+          "description": "A generated program loops forever. Which control directly limits its execution time?",
+          "choices": [
+            {
+              "text": "A runtime timeout enforced by the execution platform.",
+              "correct": true
+            },
+            {
+              "text": "A more descriptive filename.",
+              "correct": false
+            },
+            {
+              "text": "A longer prompt.",
+              "correct": false
+            },
+            {
+              "text": "An output schema alone.",
+              "correct": false
+            }
+          ],
+          "hint": "The platform needs to stop work exceeding the allowed duration.",
+          "solution": {
+            "code": "A runtime timeout enforced by the execution platform.",
+            "steps": [
+              {
+                "title": "Identify the resource",
+                "explanation": "The program consumes time indefinitely."
+              },
+              {
+                "title": "Enforce a bound",
+                "explanation": "A platform timeout terminates work exceeding the policy."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-37",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Test isolation cleanup",
+          "description": "One user's execution leaves files in a reusable environment. What should a boundary test verify?",
+          "choices": [
+            {
+              "text": "That all users share the same working directory.",
+              "correct": false
+            },
+            {
+              "text": "That every program has the same output.",
+              "correct": false
+            },
+            {
+              "text": "A later user cannot access those files and cleanup behaves as intended.",
+              "correct": true
+            },
+            {
+              "text": "Only that the model can generate code.",
+              "correct": false
+            }
+          ],
+          "hint": "The environment must not leak state across users.",
+          "solution": {
+            "code": "A later user cannot access those files and cleanup behaves as intended.",
+            "steps": [
+              {
+                "title": "Identify leftover state",
+                "explanation": "Files persist after the first execution."
+              },
+              {
+                "title": "Test isolation",
+                "explanation": "Confirm cleanup and access restrictions prevent cross-user exposure."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-38",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Bind confirmation to a target",
+          "description": "A user approves sending a report to one recipient. The proposed recipient then changes. What should happen?",
+          "choices": [
+            {
+              "text": "Recheck policy and obtain any required approval for the changed action.",
+              "correct": true
+            },
+            {
+              "text": "Hide the recipient change.",
+              "correct": false
+            },
+            {
+              "text": "Send to the new recipient under the old approval.",
+              "correct": false
+            },
+            {
+              "text": "Assume a preview grants unlimited permission.",
+              "correct": false
+            }
+          ],
+          "hint": "The approved action and the changed action are different.",
+          "solution": {
+            "code": "Recheck policy and obtain any required approval for the changed action.",
+            "steps": [
+              {
+                "title": "Compare the target",
+                "explanation": "The recipient changed after confirmation."
+              },
+              {
+                "title": "Enforce approval",
+                "explanation": "Reauthorize and obtain required confirmation for the actual action."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-39",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Handle partial external failure",
+          "description": "An agent sends a request to an external system, but the response is lost. Why is it unsafe to report definite failure and retry blindly?",
+          "choices": [
+            {
+              "text": "A missing response proves the action never ran.",
+              "correct": false
+            },
+            {
+              "text": "The external action may have succeeded despite the missing response.",
+              "correct": true
+            },
+            {
+              "text": "External systems always support atomic rollback.",
+              "correct": false
+            },
+            {
+              "text": "A retry cannot produce duplicate side effects.",
+              "correct": false
+            }
+          ],
+          "hint": "The operation outcome may be ambiguous.",
+          "solution": {
+            "code": "The external action may have succeeded despite the missing response.",
+            "steps": [
+              {
+                "title": "Identify the uncertainty",
+                "explanation": "The service may have completed the action."
+              },
+              {
+                "title": "Recover safely",
+                "explanation": "Check status or use appropriate idempotency and report the uncertain outcome."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-40",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Separate preview from authority",
+          "description": "A user sees a preview of a proposed record update. What is still required before committing?",
+          "choices": [
+            {
+              "text": "Application policy and authorization checks, including any required confirmation.",
+              "correct": true
+            },
+            {
+              "text": "Only valid JSON in the preview.",
+              "correct": false
+            },
+            {
+              "text": "Automatic execution because the model generated the action.",
+              "correct": false
+            },
+            {
+              "text": "Removing the audit trail.",
+              "correct": false
+            }
+          ],
+          "hint": "Presentation alone does not enforce permissions.",
+          "solution": {
+            "code": "Application policy and authorization checks, including any required confirmation.",
+            "steps": [
+              {
+                "title": "Identify the preview's role",
+                "explanation": "It shows the intended action for review."
+              },
+              {
+                "title": "Apply controls",
+                "explanation": "Validate and authorize the actual commit separately."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-41",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Retry an uncertain side effect",
+          "description": "An agent sends a create-ticket request and times out before receiving a response. The service supports idempotency keys. What should the agent do before retrying the same logical operation?",
+          "choices": [
+            {
+              "text": "Send several parallel retries to reduce latency.",
+              "correct": false
+            },
+            {
+              "text": "Assume the timed-out request definitely created no ticket.",
+              "correct": false
+            },
+            {
+              "text": "Generate a new key for every attempt.",
+              "correct": false
+            },
+            {
+              "text": "Reuse the original operation's idempotency key and follow the service's retry policy.",
+              "correct": true
+            }
+          ],
+          "hint": "The first request may have completed despite the timeout.",
+          "solution": {
+            "code": "Reuse the original operation's idempotency key and follow the service's retry policy.",
+            "steps": [
+              {
+                "title": "Recognize uncertainty",
+                "explanation": "The server may have created the ticket before the response was lost."
+              },
+              {
+                "title": "Preserve operation identity",
+                "explanation": "Reuse the stable key so a supported service can deduplicate attempts."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-42",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Classify retry failures",
+          "description": "A tool rejects a request because a required argument is missing. The same call has failed twice. What should an agent do next?",
+          "choices": [
+            {
+              "text": "Declare success because the tool responded quickly.",
+              "correct": false
+            },
+            {
+              "text": "Retry the unchanged request until the overall deadline expires.",
+              "correct": false
+            },
+            {
+              "text": "Correct or surface the invalid input instead of repeating the same request.",
+              "correct": true
+            },
+            {
+              "text": "Open a circuit breaker solely because the argument was invalid.",
+              "correct": false
+            }
+          ],
+          "hint": "Distinguish permanent input errors from transient service errors.",
+          "solution": {
+            "code": "Correct or surface the invalid input instead of repeating the same request.",
+            "steps": [
+              {
+                "title": "Classify the failure",
+                "explanation": "The request is invalid, so repeating it unchanged is unlikely to help."
+              },
+              {
+                "title": "Choose a response",
+                "explanation": "Correct the argument if possible or return a clear error."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-43",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Use a circuit breaker",
+          "description": "A dependency has exceeded the configured failure threshold. While the circuit breaker is open, what should calls normally do?",
+          "choices": [
+            {
+              "text": "Fail fast or follow an approved fallback until the breaker allows a probe.",
+              "correct": true
+            },
+            {
+              "text": "Reset the workflow deadline on each rejected call.",
+              "correct": false
+            },
+            {
+              "text": "Continue making unrestricted calls to the failing dependency.",
+              "correct": false
+            },
+            {
+              "text": "Skip authorization checks on a fallback tool.",
+              "correct": false
+            }
+          ],
+          "hint": "The open state limits pressure on a failing dependency.",
+          "solution": {
+            "code": "Fail fast or follow an approved fallback until the breaker allows a probe.",
+            "steps": [
+              {
+                "title": "Identify the breaker state",
+                "explanation": "An open breaker blocks ordinary calls for a configured period."
+              },
+              {
+                "title": "Handle the request",
+                "explanation": "Fail fast or use a policy-compliant fallback, then probe recovery as configured."
+              }
+            ]
+          }
+        },
+        {
+          "id": "llm-advanced-44",
+          "language": "llm-agents",
+          "level": "advanced",
+          "title": "Test run budgets",
+          "description": "An agent repeatedly alternates between two tools without advancing the task. Which control most directly bounds this behavior?",
+          "choices": [
+            {
+              "text": "A longer prompt alone.",
+              "correct": false
+            },
+            {
+              "text": "A larger unbounded retry queue.",
+              "correct": false
+            },
+            {
+              "text": "A higher maximum response size.",
+              "correct": false
+            },
+            {
+              "text": "A workflow step budget or overall deadline.",
+              "correct": true
+            }
+          ],
+          "hint": "The problem is unbounded repeated work across calls.",
+          "solution": {
+            "code": "A workflow step budget or overall deadline.",
+            "steps": [
+              {
+                "title": "Identify the loop",
+                "explanation": "Individual calls may succeed while the workflow fails to progress."
+              },
+              {
+                "title": "Bound the run",
+                "explanation": "An overall step or time budget stops the cycle and permits an explicit incomplete result."
               }
             ]
           }

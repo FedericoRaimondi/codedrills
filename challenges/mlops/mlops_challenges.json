@@ -978,6 +978,825 @@
               }
             ]
           }
+        },
+        {
+          "id": "mlops-new-26",
+          "language": "mlops",
+          "level": "new",
+          "title": "After deployment",
+          "description": "A demand forecast passed evaluation and has been deployed. What should the team do next?",
+          "choices": [
+            {
+              "text": "Monitor service health and data, and assess prediction quality when outcomes become available.",
+              "correct": true
+            },
+            {
+              "text": "Stop monitoring because evaluation has already proved the model will always work.",
+              "correct": false
+            },
+            {
+              "text": "Delete the records of the training data and model configuration.",
+              "correct": false
+            },
+            {
+              "text": "Assume all future input data will match training data.",
+              "correct": false
+            }
+          ],
+          "hint": "Consider what can change after the model starts serving users.",
+          "solution": {
+            "code": "Monitor service health and data, and assess prediction quality when outcomes become available.",
+            "steps": [
+              {
+                "title": "Observe the service",
+                "explanation": "Availability and data problems can affect users even after a successful offline evaluation."
+              },
+              {
+                "title": "Check outcomes",
+                "explanation": "When ground truth arrives, compare predictions with outcomes and investigate material changes."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-new-27",
+          "language": "mlops",
+          "level": "new",
+          "title": "Investigate an alert",
+          "description": "A monitoring alert shows that many incoming feature values are missing after a pipeline change. What is the best first response?",
+          "choices": [
+            {
+              "text": "Remove all monitoring to prevent future alerts.",
+              "correct": false
+            },
+            {
+              "text": "Investigate the input pipeline and assess the impact on predictions.",
+              "correct": true
+            },
+            {
+              "text": "Ignore the alert because the model was accurate during evaluation.",
+              "correct": false
+            },
+            {
+              "text": "Retrain immediately without checking why the values are missing.",
+              "correct": false
+            }
+          ],
+          "hint": "Identify whether the issue is in the data pipeline before choosing a remedy.",
+          "solution": {
+            "code": "Investigate the input pipeline and assess the impact on predictions.",
+            "steps": [
+              {
+                "title": "Find the cause",
+                "explanation": "A pipeline change can produce missing values even if the underlying population has not changed."
+              },
+              {
+                "title": "Choose a response",
+                "explanation": "Understanding the cause and impact helps the team fix the pipeline or apply the appropriate safeguard."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-new-28",
+          "language": "mlops",
+          "level": "new",
+          "title": "Record an experiment",
+          "description": "A dataset changes over time. Which record best helps a teammate reproduce a training run?",
+          "choices": [
+            {
+              "text": "Only the dataset's general name.",
+              "correct": false
+            },
+            {
+              "text": "Only the final accuracy score.",
+              "correct": false
+            },
+            {
+              "text": "The name of the person who ran the experiment, with no technical details.",
+              "correct": false
+            },
+            {
+              "text": "The data version and split, code revision, settings, and environment.",
+              "correct": true
+            }
+          ],
+          "hint": "Record both the data used and how the run was executed.",
+          "solution": {
+            "code": "The data version and split, code revision, settings, and environment.",
+            "steps": [
+              {
+                "title": "Identify the inputs",
+                "explanation": "A version and split identify which data the experiment used."
+              },
+              {
+                "title": "Capture execution details",
+                "explanation": "Code, settings, and environment provide the context needed to rerun or investigate the result."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-new-29",
+          "language": "mlops",
+          "level": "new",
+          "title": "Understand random seeds",
+          "description": "A team records the random seed for a training run. Why might a rerun still produce a different result?",
+          "choices": [
+            {
+              "text": "Different environments or nondeterministic operations can still affect the run.",
+              "correct": true
+            },
+            {
+              "text": "A seed guarantees identical results across all hardware and libraries.",
+              "correct": false
+            },
+            {
+              "text": "Recording a seed prevents the team from recording data versions.",
+              "correct": false
+            },
+            {
+              "text": "The recorded seed automatically changes the target labels.",
+              "correct": false
+            }
+          ],
+          "hint": "A seed is useful, but it does not control every source of variation.",
+          "solution": {
+            "code": "Different environments or nondeterministic operations can still affect the run.",
+            "steps": [
+              {
+                "title": "Recognize the seed's role",
+                "explanation": "A seed controls some random choices, such as initialization when the implementation uses it."
+              },
+              {
+                "title": "Account for other variation",
+                "explanation": "Hardware, dependency versions, and nondeterministic operations can still change results."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-new-30",
+          "language": "mlops",
+          "level": "new",
+          "title": "Trace a dataset change",
+          "description": "A model's evaluation score changes after a delivery dataset is corrected. Which record best helps investigate whether the data changed?",
+          "choices": [
+            {
+              "text": "Only the name of the dashboard color theme.",
+              "correct": false
+            },
+            {
+              "text": "Only the name of the model author.",
+              "correct": false
+            },
+            {
+              "text": "The dataset version and preprocessing used by each run.",
+              "correct": true
+            },
+            {
+              "text": "A statement that all datasets are permanently identical.",
+              "correct": false
+            }
+          ],
+          "hint": "Compare the inputs and transformations associated with the two runs.",
+          "solution": {
+            "code": "The dataset version and preprocessing used by each run.",
+            "steps": [
+              {
+                "title": "Compare the versions",
+                "explanation": "The recorded snapshots and transformations reveal whether the model saw different data."
+              },
+              {
+                "title": "Investigate the change",
+                "explanation": "Lineage helps separate data changes from changes to code or configuration."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-new-31",
+          "language": "mlops",
+          "level": "new",
+          "title": "Version data responsibly",
+          "description": "A valid deletion request applies to records in an old dataset snapshot. How should the team respond?",
+          "choices": [
+            {
+              "text": "Assume the request applies only to future model runs.",
+              "correct": false
+            },
+            {
+              "text": "Apply the relevant deletion and retention rules to stored versions and document the impact.",
+              "correct": true
+            },
+            {
+              "text": "Hide the snapshot from the catalog but retain the data without review.",
+              "correct": false
+            },
+            {
+              "text": "Keep all copies forever because reproducibility always overrides privacy.",
+              "correct": false
+            }
+          ],
+          "hint": "Versioned snapshots remain subject to data governance requirements.",
+          "solution": {
+            "code": "Apply the relevant deletion and retention rules to stored versions and document the impact.",
+            "steps": [
+              {
+                "title": "Follow data obligations",
+                "explanation": "Access, retention, and deletion rules also apply to versioned snapshots."
+              },
+              {
+                "title": "Record reproducibility limits",
+                "explanation": "Document if an older dataset version can no longer be reconstructed after the required action."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-new-32",
+          "language": "mlops",
+          "level": "new",
+          "title": "Preserve preprocessing",
+          "description": "A classifier was trained with a fitted category mapping. Why save that mapping alongside the model?",
+          "choices": [
+            {
+              "text": "The model can never accept numeric features.",
+              "correct": false
+            },
+            {
+              "text": "The mapping guarantees perfect accuracy.",
+              "correct": false
+            },
+            {
+              "text": "It replaces the need to store model weights.",
+              "correct": false
+            },
+            {
+              "text": "Serving needs the same interpretation of categories to produce compatible inputs.",
+              "correct": true
+            }
+          ],
+          "hint": "The model consumes transformed inputs, not just raw labels.",
+          "solution": {
+            "code": "Serving needs the same interpretation of categories to produce compatible inputs.",
+            "steps": [
+              {
+                "title": "Identify the dependency",
+                "explanation": "The model was trained using a particular category-to-value mapping."
+              },
+              {
+                "title": "Keep the mapping compatible",
+                "explanation": "A different serving mapping can change the input representation and predictions."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-new-33",
+          "language": "mlops",
+          "level": "new",
+          "title": "Trace an artifact",
+          "description": "A team finds a deployed model with an unknown training data version. Which record would best help investigate it?",
+          "choices": [
+            {
+              "text": "A filename that changes whenever the model is updated.",
+              "correct": false
+            },
+            {
+              "text": "Only the team's meeting calendar.",
+              "correct": false
+            },
+            {
+              "text": "A link from the artifact version to the training run and data version.",
+              "correct": true
+            },
+            {
+              "text": "An unlabeled screenshot of an unrelated metric.",
+              "correct": false
+            }
+          ],
+          "hint": "Connect the deployed artifact to its provenance.",
+          "solution": {
+            "code": "A link from the artifact version to the training run and data version.",
+            "steps": [
+              {
+                "title": "Identify the deployed version",
+                "explanation": "A stable artifact identifier specifies which model is running."
+              },
+              {
+                "title": "Follow the lineage",
+                "explanation": "Training-run and data-version records explain how it was produced."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-new-34",
+          "language": "mlops",
+          "level": "new",
+          "title": "Test a deployment package",
+          "description": "Weights load successfully, but the serving pipeline uses a different preprocessing version from training. What should the team do?",
+          "choices": [
+            {
+              "text": "Check compatible model and preprocessing versions and test representative predictions.",
+              "correct": true
+            },
+            {
+              "text": "Ignore preprocessing because it is not part of serving.",
+              "correct": false
+            },
+            {
+              "text": "Treat successful loading as proof that predictions are correct.",
+              "correct": false
+            },
+            {
+              "text": "Delete the evaluation report.",
+              "correct": false
+            }
+          ],
+          "hint": "Loading a file and producing the intended inputs are different checks.",
+          "solution": {
+            "code": "Check compatible model and preprocessing versions and test representative predictions.",
+            "steps": [
+              {
+                "title": "Inspect dependencies",
+                "explanation": "Different preprocessing can change the values passed to the model."
+              },
+              {
+                "title": "Verify the package",
+                "explanation": "Test a compatible set of artifacts in the serving environment."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-new-35",
+          "language": "mlops",
+          "level": "new",
+          "title": "Compare two training runs",
+          "description": "Two runs use different learning rates. What should be recorded to make their comparison useful?",
+          "choices": [
+            {
+              "text": "No settings, because defaults are always stable.",
+              "correct": false
+            },
+            {
+              "text": "Resolved configurations, metrics, and data versions.",
+              "correct": true
+            },
+            {
+              "text": "Only the run names.",
+              "correct": false
+            },
+            {
+              "text": "Only the newest model filename.",
+              "correct": false
+            }
+          ],
+          "hint": "The team needs to know what changed and what stayed fixed.",
+          "solution": {
+            "code": "Resolved configurations, metrics, and data versions.",
+            "steps": [
+              {
+                "title": "Record inputs and settings",
+                "explanation": "Capture the data version and resolved configuration for each run."
+              },
+              {
+                "title": "Compare results",
+                "explanation": "Associate those records with metrics and artifacts."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-new-36",
+          "language": "mlops",
+          "level": "new",
+          "title": "Reject invalid training settings",
+          "description": "A training configuration specifies a batch size of -2. What should happen?",
+          "choices": [
+            {
+              "text": "Treat the negative batch size as a valid sample count.",
+              "correct": false
+            },
+            {
+              "text": "Start training and mark validation as passed.",
+              "correct": false
+            },
+            {
+              "text": "Reject the configuration with a clear error.",
+              "correct": true
+            },
+            {
+              "text": "Silently replace it with an arbitrary value.",
+              "correct": false
+            }
+          ],
+          "hint": "Validate the permissible range before launching.",
+          "solution": {
+            "code": "Reject the configuration with a clear error.",
+            "steps": [
+              {
+                "title": "Check the value",
+                "explanation": "A batch size must be a valid positive count."
+              },
+              {
+                "title": "Surface the failure",
+                "explanation": "Report the invalid configuration instead of silently substituting a value."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-new-37",
+          "language": "mlops",
+          "level": "new",
+          "title": "Protect training secrets",
+          "description": "Where should a training service obtain a credential?",
+          "choices": [
+            {
+              "text": "From the model output.",
+              "correct": false
+            },
+            {
+              "text": "From an appropriate secret or identity system.",
+              "correct": true
+            },
+            {
+              "text": "From a public log entry.",
+              "correct": false
+            },
+            {
+              "text": "From a committed plain-text configuration value.",
+              "correct": false
+            }
+          ],
+          "hint": "The secret should not be stored in source files or logs.",
+          "solution": {
+            "code": "From an appropriate secret or identity system.",
+            "steps": [
+              {
+                "title": "Identify the risk",
+                "explanation": "Plain-text credentials in files or logs can be exposed."
+              },
+              {
+                "title": "Use a controlled source",
+                "explanation": "A secret or identity system can provide the credential under access policy."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-new-38",
+          "language": "mlops",
+          "level": "new",
+          "title": "Handle a missing gate result",
+          "description": "A required compatibility test did not run. How should the promotion gate treat the missing result?",
+          "choices": [
+            {
+              "text": "Block promotion or use a defined exception process.",
+              "correct": true
+            },
+            {
+              "text": "Replace the result with training accuracy.",
+              "correct": false
+            },
+            {
+              "text": "Deploy before recording the result.",
+              "correct": false
+            },
+            {
+              "text": "Treat the missing result as a pass.",
+              "correct": false
+            }
+          ],
+          "hint": "Missing evidence is not evidence that the check passed.",
+          "solution": {
+            "code": "Block promotion or use a defined exception process.",
+            "steps": [
+              {
+                "title": "Identify the requirement",
+                "explanation": "Compatibility is a required check."
+              },
+              {
+                "title": "Apply the policy",
+                "explanation": "Block or follow an explicit exception process when it is unavailable."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-new-39",
+          "language": "mlops",
+          "level": "new",
+          "title": "Choose gate criteria",
+          "description": "A model meets its quality threshold but exceeds a mandatory latency limit. What should the gate do?",
+          "choices": [
+            {
+              "text": "Block promotion until the latency requirement is met or a valid exception applies.",
+              "correct": true
+            },
+            {
+              "text": "Ignore the latency result.",
+              "correct": false
+            },
+            {
+              "text": "Pass because quality alone is sufficient.",
+              "correct": false
+            },
+            {
+              "text": "Remove the limit after seeing the result without review.",
+              "correct": false
+            }
+          ],
+          "hint": "A mandatory operational criterion is part of the decision.",
+          "solution": {
+            "code": "Block promotion until the latency requirement is met or a valid exception applies.",
+            "steps": [
+              {
+                "title": "Check each criterion",
+                "explanation": "Quality passes but latency fails."
+              },
+              {
+                "title": "Apply the gate",
+                "explanation": "The candidate does not satisfy all required conditions."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-new-40",
+          "language": "mlops",
+          "level": "new",
+          "title": "Interpret gate success",
+          "description": "A candidate passes predeployment checks. What is a sound conclusion?",
+          "choices": [
+            {
+              "text": "The model will perform safely forever.",
+              "correct": false
+            },
+            {
+              "text": "Data drift is impossible.",
+              "correct": false
+            },
+            {
+              "text": "The candidate met the measured criteria; production monitoring is still needed.",
+              "correct": true
+            },
+            {
+              "text": "A rollback plan is unnecessary.",
+              "correct": false
+            }
+          ],
+          "hint": "Evaluation evidence is limited to the cases and conditions tested.",
+          "solution": {
+            "code": "The candidate met the measured criteria; production monitoring is still needed.",
+            "steps": [
+              {
+                "title": "Interpret the result",
+                "explanation": "The candidate passed the defined checks."
+              },
+              {
+                "title": "Continue oversight",
+                "explanation": "Monitor real use and retain a tested recovery path."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-new-41",
+          "language": "mlops",
+          "level": "new",
+          "title": "Interpret registry status",
+          "description": "A model artifact is registered but has not passed the required review. Is it automatically approved for deployment?",
+          "choices": [
+            {
+              "text": "No; registration and approval are separate.",
+              "correct": true
+            },
+            {
+              "text": "Yes; registration always implies approval.",
+              "correct": false
+            },
+            {
+              "text": "No; registered artifacts can never be evaluated.",
+              "correct": false
+            },
+            {
+              "text": "Yes; the artifact filename is sufficient evidence.",
+              "correct": false
+            }
+          ],
+          "hint": "Tracking an artifact is not the same as authorizing its use.",
+          "solution": {
+            "code": "No; registration and approval are separate.",
+            "steps": [
+              {
+                "title": "Identify the state",
+                "explanation": "The model is registered but review is incomplete."
+              },
+              {
+                "title": "Apply governance",
+                "explanation": "Deployment requires the defined approval process."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-new-42",
+          "language": "mlops",
+          "level": "new",
+          "title": "Trace a registry alias",
+          "description": "A mutable production alias is reassigned from model v1 to v2. What record helps determine which version served an earlier release?",
+          "choices": [
+            {
+              "text": "Only the model family name.",
+              "correct": false
+            },
+            {
+              "text": "Only the current alias target.",
+              "correct": false
+            },
+            {
+              "text": "An assumption that the alias never changes.",
+              "correct": false
+            },
+            {
+              "text": "The deployment record with the exact artifact version.",
+              "correct": true
+            }
+          ],
+          "hint": "A mutable alias may not preserve its earlier target.",
+          "solution": {
+            "code": "The deployment record with the exact artifact version.",
+            "steps": [
+              {
+                "title": "Identify the change",
+                "explanation": "The alias now points to v2."
+              },
+              {
+                "title": "Trace the release",
+                "explanation": "Use the recorded immutable version for the earlier deployment."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-new-43",
+          "language": "mlops",
+          "level": "new",
+          "title": "Protect registry changes",
+          "description": "Why limit who can change a model's approval status?",
+          "choices": [
+            {
+              "text": "Unauthorized status changes could bypass the review process.",
+              "correct": true
+            },
+            {
+              "text": "Approval status has no effect on deployment policy.",
+              "correct": false
+            },
+            {
+              "text": "It guarantees every model is accurate.",
+              "correct": false
+            },
+            {
+              "text": "It removes the need to keep evaluation evidence.",
+              "correct": false
+            }
+          ],
+          "hint": "Approval is a governance decision.",
+          "solution": {
+            "code": "Unauthorized status changes could bypass the review process.",
+            "steps": [
+              {
+                "title": "Identify the risk",
+                "explanation": "An unauthorized user could mark a candidate as approved."
+              },
+              {
+                "title": "Apply access control",
+                "explanation": "Restrict status changes and retain the supporting evidence."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-new-44",
+          "language": "mlops",
+          "level": "new",
+          "title": "Interpret a schema check",
+          "description": "An ML data fixture passes checks for column names and data types. What does this result establish?",
+          "choices": [
+            {
+              "text": "All production data is unbiased and current.",
+              "correct": false
+            },
+            {
+              "text": "The pipeline is safe against every possible data issue.",
+              "correct": false
+            },
+            {
+              "text": "The model meets its quality target.",
+              "correct": false
+            },
+            {
+              "text": "The checked fixture satisfies those specified schema checks.",
+              "correct": true
+            }
+          ],
+          "hint": "A test establishes only what it checks.",
+          "solution": {
+            "code": "The checked fixture satisfies those specified schema checks.",
+            "steps": [
+              {
+                "title": "Identify the checks",
+                "explanation": "They cover names and types for a fixture."
+              },
+              {
+                "title": "Recognize the limit",
+                "explanation": "Freshness, suitability, and model quality need separate evidence."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-new-45",
+          "language": "mlops",
+          "level": "new",
+          "title": "Use a smoke test",
+          "description": "A pull request changes the training code. Full training takes days, but a small fixture can exercise the training loop in minutes. What is a useful CI check?",
+          "choices": [
+            {
+              "text": "Treat a successful smoke test as proof of production model quality.",
+              "correct": false
+            },
+            {
+              "text": "Train on the final test set to make the smoke test faster.",
+              "correct": false
+            },
+            {
+              "text": "Skip all checks until the next production incident.",
+              "correct": false
+            },
+            {
+              "text": "Run a small training smoke test and report failures, with larger evaluations elsewhere as needed.",
+              "correct": true
+            }
+          ],
+          "hint": "A smoke test detects broken paths but has limited scope.",
+          "solution": {
+            "code": "Run a small training smoke test and report failures, with larger evaluations elsewhere as needed.",
+            "steps": [
+              {
+                "title": "Choose a fast check",
+                "explanation": "A short run can reveal errors in the changed training path."
+              },
+              {
+                "title": "Keep its limits clear",
+                "explanation": "Full task quality requires appropriate evaluation beyond the smoke test."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-new-46",
+          "language": "mlops",
+          "level": "new",
+          "title": "Investigate a failing check",
+          "description": "A new model fails a CI threshold for an important evaluation slice. What is an appropriate next action?",
+          "choices": [
+            {
+              "text": "Silently remove the slice from the report.",
+              "correct": false
+            },
+            {
+              "text": "Publish a success status without reviewing the failure.",
+              "correct": false
+            },
+            {
+              "text": "Investigate the data, model change, and threshold before an approved release decision.",
+              "correct": true
+            },
+            {
+              "text": "Assume the overall score makes the slice irrelevant.",
+              "correct": false
+            }
+          ],
+          "hint": "A failing slice can reveal a hidden regression.",
+          "solution": {
+            "code": "Investigate the data, model change, and threshold before an approved release decision.",
+            "steps": [
+              {
+                "title": "Inspect the failure",
+                "explanation": "The candidate did not meet an agreed slice threshold."
+              },
+              {
+                "title": "Investigate",
+                "explanation": "Check the cause and follow the documented decision process."
+              }
+            ]
+          }
         }
       ]
     },
@@ -1955,6 +2774,786 @@
               {
                 "title": "Apply with evidence",
                 "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-beginner-26",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Compare experiment runs",
+          "description": "Run A and Run B use different validation datasets and different metric thresholds. Run B reports a higher score. What can the team conclude?",
+          "choices": [
+            {
+              "text": "Run B is necessarily better for every task.",
+              "correct": false
+            },
+            {
+              "text": "The dataset and metric definitions do not matter.",
+              "correct": false
+            },
+            {
+              "text": "The lower score must indicate a broken model.",
+              "correct": false
+            },
+            {
+              "text": "The scores are not directly comparable without accounting for those differences.",
+              "correct": true
+            }
+          ],
+          "hint": "A fair comparison requires compatible evaluation conditions.",
+          "solution": {
+            "code": "The scores are not directly comparable without accounting for those differences.",
+            "steps": [
+              {
+                "title": "Inspect evaluation conditions",
+                "explanation": "The dataset and threshold can both affect the reported score."
+              },
+              {
+                "title": "Compare consistently",
+                "explanation": "Evaluate the candidates on the same relevant split and metric definition where feasible."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-beginner-27",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Trace model artifacts",
+          "description": "A model is deployed months after training. What should the experiment record link to help investigate the deployed behavior?",
+          "choices": [
+            {
+              "text": "The exact model and preprocessing artifacts and their evaluation report.",
+              "correct": true
+            },
+            {
+              "text": "A mutable filename without version information.",
+              "correct": false
+            },
+            {
+              "text": "Only a screenshot of the final score.",
+              "correct": false
+            },
+            {
+              "text": "Only the team's meeting schedule.",
+              "correct": false
+            }
+          ],
+          "hint": "Identify the versions required to reproduce and evaluate the served pipeline.",
+          "solution": {
+            "code": "The exact model and preprocessing artifacts and their evaluation report.",
+            "steps": [
+              {
+                "title": "Identify the served components",
+                "explanation": "Both the model and preprocessing can influence predictions."
+              },
+              {
+                "title": "Connect the evidence",
+                "explanation": "Versioned artifacts and the evaluation report tie deployment behavior back to its run."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-beginner-28",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Fit a scaler safely",
+          "description": "A model uses a scaler whose mean is learned from data. Which data should be used to fit it during model development?",
+          "choices": [
+            {
+              "text": "Future production outcomes.",
+              "correct": false
+            },
+            {
+              "text": "Training data only, then apply the fitted scaler to validation and test data.",
+              "correct": true
+            },
+            {
+              "text": "The full dataset including the final test set.",
+              "correct": false
+            },
+            {
+              "text": "Only the final test set.",
+              "correct": false
+            }
+          ],
+          "hint": "Avoid allowing held-out information into the fitted preprocessing.",
+          "solution": {
+            "code": "Training data only, then apply the fitted scaler to validation and test data.",
+            "steps": [
+              {
+                "title": "Fit on training",
+                "explanation": "Estimate the scaler parameters using the training partition."
+              },
+              {
+                "title": "Apply consistently",
+                "explanation": "Transform held-out and serving data using those saved parameters."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-beginner-29",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Handle unknown categories",
+          "description": "A categorical feature may contain values that were absent in training. What should a production pipeline specify?",
+          "choices": [
+            {
+              "text": "That unknown values are impossible without checking.",
+              "correct": false
+            },
+            {
+              "text": "A rule to silently use the target label.",
+              "correct": false
+            },
+            {
+              "text": "A tested, explicit policy for unknown values.",
+              "correct": true
+            },
+            {
+              "text": "A new mapping chosen independently for every request.",
+              "correct": false
+            }
+          ],
+          "hint": "Serving data can differ from training data.",
+          "solution": {
+            "code": "A tested, explicit policy for unknown values.",
+            "steps": [
+              {
+                "title": "Identify the case",
+                "explanation": "A new category is not present in the fitted mapping."
+              },
+              {
+                "title": "Define the behavior",
+                "explanation": "Use and test a documented unknown-category policy compatible with the model."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-beginner-30",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Test pipeline parity",
+          "description": "Offline and online feature pipelines are intended to implement the same transformation. What test best checks their agreement?",
+          "choices": [
+            {
+              "text": "Inspect just one path and assume the other matches.",
+              "correct": false
+            },
+            {
+              "text": "Measure model training time only.",
+              "correct": false
+            },
+            {
+              "text": "Run the same representative raw inputs through both and compare outputs.",
+              "correct": true
+            },
+            {
+              "text": "Compare the names of the servers only.",
+              "correct": false
+            }
+          ],
+          "hint": "Use equivalent inputs and compare the resulting features.",
+          "solution": {
+            "code": "Run the same representative raw inputs through both and compare outputs.",
+            "steps": [
+              {
+                "title": "Control the inputs",
+                "explanation": "Provide the same raw values and point-in-time context to both paths."
+              },
+              {
+                "title": "Compare outputs",
+                "explanation": "Check values, types, units, and missing-value behavior, including boundary cases."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-beginner-31",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Separate type and unit",
+          "description": "A contract expects temperature in Celsius. A producer sends a numeric value in Fahrenheit without conversion. Which check is needed beyond the numeric type?",
+          "choices": [
+            {
+              "text": "A model architecture check.",
+              "correct": false
+            },
+            {
+              "text": "A requirement that the field is numeric.",
+              "correct": false
+            },
+            {
+              "text": "Only a JSON syntax check.",
+              "correct": false
+            },
+            {
+              "text": "A unit or semantic constraint.",
+              "correct": true
+            }
+          ],
+          "hint": "A valid number may still have the wrong meaning.",
+          "solution": {
+            "code": "A unit or semantic constraint.",
+            "steps": [
+              {
+                "title": "Check the type",
+                "explanation": "The value is numeric, so it can pass a type check."
+              },
+              {
+                "title": "Check semantics",
+                "explanation": "The contract must specify and enforce the expected unit."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-beginner-32",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Handle a breaking schema change",
+          "description": "A producer plans to rename a required field used by downstream consumers. What should it do?",
+          "choices": [
+            {
+              "text": "Assume every consumer updates immediately.",
+              "correct": false
+            },
+            {
+              "text": "Rename the field silently and ignore failures.",
+              "correct": false
+            },
+            {
+              "text": "Remove all validation before deployment.",
+              "correct": false
+            },
+            {
+              "text": "Coordinate a versioned migration with affected consumers.",
+              "correct": true
+            }
+          ],
+          "hint": "Existing readers may depend on the current field name.",
+          "solution": {
+            "code": "Coordinate a versioned migration with affected consumers.",
+            "steps": [
+              {
+                "title": "Identify compatibility risk",
+                "explanation": "The renamed field may break consumers expecting the old name."
+              },
+              {
+                "title": "Plan the change",
+                "explanation": "Version and coordinate the migration and check actual consumer behavior."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-beginner-33",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Respond to contract failure",
+          "description": "A freshness check fails because yesterday's data has not arrived. What should the pipeline do?",
+          "choices": [
+            {
+              "text": "Surface the failure through its defined error or alerting path.",
+              "correct": true
+            },
+            {
+              "text": "Treat the missing data as a successful run.",
+              "correct": false
+            },
+            {
+              "text": "Mark the stale data as fresh without a record.",
+              "correct": false
+            },
+            {
+              "text": "Skip all future checks.",
+              "correct": false
+            }
+          ],
+          "hint": "The consumer needs to know that the agreed expectation was not met.",
+          "solution": {
+            "code": "Surface the failure through its defined error or alerting path.",
+            "steps": [
+              {
+                "title": "Detect the violation",
+                "explanation": "The expected data is late."
+              },
+              {
+                "title": "Handle it explicitly",
+                "explanation": "Use the agreed failure or alerting process rather than silently proceeding."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-beginner-34",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Express task dependencies",
+          "description": "Evaluation requires the model produced by training. What should the orchestrator enforce?",
+          "choices": [
+            {
+              "text": "Evaluation waits for successful training and its output.",
+              "correct": true
+            },
+            {
+              "text": "A failed training task counts as successful.",
+              "correct": false
+            },
+            {
+              "text": "Evaluation starts before training by definition.",
+              "correct": false
+            },
+            {
+              "text": "Both tasks ignore their inputs.",
+              "correct": false
+            }
+          ],
+          "hint": "The downstream task consumes the upstream output.",
+          "solution": {
+            "code": "Evaluation waits for successful training and its output.",
+            "steps": [
+              {
+                "title": "Identify the dependency",
+                "explanation": "Evaluation needs the trained artifact."
+              },
+              {
+                "title": "Set the order",
+                "explanation": "Run evaluation after the required training output is available."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-beginner-35",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Retry safely",
+          "description": "A task sends a notification and then fails before recording completion. Why can a blind retry be risky?",
+          "choices": [
+            {
+              "text": "Retries always undo earlier side effects.",
+              "correct": false
+            },
+            {
+              "text": "Notifications cannot be side effects.",
+              "correct": false
+            },
+            {
+              "text": "It can send the notification twice.",
+              "correct": true
+            },
+            {
+              "text": "The failure proves the notification was never sent.",
+              "correct": false
+            }
+          ],
+          "hint": "The side effect may have happened before the failure.",
+          "solution": {
+            "code": "It can send the notification twice.",
+            "steps": [
+              {
+                "title": "Identify the ambiguity",
+                "explanation": "The notification may already have been delivered."
+              },
+              {
+                "title": "Control repeats",
+                "explanation": "Use an appropriate idempotency or deduplication strategy."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-beginner-36",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Investigate a workflow failure",
+          "description": "A training run fails after data validation. Which records best support investigation?",
+          "choices": [
+            {
+              "text": "A list of unrelated model names.",
+              "correct": false
+            },
+            {
+              "text": "Task statuses, input and output versions, and relevant logs.",
+              "correct": true
+            },
+            {
+              "text": "A success message without task details.",
+              "correct": false
+            },
+            {
+              "text": "Only the dashboard color.",
+              "correct": false
+            }
+          ],
+          "hint": "Trace the failed run and its dependencies.",
+          "solution": {
+            "code": "Task statuses, input and output versions, and relevant logs.",
+            "steps": [
+              {
+                "title": "Locate the failure",
+                "explanation": "Task statuses and logs show where the run stopped."
+              },
+              {
+                "title": "Trace inputs",
+                "explanation": "Versioned inputs and outputs help reproduce or investigate the failure."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-beginner-37",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Identify a stored artifact",
+          "description": "A model file named current.bin is overwritten for every release. What improves traceability?",
+          "choices": [
+            {
+              "text": "Assume every file with the same name has identical contents.",
+              "correct": false
+            },
+            {
+              "text": "Keep only the mutable filename.",
+              "correct": false
+            },
+            {
+              "text": "Use an immutable artifact version linked to its producing run.",
+              "correct": true
+            },
+            {
+              "text": "Delete all run records after deployment.",
+              "correct": false
+            }
+          ],
+          "hint": "The same filename can point to different contents.",
+          "solution": {
+            "code": "Use an immutable artifact version linked to its producing run.",
+            "steps": [
+              {
+                "title": "Identify the ambiguity",
+                "explanation": "The file is overwritten across releases."
+              },
+              {
+                "title": "Record identity",
+                "explanation": "A stable version and run link identify the deployed artifact."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-beginner-38",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Separate artifact permissions",
+          "description": "A monitoring service only needs to read a deployed model artifact. Which grant is appropriate?",
+          "choices": [
+            {
+              "text": "Write access to all release artifacts.",
+              "correct": false
+            },
+            {
+              "text": "Permission to delete all rollback versions.",
+              "correct": false
+            },
+            {
+              "text": "Administrator access to the store.",
+              "correct": false
+            },
+            {
+              "text": "Read access to the required artifact.",
+              "correct": true
+            }
+          ],
+          "hint": "Match the permission to the required operation.",
+          "solution": {
+            "code": "Read access to the required artifact.",
+            "steps": [
+              {
+                "title": "Identify the need",
+                "explanation": "The service reads the model."
+              },
+              {
+                "title": "Limit the grant",
+                "explanation": "Read access to the necessary artifact avoids unrelated write privileges."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-beginner-39",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Verify artifact integrity",
+          "description": "A deployment downloads a model and a checksum from the same untrusted source. What additional evidence is useful?",
+          "choices": [
+            {
+              "text": "A successful download without integrity checks.",
+              "correct": false
+            },
+            {
+              "text": "A checksum from the same untrusted source alone.",
+              "correct": false
+            },
+            {
+              "text": "A trusted expected digest or verified signature.",
+              "correct": true
+            },
+            {
+              "text": "Only the model filename.",
+              "correct": false
+            }
+          ],
+          "hint": "An attacker controlling the source could replace both files.",
+          "solution": {
+            "code": "A trusted expected digest or verified signature.",
+            "steps": [
+              {
+                "title": "Identify the limitation",
+                "explanation": "The downloaded checksum is not an independent trust anchor."
+              },
+              {
+                "title": "Verify independently",
+                "explanation": "Use a trusted expected digest or signature where supported."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-beginner-40",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Identify a container image",
+          "description": "A training image is rebuilt under the same mutable tag. What identifier helps distinguish the exact image used?",
+          "choices": [
+            {
+              "text": "An immutable image digest.",
+              "correct": true
+            },
+            {
+              "text": "The current date without a build record.",
+              "correct": false
+            },
+            {
+              "text": "The model title.",
+              "correct": false
+            },
+            {
+              "text": "Only the mutable tag.",
+              "correct": false
+            }
+          ],
+          "hint": "The same tag can refer to different image contents.",
+          "solution": {
+            "code": "An immutable image digest.",
+            "steps": [
+              {
+                "title": "Identify the ambiguity",
+                "explanation": "The tag was reused for another build."
+              },
+              {
+                "title": "Record exact identity",
+                "explanation": "An image digest identifies the image contents."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-beginner-41",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Provide a training secret",
+          "description": "How should a containerized training job obtain a credential?",
+          "choices": [
+            {
+              "text": "Bake the credential into the image.",
+              "correct": false
+            },
+            {
+              "text": "Commit it into a public configuration file.",
+              "correct": false
+            },
+            {
+              "text": "Use an appropriate secret or identity system at runtime.",
+              "correct": true
+            },
+            {
+              "text": "Print it in the build log.",
+              "correct": false
+            }
+          ],
+          "hint": "Secrets should not be embedded in persistent image layers or logs.",
+          "solution": {
+            "code": "Use an appropriate secret or identity system at runtime.",
+            "steps": [
+              {
+                "title": "Identify the risk",
+                "explanation": "Images and logs can be widely accessible and retained."
+              },
+              {
+                "title": "Provide it securely",
+                "explanation": "Use the platform's approved secret or identity mechanism."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-beginner-42",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Understand container limits",
+          "description": "A container image runs on one machine but fails on another with an incompatible accelerator driver. What does this show?",
+          "choices": [
+            {
+              "text": "Image identity guarantees identical behavior everywhere.",
+              "correct": false
+            },
+            {
+              "text": "Containers include all possible host drivers automatically.",
+              "correct": false
+            },
+            {
+              "text": "Training never depends on hardware.",
+              "correct": false
+            },
+            {
+              "text": "The host runtime and hardware still matter.",
+              "correct": true
+            }
+          ],
+          "hint": "A container relies on host-provided capabilities.",
+          "solution": {
+            "code": "The host runtime and hardware still matter.",
+            "steps": [
+              {
+                "title": "Identify the missing dependency",
+                "explanation": "The second host has an incompatible driver."
+              },
+              {
+                "title": "Check the runtime",
+                "explanation": "Hardware and driver compatibility remain deployment requirements."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-beginner-43",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Interpret a registry stage",
+          "description": "A model version is labeled production-ready, but no evaluation or approval record is available. What can be concluded from the label alone?",
+          "choices": [
+            {
+              "text": "The deployed artifact must be identical to the labeled version.",
+              "correct": false
+            },
+            {
+              "text": "The model cannot have any compatibility issues.",
+              "correct": false
+            },
+            {
+              "text": "The model meets every quality and safety requirement.",
+              "correct": false
+            },
+            {
+              "text": "The label communicates a status, but does not prove that the required checks occurred.",
+              "correct": true
+            }
+          ],
+          "hint": "A status label and release evidence are distinct.",
+          "solution": {
+            "code": "The label communicates a status, but does not prove that the required checks occurred.",
+            "steps": [
+              {
+                "title": "Read the status",
+                "explanation": "The registry shows a production-ready label."
+              },
+              {
+                "title": "Identify missing evidence",
+                "explanation": "The label alone does not demonstrate evaluation or approval."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-beginner-44",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Deploy the reviewed version",
+          "description": "A team approved model version 4, but a deployment resolves a mutable registry label to version 5. What should the team verify?",
+          "choices": [
+            {
+              "text": "The label name alone matches the deployment environment.",
+              "correct": false
+            },
+            {
+              "text": "Version 5 has a larger number than version 4.",
+              "correct": false
+            },
+            {
+              "text": "The registry contains at least one model.",
+              "correct": false
+            },
+            {
+              "text": "The resolved artifact matches the reviewed and approved version before deployment.",
+              "correct": true
+            }
+          ],
+          "hint": "Labels can point to different versions over time.",
+          "solution": {
+            "code": "The resolved artifact matches the reviewed and approved version before deployment.",
+            "steps": [
+              {
+                "title": "Compare identities",
+                "explanation": "The approved version and resolved version differ."
+              },
+              {
+                "title": "Prevent mismatch",
+                "explanation": "Deploy the exact approved artifact or obtain the required review for the new version."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-beginner-45",
+          "language": "mlops",
+          "level": "beginner",
+          "title": "Roll back a compatible release",
+          "description": "An older model requires an older preprocessing configuration. What should a rollback restore?",
+          "choices": [
+            {
+              "text": "The newest preprocessing regardless of compatibility.",
+              "correct": false
+            },
+            {
+              "text": "Only the registry label without checking the serving artifact.",
+              "correct": false
+            },
+            {
+              "text": "A compatible model and preprocessing combination, with its needed dependencies.",
+              "correct": true
+            },
+            {
+              "text": "Only the model file while leaving incompatible preprocessing in place.",
+              "correct": false
+            }
+          ],
+          "hint": "Model input semantics depend on preprocessing as well as weights.",
+          "solution": {
+            "code": "A compatible model and preprocessing combination, with its needed dependencies.",
+            "steps": [
+              {
+                "title": "Identify the dependency",
+                "explanation": "The older model expects an older preprocessing configuration."
+              },
+              {
+                "title": "Restore the bundle",
+                "explanation": "Roll back a compatible release and verify serving behavior."
               }
             ]
           }
@@ -2938,6 +4537,825 @@
               }
             ]
           }
+        },
+        {
+          "id": "mlops-intermediate-26",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Detect a default mismatch",
+          "description": "For the same input at the same time, offline preprocessing replaces a missing value with 0 while online preprocessing uses -1. What should the parity test report?",
+          "choices": [
+            {
+              "text": "A pass because the model file has not changed.",
+              "correct": false
+            },
+            {
+              "text": "A feature mismatch requiring investigation of the definitions.",
+              "correct": true
+            },
+            {
+              "text": "A failure of the final test set's labels.",
+              "correct": false
+            },
+            {
+              "text": "A pass because both outputs are numbers.",
+              "correct": false
+            }
+          ],
+          "hint": "Compare transformed values, not just output types.",
+          "solution": {
+            "code": "A feature mismatch requiring investigation of the definitions.",
+            "steps": [
+              {
+                "title": "Compare outputs",
+                "explanation": "The same missing input receives different default values."
+              },
+              {
+                "title": "Investigate the cause",
+                "explanation": "The offline and online feature definitions need to be reconciled before relying on parity."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-intermediate-27",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Respect publication time",
+          "description": "A daily total is computed at 18:00. An offline training example represents a prediction at 10:00 on the same day. Should that day's total be used as a feature?",
+          "choices": [
+            {
+              "text": "Yes, provided the final model artifact is versioned.",
+              "correct": false
+            },
+            {
+              "text": "Yes, because it has the same calendar date.",
+              "correct": false
+            },
+            {
+              "text": "No, because it was not available at prediction time.",
+              "correct": true
+            },
+            {
+              "text": "No, because all aggregated features are invalid.",
+              "correct": false
+            }
+          ],
+          "hint": "Compare the feature publication time with the decision time.",
+          "solution": {
+            "code": "No, because it was not available at prediction time.",
+            "steps": [
+              {
+                "title": "Check availability",
+                "explanation": "The total is published eight hours after the decision."
+              },
+              {
+                "title": "Avoid leakage",
+                "explanation": "The historical feature must use only data available by the prediction time."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-intermediate-28",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Interpret a passing parity test",
+          "description": "Offline and online feature outputs match for all cases in a small test suite. What can the team conclude?",
+          "choices": [
+            {
+              "text": "The tested cases match, but untested cases and model accuracy still need evaluation.",
+              "correct": true
+            },
+            {
+              "text": "All production data is guaranteed fresh.",
+              "correct": false
+            },
+            {
+              "text": "The model is guaranteed accurate for every user.",
+              "correct": false
+            },
+            {
+              "text": "Future feature changes cannot introduce mismatches.",
+              "correct": false
+            }
+          ],
+          "hint": "A test only directly covers the inputs and properties it checks.",
+          "solution": {
+            "code": "The tested cases match, but untested cases and model accuracy still need evaluation.",
+            "steps": [
+              {
+                "title": "Interpret the evidence",
+                "explanation": "The test establishes agreement for the selected cases and comparison rules."
+              },
+              {
+                "title": "Cover remaining risks",
+                "explanation": "Additional boundary cases, production monitoring, and model evaluation address different risks."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-intermediate-29",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Identify DAG dependencies",
+          "description": "A workflow evaluates a model only after training completes. Which dependency is required?",
+          "choices": [
+            {
+              "text": "Training and evaluation must form a cycle.",
+              "correct": false
+            },
+            {
+              "text": "Training must precede evaluation.",
+              "correct": true
+            },
+            {
+              "text": "Evaluation must precede training.",
+              "correct": false
+            },
+            {
+              "text": "Neither task may have inputs.",
+              "correct": false
+            }
+          ],
+          "hint": "Evaluation consumes the trained artifact.",
+          "solution": {
+            "code": "Training must precede evaluation.",
+            "steps": [
+              {
+                "title": "Identify the input",
+                "explanation": "Evaluation requires the trained model."
+              },
+              {
+                "title": "Set the dependency",
+                "explanation": "The training task must complete before evaluation can run."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-intermediate-30",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Retry a failed task safely",
+          "description": "An evaluation task fails due to a temporary service error while an unrelated data check already succeeded. What should a retry strategy consider?",
+          "choices": [
+            {
+              "text": "Always rerun every task regardless of artifact validity.",
+              "correct": false
+            },
+            {
+              "text": "Retry evaluation when its inputs remain valid and avoid repeating unsafe side effects.",
+              "correct": true
+            },
+            {
+              "text": "Mark the failed evaluation as passed.",
+              "correct": false
+            },
+            {
+              "text": "Remove the evaluation dependency.",
+              "correct": false
+            }
+          ],
+          "hint": "Selective retry depends on inputs and side effects.",
+          "solution": {
+            "code": "Retry evaluation when its inputs remain valid and avoid repeating unsafe side effects.",
+            "steps": [
+              {
+                "title": "Check retry conditions",
+                "explanation": "A transient failure can be retried if the task and inputs support it."
+              },
+              {
+                "title": "Protect completed work",
+                "explanation": "Reuse valid upstream results and ensure side effects are safe to repeat."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-intermediate-31",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Invalidate stale workflow artifacts",
+          "description": "A cached training output was produced with an older data snapshot. A new run uses a different snapshot. When is reuse valid?",
+          "choices": [
+            {
+              "text": "Always, because a cache entry exists.",
+              "correct": false
+            },
+            {
+              "text": "Always, because the task name is unchanged.",
+              "correct": false
+            },
+            {
+              "text": "Only if the old result is deleted after deployment.",
+              "correct": false
+            },
+            {
+              "text": "Only if the workflow's cache policy establishes that the changed input does not affect the result.",
+              "correct": true
+            }
+          ],
+          "hint": "A cache key must represent inputs that affect the output.",
+          "solution": {
+            "code": "Only if the workflow's cache policy establishes that the changed input does not affect the result.",
+            "steps": [
+              {
+                "title": "Identify the change",
+                "explanation": "The new run uses a different data snapshot."
+              },
+              {
+                "title": "Check dependency validity",
+                "explanation": "Reusing the old result without accounting for the changed input can produce an incorrect workflow output."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-intermediate-32",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Identify a reproducible snapshot",
+          "description": "A source table is mutable and can be backfilled after a run. Which record best identifies the exact input version?",
+          "choices": [
+            {
+              "text": "A note that the table existed.",
+              "correct": false
+            },
+            {
+              "text": "An immutable snapshot or version identifier.",
+              "correct": true
+            },
+            {
+              "text": "Only the current table name.",
+              "correct": false
+            },
+            {
+              "text": "Only the model display name.",
+              "correct": false
+            }
+          ],
+          "hint": "A mutable source name can refer to different contents later.",
+          "solution": {
+            "code": "An immutable snapshot or version identifier.",
+            "steps": [
+              {
+                "title": "Identify the risk",
+                "explanation": "Backfills can change the table after training."
+              },
+              {
+                "title": "Record a fixed reference",
+                "explanation": "An immutable version identifies the data used by the run."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-intermediate-33",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Preserve preprocessing context",
+          "description": "Two runs use the same immutable dataset but different feature transformation code. What can differ?",
+          "choices": [
+            {
+              "text": "The source snapshot identity by definition.",
+              "correct": false
+            },
+            {
+              "text": "Their resulting training inputs.",
+              "correct": true
+            },
+            {
+              "text": "Whether the data has a version identifier.",
+              "correct": false
+            },
+            {
+              "text": "The meaning of the word immutable.",
+              "correct": false
+            }
+          ],
+          "hint": "The pipeline can transform the same raw data differently.",
+          "solution": {
+            "code": "Their resulting training inputs.",
+            "steps": [
+              {
+                "title": "Compare the raw inputs",
+                "explanation": "Both runs refer to the same snapshot."
+              },
+              {
+                "title": "Consider transformations",
+                "explanation": "Different preprocessing can produce different model inputs."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-intermediate-34",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Understand reproducibility limits",
+          "description": "A team records the dataset snapshot but not the training code or environment. What can it conclude?",
+          "choices": [
+            {
+              "text": "The snapshot alone is insufficient to guarantee exact reproduction.",
+              "correct": true
+            },
+            {
+              "text": "No other state matters for training.",
+              "correct": false
+            },
+            {
+              "text": "Code versions do not affect results.",
+              "correct": false
+            },
+            {
+              "text": "The run is guaranteed bit-for-bit reproducible.",
+              "correct": false
+            }
+          ],
+          "hint": "The data is only one part of a run.",
+          "solution": {
+            "code": "The snapshot alone is insufficient to guarantee exact reproduction.",
+            "steps": [
+              {
+                "title": "Identify missing information",
+                "explanation": "Code and environment can affect the outcome."
+              },
+              {
+                "title": "Limit the claim",
+                "explanation": "The recorded snapshot helps but does not by itself guarantee exact reproduction."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-intermediate-35",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Trace an affected deployment",
+          "description": "A training dataset is found to have an error. Which lineage link helps find affected production systems?",
+          "choices": [
+            {
+              "text": "A list of unrelated team members.",
+              "correct": false
+            },
+            {
+              "text": "Dataset version to training run to model artifact to deployment.",
+              "correct": true
+            },
+            {
+              "text": "Only the deployment display name.",
+              "correct": false
+            },
+            {
+              "text": "The current date without artifact records.",
+              "correct": false
+            }
+          ],
+          "hint": "Follow the dependency chain forward.",
+          "solution": {
+            "code": "Dataset version to training run to model artifact to deployment.",
+            "steps": [
+              {
+                "title": "Identify the source",
+                "explanation": "Start with the affected dataset version."
+              },
+              {
+                "title": "Trace downstream",
+                "explanation": "Find runs, resulting artifacts, and deployments that used them."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-intermediate-36",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Interpret missing lineage",
+          "description": "A model record has no link to its preprocessing code. What can be concluded?",
+          "choices": [
+            {
+              "text": "The model is guaranteed reproducible.",
+              "correct": false
+            },
+            {
+              "text": "The record has a gap that needs investigation.",
+              "correct": true
+            },
+            {
+              "text": "All deployments use identical features.",
+              "correct": false
+            },
+            {
+              "text": "The model definitely used no preprocessing.",
+              "correct": false
+            }
+          ],
+          "hint": "Missing documentation is not evidence that a dependency did not exist.",
+          "solution": {
+            "code": "The record has a gap that needs investigation.",
+            "steps": [
+              {
+                "title": "Identify the gap",
+                "explanation": "No preprocessing link was recorded."
+              },
+              {
+                "title": "Investigate",
+                "explanation": "Check artifacts and workflow records rather than assuming no preprocessing occurred."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-intermediate-37",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Protect lineage records",
+          "description": "Why restrict changes to lineage records?",
+          "choices": [
+            {
+              "text": "Unauthorized edits could make provenance unreliable.",
+              "correct": true
+            },
+            {
+              "text": "Lineage must never be audited.",
+              "correct": false
+            },
+            {
+              "text": "Version identifiers cannot be changed in any system.",
+              "correct": false
+            },
+            {
+              "text": "Access control guarantees the model is accurate.",
+              "correct": false
+            }
+          ],
+          "hint": "The records are used to understand what happened.",
+          "solution": {
+            "code": "Unauthorized edits could make provenance unreliable.",
+            "steps": [
+              {
+                "title": "Identify the risk",
+                "explanation": "Uncontrolled edits can alter the recorded history."
+              },
+              {
+                "title": "Protect the record",
+                "explanation": "Control changes and test completeness while following retention policy."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-intermediate-38",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Distinguish schema and quality",
+          "description": "A dataset has the expected field types, but every measurement is an impossible value. What does this show?",
+          "choices": [
+            {
+              "text": "All values are valid because the types match.",
+              "correct": false
+            },
+            {
+              "text": "Quality checks are unnecessary.",
+              "correct": false
+            },
+            {
+              "text": "Schema validity alone does not establish data quality.",
+              "correct": true
+            },
+            {
+              "text": "The model is guaranteed to work.",
+              "correct": false
+            }
+          ],
+          "hint": "Type correctness and value plausibility differ.",
+          "solution": {
+            "code": "Schema validity alone does not establish data quality.",
+            "steps": [
+              {
+                "title": "Check structure",
+                "explanation": "The fields have the expected types."
+              },
+              {
+                "title": "Check values",
+                "explanation": "Impossible measurements violate a separate quality constraint."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-intermediate-39",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Handle a failed check",
+          "description": "A required safety check fails before deployment. What should the workflow do?",
+          "choices": [
+            {
+              "text": "Block advancement or follow a defined exception process.",
+              "correct": true
+            },
+            {
+              "text": "Delete the evaluation result and proceed silently.",
+              "correct": false
+            },
+            {
+              "text": "Treat the missing approval as permission.",
+              "correct": false
+            },
+            {
+              "text": "Mark the check as passed to keep the schedule.",
+              "correct": false
+            }
+          ],
+          "hint": "A required check is part of the promotion policy.",
+          "solution": {
+            "code": "Block advancement or follow a defined exception process.",
+            "steps": [
+              {
+                "title": "Identify the result",
+                "explanation": "The required check failed."
+              },
+              {
+                "title": "Apply the policy",
+                "explanation": "Block or route through a documented exception process."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-intermediate-40",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Test a validator",
+          "description": "How can a team check that its automated validation detects a missing required field?",
+          "choices": [
+            {
+              "text": "Assume a configured rule always executes correctly.",
+              "correct": false
+            },
+            {
+              "text": "Run an intentionally invalid example missing that field.",
+              "correct": true
+            },
+            {
+              "text": "Test only valid examples.",
+              "correct": false
+            },
+            {
+              "text": "Disable the validation rule.",
+              "correct": false
+            }
+          ],
+          "hint": "A negative case should exercise the failure path.",
+          "solution": {
+            "code": "Run an intentionally invalid example missing that field.",
+            "steps": [
+              {
+                "title": "Construct an invalid input",
+                "explanation": "Omit the required field."
+              },
+              {
+                "title": "Verify the response",
+                "explanation": "The validation should fail and surface the reason."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-intermediate-41",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Interpret a short canary",
+          "description": "A candidate receives very little traffic and has zero observed errors. What is a cautious conclusion?",
+          "choices": [
+            {
+              "text": "The sample may be too small to rule out an elevated error rate.",
+              "correct": true
+            },
+            {
+              "text": "Future quality is guaranteed.",
+              "correct": false
+            },
+            {
+              "text": "No control comparison is needed.",
+              "correct": false
+            },
+            {
+              "text": "The candidate is proven error-free.",
+              "correct": false
+            }
+          ],
+          "hint": "A small sample provides limited evidence.",
+          "solution": {
+            "code": "The sample may be too small to rule out an elevated error rate.",
+            "steps": [
+              {
+                "title": "Observe the result",
+                "explanation": "No errors appeared in the small sample."
+              },
+              {
+                "title": "Consider uncertainty",
+                "explanation": "Rare problems may not appear in a short canary."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-intermediate-42",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Account for delayed labels",
+          "description": "A canary has normal latency but task-quality labels arrive a week later. What is the limitation of a one-hour test?",
+          "choices": [
+            {
+              "text": "A control group cannot be monitored.",
+              "correct": false
+            },
+            {
+              "text": "It may not reveal quality regressions that require delayed labels.",
+              "correct": true
+            },
+            {
+              "text": "Normal latency proves task quality is unchanged.",
+              "correct": false
+            },
+            {
+              "text": "Delayed labels automatically arrive during the test.",
+              "correct": false
+            }
+          ],
+          "hint": "Operational metrics and outcome labels can arrive at different times.",
+          "solution": {
+            "code": "It may not reveal quality regressions that require delayed labels.",
+            "steps": [
+              {
+                "title": "Identify available evidence",
+                "explanation": "Latency is available during the short test."
+              },
+              {
+                "title": "Identify missing evidence",
+                "explanation": "Task outcomes may not yet be measurable."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-intermediate-43",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Use predefined rollback rules",
+          "description": "A candidate exceeds a predefined error threshold during a canary. What should the team do?",
+          "choices": [
+            {
+              "text": "Ignore the threshold because the release has started.",
+              "correct": false
+            },
+            {
+              "text": "Follow the documented hold or rollback decision process.",
+              "correct": true
+            },
+            {
+              "text": "Change the threshold silently after seeing the result.",
+              "correct": false
+            },
+            {
+              "text": "Route all traffic to the candidate immediately.",
+              "correct": false
+            }
+          ],
+          "hint": "Decision rules should be defined before observing rollout results.",
+          "solution": {
+            "code": "Follow the documented hold or rollback decision process.",
+            "steps": [
+              {
+                "title": "Compare the metric",
+                "explanation": "The candidate crossed the error threshold."
+              },
+              {
+                "title": "Apply the policy",
+                "explanation": "Hold or roll back according to the agreed rule."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-intermediate-44",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Interpret shadow predictions",
+          "description": "A shadow candidate produces different scores from the serving model, but outcome labels have not arrived. What can be concluded?",
+          "choices": [
+            {
+              "text": "The candidate has already changed user-facing decisions.",
+              "correct": false
+            },
+            {
+              "text": "The serving model is wrong for every request.",
+              "correct": false
+            },
+            {
+              "text": "The models differ, but the observed difference alone does not establish which is better.",
+              "correct": true
+            },
+            {
+              "text": "The candidate is better because its scores differ.",
+              "correct": false
+            }
+          ],
+          "hint": "Comparing scores is not the same as comparing outcomes.",
+          "solution": {
+            "code": "The models differ, but the observed difference alone does not establish which is better.",
+            "steps": [
+              {
+                "title": "Observe the evidence",
+                "explanation": "The predictions differ, but outcome labels are pending."
+              },
+              {
+                "title": "Limit the conclusion",
+                "explanation": "Evaluate task quality when sufficient relevant outcomes become available."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-intermediate-45",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Prevent shadow side effects",
+          "description": "A candidate in shadow mode calls a downstream service that sends a real notification. What is the problem?",
+          "choices": [
+            {
+              "text": "Notifications are required for an unbiased shadow comparison.",
+              "correct": false
+            },
+            {
+              "text": "The shadow path can cause a user-facing side effect and needs isolation.",
+              "correct": true
+            },
+            {
+              "text": "The side effect proves the candidate is ready for production.",
+              "correct": false
+            },
+            {
+              "text": "Shadow mode guarantees all tool calls are read-only.",
+              "correct": false
+            }
+          ],
+          "hint": "A label does not disable downstream actions.",
+          "solution": {
+            "code": "The shadow path can cause a user-facing side effect and needs isolation.",
+            "steps": [
+              {
+                "title": "Trace the action",
+                "explanation": "The shadow candidate invokes a live notification service."
+              },
+              {
+                "title": "Isolate it",
+                "explanation": "Prevent or safely substitute side-effecting calls during evaluation."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-intermediate-46",
+          "language": "mlops",
+          "level": "intermediate",
+          "title": "Compare shadow inputs",
+          "description": "The shadow model receives fresher features than the serving model for the same request. Why does this matter?",
+          "choices": [
+            {
+              "text": "A performance difference may reflect the input mismatch rather than the model alone.",
+              "correct": true
+            },
+            {
+              "text": "The candidate automatically receives the same inputs because it is in shadow mode.",
+              "correct": false
+            },
+            {
+              "text": "The results prove that the serving model is worse.",
+              "correct": false
+            },
+            {
+              "text": "Feature freshness cannot affect predictions.",
+              "correct": false
+            }
+          ],
+          "hint": "A fair model comparison depends on comparable inputs.",
+          "solution": {
+            "code": "A performance difference may reflect the input mismatch rather than the model alone.",
+            "steps": [
+              {
+                "title": "Identify the mismatch",
+                "explanation": "The two paths see different feature freshness."
+              },
+              {
+                "title": "Interpret the comparison",
+                "explanation": "Measure or control that difference before attributing results to model changes."
+              }
+            ]
+          }
         }
       ]
     },
@@ -3915,6 +6333,747 @@
               {
                 "title": "Apply with evidence",
                 "explanation": "Check this principle against representative data and the stated use. The other options describe related concepts, not the named one."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-advanced-26",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Avoid late feature leakage",
+          "description": "An event occurred at 09:00, a prediction was made at 10:00, and the feature derived from that event was published at 11:00. Should the historical 10:00 example include it?",
+          "choices": [
+            {
+              "text": "Yes, because a feature store always prevents leakage.",
+              "correct": false
+            },
+            {
+              "text": "No, because the feature was not available at prediction time.",
+              "correct": true
+            },
+            {
+              "text": "No, because historical features can never be used.",
+              "correct": false
+            },
+            {
+              "text": "Yes, because the event occurred before prediction.",
+              "correct": false
+            }
+          ],
+          "hint": "Event time and availability time can differ.",
+          "solution": {
+            "code": "No, because the feature was not available at prediction time.",
+            "steps": [
+              {
+                "title": "Compare timestamps",
+                "explanation": "The feature was published after the prediction."
+              },
+              {
+                "title": "Use available information",
+                "explanation": "Exclude that value from the historical example unless an equivalent value was available at 10:00."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-advanced-27",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Handle stale online features",
+          "description": "An online feature is older than its documented maximum age. Which behavior should the serving system use?",
+          "choices": [
+            {
+              "text": "Apply the defined missing-or-stale fallback and record the condition.",
+              "correct": true
+            },
+            {
+              "text": "Delete all model versions immediately.",
+              "correct": false
+            },
+            {
+              "text": "Assume the model is correct because training succeeded.",
+              "correct": false
+            },
+            {
+              "text": "Silently treat the stale value as fresh.",
+              "correct": false
+            }
+          ],
+          "hint": "The freshness contract should define what happens when the value is late.",
+          "solution": {
+            "code": "Apply the defined missing-or-stale fallback and record the condition.",
+            "steps": [
+              {
+                "title": "Detect the violation",
+                "explanation": "The feature exceeds its stated freshness threshold."
+              },
+              {
+                "title": "Use the contract",
+                "explanation": "Apply the documented fallback and monitor or log the condition as appropriate."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-advanced-28",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Version a feature definition",
+          "description": "A team changes a feature from a seven-day count to a thirty-day count while retaining its name. What is a key risk?",
+          "choices": [
+            {
+              "text": "Consumers may silently receive changed semantics incompatible with existing models.",
+              "correct": true
+            },
+            {
+              "text": "The old training dataset automatically updates correctly.",
+              "correct": false
+            },
+            {
+              "text": "Versioning makes historical values unnecessary.",
+              "correct": false
+            },
+            {
+              "text": "All downstream models will necessarily improve.",
+              "correct": false
+            }
+          ],
+          "hint": "A stable name does not guarantee a stable meaning.",
+          "solution": {
+            "code": "Consumers may silently receive changed semantics incompatible with existing models.",
+            "steps": [
+              {
+                "title": "Identify the change",
+                "explanation": "The aggregation window changes what the feature measures."
+              },
+              {
+                "title": "Protect consumers",
+                "explanation": "Version and communicate the change, then evaluate compatible training and serving paths."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-advanced-29",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Separate training from promotion",
+          "description": "A scheduled pipeline trains a candidate model successfully. What follows under a governed continuous-training process?",
+          "choices": [
+            {
+              "text": "Deploy immediately regardless of policy.",
+              "correct": false
+            },
+            {
+              "text": "Assume a training success proves quality.",
+              "correct": false
+            },
+            {
+              "text": "Delete the existing production model first.",
+              "correct": false
+            },
+            {
+              "text": "Evaluate and apply the required approval policy before deployment.",
+              "correct": true
+            }
+          ],
+          "hint": "A trained candidate is not the same as an approved release.",
+          "solution": {
+            "code": "Evaluate and apply the required approval policy before deployment.",
+            "steps": [
+              {
+                "title": "Identify the stage",
+                "explanation": "Training produced a candidate."
+              },
+              {
+                "title": "Apply promotion gates",
+                "explanation": "Evaluation and required approval remain separate steps."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-advanced-30",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Handle invalid training data",
+          "description": "A continuous-training run detects a schema violation in its input. What is the appropriate response?",
+          "choices": [
+            {
+              "text": "Stop or route the run for investigation according to policy.",
+              "correct": true
+            },
+            {
+              "text": "Treat every invalid record as valid.",
+              "correct": false
+            },
+            {
+              "text": "Remove the check permanently.",
+              "correct": false
+            },
+            {
+              "text": "Silently train and mark the data check as passed.",
+              "correct": false
+            }
+          ],
+          "hint": "A failed data check needs an explicit path.",
+          "solution": {
+            "code": "Stop or route the run for investigation according to policy.",
+            "steps": [
+              {
+                "title": "Identify the failure",
+                "explanation": "The input violates the expected schema."
+              },
+              {
+                "title": "Use the failure policy",
+                "explanation": "Block or investigate rather than silently presenting the run as valid."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-advanced-31",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Rollback a model release",
+          "description": "A new model performs poorly after rollout. What should a rollback restore?",
+          "choices": [
+            {
+              "text": "The newest input schema regardless of compatibility.",
+              "correct": false
+            },
+            {
+              "text": "A compatible model and preprocessing package.",
+              "correct": true
+            },
+            {
+              "text": "Only an unrelated model name.",
+              "correct": false
+            },
+            {
+              "text": "Only monitoring dashboards.",
+              "correct": false
+            }
+          ],
+          "hint": "The model depends on the transformations used to produce its inputs.",
+          "solution": {
+            "code": "A compatible model and preprocessing package.",
+            "steps": [
+              {
+                "title": "Identify the dependency",
+                "explanation": "The model and preprocessing must work together."
+              },
+              {
+                "title": "Restore the release",
+                "explanation": "Roll back to a tested compatible combination."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-advanced-32",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Detect semantic mismatch",
+          "description": "A serving feature has the expected name and numeric type, but its unit changed from meters to feet. Why can a schema-only check miss it?",
+          "choices": [
+            {
+              "text": "The schema can match while the meaning of the value changes.",
+              "correct": true
+            },
+            {
+              "text": "Type checks automatically detect every unit conversion.",
+              "correct": false
+            },
+            {
+              "text": "A matching name proves the transform is unchanged.",
+              "correct": false
+            },
+            {
+              "text": "Feature units never affect models.",
+              "correct": false
+            }
+          ],
+          "hint": "Type and semantic meaning are distinct.",
+          "solution": {
+            "code": "The schema can match while the meaning of the value changes.",
+            "steps": [
+              {
+                "title": "Check the shape",
+                "explanation": "The name and type still match."
+              },
+              {
+                "title": "Check meaning",
+                "explanation": "A unit change can alter the feature values seen by the model."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-advanced-33",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Test training-serving parity",
+          "description": "How should a team check that a preprocessing change behaves consistently in training and serving?",
+          "choices": [
+            {
+              "text": "Assume matching file names imply equivalent transforms.",
+              "correct": false
+            },
+            {
+              "text": "Check only that both services are online.",
+              "correct": false
+            },
+            {
+              "text": "Use different inputs in each path.",
+              "correct": false
+            },
+            {
+              "text": "Compare resulting features for representative inputs, including boundary cases.",
+              "correct": true
+            }
+          ],
+          "hint": "Compare outputs produced from the same inputs.",
+          "solution": {
+            "code": "Compare resulting features for representative inputs, including boundary cases.",
+            "steps": [
+              {
+                "title": "Prepare cases",
+                "explanation": "Include normal, missing, and boundary inputs."
+              },
+              {
+                "title": "Compare results",
+                "explanation": "Check both paths using suitable tolerances and investigate differences."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-advanced-34",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Promote compatible versions",
+          "description": "A candidate model expects feature definition v2, but the serving pipeline supplies v1. What should happen before promotion?",
+          "choices": [
+            {
+              "text": "Verify and deploy a compatible feature and preprocessing combination.",
+              "correct": true
+            },
+            {
+              "text": "Promote immediately because the model file exists.",
+              "correct": false
+            },
+            {
+              "text": "Rename v1 to v2 without checking behavior.",
+              "correct": false
+            },
+            {
+              "text": "Disable input validation.",
+              "correct": false
+            }
+          ],
+          "hint": "Version labels reflect a dependency that must be checked.",
+          "solution": {
+            "code": "Verify and deploy a compatible feature and preprocessing combination.",
+            "steps": [
+              {
+                "title": "Identify the mismatch",
+                "explanation": "The model and serving pipeline expect different feature versions."
+              },
+              {
+                "title": "Resolve compatibility",
+                "explanation": "Test and release the appropriate combination together."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-advanced-35",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Restore a compatible release",
+          "description": "An older model requires preprocessing v1, while production currently runs v2. What should rollback consider?",
+          "choices": [
+            {
+              "text": "Keeping the newest preprocessing regardless of behavior.",
+              "correct": false
+            },
+            {
+              "text": "Restoring only the model and assuming compatibility.",
+              "correct": false
+            },
+            {
+              "text": "Restoring a tested model and preprocessing combination.",
+              "correct": true
+            },
+            {
+              "text": "Removing all feature checks.",
+              "correct": false
+            }
+          ],
+          "hint": "Model inputs depend on preprocessing semantics.",
+          "solution": {
+            "code": "Restoring a tested model and preprocessing combination.",
+            "steps": [
+              {
+                "title": "Identify the dependency",
+                "explanation": "The prior model expects v1."
+              },
+              {
+                "title": "Restore the combination",
+                "explanation": "Use a compatible, tested release rather than an isolated model file."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-advanced-36",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Handle in-flight work",
+          "description": "A rollback occurs while asynchronous requests are still running. Why plan for in-flight work?",
+          "choices": [
+            {
+              "text": "Rollback changes only the dashboard.",
+              "correct": false
+            },
+            {
+              "text": "It may otherwise complete with incompatible versions or be duplicated.",
+              "correct": true
+            },
+            {
+              "text": "Asynchronous tasks never produce results.",
+              "correct": false
+            },
+            {
+              "text": "In-flight requests disappear automatically in every system.",
+              "correct": false
+            }
+          ],
+          "hint": "Existing work may outlive the routing change.",
+          "solution": {
+            "code": "It may otherwise complete with incompatible versions or be duplicated.",
+            "steps": [
+              {
+                "title": "Identify the overlap",
+                "explanation": "Some requests began under the previous release."
+              },
+              {
+                "title": "Coordinate transition",
+                "explanation": "Define how to complete, cancel, or route them safely."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-advanced-37",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Exercise rollback",
+          "description": "A team has stored an old model artifact but never tested restoring it with current consumers. What is the main gap?",
+          "choices": [
+            {
+              "text": "A rollback never needs monitoring.",
+              "correct": false
+            },
+            {
+              "text": "Artifact availability does not establish end-to-end compatibility.",
+              "correct": true
+            },
+            {
+              "text": "Consumers cannot depend on schemas.",
+              "correct": false
+            },
+            {
+              "text": "The artifact name proves rollback will work.",
+              "correct": false
+            }
+          ],
+          "hint": "A release involves multiple interfaces and dependencies.",
+          "solution": {
+            "code": "Artifact availability does not establish end-to-end compatibility.",
+            "steps": [
+              {
+                "title": "Identify the evidence",
+                "explanation": "The old artifact exists."
+              },
+              {
+                "title": "Test the path",
+                "explanation": "Exercise restoration and verify producer and consumer compatibility."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-advanced-38",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Locate a fleet owner",
+          "description": "A deployed model fails and no team knows who maintains it. Which fleet record would help?",
+          "choices": [
+            {
+              "text": "The age of an unrelated dataset.",
+              "correct": false
+            },
+            {
+              "text": "Only a list of model filenames.",
+              "correct": false
+            },
+            {
+              "text": "An inventory linking the deployment to an owner and purpose.",
+              "correct": true
+            },
+            {
+              "text": "A global CPU chart without service names.",
+              "correct": false
+            }
+          ],
+          "hint": "Incident response requires a responsible owner.",
+          "solution": {
+            "code": "An inventory linking the deployment to an owner and purpose.",
+            "steps": [
+              {
+                "title": "Identify the gap",
+                "explanation": "The deployment has no known owner."
+              },
+              {
+                "title": "Maintain inventory",
+                "explanation": "Record ownership and contact paths for each deployment."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-advanced-39",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Detect shared capacity contention",
+          "description": "Overall fleet CPU utilization looks healthy, but one model's latency is increasing. What should the team inspect?",
+          "choices": [
+            {
+              "text": "Assume no issue exists because the aggregate is healthy.",
+              "correct": false
+            },
+            {
+              "text": "Only the fleet-wide average.",
+              "correct": false
+            },
+            {
+              "text": "Only the model title.",
+              "correct": false
+            },
+            {
+              "text": "Per-service utilization, latency, and shared resource contention.",
+              "correct": true
+            }
+          ],
+          "hint": "Aggregate metrics can hide individual workload problems.",
+          "solution": {
+            "code": "Per-service utilization, latency, and shared resource contention.",
+            "steps": [
+              {
+                "title": "Identify the discrepancy",
+                "explanation": "One service is degraded despite a healthy average."
+              },
+              {
+                "title": "Inspect the workload",
+                "explanation": "Per-service metrics can reveal contention or saturation."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-advanced-40",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Trace a shared dependency",
+          "description": "A library vulnerability affects several model services. Which fleet capability helps identify them?",
+          "choices": [
+            {
+              "text": "An inventory linking deployments to dependency versions.",
+              "correct": true
+            },
+            {
+              "text": "Only a list of current user names.",
+              "correct": false
+            },
+            {
+              "text": "A single fleet-wide accuracy number.",
+              "correct": false
+            },
+            {
+              "text": "A policy that assumes all models are independent.",
+              "correct": false
+            }
+          ],
+          "hint": "The team needs to know which deployments use the affected version.",
+          "solution": {
+            "code": "An inventory linking deployments to dependency versions.",
+            "steps": [
+              {
+                "title": "Identify the dependency",
+                "explanation": "The vulnerable library version is known."
+              },
+              {
+                "title": "Trace affected services",
+                "explanation": "Use recorded dependency links to prioritize investigation."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-advanced-41",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Interpret client participation",
+          "description": "A federated round is dominated by clients that are usually online at night; daytime-only clients rarely participate. What risk deserves investigation?",
+          "choices": [
+            {
+              "text": "Participation bias may cause the update to underrepresent daytime-only clients.",
+              "correct": true
+            },
+            {
+              "text": "The round is automatically representative because all updates are local.",
+              "correct": false
+            },
+            {
+              "text": "Secure aggregation guarantees equal client participation.",
+              "correct": false
+            },
+            {
+              "text": "Client availability cannot affect the aggregated model.",
+              "correct": false
+            }
+          ],
+          "hint": "Consider whether participating clients reflect the intended population.",
+          "solution": {
+            "code": "Participation bias may cause the update to underrepresent daytime-only clients.",
+            "steps": [
+              {
+                "title": "Inspect selection",
+                "explanation": "Availability differs across client groups."
+              },
+              {
+                "title": "Assess the consequence",
+                "explanation": "Uneven participation can change which data influences the model."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-advanced-42",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Handle stale updates",
+          "description": "A client submits an update trained against an older global model than the round's required version. What should the coordinator do?",
+          "choices": [
+            {
+              "text": "Apply the configured version and staleness policy before accepting the update.",
+              "correct": true
+            },
+            {
+              "text": "Accept it only because its client sent it before the deadline.",
+              "correct": false
+            },
+            {
+              "text": "Silently relabel it as a current-version update.",
+              "correct": false
+            },
+            {
+              "text": "Always aggregate it as if it used the current model.",
+              "correct": false
+            }
+          ],
+          "hint": "Arrival time and model compatibility are separate checks.",
+          "solution": {
+            "code": "Apply the configured version and staleness policy before accepting the update.",
+            "steps": [
+              {
+                "title": "Identify the mismatch",
+                "explanation": "The update was computed against a different model version."
+              },
+              {
+                "title": "Apply the round policy",
+                "explanation": "Reject, defer, or handle staleness only as explicitly designed."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-advanced-43",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Distinguish privacy controls",
+          "description": "A team keeps raw records on devices and uses secure aggregation. Which additional claim requires separate evidence?",
+          "choices": [
+            {
+              "text": "The training process satisfies a specified differential privacy guarantee.",
+              "correct": true
+            },
+            {
+              "text": "Raw training records are not sent as part of the described update.",
+              "correct": false
+            },
+            {
+              "text": "A coordinator distributes a model for a training round.",
+              "correct": false
+            },
+            {
+              "text": "Individual client updates are combined by the secure aggregation protocol.",
+              "correct": false
+            }
+          ],
+          "hint": "Secure aggregation and differential privacy address different properties.",
+          "solution": {
+            "code": "The training process satisfies a specified differential privacy guarantee.",
+            "steps": [
+              {
+                "title": "Identify the controls",
+                "explanation": "Keeping data local and securely aggregating updates do not define a differential privacy mechanism."
+              },
+              {
+                "title": "Require evidence",
+                "explanation": "A privacy guarantee needs an appropriate mechanism and accounting."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mlops-advanced-44",
+          "language": "mlops",
+          "level": "advanced",
+          "title": "Investigate a hidden regression",
+          "description": "Global model accuracy improves after a federated round, but a sufficiently sampled client population's accuracy falls. What should the team do?",
+          "choices": [
+            {
+              "text": "Assume the drop is caused by privacy controls without evidence.",
+              "correct": false
+            },
+            {
+              "text": "Promote immediately because aggregate accuracy increased.",
+              "correct": false
+            },
+            {
+              "text": "Average away the regression and stop tracking client populations.",
+              "correct": false
+            },
+            {
+              "text": "Investigate the population-level regression alongside aggregate performance.",
+              "correct": true
+            }
+          ],
+          "hint": "A global average does not describe every population.",
+          "solution": {
+            "code": "Investigate the population-level regression alongside aggregate performance.",
+            "steps": [
+              {
+                "title": "Compare results",
+                "explanation": "Aggregate performance improved while one population deteriorated."
+              },
+              {
+                "title": "Investigate the slice",
+                "explanation": "Examine data, participation, weighting and uncertainty before promotion."
               }
             ]
           }

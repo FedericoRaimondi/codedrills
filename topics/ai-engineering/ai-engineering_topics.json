@@ -13,8 +13,29 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "An AI feature needs a user problem, decision point, measurable outcome, and non-AI baseline before model selection. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Start with the user",
+              "body": "Describe who has the problem, when it occurs, and what they do today. For example, support agents may spend time finding relevant policy passages before answering a customer. State the task in terms of the user's work rather than a solution such as 'add a chatbot'.",
+              "image": "img/languages/ai-engineering/feature-framing-user-problem.png"
+            },
+            {
+              "title": "Identify the decision",
+              "body": "Decide what the system will suggest and who remains responsible for the outcome. A policy assistant could retrieve passages for an agent to review, rather than automatically promising a refund. Define the inputs available at that point and what should happen when the information is missing.",
+              "image": "img/languages/ai-engineering/feature-framing-decision.png"
+            },
+            {
+              "title": "Measure the outcome",
+              "body": "Choose a measurable outcome and a guardrail that reflects the risk. For a support assistant, compare time to find the right policy and the rate of unsupported answers on representative cases. Faster answers alone are not a success if they misstate policy.",
+              "image": "img/languages/ai-engineering/feature-framing-measures.png"
+            },
+            {
+              "title": "Compare a baseline",
+              "body": "Compare the proposed feature with the current workflow and a simple alternative, such as a keyword search of the policy library. Use the same cases and assessment criteria for each approach. A more complex model is useful only if its benefits justify its costs and risks.",
+              "image": "img/languages/ai-engineering/feature-framing-baseline.png"
+            },
+            {
+              "title": "Check the boundaries",
+              "body": "Include ambiguous requests, outdated policies, and cases outside the feature's scope in evaluation. Define when the assistant should ask for clarification or defer to a person. Revisit the framing if representative users cannot act on the output or the guardrails are not met.",
+              "image": "img/languages/ai-engineering/feature-framing-handoff.png"
             }
           ]
         },
@@ -28,7 +49,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Product behavior depends on interfaces, data, policy, and operations in addition to the model itself. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A model produces predictions or generated content. A product surrounds that model with an interface, data, rules, and operations that determine what users actually experience. Improving the model alone may not fix a confusing interface or missing data.",
+              "image": "img/languages/ai-engineering/product-components.png"
+            },
+            {
+              "title": "Follow a request",
+              "body": "A policy assistant may accept a question, retrieve documents, send selected passages to a model, and display an answer with sources. Each stage can affect the result. If retrieval misses the relevant policy, a capable model may still have insufficient evidence.",
+              "image": "img/languages/ai-engineering/product-request-flow.png"
+            },
+            {
+              "title": "Design for failure",
+              "body": "Plan for timeouts, missing documents, malformed outputs, and questions outside the supported scope. Give users a clear error or a way to ask a person for help instead of presenting a failed request as a reliable answer.",
+              "image": "img/languages/ai-engineering/product-error-fallback.png"
+            },
+            {
+              "title": "Measure the whole experience",
+              "body": "A model benchmark can show how the model behaves on a fixed set of examples, but it does not measure the entire workflow. Also evaluate whether users find the feature useful, can verify its answers, and can complete their task within acceptable latency and cost.",
+              "image": "img/languages/ai-engineering/product-experience-measures.png"
+            },
+            {
+              "title": "Assign ownership",
+              "body": "Identify who maintains the data, evaluates changes, handles incidents, and updates user guidance. For example, a policy team may update source documents while an engineering team monitors retrieval and service health. Coordinate changes because a product release can alter behavior without changing the model.",
+              "image": "img/languages/ai-engineering/product-ownership.png"
             }
           ]
         },
@@ -42,7 +84,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Contracts define accepted inputs, response shape, and error behavior around uncertain model outputs. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A contract specifies what a component accepts, what it returns, and how it reports failures. For a policy assistant, an input contract might require a question and a supported language. An output contract might distinguish an answer with sources from an explicit no-evidence result.",
+              "image": "img/languages/ai-engineering/contracts-overview.png"
+            },
+            {
+              "title": "Validate inputs",
+              "body": "Check required fields, types, size limits, and allowed values before invoking the model. For example, an empty question should produce a clear validation error rather than an invented answer. A valid input shape alone does not establish that the content is trustworthy.",
+              "image": "img/languages/ai-engineering/contracts-input-validation.png"
+            },
+            {
+              "title": "Define output states",
+              "body": "A response can distinguish success, insufficient evidence, and processing failure. On success, require the fields needed by the application, such as answer text and source identifiers. Do not represent a timeout or missing evidence as a successful answer.",
+              "image": "img/languages/ai-engineering/contracts-response-states.png"
+            },
+            {
+              "title": "Check the generated result",
+              "body": "Model output can violate the requested structure. Parse and validate it before use, check that cited identifiers refer to permitted sources, and handle an invalid response explicitly. A syntactically valid response is not necessarily factually correct.",
+              "image": "img/languages/ai-engineering/contracts-output-validation.png"
+            },
+            {
+              "title": "Change contracts carefully",
+              "body": "When a field or status changes, consider existing clients and document compatibility. Test normal requests, missing fields, invalid model responses, and error paths. A contract makes interactions predictable, but it does not eliminate the need for task-level evaluation.",
+              "image": "img/languages/ai-engineering/contracts-compatibility.png"
             }
           ]
         },
@@ -56,7 +119,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Quality may include correctness, latency, coverage, safety, and cost, with task-specific trade-offs. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "An AI feature can be fast but wrong, accurate but too slow, or useful only for a narrow set of requests. Define quality in terms of the user's task rather than a single model score.",
+              "image": "img/languages/ai-engineering/quality-dimensions.png"
+            },
+            {
+              "title": "Measure correctness",
+              "body": "For a support assistant, correctness may include answering the question accurately and using valid evidence. Review representative cases with clear criteria. A well-formatted answer is not necessarily factually correct.",
+              "image": "img/languages/ai-engineering/quality-correctness.png"
+            },
+            {
+              "title": "Check coverage",
+              "body": "Coverage describes which requests the system can handle under a defined policy. Separate successful answers from appropriate refusals and failures. Inspect important request categories and user groups so an overall average does not hide gaps.",
+              "image": "img/languages/ai-engineering/quality-coverage.png"
+            },
+            {
+              "title": "Consider time and cost",
+              "body": "Measure response time from the user's perspective and include both typical and slow requests. Track serving cost under realistic traffic. A more expensive model might improve one metric while missing a latency or budget requirement.",
+              "image": "img/languages/ai-engineering/quality-latency-cost.png"
+            },
+            {
+              "title": "Set trade-offs explicitly",
+              "body": "Choose task-specific targets for accuracy, safety, coverage, latency, and cost before comparing candidates. Use held-out cases and monitor after release. A single average or a benchmark from another task cannot establish that the feature meets all requirements.",
+              "image": "img/languages/ai-engineering/quality-targets.png"
             }
           ]
         },
@@ -70,7 +154,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Rules, simple models, and current workflows offer a reference for whether added complexity helps. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A baseline is a practical reference for judging a new approach. It might be the current workflow, a simple rule, or a smaller model. Without a comparison, a promising score does not show whether added complexity provides value.",
+              "image": "img/languages/ai-engineering/baseline-reference.png"
+            },
+            {
+              "title": "Define the task",
+              "body": "Describe the user need, the inputs available at decision time, and what a useful result looks like. Choose a baseline that could actually be used for the same task and respects the same information constraints.",
+              "image": "img/languages/ai-engineering/baseline-task-definition.png"
+            },
+            {
+              "title": "Build a simple reference",
+              "body": "For a support-ticket routing task, a keyword rule or an existing manual process might serve as a baseline. Record the rule and any exceptions so its behavior can be reproduced and compared fairly.",
+              "image": "img/languages/ai-engineering/baseline-ticket-rule.png"
+            },
+            {
+              "title": "Compare fairly",
+              "body": "Evaluate both approaches on representative cases with the same task metric and relevant operating conditions. Include error types, latency, cost, and human effort where they matter. Avoid tuning on the final evaluation set.",
+              "image": "img/languages/ai-engineering/baseline-fair-comparison.png"
+            },
+            {
+              "title": "Decide from evidence",
+              "body": "Adopt added complexity only if its benefits justify its costs and risks for the intended use. A simple baseline may remain useful as a fallback or monitoring reference even after a more complex approach is deployed.",
+              "image": "img/languages/ai-engineering/baseline-decision.png"
             }
           ]
         },
@@ -84,7 +189,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Users need a clear route when a model is uncertain, unavailable, or outside its intended scope. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A human fallback gives users a route to help when an automated system cannot handle a request safely or reliably. The route should be usable, not just a message that says to try again.",
+              "image": "img/languages/ai-engineering/fallback-overview.png"
+            },
+            {
+              "title": "Define escalation triggers",
+              "body": "Escalation can be appropriate when a request is outside the system's scope, a required service is unavailable, or an applicable policy requires human review. A model's confidence signal alone may be unreliable and needs evaluation.",
+              "image": "img/languages/ai-engineering/fallback-triggers.png"
+            },
+            {
+              "title": "Prepare the handoff",
+              "body": "Pass the relevant request, context, and reason for escalation to the authorized reviewer. Minimize sensitive information and obtain any required consent. Tell the user what information will be shared.",
+              "image": "img/languages/ai-engineering/fallback-handoff.png"
+            },
+            {
+              "title": "Set expectations",
+              "body": "Explain how the user can reach help, what happens next, and any known response-time expectations. Do not promise immediate review unless the service can deliver it. Provide a clear path when the human channel is unavailable.",
+              "image": "img/languages/ai-engineering/fallback-expectations.png"
+            },
+            {
+              "title": "Evaluate the fallback",
+              "body": "Test that eligible requests reach the right team and that reviewers have enough context to act. Monitor handoff failures, wait times, and user outcomes. Review whether escalation rules miss important cases or overwhelm the review team.",
+              "image": "img/languages/ai-engineering/fallback-evaluation.png"
             }
           ]
         },
@@ -98,8 +224,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Map user input through retrieval, inference, tools, storage, and human review, marking trust boundaries. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use.",
-              "image": "img/languages/ai-engineering/system-boundaries.png"
+              "body": "A system boundary map shows how data and actions move through an application. Marking where information crosses between users, services, models, and external systems helps identify checks and responsibilities.",
+              "image": "img/languages/ai-engineering/system-boundary-overview.png"
+            },
+            {
+              "title": "Trace the request",
+              "body": "Follow a user request through the application, retrieval, model inference, and response. Record where data is transformed, stored, or sent to another service. Include failure and fallback paths, not only the successful route.",
+              "image": "img/languages/ai-engineering/system-boundary-request.png"
+            },
+            {
+              "title": "Mark trust boundaries",
+              "body": "User input, retrieved documents, and tool results can contain untrusted content. A boundary crossing should have appropriate validation and authorization. A diagram helps locate those checks but does not itself enforce them.",
+              "image": "img/languages/ai-engineering/system-boundary-trust.png"
+            },
+            {
+              "title": "Map actions and access",
+              "body": "Show which component can read data, call a tool, or change state. Distinguish a model's proposed action from the application's authorization and the tool's execution. Identify where human review is required.",
+              "image": "img/languages/ai-engineering/system-boundary-actions.png"
+            },
+            {
+              "title": "Review changes",
+              "body": "Update the map when dependencies, data flows, or permissions change. Walk through representative requests and failures with the responsible teams. Verify the actual implementation, since a diagram can become outdated.",
+              "image": "img/languages/ai-engineering/system-boundary-review.png"
             }
           ]
         },
@@ -112,8 +258,29 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Training features should be available with the same meaning and timing at inference. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Use information available at prediction",
+              "body": "A model can only use information that exists when it makes a prediction. If a loan model predicts at application time, a repayment recorded months later cannot be an input to that decision. Training on such future information creates leakage and can make offline performance look better than real-world performance. Write down the decision time before selecting features.",
+              "image": "img/languages/ai-engineering/prediction-data-time.png"
+            },
+            {
+              "title": "Preserve feature meaning",
+              "body": "A feature name is not enough to establish that training and serving use the same information. Check units, category definitions, transformations, and whether missing values are handled consistently. For example, a training value in dollars and a serving value in cents have the same shape but different meaning. Define and version these contracts with the model.",
+              "image": "img/languages/ai-engineering/prediction-data-meaning.png"
+            },
+            {
+              "title": "Respect availability delays",
+              "body": "Some inputs are created before a decision but arrive in the feature system later. A daily report published at noon is not available for a 9 a.m. decision even if it describes the previous day. Reconstruct historical features using what was actually available at each prediction time. Account for late updates and source-specific delays.",
+              "image": "img/languages/ai-engineering/prediction-data-delay.png"
+            },
+            {
+              "title": "Handle missing and stale inputs",
+              "body": "Serving inputs can be absent, delayed, or outdated. Decide in advance whether to use a documented default, abstain, or return an error based on the feature and the application's risk. A value from last week may be acceptable for a slow-changing attribute but unsafe for a rapidly changing one. Record missingness and freshness so these decisions can be monitored.",
+              "image": "img/languages/ai-engineering/prediction-data-freshness.png"
+            },
+            {
+              "title": "Compare training and serving",
+              "body": "Run the same representative examples through the training and serving preprocessing paths and compare resulting features. Include missing values, boundary values, units, and time-dependent lookups. Investigate differences before release instead of assuming that matching model files imply matching inputs. Continue monitoring for changes to upstream sources after deployment.",
+              "image": "img/languages/ai-engineering/prediction-data-parity.png"
             }
           ]
         },
@@ -230,7 +397,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Stable API contracts define schema, versioning, errors, and compatibility independently of model internals. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "An API contract describes the request, response, and failure behavior that clients can rely on. For a policy assistant, define the question field, supported options, and response states independently of which model processes the request.",
+              "image": "img/languages/ai-engineering/contracts-overview.png"
+            },
+            {
+              "title": "Specify request and response",
+              "body": "Define required and optional fields, types, size limits, and allowed values. Specify success and no-evidence responses separately, including how source identifiers are represented. Validate requests and model outputs against the contract rather than assuming either is well formed.",
+              "image": "img/languages/ai-engineering/contracts-output-validation.png"
+            },
+            {
+              "title": "Make errors actionable",
+              "body": "Document errors for invalid input, authorization failures, unavailable dependencies, and timeouts. Clients need to distinguish a request they should correct from a temporary failure they may retry. Avoid returning a fabricated answer or exposing sensitive implementation details in an error.",
+              "image": "img/languages/ai-engineering/contracts-response-states.png"
+            },
+            {
+              "title": "Plan compatible changes",
+              "body": "Identify clients and their assumptions before changing fields or status values. Even an added field can break a client that rejects unknown fields. Use an explicit versioning or migration strategy when needed, and test old and new clients against the documented behavior.",
+              "image": "img/languages/ai-engineering/contracts-compatibility.png"
+            },
+            {
+              "title": "Test the boundary",
+              "body": "Exercise a valid request, missing and malformed fields, unauthorized access, model timeouts, and invalid generated outputs. Verify both response shape and error behavior. A response that matches the schema still needs task-specific checks for correctness.",
+              "image": "img/languages/ai-engineering/api-contract-test-cases.png"
             }
           ]
         },
@@ -244,7 +432,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Validate format, size, allowed values, and authorization before data reaches the model. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Input validation checks whether a request meets the application's contract before processing it. For an AI feature, validate structured fields and limits before building the model request; do not assume the model will reliably reject malformed inputs.",
+              "image": "img/languages/ai-engineering/input-validation-overview.png"
+            },
+            {
+              "title": "Check the request shape",
+              "body": "Require expected fields and types, then validate allowed values. For example, a summary request might require nonempty text and a supported output language. Return a clear validation error when a required field is missing instead of silently inventing a value.",
+              "image": "img/languages/ai-engineering/contracts-input-validation.png"
+            },
+            {
+              "title": "Limit resource use",
+              "body": "Apply limits to uploaded file size and request length before expensive processing. Count tokens using the tokenizer used by the target model when enforcing its context limit, including instructions and reserved output space. A character limit alone is not an exact token count.",
+              "image": "img/languages/ai-engineering/input-resource-limits.png"
+            },
+            {
+              "title": "Check permissions",
+              "body": "Validation and authorization answer different questions. A document ID can be correctly formatted but still refer to content the caller cannot access. Check the caller's permission at the resource boundary and handle denials without revealing protected data.",
+              "image": "img/languages/ai-engineering/input-validation-authorization.png"
+            },
+            {
+              "title": "Test boundary cases",
+              "body": "Exercise missing fields, wrong types, oversized inputs, unsupported values, and unauthorized resources. Also test valid edge cases so limits do not reject legitimate requests. Record failures without logging sensitive request content unnecessarily.",
+              "image": "img/languages/ai-engineering/api-contract-test-cases.png"
             }
           ]
         },
@@ -258,7 +467,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Check generated values against schema and business rules before downstream use. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Generated output can be syntactically valid yet unsuitable for the task. Validate its structure and values before passing it to a downstream component, and handle failures explicitly.",
+              "image": "img/languages/ai-engineering/output-validation-boundary.png"
+            },
+            {
+              "title": "Check structure",
+              "body": "A schema can require fields and types: for example, an order summary may need a string order ID and a numeric quantity. Reject missing fields or invalid types instead of assuming that parseable JSON has the expected shape.",
+              "image": "img/languages/ai-engineering/output-schema-types.png"
+            },
+            {
+              "title": "Check business rules",
+              "body": "A correctly typed quantity can still be negative or exceed the available inventory. Apply task-specific bounds and cross-field checks after structural validation. Validate against authoritative data where the rules require it.",
+              "image": "img/languages/ai-engineering/output-business-rules.png"
+            },
+            {
+              "title": "Handle invalid output",
+              "body": "Return a clear error or use a bounded, observable retry when appropriate. Do not silently substitute a plausible value or execute a partially valid action. A retry should not repeat side effects that have already happened.",
+              "image": "img/languages/ai-engineering/invalid-output-handling.png"
+            },
+            {
+              "title": "Test the boundary",
+              "body": "Exercise missing fields, wrong types, out-of-range values, and conflicting fields, as well as valid examples. Record validation failures without logging unnecessary sensitive content. A validator checks defined rules; it does not prove that every generated claim is true.",
+              "image": "img/languages/ai-engineering/output-validation-tests.png"
             }
           ]
         },
@@ -272,7 +502,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Prompts and model parameters are production configuration and need traceable reviewed versions. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A prompt is part of an AI application's behavior, so changes should be traceable and reviewed like other production configuration. Record the model and relevant generation settings as well as the prompt template.",
+              "image": "img/languages/ai-engineering/prompt-version-release.png"
+            },
+            {
+              "title": "Identify a version",
+              "body": "Give each approved template an immutable identifier and retain its contents and intended purpose. Record which version a run or release used. A name such as latest is not sufficient to reproduce an earlier configuration.",
+              "image": "img/languages/ai-engineering/prompt-version-identity.png"
+            },
+            {
+              "title": "Separate data from the template",
+              "body": "Define the template and its input fields separately. Record the template version without unnecessarily storing sensitive user inputs. Clearly mark untrusted content, while enforcing permissions outside the prompt.",
+              "image": "img/languages/ai-engineering/prompt-version-inputs.png"
+            },
+            {
+              "title": "Evaluate changes",
+              "body": "Compare candidate prompt versions on the same representative cases with relevant quality and safety criteria. Record model settings and inspect regressions. A favorable result on a few examples does not guarantee improvement in production.",
+              "image": "img/languages/ai-engineering/prompt-version-evaluation.png"
+            },
+            {
+              "title": "Release and recover",
+              "body": "Review and promote the tested version, monitor its behavior, and retain a way to restore a previous compatible configuration. Track changes to model versions and tools too, since a prompt alone does not determine the entire system's behavior.",
+              "image": "img/languages/ai-engineering/prompt-version-rollback.png"
             }
           ]
         },
@@ -286,7 +537,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Timeouts bound latency; retry only within limits and ensure side effects are safe. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A timeout limits how long a caller waits for an operation. A retry can recover from some temporary failures, but it can also increase load or repeat an action that already happened.",
+              "image": "img/languages/ai-engineering/retry-timeout-overview.png"
+            },
+            {
+              "title": "Set a deadline",
+              "body": "Choose timeouts based on the user-facing latency budget and observed service behavior. An overall deadline may cover several attempts. A timeout does not prove that the remote service stopped processing the request.",
+              "image": "img/languages/ai-engineering/retry-deadline.png"
+            },
+            {
+              "title": "Retry selectively",
+              "body": "Retry failures that are likely to be temporary and allowed by the service contract. Use a limited number of attempts with backoff and jitter. Invalid input or an authorization failure usually needs correction rather than repeated identical requests.",
+              "image": "img/languages/ai-engineering/retry-selective.png"
+            },
+            {
+              "title": "Protect side effects",
+              "body": "A timed-out request may have completed remotely even if its response was lost. For operations that create or change state, use a supported idempotency key or another deduplication mechanism, and check status when appropriate.",
+              "image": "img/languages/ai-engineering/retry-idempotency.png"
+            },
+            {
+              "title": "Test and observe",
+              "body": "Test slow responses, lost responses, transient failures, and retry exhaustion. Track timeouts, retries, latency, and duplicate operations. Return an explicit failure when the retry budget is exhausted rather than reporting a false success.",
+              "image": "img/languages/ai-engineering/retry-observability.png"
             }
           ]
         },
@@ -300,7 +572,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "A fallback should preserve user safety and communicate degraded capability instead of pretending success. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A fallback is an alternative path used when the primary service cannot complete a task. It should preserve the application's safety requirements and make reduced capability clear to the user.",
+              "image": "img/languages/ai-engineering/fallback-behavior-overview.png"
+            },
+            {
+              "title": "Define a safe alternative",
+              "body": "An unavailable model might trigger a limited rule-based response or a human-support route. Choose the alternative for the task and its risks. If no safe result is available, return a clear failure rather than inventing one.",
+              "image": "img/languages/ai-engineering/fallback-behavior-alternatives.png"
+            },
+            {
+              "title": "Communicate degradation",
+              "body": "Tell the user what the fallback can and cannot do. Do not report a state-changing operation as completed when it was not performed. Provide a next step when the task cannot be completed automatically.",
+              "image": "img/languages/ai-engineering/fallback-behavior-status.png"
+            },
+            {
+              "title": "Keep controls in place",
+              "body": "Fallbacks still need authorization, data protection, and input validation. A lower-capability route must not bypass checks merely because the primary service is unavailable. Define timeouts and retry limits for the fallback too.",
+              "image": "img/languages/ai-engineering/fallback-behavior-controls.png"
+            },
+            {
+              "title": "Test and monitor",
+              "body": "Exercise primary failures, fallback failures, and recovery. Verify user-visible status and side effects, then monitor fallback frequency and outcomes. A fallback that is rarely used can still fail if it is never tested.",
+              "image": "img/languages/ai-engineering/fallback-behavior-testing.png"
             }
           ]
         },
@@ -313,8 +606,29 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Handoff should transfer relevant context and unresolved uncertainty without unnecessary data exposure. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Know when to hand off",
+              "body": "A human handoff transfers a task from an automated system to a person or team. Triggers may include insufficient evidence, a request outside the system's authority, repeated failures, or a situation requiring human judgment. Define those triggers and the destination before deployment. An escalation is useful only if someone can receive and act on it.",
+              "image": "img/languages/ai-engineering/handoff-trigger.png"
+            },
+            {
+              "title": "Provide useful context",
+              "body": "Give the recipient the user's request, relevant facts, actions already taken, and the reason for escalation. Distinguish observed facts from model-generated summaries and include links to authorized evidence when appropriate. For example, a support agent needs to know whether a refund was already issued before deciding on another action. A concise structured handoff reduces repeated work.",
+              "image": "img/languages/ai-engineering/handoff-context.png"
+            },
+            {
+              "title": "Communicate uncertainty",
+              "body": "State what is unknown, conflicting, or unverified rather than presenting a guess as a fact. If a tool timed out, report that the outcome is unknown unless its status has been reconciled. The recipient can then decide whether to inspect the system, ask the user, or take another permitted step. Preserve enough detail to prevent duplicate actions.",
+              "image": "img/languages/ai-engineering/handoff-uncertainty.png"
+            },
+            {
+              "title": "Limit exposed data",
+              "body": "Send only information needed for the receiving team to resolve the task, and apply the relevant access and retention rules. A handoff should not include credentials or unrelated private history merely because those details were in the model's context. Store a reference to protected evidence instead of copying sensitive content when the workflow supports it. Access must still be checked when the reference is opened.",
+              "image": "img/languages/ai-engineering/handoff-privacy.png"
+            },
+            {
+              "title": "Close the loop",
+              "body": "Tell the user whether the task has been transferred and what happens next without promising a response time the team cannot meet. Track acceptance, unresolved cases, and outcomes so dropped handoffs can be investigated. Test the process with missing information, unavailable recipients, and duplicate requests. A queued handoff is not the same as a completed resolution.",
+              "image": "img/languages/ai-engineering/handoff-followup.png"
             }
           ]
         },
@@ -445,7 +759,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Separating orchestration, retrieval, inference, policy, and storage enables focused testing and scaling. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Decompose a model-backed application by responsibilities, not by the number of available technologies. Orchestration coordinates a request; retrieval finds evidence; inference produces a model response; policy checks govern allowed behavior; storage maintains state and data.",
+              "image": "img/languages/ai-engineering/service-decomposition.png"
+            },
+            {
+              "title": "Define component contracts",
+              "body": "Specify the inputs, outputs, failure states, and ownership of each boundary. For example, retrieval can return ranked passage IDs and text with source versions, while inference accepts a bounded context. A stable contract makes it possible to test or replace a component without assuming its internals.",
+              "image": "img/languages/ai-engineering/service-retrieval-contract.png"
+            },
+            {
+              "title": "Place policy at enforcement points",
+              "body": "Apply authorization where protected data or actions are accessed, not solely in prompts or upstream routing. Retrieval must filter results according to the caller's permissions, and a tool must independently authorize its operation. The orchestrator should propagate the relevant identity and handle denials.",
+              "image": "img/languages/ai-engineering/service-authorization.png"
+            },
+            {
+              "title": "Manage distributed failures",
+              "body": "Separate services introduce network latency, timeouts, retries, and partial failures. Set deadlines and define which operations can be retried safely; a retry of a side-effecting tool requires appropriate idempotency controls. Expose meaningful failure states rather than returning an unsupported answer.",
+              "image": "img/languages/ai-engineering/service-failure-handling.png"
+            },
+            {
+              "title": "Evaluate the trade-off",
+              "body": "Independent deployment and scaling can help when retrieval and inference have different resource needs. Additional boundaries also increase operational and debugging costs. Measure end-to-end latency and quality, trace requests across components, and keep closely coupled work together when separation has no clear benefit.",
+              "image": "img/languages/ai-engineering/service-decomposition-tradeoffs.png"
             }
           ]
         },
@@ -459,7 +794,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Async jobs handle long workloads but need status, cancellation, and idempotent submission. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Asynchronous inference accepts work for later processing instead of holding a request open until inference finishes. The client receives a job identifier and can check status or receive a notification. This pattern is useful for long tasks but adds queue and lifecycle management.",
+              "image": "img/languages/ai-engineering/async-job-flow.png"
+            },
+            {
+              "title": "Define job states",
+              "body": "Document states such as queued, running, succeeded, failed, and canceled, including terminal states and result retention. A client should distinguish a pending job from a completed job with an empty result. Access to status and results must be authorized.",
+              "image": "img/languages/ai-engineering/async-job-states.png"
+            },
+            {
+              "title": "Make submission retry-safe",
+              "body": "A submission response can time out after the server has accepted the job. A client-supplied idempotency key and server-side deduplication can prevent a retry from creating a second job. Define key scope, expiration, and behavior for reused keys with different payloads.",
+              "image": "img/languages/ai-engineering/service-failure-handling.png"
+            },
+            {
+              "title": "Handle cancellation and failure",
+              "body": "Cancellation is usually a request, not proof that work stopped immediately. Define what happens when cancellation races with completion and whether partial results are kept. Expose a failed state and a useful error category; use bounded retries only where repeating work is safe.",
+              "image": "img/languages/ai-engineering/async-job-cancellation.png"
+            },
+            {
+              "title": "Control the queue",
+              "body": "Measure queue wait, execution time, failure rate, and backlog. Apply admission limits or backpressure when capacity is exhausted, and communicate retry guidance to clients. Retain logs and results according to access and privacy requirements.",
+              "image": "img/languages/ai-engineering/async-queue-metrics.png"
             }
           ]
         },
@@ -473,7 +829,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Rate limits protect capacity and distribute service fairly across users and tenants. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Rate limiting controls how much work a caller can request over time. It can protect shared capacity and help distribute it fairly, but the limit needs to reflect the actual resources being consumed.",
+              "image": "img/languages/ai-engineering/rate-limit-capacity.png"
+            },
+            {
+              "title": "Choose a limit key",
+              "body": "Limits can apply per user, tenant, API key, or service, depending on the policy. A shared limit alone may allow one caller to consume the capacity of others. Combine scopes when both individual and overall protection are needed.",
+              "image": "img/languages/ai-engineering/rate-limit-scopes.png"
+            },
+            {
+              "title": "Choose a quota",
+              "body": "A request count is easy to understand, but requests may differ greatly in token count, runtime, or cost. A policy can account for the relevant resource and define how bursts are handled. Make the time window and quota visible to clients.",
+              "image": "img/languages/ai-engineering/rate-limit-resources.png"
+            },
+            {
+              "title": "Handle rejected requests",
+              "body": "Return an explicit rate-limit response and, when available, information about when a client may retry. Clients should use bounded retries with backoff and jitter rather than retrying immediately in a synchronized loop.",
+              "image": "img/languages/ai-engineering/rate-limit-retry.png"
+            },
+            {
+              "title": "Monitor and tune",
+              "body": "Measure rejected requests, latency, resource utilization, and consumption by scope. Test burst behavior and concurrent callers, then adjust limits using observed demand and fairness goals. Rate limiting does not replace authentication or capacity planning.",
+              "image": "img/languages/ai-engineering/rate-limit-metrics.png"
             }
           ]
         },
@@ -487,7 +864,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Circuit breakers stop repeated calls to unhealthy dependencies and permit controlled recovery. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "A circuit breaker limits calls to a dependency that appears unhealthy. It can reduce repeated failures and give the dependency time to recover, but it does not repair the dependency itself.",
+              "image": "img/languages/ai-engineering/circuit-breaker-overview.png"
+            },
+            {
+              "title": "Observe failures",
+              "body": "While closed, the breaker allows calls and measures outcomes over a defined window. A policy can open it when the failure rate or count crosses a threshold with sufficient observations. Choose which errors count carefully.",
+              "image": "img/languages/ai-engineering/circuit-breaker-closed.png"
+            },
+            {
+              "title": "Open the circuit",
+              "body": "When open, the breaker rejects or routes calls without repeatedly contacting the unhealthy dependency. Return a clear failure or use an explicitly defined fallback. A fallback must not pretend that an unperformed operation succeeded.",
+              "image": "img/languages/ai-engineering/circuit-breaker-open.png"
+            },
+            {
+              "title": "Probe recovery",
+              "body": "After a cooldown, a half-open breaker allows a limited number of test calls. The policy closes the circuit after sufficient successful probes or reopens it after failure. Control probe volume to avoid overwhelming a recovering service.",
+              "image": "img/languages/ai-engineering/circuit-breaker-half-open.png"
+            },
+            {
+              "title": "Test and monitor",
+              "body": "Test thresholds, cooldown, concurrent calls, and recovery behavior. Monitor state changes and rejected calls alongside dependency latency and errors. Circuit breakers complement timeouts and retry policies rather than replacing them.",
+              "image": "img/languages/ai-engineering/circuit-breaker-testing.png"
             }
           ]
         },
@@ -501,7 +899,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Backpressure limits incoming work when downstream capacity is saturated and queues are growing. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Backpressure slows or limits incoming work when a downstream component cannot keep up. It helps prevent an unbounded queue from turning temporary overload into excessive latency or resource exhaustion.",
+              "image": "img/languages/ai-engineering/backpressure-overview.png"
+            },
+            {
+              "title": "Detect saturation",
+              "body": "Track queue depth, wait time, throughput, and worker utilization. A growing queue can indicate that the arrival rate exceeds processing capacity, though the cause still needs investigation.",
+              "image": "img/languages/ai-engineering/backpressure-signals.png"
+            },
+            {
+              "title": "Signal the caller",
+              "body": "Depending on the interface, the service may slow producers, reject new work, or tell clients when to retry. Make overload behavior explicit. Clients should not immediately retry in a synchronized loop.",
+              "image": "img/languages/ai-engineering/backpressure-caller.png"
+            },
+            {
+              "title": "Bound the queue",
+              "body": "Set a queue capacity and decide what happens when it is full. Rejecting work with a clear response can be safer than accepting requests that cannot complete within their deadlines. Apply fair limits across callers when required.",
+              "image": "img/languages/ai-engineering/backpressure-bound.png"
+            },
+            {
+              "title": "Test recovery",
+              "body": "Exercise traffic bursts and sustained overload, then check whether the queue drains when demand falls. Monitor accepted and rejected work and user-visible latency. Backpressure complements capacity planning and does not create additional processing capacity.",
+              "image": "img/languages/ai-engineering/backpressure-recovery.png"
             }
           ]
         },
@@ -515,7 +934,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Routing balances capability, quality, latency, and cost and must include tested failure behavior. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Model routing selects a model or service for each request based on the task and operational constraints. A routing policy can balance quality, latency, and cost, but must also respect permissions and deployment requirements.",
+              "image": "img/languages/ai-engineering/model-routing-overview.png"
+            },
+            {
+              "title": "Define routing signals",
+              "body": "Use signals available at request time, such as task type, input size, required capability, and policy constraints. A routing signal can be wrong, so define how uncertain or unsupported requests are handled.",
+              "image": "img/languages/ai-engineering/model-routing-signals.png"
+            },
+            {
+              "title": "Compare routes",
+              "body": "Evaluate each candidate route on representative requests using task quality, latency, cost, and relevant safety checks. A cheaper model may be sufficient for one task but inadequate for another. Record versions and settings.",
+              "image": "img/languages/ai-engineering/model-routing-evaluation.png"
+            },
+            {
+              "title": "Handle failures",
+              "body": "Define what happens when the selected route is unavailable or exceeds a deadline. An alternate route must satisfy access and data-handling rules. Communicate degraded behavior instead of silently claiming equivalent quality.",
+              "image": "img/languages/ai-engineering/model-routing-fallback.png"
+            },
+            {
+              "title": "Monitor decisions",
+              "body": "Track route distribution, errors, latency, cost, and downstream outcomes. Test routing changes and fallback behavior with held-out cases and realistic failures. Reassess the policy when models or traffic change.",
+              "image": "img/languages/ai-engineering/model-routing-monitor.png"
             }
           ]
         },
@@ -528,8 +968,29 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Observe service health together with quality, refusals, drift, and user impact while minimizing sensitive logs. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Observe the whole service",
+              "body": "An AI service can respond quickly and without errors while producing poor answers. Observe infrastructure health alongside task quality, refusal behavior, and user-facing outcomes. Define metrics for the specific use case and its risks, rather than assuming a single score captures all failures. Connect an observed regression to the relevant model, prompt, and deployment versions.",
+              "image": "img/languages/ai-engineering/ai-observe-overview.png"
+            },
+            {
+              "title": "Trace an individual request",
+              "body": "A trace can connect stages such as retrieval, model inference, and tool execution for one request. Record timings, statuses, and version identifiers so an operator can locate a slow or failing stage. Use correlation identifiers across services without assuming that a trace alone explains why an answer is wrong. Protect trace contents and limit access.",
+              "image": "img/languages/ai-engineering/ai-observe-trace.png"
+            },
+            {
+              "title": "Monitor quality and refusals",
+              "body": "Measure answer quality using suitable labeled examples, human review, or task-specific outcomes, depending on the application. Track both unsupported answers and unnecessary refusals; a change in refusal rate alone does not establish whether behavior improved. Compare relevant groups and query types when sample sizes support it. Where labels are delayed, distinguish pending outcomes from failures.",
+              "image": "img/languages/ai-engineering/ai-observe-quality.png"
+            },
+            {
+              "title": "Detect changes in inputs",
+              "body": "Monitor input properties such as length, language, category, or source to identify changes from a relevant baseline. Input drift can signal that earlier evaluation no longer represents current traffic, but it does not by itself prove a quality regression. Investigate with outcome metrics and representative samples. Changes in collection or logging can also alter observed distributions.",
+              "image": "img/languages/ai-engineering/ai-observe-drift.png"
+            },
+            {
+              "title": "Protect telemetry",
+              "body": "Logs can contain sensitive prompts, retrieved documents, or tool results. Collect only what operators need, apply access controls and retention limits, and redact or aggregate data where appropriate. Define alerts and an owner for investigation; noisy alerts without a response path can hide real issues. Check that privacy controls apply to traces and evaluation artifacts as well as application logs.",
+              "image": "img/languages/ai-engineering/ai-observe-privacy.png"
             }
           ]
         },
@@ -660,7 +1121,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Threat modeling connects trust boundaries and failure modes to architecture controls and test cases. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Threat modeling identifies what an AI system must protect, who can affect it, and how information crosses trust boundaries. Model the entire application, including retrieval, tools, credentials, data stores, and human review; the model prompt is only one part of the system.",
+              "image": "img/languages/ai-engineering/threat-model-components.png"
+            },
+            {
+              "title": "Map an attack path",
+              "body": "For a document-answering assistant, an attacker might place instructions in a document that retrieval later passes to the model. The boundary is crossed when external content enters the model context. Trace the proposed tool action or disclosure to its consequence instead of treating the document's text as an authorized instruction.",
+              "image": "img/languages/ai-engineering/threat-model-trust-boundary.png"
+            },
+            {
+              "title": "Choose independent controls",
+              "body": "Restrict retrieval to the caller's permissions, constrain tool privileges, validate tool arguments, and require appropriate approval for sensitive actions. Treat prompt instructions and content delimiters as helpful context, not as the sole authorization mechanism. Defense in depth limits the impact of a failed layer.",
+              "image": "img/languages/ai-engineering/threat-model-controls.png"
+            },
+            {
+              "title": "Turn threats into tests",
+              "body": "Create cases that exercise each trust boundary: unauthorized documents, malicious retrieved instructions, invalid tool arguments, and requests that exceed the user's privileges. Assert externally visible behavior, including denial and audit events, not just the model's wording.",
+              "image": "img/languages/ai-engineering/threat-model-tests.png"
+            },
+            {
+              "title": "Revisit assumptions",
+              "body": "Record assets, entry points, assumptions, owners, and residual risks. Reassess the model when a tool gains privileges, a data source changes, or the system starts serving a new audience. Threat modeling reduces uncertainty; it does not prove that the system is secure.",
+              "image": "img/languages/ai-engineering/threat-model-maintenance.png"
             }
           ]
         },
@@ -674,7 +1156,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Scoped, short-lived credentials should be unavailable to model-generated code and prompt content. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Least privilege grants each component only the access it needs for a defined task. For AI applications, separate the model's ability to propose an action from the application's authority to perform it.",
+              "image": "img/languages/ai-engineering/least-privilege-scope.png"
+            },
+            {
+              "title": "Scope identities",
+              "body": "Give services distinct identities and grant permissions to specific resources and operations. A retrieval service that only reads approved documents should not have write access to unrelated stores. Review both direct permissions and permissions inherited through service roles.",
+              "image": "img/languages/ai-engineering/retrieval-identity-scope.png"
+            },
+            {
+              "title": "Protect credentials",
+              "body": "Keep credentials in an appropriate secret or identity system, outside prompts, retrieved content, and model-generated code. Prefer short-lived credentials where available, and rotate or revoke them when access changes. Short lifetimes reduce exposure but do not replace authorization.",
+              "image": "img/languages/ai-engineering/credential-protection.png"
+            },
+            {
+              "title": "Authorize each action",
+              "body": "A tool should check the caller's authority and validate its arguments before performing an operation. Model output, even when it follows the expected schema, is a proposal rather than proof of permission. Require additional approval where the application policy calls for it.",
+              "image": "img/languages/ai-engineering/input-validation-authorization.png"
+            },
+            {
+              "title": "Review and test grants",
+              "body": "Test both allowed and denied operations with representative identities. Audit unused or overly broad permissions, monitor access, and update grants when the workflow changes. A passing test set does not establish that every possible access path is covered.",
+              "image": "img/languages/ai-engineering/threat-model-tests.png"
             }
           ]
         },
@@ -688,7 +1191,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Model, library, dataset, and container provenance affect security and reproducibility. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "An AI application depends on models, datasets, libraries, and runtime artifacts from many sources. Supply-chain controls help teams understand what entered a release and reduce exposure to tampering, vulnerable dependencies, and untraceable changes.",
+              "image": "img/languages/ai-engineering/supply-chain-parts.png"
+            },
+            {
+              "title": "Record provenance",
+              "body": "Record where each artifact came from, its version or immutable identifier, and how it was produced. Link a deployed model to its training data, code, and build when that information is available. Provenance supports investigation but is not proof that an artifact is safe.",
+              "image": "img/languages/ai-engineering/supply-chain-provenance.png"
+            },
+            {
+              "title": "Verify artifacts",
+              "body": "Use trusted distribution channels and verify integrity against a trusted expected digest or signature where the ecosystem supports it. A digest downloaded from the same untrusted location as an artifact does not independently establish authenticity.",
+              "image": "img/languages/ai-engineering/supply-chain-integrity.png"
+            },
+            {
+              "title": "Review dependencies",
+              "body": "Inventory libraries and containers, track applicable vulnerability advisories, and update or mitigate affected components. Examine model and dataset usage terms and access restrictions as well. A scan can miss unknown issues and should not be the only control.",
+              "image": "img/languages/ai-engineering/supply-chain-dependency-review.png"
+            },
+            {
+              "title": "Control releases",
+              "body": "Build and test candidates in controlled environments, record the artifacts that passed review, and promote those same artifacts. Restrict who can publish or replace them. Maintain a rollback and incident process for newly discovered problems.",
+              "image": "img/languages/ai-engineering/supply-chain-release.png"
             }
           ]
         },
@@ -702,7 +1226,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Telemetry should support diagnosis while minimizing sensitive content and enforcing retention limits. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Telemetry helps teams understand failures and performance, but prompts, outputs, and metadata can contain sensitive information. Collect only what is needed for a defined operational purpose.",
+              "image": "img/languages/ai-engineering/telemetry-minimization.png"
+            },
+            {
+              "title": "Choose useful signals",
+              "body": "A team may need latency, error category, model version, and aggregate usage to diagnose a service. Start with these purpose-specific signals before considering raw content. Even metadata can identify individuals in some contexts.",
+              "image": "img/languages/ai-engineering/telemetry-signals.png"
+            },
+            {
+              "title": "Minimize and protect",
+              "body": "Avoid recording raw secrets and unnecessary user content. Apply appropriate filtering or redaction before storage, restrict access, and encrypt data according to policy. Redaction can miss sensitive information, so it is not a guarantee of anonymity.",
+              "image": "img/languages/ai-engineering/telemetry-protection.png"
+            },
+            {
+              "title": "Define retention",
+              "body": "Set retention periods and deletion procedures appropriate to the data and operational purpose. Include copies and downstream systems in the policy. Retaining data indefinitely merely because it might be useful increases exposure.",
+              "image": "img/languages/ai-engineering/telemetry-retention.png"
+            },
+            {
+              "title": "Test and audit",
+              "body": "Test logging with representative sensitive inputs and verify that permitted diagnostic signals remain useful. Audit access, retention, and deletion, and review the policy as the system changes. Do not put real secrets into test fixtures.",
+              "image": "img/languages/ai-engineering/telemetry-tests.png"
             }
           ]
         },
@@ -716,7 +1261,28 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Regional deployment can reduce latency and improve resilience but complicates residency and consistency. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Multi-region inference runs an AI service in more than one geographic region. It can reduce network distance or provide another recovery option, but introduces routing, data residency, and consistency decisions.",
+              "image": "img/languages/ai-engineering/multi-region-overview.png"
+            },
+            {
+              "title": "Route requests",
+              "body": "Choose a region based on latency, health, capacity, and applicable residency rules. The nearest region is not always permitted or healthy. Define what the client sees when no compliant region is available.",
+              "image": "img/languages/ai-engineering/multi-region-routing.png"
+            },
+            {
+              "title": "Keep releases consistent",
+              "body": "Track model, prompt, preprocessing, and configuration versions in each region. During a staged rollout, regions may temporarily differ; make that state observable and define which combinations are allowed.",
+              "image": "img/languages/ai-engineering/multi-region-versions.png"
+            },
+            {
+              "title": "Plan failover",
+              "body": "Test whether a permitted alternate region has enough capacity and the necessary dependencies before routing traffic there. Consider in-flight work and state replication. A second region alone does not guarantee independent failure modes.",
+              "image": "img/languages/ai-engineering/multi-region-failover.png"
+            },
+            {
+              "title": "Monitor by region",
+              "body": "Measure latency, errors, capacity, and model behavior separately by region. Exercise failover and recovery under realistic conditions. Keep sensitive data within authorized locations and review replication and retention policies.",
+              "image": "img/languages/ai-engineering/multi-region-monitoring.png"
             }
           ]
         },
@@ -729,8 +1295,29 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Plan for request shapes, concurrency, input and output lengths, and model throughput rather than call averages. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Describe the workload",
+              "body": "Capacity planning starts with the shape of incoming work, not only requests per second. Record arrival patterns, concurrent requests, input and output token lengths, and the mix of models and features. A long generation can occupy a worker much longer than a short classification request. Use distributions and peak periods so an average does not hide a costly tail.",
+              "image": "img/languages/ai-engineering/capacity-workload.png"
+            },
+            {
+              "title": "Measure service capacity",
+              "body": "Benchmark the actual model, hardware, serving configuration, and representative request shapes. Track prompt processing and generation throughput as well as end-to-end latency and error rates. Batching may improve throughput while increasing wait time, and memory limits may constrain concurrency. A benchmark on short prompts alone cannot establish capacity for long-context traffic.",
+              "image": "img/languages/ai-engineering/capacity-benchmark.png"
+            },
+            {
+              "title": "Understand queues and headroom",
+              "body": "A queue grows when work arrives faster than the service can complete it for a sustained period. Even when average capacity exceeds average demand, bursts and variable service times can cause long waits. Reserve headroom based on observed variability and service objectives; use bounded queues and admission controls to limit overload. Rejecting excess work explicitly can be safer than accepting it without a feasible deadline.",
+              "image": "img/languages/ai-engineering/capacity-queue.png"
+            },
+            {
+              "title": "Plan scaling and dependencies",
+              "body": "Estimate how much each replica can serve under the intended workload, then test scaling rather than assuming linear gains. Startup time, accelerator availability, shared rate limits, and downstream dependencies can delay or cap effective capacity. A shared inference provider may remain the bottleneck after adding application replicas. Include failover and degraded-mode demand in the plan.",
+              "image": "img/languages/ai-engineering/capacity-scaling.png"
+            },
+            {
+              "title": "Validate and revise the plan",
+              "body": "Run load tests with representative traffic, including bursts, long inputs, output-length variation, and dependency failures. Compare tail latency, errors, queue depth, utilization, and cost against explicit targets. Review the results after a model, hardware, or traffic change, since any of these can alter the capacity curve. Record assumptions so a future team knows when the estimate needs revision.",
+              "image": "img/languages/ai-engineering/capacity-validation.png"
             }
           ]
         },
