@@ -295,6 +295,14 @@
             {
               "title": "Concept and application",
               "body": "Model delivery automates controlled promotion while preserving approvals, canaries, and rollback. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Stage a release",
+              "body": "A delivery pipeline should promote an evaluated artifact through explicit stages, not train a fresh model during deployment. Keep the candidate identifier and evaluation report attached to each approval so reviewers can tell exactly what will receive traffic."
+            },
+            {
+              "title": "Limit exposure and recover",
+              "body": "Route a small, measurable share of requests to a candidate while tracking predefined service and quality guardrails. If a guardrail fails, restore the prior known-good version and confirm traffic has actually moved back."
             }
           ]
         },
@@ -309,6 +317,14 @@
             {
               "title": "Concept and application",
               "body": "Serving mode determines schedule, latency, scaling, and freshness needs. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Choose by response need",
+              "body": "Batch inference processes a defined set of records on a schedule, making it efficient when a result can wait. Online inference serves a request immediately and is appropriate when a user or system needs a low-latency answer."
+            },
+            {
+              "title": "Plan freshness and capacity",
+              "body": "A daily batch may be economical but leave decisions based on yesterday's data; an online endpoint can be fresh but needs capacity for traffic spikes. Choose the mode against the required freshness, latency, cost, and recovery constraints."
             }
           ]
         },
@@ -323,6 +339,14 @@
             {
               "title": "Concept and application",
               "body": "Monitoring covers service health and prediction behavior, though quality labels may arrive late. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Separate service and model signals",
+              "body": "Request failures and latency describe whether the serving system is healthy; input distributions and later outcome metrics describe model behavior. Track both because a fast, available endpoint can still make poor predictions."
+            },
+            {
+              "title": "Act on delayed evidence",
+              "body": "When labels arrive weeks later, use immediate operational signals to detect outages and data checks to catch malformed inputs, but do not claim those proxies prove predictive quality. Reconcile eventual labels against the model's recorded predictions."
             }
           ]
         },
@@ -337,6 +361,14 @@
             {
               "title": "Concept and application",
               "body": "Checks detect schema changes, missing values, invalid ranges, and distribution anomalies. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Validate before training",
+              "body": "Check required columns, types, missingness, allowed ranges, and row volumes before a dataset enters training. A failed schema check should stop or quarantine the run rather than silently coercing unexpected values."
+            },
+            {
+              "title": "Set meaningful bounds",
+              "body": "A rule should distinguish harmless variation from a broken feed: compare counts with expected ranges and validate domain constraints such as nonnegative amounts. Review alerts against source changes before loosening a threshold."
             }
           ]
         },
@@ -351,6 +383,14 @@
             {
               "title": "Concept and application",
               "body": "Drift signals changing inputs or relationships but does not alone prove declining outcome quality. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Recognize a drift signal",
+              "body": "Drift means the observed input or prediction distribution has changed relative to a reference period. A change can come from seasonality or a population shift, so it is evidence to investigate rather than proof that accuracy fell."
+            },
+            {
+              "title": "Connect inputs to outcomes",
+              "body": "Compare drifted features with delayed labels, segment metrics, and known product changes to determine whether model quality or only the population changed. Escalate according to impact and retrain only after a validated candidate improves the relevant outcomes."
             }
           ]
         },
@@ -365,6 +405,14 @@
             {
               "title": "Concept and application",
               "body": "Incidents need defined severity, owners, rollback, communication, and post-incident learning. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Triage with ownership",
+              "body": "An incident process states how to classify impact, who is on call, and where to find the current production model and runbook. Assign an owner and preserve key timestamps and evidence as soon as the issue is identified."
+            },
+            {
+              "title": "Recover and learn",
+              "body": "Use a tested rollback or mitigation when user impact warrants it, then verify service and prediction behavior after the change. Record the cause and follow-up actions so the same failure is less likely to recur."
             }
           ]
         },
@@ -379,6 +427,14 @@
             {
               "title": "Concept and application",
               "body": "Retraining should respond to evidence and validation rather than schedule alone. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Use evidence to trigger training",
+              "body": "A fixed calendar can create unnecessary runs or miss a sudden change. Combine drift or data-quality alerts with outcome evidence and operational context to decide whether retraining is justified."
+            },
+            {
+              "title": "Validate before replacing",
+              "body": "A newly trained model is only a candidate: compare it with the current version on a representative, held-out evaluation and required slices. Promote it only when quality, safety, and deployment checks pass; otherwise keep the current model."
             }
           ]
         }
@@ -643,6 +699,14 @@
             {
               "title": "Concept and application",
               "body": "Canary and blue-green releases limit exposure and simplify rollback. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Compare canary and blue-green",
+              "body": "A canary sends a small fraction of live traffic to a candidate while the existing version continues to serve most requests. Blue-green keeps two environments available and switches traffic between them, enabling a quick switch back if compatibility and capacity are ready."
+            },
+            {
+              "title": "Define a guarded rollout",
+              "body": "Choose the rollout method based on traffic shape, state compatibility, and the ability to observe outcomes. Set explicit error, latency, and quality thresholds before increasing exposure; do not treat a successful process start as evidence of a safe release."
             }
           ]
         },
@@ -657,6 +721,14 @@
             {
               "title": "Concept and application",
               "body": "Logs enable diagnosis and audit but require minimization, access controls, and retention limits. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Log for traceability",
+              "body": "A prediction record can link a request identifier, model version, timestamp, and carefully selected input or output fields to later outcomes. That linkage helps diagnose regressions, but logging every raw feature is neither necessary nor safe by default."
+            },
+            {
+              "title": "Minimize and protect records",
+              "body": "Exclude direct identifiers and sensitive fields unless there is a documented need, restrict access, and apply retention limits. Test that logs still support the intended investigation after minimization and that deletion policies cover copies and exports."
             }
           ]
         },
@@ -671,6 +743,14 @@
             {
               "title": "Concept and application",
               "body": "Availability, errors, latency, and saturation reveal serving problems before labels arrive. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Read the four signals",
+              "body": "Availability, error rate, latency, and resource saturation describe distinct failure modes. A service can meet its availability target while latency or saturation steadily worsens, so inspect the signals together."
+            },
+            {
+              "title": "Connect symptoms to action",
+              "body": "A rising timeout rate alongside a full worker pool suggests a capacity or dependency problem, while an isolated model-quality shift calls for a different investigation. Page the responsible owner using thresholds tied to user impact, not every noisy fluctuation."
             }
           ]
         },
@@ -685,6 +765,14 @@
             {
               "title": "Concept and application",
               "body": "Distribution changes are investigation signals, not proof of model quality degradation. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Choose a reference carefully",
+              "body": "Drift monitoring compares recent feature values with a documented baseline that represents an appropriate operating period. If the baseline includes a known outage or excludes normal seasonality, alerts can mislead."
+            },
+            {
+              "title": "Investigate before reacting",
+              "body": "Check which features moved, whether collection or product behavior changed, and whether affected records are valid. Use labeled outcomes when available before concluding that a drift alert requires retraining or rollback."
             }
           ]
         },
@@ -699,6 +787,14 @@
             {
               "title": "Concept and application",
               "body": "Delayed outcomes require distinguishing immediate proxies from confirmed predictive quality. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Distinguish proxy from outcome",
+              "body": "Latency, prediction volume, and schema validity are available quickly, but they do not directly establish whether a prediction was correct. A delayed business outcome or adjudicated label is stronger evidence of predictive quality."
+            },
+            {
+              "title": "Align predictions and labels",
+              "body": "Store a stable prediction identifier and the model version so a label arriving later can be joined to the original decision. Track label completeness and delay by cohort to avoid comparing mature and incomplete evaluation windows."
             }
           ]
         },
@@ -713,6 +809,14 @@
             {
               "title": "Concept and application",
               "body": "Rollback requires a known-good artifact, compatible interface, and tested procedure. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Keep a known-good release",
+              "body": "Rollback needs the previous approved model artifact, its preprocessing and serving configuration, and a compatible interface. A model file alone may not recreate the behavior that served production."
+            },
+            {
+              "title": "Test the recovery path",
+              "body": "Practice switching traffic to the prior version and checking health, feature compatibility, and downstream effects. Record who can initiate rollback and how to avoid overwriting the evidence needed to diagnose the failed release."
             }
           ]
         },
@@ -727,6 +831,14 @@
             {
               "title": "Concept and application",
               "body": "Least privilege protects datasets, registries, secrets, and production endpoints. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Apply least privilege",
+              "body": "Give each training job, reviewer, and serving service only the data and actions it needs. A read-only analyst should not be able to replace a production registry alias or retrieve deployment secrets."
+            },
+            {
+              "title": "Separate identities and credentials",
+              "body": "Use managed identities or scoped short-lived credentials for automated jobs rather than embedding secrets in notebooks, images, or logs. Review access periodically and revoke credentials when a workload or owner changes."
             }
           ]
         },
@@ -741,6 +853,14 @@
             {
               "title": "Concept and application",
               "body": "Runbooks and named owners make model behavior and incident steps discoverable. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Make ownership actionable",
+              "body": "A runbook should identify the service owner, alert meaning, first diagnostic checks, and escalation route. An unowned alert or generic instruction to \"check the model\" leaves responders without a safe next step."
+            },
+            {
+              "title": "Keep operational guidance current",
+              "body": "Link the runbook to the deployed model and dependency versions, then update it after changes and incidents. Rehearse a realistic failure so the team can verify that the steps and contacts work under pressure."
             }
           ]
         }
@@ -1005,6 +1125,14 @@
             {
               "title": "Concept and application",
               "body": "Drift and delayed-label signals require investigation and defined actions rather than automatic retraining. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Triage the changed population",
+              "body": "Break a drift alert down by feature, segment, source, and time window; verify whether the change is a collection defect, expected seasonality, or a genuine population shift. This narrows the cause before a model change is considered."
+            },
+            {
+              "title": "Choose an evidence-based response",
+              "body": "When labels are delayed, maintain existing guardrails and gather outcome evidence rather than automatically retraining on recent unlabeled data. If a material, harmful regression is confirmed, follow the approved mitigation or rollback policy and record the decision."
             }
           ]
         },
@@ -1019,6 +1147,14 @@
             {
               "title": "Concept and application",
               "body": "Retraining needs controlled data windows, validation, approvals, and artifact lineage. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Make training inputs explicit",
+              "body": "Pin a time-bounded dataset snapshot, feature definitions, code revision, and configuration for every run. Explicit inputs prevent a retry from silently consuming a newer data window than the original attempt."
+            },
+            {
+              "title": "Gate and publish candidates",
+              "body": "Run data validation and representative evaluation before producing a versioned candidate artifact; then record lineage and route it through review. A scheduled pipeline can create candidates, but it should not bypass promotion policy or replace production merely because a run succeeded."
             }
           ]
         },
@@ -1033,6 +1169,14 @@
             {
               "title": "Concept and application",
               "body": "Promotion maps evidence and approvals to a production state, preventing unreviewed deployment. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Translate evidence into policy",
+              "body": "A promotion policy names required evaluation suites, slice thresholds, approvals, and compatibility checks for each transition. A single aggregate metric or a green training job is not enough if a required subgroup or serving contract fails."
+            },
+            {
+              "title": "Make transitions auditable",
+              "body": "Record the candidate version, evidence, approver, decision, and time when a model moves stages. If any gate is missing or stale, keep the model in its current stage and request the missing evidence rather than inferring approval."
             }
           ]
         },
@@ -1047,6 +1191,14 @@
             {
               "title": "Concept and application",
               "body": "Autoscaling must account for model load, warmup, concurrency, and accelerator capacity. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Measure model-specific capacity",
+              "body": "Estimate throughput and latency under representative batch sizes, concurrency, model load time, and accelerator memory use. CPU-based scaling alone may miss GPU saturation or repeated model warmups."
+            },
+            {
+              "title": "Prevent scale oscillation",
+              "body": "Set minimum warm capacity and meaningful scale-up and scale-down windows based on traffic bursts and model startup time. Validate that the cluster has quota and that scaling does not exceed safe accelerator capacity or starve other workloads."
             }
           ]
         },
@@ -1061,6 +1213,14 @@
             {
               "title": "Concept and application",
               "body": "SLOs cover inference latency, availability, freshness, and where possible task quality. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Specify measurable objectives",
+              "body": "Define service-level objectives for latency percentiles, successful requests, and feature freshness, with a window and eligible traffic population. Predictive quality can be included only where trustworthy labels or reviewed evaluation data exist."
+            },
+            {
+              "title": "Use error budgets deliberately",
+              "body": "An error budget connects observed SLO misses to release risk: when the budget is exhausted, pause risky changes and prioritize reliability work. Avoid treating an SLO as a model-quality guarantee when its metric measures only infrastructure health."
             }
           ]
         },
@@ -1075,6 +1235,14 @@
             {
               "title": "Concept and application",
               "body": "Resource monitoring relates accelerator use, storage, and pipeline time to model value. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Attribute resource cost",
+              "body": "Track accelerator time, storage growth, and pipeline duration by experiment, model, and workload owner so expensive runs can be traced to a purpose. Aggregate platform totals alone hide inefficient or abandoned jobs."
+            },
+            {
+              "title": "Optimize against value and limits",
+              "body": "Compare cost per useful prediction or validated model improvement with latency and quality constraints. Right-size hardware, schedule nonurgent jobs off peak, or stop redundant runs only after checking that the change preserves reproducibility and service objectives."
             }
           ]
         },
@@ -1089,6 +1257,14 @@
             {
               "title": "Concept and application",
               "body": "Randomized exposure compares model versions with guardrails and adequate sample size. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Design a valid comparison",
+              "body": "Randomly assign eligible requests or users to stable control and treatment groups and define the primary metric before looking at results. Prevent a user from switching groups across requests when that would contaminate the comparison."
+            },
+            {
+              "title": "Respect guardrails and uncertainty",
+              "body": "Check sample size, duration, segment balance, and confidence intervals alongside quality and safety guardrails. Stop or roll back for a predeclared harm threshold; do not declare a winner from a short, repeatedly inspected experiment."
             }
           ]
         },
@@ -1103,6 +1279,14 @@
             {
               "title": "Concept and application",
               "body": "Recovery restores artifacts and workflow state while avoiding partial or duplicate outputs. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Checkpoint coherent state",
+              "body": "Persist immutable inputs, successful task outputs, configuration, and lineage at boundaries where a workflow can resume safely. Do not mark a partially written artifact as complete or rely on mutable 'latest' paths after a failure."
+            },
+            {
+              "title": "Make retries idempotent",
+              "body": "A retry should either reuse a verified output for the same input identity or safely replace it atomically, without duplicating external side effects. After recovery, compare checksums and lineage to confirm the final artifact matches the intended run."
             }
           ]
         }
@@ -1332,6 +1516,14 @@
             {
               "title": "Concept and application",
               "body": "Privacy controls cover collection, transformation, access, logging, backups, and derived artifacts. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Map data across the lifecycle",
+              "body": "Inventory sensitive fields as they move through ingestion, feature transforms, training snapshots, logs, caches, backups, and derived artifacts. Removing a field from the source table is insufficient if a copy remains in an export or retained model input record."
+            },
+            {
+              "title": "Enforce verifiable controls",
+              "body": "Apply purpose-limited collection, role-based access, encryption, retention and deletion rules to each data store, and test that derived artifacts follow the applicable policy. Document exceptions and evidence without exposing the sensitive values themselves."
             }
           ]
         },
@@ -1346,6 +1538,14 @@
             {
               "title": "Concept and application",
               "body": "Supply-chain controls verify code, dependencies, datasets, and artifacts from source to deployment. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Establish artifact provenance",
+              "body": "Bind a release artifact to reviewed source, pinned dependencies, build identity, dataset and configuration references, and a verifiable digest. A registry label alone does not establish that the artifact was built from trusted inputs."
+            },
+            {
+              "title": "Verify before deployment",
+              "body": "Enforce signature or attestation checks and vulnerability policy at promotion time, then preserve the verification record with the deployed version. A failed or unverifiable dependency should block promotion until assessed and resolved under an explicit exception process."
             }
           ]
         },
@@ -1360,6 +1560,14 @@
             {
               "title": "Concept and application",
               "body": "Availability requires redundancy, health-aware routing, capacity reserves, and tested failover. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Design independent failure domains",
+              "body": "Place redundant serving capacity across failure domains and route requests based on health, while ensuring each replica has compatible model and feature versions. Replicas sharing a single dependency or control plane do not provide full availability."
+            },
+            {
+              "title": "Prove failover under load",
+              "body": "Reserve capacity for the loss of a zone and exercise failover with realistic traffic, dependency faults, and latency measurements. Validate recovery time and error budgets before claiming the design meets its availability target."
             }
           ]
         },
@@ -1374,6 +1582,14 @@
             {
               "title": "Concept and application",
               "body": "Recovery objectives cover artifacts, metadata, workflows, and serving state. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Set recovery objectives",
+              "body": "Define recovery-time and recovery-point objectives for model artifacts, registry metadata, feature definitions, workflow state, and serving configuration. A backup strategy is incomplete if restoring model weights loses the provenance required to know how to serve them."
+            },
+            {
+              "title": "Test an end-to-end restore",
+              "body": "Restore into an isolated environment, verify checksums and lineage, replay a representative workflow, and exercise compatible serving. Measure actual recovery against objectives and close gaps before relying on the backup plan."
             }
           ]
         },
@@ -1388,6 +1604,14 @@
             {
               "title": "Concept and application",
               "body": "Diagnosis separates input drift, label shift, and concept change using data and outcome evidence. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Separate competing hypotheses",
+              "body": "Input drift changes feature distributions; label shift changes outcome prevalence; concept change alters the relationship between features and outcomes. Examine collection pipelines, cohort composition, and trustworthy labels to distinguish these causes."
+            },
+            {
+              "title": "Quantify impact before intervention",
+              "body": "Estimate quality and decision impact by segment with uncertainty and compare against a stable reference. Select a targeted data fix, calibration, retraining, or rollback only when the evidence supports it and evaluation covers the affected population."
             }
           ]
         },
@@ -1402,6 +1626,14 @@
             {
               "title": "Concept and application",
               "body": "Fairness monitoring tracks subgroup quality and coverage while accounting for privacy and population change. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Define meaningful subgroup measures",
+              "body": "Select outcome and coverage metrics that reflect the model's intended decision and examine intersections where sample sizes support interpretation. Report denominators and uncertainty so a small or changing subgroup is not mistaken for stable evidence."
+            },
+            {
+              "title": "Govern privacy-aware response",
+              "body": "Limit sensitive attribute access, document lawful measurement and retention, and avoid inferring protected traits from proxies without justification. Investigate confirmed disparities with domain owners and evaluate any mitigation for both subgroup effects and overall utility before rollout."
             }
           ]
         },
@@ -1416,6 +1648,14 @@
             {
               "title": "Concept and application",
               "body": "Governance requires attributable decisions, access history, approvals, and production-version evidence. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Record decision provenance",
+              "body": "An audit trail links deployed version and data lineage to evaluations, policy checks, approvals, and the accountable decision-maker. Timestamps and immutable event records help reconstruct who authorized a release and on what evidence."
+            },
+            {
+              "title": "Make evidence reconstructable",
+              "body": "Test whether an independent reviewer can retrieve the exact report, model digest, and approval chain for a historical deployment. Apply retention and access controls so evidence remains complete without retaining unnecessary sensitive payloads."
             }
           ]
         },
@@ -1430,6 +1670,14 @@
             {
               "title": "Concept and application",
               "body": "Decommissioning removes traffic and credentials safely while preserving required records and deleting expired data. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Plan a controlled shutdown",
+              "body": "Identify consumers, scheduled jobs, aliases, credentials, feature dependencies, and retention obligations before removing a model. Notify owners and route traffic elsewhere only after replacement behavior and rollback windows are understood."
+            },
+            {
+              "title": "Verify removal and retention",
+              "body": "Drain traffic, revoke runtime credentials, remove obsolete resources, and verify that caches and derived data follow approved deletion schedules. Preserve required audit records and confirm no hidden client continues to call the retired endpoint."
             }
           ]
         },
@@ -1444,6 +1692,14 @@
             {
               "title": "Concept and application",
               "body": "Shared platforms need quotas and priority policies to prevent workload resource starvation. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+            },
+            {
+              "title": "Model shared workload demand",
+              "body": "Estimate resource requests and deadlines across interactive inference, urgent retraining, and deferrable batch work. Quotas, priorities, and admission controls should reflect service criticality without allowing one team to reserve idle capacity indefinitely."
+            },
+            {
+              "title": "Protect fairness and reliability",
+              "body": "Monitor queue delay, starvation, preemption, and accelerator utilization by tenant, then revise scheduling policy against explicit service targets. Test overload behavior and protect reserved serving capacity before accepting additional training workloads."
             }
           ]
         }

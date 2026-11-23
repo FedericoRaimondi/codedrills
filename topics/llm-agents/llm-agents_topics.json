@@ -293,8 +293,16 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Embeddings support similarity search, but semantic similarity is not the same as factual relevance. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Embeddings support similarity search, but semantic similarity is not the same as factual relevance. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Filter and inspect candidates",
+              "body": "Use metadata filters to exclude out-of-scope or unauthorized records before ranking candidates. Review passages against the question, since a semantically close result can concern a different entity, date, or claim."
+            },
+            {
+              "title": "Evaluate search quality",
+              "body": "Create labeled queries with relevant and hard-negative passages, then measure whether useful evidence appears near the top. Test paraphrases and ambiguous terms separately, and inspect misses before changing the embedding model."
             }
           ]
         },
@@ -307,8 +315,16 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Prompt injection uses untrusted content to manipulate model behavior, including through retrieved documents. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Prompt injection uses untrusted content to manipulate model behavior, including through retrieved documents. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Separate content from authority",
+              "body": "Clearly mark retrieved text as quoted or untrusted input, but do not assume delimiters prevent the model from following embedded instructions. Keep secrets and privileged actions out of the model's discretionary reach."
+            },
+            {
+              "title": "Enforce controls outside the prompt",
+              "body": "Authorize each tool call in application code and limit tools to the minimum needed. Test documents that ask the assistant to ignore the task, reveal private data, or invoke a tool, and verify that the application blocks unauthorized outcomes."
             }
           ]
         },
@@ -321,8 +337,16 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "A schema can constrain output shape, but the application must still validate values and business rules. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "A schema can constrain output shape, but the application must still validate values and business rules. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Validate meaning after parsing",
+              "body": "Parse the response and check required fields, allowed ranges, cross-field rules, and domain constraints in trusted code. Reject or repair invalid values through a defined path rather than treating valid JSON as proof of correctness."
+            },
+            {
+              "title": "Use structured data in a workflow",
+              "body": "For an extracted event, verify that its date exists and its category is allowed before saving it. Keep a safe failure state for malformed or unsupported content, and test missing, extra, and boundary-valued fields."
             }
           ]
         },
@@ -335,8 +359,16 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "A model may propose a tool and arguments; trusted application code decides whether execution is authorized. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "A model may propose a tool and arguments; trusted application code decides whether execution is authorized. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Check a proposal before execution",
+              "body": "Validate the tool name and argument types, then check the signed-in user's permissions and the target resource. Ask for explicit confirmation when policy requires it; a plausible request is not consent."
+            },
+            {
+              "title": "Report the actual tool outcome",
+              "body": "Execute only the approved operation and use the tool's result to build the response. If the tool fails or returns partial data, communicate that state instead of claiming the requested action succeeded."
             }
           ]
         },
@@ -349,9 +381,17 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "An agent cycles through model decisions and tool results, so it needs explicit limits and stop conditions. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use.",
+              "title": "Understand the core idea",
+              "body": "An agent cycles through model decisions and tool results, so it needs explicit limits and stop conditions. Use this principle to decide what the system must verify before relying on an answer or action.",
               "image": "img/languages/llm-agents/authorized-agent-loop.png"
+            },
+            {
+              "title": "Define progress and stop rules",
+              "body": "Set limits for tool calls, elapsed time, and tokens, and stop when the task is complete or no safe progress is possible. Treat a repeated call with unchanged inputs as a possible loop rather than evidence of progress."
+            },
+            {
+              "title": "Return a bounded result",
+              "body": "Track which steps succeeded and which remain unresolved. When a budget is reached, stop further actions and report partial completion or request human help instead of silently exceeding the limit."
             }
           ]
         },
@@ -364,8 +404,16 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Human review is valuable when impact, uncertainty, or policy exceeds what automated checks can safely resolve. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Human review is valuable when impact, uncertainty, or policy exceeds what automated checks can safely resolve. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Route cases by impact and evidence",
+              "body": "Define review triggers such as conflicting sources, low evidence coverage, sensitive actions, or a policy exception. Give reviewers the relevant evidence and uncertainty without asking them to infer missing context."
+            },
+            {
+              "title": "Make review actionable",
+              "body": "Provide a clear approve, edit, reject, or escalate path and record the reviewer's decision. Measure disagreement and turnaround time, then update the workflow when review repeatedly catches a specific failure mode."
             }
           ]
         },
@@ -378,8 +426,16 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Task-specific examples and rubrics measure product behavior better than a single broad benchmark. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Task-specific examples and rubrics measure product behavior better than a single broad benchmark. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Write cases from real requirements",
+              "body": "Include normal requests, ambiguous inputs, missing evidence, and cases where the right behavior is to abstain. Define observable criteria such as factual support, correct tool use, and format compliance before scoring."
+            },
+            {
+              "title": "Use results to guide iteration",
+              "body": "Inspect failures by category and compare prompt or model changes on the same held-out cases. Track regressions and operational measures such as latency, then add validated production misses to the test set."
             }
           ]
         }
@@ -642,8 +698,16 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Schemas constrain tool argument shape but do not establish that the caller may perform the requested action. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Schemas constrain tool argument shape but do not establish that the caller may perform the requested action. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Validate arguments and authority",
+              "body": "Check types, ranges, and relationships between arguments before calling a tool. Separately authorize the user against the target resource; schema validation cannot substitute for an access-control decision."
+            },
+            {
+              "title": "Design a narrow tool contract",
+              "body": "Expose focused functions with explicit required fields and bounded choices instead of a general-purpose command surface. Return typed errors for invalid input or denied access, and test both successful and rejected proposals."
             }
           ]
         },
@@ -656,8 +720,16 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Idempotency prevents retried tool calls from duplicating side effects. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Idempotency prevents retried tool calls from duplicating side effects. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Reuse the operation identity",
+              "body": "Create a stable key for one user-intended action and reuse it across retries; do not generate a new key for each attempt. The service must persist and check the key alongside the operation result."
+            },
+            {
+              "title": "Reconcile uncertain outcomes",
+              "body": "After a timeout, retry with the same key or query operation status before attempting a new action. Test duplicate requests, delayed responses, and key reuse so the user is not charged or booked twice."
             }
           ]
         },
@@ -670,8 +742,16 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Explicit task state separates validated progress from potentially stale or contradictory conversation history. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Explicit task state separates validated progress from potentially stale or contradictory conversation history. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Update state from verified results",
+              "body": "Record a step as complete only after checking the authoritative tool result. Preserve unresolved errors and assumptions as such rather than converting a model summary into a confirmed fact."
+            },
+            {
+              "title": "Resume from a checkpoint",
+              "body": "On restart, load the latest validated state and determine which operations are safe to continue. Test delayed or conflicting messages so a resumed agent does not repeat completed side effects."
             }
           ]
         },
@@ -684,8 +764,16 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Useful memory is scoped, correctable, and deletable rather than treating every interaction as durable truth. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Useful memory is scoped, correctable, and deletable rather than treating every interaction as durable truth. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Choose what is worth retaining",
+              "body": "Store a concise preference only when it benefits a future task and the user is permitted to retain it. Avoid treating every message as a durable fact, and preserve source or confidence where needed."
+            },
+            {
+              "title": "Support correction and deletion",
+              "body": "Let users inspect and update stored items, enforce retention periods, and remove data from dependent indexes or caches when required. Test that deleted or corrected memories no longer influence later responses."
             }
           ]
         },
@@ -698,8 +786,16 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Step, time, and token budgets limit runaway cost and repeated unproductive actions. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Step, time, and token budgets limit runaway cost and repeated unproductive actions. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Set limits around useful work",
+              "body": "Choose a maximum number of actions, an overall deadline, and a token ceiling based on the task. Reserve enough budget to summarize the result, and do not reset the overall deadline on every retry."
+            },
+            {
+              "title": "Handle budget exhaustion",
+              "body": "Stop when any hard limit is reached, preserve verified progress, and return a clear partial status or escalation. Track which budget was exhausted so teams can distinguish an inefficient loop from an undersized limit."
             }
           ]
         },
@@ -712,8 +808,16 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Typed errors let an agent distinguish timeouts and failures from a successful empty result. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Typed errors let an agent distinguish timeouts and failures from a successful empty result. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Choose handling by error class",
+              "body": "Retry a transient timeout only within a bounded policy, but surface a permanent validation error for correction. Treat a successful empty result as evidence of no match, not as a transport failure."
+            },
+            {
+              "title": "Preserve failure status",
+              "body": "Carry the tool status into the final response and telemetry instead of converting every failure to an empty list. Test timeouts, permission denials, invalid inputs, and valid empty results independently."
             }
           ]
         },
@@ -726,8 +830,16 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Model judges can scale rubric checks but require calibration against human ratings and bias checks. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Model judges can scale rubric checks but require calibration against human ratings and bias checks. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Calibrate against human ratings",
+              "body": "Define observable rubric dimensions and compare judge scores with a representative set of human judgments. Review disagreements and measure consistency across relevant user groups and response styles."
+            },
+            {
+              "title": "Use judge scores carefully",
+              "body": "Use the judge to prioritize review or track a tested metric, not as the only gate for high-impact decisions. Recalibrate when the model, prompt, rubric, or output population changes."
             }
           ]
         },
@@ -740,8 +852,16 @@
           "estimatedMinutes": 8,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Regression cases preserve expected behavior across edits and should include ambiguous and adversarial inputs. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Regression cases preserve expected behavior across edits and should include ambiguous and adversarial inputs. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Cover edge cases and boundaries",
+              "body": "Include representative requests, ambiguous wording, missing evidence, and adversarial content that should not change tool permissions. Assert key properties rather than brittle exact wording when several answers are valid."
+            },
+            {
+              "title": "Run and maintain the suite",
+              "body": "Compare the revised system with a baseline using the same cases and inspect regressions before release. Add confirmed production failures and periodically remove obsolete expectations that no longer match product requirements."
             }
           ]
         }
@@ -1004,8 +1124,16 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Evaluate full task outcomes and policy compliance across tool traces, not just final-response quality. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Evaluate full task outcomes and policy compliance across tool traces, not just final-response quality. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Score outcomes and traces",
+              "body": "Define separate checks for task completion, evidence quality, tool choice, authorization, and side effects. Preserve traces that show what the agent observed and attempted, while limiting sensitive content."
+            },
+            {
+              "title": "Analyze failure attribution",
+              "body": "Compare successful and failed traces to find whether the cause was planning, retrieval, tool execution, or final reporting. Test partial completion and policy boundaries, not only clean end-to-end demonstrations."
             }
           ]
         },
@@ -1018,8 +1146,16 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Traces connect prompts, decisions, tools, and results while minimizing sensitive logged content. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Traces connect prompts, decisions, tools, and results while minimizing sensitive logged content. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Record useful, minimal fields",
+              "body": "Capture timestamps, component versions, decision identifiers, tool status, and bounded error categories. Redact or omit sensitive payloads unless a documented, access-controlled need requires them."
+            },
+            {
+              "title": "Use traces for diagnosis",
+              "body": "Correlate latency and failure rates across the trace, then sample content only under approved retention and access rules. Test that secrets and personal data are not exposed in routine logs."
             }
           ]
         },
@@ -1032,8 +1168,16 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Defense in depth includes least privilege, external authorization, and output checks; keyword blocking alone is insufficient. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Defense in depth includes least privilege, external authorization, and output checks; keyword blocking alone is insufficient. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Constrain capabilities externally",
+              "body": "Give tools least privilege, authorize each action in trusted code, and validate outputs before use. Treat retrieved content as data and do not grant it access to secrets or privileged instructions."
+            },
+            {
+              "title": "Test the complete boundary",
+              "body": "Use benign and adversarial test cases to check whether sensitive data is disclosed or unauthorized actions occur. Measure blocked outcomes and false positives, and revise controls rather than relying on a single prompt or filter."
             }
           ]
         },
@@ -1046,8 +1190,16 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Multiple agents add handoff and shared-state failure modes and are useful only when measured specialization helps. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Multiple agents add handoff and shared-state failure modes and are useful only when measured specialization helps. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Define bounded handoffs",
+              "body": "Specify each agent's responsibility, accepted input, and evidence-bearing output. Keep shared state explicit and identify which component can approve consequential actions."
+            },
+            {
+              "title": "Measure coordination overhead",
+              "body": "Compare the multi-agent workflow with a simpler baseline on the same task set. Track completion quality, extra calls, latency, and disagreement, including failures caused by lost or stale handoff context."
             }
           ]
         },
@@ -1060,8 +1212,16 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Summaries save context but can omit constraints or introduce errors that affect future actions. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Summaries save context but can omit constraints or introduce errors that affect future actions. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Preserve decision-critical details",
+              "body": "Keep active constraints, verified facts with provenance, user preferences, and unresolved items distinct. Avoid compressing away negation, dates, exceptions, or approval status that can change an action."
+            },
+            {
+              "title": "Validate summary quality",
+              "body": "Compare summaries with source conversations using targeted checks for omitted requirements and altered facts. For high-impact actions, retrieve the original evidence or ask for confirmation rather than relying only on a summary."
             }
           ]
         },
@@ -1074,8 +1234,16 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Preference data shapes outputs but can encode rater bias and reward superficial signals. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Preference data shapes outputs but can encode rater bias and reward superficial signals. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Audit the comparison signal",
+              "body": "Use clear task-relevant criteria and examples that distinguish factuality, helpfulness, and style. Check rater consistency and representation, and identify cases where both candidate answers are flawed."
+            },
+            {
+              "title": "Check for reward shortcuts",
+              "body": "Evaluate on held-out tasks and inspect whether improvements generalize beyond the preference examples. Track regressions such as verbosity or unjustified confidence, and revise data or objectives when proxy metrics diverge from user outcomes."
             }
           ]
         },
@@ -1088,8 +1256,16 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Routing trades quality, latency, and cost across models and needs measured fallback behavior. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Routing trades quality, latency, and cost across models and needs measured fallback behavior. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Define routing evidence",
+              "body": "Use validated task features and measured capability differences rather than unsupported confidence claims. Avoid sending sensitive inputs to a model that lacks the required data protections."
+            },
+            {
+              "title": "Test fallback behavior",
+              "body": "Benchmark quality, latency, and cost for each route on representative cases, including timeouts and provider changes. Ensure a fallback does not bypass safety checks, and report when it cannot meet the required quality bar."
             }
           ]
         },
@@ -1102,8 +1278,16 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Live sampling complements fixed tests because user behavior and external knowledge change over time. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Live sampling complements fixed tests because user behavior and external knowledge change over time. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Sample with a defined purpose",
+              "body": "Choose representative cohorts and issue categories, minimize collected content, and follow consent and retention rules. Include enough context to assess behavior without retaining unnecessary personal data."
+            },
+            {
+              "title": "Close the feedback loop",
+              "body": "Review samples against a stable rubric, compare trends with offline tests, and turn confirmed failures into regression cases. Investigate traffic or source-data changes before attributing a metric shift to the model."
             }
           ]
         }
@@ -1331,8 +1515,16 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Long tasks need checkpoints, invariant checks, and recovery from partial completion. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Long tasks need checkpoints, invariant checks, and recovery from partial completion. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Track invariants and dependencies",
+              "body": "Represent preconditions, completed steps, and required invariants explicitly; verify them after state-changing operations. Persist enough information to tell whether a step ran, failed, or has an uncertain outcome."
+            },
+            {
+              "title": "Recover without duplicating work",
+              "body": "On restart, reconcile checkpoint state with authoritative tool status before resuming. Use idempotency or compensation where supported, and stop for review when the state cannot be safely determined."
             }
           ]
         },
@@ -1345,8 +1537,16 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Benchmarks should include realistic environments, hidden state, tool failures, and policy constraints. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Benchmarks should include realistic environments, hidden state, tool failures, and policy constraints. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Design representative environments",
+              "body": "Vary task difficulty, user intent, data freshness, and tool availability while keeping success criteria explicit. Include negative cases where the correct result is to abstain or request approval."
+            },
+            {
+              "title": "Protect benchmark validity",
+              "body": "Separate development tasks from held-out evaluation, prevent leakage of hidden state, and measure full traces as well as final answers. Report uncertainty and failure categories so an aggregate score does not hide policy violations."
             }
           ]
         },
@@ -1359,8 +1559,16 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Red teaming probes misuse, privacy leakage, bias, and instruction failures under defined threat scenarios. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Red teaming probes misuse, privacy leakage, bias, and instruction failures under defined threat scenarios. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Build a threat-based test plan",
+              "body": "Specify assets, adversary capabilities, prohibited outcomes, and safe test fixtures before probing. Include representative user groups and indirect content channels without targeting real people or systems."
+            },
+            {
+              "title": "Turn findings into mitigations",
+              "body": "Record reproducible evidence, severity, and affected controls without exposing sensitive data broadly. Retest the fix and nearby workflows, then update monitoring and the threat model for residual risk."
             }
           ]
         },
@@ -1373,8 +1581,16 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Document permissions must be enforced during retrieval rather than merely described in a prompt. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Document permissions must be enforced during retrieval rather than merely described in a prompt. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Filter by current identity and policy",
+              "body": "Bind each query to the authenticated user and apply current document-level permissions during candidate selection. Treat cached results and derived chunks as protected data with the same access boundaries."
+            },
+            {
+              "title": "Test permission changes",
+              "body": "Test users with different roles, revoked access, shared documents, and cached results. Verify unauthorized text is absent from retrieval, model context, citations, and logs, not merely hidden in the final answer."
             }
           ]
         },
@@ -1387,8 +1603,16 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Grounded answers need provenance linking claims to source versions and access decisions. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Grounded answers need provenance linking claims to source versions and access decisions. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Link claims to passages",
+              "body": "Retain stable source identifiers, version or timestamp, relevant passage locations, and retrieval context. Verify each cited passage entails the particular claim and is still accessible to the requester."
+            },
+            {
+              "title": "Handle source changes",
+              "body": "When a source is updated or withdrawn, refresh dependent indexes and reassess stored answers. Preserve audit metadata needed to reproduce a decision while respecting retention and deletion policies."
             }
           ]
         },
@@ -1401,8 +1625,16 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Version model, tokenizer, prompt, retrieval index, and tool schema to attribute behavior changes. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Version model, tokenizer, prompt, retrieval index, and tool schema to attribute behavior changes. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Capture a deployment manifest",
+              "body": "Version all behavior-affecting components and record the configuration used for each evaluation and production release. Keep secrets out of manifests while preserving identifiers needed for reproducibility."
+            },
+            {
+              "title": "Compare releases safely",
+              "body": "Run a representative regression suite against old and new manifests, then inspect differences by task and policy category. Use staged rollout and rollback if quality, latency, or safety metrics cross defined limits."
             }
           ]
         },
@@ -1415,8 +1647,16 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Uncertainty can trigger retrieval, another model, or review but must be calibrated for the task. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Uncertainty can trigger retrieval, another model, or review but must be calibrated for the task. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Calibrate decision thresholds",
+              "body": "Compare uncertainty scores with observed correctness on representative, labeled cases and choose thresholds based on error costs. Recheck calibration across input groups and after model or data changes."
+            },
+            {
+              "title": "Use a safe fallback",
+              "body": "Route uncertain high-impact cases to a verified evidence path or qualified reviewer, and define what happens if that path is unavailable. Measure missed and unnecessary escalations to detect hidden cost or unequal service."
             }
           ]
         },
@@ -1429,8 +1669,16 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Prompts, outputs, embeddings, and logs can expose sensitive information and need retention controls. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Prompts, outputs, embeddings, and logs can expose sensitive information and need retention controls. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Minimize and govern data",
+              "body": "Send only fields needed for the task, apply access controls to derived data, and define retention and deletion across providers, indexes, caches, and logs. Review data flows before adding a new model or observability service."
+            },
+            {
+              "title": "Verify privacy controls",
+              "body": "Test redaction, access, retention expiry, deletion propagation, and incident response using synthetic data. Confirm provider settings and operational processes rather than inferring protection from a model response."
             }
           ]
         },
@@ -1443,8 +1691,16 @@
           "estimatedMinutes": 10,
           "lessons": [
             {
-              "title": "Concept and application",
-              "body": "Safe shutdown records in-flight work and prevents duplicate execution during restart. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "title": "Understand the core idea",
+              "body": "Safe shutdown records in-flight work and prevents duplicate execution during restart. Use this principle to decide what the system must verify before relying on an answer or action."
+            },
+            {
+              "title": "Quiesce and checkpoint",
+              "body": "Stop scheduling new work, persist the operation identifier and last verified state, and wait only within a defined grace period for in-flight calls. Mark unresolved operations as uncertain rather than successful."
+            },
+            {
+              "title": "Reconcile before resuming",
+              "body": "After restart, query authoritative operation status or use the same idempotency key before retrying. Test crashes before, during, and after side effects, and make incomplete work visible for safe review."
             }
           ]
         }
