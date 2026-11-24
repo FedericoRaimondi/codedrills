@@ -151,10 +151,18 @@ The local review UI lets contributors review and update lesson and challenge JSO
 Install [uv](https://docs.astral.sh/uv/) if it is not already available, then run the following from the repository root:
 
 ```bash
+uv sync
 uv run streamlit run content_review.py
 ```
 
 Open the local URL printed by Streamlit, normally `http://localhost:8501`.
+
+If `uv sync` reports that `.venv` is not a valid Python environment, recreate the ignored virtual environment and sync again:
+
+```bash
+uv venv --clear --force
+uv sync
+```
 
 #### What it supports
 
