@@ -1,12 +1,12 @@
 {
-    "language": "deep-neural-nets",
+    "language": "deep-learning",
     "levels": [
         {
             "level": "new",
             "topics": [
                 {
                     "id": "dnn-new-01-neuron-and-activation",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "new",
                     "title": "Neuron and activation",
                     "description": "A neuron combines weighted inputs and a bias, then applies a nonlinear activation; without nonlinearity, stacked layers remain a linear transformation.",
@@ -41,7 +41,7 @@
                 },
                 {
                     "id": "dnn-new-02-layers-and-representations",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "new",
                     "title": "Layers and representations",
                     "description": "Each layer transforms an input into a representation for later layers; useful representations depend on the training objective and data.",
@@ -76,7 +76,7 @@
                 },
                 {
                     "id": "dnn-new-03-weights-and-biases",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "new",
                     "title": "Weights and biases",
                     "description": "Weights scale input contributions and biases shift activations; training updates both to reduce a specified loss.",
@@ -111,7 +111,7 @@
                 },
                 {
                     "id": "dnn-new-04-forward-pass",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "new",
                     "title": "Forward pass",
                     "description": "A forward pass computes outputs by applying layer operations in sequence, making tensor shapes and transformations auditable.",
@@ -146,7 +146,7 @@
                 },
                 {
                     "id": "dnn-new-05-loss-function",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "new",
                     "title": "Loss function",
                     "description": "A loss measures prediction error and defines the signal training optimizes; it should match the task and output representation.",
@@ -181,7 +181,7 @@
                 },
                 {
                     "id": "dnn-new-06-gradient-descent",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "new",
                     "title": "Gradient descent",
                     "description": "Gradient descent updates parameters using loss gradients, and the learning rate controls the step size.",
@@ -216,7 +216,7 @@
                 },
                 {
                     "id": "dnn-new-07-backpropagation",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "new",
                     "title": "Backpropagation",
                     "description": "Backpropagation applies the chain rule to calculate parameter gradients efficiently from the output layer toward earlier layers.",
@@ -251,7 +251,7 @@
                 },
                 {
                     "id": "dnn-new-08-training-batches",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "new",
                     "title": "Training batches",
                     "description": "A batch supplies examples for an optimizer update; batch size changes memory use, gradient noise, and update frequency.",
@@ -286,183 +286,189 @@
                 },
                 {
                     "id": "dnn-new-09-epochs-and-iterations",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "new",
                     "title": "Epochs and iterations",
                     "description": "An epoch passes through the training set once, while an iteration is one optimizer update; they are not interchangeable.",
                     "estimatedMinutes": 8,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "An epoch passes through the training set once, while an iteration is one optimizer update; they are not interchangeable. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Distinguish a pass from an update",
+                            "body": "An epoch is one pass through the training dataset. An iteration usually means one optimizer update, although some tools use it for a batch-processing step. State the convention in training logs: processing a batch and updating parameters are separate operations when gradients are accumulated."
                         },
                         {
-                            "title": "How it works",
-                            "body": "An epoch passes through the training set once, while an iteration is one optimizer update; they are not interchangeable. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Count batches in an epoch",
+                            "body": "With 100 examples and batches of 20, an epoch contains five batches. If the optimizer updates after each batch, three epochs produce 15 updates. When the dataset size is not divisible by the batch size, keeping or dropping the last incomplete batch changes this count.",
+                            "image": "img/languages/deep-neural-nets/batch-update-count.png"
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat epochs and iterations as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Account for gradient accumulation",
+                            "body": "Suppose an epoch contains 12 microbatches and gradients are accumulated over three microbatches before each optimizer step. That gives four updates per epoch, not 12. Clear gradients at the intended update boundary and specify what happens to a partial accumulation group at the end."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use epochs and iterations as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Read the schedule's clock",
+                            "body": "A learning-rate scheduler may advance per epoch or per optimizer update. Calling a per-epoch scheduler after every batch makes it progress too quickly. When changing batch size, record both examples processed and optimizer steps so comparisons reveal whether the model received a different training budget."
                         }
                     ]
                 },
                 {
                     "id": "dnn-new-10-training-and-validation-curves",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "new",
                     "title": "Training and validation curves",
                     "description": "Comparing training and validation loss helps reveal underfitting and overfitting when validation data is not used to fit weights.",
                     "estimatedMinutes": 8,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Comparing training and validation loss helps reveal underfitting and overfitting when validation data is not used to fit weights. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Measure on separate data",
+                            "body": "Training loss measures fit to examples used to update weights. Validation loss measures the current model on separate examples without updating it. Plot both against epochs or optimizer steps using consistent loss definitions; the validation set guides model choices rather than supplying training gradients."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Comparing training and validation loss helps reveal underfitting and overfitting when validation data is not used to fit weights. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Read a widening gap",
+                            "body": "Suppose training loss falls from 0.8 to 0.2 while validation loss falls to 0.5 and then rises to 0.7. The later training fits training-specific patterns more closely without improving validation performance. Save checkpoints so the earlier, better-validating model remains available.",
+                            "image": "img/languages/deep-neural-nets/loss-training-validation.png"
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat training and validation curves as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Investigate two high losses",
+                            "body": "If both curves stay high, inspect whether the model can learn even a small training subset. Incorrect labels, badly scaled inputs, a disconnected gradient, or an unsuitable learning rate can prevent fitting. A curve alone cannot distinguish those causes from insufficient model capacity."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use training and validation curves as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Compare like-for-like measurements",
+                            "body": "Dropout, data augmentation, and regularization penalties can make the logged training loss differ from validation loss even without overfitting. Evaluate a training subset in evaluation mode with the same loss definition to clarify the comparison. Treat the observed trend as evidence to investigate, not an automatic diagnosis."
                         }
                     ]
                 },
                 {
                     "id": "dnn-new-11-classification-heads",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "new",
                     "title": "Classification heads",
                     "description": "A softmax head normalizes logits for mutually exclusive classes but does not guarantee that its probabilities are calibrated.",
                     "estimatedMinutes": 8,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "A softmax head normalizes logits for mutually exclusive classes but does not guarantee that its probabilities are calibrated. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Produce class scores",
+                            "body": "A classification head maps the network's final representation to class scores called logits. For a batch of eight examples and three mutually exclusive classes, the output can have shape 8-by-3. Each row describes one example, and each column must correspond to the same class throughout training and serving.",
+                            "image": "img/languages/deep-neural-nets/forward-output-types.png"
                         },
                         {
-                            "title": "How it works",
-                            "body": "A softmax head normalizes logits for mutually exclusive classes but does not guarantee that its probabilities are calibrated. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Convert logits to probabilities",
+                            "body": "Softmax exponentiates each logit and divides by the sum of those exponentials. Logits [0, 0] therefore give probabilities [0.5, 0.5]. Implementations subtract the largest logit first for numerical stability. Many cross-entropy functions already include this calculation and expect raw logits as input."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat classification heads as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Separate exclusive and overlapping labels",
+                            "body": "An animal photo assigned exactly one species fits a softmax head. A photo that can independently contain a dog, a bicycle, and a person needs multiple labels, often modeled with one sigmoid output per label. Those probabilities need not sum to one; use a compatible binary loss for each label."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use classification heads as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Choose a decision rule",
+                            "body": "Selecting the largest softmax probability yields a class, but a product may instead abstain below a confidence threshold. Set that policy using validation data and the cost of errors. A probability of 0.9 is not automatically calibrated: check how often predictions with similar confidence are actually correct."
                         }
                     ]
                 },
                 {
                     "id": "dnn-new-12-regression-heads",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "new",
                     "title": "Regression heads",
                     "description": "A regression output and loss should reflect the target's scale, range, and error costs.",
                     "estimatedMinutes": 8,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "A regression output and loss should reflect the target's scale, range, and error costs. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Output a numeric target",
+                            "body": "A regression head predicts quantities rather than class membership. A single unconstrained linear output can represent a temperature above or below zero. For several targets, use several outputs and keep their order and units explicit; a predicted price and a predicted duration are not interchangeable columns.",
+                            "image": "img/languages/deep-neural-nets/forward-output-types.png"
                         },
                         {
-                            "title": "How it works",
-                            "body": "A regression output and loss should reflect the target's scale, range, and error costs. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Match the loss to error costs",
+                            "body": "For a target of 5 and prediction of 7, absolute error is 2 and squared error is 4. Squared error puts more emphasis on large misses than absolute error. Select a loss based on the task rather than choosing an output activation intended for classification."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat regression heads as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Respect ranges and scaling",
+                            "body": "An unconstrained output can predict a negative duration. A positive-valued transformation such as softplus can enforce positivity when that matches the target. If training uses standardized targets, save the training mean and scale and invert the transformation before reporting predictions in the original units."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use regression heads as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Inspect errors beyond the mean",
+                            "body": "A low overall mean absolute error can hide systematic underprediction for large targets. Plot prediction errors against target size and report errors in the units users need. A point prediction alone gives no uncertainty interval; estimating intervals requires an additional method and held-out coverage checks."
                         }
                     ]
                 },
                 {
                     "id": "dnn-new-13-overfitting",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "new",
                     "title": "Overfitting",
                     "description": "Overfitting occurs when a network learns training-specific details that do not generalize to relevant unseen examples.",
                     "estimatedMinutes": 8,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Overfitting occurs when a network learns training-specific details that do not generalize to relevant unseen examples. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Recognize memorization",
+                            "body": "A neural network can fit accidental patterns or mislabeled examples in its training set. Overfitting appears when those improvements fail to transfer to relevant unseen data. Parameter count alone does not establish whether a model overfits; the amount and quality of data and the training procedure also matter."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Overfitting occurs when a network learns training-specific details that do not generalize to relevant unseen examples. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Compare error trajectories",
+                            "body": "If training accuracy rises from 85% to 99% while validation accuracy stalls near 83%, additional training has not demonstrated better generalization. Inspect validation loss too: confidence can become worse even when the predicted class stays unchanged. Keep a checkpoint from before the deterioration.",
+                            "image": "img/languages/deep-neural-nets/loss-training-validation.png"
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat overfitting as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Check the split before regularizing",
+                            "body": "Near-duplicate images or records from the same subject in training and validation can hide overfitting. Split by the independent unit relevant to deployment, such as a person or device. A suspiciously small gap can reflect leakage rather than excellent generalization."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use overfitting as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Change one remedy at a time",
+                            "body": "More representative data, label-preserving augmentation, weight decay, dropout, or earlier stopping may reduce overfitting. Compare a chosen change on the same validation split instead of applying every remedy together. If training performance is already poor, stronger regularization may make the problem worse."
                         }
                     ]
                 },
                 {
                     "id": "dnn-new-14-compute-and-memory",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "new",
                     "title": "Compute and memory",
                     "description": "Parameters, activations, gradients, and optimizer state use memory; estimate the full training footprint before selecting batch size.",
                     "estimatedMinutes": 8,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Parameters, activations, gradients, and optimizer state use memory; estimate the full training footprint before selecting batch size. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Count persistent training state",
+                            "body": "Training needs storage for parameters, their gradients, and optimizer state. A million FP32 parameters occupy about four million bytes for the parameters alone. Gradients and two FP32 moment buffers add about twelve million more bytes, before activations, temporary buffers, or framework overhead."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Parameters, activations, gradients, and optimizer state use memory; estimate the full training footprint before selecting batch size. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Account for activations",
+                            "body": "Intermediate activations are often retained for the backward pass. Increasing batch size or input resolution can therefore raise memory usage even when parameter count is unchanged. For sequence models, longer inputs can also increase attention memory sharply. Measure peak usage during a full training step, not just model loading.",
+                            "image": "img/languages/deep-neural-nets/batch-memory.png"
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat compute and memory as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Distinguish memory from speed",
+                            "body": "A model that fits on a device can still train slowly because of data loading, small operations, or communication. Measure examples processed per second after warmup and inspect where time is spent. Reducing parameters does not guarantee faster execution if activations or inefficient kernels dominate."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use compute and memory as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Fit a run to the device",
+                            "body": "If a full training step runs out of memory, try a smaller microbatch and measure again. Gradient accumulation can preserve the effective batch size across several microbatches, but batch-dependent operations may behave differently. Leave headroom for variable input sizes and checkpoint or evaluation work."
                         }
                     ]
                 },
                 {
                     "id": "dnn-new-15-neural-network-baselines",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "new",
                     "title": "Neural-network baselines",
                     "description": "A small neural network or non-neural baseline gives a reference for judging whether added depth is worthwhile.",
                     "estimatedMinutes": 8,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "A small neural network or non-neural baseline gives a reference for judging whether added depth is worthwhile. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Establish a reference prediction",
+                            "body": "A baseline makes a neural network's result interpretable. For numeric prediction, a constant training-set mean is a useful starting point under squared error. For classification, predicting the most frequent training class exposes how much accuracy is possible without learning input-dependent patterns."
                         },
                         {
-                            "title": "How it works",
-                            "body": "A small neural network or non-neural baseline gives a reference for judging whether added depth is worthwhile. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Train a small model first",
+                            "body": "A linear predictor or small multilayer perceptron can reveal whether the features contain usable signal before a larger network consumes the budget. Use the same split and preprocessing rules as the larger candidate. Record training time and inference cost along with the task metric."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat neural-network baselines as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Make the comparison fair",
+                            "body": "Suppose a deep model reaches 92% accuracy and a small network reaches 91.8%. Repeat runs or quantify uncertainty before attributing the difference to depth. Different data versions, tuning budgets, or thresholds can explain a small apparent gain even when the reported metric is identical."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use neural-network baselines as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Keep or reject added complexity",
+                            "body": "Prefer the larger model only when its measured benefit justifies the extra latency, memory, or maintenance. Inspect important error groups rather than deciding from the aggregate score alone. Preserve the baseline artifact as a reference for later regressions and data changes."
                         }
                     ]
                 }
@@ -473,7 +479,7 @@
             "topics": [
                 {
                     "id": "dnn-beginner-01-initialization",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "beginner",
                     "title": "Initialization",
                     "description": "Variance-aware initialization preserves useful activation and gradient scales better than setting all weights to zero.",
@@ -508,7 +514,7 @@
                 },
                 {
                     "id": "dnn-beginner-02-learning-rate-schedules",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "beginner",
                     "title": "Learning-rate schedules",
                     "description": "Schedules adjust step size over training to balance rapid early learning with stable convergence.",
@@ -543,7 +549,7 @@
                 },
                 {
                     "id": "dnn-beginner-03-momentum-and-adaptive-optimizers",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "beginner",
                     "title": "Momentum and adaptive optimizers",
                     "description": "Momentum smooths updates and adaptive optimizers scale them using gradient history; neither removes the need to tune and validate.",
@@ -578,7 +584,7 @@
                 },
                 {
                     "id": "dnn-beginner-04-weight-decay",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "beginner",
                     "title": "Weight decay",
                     "description": "Weight decay discourages large weights to regularize a model; decoupled weight decay is not identical to L2 penalties for every optimizer.",
@@ -613,7 +619,7 @@
                 },
                 {
                     "id": "dnn-beginner-05-dropout",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "beginner",
                     "title": "Dropout",
                     "description": "Dropout masks activations during training as regularization and should be disabled for ordinary inference.",
@@ -648,7 +654,7 @@
                 },
                 {
                     "id": "dnn-beginner-06-batch-normalization",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "beginner",
                     "title": "Batch normalization",
                     "description": "Batch normalization uses minibatch statistics during training and stored running statistics at inference.",
@@ -683,7 +689,7 @@
                 },
                 {
                     "id": "dnn-beginner-07-layer-normalization",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "beginner",
                     "title": "Layer normalization",
                     "description": "Layer normalization normalizes features within each example, making it useful when batch sizes or sequence lengths vary.",
@@ -718,209 +724,212 @@
                 },
                 {
                     "id": "dnn-beginner-08-convolutions",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "beginner",
                     "title": "Convolutions",
                     "description": "Convolutions reuse local filters across positions and exploit spatial locality in images and other grid-like inputs.",
                     "estimatedMinutes": 8,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Convolutions reuse local filters across positions and exploit spatial locality in images and other grid-like inputs. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Reuse a local filter",
+                            "body": "A convolutional layer applies the same learned filter at many spatial positions. A 3-by-3 filter looks at a local patch rather than connecting independently to every image pixel. Sharing weights lets the layer detect a pattern at different locations with fewer parameters than a comparable dense mapping."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Convolutions reuse local filters across positions and exploit spatial locality in images and other grid-like inputs. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Calculate an output shape",
+                            "body": "With a 5-by-5 input, a 3-by-3 kernel, stride 1, no padding, and dilation 1, each spatial output dimension is 3. Padding by one pixel on each side instead preserves the 5-by-5 size. Stride controls how far the filter moves between output positions."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat convolutions as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Combine channels",
+                            "body": "For an RGB input, one standard convolutional filter spans all three input channels. A layer with eight 3-by-3 filters has 3*3*3*8 = 216 kernel weights and produces eight output channels, plus eight biases if enabled. Spatial weight sharing keeps that count independent of image width."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use convolutions as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Understand the spatial assumption",
+                            "body": "Convolutions are useful when nearby positions have related meaning, as pixels often do. Arbitrarily ordered table columns do not necessarily have that property. Padding creates boundary effects, and stride can change the response to small translations, so test the shifts and edge cases expected in real inputs."
                         }
                     ]
                 },
                 {
                     "id": "dnn-beginner-09-pooling-and-downsampling",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "beginner",
                     "title": "Pooling and downsampling",
                     "description": "Downsampling reduces spatial compute but can discard fine details needed for localization or small-object recognition.",
                     "estimatedMinutes": 8,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Downsampling reduces spatial compute but can discard fine details needed for localization or small-object recognition. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Reduce spatial resolution",
+                            "body": "Pooling summarizes a neighborhood without learning a separate weight for each position. Max pooling retains the largest value; average pooling retains the mean. Downsampling reduces spatial dimensions and later computation, but discards information that may be needed to distinguish small objects or precise boundaries."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Downsampling reduces spatial compute but can discard fine details needed for localization or small-object recognition. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Work through a pooling window",
+                            "body": "For the 2-by-2 patch [[1, 3], [2, 0]], max pooling returns 3 and average pooling returns 1.5. A 2-by-2 window with stride 2 maps a 4-by-4 feature map to 2-by-2 when no padding is used. Each output summarizes a different non-overlapping patch."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat pooling and downsampling as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Compare learned downsampling",
+                            "body": "A strided convolution downsamples while learning how to combine local values; pooling uses a fixed reduction rule. Neither guarantees preservation of all useful details. Rapid spatial variation can alias when sampled more coarsely, so filtering before subsampling may help when small input shifts cause unstable outputs."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use pooling and downsampling as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Preserve detail when the task needs it",
+                            "body": "Image classification can often use global average pooling to turn each feature map into one value. Segmentation needs a spatial output, so architectures may retain high-resolution features or pass them through skip connections to a decoder. Evaluate small-object and boundary errors before increasing downsampling."
                         }
                     ]
                 },
                 {
                     "id": "dnn-beginner-10-embeddings",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "beginner",
                     "title": "Embeddings",
                     "description": "Embeddings map discrete identifiers to learned vectors whose geometry reflects the training objective, not universal similarity.",
                     "estimatedMinutes": 8,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Embeddings map discrete identifiers to learned vectors whose geometry reflects the training objective, not universal similarity. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Look up a learned vector",
+                            "body": "An embedding table stores one trainable vector per discrete identifier, such as a token or product ID. Looking up an ID retrieves its row. Unlike using the raw ID as a number, this representation does not imply that product 20 is twice product 10."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Embeddings map discrete identifiers to learned vectors whose geometry reflects the training objective, not universal similarity. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Size the table",
+                            "body": "A vocabulary of 1,000 identifiers with 16-dimensional embeddings requires 16,000 parameters. Looking up a batch of four sequences of length six produces a 4-by-6-by-16 tensor. The downstream model decides how to combine those vectors into predictions."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat embeddings as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Learn similarity from the objective",
+                            "body": "Training gradients update embedding rows according to the task. Two items may become close because users interact with both, not because they share every semantic property. Cosine similarity reflects that learned geometry; it is not proof of universal meaning or interchangeability."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use embeddings as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Handle unknown and rare IDs",
+                            "body": "Reserve a documented unknown-ID strategy for values absent from training and give padding its own treatment. Rare IDs receive fewer learning signals, so examine their errors separately. Save the ID-to-row mapping with the embedding weights; changing the mapping silently assigns vectors to the wrong inputs."
                         }
                     ]
                 },
                 {
                     "id": "dnn-beginner-11-padding-and-masks",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "beginner",
                     "title": "Padding and masks",
                     "description": "Padding equalizes sequence lengths; attention and loss masks must prevent padded positions from affecting learning.",
                     "estimatedMinutes": 8,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Padding equalizes sequence lengths; attention and loss masks must prevent padded positions from affecting learning. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Build a rectangular batch",
+                            "body": "Sequences of lengths three and five can share a batch by adding two padding positions to the shorter one. The resulting tensor has length five for both examples. Padding is a storage convention, not real content, so later calculations must know which positions are valid."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Padding equalizes sequence lengths; attention and loss masks must prevent padded positions from affecting learning. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Mask attention and loss separately",
+                            "body": "An attention mask prevents real tokens from attending to padded key positions. A loss mask excludes padded target positions from the training objective. One does not automatically implement the other. A causal mask adds a different restriction: a position cannot attend to later tokens.",
+                            "image": "img/languages/deep-neural-nets/transformer-attention-mask.png"
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat padding and masks as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Normalize over valid tokens",
+                            "body": "Suppose a batch contains eight real target tokens and two padding positions. Sum the losses on the eight valid tokens and divide by eight for a token-average loss. Dividing by all ten positions makes the reported value depend on how much padding happens to be in the batch."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use padding and masks as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Test padding invariance",
+                            "body": "In evaluation mode, append padding while preserving the original real-token positions and compare outputs for those tokens within numerical tolerance. Unexpected changes can expose a missing mask or incorrect pooling denominator. Confirm mask conventions in the library, since a true value can mean either allowed or blocked."
                         }
                     ]
                 },
                 {
                     "id": "dnn-beginner-12-class-imbalance",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "beginner",
                     "title": "Class imbalance",
                     "description": "Class weighting or sampling can emphasize rare examples but may change the probability calibration of the resulting classifier.",
                     "estimatedMinutes": 8,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Class weighting or sampling can emphasize rare examples but may change the probability calibration of the resulting classifier. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Expose the majority-class shortcut",
+                            "body": "If only 1% of examples are positive, predicting negative for everything gives 99% accuracy and zero positive recall. Inspect class counts and a confusion matrix before judging a classifier. Use metrics and operating thresholds that reflect the cost of missing positives and raising false alarms."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Class weighting or sampling can emphasize rare examples but may change the probability calibration of the resulting classifier. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Reweight or resample training examples",
+                            "body": "Class-weighted loss increases the contribution of selected classes. Oversampling instead presents some examples more often, while undersampling discards some majority examples. Both change training emphasis, but repeated rare examples can still be memorized. Apply sampling only to training data, not the held-out evaluation population."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat class imbalance as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Separate ranking from probability quality",
+                            "body": "A classifier trained on an artificially balanced sample does not automatically output probabilities appropriate for a population with 1% positives. Evaluate calibration on representative held-out data before treating its scores as risks. Threshold adjustment and probability calibration address different questions."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use class imbalance as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Measure a usable operating point",
+                            "body": "If a review team can inspect 50 alerts daily, measure how many true positives occur among those alerts and how many positives are missed. Report the positive sample count and uncertainty. A large recall change based on two additional cases may not be stable enough to support a release."
                         }
                     ]
                 },
                 {
                     "id": "dnn-beginner-13-data-augmentation",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "beginner",
                     "title": "Data augmentation",
                     "description": "Augmentations encode label-preserving variation and should match plausible conditions in the deployment environment.",
                     "estimatedMinutes": 8,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Augmentations encode label-preserving variation and should match plausible conditions in the deployment environment. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Encode a valid invariance",
+                            "body": "Data augmentation changes a training input while preserving the intended target, or transforms the target consistently. A small brightness change may preserve an image's species label. Rotating a digit can change its identity, so a transformation valid for one task may be wrong for another."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Augmentations encode label-preserving variation and should match plausible conditions in the deployment environment. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Transform labels with inputs",
+                            "body": "When horizontally flipping an image for object detection, flip the bounding boxes too. For a box with horizontal coordinates x_min and x_max in a width-W image, the flipped coordinates are W-x_max and W-x_min under a continuous edge-coordinate convention. Inspect transformed examples to verify the annotation convention."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat data augmentation as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Separate training variation from evaluation",
+                            "body": "Apply random augmentation to the training partition after splitting. Otherwise, transformed copies of one original can leak across partitions. Validation normally uses a fixed preprocessing path; if using test-time augmentation, define the transformations and aggregation explicitly and include their inference cost."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use data augmentation as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Choose realistic strength",
+                            "body": "Compare a modest augmentation policy with no augmentation on the same validation set. Inspect failures caused by crops that remove the object or distortions stronger than deployment conditions. More variation can hurt when it erases the signal the model must learn."
                         }
                     ]
                 },
                 {
                     "id": "dnn-beginner-14-early-stopping",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "beginner",
                     "title": "Early stopping",
                     "description": "Early stopping chooses a checkpoint using validation behavior and should not repeatedly adapt to a held-out test set.",
                     "estimatedMinutes": 8,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Early stopping chooses a checkpoint using validation behavior and should not repeatedly adapt to a held-out test set. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Stop on validation behavior",
+                            "body": "Early stopping ends training when a chosen validation metric stops improving. It limits training time and can reduce overfitting. Choose whether the metric should rise or fall before training; lower validation loss is better, while a metric such as recall usually has the opposite direction."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Early stopping chooses a checkpoint using validation behavior and should not repeatedly adapt to a held-out test set. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Track patience and minimum improvement",
+                            "body": "Suppose validation loss reaches 0.40, then measures 0.41, 0.405, and 0.42. With patience of three evaluations and no required minimum decrease, those are three consecutive non-improvements. Patience is counted at validation checks, which may occur more or less often than once per epoch."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat early stopping as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Restore the selected checkpoint",
+                            "body": "The last training weights need not be the best validation weights. Save a checkpoint whenever the monitored metric improves and reload that checkpoint before the final test. If training may resume, preserve optimizer and scheduler state too; weights alone are sufficient only for some inference uses.",
+                            "image": "img/languages/deep-neural-nets/distributed-recovery.png"
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use early stopping as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Avoid selecting on the test set",
+                            "body": "Use validation data to choose patience and the stopping checkpoint. Repeatedly examining test performance after each epoch makes the test influence selection. A noisy or unrepresentative validation set can also choose a poor checkpoint, so inspect its coverage rather than assuming stopping always improves generalization."
                         }
                     ]
                 },
                 {
                     "id": "dnn-beginner-15-transfer-learning",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "beginner",
                     "title": "Transfer learning",
                     "description": "Pretrained representations can reduce data needs, but domain mismatch determines how well they transfer.",
                     "estimatedMinutes": 8,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Pretrained representations can reduce data needs, but domain mismatch determines how well they transfer. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Reuse a pretrained representation",
+                            "body": "A pretrained network supplies weights learned on a source task. For a new classifier, replace its original output head with one matching the target classes. Reusing the earlier layers can reduce labeled-data needs, but the benefit depends on how well source representations fit the new domain."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Pretrained representations can reduce data needs, but domain mismatch determines how well they transfer. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Start with frozen features",
+                            "body": "Freeze the pretrained backbone and train the new head first. This provides a relatively cheap reference and avoids immediately changing every pretrained weight. Frozen parameters do not necessarily freeze running statistics in normalization layers; choose training and evaluation modes deliberately."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat transfer learning as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Unfreeze selectively",
+                            "body": "If frozen features are insufficient, unfreeze later blocks or the full backbone and compare validation performance. A smaller backbone learning rate can limit abrupt changes to pretrained representations. Verify that newly trainable parameters are included in the optimizer when changing which layers are frozen.",
+                            "image": "img/languages/deep-neural-nets/finetune-strategy.png"
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use transfer learning as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Check the source assumptions",
+                            "body": "Preserve the expected channel order, input normalization, and tokenizer or image-processing contract. Evaluate target-domain slices, especially those unlike the pretraining data. Compare with the frozen reference so extra fine-tuning cost is justified by a measured improvement rather than assumed transfer."
                         }
                     ]
                 }
@@ -931,7 +940,7 @@
             "topics": [
                 {
                     "id": "dnn-intermediate-01-residual-connections",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "intermediate",
                     "title": "Residual connections",
                     "description": "Residual paths give gradients and representations a shortcut through deep blocks, often improving optimization.",
@@ -966,7 +975,7 @@
                 },
                 {
                     "id": "dnn-intermediate-02-attention",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "intermediate",
                     "title": "Attention",
                     "description": "Attention combines value vectors using query-key compatibility and masks to control which positions can interact.",
@@ -1001,7 +1010,7 @@
                 },
                 {
                     "id": "dnn-intermediate-03-transformer-blocks",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "intermediate",
                     "title": "Transformer blocks",
                     "description": "Transformer blocks combine attention, feed-forward layers, normalization, and residual paths; ordering changes model behavior.",
@@ -1036,7 +1045,7 @@
                 },
                 {
                     "id": "dnn-intermediate-04-recurrent-networks",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "intermediate",
                     "title": "Recurrent networks",
                     "description": "Recurrent networks reuse hidden state across sequence steps but can struggle to preserve long-range gradients.",
@@ -1071,7 +1080,7 @@
                 },
                 {
                     "id": "dnn-intermediate-05-encoder-decoder-models",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "intermediate",
                     "title": "Encoder-decoder models",
                     "description": "Encoder-decoder systems transform an input sequence into an output sequence, often using autoregressive decoding.",
@@ -1106,7 +1115,7 @@
                 },
                 {
                     "id": "dnn-intermediate-06-multi-task-learning",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "intermediate",
                     "title": "Multi-task learning",
                     "description": "Shared representations can help related tasks but can also create negative transfer when task gradients conflict.",
@@ -1141,7 +1150,7 @@
                 },
                 {
                     "id": "dnn-intermediate-07-fine-tuning-strategies",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "intermediate",
                     "title": "Fine-tuning strategies",
                     "description": "Full and parameter-efficient tuning trade adaptation capacity against compute, memory, and preservation of pretrained behavior.",
@@ -1176,209 +1185,211 @@
                 },
                 {
                     "id": "dnn-intermediate-08-loss-balancing",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "intermediate",
                     "title": "Loss balancing",
                     "description": "Relative loss weights determine each objective's influence; inspect task-specific progress to catch domination or collapse.",
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Relative loss weights determine each objective's influence; inspect task-specific progress to catch domination or collapse. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Combine objectives explicitly",
+                            "body": "A shared model with two tasks can optimize L = a*L1 + b*L2. The weights a and b determine how each objective contributes to the shared parameter gradient. Their effects depend on loss reduction, units, and gradient magnitudes, not just the numerical values of the weights.",
+                            "image": "img/languages/deep-neural-nets/multitask-loss.png"
                         },
                         {
-                            "title": "How it works",
-                            "body": "Relative loss weights determine each objective's influence; inspect task-specific progress to catch domination or collapse. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Inspect scale and reduction",
+                            "body": "If a token loss is summed over 100 positions while a classification loss is averaged over examples, sequence length changes their relative emphasis. Define both reductions before choosing weights. Similar scalar loss values can still produce very different gradients in shared layers."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat loss balancing as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Notice conflicting gradients",
+                            "body": "Two tasks can prefer opposite updates to shared parameters. Track task-specific validation metrics and, when diagnosing interference, compare their gradient norms and directions in shared layers. A falling total loss can conceal a task whose quality is deteriorating."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use loss balancing as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Tune against task requirements",
+                            "body": "Compare candidate weight settings with fixed training data and a stated budget. If one task has a minimum acceptable recall, enforce that constraint when choosing among trade-offs rather than minimizing only the weighted loss. Include separate single-task models to detect whether sharing hurts either objective."
                         }
                     ]
                 },
                 {
                     "id": "dnn-intermediate-09-gradient-clipping",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "intermediate",
                     "title": "Gradient clipping",
                     "description": "Clipping bounds gradient magnitude to limit unstable updates but should not conceal persistently exploding gradients.",
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Clipping bounds gradient magnitude to limit unstable updates but should not conceal persistently exploding gradients. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Bound the global gradient norm",
+                            "body": "Global norm clipping rescales the combined gradient vector when its norm exceeds a threshold. For norm n and threshold c, multiply gradients by min(1, c/n) when n is nonzero. This preserves the direction of the combined gradient while limiting its magnitude."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Clipping bounds gradient magnitude to limit unstable updates but should not conceal persistently exploding gradients. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Calculate a clipped update",
+                            "body": "For gradients [3, 4], the Euclidean norm is 5. With a clipping threshold of 2, the scale is 2/5, giving [1.2, 1.6]. Clipping each value independently would give a different direction, so value clipping and global norm clipping are not interchangeable."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat gradient clipping as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Place clipping at the update boundary",
+                            "body": "Clip after the backward pass has produced the gradients for an optimizer step. With gradient accumulation, that normally means after all contributing microbatches. With scaled mixed-precision gradients, unscale before clipping so the threshold applies to the actual gradient rather than an arbitrary loss-scaling factor."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use gradient clipping as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Monitor how often clipping happens",
+                            "body": "Log the pre-clipping norm and the fraction of updates clipped. Frequent extreme norms can indicate an excessive learning rate, unstable recurrence, or problematic examples. Clipping is not a repair for NaN gradients, and adaptive optimizers can transform a clipped gradient into an update with a different scale."
                         }
                     ]
                 },
                 {
                     "id": "dnn-intermediate-10-mixed-precision",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "intermediate",
                     "title": "Mixed precision",
                     "description": "Lower precision can reduce memory and accelerate training, while sensitive operations may require higher precision or loss scaling.",
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Lower precision can reduce memory and accelerate training, while sensitive operations may require higher precision or loss scaling. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Use precision selectively",
+                            "body": "Mixed-precision training runs suitable operations in lower precision while retaining higher precision where needed. FP16 and BF16 use fewer bits than FP32 but have different exponent ranges and precision. Hardware support and kernel choice determine whether the change actually improves speed."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Lower precision can reduce memory and accelerate training, while sensitive operations may require higher precision or loss scaling. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Understand loss scaling",
+                            "body": "Small FP16 gradients can underflow to zero. Loss scaling multiplies the loss before backpropagation and divides the resulting gradients by the same scale before updating parameters. Dynamic scaling reduces the scale after detected overflow and skips invalid updates; BF16 generally needs scaling less often because of its wider exponent range."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat mixed precision as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Protect sensitive calculations",
+                            "body": "Large reductions, normalization statistics, and operations such as exponentials may need higher-precision accumulation or stable implementations. Use the framework's supported automatic casting rules before manually converting every tensor. Keep clipping after gradient unscaling and check that skipped steps do not incorrectly advance the learning-rate schedule."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use mixed precision as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Compare with an FP32 reference",
+                            "body": "Measure peak training memory, step time after warmup, and held-out quality against a comparable FP32 run. Inspect non-finite losses and gradient statistics rather than checking speed alone. Lower-precision activations do not imply that parameters, optimizer state, and all temporary buffers use half the memory."
                         }
                     ]
                 },
                 {
                     "id": "dnn-intermediate-11-checkpointing-and-recovery",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "intermediate",
                     "title": "Checkpointing and recovery",
                     "description": "A resumable checkpoint includes model and optimizer state and often scheduler and random state, not just weights.",
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "A resumable checkpoint includes model and optimizer state and often scheduler and random state, not just weights. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Save a resumable state",
+                            "body": "Model weights allow prediction, but resuming training also needs optimizer state, the current step, and any learning-rate scheduler state. Mixed-precision training may need gradient-scaler state. Record the model configuration and data version so the stored tensors can be interpreted correctly.",
+                            "image": "img/languages/deep-neural-nets/distributed-recovery.png"
                         },
                         {
-                            "title": "How it works",
-                            "body": "A resumable checkpoint includes model and optimizer state and often scheduler and random state, not just weights. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Preserve the data position",
+                            "body": "For a close continuation, save random-generator states and the sampler or data-loader position when supported. Restarting at the beginning of an epoch repeats examples if the checkpoint was taken midway through it. Distributed workers may each have relevant random state and data progress."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat checkpointing and recovery as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Publish only complete checkpoints",
+                            "body": "Write a new checkpoint to a temporary location and mark or rename it as complete only after all required files are durable. Keep an older verified checkpoint until the new one can be loaded. A partially written distributed shard set must not be advertised as a recoverable training state."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use checkpointing and recovery as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Rehearse a restart",
+                            "body": "Run several steps, save, reload in a fresh process, and verify the restored step, learning rate, and optimizer buffers. Compare the next loss and update with an uninterrupted reference under controlled randomness. Exact equality may be unavailable with nondeterministic kernels, so state the tolerance and recovery guarantee."
                         }
                     ]
                 },
                 {
                     "id": "dnn-intermediate-12-representation-probing",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "intermediate",
                     "title": "Representation probing",
                     "description": "A probe tests whether information is recoverable from hidden states but does not prove the model causally uses it.",
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "A probe tests whether information is recoverable from hidden states but does not prove the model causally uses it. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Ask what a hidden state contains",
+                            "body": "A probe is a model trained to predict a property from a network's hidden representations. Freeze the original network and collect representations from a chosen layer. A successful probe shows that its training procedure can recover information from those representations, not that the original model uses it."
                         },
                         {
-                            "title": "How it works",
-                            "body": "A probe tests whether information is recoverable from hidden states but does not prove the model causally uses it. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Control the probe's capacity",
+                            "body": "A linear probe can test whether a property is accessible through a simple linear mapping. A larger nonlinear probe may learn a difficult mapping itself. Compare probe capacity and sample size, and include controls such as shuffled labels to detect memorization or an overly easy evaluation setup."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat representation probing as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Keep probing splits independent",
+                            "body": "Separate probe-training examples from probe-evaluation examples and group related records when needed. Choosing the best layer on the same examples used for final reporting inflates the result. A feature that reveals the label through collection artifacts can make a probe look informative for the wrong reason."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use representation probing as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Distinguish decoding from causal use",
+                            "body": "If a sentiment probe succeeds, the original classifier may still rely on a different signal. Carefully designed interventions or ablations can test whether changing that information changes the model's output. Such interventions can also move representations off distribution, so their results need separate controls."
                         }
                     ]
                 },
                 {
                     "id": "dnn-intermediate-13-neural-calibration",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "intermediate",
                     "title": "Neural calibration",
                     "description": "Neural classifiers can be confidently wrong, so assess calibration separately from accuracy and ranking.",
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Neural classifiers can be confidently wrong, so assess calibration separately from accuracy and ranking. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Compare confidence with correctness",
+                            "body": "A classifier is calibrated when predictions assigned a given confidence are correct about that fraction of the time on the population evaluated. If 100 predictions near 0.8 confidence contain only 60 correct answers, that group is overconfident. Accuracy alone does not expose this mismatch."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Neural classifiers can be confidently wrong, so assess calibration separately from accuracy and ranking. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Build a reliability view",
+                            "body": "Group predictions into confidence bins and compare each bin's average confidence with observed accuracy. Include counts: sparse bins have substantial uncertainty. Expected calibration error summarizes bin gaps but depends on binning; inspect reliability plots alongside proper scoring rules such as negative log-likelihood or the Brier score."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat neural calibration as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Fit temperature on held-out logits",
+                            "body": "Temperature scaling divides logits by a fitted positive scalar before softmax. Fit the temperature on a calibration partition separate from model training and final testing. A single positive temperature preserves the largest logit's class while changing confidence, so it can improve calibration without changing top-class accuracy."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use neural calibration as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Recheck the deployment population",
+                            "body": "Calibration can deteriorate when class prevalence or input conditions change. Measure relevant subgroups as well as overall behavior before using probabilities in cost-sensitive decisions. A calibrated score does not by itself specify when to act or guarantee that a rare, high-cost error is acceptable."
                         }
                     ]
                 },
                 {
                     "id": "dnn-intermediate-14-robustness-testing",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "intermediate",
                     "title": "Robustness testing",
                     "description": "Robustness evaluation uses plausible corruptions and distribution changes rather than relying on clean benchmark accuracy alone.",
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Robustness evaluation uses plausible corruptions and distribution changes rather than relying on clean benchmark accuracy alone. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Define plausible changes",
+                            "body": "Robustness testing measures behavior when inputs differ from clean training examples. For an image service, useful changes may include blur, dim lighting, or a new camera. Choose perturbations from expected deployment conditions rather than assuming that any synthetic noise represents a realistic failure."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Robustness evaluation uses plausible corruptions and distribution changes rather than relying on clean benchmark accuracy alone. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Measure degradation by severity",
+                            "body": "Evaluate the same held-out examples at several blur strengths and report performance for each strength alongside the clean result. Preserve labels only where the transformed example still supports them. A transformation that makes the object unrecognizable tests a different limit from a mild camera defect."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat robustness testing as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Test combinations and slices",
+                            "body": "Low light and motion blur may occur together even if each was tested separately. Break down errors by relevant groups such as object size or device type, and include sample counts. One aggregate corruption score can conceal a severe failure in a common operating condition."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use robustness testing as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Keep a held-out robustness suite",
+                            "body": "Use development corruptions to guide improvements, then evaluate on separate examples and conditions that did not drive tuning. Compare clean quality too: robustness changes can trade off other requirements. Define how the service detects or handles unsupported inputs when the model cannot meet the required quality."
                         }
                     ]
                 },
                 {
                     "id": "dnn-intermediate-15-ablation-studies",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "intermediate",
                     "title": "Ablation studies",
                     "description": "Controlled ablations estimate a component's contribution when training data, compute, and evaluation are held comparable.",
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Controlled ablations estimate a component's contribution when training data, compute, and evaluation are held comparable. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Ask a component-level question",
+                            "body": "An ablation compares a full system with a version where one component is removed or changed. For example, compare a residual network with a compatible no-skip variant to ask whether skip connections help under the chosen setup. State the hypothesis before looking at results."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Controlled ablations estimate a component's contribution when training data, compute, and evaluation are held comparable. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Hold the comparison conditions steady",
+                            "body": "Use the same data partitions, evaluation code, and stated training budget for both variants. Removing a component can also change parameter count or compute, so report those differences. Decide whether each variant receives equal tuning effort or whether a fixed recipe is intentionally being tested."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat ablation studies as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Repeat and inspect interactions",
+                            "body": "A small gain from one random seed may disappear across repeated runs. Report variation and compare paired seeds when practical. If removing component A hurts only when component B is present, their interaction matters; a single remove-one-component table cannot fully describe that relationship."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use ablation studies as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Limit the conclusion",
+                            "body": "If a component improves the tested metric, conclude that it helped under the measured data and training conditions. Do not infer that it is necessary for every task or that the proposed mechanism is proven. Distinguish an inference-time removal from retraining without the component, since they answer different questions."
                         }
                     ]
                 }
@@ -1389,7 +1400,7 @@
             "topics": [
                 {
                     "id": "dnn-advanced-01-scaling-laws-and-compute",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "advanced",
                     "title": "Scaling laws and compute",
                     "description": "Scaling laws are empirical trends, not guarantees; data quality, task relevance, and inference cost constrain useful scaling.",
@@ -1424,7 +1435,7 @@
                 },
                 {
                     "id": "dnn-advanced-02-distributed-data-parallelism",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "advanced",
                     "title": "Distributed data parallelism",
                     "description": "Data-parallel replicas synchronize gradients, and communication overhead can limit throughput as workers are added.",
@@ -1459,7 +1470,7 @@
                 },
                 {
                     "id": "dnn-advanced-03-tensor-and-pipeline-parallelism",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "advanced",
                     "title": "Tensor and pipeline parallelism",
                     "description": "Tensor parallelism partitions operations and pipeline parallelism partitions layers; both introduce communication and scheduling trade-offs.",
@@ -1494,7 +1505,7 @@
                 },
                 {
                     "id": "dnn-advanced-04-activation-checkpointing",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "advanced",
                     "title": "Activation checkpointing",
                     "description": "Checkpointing recomputes selected activations during backpropagation to exchange extra compute for lower memory use.",
@@ -1529,7 +1540,7 @@
                 },
                 {
                     "id": "dnn-advanced-05-quantization-aware-training",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "advanced",
                     "title": "Quantization-aware training",
                     "description": "Quantization-aware training simulates low-precision effects during training to reduce quality loss after conversion.",
@@ -1564,7 +1575,7 @@
                 },
                 {
                     "id": "dnn-advanced-06-knowledge-distillation",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "advanced",
                     "title": "Knowledge distillation",
                     "description": "Distillation trains a smaller student using teacher outputs or intermediate signals and must be judged on task outcomes.",
@@ -1599,235 +1610,235 @@
                 },
                 {
                     "id": "dnn-advanced-07-pruning-and-sparsity",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "advanced",
                     "title": "Pruning and sparsity",
                     "description": "Removing weights reduces parameter count, but speed gains depend on sparse kernels and target hardware.",
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Removing weights reduces parameter count, but speed gains depend on sparse kernels and target hardware. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Distinguish sparse patterns",
+                            "body": "Unstructured pruning removes individual weights, often according to magnitude. Structured pruning removes groups such as channels or attention heads. Both reduce active connections, but their storage and execution consequences differ: a dense tensor containing zeros still occupies dense storage unless its representation changes."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Removing weights reduces parameter count, but speed gains depend on sparse kernels and target hardware. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Prune and recover quality",
+                            "body": "Start from a trained reference, remove a stated fraction of weights or groups, then fine-tune if the procedure allows it. Measure the immediate quality drop and the quality after recovery separately. Record recovery compute so a compressed model is not presented as free to produce."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat pruning and sparsity as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Match sparsity to the runtime",
+                            "body": "Irregular zeros may not accelerate a dense matrix kernel. Some hardware supports particular block or N:M sparsity patterns; structured channel removal can instead produce smaller dense operations. Benchmark the exported representation on the actual runtime before claiming a speed or memory benefit."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use pruning and sparsity as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Report the full trade-off",
+                            "body": "Compare artifact size, peak memory, latency at the intended batch size, and held-out quality with the unpruned model. Include subgroup regressions and any change to model shapes. A 50% reduction in nonzero weights is not equivalent to a 50% reduction in end-to-end inference time."
                         }
                     ]
                 },
                 {
                     "id": "dnn-advanced-08-architecture-search",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "advanced",
                     "title": "Architecture search",
                     "description": "Architecture search explores a bounded design space and can overfit validation results or consume excessive compute.",
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Architecture search explores a bounded design space and can overfit validation results or consume excessive compute. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Define a bounded search space",
+                            "body": "Architecture search selects among design choices such as layer width, depth, and operator type. Specify legal candidates and resource limits before launching trials. A search space already encodes assumptions: excluding a family of models prevents the search from discovering it, regardless of the optimizer."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Architecture search explores a bounded design space and can overfit validation results or consume excessive compute. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Use proxies carefully",
+                            "body": "Short training runs or reduced-resolution inputs can cheaply rank candidates, but their rankings may differ from full-budget results. Retrain promising architectures under the final recipe. If candidates share weights in a supernetwork, inherited-weight performance is a proxy rather than a standalone evaluation."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat architecture search as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Separate search from final assessment",
+                            "body": "Thousands of candidate evaluations can adapt the search to validation noise. Keep a final held-out test outside architecture selection and report multiple independent retrainings when feasible. Charge failed trials and proxy evaluations to the total search budget, not only the cost of training the winner."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use architecture search as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Search for a deployable trade-off",
+                            "body": "Treat quality and measured latency or memory as separate objectives or constraints. A candidate with fewer arithmetic operations may be slower because of unsupported operators or memory traffic. Retain the Pareto frontier: candidates for which no measured alternative is at least as good on every objective and better on one."
                         }
                     ]
                 },
                 {
                     "id": "dnn-advanced-09-continual-learning",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "advanced",
                     "title": "Continual learning",
                     "description": "Continual learning adapts to new tasks while measuring and mitigating loss of previously acquired capabilities.",
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Continual learning adapts to new tasks while measuring and mitigating loss of previously acquired capabilities. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Measure forgetting after an update",
+                            "body": "Continual learning updates a model as tasks or data distributions arrive over time. Training on new data can overwrite capabilities useful for older tasks, a problem called catastrophic forgetting. Evaluate earlier tasks after each update rather than reporting only the latest task's quality."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Continual learning adapts to new tasks while measuring and mitigating loss of previously acquired capabilities. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Compare retention strategies",
+                            "body": "Replay mixes selected old examples with new training data. Regularization can discourage changes to parameters judged important for previous tasks, while adapters can isolate some task-specific changes. These methods have different storage and compute costs, and replay must respect data retention permissions."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat continual learning as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Track an evaluation matrix",
+                            "body": "Make one row per training stage and one column per evaluation task. If task A falls from 90% after stage A to 75% after stage B, its measured accuracy dropped by 15 percentage points. The matrix also shows whether later learning improves earlier tasks rather than only causing forgetting."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use continual learning as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "State the task-information assumption",
+                            "body": "Some systems know the task identity at inference and select a matching head; others must distinguish all classes without that information. These settings are not directly comparable. Preserve chronological evaluation and include a frozen reference to distinguish adaptation gains from regressions in older capabilities."
                         }
                     ]
                 },
                 {
                     "id": "dnn-advanced-10-adversarial-robustness",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "advanced",
                     "title": "Adversarial robustness",
                     "description": "Robustness claims are relative to a defined threat model; no single attack suite covers every manipulation.",
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Robustness claims are relative to a defined threat model; no single attack suite covers every manipulation. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Specify a threat model",
+                            "body": "An adversarial robustness claim must state what an adversary can observe and change. For an image classifier, a bounded pixel perturbation is different from a physical change to lighting or viewpoint. Define the allowed set, model access, and success criterion before interpreting a robustness score."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Robustness claims are relative to a defined threat model; no single attack suite covers every manipulation. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Evaluate adaptive attacks",
+                            "body": "On an authorized test model, use attacks that account for the actual preprocessing and defense rather than attacking an unrelated surrogate alone. Evaluate several attack settings and budgets within the stated threat model. Report clean accuracy as well as the fraction of examples correctly classified under the evaluated attacks."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat adversarial robustness as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Look for misleading gradients",
+                            "body": "A defense can make gradients uninformative without making decisions robust. Unexpectedly stronger black-box than white-box results, or attack success that fails to improve with a larger search budget, merit investigation. A failed attack supplies an empirical test result, not a proof that no allowed attack exists."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use adversarial robustness as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Separate empirical and certified claims",
+                            "body": "Adversarial training can improve performance against the perturbations represented during training but need not protect against other manipulations. A robustness certificate applies only under its mathematical assumptions and stated radius. Report those limits and evaluate ordinary distribution shifts separately from adversarial perturbations."
                         }
                     ]
                 },
                 {
                     "id": "dnn-advanced-11-model-privacy-attacks",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "advanced",
                     "title": "Model privacy attacks",
                     "description": "Membership inference and extraction tests probe information exposure but do not alone establish a privacy guarantee.",
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Membership inference and extraction tests probe information exposure but do not alone establish a privacy guarantee. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Separate privacy questions",
+                            "body": "Membership inference asks whether a record was part of training. Model extraction aims to reproduce model behavior, while training-data extraction seeks memorized examples. These are different risks. Define the protected information and the access available to an authorized evaluator before selecting a privacy test."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Membership inference and extraction tests probe information exposure but do not alone establish a privacy guarantee. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Construct a matched audit",
+                            "body": "For a membership audit, compare known members with nonmembers drawn from a comparable population. Otherwise, an apparent attack may merely detect a distribution difference. Use authorized or synthetic data, separate attack development from evaluation, and report false-positive rates alongside detection rates."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat model privacy attacks as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Reduce exposure deliberately",
+                            "body": "Restrict unnecessary output detail and query access, and apply data minimization before training. Differentially private training can bound the influence of a protected unit under a stated privacy definition and budget. State whether that unit is a record or a person, since several records may belong to one person."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use model privacy attacks as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Interpret negative results narrowly",
+                            "body": "An unsuccessful audit does not establish that the model never memorizes or exposes sensitive data. The conclusion depends on the attack family, sample size, and access tested. Record those limits, protect any recovered test examples, and use formal guarantees only when their assumptions and accounting actually apply."
                         }
                     ]
                 },
                 {
                     "id": "dnn-advanced-12-deep-model-uncertainty",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "advanced",
                     "title": "Deep-model uncertainty",
                     "description": "Ensembles and approximate Bayesian methods estimate some uncertainty but can remain overconfident under distribution shift.",
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Ensembles and approximate Bayesian methods estimate some uncertainty but can remain overconfident under distribution shift. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Distinguish sources of uncertainty",
+                            "body": "Aleatoric uncertainty reflects ambiguity or noise in observations under the chosen task. Epistemic uncertainty reflects uncertainty about the learned model and can sometimes shrink with informative data. This distinction depends on the modeling assumptions; one softmax confidence score does not identify both sources."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Ensembles and approximate Bayesian methods estimate some uncertainty but can remain overconfident under distribution shift. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Compare multiple predictions",
+                            "body": "A deep ensemble trains several models and compares their predictions. Stochastic methods such as Monte Carlo dropout sample predictions from one model under a particular approximation. Agreement is useful evidence but can be misleading when all members share the same training gaps or architectural biases."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat deep-model uncertainty as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Evaluate intervals or abstention",
+                            "body": "For regression intervals, measure coverage together with interval width: an interval that always spans every plausible value is uninformative despite high coverage. For selective classification, report error as a function of the fraction of predictions retained. Choose abstention thresholds on validation data rather than the final test."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use deep-model uncertainty as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Challenge uncertainty under shift",
+                            "body": "Evaluate known distribution changes and examples outside the supported operating range. A model or ensemble can confidently agree on an incorrect answer far from its training data. If using conformal intervals, state the exchangeability assumptions behind their coverage guarantee instead of assuming it survives arbitrary shifts."
                         }
                     ]
                 },
                 {
                     "id": "dnn-advanced-13-graph-neural-networks",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "advanced",
                     "title": "Graph neural networks",
                     "description": "Message-passing graph networks aggregate neighborhood information and can oversmooth or leak structure across data splits.",
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Message-passing graph networks aggregate neighborhood information and can oversmooth or leak structure across data splits. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Aggregate a neighborhood",
+                            "body": "A message-passing layer computes messages from neighboring nodes and combines them with a node's current representation. The aggregation must respect the graph's ordering invariance, often through a sum or mean. After several layers, a node can receive information from nodes multiple edges away."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Message-passing graph networks aggregate neighborhood information and can oversmooth or leak structure across data splits. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Calculate a simple message",
+                            "body": "If a node's neighbors have scalar features 2 and 4, mean aggregation returns 3. A learned update can combine that value with the node's own feature. Specify self-loops and directed-edge handling: including the node itself or reversing edges changes which information reaches it."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat graph neural networks as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Recognize depth and sampling limits",
+                            "body": "Repeated averaging can make nearby node representations difficult to distinguish, an effect called oversmoothing. Compressing a rapidly growing neighborhood into a fixed-size vector can also lose information. Neighbor sampling limits computation but changes the messages observed, so evaluate its effect rather than treating it as exact full-graph computation."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use graph neural networks as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Align graph visibility with deployment",
+                            "body": "For future-link prediction, build message-passing edges only from information available before the prediction cutoff. State whether test nodes are visible during training or entirely new at evaluation. Compare with a model using node features alone to measure the benefit of graph structure under that protocol."
                         }
                     ]
                 },
                 {
                     "id": "dnn-advanced-14-multimodal-fusion",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "advanced",
                     "title": "Multimodal fusion",
                     "description": "Early, late, and cross-attention fusion differ in interaction depth and behavior when a modality is missing.",
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Early, late, and cross-attention fusion differ in interaction depth and behavior when a modality is missing. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Choose where modalities interact",
+                            "body": "Early fusion combines modality features before much shared processing. Late fusion combines predictions from separate models. Cross-attention lets representations from one modality select information from another. These choices differ in interaction capacity, training requirements, and whether individual modality encoders can be run independently."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Early, late, and cross-attention fusion differ in interaction depth and behavior when a modality is missing. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Align paired observations",
+                            "body": "For video and audio, verify that time windows refer to the same event. For image-text training, inspect whether captions describe the paired image. Misalignment can teach false associations; a model may minimize loss through dataset shortcuts without learning the cross-modal relationship the task requires."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat multimodal fusion as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Plan for a missing modality",
+                            "body": "A deployed system may receive an image without a caption or audio with a failed sensor stream. Evaluate those cases explicitly. Modality dropout during training can support a defined fallback, but substituting zeros at inference is not automatically valid if the model never learned that convention."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use multimodal fusion as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Verify that fusion adds evidence",
+                            "body": "Compare the fused model with each unimodal model on the same split, then inspect examples with contradictory inputs. If removing one modality leaves performance unchanged, the other may dominate. Report quality and latency for each availability pattern rather than only the fully paired benchmark."
                         }
                     ]
                 },
                 {
                     "id": "dnn-advanced-15-inference-optimization",
-                    "language": "deep-neural-nets",
+                    "language": "deep-learning",
                     "level": "advanced",
                     "title": "Inference optimization",
                     "description": "Batching, caching, kernel fusion, and sequence length affect throughput, memory, and tail latency differently.",
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Concept and application",
-                            "body": "Batching, caching, kernel fusion, and sequence length affect throughput, memory, and tail latency differently. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+                            "title": "Profile the serving workload",
+                            "body": "Define input sizes, arrival rate, concurrency, and the latency percentile the service must meet. Measure preprocessing, model execution, and output handling after warmup on target hardware. A fast isolated forward pass can still produce poor end-to-end latency if requests queue or data transfer dominates."
                         },
                         {
-                            "title": "How it works",
-                            "body": "Batching, caching, kernel fusion, and sequence length affect throughput, memory, and tail latency differently. Its mechanics determine what the model stores, computes, or reports, so define inputs and outputs explicitly before applying it."
+                            "title": "Trade batching against waiting",
+                            "body": "Combining requests into a batch can improve device utilization and throughput, but waiting to form the batch increases latency. Dynamic batching needs a maximum wait and size appropriate to the workload. Benchmark bursty arrivals and long inputs, not only a continuous stream of equal-sized requests."
                         },
                         {
-                            "title": "Failure mode",
-                            "body": "The main risk is to treat inference optimization as automatically reliable. Compare held-out evidence, look for leakage or unequal conditions, and watch for a result that depends on the chosen metric or split."
+                            "title": "Reduce repeated computation",
+                            "body": "Autoregressive decoders can cache attention keys and values from previous tokens instead of recomputing them at each step. The cache grows with sequence length and concurrent requests, consuming memory. Kernel fusion can reduce intermediate memory traffic, but support depends on the exported graph, precision, and runtime."
                         },
                         {
-                            "title": "Practical use",
-                            "body": "In a representative deployment, use inference optimization as one controlled design decision. Keep a baseline, document assumptions, monitor the relevant metric, and verify behavior on realistic examples before scaling the approach."
+                            "title": "Verify quality and tail latency",
+                            "body": "After changing precision, compilation, or kernels, compare outputs within task-appropriate tolerances and rerun held-out quality checks. Report peak memory, throughput, and tail latency under realistic load. An optimization that improves average speed but causes out-of-memory failures on long requests is not a successful serving change."
                         }
                     ]
                 }

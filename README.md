@@ -47,6 +47,12 @@ img/
 | AI Engineering | `ai-engineering/` |
 | MLOps | `mlops/` |
 
+Deep Neural Nets uses the app language key `deep-learning` in its top-level
+`language` field and every topic and challenge's `language` field. Its source
+directories and image paths remain under `deep-neural-nets/`, and IDs retain
+the `dnn-` prefix. The merger uses the JSON language key, not the directory name,
+to group content under `languages`.
+
 ### Levels
 
 Each file covers four levels:
@@ -99,7 +105,7 @@ See the [`examples/`](examples/) folder for annotated reference files:
 }
 ```
 
-For AI/ML concept areas (`ai+ml`, `traditional-ml`, `deep-neural-nets`, `llm-agents`, `ai-engineering`, and `mlops`), use `choices` instead of `starterCode`:
+For AI/ML concept areas (`ai+ml`, `traditional-ml`, `deep-learning`, `llm-agents`, `ai-engineering`, and `mlops`), use `choices` instead of `starterCode`:
 
 ```json
 "choices": [
@@ -185,6 +191,10 @@ directory at the repository root (excluded from version control via `.gitignore`
 its entries are loaded first and take priority.  New entries whose `id` already
 appears in the existing output are skipped, so manual edits to the output files
 are preserved across re-runs.
+
+When updating existing content or a language key, also refresh the affected
+cached entries and language groups in `output/`; rerunning the merger alone
+does not replace them. Preserve any intentional output-only edits.
 
 #### Usage
 

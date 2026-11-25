@@ -21,7 +21,7 @@ AI_ML_CHALLENGE_KEYS = {"id", "language", "level", "title", "description", "choi
 CONCEPT_AREA_LANGUAGES = {
     "ai+ml",
     "traditional-ml",
-    "deep-neural-nets",
+    "deep-learning",
     "llm-agents",
     "ai-engineering",
     "mlops",

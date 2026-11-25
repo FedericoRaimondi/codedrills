@@ -25,8 +25,8 @@
                             "body": "A thermostat can follow fixed rules, while a model can learn a temperature-to-energy pattern from examples."
                         },
                         {
-                            "title": "AI basics: what is AI and ML: A decision check",
-                            "body": "For ai basics: what is ai and ml, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "AI basics: what is AI and ML: Identify what is learned",
+                            "body": "Ask which part of a system changes after it sees examples. A fixed rule that flags every payment above a limit is not learned; a fraud model adjusts its parameters from past transactions. Both can belong to a larger automated system."
                         }
                     ]
                 },
@@ -43,8 +43,8 @@
                             "body": "A spreadsheet of transactions has named columns; a customer email is text that needs parsing or an embedding before many models can use it."
                         },
                         {
-                            "title": "Data types: structured vs unstructured data: A decision check",
-                            "body": "For data types: structured vs unstructured data, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Data types: structured vs unstructured data: Choose a representation",
+                            "body": "A support ticket can contain structured fields such as creation time alongside free-text notes and an attached image. Decide how to represent each field separately. Converting the notes into word counts loses word order, while resizing the image can remove small details."
                         },
                         {
                             "title": "Data types: structured vs unstructured data: Where it can fail",
@@ -61,8 +61,8 @@
                     "estimatedMinutes": 11,
                     "lessons": [
                         {
-                            "title": "Intro to datasets: A decision check",
-                            "body": "For intro to datasets, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Intro to datasets: Define one example",
+                            "body": "Specify what one row represents before counting examples. A dataset with ten orders from each of 100 customers has 1,000 orders but only 100 customers. If the goal is to predict behavior for new customers, keep each customer's records together when splitting the data."
                         },
                         {
                             "title": "Intro to datasets: The core idea",
@@ -87,8 +87,8 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Basic math for AI: A decision check",
-                            "body": "For basic math for ai, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Basic math for AI: Calculate a weighted sum",
+                            "body": "For input vector [2, 3] and weights [0.5, -1], the dot product is 2*0.5 + 3*(-1) = -2. Adding a bias of 4 gives a prediction of 2. Each input must line up with its corresponding weight; swapping feature order changes the calculation."
                         },
                         {
                             "title": "Basic math for AI: Where it can fail",
@@ -109,8 +109,8 @@
                             "body": "Statistics helps quantify uncertainty through concepts like mean, variance, and distributions, which are essential for understanding noisy real-world data."
                         },
                         {
-                            "title": "Intro to statistics: A decision check",
-                            "body": "For intro to statistics, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Intro to statistics: See an outlier's effect",
+                            "body": "The values 2, 3, 3, 4, and 18 have mean 6 and median 3. The large value pulls up the mean while leaving the median near most observations. Neither summary tells the whole story, so inspect the spread and investigate whether 18 is a valid observation."
                         },
                         {
                             "title": "Intro to statistics: A worked example",
@@ -150,8 +150,8 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Data inspection: A decision check",
-                            "body": "For data inspection, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Data inspection: Investigate suspicious records",
+                            "body": "A negative age could indicate a parsing error, a special missing-value code, or a broken source system. Inspect the raw record and field definition before replacing it. Record the cause and count affected rows so a recurring ingestion problem does not go unnoticed."
                         },
                         {
                             "title": "Data inspection: The core idea",
@@ -176,8 +176,8 @@
                     "estimatedMinutes": 11,
                     "lessons": [
                         {
-                            "title": "Intro to predictions: A decision check",
-                            "body": "For intro to predictions, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Intro to predictions: Separate output from action",
+                            "body": "Suppose a delay model returns 0.3. With a notification threshold of 0.2, the system sends an alert; with a threshold of 0.5, it does not. The prediction is unchanged. The action also depends on the policy and the cost of unnecessary or missed alerts."
                         },
                         {
                             "title": "Intro to predictions: Where it can fail",
@@ -202,8 +202,8 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Supervised vs unsupervised: A decision check",
-                            "body": "For supervised vs unsupervised, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Supervised vs unsupervised: Match the question to the data",
+                            "body": "To learn which requests need escalation, supervised training needs examples with escalation targets. If those labels do not exist, clustering can help explore recurring request types, but a cluster number is not an escalation prediction. Human review may help turn that exploration into a labeling plan."
                         },
                         {
                             "title": "Supervised vs unsupervised: A worked example",
@@ -232,8 +232,8 @@
                             "body": "Features are the inputs provided to a model, and the label is the ground-truth value the model is trained to predict."
                         },
                         {
-                            "title": "Feature vs label: A decision check",
-                            "body": "For feature vs label, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Feature vs label: Spot a leaked answer",
+                            "body": "When predicting whether an order will arrive late at checkout, the eventual delivery timestamp cannot be an input: it reveals the outcome after the decision. Use information already known at checkout as features, and derive the late-delivery label from the later delivery record."
                         }
                     ]
                 },
@@ -246,8 +246,8 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Data cleaning basics: A decision check",
-                            "body": "For data cleaning basics, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Data cleaning basics: Distinguish missing from zero",
+                            "body": "A missing purchase amount means the amount is unknown; zero can mean a valid free order. Replacing every missing amount with zero erases that distinction. Investigate why values are absent, choose a documented handling rule, and retain a missingness indicator when it carries useful information."
                         },
                         {
                             "title": "Data cleaning basics: The core idea",
@@ -276,8 +276,8 @@
                             "body": "The best threshold depends on the harm of missed spam versus blocking an important message."
                         },
                         {
-                            "title": "Simple classification idea: A decision check",
-                            "body": "For simple classification idea, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Simple classification idea: Count both kinds of error",
+                            "body": "In spam detection, a false positive blocks legitimate mail and a false negative lets spam through. Count the two separately rather than reporting only the percentage of correct predictions. A filter that labels every message legitimate can look accurate when spam is rare while catching none of it."
                         }
                     ]
                 },
@@ -290,8 +290,8 @@
                     "estimatedMinutes": 11,
                     "lessons": [
                         {
-                            "title": "Simple regression idea: A decision check",
-                            "body": "For simple regression idea, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Simple regression idea: Measure numeric error",
+                            "body": "If predicted demand is 12 units and actual demand is 9, the absolute error is 3 units. Mean absolute error averages this distance across predictions and keeps the target's units. Compare it with a simple forecast such as the previous week's demand to judge whether the model adds value."
                         },
                         {
                             "title": "Simple regression idea: The core idea",
@@ -320,8 +320,8 @@
                             "body": "Do not move to a more complex model until evidence shows the simpler approach misses the need."
                         },
                         {
-                            "title": "AI workflows: A decision check",
-                            "body": "For ai workflows, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "AI workflows: Plan the feedback loop",
+                            "body": "For a delivery-delay service, record each prediction with its model version and match it to the eventual arrival outcome. That feedback lets the team detect deteriorating performance. Decide who investigates a rise in missed delays and whether the response is a data fix, retraining, or rollback."
                         },
                         {
                             "title": "AI workflows: The core idea",
@@ -338,8 +338,8 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "AI use cases: A decision check",
-                            "body": "For ai use cases, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "AI use cases: Check whether learning is useful",
+                            "body": "A demand forecast needs historical demand and a planning decision that benefits from it. If a fixed reorder rule already meets the need, a learned forecast may add maintenance without improving outcomes. Start with a use case where errors can be measured and the prediction can change a decision."
                         },
                         {
                             "title": "AI use cases: The core idea",
@@ -374,8 +374,8 @@
                             "body": "Linear regression models a continuous target as a weighted sum of features and is a strong baseline for interpretable numeric prediction tasks."
                         },
                         {
-                            "title": "Linear regression: A decision check",
-                            "body": "For linear regression, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Linear regression: Read the residuals",
+                            "body": "A residual is the observed target minus its prediction. Plot residuals against predicted values: a curved pattern suggests missing nonlinear structure, while a widening spread suggests changing error variance. These patterns guide investigation even when the average error appears acceptable."
                         },
                         {
                             "title": "Linear regression: A worked example",
@@ -419,8 +419,8 @@
                             "body": "Repeatedly selecting features after viewing test results turns the test set into validation data."
                         },
                         {
-                            "title": "Train/test split: A decision check",
-                            "body": "For train/test split, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Train/test split: Keep related records together",
+                            "body": "If several images come from the same object, a random image split can put near-duplicates in both partitions. Split by object when evaluating performance on unseen objects. Fit preprocessing on the training partition only, then apply those fitted transformations to the test data."
                         }
                     ]
                 },
@@ -445,8 +445,8 @@
                             "body": "Classification metrics such as precision, recall, and F1 complement accuracy, while regression uses MAE, MSE, or RMSE depending on error sensitivity."
                         },
                         {
-                            "title": "Basic metrics: A decision check",
-                            "body": "For basic metrics, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Basic metrics: Calculate precision and recall",
+                            "body": "Suppose a fraud detector flags 20 transactions, of which 15 are fraudulent, and there are 30 fraudulent transactions overall. Precision is 15/20 = 75%; recall is 15/30 = 50%. The first measures how often an alert is right, and the second measures how much fraud it catches."
                         }
                     ]
                 },
@@ -482,8 +482,8 @@
                             "image": "img/languages/ai+ml/beginner-lesson-6.png"
                         },
                         {
-                            "title": "Decision trees: A decision check",
-                            "body": "For decision trees, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Decision trees: Control small leaves",
+                            "body": "A leaf containing one training record can make a very confident prediction from almost no evidence. Increasing the minimum samples per leaf prevents some of these fragile rules. Choose that setting with validation data and inspect whether important rare cases still receive useful predictions."
                         },
                         {
                             "title": "Decision trees: A worked example",
@@ -500,8 +500,8 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "Data preprocessing: A decision check",
-                            "body": "For data preprocessing, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Data preprocessing: Handle unseen categories",
+                            "body": "An encoder fitted on training cities may later receive a city it has never seen. Decide whether to map it to an unknown category or use an encoding that tolerates unseen values. Save the fitted encoder with the model so training and serving use the same column order and mappings."
                         },
                         {
                             "title": "Data preprocessing: A worked example",
@@ -518,8 +518,8 @@
                     "estimatedMinutes": 11,
                     "lessons": [
                         {
-                            "title": "Feature engineering: A decision check",
-                            "body": "For feature engineering, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Feature engineering: Build a historical aggregate",
+                            "body": "For a purchase at noon, a 'spend in the last seven days' feature must stop at noon and exclude the current target outcome. Recreate that time boundary for each training example. An aggregate computed from the full customer history can accidentally include future purchases."
                         },
                         {
                             "title": "Feature engineering: Where it can fail",
@@ -549,8 +549,8 @@
                             "image": "img/languages/ai+ml/beginner-lesson-9.png"
                         },
                         {
-                            "title": "Clustering basics: A decision check",
-                            "body": "For clustering basics, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Clustering basics: Examine what defines a group",
+                            "body": "If requests cluster mostly by message length rather than subject, the representation may emphasize the wrong similarity. Read typical and borderline examples from each group. Compare assignments across resamples or initializations before treating a cluster as a stable customer segment."
                         },
                         {
                             "title": "Clustering basics: The core idea",
@@ -572,8 +572,8 @@
                             "image": "img/languages/ai+ml/beginner-lesson-10.png"
                         },
                         {
-                            "title": "PCA basics: A decision check",
-                            "body": "For pca basics, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "PCA basics: Choose the number of components",
+                            "body": "Inspect cumulative explained variance to see how much variation the retained components preserve. If PCA feeds a predictor, also measure validation performance: retaining 95% of feature variance does not guarantee retaining the information needed for the target. Fit centering, scaling, and PCA only on training data."
                         },
                         {
                             "title": "PCA basics: Where it can fail",
@@ -647,8 +647,8 @@
                             "body": "Cross-validation rotates validation folds to estimate performance more reliably and to compare models with less split-to-split variance."
                         },
                         {
-                            "title": "Cross-validation: A decision check",
-                            "body": "For cross-validation, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Cross-validation: Interpret fold variation",
+                            "body": "Scores of 0.91, 0.90, 0.89, 0.72, and 0.90 deserve more investigation than their mean alone suggests. Inspect the low-scoring fold for population differences or scarce classes. Use the same folds to compare candidates so differences do not merely reflect easier partitions."
                         }
                     ]
                 },
@@ -669,8 +669,8 @@
                             "body": "A good evaluation workflow defines metrics upfront, checks baseline comparisons, inspects error patterns, and validates assumptions before deployment."
                         },
                         {
-                            "title": "Model evaluation workflow: A decision check",
-                            "body": "For model evaluation workflow, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Model evaluation workflow: Audit errors by slice",
+                            "body": "After computing the overall metric, separate errors by meaningful slices such as new versus returning customers. Include each slice's sample count so a result based on a handful of examples is not mistaken for firm evidence. Use validation errors for iteration and reserve the final test for the selected approach."
                         }
                     ]
                 },
@@ -687,8 +687,8 @@
                             "body": "Do not optimize a model before verifying that the label is meaningful and available at decision time."
                         },
                         {
-                            "title": "First ML project: A decision check",
-                            "body": "For first ml project, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "First ML project: Make the result reproducible",
+                            "body": "Save the dataset version, split rule, preprocessing settings, and model configuration with the reported score. Another person should be able to regenerate the result from those records. Record a simple baseline alongside it so the project demonstrates an improvement rather than just a trained model."
                         },
                         {
                             "title": "First ML project: The core idea",
@@ -740,8 +740,8 @@
                             "body": "Large searches can overfit the validation set; track the search budget and selection process."
                         },
                         {
-                            "title": "Hyperparameter tuning: A decision check",
-                            "body": "For hyperparameter tuning, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Hyperparameter tuning: Budget the search",
+                            "body": "Define a search space and a maximum number of trials or training hours before starting. Compare candidates on fixed validation folds and retain their configurations, including unsuccessful trials. When estimating the performance of the entire selection process, nested cross-validation separates tuning from outer-fold evaluation."
                         },
                         {
                             "title": "Hyperparameter tuning: The core idea",
@@ -766,8 +766,8 @@
                             "body": "A feature that ranks highly may proxy for a sensitive attribute or leak future information."
                         },
                         {
-                            "title": "Feature selection: A decision check",
-                            "body": "For feature selection, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Feature selection: Test a smaller feature set",
+                            "body": "Compare the full model with one trained without an expensive feature group using the same validation folds. A negligible quality change may justify simpler data collection. Correlated features can substitute for each other, so a low individual importance score does not mean the underlying information is useless."
                         },
                         {
                             "title": "Feature selection: A worked example",
@@ -819,8 +819,8 @@
                             "body": "Choose a threshold using validation costs, inspect subgroup metrics, and calibrate probabilities if decisions use risk."
                         },
                         {
-                            "title": "Advanced evaluation: A decision check",
-                            "body": "For advanced evaluation, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Advanced evaluation: Account for review capacity",
+                            "body": "If reviewers can inspect only 100 alerts per day, evaluate precision and recall at that workload rather than choosing a threshold by F1 alone. Include how many cases remain unreviewed and the cost of missed positives. A threshold selected on one population may need reassessment when prevalence changes."
                         }
                     ]
                 },
@@ -855,8 +855,8 @@
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Backpropagation: A decision check",
-                            "body": "For backpropagation, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline.",
+                            "title": "Backpropagation: Check a computed gradient",
+                            "body": "For a small differentiable example, perturb one parameter slightly in each direction and estimate the derivative from the resulting loss difference. Compare it with the backpropagated gradient while holding randomness fixed. A disagreement can reveal a detached computation or an incorrect custom derivative.",
                             "image": "img/languages/ai+ml/intermediate-lesson-7.png"
                         },
                         {
@@ -890,8 +890,8 @@
                             "body": "Representation learning still depends on labeled data quality, regularization, and evaluation outside the training set."
                         },
                         {
-                            "title": "Deep learning basics: A decision check",
-                            "body": "For deep learning basics, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Deep learning basics: Diagnose the training run",
+                            "body": "If both training and validation error remain high, first check labels, preprocessing, and whether optimization is making progress. If training error falls while validation error rises, investigate overfitting. These situations call for different changes; adding layers is not a diagnosis."
                         }
                     ]
                 },
@@ -904,8 +904,8 @@
                     "estimatedMinutes": 9,
                     "lessons": [
                         {
-                            "title": "NLP basics: A decision check",
-                            "body": "For nlp basics, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "NLP basics: Inspect tokenization",
+                            "body": "Tokenize a few real messages containing abbreviations, spelling mistakes, and domain terms. Check whether important text is split unexpectedly or lost through truncation. For sentiment classification, removing words such as 'not' can reverse meaning even if the remaining vocabulary looks cleaner."
                         },
                         {
                             "title": "NLP basics: A worked example",
@@ -931,8 +931,8 @@
                             "image": "img/languages/ai+ml/intermediate-lesson-10.png"
                         },
                         {
-                            "title": "Computer vision basics: A decision check",
-                            "body": "For computer vision basics, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Computer vision basics: Verify image preprocessing",
+                            "body": "Inspect images after resizing, cropping, and normalization rather than only the original files. A crop can remove the object, and an incorrect color-channel order can change the input distribution. Use the same deterministic preprocessing at validation and serving time."
                         },
                         {
                             "title": "Computer vision basics: A worked example",
@@ -961,8 +961,8 @@
                             "body": "Predict tomorrow’s demand from earlier observations and calendar signals while preserving chronological order."
                         },
                         {
-                            "title": "Time series basics: A decision check",
-                            "body": "For time series basics, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Time series basics: Backtest the forecast horizon",
+                            "body": "For a seven-day forecast, evaluate predictions made seven days before their targets, then move the forecast origin forward through time. Rebuild lag features at each origin using only available history. Compare with a seasonal forecast such as the same weekday's demand from the previous week."
                         }
                     ]
                 },
@@ -980,8 +980,8 @@
                             "image": "img/languages/ai+ml/intermediate-lesson-12.png"
                         },
                         {
-                            "title": "Recommendation systems: A decision check",
-                            "body": "For recommendation systems, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Recommendation systems: Define the candidate set",
+                            "body": "A ranker cannot recommend an item that candidate retrieval excluded. Evaluate both whether retrieval finds relevant items and whether ranking puts them near the top. Record which items were available at recommendation time; including future or unavailable items makes an offline ranking task unrealistic."
                         },
                         {
                             "title": "Recommendation systems: The core idea",
@@ -1002,8 +1002,8 @@
                     "estimatedMinutes": 11,
                     "lessons": [
                         {
-                            "title": "Model deployment basics: A decision check",
-                            "body": "For model deployment basics, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Model deployment basics: Verify the serving contract",
+                            "body": "Send a fixed example through both the training-time prediction pipeline and the packaged service, then compare outputs within a defined tolerance. Check missing fields and invalid types too. A successful response is not enough if the service silently uses a different feature order or preprocessing version."
                         },
                         {
                             "title": "Model deployment basics: A worked example",
@@ -1032,8 +1032,8 @@
                             "body": "Data pipelines automate ingestion, validation, transformation, and feature generation so training and inference use consistent data logic."
                         },
                         {
-                            "title": "Data pipelines: A decision check",
-                            "body": "For data pipelines, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Data pipelines: Handle late and repeated records",
+                            "body": "An ingestion retry should not double-count the same transaction. Use stable record identifiers and define how corrections or late arrivals update derived features. Keep event time separate from ingestion time so historical training data can reflect what the serving system actually knew at each decision."
                         }
                     ]
                 },
@@ -1054,8 +1054,8 @@
                             "body": "Use feature attribution to debug an individual prediction, then verify the explanation under a suitable method."
                         },
                         {
-                            "title": "Model interpretability: A decision check",
-                            "body": "For model interpretability, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Model interpretability: Question the reference",
+                            "body": "An attribution method may compare a prediction with a chosen background population. Changing that reference can change which features appear influential. State the reference and inspect correlated inputs before interpreting an attribution as a stable explanation of an individual prediction."
                         }
                     ]
                 }
@@ -1082,8 +1082,8 @@
                             "body": "A convolutional model suits local image structure, while attention handles long-range relationships in sequences."
                         },
                         {
-                            "title": "Deep learning architectures: A decision check",
-                            "body": "For deep learning architectures, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Deep learning architectures: Compare under a fixed budget",
+                            "body": "Train candidate architectures with the same data split and a stated compute budget, then report quality alongside memory and inference latency. A larger model trained much longer is not evidence that its architecture alone is better. Include preprocessing and input resolution in the comparison."
                         },
                         {
                             "title": "Deep learning architectures: Where it can fail",
@@ -1104,8 +1104,8 @@
                             "body": "Fine-tune a pretrained image encoder on a small labeled dataset and compare frozen features with selective unfreezing."
                         },
                         {
-                            "title": "Transfer learning: A decision check",
-                            "body": "For transfer learning, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Transfer learning: Measure domain mismatch",
+                            "body": "Evaluate a frozen pretrained encoder with a newly trained head before unfreezing the network. If the source images differ strongly from the target domain, inspect errors by target subgroup and compare selective fine-tuning. Keep the pretrained model's required input normalization unless the adaptation deliberately changes it."
                         }
                     ]
                 },
@@ -1118,8 +1118,8 @@
                     "estimatedMinutes": 11,
                     "lessons": [
                         {
-                            "title": "NLP advanced: A decision check",
-                            "body": "For nlp advanced, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "NLP advanced: Evaluate context and meaning",
+                            "body": "Build examples where negation, long-range references, or domain-specific terms change the correct answer. For extraction, score the required spans or fields rather than only fluent output. Separate failures caused by context truncation from failures on text the model actually received."
                         },
                         {
                             "title": "NLP advanced: Where it can fail",
@@ -1149,8 +1149,8 @@
                             "body": "An object detector predicts boxes and classes; segmentation assigns labels at pixel level for a different use case."
                         },
                         {
-                            "title": "Computer vision advanced: A decision check",
-                            "body": "For computer vision advanced, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Computer vision advanced: Inspect localization quality",
+                            "body": "For detection, intersection over union divides the overlap area of predicted and reference boxes by their union area. Report detection quality across localization thresholds and object sizes. A model can identify the right class yet place boxes too loosely for a downstream measurement task."
                         },
                         {
                             "title": "Computer vision advanced: The core idea",
@@ -1176,8 +1176,8 @@
                             "body": "Reinforcement learning trains agents to maximize cumulative reward by learning policies from environment interaction."
                         },
                         {
-                            "title": "Reinforcement learning: A decision check",
-                            "body": "For reinforcement learning, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Reinforcement learning: Evaluate a policy separately",
+                            "body": "Evaluate a fixed policy on separate environment seeds without letting evaluation update it. Report the distribution of episode returns and constraint violations, not only the best episode. In a simulator, vary dynamics to check whether the policy exploits an artifact that may not hold outside training."
                         },
                         {
                             "title": "Reinforcement learning: Where it can fail",
@@ -1212,8 +1212,8 @@
                     "estimatedMinutes": 10,
                     "lessons": [
                         {
-                            "title": "Large language models: A decision check",
-                            "body": "For large language models, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline.",
+                            "title": "Large language models: Test grounded answers",
+                            "body": "For document question answering, include questions the supplied documents cannot answer. Check whether claims are supported by the cited passages and whether the system abstains when evidence is missing. Test retrieval and generation separately: a fluent answer can hide a failure to retrieve the relevant source.",
                             "image": "img/languages/ai+ml/advanced-lesson-7.png"
                         },
                         {
@@ -1244,8 +1244,8 @@
                             "image": "img/languages/ai+ml/advanced-lesson-8.png"
                         },
                         {
-                            "title": "MLOps: A decision check",
-                            "body": "For mlops, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "MLOps: Trace a released model",
+                            "body": "A model registry entry should identify the training data version, source revision, configuration, and evaluation report. Promote a specific artifact rather than retraining an untracked copy for production. A rollback must restore compatible preprocessing and feature definitions as well as model weights."
                         }
                     ]
                 },
@@ -1289,8 +1289,8 @@
                             "body": "Search can leak validation data or consume a large budget; document the search space and holdout."
                         },
                         {
-                            "title": "AutoML: A decision check",
-                            "body": "For automl, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "AutoML: Audit the selected pipeline",
+                            "body": "Inspect the winning pipeline's transformations, feature dependencies, and inference cost before accepting it. Verify that preprocessing and feature selection were fitted inside the training folds. Export the exact selected artifact and compare it with a manually specified baseline under the same evaluation protocol."
                         }
                     ]
                 },
@@ -1308,8 +1308,8 @@
                             "image": "img/languages/ai+ml/advanced-lesson-11.png"
                         },
                         {
-                            "title": "Graph neural networks: A decision check",
-                            "body": "For graph neural networks, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Graph neural networks: Define what the graph reveals",
+                            "body": "In a transductive task, unlabeled test nodes and their edges may be visible during training; an inductive task instead evaluates unseen nodes or graphs. State which setting matches deployment. For future-link prediction, exclude edges created after the prediction time from the message-passing graph."
                         },
                         {
                             "title": "Graph neural networks: Where it can fail",
@@ -1331,8 +1331,8 @@
                             "image": "img/languages/ai+ml/advanced-lesson-12.png"
                         },
                         {
-                            "title": "Multimodal AI: A decision check",
-                            "body": "For multimodal ai, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "Multimodal AI: Verify paired inputs",
+                            "body": "Check that each caption or transcript corresponds to the correct image or audio segment before training. Compare the fused model with each single-modality model, then evaluate mismatched and missing inputs. This reveals whether useful cross-modal information drives the gain or one modality supplies a shortcut."
                         },
                         {
                             "title": "Multimodal AI: Where it can fail",
@@ -1394,8 +1394,8 @@
                             "image": "img/languages/ai+ml/advanced-lesson-15.png"
                         },
                         {
-                            "title": "End-to-end system: A decision check",
-                            "body": "For end-to-end system, write down the success condition before inspecting the final test result. Check that inputs are available when the decision is made and compare against a simple baseline."
+                            "title": "End-to-end system: Test a broken handoff",
+                            "body": "Walk through a stale feature table or unavailable prediction service and specify what the product does next. Exercise the fallback, alert, and recovery path with a known example. Model quality alone does not determine system reliability when upstream data or downstream actions fail."
                         },
                         {
                             "title": "End-to-end system: A worked example",
