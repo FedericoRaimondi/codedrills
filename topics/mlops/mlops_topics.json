@@ -298,11 +298,13 @@
             },
             {
               "title": "Stage a release",
-              "body": "A delivery pipeline should promote an evaluated artifact through explicit stages, not train a fresh model during deployment. Keep the candidate identifier and evaluation report attached to each approval so reviewers can tell exactly what will receive traffic."
+              "body": "A delivery pipeline should promote an evaluated artifact through explicit stages, not train a fresh model during deployment. Keep the candidate identifier and evaluation report attached to each approval so reviewers can tell exactly what will receive traffic.",
+              "image": "img/languages/mlops/model-release-stages.png"
             },
             {
               "title": "Limit exposure and recover",
-              "body": "Route a small, measurable share of requests to a candidate while tracking predefined service and quality guardrails. If a guardrail fails, restore the prior known-good version and confirm traffic has actually moved back."
+              "body": "Route a small, measurable share of requests to a candidate while tracking predefined service and quality guardrails. If a guardrail fails, restore the prior known-good version and confirm traffic has actually moved back.",
+              "image": "img/languages/mlops/model-canary-rollback.png"
             }
           ]
         },
@@ -320,11 +322,13 @@
             },
             {
               "title": "Choose by response need",
-              "body": "Batch inference processes a defined set of records on a schedule, making it efficient when a result can wait. Online inference serves a request immediately and is appropriate when a user or system needs a low-latency answer."
+              "body": "Batch inference processes a defined set of records on a schedule, making it efficient when a result can wait. Online inference serves a request immediately and is appropriate when a user or system needs a low-latency answer.",
+              "image": "img/languages/mlops/serving-batch-online.png"
             },
             {
               "title": "Plan freshness and capacity",
-              "body": "A daily batch may be economical but leave decisions based on yesterday's data; an online endpoint can be fresh but needs capacity for traffic spikes. Choose the mode against the required freshness, latency, cost, and recovery constraints."
+              "body": "A daily batch may be economical but leave decisions based on yesterday's data; an online endpoint can be fresh but needs capacity for traffic spikes. Choose the mode against the required freshness, latency, cost, and recovery constraints.",
+              "image": "img/languages/mlops/serving-freshness-capacity.png"
             }
           ]
         },
@@ -342,11 +346,13 @@
             },
             {
               "title": "Separate service and model signals",
-              "body": "Request failures and latency describe whether the serving system is healthy; input distributions and later outcome metrics describe model behavior. Track both because a fast, available endpoint can still make poor predictions."
+              "body": "Request failures and latency describe whether the serving system is healthy; input distributions and later outcome metrics describe model behavior. Track both because a fast, available endpoint can still make poor predictions.",
+              "image": "img/languages/mlops/service-model-monitoring.png"
             },
             {
               "title": "Act on delayed evidence",
-              "body": "When labels arrive weeks later, use immediate operational signals to detect outages and data checks to catch malformed inputs, but do not claim those proxies prove predictive quality. Reconcile eventual labels against the model's recorded predictions."
+              "body": "When labels arrive weeks later, use immediate operational signals to detect outages and data checks to catch malformed inputs, but do not claim those proxies prove predictive quality. Reconcile eventual labels against the model's recorded predictions.",
+              "image": "img/languages/mlops/outcome-label-delay.png"
             }
           ]
         },
@@ -360,11 +366,13 @@
           "lessons": [
             {
               "title": "Concept and application",
-              "body": "Checks detect schema changes, missing values, invalid ranges, and distribution anomalies. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use."
+              "body": "Checks detect schema changes, missing values, invalid ranges, and distribution anomalies. Apply this idea using representative examples, and verify its limits with an evaluation that matches the intended use.",
+              "image": "img/languages/mlops/data-quality-gate.png"
             },
             {
               "title": "Validate before training",
-              "body": "Check required columns, types, missingness, allowed ranges, and row volumes before a dataset enters training. A failed schema check should stop or quarantine the run rather than silently coercing unexpected values."
+              "body": "Check required columns, types, missingness, allowed ranges, and row volumes before a dataset enters training. A failed schema check should stop or quarantine the run rather than silently coercing unexpected values.",
+              "image": "img/languages/mlops/training-data-quality-check.png"
             },
             {
               "title": "Set meaningful bounds",
@@ -386,11 +394,13 @@
             },
             {
               "title": "Recognize a drift signal",
-              "body": "Drift means the observed input or prediction distribution has changed relative to a reference period. A change can come from seasonality or a population shift, so it is evidence to investigate rather than proof that accuracy fell."
+              "body": "Drift means the observed input or prediction distribution has changed relative to a reference period. A change can come from seasonality or a population shift, so it is evidence to investigate rather than proof that accuracy fell.",
+              "image": "img/languages/mlops/input-distribution-drift.png"
             },
             {
               "title": "Connect inputs to outcomes",
-              "body": "Compare drifted features with delayed labels, segment metrics, and known product changes to determine whether model quality or only the population changed. Escalate according to impact and retrain only after a validated candidate improves the relevant outcomes."
+              "body": "Compare drifted features with delayed labels, segment metrics, and known product changes to determine whether model quality or only the population changed. Escalate according to impact and retrain only after a validated candidate improves the relevant outcomes.",
+              "image": "img/languages/mlops/drift-investigation-evidence.png"
             }
           ]
         },
@@ -408,11 +418,13 @@
             },
             {
               "title": "Triage with ownership",
-              "body": "An incident process states how to classify impact, who is on call, and where to find the current production model and runbook. Assign an owner and preserve key timestamps and evidence as soon as the issue is identified."
+              "body": "An incident process states how to classify impact, who is on call, and where to find the current production model and runbook. Assign an owner and preserve key timestamps and evidence as soon as the issue is identified.",
+              "image": "img/languages/mlops/incident-owner-runbook.png"
             },
             {
               "title": "Recover and learn",
-              "body": "Use a tested rollback or mitigation when user impact warrants it, then verify service and prediction behavior after the change. Record the cause and follow-up actions so the same failure is less likely to recur."
+              "body": "Use a tested rollback or mitigation when user impact warrants it, then verify service and prediction behavior after the change. Record the cause and follow-up actions so the same failure is less likely to recur.",
+              "image": "img/languages/mlops/rollback-and-health-check.png"
             }
           ]
         },
@@ -430,11 +442,13 @@
             },
             {
               "title": "Use evidence to trigger training",
-              "body": "A fixed calendar can create unnecessary runs or miss a sudden change. Combine drift or data-quality alerts with outcome evidence and operational context to decide whether retraining is justified."
+              "body": "A fixed calendar can create unnecessary runs or miss a sudden change. Combine drift or data-quality alerts with outcome evidence and operational context to decide whether retraining is justified.",
+              "image": "img/languages/mlops/retraining-evidence-decision.png"
             },
             {
               "title": "Validate before replacing",
-              "body": "A newly trained model is only a candidate: compare it with the current version on a representative, held-out evaluation and required slices. Promote it only when quality, safety, and deployment checks pass; otherwise keep the current model."
+              "body": "A newly trained model is only a candidate: compare it with the current version on a representative, held-out evaluation and required slices. Promote it only when quality, safety, and deployment checks pass; otherwise keep the current model.",
+              "image": "img/languages/mlops/retraining-candidate-evaluation.png"
             }
           ]
         }

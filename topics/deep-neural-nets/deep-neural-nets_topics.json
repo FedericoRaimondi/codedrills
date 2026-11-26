@@ -294,7 +294,8 @@
                     "lessons": [
                         {
                             "title": "Distinguish a pass from an update",
-                            "body": "An epoch is one pass through the training dataset. An iteration usually means one optimizer update, although some tools use it for a batch-processing step. State the convention in training logs: processing a batch and updating parameters are separate operations when gradients are accumulated."
+                            "body": "An epoch is one pass through the training dataset. An iteration usually means one optimizer update, although some tools use it for a batch-processing step. State the convention in training logs: processing a batch and updating parameters are separate operations when gradients are accumulated.",
+                            "image": "img/languages/deep-neural-nets/epoch-versus-update.png"
                         },
                         {
                             "title": "Count batches in an epoch",
@@ -303,11 +304,13 @@
                         },
                         {
                             "title": "Account for gradient accumulation",
-                            "body": "Suppose an epoch contains 12 microbatches and gradients are accumulated over three microbatches before each optimizer step. That gives four updates per epoch, not 12. Clear gradients at the intended update boundary and specify what happens to a partial accumulation group at the end."
+                            "body": "Suppose an epoch contains 12 microbatches and gradients are accumulated over three microbatches before each optimizer step. That gives four updates per epoch, not 12. Clear gradients at the intended update boundary and specify what happens to a partial accumulation group at the end.",
+                            "image": "img/languages/deep-neural-nets/gradient-accumulation-updates.png"
                         },
                         {
                             "title": "Read the schedule's clock",
-                            "body": "A learning-rate scheduler may advance per epoch or per optimizer update. Calling a per-epoch scheduler after every batch makes it progress too quickly. When changing batch size, record both examples processed and optimizer steps so comparisons reveal whether the model received a different training budget."
+                            "body": "A learning-rate scheduler may advance per epoch or per optimizer update. Calling a per-epoch scheduler after every batch makes it progress too quickly. When changing batch size, record both examples processed and optimizer steps so comparisons reveal whether the model received a different training budget.",
+                            "image": "img/languages/deep-neural-nets/scheduler-update-epoch.png"
                         }
                     ]
                 },
@@ -321,7 +324,8 @@
                     "lessons": [
                         {
                             "title": "Measure on separate data",
-                            "body": "Training loss measures fit to examples used to update weights. Validation loss measures the current model on separate examples without updating it. Plot both against epochs or optimizer steps using consistent loss definitions; the validation set guides model choices rather than supplying training gradients."
+                            "body": "Training loss measures fit to examples used to update weights. Validation loss measures the current model on separate examples without updating it. Plot both against epochs or optimizer steps using consistent loss definitions; the validation set guides model choices rather than supplying training gradients.",
+                            "image": "img/languages/deep-neural-nets/training-validation-separate-data.png"
                         },
                         {
                             "title": "Read a widening gap",
@@ -357,7 +361,8 @@
                         },
                         {
                             "title": "Separate exclusive and overlapping labels",
-                            "body": "An animal photo assigned exactly one species fits a softmax head. A photo that can independently contain a dog, a bicycle, and a person needs multiple labels, often modeled with one sigmoid output per label. Those probabilities need not sum to one; use a compatible binary loss for each label."
+                            "body": "An animal photo assigned exactly one species fits a softmax head. A photo that can independently contain a dog, a bicycle, and a person needs multiple labels, often modeled with one sigmoid output per label. Those probabilities need not sum to one; use a compatible binary loss for each label.",
+                            "image": "img/languages/deep-neural-nets/exclusive-overlapping-labels.png"
                         },
                         {
                             "title": "Choose a decision rule",
@@ -380,7 +385,8 @@
                         },
                         {
                             "title": "Match the loss to error costs",
-                            "body": "For a target of 5 and prediction of 7, absolute error is 2 and squared error is 4. Squared error puts more emphasis on large misses than absolute error. Select a loss based on the task rather than choosing an output activation intended for classification."
+                            "body": "For a target of 5 and prediction of 7, absolute error is 2 and squared error is 4. Squared error puts more emphasis on large misses than absolute error. Select a loss based on the task rather than choosing an output activation intended for classification.",
+                            "image": "img/languages/deep-neural-nets/regression-error-distance.png"
                         },
                         {
                             "title": "Respect ranges and scaling",
@@ -402,7 +408,8 @@
                     "lessons": [
                         {
                             "title": "Recognize memorization",
-                            "body": "A neural network can fit accidental patterns or mislabeled examples in its training set. Overfitting appears when those improvements fail to transfer to relevant unseen data. Parameter count alone does not establish whether a model overfits; the amount and quality of data and the training procedure also matter."
+                            "body": "A neural network can fit accidental patterns or mislabeled examples in its training set. Overfitting appears when those improvements fail to transfer to relevant unseen data. Parameter count alone does not establish whether a model overfits; the amount and quality of data and the training procedure also matter.",
+                            "image": "img/languages/deep-neural-nets/overfitting-unseen-examples.png"
                         },
                         {
                             "title": "Compare error trajectories",
@@ -442,7 +449,8 @@
                         },
                         {
                             "title": "Fit a run to the device",
-                            "body": "If a full training step runs out of memory, try a smaller microbatch and measure again. Gradient accumulation can preserve the effective batch size across several microbatches, but batch-dependent operations may behave differently. Leave headroom for variable input sizes and checkpoint or evaluation work."
+                            "body": "If a full training step runs out of memory, try a smaller microbatch and measure again. Gradient accumulation can preserve the effective batch size across several microbatches, but batch-dependent operations may behave differently. Leave headroom for variable input sizes and checkpoint or evaluation work.",
+                            "image": "img/languages/deep-neural-nets/memory-microbatch-accumulation.png"
                         }
                     ]
                 },
@@ -456,11 +464,13 @@
                     "lessons": [
                         {
                             "title": "Establish a reference prediction",
-                            "body": "A baseline makes a neural network's result interpretable. For numeric prediction, a constant training-set mean is a useful starting point under squared error. For classification, predicting the most frequent training class exposes how much accuracy is possible without learning input-dependent patterns."
+                            "body": "A baseline makes a neural network's result interpretable. For numeric prediction, a constant training-set mean is a useful starting point under squared error. For classification, predicting the most frequent training class exposes how much accuracy is possible without learning input-dependent patterns.",
+                            "image": "img/languages/deep-neural-nets/baseline-prediction-reference.png"
                         },
                         {
                             "title": "Train a small model first",
-                            "body": "A linear predictor or small multilayer perceptron can reveal whether the features contain usable signal before a larger network consumes the budget. Use the same split and preprocessing rules as the larger candidate. Record training time and inference cost along with the task metric."
+                            "body": "A linear predictor or small multilayer perceptron can reveal whether the features contain usable signal before a larger network consumes the budget. Use the same split and preprocessing rules as the larger candidate. Record training time and inference cost along with the task metric.",
+                            "image": "img/languages/deep-neural-nets/baseline-same-held-out-data.png"
                         },
                         {
                             "title": "Make the comparison fair",
@@ -1786,7 +1796,8 @@
                         },
                         {
                             "title": "Align graph visibility with deployment",
-                            "body": "For future-link prediction, build message-passing edges only from information available before the prediction cutoff. State whether test nodes are visible during training or entirely new at evaluation. Compare with a model using node features alone to measure the benefit of graph structure under that protocol."
+                            "body": "For future-link prediction, build message-passing edges only from information available before the prediction cutoff. State whether test nodes are visible during training or entirely new at evaluation. Compare with a model using node features alone to measure the benefit of graph structure under that protocol.",
+                            "image": "img/languages/deep-neural-nets/graph-future-edge-cutoff.png"
                         }
                     ]
                 },

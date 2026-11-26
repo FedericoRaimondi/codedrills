@@ -294,15 +294,18 @@
           "lessons": [
             {
               "title": "Understand the core idea",
-              "body": "Embeddings support similarity search, but semantic similarity is not the same as factual relevance. Use this principle to decide what the system must verify before relying on an answer or action."
+              "body": "Embeddings support similarity search, but semantic similarity is not the same as factual relevance. Use this principle to decide what the system must verify before relying on an answer or action.",
+              "image": "img/languages/llm-agents/embedding-similarity-verification.png"
             },
             {
               "title": "Filter and inspect candidates",
-              "body": "Use metadata filters to exclude out-of-scope or unauthorized records before ranking candidates. Review passages against the question, since a semantically close result can concern a different entity, date, or claim."
+              "body": "Use metadata filters to exclude out-of-scope or unauthorized records before ranking candidates. Review passages against the question, since a semantically close result can concern a different entity, date, or claim.",
+              "image": "img/languages/llm-agents/search-filter-inspect.png"
             },
             {
               "title": "Evaluate search quality",
-              "body": "Create labeled queries with relevant and hard-negative passages, then measure whether useful evidence appears near the top. Test paraphrases and ambiguous terms separately, and inspect misses before changing the embedding model."
+              "body": "Create labeled queries with relevant and hard-negative passages, then measure whether useful evidence appears near the top. Test paraphrases and ambiguous terms separately, and inspect misses before changing the embedding model.",
+              "image": "img/languages/llm-agents/retrieval-ranked-evaluation.png"
             }
           ]
         },
@@ -316,15 +319,18 @@
           "lessons": [
             {
               "title": "Understand the core idea",
-              "body": "Prompt injection uses untrusted content to manipulate model behavior, including through retrieved documents. Use this principle to decide what the system must verify before relying on an answer or action."
+              "body": "Prompt injection uses untrusted content to manipulate model behavior, including through retrieved documents. Use this principle to decide what the system must verify before relying on an answer or action.",
+              "image": "img/languages/llm-agents/prompt-injection-untrusted-document.png"
             },
             {
               "title": "Separate content from authority",
-              "body": "Clearly mark retrieved text as quoted or untrusted input, but do not assume delimiters prevent the model from following embedded instructions. Keep secrets and privileged actions out of the model's discretionary reach."
+              "body": "Clearly mark retrieved text as quoted or untrusted input, but do not assume delimiters prevent the model from following embedded instructions. Keep secrets and privileged actions out of the model's discretionary reach.",
+              "image": "img/languages/llm-agents/untrusted-context-access-control.png"
             },
             {
               "title": "Enforce controls outside the prompt",
-              "body": "Authorize each tool call in application code and limit tools to the minimum needed. Test documents that ask the assistant to ignore the task, reveal private data, or invoke a tool, and verify that the application blocks unauthorized outcomes."
+              "body": "Authorize each tool call in application code and limit tools to the minimum needed. Test documents that ask the assistant to ignore the task, reveal private data, or invoke a tool, and verify that the application blocks unauthorized outcomes.",
+              "image": "img/languages/llm-agents/prompt-injection-tool-authorization.png"
             }
           ]
         },
@@ -342,11 +348,13 @@
             },
             {
               "title": "Validate meaning after parsing",
-              "body": "Parse the response and check required fields, allowed ranges, cross-field rules, and domain constraints in trusted code. Reject or repair invalid values through a defined path rather than treating valid JSON as proof of correctness."
+              "body": "Parse the response and check required fields, allowed ranges, cross-field rules, and domain constraints in trusted code. Reject or repair invalid values through a defined path rather than treating valid JSON as proof of correctness.",
+              "image": "img/languages/llm-agents/structured-syntax-and-values.png"
             },
             {
               "title": "Use structured data in a workflow",
-              "body": "For an extracted event, verify that its date exists and its category is allowed before saving it. Keep a safe failure state for malformed or unsupported content, and test missing, extra, and boundary-valued fields."
+              "body": "For an extracted event, verify that its date exists and its category is allowed before saving it. Keep a safe failure state for malformed or unsupported content, and test missing, extra, and boundary-valued fields.",
+              "image": "img/languages/llm-agents/structured-event-date-check.png"
             }
           ]
         },
@@ -360,7 +368,8 @@
           "lessons": [
             {
               "title": "Understand the core idea",
-              "body": "A model may propose a tool and arguments; trusted application code decides whether execution is authorized. Use this principle to decide what the system must verify before relying on an answer or action."
+              "body": "A model may propose a tool and arguments; trusted application code decides whether execution is authorized. Use this principle to decide what the system must verify before relying on an answer or action.",
+              "image": "img/languages/llm-agents/tool-proposal-authorize.png"
             },
             {
               "title": "Check a proposal before execution",
@@ -368,7 +377,8 @@
             },
             {
               "title": "Report the actual tool outcome",
-              "body": "Execute only the approved operation and use the tool's result to build the response. If the tool fails or returns partial data, communicate that state instead of claiming the requested action succeeded."
+              "body": "Execute only the approved operation and use the tool's result to build the response. If the tool fails or returns partial data, communicate that state instead of claiming the requested action succeeded.",
+              "image": "img/languages/llm-agents/tool-failure-reporting.png"
             }
           ]
         },
@@ -387,7 +397,8 @@
             },
             {
               "title": "Define progress and stop rules",
-              "body": "Set limits for tool calls, elapsed time, and tokens, and stop when the task is complete or no safe progress is possible. Treat a repeated call with unchanged inputs as a possible loop rather than evidence of progress."
+              "body": "Set limits for tool calls, elapsed time, and tokens, and stop when the task is complete or no safe progress is possible. Treat a repeated call with unchanged inputs as a possible loop rather than evidence of progress.",
+              "image": "img/languages/llm-agents/agent-loop-stop-budget.png"
             },
             {
               "title": "Return a bounded result",
@@ -409,11 +420,13 @@
             },
             {
               "title": "Route cases by impact and evidence",
-              "body": "Define review triggers such as conflicting sources, low evidence coverage, sensitive actions, or a policy exception. Give reviewers the relevant evidence and uncertainty without asking them to infer missing context."
+              "body": "Define review triggers such as conflicting sources, low evidence coverage, sensitive actions, or a policy exception. Give reviewers the relevant evidence and uncertainty without asking them to infer missing context.",
+              "image": "img/languages/llm-agents/review-evidence-uncertainty.png"
             },
             {
               "title": "Make review actionable",
-              "body": "Provide a clear approve, edit, reject, or escalate path and record the reviewer's decision. Measure disagreement and turnaround time, then update the workflow when review repeatedly catches a specific failure mode."
+              "body": "Provide a clear approve, edit, reject, or escalate path and record the reviewer's decision. Measure disagreement and turnaround time, then update the workflow when review repeatedly catches a specific failure mode.",
+              "image": "img/languages/llm-agents/review-decision-paths.png"
             }
           ]
         },
@@ -431,11 +444,13 @@
             },
             {
               "title": "Write cases from real requirements",
-              "body": "Include normal requests, ambiguous inputs, missing evidence, and cases where the right behavior is to abstain. Define observable criteria such as factual support, correct tool use, and format compliance before scoring."
+              "body": "Include normal requests, ambiguous inputs, missing evidence, and cases where the right behavior is to abstain. Define observable criteria such as factual support, correct tool use, and format compliance before scoring.",
+              "image": "img/languages/llm-agents/evaluation-varied-cases.png"
             },
             {
               "title": "Use results to guide iteration",
-              "body": "Inspect failures by category and compare prompt or model changes on the same held-out cases. Track regressions and operational measures such as latency, then add validated production misses to the test set."
+              "body": "Inspect failures by category and compare prompt or model changes on the same held-out cases. Track regressions and operational measures such as latency, then add validated production misses to the test set.",
+              "image": "img/languages/llm-agents/evaluation-failure-categories.png"
             }
           ]
         }

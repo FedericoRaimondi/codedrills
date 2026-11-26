@@ -14,7 +14,8 @@
                     "lessons": [
                         {
                             "title": "AI basics: what is AI and ML: The core idea",
-                            "body": "Artificial intelligence is the broad goal of building systems that perform intelligent tasks, while machine learning is a subset that learns patterns from data instead of relying only on hand-written rules."
+                            "body": "Artificial intelligence is the broad goal of building systems that perform intelligent tasks, while machine learning is a subset that learns patterns from data instead of relying only on hand-written rules.",
+                            "image": "img/languages/ai+ml/ai-and-ml-scope.png"
                         },
                         {
                             "title": "AI basics: what is AI and ML: Where it can fail",
@@ -22,7 +23,8 @@
                         },
                         {
                             "title": "AI basics: what is AI and ML: A worked example",
-                            "body": "A thermostat can follow fixed rules, while a model can learn a temperature-to-energy pattern from examples."
+                            "body": "A thermostat can follow fixed rules, while a model can learn a temperature-to-energy pattern from examples.",
+                            "image": "img/languages/ai+ml/fixed-rule-learned-pattern.png"
                         },
                         {
                             "title": "AI basics: what is AI and ML: Identify what is learned",
@@ -40,11 +42,13 @@
                     "lessons": [
                         {
                             "title": "Data types: structured vs unstructured data: A worked example",
-                            "body": "A spreadsheet of transactions has named columns; a customer email is text that needs parsing or an embedding before many models can use it."
+                            "body": "A spreadsheet of transactions has named columns; a customer email is text that needs parsing or an embedding before many models can use it.",
+                            "image": "img/languages/ai+ml/structured-unstructured.png"
                         },
                         {
                             "title": "Data types: structured vs unstructured data: Choose a representation",
-                            "body": "A support ticket can contain structured fields such as creation time alongside free-text notes and an attached image. Decide how to represent each field separately. Converting the notes into word counts loses word order, while resizing the image can remove small details."
+                            "body": "A support ticket can contain structured fields such as creation time alongside free-text notes and an attached image. Decide how to represent each field separately. Converting the notes into word counts loses word order, while resizing the image can remove small details.",
+                            "image": "img/languages/ai+ml/support-ticket-data-types.png"
                         },
                         {
                             "title": "Data types: structured vs unstructured data: Where it can fail",
@@ -62,11 +66,13 @@
                     "lessons": [
                         {
                             "title": "Intro to datasets: Define one example",
-                            "body": "Specify what one row represents before counting examples. A dataset with ten orders from each of 100 customers has 1,000 orders but only 100 customers. If the goal is to predict behavior for new customers, keep each customer's records together when splitting the data."
+                            "body": "Specify what one row represents before counting examples. A dataset with ten orders from each of 100 customers has 1,000 orders but only 100 customers. If the goal is to predict behavior for new customers, keep each customer's records together when splitting the data.",
+                            "image": "img/languages/ai+ml/dataset-customer-orders.png"
                         },
                         {
                             "title": "Intro to datasets: The core idea",
-                            "body": "A dataset is a collection of examples used for training and evaluation, typically with features (inputs) and labels (targets) when the task is supervised."
+                            "body": "A dataset is a collection of examples used for training and evaluation, typically with features (inputs) and labels (targets) when the task is supervised.",
+                            "image": "img/languages/ai+ml/dataset-features-labels.png"
                         },
                         {
                             "title": "Intro to datasets: A worked example",
@@ -88,11 +94,13 @@
                     "lessons": [
                         {
                             "title": "Basic math for AI: Calculate a weighted sum",
-                            "body": "For input vector [2, 3] and weights [0.5, -1], the dot product is 2*0.5 + 3*(-1) = -2. Adding a bias of 4 gives a prediction of 2. Each input must line up with its corresponding weight; swapping feature order changes the calculation."
+                            "body": "For input vector [2, 3] and weights [0.5, -1], the dot product is 2*0.5 + 3*(-1) = -2. Adding a bias of 4 gives a prediction of 2. Each input must line up with its corresponding weight; swapping feature order changes the calculation.",
+                            "image": "img/languages/ai+ml/weighted-inputs.png"
                         },
                         {
                             "title": "Basic math for AI: Where it can fail",
-                            "body": "Keep track of units and dimensions; an invalid shape or scale can make a correct formula meaningless."
+                            "body": "Keep track of units and dimensions; an invalid shape or scale can make a correct formula meaningless.",
+                            "image": "img/languages/ai+ml/math-dimensions-units.png"
                         }
                     ]
                 },
@@ -110,11 +118,13 @@
                         },
                         {
                             "title": "Intro to statistics: See an outlier's effect",
-                            "body": "The values 2, 3, 3, 4, and 18 have mean 6 and median 3. The large value pulls up the mean while leaving the median near most observations. Neither summary tells the whole story, so inspect the spread and investigate whether 18 is a valid observation."
+                            "body": "The values 2, 3, 3, 4, and 18 have mean 6 and median 3. The large value pulls up the mean while leaving the median near most observations. Neither summary tells the whole story, so inspect the spread and investigate whether 18 is a valid observation.",
+                            "image": "img/languages/ai+ml/mean-median-outlier.png"
                         },
                         {
                             "title": "Intro to statistics: A worked example",
-                            "body": "The mean delivery time can hide a long tail, so pair it with a spread measure and inspect the distribution."
+                            "body": "The mean delivery time can hide a long tail, so pair it with a spread measure and inspect the distribution.",
+                            "image": "img/languages/ai+ml/statistics-long-tail.png"
                         }
                     ]
                 },
@@ -129,6 +139,7 @@
                         {
                             "title": "Visualization basics: A worked example",
                             "body": "A histogram reveals skew in transaction amounts, while a scatter plot can expose a nonlinear relationship or an outlier.",
+                            "image": "img/languages/ai+ml/visualization-scatter.png",
                             "image": "img/languages/ai+ml/new-lesson-6.png"
                         },
                         {
@@ -137,7 +148,8 @@
                         },
                         {
                             "title": "Visualization basics: The core idea",
-                            "body": "Visualizations like histograms, scatter plots, and box plots quickly reveal distribution shape, outliers, and variable relationships before modeling begins."
+                            "body": "Visualizations like histograms, scatter plots, and box plots quickly reveal distribution shape, outliers, and variable relationships before modeling begins.",
+                            "image": "img/languages/ai+ml/visualization-histogram.png"
                         }
                     ]
                 },
@@ -151,11 +163,13 @@
                     "lessons": [
                         {
                             "title": "Data inspection: Investigate suspicious records",
-                            "body": "A negative age could indicate a parsing error, a special missing-value code, or a broken source system. Inspect the raw record and field definition before replacing it. Record the cause and count affected rows so a recurring ingestion problem does not go unnoticed."
+                            "body": "A negative age could indicate a parsing error, a special missing-value code, or a broken source system. Inspect the raw record and field definition before replacing it. Record the cause and count affected rows so a recurring ingestion problem does not go unnoticed.",
+                            "image": "img/languages/ai+ml/inspect-negative-age.png"
                         },
                         {
                             "title": "Data inspection: The core idea",
-                            "body": "Initial data inspection checks missing values, duplicates, data types, and unrealistic ranges to prevent avoidable modeling errors."
+                            "body": "Initial data inspection checks missing values, duplicates, data types, and unrealistic ranges to prevent avoidable modeling errors.",
+                            "image": "img/languages/ai+ml/inspect-missing-invalid.png"
                         },
                         {
                             "title": "Data inspection: Where it can fail",
@@ -163,7 +177,8 @@
                         },
                         {
                             "title": "Data inspection: A worked example",
-                            "body": "Count missing values, verify a date column parses correctly, and inspect extreme quantities before training."
+                            "body": "Count missing values, verify a date column parses correctly, and inspect extreme quantities before training.",
+                            "image": "img/languages/ai+ml/inspect-example-fields.png"
                         }
                     ]
                 },
@@ -177,7 +192,8 @@
                     "lessons": [
                         {
                             "title": "Intro to predictions: Separate output from action",
-                            "body": "Suppose a delay model returns 0.3. With a notification threshold of 0.2, the system sends an alert; with a threshold of 0.5, it does not. The prediction is unchanged. The action also depends on the policy and the cost of unnecessary or missed alerts."
+                            "body": "Suppose a delay model returns 0.3. With a notification threshold of 0.2, the system sends an alert; with a threshold of 0.5, it does not. The prediction is unchanged. The action also depends on the policy and the cost of unnecessary or missed alerts.",
+                            "image": "img/languages/ai+ml/prediction-score-decision.png"
                         },
                         {
                             "title": "Intro to predictions: Where it can fail",
@@ -185,7 +201,8 @@
                         },
                         {
                             "title": "Intro to predictions: The core idea",
-                            "body": "A prediction is a model output produced from input features, such as a class label, a probability, or a continuous numeric estimate."
+                            "body": "A prediction is a model output produced from input features, such as a class label, a probability, or a continuous numeric estimate.",
+                            "image": "img/languages/ai+ml/prediction-probability-output.png"
                         },
                         {
                             "title": "Intro to predictions: A worked example",
@@ -203,15 +220,18 @@
                     "lessons": [
                         {
                             "title": "Supervised vs unsupervised: Match the question to the data",
-                            "body": "To learn which requests need escalation, supervised training needs examples with escalation targets. If those labels do not exist, clustering can help explore recurring request types, but a cluster number is not an escalation prediction. Human review may help turn that exploration into a labeling plan."
+                            "body": "To learn which requests need escalation, supervised training needs examples with escalation targets. If those labels do not exist, clustering can help explore recurring request types, but a cluster number is not an escalation prediction. Human review may help turn that exploration into a labeling plan.",
+                            "image": "img/languages/ai+ml/supervised-labeled-examples.png"
                         },
                         {
                             "title": "Supervised vs unsupervised: A worked example",
-                            "body": "Predicting a known churn label is supervised; grouping users without labels is exploratory unsupervised learning."
+                            "body": "Predicting a known churn label is supervised; grouping users without labels is exploratory unsupervised learning.",
+                            "image": "img/languages/ai+ml/unsupervised-clusters.png"
                         },
                         {
                             "title": "Supervised vs unsupervised: Where it can fail",
-                            "body": "Clusters do not come with business meaning; validate whether the groups are stable and useful."
+                            "body": "Clusters do not come with business meaning; validate whether the groups are stable and useful.",
+                            "image": "img/languages/ai+ml/cluster-meaning-review.png"
                         }
                     ]
                 },
@@ -225,15 +245,18 @@
                     "lessons": [
                         {
                             "title": "Feature vs label: A worked example",
-                            "body": "For a house-price task, floor area available at listing time is a feature and the eventual sale price is the label."
+                            "body": "For a house-price task, floor area available at listing time is a feature and the eventual sale price is the label.",
+                            "image": "img/languages/ai+ml/house-size-sale-price.png"
                         },
                         {
                             "title": "Feature vs label: The core idea",
-                            "body": "Features are the inputs provided to a model, and the label is the ground-truth value the model is trained to predict."
+                            "body": "Features are the inputs provided to a model, and the label is the ground-truth value the model is trained to predict.",
+                            "image": "img/languages/ai+ml/input-features-target.png"
                         },
                         {
                             "title": "Feature vs label: Spot a leaked answer",
-                            "body": "When predicting whether an order will arrive late at checkout, the eventual delivery timestamp cannot be an input: it reveals the outcome after the decision. Use information already known at checkout as features, and derive the late-delivery label from the later delivery record."
+                            "body": "When predicting whether an order will arrive late at checkout, the eventual delivery timestamp cannot be an input: it reveals the outcome after the decision. Use information already known at checkout as features, and derive the late-delivery label from the later delivery record.",
+                            "image": "img/languages/ai+ml/checkout-delivery-leakage.png"
                         }
                     ]
                 },
@@ -247,11 +270,13 @@
                     "lessons": [
                         {
                             "title": "Data cleaning basics: Distinguish missing from zero",
-                            "body": "A missing purchase amount means the amount is unknown; zero can mean a valid free order. Replacing every missing amount with zero erases that distinction. Investigate why values are absent, choose a documented handling rule, and retain a missingness indicator when it carries useful information."
+                            "body": "A missing purchase amount means the amount is unknown; zero can mean a valid free order. Replacing every missing amount with zero erases that distinction. Investigate why values are absent, choose a documented handling rule, and retain a missingness indicator when it carries useful information.",
+                            "image": "img/languages/ai+ml/missing-versus-zero.png"
                         },
                         {
                             "title": "Data cleaning basics: The core idea",
-                            "body": "Data cleaning standardizes formats, handles nulls, removes duplicates, and corrects inconsistencies so the model learns from reliable signals."
+                            "body": "Data cleaning standardizes formats, handles nulls, removes duplicates, and corrects inconsistencies so the model learns from reliable signals.",
+                            "image": "img/languages/ai+ml/cleaning-duplicates-missing.png"
                         }
                     ]
                 },
@@ -265,11 +290,13 @@
                     "lessons": [
                         {
                             "title": "Simple classification idea: The core idea",
-                            "body": "Classification maps an input to one of several classes, for example spam vs not spam, often using probabilities and a decision threshold."
+                            "body": "Classification maps an input to one of several classes, for example spam vs not spam, often using probabilities and a decision threshold.",
+                            "image": "img/languages/ai+ml/spam-classification.png"
                         },
                         {
                             "title": "Simple classification idea: A worked example",
-                            "body": "A spam filter estimates whether a message belongs to spam or legitimate mail, then applies a threshold to the score."
+                            "body": "A spam filter estimates whether a message belongs to spam or legitimate mail, then applies a threshold to the score.",
+                            "image": "img/languages/ai+ml/spam-decision-threshold.png"
                         },
                         {
                             "title": "Simple classification idea: Where it can fail",
@@ -291,15 +318,18 @@
                     "lessons": [
                         {
                             "title": "Simple regression idea: Measure numeric error",
-                            "body": "If predicted demand is 12 units and actual demand is 9, the absolute error is 3 units. Mean absolute error averages this distance across predictions and keeps the target's units. Compare it with a simple forecast such as the previous week's demand to judge whether the model adds value."
+                            "body": "If predicted demand is 12 units and actual demand is 9, the absolute error is 3 units. Mean absolute error averages this distance across predictions and keeps the target's units. Compare it with a simple forecast such as the previous week's demand to judge whether the model adds value.",
+                            "image": "img/languages/ai+ml/regression-absolute-error.png"
                         },
                         {
                             "title": "Simple regression idea: The core idea",
-                            "body": "Regression estimates a continuous value such as demand or price and is evaluated with error-based metrics like MAE or RMSE."
+                            "body": "Regression estimates a continuous value such as demand or price and is evaluated with error-based metrics like MAE or RMSE.",
+                            "image": "img/languages/ai+ml/regression-points-line.png"
                         },
                         {
                             "title": "Simple regression idea: Where it can fail",
-                            "body": "Use a time-based holdout to avoid future information leaking into training and communicate forecast uncertainty."
+                            "body": "Use a time-based holdout to avoid future information leaking into training and communicate forecast uncertainty.",
+                            "image": "img/languages/ai+ml/regression-time-holdout.png"
                         }
                     ]
                 },
@@ -321,11 +351,13 @@
                         },
                         {
                             "title": "AI workflows: Plan the feedback loop",
-                            "body": "For a delivery-delay service, record each prediction with its model version and match it to the eventual arrival outcome. That feedback lets the team detect deteriorating performance. Decide who investigates a rise in missed delays and whether the response is a data fix, retraining, or rollback."
+                            "body": "For a delivery-delay service, record each prediction with its model version and match it to the eventual arrival outcome. That feedback lets the team detect deteriorating performance. Decide who investigates a rise in missed delays and whether the response is a data fix, retraining, or rollback.",
+                            "image": "img/languages/ai+ml/ai-monitoring-review.png"
                         },
                         {
                             "title": "AI workflows: The core idea",
-                            "body": "A practical AI workflow moves from problem framing and data preparation to training, evaluation, deployment, and continuous monitoring."
+                            "body": "A practical AI workflow moves from problem framing and data preparation to training, evaluation, deployment, and continuous monitoring.",
+                            "image": "img/languages/ai+ml/ai-workflow-cycle.png"
                         }
                     ]
                 },
@@ -339,11 +371,13 @@
                     "lessons": [
                         {
                             "title": "AI use cases: Check whether learning is useful",
-                            "body": "A demand forecast needs historical demand and a planning decision that benefits from it. If a fixed reorder rule already meets the need, a learned forecast may add maintenance without improving outcomes. Start with a use case where errors can be measured and the prediction can change a decision."
+                            "body": "A demand forecast needs historical demand and a planning decision that benefits from it. If a fixed reorder rule already meets the need, a learned forecast may add maintenance without improving outcomes. Start with a use case where errors can be measured and the prediction can change a decision.",
+                            "image": "img/languages/ai+ml/forecast-reorder-decision.png"
                         },
                         {
                             "title": "AI use cases: The core idea",
-                            "body": "Common AI use cases include recommendation, fraud detection, forecasting, language understanding, and visual inspection in production systems."
+                            "body": "Common AI use cases include recommendation, fraud detection, forecasting, language understanding, and visual inspection in production systems.",
+                            "image": "img/languages/ai+ml/ai-use-case-examples.png"
                         },
                         {
                             "title": "AI use cases: A worked example",
@@ -375,7 +409,8 @@
                         },
                         {
                             "title": "Linear regression: Read the residuals",
-                            "body": "A residual is the observed target minus its prediction. Plot residuals against predicted values: a curved pattern suggests missing nonlinear structure, while a widening spread suggests changing error variance. These patterns guide investigation even when the average error appears acceptable."
+                            "body": "A residual is the observed target minus its prediction. Plot residuals against predicted values: a curved pattern suggests missing nonlinear structure, while a widening spread suggests changing error variance. These patterns guide investigation even when the average error appears acceptable.",
+                            "image": "img/languages/ai+ml/linear-residual-pattern.png"
                         },
                         {
                             "title": "Linear regression: A worked example",
@@ -412,7 +447,8 @@
                     "lessons": [
                         {
                             "title": "Train/test split: A worked example",
-                            "body": "For a future-demand task, train on earlier dates and reserve a later period as the final test."
+                            "body": "For a future-demand task, train on earlier dates and reserve a later period as the final test.",
+                            "image": "img/languages/ai+ml/split-time-train-test.png"
                         },
                         {
                             "title": "Train/test split: Where it can fail",
@@ -420,7 +456,8 @@
                         },
                         {
                             "title": "Train/test split: Keep related records together",
-                            "body": "If several images come from the same object, a random image split can put near-duplicates in both partitions. Split by object when evaluating performance on unseen objects. Fit preprocessing on the training partition only, then apply those fitted transformations to the test data."
+                            "body": "If several images come from the same object, a random image split can put near-duplicates in both partitions. Split by object when evaluating performance on unseen objects. Fit preprocessing on the training partition only, then apply those fitted transformations to the test data.",
+                            "image": "img/languages/ai+ml/split-grouped-objects.png"
                         }
                     ]
                 },
@@ -434,7 +471,8 @@
                     "lessons": [
                         {
                             "title": "Basic metrics: Where it can fail",
-                            "body": "Accuracy can look high when one class dominates; choose metrics based on error consequences."
+                            "body": "Accuracy can look high when one class dominates; choose metrics based on error consequences.",
+                            "image": "img/languages/ai+ml/metric-rare-class.png"
                         },
                         {
                             "title": "Basic metrics: A worked example",
@@ -446,7 +484,8 @@
                         },
                         {
                             "title": "Basic metrics: Calculate precision and recall",
-                            "body": "Suppose a fraud detector flags 20 transactions, of which 15 are fraudulent, and there are 30 fraudulent transactions overall. Precision is 15/20 = 75%; recall is 15/30 = 50%. The first measures how often an alert is right, and the second measures how much fraud it catches."
+                            "body": "Suppose a fraud detector flags 20 transactions, of which 15 are fraudulent, and there are 30 fraudulent transactions overall. Precision is 15/20 = 75%; recall is 15/30 = 50%. The first measures how often an alert is right, and the second measures how much fraud it catches.",
+                            "image": "img/languages/ai+ml/precision-recall-counts.png"
                         }
                     ]
                 },
@@ -460,7 +499,8 @@
                     "lessons": [
                         {
                             "title": "k-NN algorithm: A worked example",
-                            "body": "A k-NN model predicts a new flower from nearby labeled flowers; centimeters should not be overwhelmed by millimeters."
+                            "body": "A k-NN model predicts a new flower from nearby labeled flowers; centimeters should not be overwhelmed by millimeters.",
+                            "image": "img/languages/ai+ml/nearest-neighbors.png"
                         },
                         {
                             "title": "k-NN algorithm: Where it can fail",
@@ -483,7 +523,8 @@
                         },
                         {
                             "title": "Decision trees: Control small leaves",
-                            "body": "A leaf containing one training record can make a very confident prediction from almost no evidence. Increasing the minimum samples per leaf prevents some of these fragile rules. Choose that setting with validation data and inspect whether important rare cases still receive useful predictions."
+                            "body": "A leaf containing one training record can make a very confident prediction from almost no evidence. Increasing the minimum samples per leaf prevents some of these fragile rules. Choose that setting with validation data and inspect whether important rare cases still receive useful predictions.",
+                            "image": "img/languages/ai+ml/tree-small-leaf.png"
                         },
                         {
                             "title": "Decision trees: A worked example",
@@ -501,7 +542,8 @@
                     "lessons": [
                         {
                             "title": "Data preprocessing: Handle unseen categories",
-                            "body": "An encoder fitted on training cities may later receive a city it has never seen. Decide whether to map it to an unknown category or use an encoding that tolerates unseen values. Save the fitted encoder with the model so training and serving use the same column order and mappings."
+                            "body": "An encoder fitted on training cities may later receive a city it has never seen. Decide whether to map it to an unknown category or use an encoding that tolerates unseen values. Save the fitted encoder with the model so training and serving use the same column order and mappings.",
+                            "image": "img/languages/ai+ml/encoder-unseen-category.png"
                         },
                         {
                             "title": "Data preprocessing: A worked example",
@@ -519,7 +561,8 @@
                     "lessons": [
                         {
                             "title": "Feature engineering: Build a historical aggregate",
-                            "body": "For a purchase at noon, a 'spend in the last seven days' feature must stop at noon and exclude the current target outcome. Recreate that time boundary for each training example. An aggregate computed from the full customer history can accidentally include future purchases."
+                            "body": "For a purchase at noon, a 'spend in the last seven days' feature must stop at noon and exclude the current target outcome. Recreate that time boundary for each training example. An aggregate computed from the full customer history can accidentally include future purchases.",
+                            "image": "img/languages/ai+ml/feature-history-window.png"
                         },
                         {
                             "title": "Feature engineering: Where it can fail",
@@ -527,7 +570,8 @@
                         },
                         {
                             "title": "Feature engineering: A worked example",
-                            "body": "For a timestamped purchase, derive hour-of-day and time-since-last-order using only events available then."
+                            "body": "For a timestamped purchase, derive hour-of-day and time-since-last-order using only events available then.",
+                            "image": "img/languages/ai+ml/feature-time-derived.png"
                         },
                         {
                             "title": "Feature engineering: The core idea",
@@ -550,7 +594,8 @@
                         },
                         {
                             "title": "Clustering basics: Examine what defines a group",
-                            "body": "If requests cluster mostly by message length rather than subject, the representation may emphasize the wrong similarity. Read typical and borderline examples from each group. Compare assignments across resamples or initializations before treating a cluster as a stable customer segment."
+                            "body": "If requests cluster mostly by message length rather than subject, the representation may emphasize the wrong similarity. Read typical and borderline examples from each group. Compare assignments across resamples or initializations before treating a cluster as a stable customer segment.",
+                            "image": "img/languages/ai+ml/cluster-inspect-content.png"
                         },
                         {
                             "title": "Clustering basics: The core idea",
@@ -581,7 +626,8 @@
                         },
                         {
                             "title": "PCA basics: A worked example",
-                            "body": "PCA can compress correlated sensor measurements into a few orthogonal components for visualization."
+                            "body": "PCA can compress correlated sensor measurements into a few orthogonal components for visualization.",
+                            "image": "img/languages/ai+ml/pca-variance-direction.png"
                         }
                     ]
                 },
@@ -595,7 +641,8 @@
                     "lessons": [
                         {
                             "title": "Pipeline basics: Where it can fail",
-                            "body": "Transformations fitted before splitting can leak information even if the classifier itself is trained correctly."
+                            "body": "Transformations fitted before splitting can leak information even if the classifier itself is trained correctly.",
+                            "image": "img/languages/ai+ml/pipeline-fitted-transform.png"
                         },
                         {
                             "title": "Pipeline basics: The core idea",
@@ -603,7 +650,8 @@
                         },
                         {
                             "title": "Pipeline basics: A worked example",
-                            "body": "A pipeline keeps imputation, scaling, and estimation together so cross-validation refits each step correctly."
+                            "body": "A pipeline keeps imputation, scaling, and estimation together so cross-validation refits each step correctly.",
+                            "image": "img/languages/ai+ml/pipeline-train-validation.png"
                         }
                     ]
                 },
@@ -636,11 +684,13 @@
                     "lessons": [
                         {
                             "title": "Cross-validation: A worked example",
-                            "body": "Rotate the held-out fold across several partitions to compare model settings without depending on one lucky split."
+                            "body": "Rotate the held-out fold across several partitions to compare model settings without depending on one lucky split.",
+                            "image": "img/languages/ai+ml/cross-validation-folds.png"
                         },
                         {
                             "title": "Cross-validation: Where it can fail",
-                            "body": "Grouped or temporal data needs a split strategy that respects its structure rather than random folds."
+                            "body": "Grouped or temporal data needs a split strategy that respects its structure rather than random folds.",
+                            "image": "img/languages/ai+ml/cross-validation-temporal.png"
                         },
                         {
                             "title": "Cross-validation: The core idea",
@@ -662,7 +712,8 @@
                     "lessons": [
                         {
                             "title": "Model evaluation workflow: Where it can fail",
-                            "body": "A single aggregate metric can hide leakage, subgroup failures, or an unacceptable error type."
+                            "body": "A single aggregate metric can hide leakage, subgroup failures, or an unacceptable error type.",
+                            "image": "img/languages/ai+ml/evaluation-overall-slices.png"
                         },
                         {
                             "title": "Model evaluation workflow: The core idea",
@@ -670,7 +721,8 @@
                         },
                         {
                             "title": "Model evaluation workflow: Audit errors by slice",
-                            "body": "After computing the overall metric, separate errors by meaningful slices such as new versus returning customers. Include each slice's sample count so a result based on a handful of examples is not mistaken for firm evidence. Use validation errors for iteration and reserve the final test for the selected approach."
+                            "body": "After computing the overall metric, separate errors by meaningful slices such as new versus returning customers. Include each slice's sample count so a result based on a handful of examples is not mistaken for firm evidence. Use validation errors for iteration and reserve the final test for the selected approach.",
+                            "image": "img/languages/ai+ml/evaluation-group-comparison.png"
                         }
                     ]
                 },
@@ -688,7 +740,8 @@
                         },
                         {
                             "title": "First ML project: Make the result reproducible",
-                            "body": "Save the dataset version, split rule, preprocessing settings, and model configuration with the reported score. Another person should be able to regenerate the result from those records. Record a simple baseline alongside it so the project demonstrates an improvement rather than just a trained model."
+                            "body": "Save the dataset version, split rule, preprocessing settings, and model configuration with the reported score. Another person should be able to regenerate the result from those records. Record a simple baseline alongside it so the project demonstrates an improvement rather than just a trained model.",
+                            "image": "img/languages/ai+ml/project-reproducibility.png"
                         },
                         {
                             "title": "First ML project: The core idea",
@@ -696,7 +749,8 @@
                         },
                         {
                             "title": "First ML project: A worked example",
-                            "body": "Start with a narrow question, a documented dataset, one baseline, and a result another person can reproduce."
+                            "body": "Start with a narrow question, a documented dataset, one baseline, and a result another person can reproduce.",
+                            "image": "img/languages/ai+ml/project-baseline-comparison.png"
                         }
                     ]
                 }
@@ -715,11 +769,13 @@
                     "lessons": [
                         {
                             "title": "Ensemble methods: A worked example",
-                            "body": "Averaging diverse models can reduce variance; boosting adds learners to correct earlier errors."
+                            "body": "Averaging diverse models can reduce variance; boosting adds learners to correct earlier errors.",
+                            "image": "img/languages/ai+ml/ensemble-boosting.png"
                         },
                         {
                             "title": "Ensemble methods: The core idea",
-                            "body": "Ensembles combine multiple models to improve robustness and accuracy by averaging or boosting complementary prediction behaviors."
+                            "body": "Ensembles combine multiple models to improve robustness and accuracy by averaging or boosting complementary prediction behaviors.",
+                            "image": "img/languages/ai+ml/ensemble-average-models.png"
                         },
                         {
                             "title": "Ensemble methods: Where it can fail",
@@ -741,11 +797,13 @@
                         },
                         {
                             "title": "Hyperparameter tuning: Budget the search",
-                            "body": "Define a search space and a maximum number of trials or training hours before starting. Compare candidates on fixed validation folds and retain their configurations, including unsuccessful trials. When estimating the performance of the entire selection process, nested cross-validation separates tuning from outer-fold evaluation."
+                            "body": "Define a search space and a maximum number of trials or training hours before starting. Compare candidates on fixed validation folds and retain their configurations, including unsuccessful trials. When estimating the performance of the entire selection process, nested cross-validation separates tuning from outer-fold evaluation.",
+                            "image": "img/languages/ai+ml/hyperparameter-budget.png"
                         },
                         {
                             "title": "Hyperparameter tuning: The core idea",
-                            "body": "Hyperparameter tuning explores settings like depth, learning rate, and regularization to maximize validation performance without overfitting."
+                            "body": "Hyperparameter tuning explores settings like depth, learning rate, and regularization to maximize validation performance without overfitting.",
+                            "image": "img/languages/ai+ml/hyperparameter-search.png"
                         }
                     ]
                 },
@@ -759,7 +817,8 @@
                     "lessons": [
                         {
                             "title": "Feature selection: The core idea",
-                            "body": "Feature selection removes redundant or noisy variables, improving interpretability, reducing training cost, and sometimes improving generalization."
+                            "body": "Feature selection removes redundant or noisy variables, improving interpretability, reducing training cost, and sometimes improving generalization.",
+                            "image": "img/languages/ai+ml/feature-selection-filter.png"
                         },
                         {
                             "title": "Feature selection: Where it can fail",
@@ -767,7 +826,8 @@
                         },
                         {
                             "title": "Feature selection: Test a smaller feature set",
-                            "body": "Compare the full model with one trained without an expensive feature group using the same validation folds. A negligible quality change may justify simpler data collection. Correlated features can substitute for each other, so a low individual importance score does not mean the underlying information is useless."
+                            "body": "Compare the full model with one trained without an expensive feature group using the same validation folds. A negligible quality change may justify simpler data collection. Correlated features can substitute for each other, so a low individual importance score does not mean the underlying information is useless.",
+                            "image": "img/languages/ai+ml/feature-subset-comparison.png"
                         },
                         {
                             "title": "Feature selection: A worked example",
@@ -790,7 +850,8 @@
                         },
                         {
                             "title": "Bias-variance tradeoff: A worked example",
-                            "body": "A shallow model may miss a real pattern, while a very deep model may follow noise; compare learning curves."
+                            "body": "A shallow model may miss a real pattern, while a very deep model may follow noise; compare learning curves.",
+                            "image": "img/languages/ai+ml/underfit-overfit-curves.png"
                         },
                         {
                             "title": "Bias-variance tradeoff: The core idea",
@@ -812,7 +873,8 @@
                         },
                         {
                             "title": "Advanced evaluation: The core idea",
-                            "body": "Advanced evaluation includes calibration, threshold analysis, subgroup metrics, and cost-aware decision rules for production-relevant model assessment."
+                            "body": "Advanced evaluation includes calibration, threshold analysis, subgroup metrics, and cost-aware decision rules for production-relevant model assessment.",
+                            "image": "img/languages/ai+ml/evaluation-calibration.png"
                         },
                         {
                             "title": "Advanced evaluation: A worked example",
@@ -820,7 +882,8 @@
                         },
                         {
                             "title": "Advanced evaluation: Account for review capacity",
-                            "body": "If reviewers can inspect only 100 alerts per day, evaluate precision and recall at that workload rather than choosing a threshold by F1 alone. Include how many cases remain unreviewed and the cost of missed positives. A threshold selected on one population may need reassessment when prevalence changes."
+                            "body": "If reviewers can inspect only 100 alerts per day, evaluate precision and recall at that workload rather than choosing a threshold by F1 alone. Include how many cases remain unreviewed and the cost of missed positives. A threshold selected on one population may need reassessment when prevalence changes.",
+                            "image": "img/languages/ai+ml/evaluation-review-capacity.png"
                         }
                     ]
                 },
@@ -834,11 +897,13 @@
                     "lessons": [
                         {
                             "title": "Neural networks basics: The core idea",
-                            "body": "Neural networks stack differentiable layers that transform input features into richer representations learned from data."
+                            "body": "Neural networks stack differentiable layers that transform input features into richer representations learned from data.",
+                            "image": "img/languages/ai+ml/neural-network-layers.png"
                         },
                         {
                             "title": "Neural networks basics: A worked example",
-                            "body": "A hidden layer transforms inputs through learned weights and nonlinear activations, allowing richer patterns than a linear map."
+                            "body": "A hidden layer transforms inputs through learned weights and nonlinear activations, allowing richer patterns than a linear map.",
+                            "image": "img/languages/ai+ml/neuron-activation.png"
                         },
                         {
                             "title": "Neural networks basics: Where it can fail",
@@ -865,7 +930,8 @@
                         },
                         {
                             "title": "Backpropagation: A worked example",
-                            "body": "Backpropagation applies the chain rule from the loss back through each layer to compute parameter gradients."
+                            "body": "Backpropagation applies the chain rule from the loss back through each layer to compute parameter gradients.",
+                            "image": "img/languages/ai+ml/backprop-gradient-flow.png"
                         }
                     ]
                 },
@@ -879,7 +945,8 @@
                     "lessons": [
                         {
                             "title": "Deep learning basics: A worked example",
-                            "body": "A vision network can learn edges and textures in early layers and combine them into task-relevant patterns later."
+                            "body": "A vision network can learn edges and textures in early layers and combine them into task-relevant patterns later.",
+                            "image": "img/languages/ai+ml/vision-feature-hierarchy.png"
                         },
                         {
                             "title": "Deep learning basics: The core idea",
@@ -891,7 +958,8 @@
                         },
                         {
                             "title": "Deep learning basics: Diagnose the training run",
-                            "body": "If both training and validation error remain high, first check labels, preprocessing, and whether optimization is making progress. If training error falls while validation error rises, investigate overfitting. These situations call for different changes; adding layers is not a diagnosis."
+                            "body": "If both training and validation error remain high, first check labels, preprocessing, and whether optimization is making progress. If training error falls while validation error rises, investigate overfitting. These situations call for different changes; adding layers is not a diagnosis.",
+                            "image": "img/languages/ai+ml/training-validation-errors.png"
                         }
                     ]
                 },
@@ -905,11 +973,13 @@
                     "lessons": [
                         {
                             "title": "NLP basics: Inspect tokenization",
-                            "body": "Tokenize a few real messages containing abbreviations, spelling mistakes, and domain terms. Check whether important text is split unexpectedly or lost through truncation. For sentiment classification, removing words such as 'not' can reverse meaning even if the remaining vocabulary looks cleaner."
+                            "body": "Tokenize a few real messages containing abbreviations, spelling mistakes, and domain terms. Check whether important text is split unexpectedly or lost through truncation. For sentiment classification, removing words such as 'not' can reverse meaning even if the remaining vocabulary looks cleaner.",
+                            "image": "img/languages/ai+ml/nlp-tokenization.png"
                         },
                         {
                             "title": "NLP basics: A worked example",
-                            "body": "A text classifier turns tokens into representations to identify a topic, while tokenization choices affect rare words."
+                            "body": "A text classifier turns tokens into representations to identify a topic, while tokenization choices affect rare words.",
+                            "image": "img/languages/ai+ml/nlp-text-classifier.png"
                         },
                         {
                             "title": "NLP basics: The core idea",
@@ -932,7 +1002,8 @@
                         },
                         {
                             "title": "Computer vision basics: Verify image preprocessing",
-                            "body": "Inspect images after resizing, cropping, and normalization rather than only the original files. A crop can remove the object, and an incorrect color-channel order can change the input distribution. Use the same deterministic preprocessing at validation and serving time."
+                            "body": "Inspect images after resizing, cropping, and normalization rather than only the original files. A crop can remove the object, and an incorrect color-channel order can change the input distribution. Use the same deterministic preprocessing at validation and serving time.",
+                            "image": "img/languages/ai+ml/vision-crop-information.png"
                         },
                         {
                             "title": "Computer vision basics: A worked example",
@@ -954,7 +1025,8 @@
                     "lessons": [
                         {
                             "title": "Time series basics: The core idea",
-                            "body": "Time series modeling respects temporal order and often uses lags, trends, and seasonality features to forecast future values."
+                            "body": "Time series modeling respects temporal order and often uses lags, trends, and seasonality features to forecast future values.",
+                            "image": "img/languages/ai+ml/time-series-lag-forecast.png"
                         },
                         {
                             "title": "Time series basics: A worked example",
@@ -962,7 +1034,8 @@
                         },
                         {
                             "title": "Time series basics: Backtest the forecast horizon",
-                            "body": "For a seven-day forecast, evaluate predictions made seven days before their targets, then move the forecast origin forward through time. Rebuild lag features at each origin using only available history. Compare with a seasonal forecast such as the same weekday's demand from the previous week."
+                            "body": "For a seven-day forecast, evaluate predictions made seven days before their targets, then move the forecast origin forward through time. Rebuild lag features at each origin using only available history. Compare with a seasonal forecast such as the same weekday's demand from the previous week.",
+                            "image": "img/languages/ai+ml/time-series-horizon.png"
                         }
                     ]
                 },
@@ -981,7 +1054,8 @@
                         },
                         {
                             "title": "Recommendation systems: Define the candidate set",
-                            "body": "A ranker cannot recommend an item that candidate retrieval excluded. Evaluate both whether retrieval finds relevant items and whether ranking puts them near the top. Record which items were available at recommendation time; including future or unavailable items makes an offline ranking task unrealistic."
+                            "body": "A ranker cannot recommend an item that candidate retrieval excluded. Evaluate both whether retrieval finds relevant items and whether ranking puts them near the top. Record which items were available at recommendation time; including future or unavailable items makes an offline ranking task unrealistic.",
+                            "image": "img/languages/ai+ml/recommendation-retrieve-rank.png"
                         },
                         {
                             "title": "Recommendation systems: The core idea",
@@ -1003,11 +1077,13 @@
                     "lessons": [
                         {
                             "title": "Model deployment basics: Verify the serving contract",
-                            "body": "Send a fixed example through both the training-time prediction pipeline and the packaged service, then compare outputs within a defined tolerance. Check missing fields and invalid types too. A successful response is not enough if the service silently uses a different feature order or preprocessing version."
+                            "body": "Send a fixed example through both the training-time prediction pipeline and the packaged service, then compare outputs within a defined tolerance. Check missing fields and invalid types too. A successful response is not enough if the service silently uses a different feature order or preprocessing version.",
+                            "image": "img/languages/ai+ml/serving-pipeline-parity.png"
                         },
                         {
                             "title": "Model deployment basics: A worked example",
-                            "body": "Package a versioned model behind a bounded API, monitor latency and input quality, and keep a rollback path."
+                            "body": "Package a versioned model behind a bounded API, monitor latency and input quality, and keep a rollback path.",
+                            "image": "img/languages/ai+ml/model-deployment-rollback.png"
                         },
                         {
                             "title": "Model deployment basics: Where it can fail",
@@ -1033,7 +1109,8 @@
                         },
                         {
                             "title": "Data pipelines: Handle late and repeated records",
-                            "body": "An ingestion retry should not double-count the same transaction. Use stable record identifiers and define how corrections or late arrivals update derived features. Keep event time separate from ingestion time so historical training data can reflect what the serving system actually knew at each decision."
+                            "body": "An ingestion retry should not double-count the same transaction. Use stable record identifiers and define how corrections or late arrivals update derived features. Keep event time separate from ingestion time so historical training data can reflect what the serving system actually knew at each decision.",
+                            "image": "img/languages/ai+ml/pipeline-idempotent-ingestion.png"
                         }
                     ]
                 },
@@ -1051,11 +1128,13 @@
                         },
                         {
                             "title": "Model interpretability: A worked example",
-                            "body": "Use feature attribution to debug an individual prediction, then verify the explanation under a suitable method."
+                            "body": "Use feature attribution to debug an individual prediction, then verify the explanation under a suitable method.",
+                            "image": "img/languages/ai+ml/feature-attribution-example.png"
                         },
                         {
                             "title": "Model interpretability: Question the reference",
-                            "body": "An attribution method may compare a prediction with a chosen background population. Changing that reference can change which features appear influential. State the reference and inspect correlated inputs before interpreting an attribution as a stable explanation of an individual prediction."
+                            "body": "An attribution method may compare a prediction with a chosen background population. Changing that reference can change which features appear influential. State the reference and inspect correlated inputs before interpreting an attribution as a stable explanation of an individual prediction.",
+                            "image": "img/languages/ai+ml/attribution-reference.png"
                         }
                     ]
                 }
@@ -1083,7 +1162,8 @@
                         },
                         {
                             "title": "Deep learning architectures: Compare under a fixed budget",
-                            "body": "Train candidate architectures with the same data split and a stated compute budget, then report quality alongside memory and inference latency. A larger model trained much longer is not evidence that its architecture alone is better. Include preprocessing and input resolution in the comparison."
+                            "body": "Train candidate architectures with the same data split and a stated compute budget, then report quality alongside memory and inference latency. A larger model trained much longer is not evidence that its architecture alone is better. Include preprocessing and input resolution in the comparison.",
+                            "image": "img/languages/ai+ml/architecture-budget-comparison.png"
                         },
                         {
                             "title": "Deep learning architectures: Where it can fail",
@@ -1101,7 +1181,8 @@
                     "lessons": [
                         {
                             "title": "Transfer learning: A worked example",
-                            "body": "Fine-tune a pretrained image encoder on a small labeled dataset and compare frozen features with selective unfreezing."
+                            "body": "Fine-tune a pretrained image encoder on a small labeled dataset and compare frozen features with selective unfreezing.",
+                            "image": "img/languages/ai+ml/transfer-frozen-tunable.png"
                         },
                         {
                             "title": "Transfer learning: Measure domain mismatch",
@@ -1119,7 +1200,8 @@
                     "lessons": [
                         {
                             "title": "NLP advanced: Evaluate context and meaning",
-                            "body": "Build examples where negation, long-range references, or domain-specific terms change the correct answer. For extraction, score the required spans or fields rather than only fluent output. Separate failures caused by context truncation from failures on text the model actually received."
+                            "body": "Build examples where negation, long-range references, or domain-specific terms change the correct answer. For extraction, score the required spans or fields rather than only fluent output. Separate failures caused by context truncation from failures on text the model actually received.",
+                            "image": "img/languages/ai+ml/nlp-negation-meaning.png"
                         },
                         {
                             "title": "NLP advanced: Where it can fail",
@@ -1127,7 +1209,8 @@
                         },
                         {
                             "title": "NLP advanced: The core idea",
-                            "body": "Advanced NLP covers tokenization strategy, attention-based architectures, fine-tuning, and evaluation beyond simple accuracy metrics."
+                            "body": "Advanced NLP covers tokenization strategy, attention-based architectures, fine-tuning, and evaluation beyond simple accuracy metrics.",
+                            "image": "img/languages/ai+ml/nlp-attention-tokens.png"
                         }
                     ]
                 },
@@ -1150,7 +1233,8 @@
                         },
                         {
                             "title": "Computer vision advanced: Inspect localization quality",
-                            "body": "For detection, intersection over union divides the overlap area of predicted and reference boxes by their union area. Report detection quality across localization thresholds and object sizes. A model can identify the right class yet place boxes too loosely for a downstream measurement task."
+                            "body": "For detection, intersection over union divides the overlap area of predicted and reference boxes by their union area. Report detection quality across localization thresholds and object sizes. A model can identify the right class yet place boxes too loosely for a downstream measurement task.",
+                            "image": "img/languages/ai+ml/vision-detection-overlap.png"
                         },
                         {
                             "title": "Computer vision advanced: The core idea",
@@ -1173,7 +1257,8 @@
                         },
                         {
                             "title": "Reinforcement learning: The core idea",
-                            "body": "Reinforcement learning trains agents to maximize cumulative reward by learning policies from environment interaction."
+                            "body": "Reinforcement learning trains agents to maximize cumulative reward by learning policies from environment interaction.",
+                            "image": "img/languages/ai+ml/reinforcement-agent-environment.png"
                         },
                         {
                             "title": "Reinforcement learning: Evaluate a policy separately",
@@ -1195,7 +1280,8 @@
                     "lessons": [
                         {
                             "title": "Generative AI: Where it can fail",
-                            "body": "Plausibility is not factuality, provenance, or permission to reuse training content."
+                            "body": "Plausibility is not factuality, provenance, or permission to reuse training content.",
+                            "image": "img/languages/ai+ml/generated-content-source-check.png"
                         },
                         {
                             "title": "Generative AI: The core idea",
@@ -1218,7 +1304,8 @@
                         },
                         {
                             "title": "Large language models: A worked example",
-                            "body": "An LLM generates token sequences conditioned on context and can use retrieval or tools when a product supplies them."
+                            "body": "An LLM generates token sequences conditioned on context and can use retrieval or tools when a product supplies them.",
+                            "image": "img/languages/ai+ml/llm-next-token.png"
                         },
                         {
                             "title": "Large language models: The core idea",
@@ -1268,7 +1355,8 @@
                         },
                         {
                             "title": "Distributed training: A worked example",
-                            "body": "Data parallel workers process batches and synchronize gradients, trading wall time for communication overhead."
+                            "body": "Data parallel workers process batches and synchronize gradients, trading wall time for communication overhead.",
+                            "image": "img/languages/ai+ml/distributed-gradient-sync.png"
                         }
                     ]
                 },
@@ -1282,7 +1370,8 @@
                     "lessons": [
                         {
                             "title": "AutoML: The core idea",
-                            "body": "AutoML automates model search, feature processing, and tuning to speed up baseline creation while preserving reproducibility."
+                            "body": "AutoML automates model search, feature processing, and tuning to speed up baseline creation while preserving reproducibility.",
+                            "image": "img/languages/ai+ml/automl-search-candidates.png"
                         },
                         {
                             "title": "AutoML: Where it can fail",
@@ -1290,7 +1379,8 @@
                         },
                         {
                             "title": "AutoML: Audit the selected pipeline",
-                            "body": "Inspect the winning pipeline's transformations, feature dependencies, and inference cost before accepting it. Verify that preprocessing and feature selection were fitted inside the training folds. Export the exact selected artifact and compare it with a manually specified baseline under the same evaluation protocol."
+                            "body": "Inspect the winning pipeline's transformations, feature dependencies, and inference cost before accepting it. Verify that preprocessing and feature selection were fitted inside the training folds. Export the exact selected artifact and compare it with a manually specified baseline under the same evaluation protocol.",
+                            "image": "img/languages/ai+ml/automl-audit-pipeline.png"
                         }
                     ]
                 },
@@ -1309,7 +1399,8 @@
                         },
                         {
                             "title": "Graph neural networks: Define what the graph reveals",
-                            "body": "In a transductive task, unlabeled test nodes and their edges may be visible during training; an inductive task instead evaluates unseen nodes or graphs. State which setting matches deployment. For future-link prediction, exclude edges created after the prediction time from the message-passing graph."
+                            "body": "In a transductive task, unlabeled test nodes and their edges may be visible during training; an inductive task instead evaluates unseen nodes or graphs. State which setting matches deployment. For future-link prediction, exclude edges created after the prediction time from the message-passing graph.",
+                            "image": "img/languages/ai+ml/graph-future-edge-leakage.png"
                         },
                         {
                             "title": "Graph neural networks: Where it can fail",
@@ -1340,7 +1431,8 @@
                         },
                         {
                             "title": "Multimodal AI: The core idea",
-                            "body": "Multimodal models align and fuse modalities such as text and images to solve tasks requiring cross-modal understanding."
+                            "body": "Multimodal models align and fuse modalities such as text and images to solve tasks requiring cross-modal understanding.",
+                            "image": "img/languages/ai+ml/multimodal-image-text.png"
                         }
                     ]
                 },
@@ -1354,7 +1446,8 @@
                     "lessons": [
                         {
                             "title": "Model optimization: The core idea",
-                            "body": "Model optimization techniques like quantization, pruning, and distillation reduce latency and memory while preserving acceptable accuracy."
+                            "body": "Model optimization techniques like quantization, pruning, and distillation reduce latency and memory while preserving acceptable accuracy.",
+                            "image": "img/languages/ai+ml/model-compression-performance.png"
                         },
                         {
                             "title": "Model optimization: Where it can fail",
@@ -1376,7 +1469,8 @@
                         },
                         {
                             "title": "AI ethics: A worked example",
-                            "body": "An impact assessment identifies affected groups, plausible harms, mitigations, and owners before launch."
+                            "body": "An impact assessment identifies affected groups, plausible harms, mitigations, and owners before launch.",
+                            "image": "img/languages/ai+ml/ai-impact-assessment.png"
                         }
                     ]
                 },
@@ -1395,7 +1489,8 @@
                         },
                         {
                             "title": "End-to-end system: Test a broken handoff",
-                            "body": "Walk through a stale feature table or unavailable prediction service and specify what the product does next. Exercise the fallback, alert, and recovery path with a known example. Model quality alone does not determine system reliability when upstream data or downstream actions fail."
+                            "body": "Walk through a stale feature table or unavailable prediction service and specify what the product does next. Exercise the fallback, alert, and recovery path with a known example. Model quality alone does not determine system reliability when upstream data or downstream actions fail.",
+                            "image": "img/languages/ai+ml/system-handoff-fallback.png"
                         },
                         {
                             "title": "End-to-end system: A worked example",
